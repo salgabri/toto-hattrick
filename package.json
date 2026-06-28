@@ -1,0 +1,25 @@
+{
+  "name": "hattrick-archive",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fetch, store, and browse a Hattrick team's match history via the CHPP API.",
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:server dev:web",
+    "dev:server": "npm run dev --workspace server",
+    "dev:web": "npm run dev --workspace web",
+    "build": "npm run build --workspace server && npm run build --workspace web",
+    "db:migrate": "npm run db:migrate --workspace server",
+    "db:generate": "npm run db:generate --workspace server",
+    "typecheck": "npm run typecheck --workspace server && npm run typecheck --workspace web"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

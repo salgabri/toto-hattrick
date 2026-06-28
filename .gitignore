@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+build/
+
+# env / secrets — NEVER commit these
+.env
+.env.*
+!.env.example
+
+# database
+*.db
+*.db-journal
+*.sqlite
+server/prisma/dev.db*
+
+# logs
+*.log
+npm-debug.log*
+
+# editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# real CHPP XML captures may contain team data — keep only the curated samples you intend to commit
+# (delete this rule if you want everything in /samples tracked)
+server/samples/*.local.xml

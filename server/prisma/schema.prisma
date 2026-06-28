@@ -1,0 +1,76 @@
+// Hattrick Archive — data model.
+// Starting point per spec; refine column shapes against real XML in /samples.
+// Swap to Postgres later by changing `provider` + DATABASE_URL only.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// A Hattrick team we sync. Bounds how far back to walk (foundedDate).
+model Team {
+  teamId      Int      @id
+  name        String
+  foundedDate DateTime?
+  leagueId    Int?
+
+  matches Match[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/// One match summary, sourced from `matchesarchive`.
+/// `detailsFetched` flips true once `matchdetails` has enriched it.
+model Match {
+  matchId      Int      @id
+  teamId       Int
+  season       Int
+  matchDate    DateTime
+  homeTeamId   Int
+  awayTeamId   Int
+  homeTeamName String
+  awayTeamName String
+  homeGoals    Int?
+  awayGoals    Int?
+  matchType    Int?
+  detailsFetched Boolean @default(false)
+
+  team   Team         @relation(fields: [teamId], references: [teamId])
+  detail MatchDetail?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([teamId, season])
+  @@index([matchDate])
+}
+
+/// Enriched detail from `matchdetails`. JSON columns now; normalize later only if a feature needs it.
+model MatchDetail {
+  matchId     Int    @id
+  lineupJson  String // JSON: lineup / formation
+  scorersJson String // JSON: goals + scorers
+  ratingsJson String // JSON: player + team ratings
+
+  match Match @relation(fields: [matchId], references: [matchId])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/// Per-user CHPP OAuth 1.0a access token + secret. Server-side only.
+/// `userId` is Hattrick's user id (from the access-token response), not a local account.
+model ChppToken {
+  userId      Int      @id
+  accessToken String
+  tokenSecret String
+  scope       String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
