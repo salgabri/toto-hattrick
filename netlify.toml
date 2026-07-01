@@ -1,0 +1,12 @@
+# Static frontend deploy. The site is baked JSON + Vite build — the server is not
+# needed at deploy time, so build only the web workspace.
+[build]
+  command = "npm run build -w web"
+  publish = "web/dist"
+
+# SPA fallback. Existing static files (assets, /data/*.json) are served first;
+# this only catches unmatched paths.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
