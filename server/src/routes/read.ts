@@ -122,6 +122,8 @@ export async function registerReadRoutes(app: FastifyInstance): Promise<void> {
       season: c.season,
       championTeamId: c.championTeamId,
       champion: c.championTeamName,
+      championUserId: c.championUserId,
+      championUserName: c.championUserName,
       points: c.points,
       played: c.played,
       complete: c.complete,
