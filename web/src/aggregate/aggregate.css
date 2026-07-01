@@ -1,0 +1,38 @@
+/* Interactive states for the Aggregate Stats views. Everything static is inline (to mirror the
+   prototype exactly); only :hover / :focus / :placeholder need real rules. Scoped to
+   `.ts-aggregate` so nothing leaks globally. */
+
+html,
+body,
+#root {
+  margin: 0;
+}
+
+.ts-aggregate,
+.ts-aggregate * {
+  box-sizing: border-box;
+}
+
+.ts-aggregate select,
+.ts-aggregate input,
+.ts-aggregate button {
+  font-family: inherit;
+}
+
+/* Leaderboard row highlight — matches the prototype's
+   style-hover="background:color-mix(in srgb,var(--accent) 6%,transparent)".
+   Expanded rows carry an inline background (accent 7%) which wins over this. */
+.ts-aggregate .mgr-row {
+  cursor: pointer;
+}
+.ts-aggregate .mgr-row:hover {
+  background: color-mix(in srgb, var(--accent, #b0742a) 6%, transparent);
+}
+
+/* Search field focus ring — matches style-focus="border-color:var(--accent)". */
+.ts-aggregate .search-input:focus {
+  border-color: var(--accent, #b0742a);
+}
+.ts-aggregate .search-input::placeholder {
+  color: var(--ink-faint, #a99e86);
+}
