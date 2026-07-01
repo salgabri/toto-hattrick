@@ -1,12 +1,15 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { CSSProperties, Dispatch, SetStateAction } from 'react';
 import {
-  COUNTRIES,
-  MANAGERS,
-  buildWinners,
-  countryName,
-  trophiesFor,
-  type CountryCode,
+  getCabinet,
+  getLeagues,
+  getManagers,
+  getNationalities,
+  getWinners,
+  type Country,
+  type Manager,
+  type TrophyCabinet,
+  type Winner,
 } from './data.js';
 import { C, CHAMP_COLOR, MAIN_COLOR, rootStyle, type Density, type Theme } from './theme.js';
 import './aggregate.css';
@@ -14,23 +17,19 @@ import './aggregate.css';
 /**
  * Toto Hattrick — Aggregate records.
  *
- * Cross-universe aggregate stats over the Hattrick world. Two views today, built to grow:
- *   - Trophy leaders — managers ranked by silverware, category toggles, nationality + name
- *     filters, expandable trophy cabinets, gold/silver/bronze podium.
- *   - League winners — per-country top-division roll of honour with dynasty highlighting and a
- *     "most titles" tally.
+ * Cross-universe aggregate stats over the Hattrick world, wired to the real backend:
+ *   - Trophy leaders — managers ranked by top-division titles, nationality + name filters,
+ *     expandable trophy cabinets, gold/silver/bronze podium.
+ *   - League winners — per-country top-division roll of honour with dynasty highlighting.
  *
- * Data is design-time sample data (see ./data.ts) — this view sits ahead of the backend.
+ * Backend has league titles only (no cup/other trophies yet), so the cup toggles are inert.
  */
 
 export type View = 'trophies' | 'leagues';
 
 export interface AggregateStatsProps {
-  /** Initial theme; the sidebar toggle flips it thereafter. */
   defaultTheme?: Theme;
-  /** Accent color (heritage ochre by default). */
   accent?: string;
-  /** Row density. Reserved knob from the design system; visual defaults are comfortable. */
   density?: Density;
 }
 
@@ -43,13 +42,26 @@ export function AggregateStats({
   const [view, setView] = useState<View>('trophies');
   const toggleTheme = () => setTheme((t) => (t === 'paper' ? 'floodlit' : 'paper'));
 
-  // All view state lives on the parent so it survives nav switches — the prototype keeps a
-  // single always-mounted component, so filters/search/expansion/league selection persist.
-  const [nation, setNation] = useState<CountryCode | 'ALL'>('ALL');
+  // View state lives on the parent so it survives nav switches.
+  const [nation, setNation] = useState<string>('ALL');
   const [query, setQuery] = useState('');
   const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false });
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [league, setLeague] = useState<CountryCode>('SWE');
+  const [league, setLeague] = useState<string>('');
+
+  // Reference lists (loaded once).
+  const [nationalities, setNationalities] = useState<Country[]>([]);
+  const [leagues, setLeagues] = useState<Country[]>([]);
+
+  useEffect(() => {
+    getNationalities().then(setNationalities).catch(() => setNationalities([]));
+    getLeagues()
+      .then((ls) => {
+        setLeagues(ls);
+        setLeague((cur) => cur || ls.find((x) => x.code === '4')?.code || ls[0]?.code || '');
+      })
+      .catch(() => setLeagues([]));
+  }, []);
 
   return (
     <div className="ts-aggregate" style={rootStyle(theme, density, accent)}>
@@ -68,6 +80,7 @@ export function AggregateStats({
           <div style={{ maxWidth: 1080, margin: '0 auto' }}>
             {view === 'trophies' ? (
               <TrophyLeaders
+                nationalities={nationalities}
                 nation={nation}
                 setNation={setNation}
                 query={query}
@@ -78,7 +91,7 @@ export function AggregateStats({
                 setExpandedId={setExpandedId}
               />
             ) : (
-              <LeagueWinners league={league} setLeague={setLeague} />
+              <LeagueWinners leagues={leagues} league={league} setLeague={setLeague} />
             )}
           </div>
         </main>
@@ -135,16 +148,7 @@ function Sidebar({
             flex: 'none',
           }}
         >
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: 13,
-              background: 'var(--accent,#B0742A)',
-            }}
-          />
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 13, background: 'var(--accent,#B0742A)' }} />
           <span
             style={{
               fontFamily: "'Bricolage Grotesque',sans-serif",
@@ -158,14 +162,7 @@ function Sidebar({
           </span>
         </div>
         <div>
-          <div
-            style={{
-              fontFamily: "'Bricolage Grotesque',sans-serif",
-              fontWeight: 800,
-              fontSize: 16,
-              lineHeight: 1,
-            }}
-          >
+          <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontWeight: 800, fontSize: 16, lineHeight: 1 }}>
             Toto Hattrick
           </div>
           <div
@@ -218,20 +215,10 @@ function Sidebar({
               boxShadow: active ? 'inset 3px 0 0 ' + C.accent : 'none',
             }}
           >
-            <span
-              style={{
-                width: 8,
-                height: 8,
-                borderRadius: '50%',
-                flex: 'none',
-                background: active ? C.accent : C.line2,
-              }}
-            />
+            <span style={{ width: 8, height: 8, borderRadius: '50%', flex: 'none', background: active ? C.accent : C.line2 }} />
             <div style={{ textAlign: 'left', minWidth: 0 }}>
               <div style={{ fontSize: 13.5, fontWeight: 600 }}>{n.label}</div>
-              <div style={{ fontSize: 11, color: 'var(--ink-faint,#A99E86)', fontWeight: 500 }}>
-                {n.sub}
-              </div>
+              <div style={{ fontSize: 11, color: 'var(--ink-faint,#A99E86)', fontWeight: 500 }}>{n.sub}</div>
             </div>
           </button>
         );
@@ -318,13 +305,11 @@ const cardStyle: CSSProperties = {
   boxShadow: '0 1px 2px rgba(0,0,0,.03)',
 };
 
-const monoFaint: CSSProperties = {
-  fontFamily: "'JetBrains Mono',monospace",
-};
+const monoFaint: CSSProperties = { fontFamily: "'JetBrains Mono',monospace" };
 
 /* ========================== TROPHY LEADERS ========================== */
 
-const TROPHY_GRID = '48px minmax(0,1fr) 76px minmax(120px,196px) 56px 22px';
+const TROPHY_GRID = '48px minmax(0,1fr) 96px minmax(120px,196px) 56px 22px';
 
 interface IncState {
   champ: boolean;
@@ -336,7 +321,17 @@ function rankBg(r: number): string {
   return r === 1 ? '#D8A93B' : r === 2 ? '#C7C3B8' : r === 3 ? '#C08A52' : 'transparent';
 }
 
+function cabinetCats(tr: TrophyCabinet, inc: IncState) {
+  return [
+    { label: 'Championships', dot: CHAMP_COLOR, items: tr.champ, excluded: !inc.champ },
+    { label: 'Main cups', dot: MAIN_COLOR, items: tr.main, excluded: !inc.main },
+    { label: 'Secondary cups', dot: C.line2, items: tr.sec, excluded: !inc.sec },
+    { label: 'Other honours', dot: C.line2, items: tr.other, excluded: !inc.sec },
+  ].filter((c) => c.items.length);
+}
+
 function TrophyLeaders({
+  nationalities,
   nation,
   setNation,
   query,
@@ -346,8 +341,9 @@ function TrophyLeaders({
   expandedId,
   setExpandedId,
 }: {
-  nation: CountryCode | 'ALL';
-  setNation: Dispatch<SetStateAction<CountryCode | 'ALL'>>;
+  nationalities: Country[];
+  nation: string;
+  setNation: Dispatch<SetStateAction<string>>;
   query: string;
   setQuery: Dispatch<SetStateAction<string>>;
   inc: IncState;
@@ -355,30 +351,42 @@ function TrophyLeaders({
   expandedId: string | null;
   setExpandedId: Dispatch<SetStateAction<string | null>>;
 }) {
+  const [managers, setManagers] = useState<Manager[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [cabinets, setCabinets] = useState<Record<number, TrophyCabinet | null>>({});
+
+  useEffect(() => {
+    setLoading(true);
+    getManagers(nation === 'ALL' ? undefined : nation)
+      .then(setManagers)
+      .catch(() => setManagers([]))
+      .finally(() => setLoading(false));
+  }, [nation]);
 
   const toggleInc = (k: keyof IncState) => setInc((s) => ({ ...s, [k]: !s[k] }));
-  const toggleExpand = (login: string) =>
-    setExpandedId((cur) => (cur === login ? null : login));
+  const toggleExpand = (m: Manager) => {
+    setExpandedId((cur) => (cur === String(m.userId) ? null : String(m.userId)));
+    if (!(m.userId in cabinets)) {
+      setCabinets((c) => ({ ...c, [m.userId]: null }));
+      getCabinet(m.userId)
+        .then((cab) => setCabinets((c) => ({ ...c, [m.userId]: cab })))
+        .catch(() => setCabinets((c) => ({ ...c, [m.userId]: { champ: [], main: [], sec: [], other: [] } })));
+    }
+  };
 
-  // Ranks are ABSOLUTE: computed over the full field (only the category flags change them),
-  // so filtering by nationality/name narrows the view without renumbering or moving medals.
+  // Ranks are absolute over the fetched field; category flags change the total.
   const ranked = useMemo(() => {
-    const l = MANAGERS.map((m) => {
+    const l = managers.map((m) => {
       const mc = Math.ceil(m.cup / 2);
-      const ft =
-        (inc.champ ? m.lg : 0) + (inc.main ? mc : 0) + (inc.sec ? m.cup - mc + m.oth : 0);
+      const ft = (inc.champ ? m.lg : 0) + (inc.main ? mc : 0) + (inc.sec ? m.cup - mc + m.oth : 0);
       return { m, ft };
     });
     l.sort((a, b) => b.ft - a.ft || b.m.lg - a.m.lg);
     return l.map((e, i) => ({ ...e, rank: i + 1 }));
-  }, [inc]);
+  }, [managers, inc]);
 
   const q = query.trim().toLowerCase();
-  const visible = ranked
-    .filter((e) => nation === 'ALL' || e.m.c === nation)
-    .filter(
-      (e) => !q || e.m.login.toLowerCase().includes(q) || e.m.team.toLowerCase().includes(q),
-    );
+  const visible = ranked.filter((e) => !q || e.m.login.toLowerCase().includes(q));
 
   const chips: Array<{ k: keyof IncState; label: string }> = [
     { k: 'champ', label: 'Championships' },
@@ -388,35 +396,17 @@ function TrophyLeaders({
 
   return (
     <div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'flex-end',
-          justifyContent: 'space-between',
-          gap: 20,
-          flexWrap: 'wrap',
-          marginBottom: 6,
-        }}
-      >
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap', marginBottom: 6 }}>
         <div>
           <h1 style={h1Style}>Trophy leaders</h1>
           <p style={{ fontSize: 14, color: 'var(--ink-soft,#776F5D)', margin: '10px 0 0' }}>
-            Managers ranked by trophies won. Secondary cups &amp; minor honours are excluded by
-            default — toggle what counts below.
+            Managers ranked by top-division titles won. Cup honours aren&apos;t tracked yet, so those toggles are inert for now.
           </p>
         </div>
       </div>
 
-      {/* Filter bar: category flags (primary) → nationality → search (secondary) */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 14,
-          flexWrap: 'wrap',
-          margin: '22px 0 16px',
-        }}
-      >
+      {/* Filter bar */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap', margin: '22px 0 16px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
           <label style={filterLabel}>Counting toward total</label>
           <div style={{ display: 'flex', gap: 7 }}>
@@ -436,18 +426,12 @@ function TrophyLeaders({
                     fontWeight: 600,
                     padding: '8px 12px',
                     borderRadius: 9,
-                    border: on
-                      ? '1px solid var(--accent,#B0742A)'
-                      : '1px solid var(--line-2,#D8CDB4)',
-                    background: on
-                      ? 'color-mix(in srgb, var(--accent,#B0742A) 12%, transparent)'
-                      : 'transparent',
+                    border: on ? '1px solid var(--accent,#B0742A)' : '1px solid var(--line-2,#D8CDB4)',
+                    background: on ? 'color-mix(in srgb, var(--accent,#B0742A) 12%, transparent)' : 'transparent',
                     color: on ? C.ink : C.faint,
                   }}
                 >
-                  {on && (
-                    <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11 }}>✓</span>
-                  )}
+                  {on && <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11 }}>✓</span>}
                   {c.label}
                 </button>
               );
@@ -457,13 +441,9 @@ function TrophyLeaders({
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
           <label style={filterLabel}>Nationality</label>
-          <select
-            value={nation}
-            onChange={(e) => setNation(e.target.value as CountryCode | 'ALL')}
-            style={selectStyle}
-          >
+          <select value={nation} onChange={(e) => setNation(e.target.value)} style={selectStyle}>
             <option value="ALL">All nationalities</option>
-            {COUNTRIES.map((o) => (
+            {nationalities.map((o) => (
               <option key={o.code} value={o.code}>
                 {o.name}
               </option>
@@ -477,7 +457,7 @@ function TrophyLeaders({
             className="search-input"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Manager or club…"
+            placeholder="Manager…"
             style={{
               width: 214,
               padding: '9px 13px',
@@ -494,9 +474,7 @@ function TrophyLeaders({
         </div>
 
         <div style={{ flex: 1 }} />
-        <div style={{ ...monoFaint, fontSize: 12.5, color: 'var(--ink-soft,#776F5D)' }}>
-          {visible.length} managers
-        </div>
+        <div style={{ ...monoFaint, fontSize: 12.5, color: 'var(--ink-soft,#776F5D)' }}>{visible.length} managers</div>
       </div>
 
       {/* Leaderboard */}
@@ -528,17 +506,10 @@ function TrophyLeaders({
           const m = e.m;
           const r = e.rank;
           const top = r <= 3;
-          const isExp = expandedId === m.login;
+          const isExp = expandedId === String(m.userId);
           const mc = Math.ceil(m.cup / 2);
           const sc = m.cup - mc;
-          const tr = trophiesFor(m);
-
-          const cats = [
-            { label: 'Championships', dot: CHAMP_COLOR, items: tr.champ, excluded: !inc.champ },
-            { label: 'Main cups', dot: MAIN_COLOR, items: tr.main, excluded: !inc.main },
-            { label: 'Secondary cups', dot: C.line2, items: tr.sec, excluded: !inc.sec },
-            { label: 'Other honours', dot: C.line2, items: tr.other, excluded: !inc.sec },
-          ].filter((c) => c.items.length);
+          const cab = isExp ? cabinets[m.userId] : undefined;
 
           const segRaw: Array<{ n: number; color: string }> = [];
           if (inc.champ && m.lg) segRaw.push({ n: m.lg, color: CHAMP_COLOR });
@@ -548,19 +519,17 @@ function TrophyLeaders({
           const breakdown = segRaw.map((s) => s.n).join(' · ') || '0';
 
           return (
-            <div key={m.login} style={{ borderBottom: '1px solid var(--line,#E6DECB)' }}>
+            <div key={m.userId} style={{ borderBottom: '1px solid var(--line,#E6DECB)' }}>
               <div
                 className="mgr-row"
-                onClick={() => toggleExpand(m.login)}
+                onClick={() => toggleExpand(m)}
                 style={{
                   display: 'grid',
                   gridTemplateColumns: TROPHY_GRID,
                   gap: 14,
                   padding: '13px 22px',
                   alignItems: 'center',
-                  ...(isExp
-                    ? { background: 'color-mix(in srgb, var(--accent,#B0742A) 7%, transparent)' }
-                    : null),
+                  ...(isExp ? { background: 'color-mix(in srgb, var(--accent,#B0742A) 7%, transparent)' } : null),
                 }}
               >
                 <div>
@@ -584,33 +553,25 @@ function TrophyLeaders({
                   </span>
                 </div>
                 <div style={{ minWidth: 0 }}>
-                  <div
-                    style={{
-                      fontSize: 14.5,
-                      fontWeight: 700,
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {m.login}
+                  <div style={{ fontSize: 14.5, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    <a
+                      href={`https://www.hattrick.org/en/Club/Manager/?userId=${m.userId}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(ev) => ev.stopPropagation()}
+                      style={{ color: 'inherit', textDecoration: 'none' }}
+                    >
+                      {m.login}
+                    </a>
                   </div>
-                  <div
-                    style={{
-                      fontSize: 11.5,
-                      color: 'var(--ink-soft,#776F5D)',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {m.team}
-                  </div>
+                  <div style={{ fontSize: 11.5, color: 'var(--ink-soft,#776F5D)', ...monoFaint }}>#{m.userId}</div>
                 </div>
-                <div>
+                <div style={{ minWidth: 0 }}>
                   <span
+                    title={m.c}
                     style={{
                       display: 'inline-block',
+                      maxWidth: '100%',
                       fontFamily: "'JetBrains Mono',monospace",
                       fontSize: 11,
                       fontWeight: 600,
@@ -619,49 +580,24 @@ function TrophyLeaders({
                       borderRadius: 6,
                       background: 'var(--card-2,#EFE7D6)',
                       color: 'var(--ink-soft,#776F5D)',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                      boxSizing: 'border-box',
                     }}
                   >
                     {m.c}
                   </span>
                 </div>
                 <div style={{ minWidth: 0 }}>
-                  <div
-                    style={{
-                      height: 9,
-                      borderRadius: 5,
-                      overflow: 'hidden',
-                      display: 'flex',
-                      background: 'var(--card-2,#EFE7D6)',
-                    }}
-                  >
+                  <div style={{ height: 9, borderRadius: 5, overflow: 'hidden', display: 'flex', background: 'var(--card-2,#EFE7D6)' }}>
                     {segRaw.map((sg, i) => (
-                      <span
-                        key={i}
-                        style={{ width: (sg.n / tot) * 100 + '%', background: sg.color }}
-                      />
+                      <span key={i} style={{ width: (sg.n / tot) * 100 + '%', background: sg.color }} />
                     ))}
                   </div>
-                  <div
-                    style={{
-                      ...monoFaint,
-                      fontSize: 10.5,
-                      color: 'var(--ink-faint,#A99E86)',
-                      marginTop: 5,
-                    }}
-                  >
-                    {breakdown}
-                  </div>
+                  <div style={{ ...monoFaint, fontSize: 10.5, color: 'var(--ink-faint,#A99E86)', marginTop: 5 }}>{breakdown}</div>
                 </div>
-                <div
-                  style={{
-                    textAlign: 'right',
-                    fontFamily: "'JetBrains Mono',monospace",
-                    fontSize: 20,
-                    fontWeight: 700,
-                  }}
-                >
-                  {e.ft}
-                </div>
+                <div style={{ textAlign: 'right', fontFamily: "'JetBrains Mono',monospace", fontSize: 20, fontWeight: 700 }}>{e.ft}</div>
                 <div
                   style={{
                     textAlign: 'center',
@@ -676,138 +612,76 @@ function TrophyLeaders({
               </div>
 
               {isExp && (
-                <div
-                  style={{
-                    padding: '10px 22px 22px 84px',
-                    background: 'color-mix(in srgb, var(--accent,#B0742A) 4%, transparent)',
-                  }}
-                >
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px 34px' }}>
-                    {cats.map((g) => (
-                      <div
-                        key={g.label}
-                        style={{ flex: 1, minWidth: 186, opacity: g.excluded ? 0.45 : 1 }}
-                      >
-                        <div
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 7,
-                            marginBottom: 11,
-                          }}
-                        >
-                          <span
-                            style={{
-                              width: 9,
-                              height: 9,
-                              borderRadius: 3,
-                              flex: 'none',
-                              background: g.dot,
-                            }}
-                          />
-                          <span
-                            style={{
-                              fontSize: 10.5,
-                              letterSpacing: '.09em',
-                              textTransform: 'uppercase',
-                              fontWeight: 700,
-                              color: 'var(--ink-soft,#776F5D)',
-                            }}
-                          >
-                            {g.label}
-                          </span>
-                          <span
-                            style={{
-                              ...monoFaint,
-                              fontSize: 11,
-                              color: 'var(--ink-faint,#A99E86)',
-                            }}
-                          >
-                            {g.items.length}
-                          </span>
-                          {g.excluded && (
+                <div style={{ padding: '10px 22px 22px 84px', background: 'color-mix(in srgb, var(--accent,#B0742A) 4%, transparent)' }}>
+                  {cab == null ? (
+                    <div style={{ color: 'var(--ink-faint,#A99E86)', fontSize: 12.5 }}>Loading cabinet…</div>
+                  ) : (
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px 34px' }}>
+                      {cabinetCats(cab, inc).map((g) => (
+                        <div key={g.label} style={{ flex: 1, minWidth: 186, opacity: g.excluded ? 0.45 : 1 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 11 }}>
+                            <span style={{ width: 9, height: 9, borderRadius: 3, flex: 'none', background: g.dot }} />
                             <span
                               style={{
-                                fontSize: 9,
-                                fontWeight: 700,
-                                letterSpacing: '.06em',
+                                fontSize: 10.5,
+                                letterSpacing: '.09em',
                                 textTransform: 'uppercase',
-                                color: C.faint,
-                                border: '1px solid ' + C.line2,
-                                padding: '1px 6px',
-                                borderRadius: 999,
+                                fontWeight: 700,
+                                color: 'var(--ink-soft,#776F5D)',
                               }}
                             >
-                              excluded
+                              {g.label}
                             </span>
-                          )}
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                          {g.items.map((it, i) => (
-                            <div
-                              key={i}
-                              style={{
-                                display: 'flex',
-                                alignItems: 'baseline',
-                                justifyContent: 'space-between',
-                                gap: 10,
-                              }}
-                            >
-                              <div style={{ minWidth: 0 }}>
-                                <div
-                                  style={{
-                                    fontSize: 12.5,
-                                    fontWeight: 600,
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis',
-                                    whiteSpace: 'nowrap',
-                                  }}
-                                >
-                                  {it.main}
-                                </div>
-                                <div
-                                  style={{
-                                    fontSize: 11,
-                                    color: 'var(--ink-faint,#A99E86)',
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis',
-                                    whiteSpace: 'nowrap',
-                                  }}
-                                >
-                                  {it.sub}
-                                </div>
-                              </div>
+                            <span style={{ ...monoFaint, fontSize: 11, color: 'var(--ink-faint,#A99E86)' }}>{g.items.length}</span>
+                            {g.excluded && (
                               <span
                                 style={{
-                                  fontFamily: "'JetBrains Mono',monospace",
-                                  fontSize: 11.5,
-                                  color: 'var(--ink-soft,#776F5D)',
-                                  flex: 'none',
+                                  fontSize: 9,
+                                  fontWeight: 700,
+                                  letterSpacing: '.06em',
+                                  textTransform: 'uppercase',
+                                  color: C.faint,
+                                  border: '1px solid ' + C.line2,
+                                  padding: '1px 6px',
+                                  borderRadius: 999,
                                 }}
                               >
-                                {it.season}
+                                excluded
                               </span>
-                            </div>
-                          ))}
+                            )}
+                          </div>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                            {g.items.map((it, i) => (
+                              <div key={i} style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 10 }}>
+                                <div style={{ minWidth: 0 }}>
+                                  <div style={{ fontSize: 12.5, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                    {it.main}
+                                  </div>
+                                  <div style={{ fontSize: 11, color: 'var(--ink-faint,#A99E86)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                    {it.sub}
+                                  </div>
+                                </div>
+                                <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11.5, color: 'var(--ink-soft,#776F5D)', flex: 'none' }}>
+                                  {it.season}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
           );
         })}
 
-        {visible.length === 0 && (
-          <div
-            style={{
-              padding: '28px 22px',
-              textAlign: 'center',
-              color: 'var(--ink-faint,#A99E86)',
-              fontSize: 13,
-            }}
-          >
+        {loading && (
+          <div style={{ padding: '28px 22px', textAlign: 'center', color: 'var(--ink-faint,#A99E86)', fontSize: 13 }}>Loading managers…</div>
+        )}
+        {!loading && visible.length === 0 && (
+          <div style={{ padding: '28px 22px', textAlign: 'center', color: 'var(--ink-faint,#A99E86)', fontSize: 13 }}>
             No managers match your search.
           </div>
         )}
@@ -830,9 +704,7 @@ function TrophyLeaders({
         <LegendSwatch color="#B0742A" label="Main cups" />
         <LegendSwatch color="var(--line-2,#D8CDB4)" label="Secondary" />
         <span style={{ flex: 1 }} />
-        <span style={{ ...monoFaint, color: 'var(--ink-soft,#776F5D)', fontWeight: 400 }}>
-          source: managercompendium · team trophy lists
-        </span>
+        <span style={{ ...monoFaint, color: 'var(--ink-soft,#776F5D)', fontWeight: 400 }}>source: leaguefixtures · team history</span>
       </div>
     </div>
   );
@@ -852,21 +724,31 @@ function LegendSwatch({ color, label }: { color: string; label: string }) {
 const WINNER_GRID = '64px minmax(0,1fr) auto';
 
 function LeagueWinners({
+  leagues,
   league,
   setLeague,
 }: {
-  league: CountryCode;
-  setLeague: Dispatch<SetStateAction<CountryCode>>;
+  leagues: Country[];
+  league: string;
+  setLeague: Dispatch<SetStateAction<string>>;
 }) {
-  const winnersRaw = useMemo(() => buildWinners(league), [league]);
-  const leagueName = countryName(league);
+  const [winnersRaw, setWinnersRaw] = useState<Winner[]>([]);
+  const [loading, setLoading] = useState(true);
+  const leagueName = leagues.find((l) => l.code === league)?.name ?? '';
+
+  useEffect(() => {
+    if (!league) return;
+    setLoading(true);
+    getWinners(league)
+      .then(setWinnersRaw)
+      .catch(() => setWinnersRaw([]))
+      .finally(() => setLoading(false));
+  }, [league]);
 
   const winners = winnersRaw.map((w, i) => {
     const below = winnersRaw[i + 1];
     const above = winnersRaw[i - 1];
-    const partOfStreak =
-      (!!below && below.club === w.club) || (!!above && above.club === w.club);
-    // Label a run only on its newest row (no same-club row above it); count forward run length.
+    const partOfStreak = (!!below && below.club === w.club) || (!!above && above.club === w.club);
     let tag = '';
     if (!(above && above.club === w.club)) {
       let n = 1;
@@ -888,6 +770,7 @@ function LeagueWinners({
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5);
   const maxT = tallyArr.length ? tallyArr[0]![1] : 1;
+  const seasonRange = winnersRaw.length ? `S${winnersRaw[winnersRaw.length - 1]!.season}–S${winnersRaw[0]!.season}` : '—';
 
   return (
     <div>
@@ -898,23 +781,11 @@ function LeagueWinners({
         </p>
       </div>
 
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'flex-end',
-          gap: 14,
-          flexWrap: 'wrap',
-          margin: '22px 0 18px',
-        }}
-      >
+      <div style={{ display: 'flex', alignItems: 'flex-end', gap: 14, flexWrap: 'wrap', margin: '22px 0 18px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
           <label style={filterLabel}>League</label>
-          <select
-            value={league}
-            onChange={(e) => setLeague(e.target.value as CountryCode)}
-            style={selectStyle}
-          >
-            {COUNTRIES.map((o) => (
+          <select value={league} onChange={(e) => setLeague(e.target.value)} style={selectStyle}>
+            {leagues.map((o) => (
               <option key={o.code} value={o.code}>
                 {o.name}
               </option>
@@ -924,37 +795,12 @@ function LeagueWinners({
         <div style={{ flex: 1 }} />
       </div>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'minmax(0,1fr) 300px',
-          gap: 20,
-          alignItems: 'start',
-        }}
-      >
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 300px', gap: 20, alignItems: 'start' }}>
         {/* Roll of honour */}
         <div style={cardStyle}>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'baseline',
-              gap: 10,
-              padding: '16px 22px',
-              borderBottom: '1px solid var(--line,#E6DECB)',
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "'Bricolage Grotesque',sans-serif",
-                fontWeight: 700,
-                fontSize: 16,
-              }}
-            >
-              {leagueName}
-            </div>
-            <div style={{ fontSize: 12, color: 'var(--ink-faint,#A99E86)' }}>
-              Division I · roll of honour
-            </div>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, padding: '16px 22px', borderBottom: '1px solid var(--line,#E6DECB)' }}>
+            <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontWeight: 700, fontSize: 16 }}>{leagueName}</div>
+            <div style={{ fontSize: 12, color: 'var(--ink-faint,#A99E86)' }}>Division I · roll of honour</div>
           </div>
           <div
             style={{
@@ -988,30 +834,10 @@ function LeagueWinners({
                 borderLeft: '3px solid ' + (w.partOfStreak ? C.accent : 'transparent'),
               }}
             >
-              <div style={{ fontFamily: "'JetBrains Mono',monospace", fontWeight: 700, fontSize: 16 }}>
-                {w.season}
-              </div>
+              <div style={{ fontFamily: "'JetBrains Mono',monospace", fontWeight: 700, fontSize: 16 }}>{w.season}</div>
               <div style={{ minWidth: 0 }}>
-                <div
-                  style={{
-                    fontSize: 14,
-                    fontWeight: 700,
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {w.club}
-                </div>
-                <div
-                  style={{
-                    fontSize: 11.5,
-                    color: 'var(--ink-soft,#776F5D)',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
+                <div style={{ fontSize: 14, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{w.club}</div>
+                <div style={{ fontSize: 11.5, color: 'var(--ink-soft,#776F5D)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {w.manager}
                 </div>
               </div>
@@ -1036,83 +862,33 @@ function LeagueWinners({
             </div>
           ))}
 
-          <div
-            style={{
-              padding: '12px 22px',
-              fontSize: 11.5,
-              color: 'var(--ink-faint,#A99E86)',
-              fontFamily: "'JetBrains Mono',monospace",
-            }}
-          >
-            source: leaguedetails · worlddetails
+          {loading && (
+            <div style={{ padding: '24px 22px', color: 'var(--ink-faint,#A99E86)', fontSize: 13 }}>Loading…</div>
+          )}
+          {!loading && winnersRaw.length === 0 && (
+            <div style={{ padding: '24px 22px', color: 'var(--ink-faint,#A99E86)', fontSize: 13 }}>No champions stored for this country yet.</div>
+          )}
+
+          <div style={{ padding: '12px 22px', fontSize: 11.5, color: 'var(--ink-faint,#A99E86)', fontFamily: "'JetBrains Mono',monospace" }}>
+            source: leaguefixtures · team history
           </div>
         </div>
 
         {/* Most titles tally */}
         <aside style={{ ...cardStyle, overflow: 'visible', padding: 20 }}>
-          <div
-            style={{
-              fontFamily: "'Bricolage Grotesque',sans-serif",
-              fontWeight: 700,
-              fontSize: 15,
-              marginBottom: 4,
-            }}
-          >
-            Most titles
-          </div>
+          <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontWeight: 700, fontSize: 15, marginBottom: 4 }}>Most titles</div>
           <div style={{ fontSize: 11.5, color: 'var(--ink-faint,#A99E86)', marginBottom: 16 }}>
-            Seasons 66–89 · {leagueName}
+            {seasonRange} · {leagueName}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
             {tallyArr.map(([club, count], i) => (
               <div key={club}>
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'baseline',
-                    marginBottom: 5,
-                    gap: 8,
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: 13,
-                      fontWeight: 600,
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {club}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "'JetBrains Mono',monospace",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      flex: 'none',
-                    }}
-                  >
-                    {count}
-                  </span>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 5, gap: 8 }}>
+                  <span style={{ fontSize: 13, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{club}</span>
+                  <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 13, fontWeight: 700, flex: 'none' }}>{count}</span>
                 </div>
-                <div
-                  style={{
-                    height: 7,
-                    borderRadius: 4,
-                    background: 'var(--card-2,#EFE7D6)',
-                    overflow: 'hidden',
-                  }}
-                >
-                  <span
-                    style={{
-                      display: 'block',
-                      height: '100%',
-                      width: (count / maxT) * 100 + '%',
-                      background: i === 0 ? C.accent : C.line2,
-                    }}
-                  />
+                <div style={{ height: 7, borderRadius: 4, background: 'var(--card-2,#EFE7D6)', overflow: 'hidden' }}>
+                  <span style={{ display: 'block', height: '100%', width: (count / maxT) * 100 + '%', background: i === 0 ? C.accent : C.line2 }} />
                 </div>
               </div>
             ))}
