@@ -22,6 +22,7 @@ export interface Manager {
   lg: number;
   cup: number;
   oth: number;
+  lastSeason: number; // most recent season this manager won a title (0 = none)
 }
 
 export interface TrophyItem {
@@ -86,7 +87,24 @@ export async function getManagers(nationality?: string): Promise<Manager[]> {
   const { managers } = await load();
   return managers
     .filter((m) => !nationality || nationality === 'ALL' || m.nationality === nationality)
-    .map((m) => ({ userId: m.userId, login: m.userName, c: m.nationality, team: '', lg: m.lg, cup: 0, oth: 0 }));
+    .map((m) => ({
+      userId: m.userId,
+      login: m.userName,
+      c: m.nationality,
+      team: '',
+      lg: m.lg,
+      cup: 0,
+      oth: 0,
+      lastSeason: m.titles?.length ? Math.max(...m.titles.map((t) => t.season)) : 0,
+    }));
+}
+
+/** Most recent season anyone won a title — the "last season" for the Trophy leaders filter. */
+export async function getLatestSeason(): Promise<number> {
+  const { managers } = await load();
+  let max = 0;
+  for (const m of managers) for (const t of m.titles ?? []) if (t.season > max) max = t.season;
+  return max;
 }
 
 export async function getCabinet(userId: number): Promise<TrophyCabinet> {
