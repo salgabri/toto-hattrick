@@ -35,3 +35,6 @@ web/public/targets.json
 # local Claude tooling
 .claude/settings.local.json
 .claude/launch.json
+
+# generated unresolved-teams snapshot (re-run scripts/list-unresolved.ts)
+unresolved-teams.csv
