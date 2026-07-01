@@ -28,17 +28,25 @@ const oauth = new OAuth({
   },
 });
 
-/** Build a signed Authorization header for a request, optionally on behalf of a token. */
-export function authHeader(
-  url: string,
-  method: 'GET' | 'POST',
-  token?: TokenPair,
-): Record<string, string> {
+/**
+ * Sign a request and return a URL with the OAuth params in the QUERY STRING.
+ *
+ * Hattrick's CHPP front-end (IIS) rejects the `Authorization: OAuth ...` header at the
+ * web-server layer with an IIS 401.2 ("invalid credentials") — the request never reaches
+ * the OAuth module. Delivering the signed oauth_* params as query parameters works.
+ * The signature base string still includes every existing query param (oauth-1.0a's
+ * deParamUrl handles that), so `url` may already carry file/version/oauth_callback.
+ */
+export function buildSignedUrl(url: string, method: 'GET' | 'POST', token?: TokenPair): string {
   const signed = oauth.authorize(
     { url, method },
     token ? { key: token.token, secret: token.tokenSecret } : undefined,
-  );
-  return oauth.toHeader(signed) as unknown as Record<string, string>;
+  ) as unknown as Record<string, string | number>;
+  const u = new URL(url);
+  for (const [key, value] of Object.entries(signed)) {
+    u.searchParams.set(key, String(value));
+  }
+  return u.toString();
 }
 
 /** CHPP OAuth endpoints answer with a query-string body: oauth_token=...&oauth_token_secret=... */
@@ -57,7 +65,7 @@ function parseTokenResponse(body: string): TokenPair & Record<string, string> {
 /** Step 1. Returns the request token plus the URL to send the user to. */
 export async function getRequestToken(): Promise<{ requestToken: TokenPair; authorizeUrl: string }> {
   const url = `${REQUEST_TOKEN_URL}?oauth_callback=${encodeURIComponent(env.CHPP_CALLBACK_URL)}`;
-  const res = await fetch(url, { method: 'GET', headers: authHeader(url, 'GET') });
+  const res = await fetch(buildSignedUrl(url, 'GET'), { method: 'GET' });
   const body = await res.text();
   if (!res.ok) throw new Error(`request_token failed (${res.status}): ${body.slice(0, 200)}`);
 
@@ -75,7 +83,7 @@ export async function getAccessToken(
   verifier: string,
 ): Promise<TokenPair> {
   const url = `${ACCESS_TOKEN_URL}?oauth_verifier=${encodeURIComponent(verifier)}`;
-  const res = await fetch(url, { method: 'GET', headers: authHeader(url, 'GET', requestToken) });
+  const res = await fetch(buildSignedUrl(url, 'GET', requestToken), { method: 'GET' });
   const body = await res.text();
   if (!res.ok) throw new Error(`access_token failed (${res.status}): ${body.slice(0, 200)}`);
 

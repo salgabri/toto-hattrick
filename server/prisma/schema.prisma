@@ -63,6 +63,79 @@ model MatchDetail {
   updatedAt DateTime @updatedAt
 }
 
+/// The final league table for the division a team played in, one row per season. Reconstructed
+/// from `leaguefixtures` (which serves historical seasons). `championTeam*` is the top of the
+/// computed standings; `complete` is false while a season is still being played.
+model SeasonStanding {
+  teamId              Int
+  season              Int
+  leagueLevelUnitId   Int
+  leagueLevelUnitName String
+  championTeamId      Int
+  championTeamName    String
+  complete            Boolean @default(false)
+  standingsJson       String // full table: StandingRow[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([teamId, season])
+}
+
+/// Seed of every Hattrick league's top division (level 1). topSeriesId is the
+/// LeagueLevelUnitID used to reconstruct that country's champions via leaguefixtures.
+model NationalLeague {
+  leagueId      Int     @id
+  countryName   String
+  topSeriesId   Int
+  currentSeason Int?
+  isCountry     Boolean @default(true)
+
+  champions LeagueChampion[]
+}
+
+/// Champion of a country's top division for one season. Reconstructed from leaguefixtures
+/// (works for past seasons). championUserId is null for historical seasons — leaguefixtures
+/// exposes team ids/names but not the manager. `complete` is false for the running season.
+model LeagueChampion {
+  leagueId         Int
+  season           Int
+  topSeriesId      Int
+  countryName      String
+  championTeamId   Int
+  championTeamName String
+  championUserId   Int?
+  championUserName String?
+  played           Int
+  points           Int
+  complete         Boolean @default(false)
+
+  league NationalLeague @relation(fields: [leagueId], references: [leagueId])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([leagueId, season])
+  @@index([season])
+  @@index([championTeamId])
+  @@index([championUserId])
+}
+
+/// A Hattrick manager who has won at least one top-division title. Resolved from the champion
+/// team's CURRENT owner (teamdetails) — historical owners aren't exposed by CHPP. nationality
+/// comes from managercompendium. isBot/abandoned teams have no owner (userId stays unresolved).
+model HattrickUser {
+  userId      Int     @id
+  loginName   String
+  countryId   Int?
+  nationality String? // manager's country (managercompendium)
+  isBot       Boolean @default(false)
+
+  updatedAt DateTime @updatedAt
+
+  @@index([nationality])
+}
+
 /// Per-user CHPP OAuth 1.0a access token + secret. Server-side only.
 /// `userId` is Hattrick's user id (from the access-token response), not a local account.
 model ChppToken {

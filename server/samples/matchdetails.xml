@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>matchdetails.xml</FileName>
+  <Version>3.0</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-06-30 18:34:14</FetchedDate>
+  <UserSupporterTier>diamond</UserSupporterTier>
+  <SourceSystem>Hattrick</SourceSystem>
+  <Match>
+    <MatchID>761952861</MatchID>
+    <MatchType>3</MatchType>
+    <MatchContextId>1332</MatchContextId>
+    <MatchRuleId>0</MatchRuleId>
+    <CupLevel>1</CupLevel>
+    <CupLevelIndex>1</CupLevelIndex>
+    <MatchDate>2026-03-31 19:00:00</MatchDate>
+    <FinishedDate>2026-03-31 20:47:00</FinishedDate>
+    <AddedMinutes>2</AddedMinutes>
+    <HomeTeam>
+      <HomeTeamID>2241372</HomeTeamID>
+      <HomeTeamName>Panormus 2024</HomeTeamName>
+      <DressURI>//res.hattrick.org/kits/31/307/3070/3069583/matchKitSmall.png</DressURI>
+      <Formation>3-5-2</Formation>
+      <HomeGoals>5</HomeGoals>
+      <TacticType>4</TacticType>
+      <TacticSkill>11</TacticSkill>
+      <RatingMidfield>17</RatingMidfield>
+      <RatingRightDef>33</RatingRightDef>
+      <RatingMidDef>29</RatingMidDef>
+      <RatingLeftDef>27</RatingLeftDef>
+      <RatingRightAtt>25</RatingRightAtt>
+      <RatingMidAtt>20</RatingMidAtt>
+      <RatingLeftAtt>25</RatingLeftAtt>
+      <TeamAttitude>-1</TeamAttitude>
+      <RatingIndirectSetPiecesDef>21</RatingIndirectSetPiecesDef>
+      <RatingIndirectSetPiecesAtt>21</RatingIndirectSetPiecesAtt>
+    </HomeTeam>
+    <AwayTeam>
+      <AwayTeamID>2554706</AwayTeamID>
+      <AwayTeamName>FC Parmareggio</AwayTeamName>
+      <DressURI>//res.hattrick.org/kits/1/1/1/2/matchKitSmall.png</DressURI>
+      <Formation>3-4-3</Formation>
+      <AwayGoals>2</AwayGoals>
+      <TacticType>4</TacticType>
+      <TacticSkill>13</TacticSkill>
+      <RatingMidfield>13</RatingMidfield>
+      <RatingRightDef>19</RatingRightDef>
+      <RatingMidDef>25</RatingMidDef>
+      <RatingLeftDef>19</RatingLeftDef>
+      <RatingRightAtt>28</RatingRightAtt>
+      <RatingMidAtt>30</RatingMidAtt>
+      <RatingLeftAtt>27</RatingLeftAtt>
+      <RatingIndirectSetPiecesDef>19</RatingIndirectSetPiecesDef>
+      <RatingIndirectSetPiecesAtt>19</RatingIndirectSetPiecesAtt>
+    </AwayTeam>
+    <Arena>
+      <ArenaID>2238114</ArenaID>
+      <ArenaName>Capelli di Sabaku no Maiku</ArenaName>
+      <WeatherID>3</WeatherID>
+      <SoldTotal>7988</SoldTotal>
+      <SoldTerraces>4948</SoldTerraces>
+      <SoldBasic>2157</SoldBasic>
+      <SoldRoof>699</SoldRoof>
+      <SoldVIP>184</SoldVIP>
+    </Arena>
+    <MatchOfficials>
+      <Referee>
+        <RefereeId>451404890</RefereeId>
+        <RefereeName>Edward Rueda</RefereeName>
+        <RefereeCountryId>88</RefereeCountryId>
+        <RefereeCountryName>República Dominicana</RefereeCountryName>
+        <RefereeTeamId>463646</RefereeTeamId>
+        <RefereeTeamname>JFS Dominicana</RefereeTeamname>
+      </Referee>
+      <RefereeAssistant1>
+        <RefereeId>427724210</RefereeId>
+        <RefereeName>Sorin Cantemir</RefereeName>
+        <RefereeCountryId>37</RefereeCountryId>
+        <RefereeCountryName>România</RefereeCountryName>
+        <RefereeTeamId>1986039</RefereeTeamId>
+        <RefereeTeamname>Foul Bay Buccaneers</RefereeTeamname>
+      </RefereeAssistant1>
+      <RefereeAssistant2>
+        <RefereeId>495088694</RefereeId>
+        <RefereeName>Tancredi Capasso</RefereeName>
+        <RefereeCountryId>4</RefereeCountryId>
+        <RefereeCountryName>Italia</RefereeCountryName>
+        <RefereeTeamId>1920274</RefereeTeamId>
+        <RefereeTeamname>Montefreddo City</RefereeTeamname>
+      </RefereeAssistant2>
+    </MatchOfficials>
+    <Scorers>
+      <Goal Index="0">
+        <ScorerPlayerID>478962284</ScorerPlayerID>
+        <ScorerPlayerName>Anuiyelewa Zondi</ScorerPlayerName>
+        <ScorerTeamID>2241372</ScorerTeamID>
+        <ScorerHomeGoals>1</ScorerHomeGoals>
+        <ScorerAwayGoals>0</ScorerAwayGoals>
+        <ScorerMinute>15</ScorerMinute>
+        <MatchPart>1</MatchPart>
+      </Goal>
+      <Goal Index="1">
+        <ScorerPlayerID>482036378</ScorerPlayerID>
+        <ScorerPlayerName>Maximilian Drumbl</ScorerPlayerName>
+        <ScorerTeamID>2554706</ScorerTeamID>
+        <ScorerHomeGoals>1</ScorerHomeGoals>
+        <ScorerAwayGoals>1</ScorerAwayGoals>
+        <ScorerMinute>18</ScorerMinute>
+        <MatchPart>1</MatchPart>
+      </Goal>
+      <Goal Index="2">
+        <ScorerPlayerID>485815338</ScorerPlayerID>
+        <ScorerPlayerName>Pedro Pérez</ScorerPlayerName>
+        <ScorerTeamID>2554706</ScorerTeamID>
+        <ScorerHomeGoals>1</ScorerHomeGoals>
+        <ScorerAwayGoals>2</ScorerAwayGoals>
+        <ScorerMinute>34</ScorerMinute>
+        <MatchPart>1</MatchPart>
+      </Goal>
+      <Goal Index="3">
+        <ScorerPlayerID>462730731</ScorerPlayerID>
+        <ScorerPlayerName>Jan Lubczyk</ScorerPlayerName>
+        <ScorerTeamID>2241372</ScorerTeamID>
+        <ScorerHomeGoals>2</ScorerHomeGoals>
+        <ScorerAwayGoals>2</ScorerAwayGoals>
+        <ScorerMinute>36</ScorerMinute>
+        <MatchPart>1</MatchPart>
+      </Goal>
+      <Goal Index="4">
+        <ScorerPlayerID>478962284</ScorerPlayerID>
+        <ScorerPlayerName>Anuiyelewa Zondi</ScorerPlayerName>
+        <ScorerTeamID>2241372</ScorerTeamID>
+        <ScorerHomeGoals>3</ScorerHomeGoals>
+        <ScorerAwayGoals>2</ScorerAwayGoals>
+        <ScorerMinute>42</ScorerMinute>
+        <MatchPart>1</MatchPart>
+      </Goal>
+      <Goal Index="5">
+        <ScorerPlayerID>478962284</ScorerPlayerID>
+        <ScorerPlayerName>Anuiyelewa Zondi</ScorerPlayerName>
+        <ScorerTeamID>2241372</ScorerTeamID>
+        <ScorerHomeGoals>4</ScorerHomeGoals>
+        <ScorerAwayGoals>2</ScorerAwayGoals>
+        <ScorerMinute>50</ScorerMinute>
+        <MatchPart>2</MatchPart>
+      </Goal>
+      <Goal Index="6">
+        <ScorerPlayerID>492636372</ScorerPlayerID>
+        <ScorerPlayerName>Jens Kilicaslan</ScorerPlayerName>
+        <ScorerTeamID>2241372</ScorerTeamID>
+        <ScorerHomeGoals>5</ScorerHomeGoals>
+        <ScorerAwayGoals>2</ScorerAwayGoals>
+        <ScorerMinute>58</ScorerMinute>
+        <MatchPart>2</MatchPart>
+      </Goal>
+    </Scorers>
+    <Bookings />
+    <Injuries>
+      <Injury Index="0">
+        <InjuryPlayerID>476351223</InjuryPlayerID>
+        <InjuryPlayerName>Erland Løgstrup</InjuryPlayerName>
+        <InjuryTeamID>2554706</InjuryTeamID>
+        <InjuryType>2</InjuryType>
+        <InjuryMinute>89</InjuryMinute>
+        <MatchPart>2</MatchPart>
+      </Injury>
+    </Injuries>
+    <PossessionFirstHalfHome>56</PossessionFirstHalfHome>
+    <PossessionFirstHalfAway>44</PossessionFirstHalfAway>
+    <PossessionSecondHalfHome>54</PossessionSecondHalfHome>
+    <PossessionSecondHalfAway>46</PossessionSecondHalfAway>
+    <EventList>
+      <Event Index="0">
+        <Minute>0</Minute>
+        <SubjectPlayerID>2238114</SubjectPlayerID>
+        <SubjectTeamID>31136</SubjectTeamID>
+        <ObjectPlayerID>7988</ObjectPlayerID>
+        <MatchPart>0</MatchPart>
+        <EventTypeID>33</EventTypeID>
+        <EventVariation>1</EventVariation>
+        <EventText>A brilliantly sunny day had enticed a crowd of 7988 to &lt;a href="/Club/Stadium/?stadiumId=2238114"&gt;Capelli di Sabaku no Maiku&lt;/a&gt;. &lt;a href="/Club/HallOfFame/Player.aspx?playerId=449799024"&gt;Eerik Maasik&lt;/a&gt; was the appointed referee with assistance provided by &lt;a href="/Club/HallOfFame/Player.aspx?playerId=435745783"&gt;Rogel Shamir&lt;/a&gt; and &lt;a href="/Club/HallOfFame/Player.aspx?playerId=490770538"&gt;Gustav Hollenbach&lt;/a&gt;.</EventText>
+      </Event>
+      <Event Index="1">
+        <Minute>0</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>0</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>0</MatchPart>
+        <EventTypeID>391</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText>The weather was sunny, which meant perfect conditions for technical players in both teams. However, it was also quite warm, which meant quick or physically strong players were drained faster and couldn't play their best game. </EventText>
+      </Event>
+      <Event Index="2">
+        <Minute>0</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>0</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>0</MatchPart>
+        <EventTypeID>19</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText></EventText>
+      </Event>
+      <Event Index="3">
+        <Minute>0</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>0</MatchPart>
+        <EventTypeID>21</EventTypeID>
+        <EventVariation>1</EventVariation>
+        <EventText>&lt;span class="hometeam"&gt;Panormus&lt;/span&gt; fielded: &lt;a href="/Club/Players/Player.aspx?playerId=482473123" title="Vastbinder" class="homeplayer"&gt;Vastbinder&lt;/a&gt; - &lt;a href="/Club/Players/Player.aspx?playerId=462730731" title="Lubczyk" class="homeplayer"&gt;Lubczyk&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=449855633" title="Hamm" class="homeplayer"&gt;Hamm&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=492636372" title="Kilicaslan" class="homeplayer"&gt;Kilicaslan&lt;/a&gt; - &lt;a href="/Club/Players/Player.aspx?playerId=493250101" title="Ayık" class="homeplayer"&gt;Ayık&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=478250576" title="Bury" class="homeplayer"&gt;Bury&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=478962284" title="Zondi" class="homeplayer"&gt;Zondi&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=487637258" title="Sorte" class="homeplayer"&gt;Sorte&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=492920437" title="Magoč" class="homeplayer"&gt;Magoč&lt;/a&gt; - &lt;a href="/Club/Players/Player.aspx?playerId=478885885" title="Tapias" class="homeplayer"&gt;Tapias&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=471223179" title="Eggum" class="homeplayer"&gt;Eggum&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;</EventText>
+      </Event>
+      <Event Index="4">
+        <Minute>0</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>0</MatchPart>
+        <EventTypeID>21</EventTypeID>
+        <EventVariation>3</EventVariation>
+        <EventText>&lt;span class="awayteam"&gt;Parmareggio&lt;/span&gt;'s lineup was: &lt;a href="/Club/Players/Player.aspx?playerId=479170026" title="Zaffarano" class="awayplayer"&gt;Zaffarano&lt;/a&gt; - &lt;a href="/Club/Players/Player.aspx?playerId=500639202" title="Pioggia" class="awayplayer"&gt;Pioggia&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=482541640" title="Novello" class="awayplayer"&gt;Novello&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=490703198" title="Sarno" class="awayplayer"&gt;Sarno&lt;/a&gt; - &lt;a href="/Club/Players/Player.aspx?playerId=494992484" title="Vutera" class="awayplayer"&gt;Vutera&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=488936547" title="Calqueiro" class="awayplayer"&gt;Calqueiro&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=482036378" title="Drumbl" class="awayplayer"&gt;Drumbl&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=483583368" title="Bujeque" class="awayplayer"&gt;Bujeque&lt;/a&gt; - &lt;a href="/Club/Players/Player.aspx?playerId=494992485" title="Gianola" class="awayplayer"&gt;Gianola&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=477869087" title="Jammo" class="awayplayer"&gt;Jammo&lt;/a&gt;, &lt;a href="/Club/Players/Player.aspx?playerId=485815338" title="P&amp;#233;rez" class="awayplayer"&gt;Pérez&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;</EventText>
+      </Event>
+      <Event Index="5">
+        <Minute>0</Minute>
+        <SubjectPlayerID>1030502</SubjectPlayerID>
+        <SubjectTeamID>0</SubjectTeamID>
+        <ObjectPlayerID>1030403</ObjectPlayerID>
+        <MatchPart>0</MatchPart>
+        <EventTypeID>24</EventTypeID>
+        <EventVariation>3</EventVariation>
+        <EventText>&lt;span class="hometeam"&gt;Panormus 2024&lt;/span&gt; entered the field in a 3-5-2 formation. The visitors, &lt;span class="awayteam"&gt;FC Parmareggio&lt;/span&gt;, chose to start the game with a 3-4-3 lineup. I know I'm only your commentator, but I definitely called both of those before I saw the team sheets.</EventText>
+      </Event>
+      <Event Index="6">
+        <Minute>0</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>0</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>0</MatchPart>
+        <EventTypeID>598</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText></EventText>
+      </Event>
+      <Event Index="7">
+        <Minute>0</Minute>
+        <SubjectPlayerID>156</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>334</EventTypeID>
+        <EventVariation>3</EventVariation>
+        <EventText>It was an obvious ambition of &lt;span class="hometeam"&gt;Panormus&lt;/span&gt; to use their &lt;a href="/Help/Rules/AppDenominations.aspx?lt=skill&amp;amp;ll=11#skill" class="skill"&gt;brilliant&lt;/a&gt; ability at attacking on the flanks.</EventText>
+      </Event>
+      <Event Index="8">
+        <Minute>0</Minute>
+        <SubjectPlayerID>182</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>334</EventTypeID>
+        <EventVariation>5</EventVariation>
+        <EventText>The wings were the focus of most of &lt;span class="awayteam"&gt;Parmareggio&lt;/span&gt;'s attacks on this day, taking advantage of their &lt;a href="/Help/Rules/AppDenominations.aspx?lt=skill&amp;amp;ll=13#skill" class="skill"&gt;world class&lt;/a&gt; level with that tactic.</EventText>
+      </Event>
+      <Event Index="9">
+        <Minute>10</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>494</EventTypeID>
+        <EventVariation>5</EventVariation>
+        <EventText></EventText>
+      </Event>
+      <Event Index="10">
+        <Minute>15</Minute>
+        <SubjectPlayerID>478962284</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>479170026</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>123</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText>After 15 minutes, &lt;a href="/Club/Players/Player.aspx?playerId=478962284" title="Anuiyelewa Zondi" class="homeplayer"&gt;Anuiyelewa Zondi&lt;/a&gt; came in from the right, feinted, then sped past the off-balance defender to make the score 1 - 0, giving &lt;span class="hometeam"&gt;Panormus&lt;/span&gt; the lead.</EventText>
+      </Event>
+      <Event Index="11">
+        <Minute>18</Minute>
+        <SubjectPlayerID>482036378</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>482473123</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>160</EventTypeID>
+        <EventVariation>2</EventVariation>
+        <EventText>18 minutes into the match, &lt;a href="/Club/Players/Player.aspx?playerId=482036378" title="Maximilian Drumbl" class="awayplayer"&gt;Maximilian Drumbl&lt;/a&gt; bent a free kick around the home team's defensive formation, leaving the keeper with no chance for a save. &lt;span class="awayteam"&gt;Parmareggio&lt;/span&gt; had levelled the scoreline at 1 - 1.</EventText>
+      </Event>
+      <Event Index="12">
+        <Minute>27</Minute>
+        <SubjectPlayerID>56</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>471</EventTypeID>
+        <EventVariation>5</EventVariation>
+        <EventText></EventText>
+      </Event>
+      <Event Index="13">
+        <Minute>33</Minute>
+        <SubjectPlayerID>485815338</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>487637258</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>239</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText>&lt;a href="/Club/Players/Player.aspx?playerId=485815338" title="Pedro P&amp;#233;rez" class="awayplayer"&gt;Pedro Pérez&lt;/a&gt; almost seemed to dance around &lt;a href="/Club/Players/Player.aspx?playerId=487637258" title="Edoardo Sorte" class="homeplayer"&gt;Edoardo Sorte&lt;/a&gt;, his movements were so smooth. Unfortunately for &lt;span class="awayteam"&gt;Parmareggio&lt;/span&gt;, his finish ended up on the wrong side of the post.</EventText>
+      </Event>
+      <Event Index="14">
+        <Minute>34</Minute>
+        <SubjectPlayerID>485815338</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>482473123</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>172</EventTypeID>
+        <EventVariation>2</EventVariation>
+        <EventText>&lt;span class="awayteam"&gt;Parmareggio&lt;/span&gt; took the lead after 34 minutes making the score 1 - 2. &lt;a href="/Club/Players/Player.aspx?playerId=485815338" title="Pedro P&amp;#233;rez" class="awayplayer"&gt;Pedro Pérez&lt;/a&gt; placed the ball out of reach for the home side's keeper after a fine move, coming in from the left.</EventText>
+      </Event>
+      <Event Index="15">
+        <Minute>36</Minute>
+        <SubjectPlayerID>462730731</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>479170026</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>114</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText>A tussle 36 minutes into the match resulted in a penalty being awarded to the home team and &lt;a href="/Club/Players/Player.aspx?playerId=462730731" title="Jan Lubczyk" class="homeplayer"&gt;Jan Lubczyk&lt;/a&gt; put the ball into the back of the net without any difficulty. That tied the score up at 2 - 2.</EventText>
+      </Event>
+      <Event Index="16">
+        <Minute>40</Minute>
+        <SubjectPlayerID>477869087</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>482473123</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>272</EventTypeID>
+        <EventVariation>3</EventVariation>
+        <EventText>&lt;a href="/Club/Players/Player.aspx?playerId=477869087" title="Adwar Jammo" class="awayplayer"&gt;Adwar Jammo&lt;/a&gt; had a good try after 40 minutes, coming in on a fine move from the left, but the ball went wide.</EventText>
+      </Event>
+      <Event Index="17">
+        <Minute>41</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>344</EventTypeID>
+        <EventVariation>5</EventVariation>
+        <EventText>Attacking on the wings was the choice for &lt;span class="hometeam"&gt;Panormus&lt;/span&gt;, and they were successfully passing the ball from the middle to the wings to attack.</EventText>
+      </Event>
+      <Event Index="18">
+        <Minute>42</Minute>
+        <SubjectPlayerID>478962284</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>479170026</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>122</EventTypeID>
+        <EventVariation>2</EventVariation>
+        <EventText>After some beautiful movement down the left wing, &lt;a href="/Club/Players/Player.aspx?playerId=478962284" title="Anuiyelewa Zondi" class="homeplayer"&gt;Anuiyelewa Zondi&lt;/a&gt; scored for &lt;span class="hometeam"&gt;Panormus&lt;/span&gt; putting them ahead 3 - 2, after 42 minutes.</EventText>
+      </Event>
+      <Event Index="19">
+        <Minute>45</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>0</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>45</EventTypeID>
+        <EventVariation>5</EventVariation>
+        <EventText>3 - 2 was the score after the first half.</EventText>
+      </Event>
+      <Event Index="20">
+        <Minute>45</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>56</ObjectPlayerID>
+        <MatchPart>1</MatchPart>
+        <EventTypeID>40</EventTypeID>
+        <EventVariation>2</EventVariation>
+        <EventText>&lt;span class="hometeam"&gt;Panormus&lt;/span&gt; had most of the ball, with 56 percent of possession.&lt;br /&gt;&lt;br /&gt;</EventText>
+      </Event>
+      <Event Index="21">
+        <Minute>46</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>0</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>597</EventTypeID>
+        <EventVariation>1</EventVariation>
+        <EventText></EventText>
+      </Event>
+      <Event Index="22">
+        <Minute>49</Minute>
+        <SubjectPlayerID>494992485</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>482473123</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>261</EventTypeID>
+        <EventVariation>1</EventVariation>
+        <EventText>The visitors almost came back with an equaliser 49 minutes into the match after a good combination through the middle, but when &lt;a href="/Club/Players/Player.aspx?playerId=494992485" title="Menelao Gianola" class="awayplayer"&gt;Menelao Gianola&lt;/a&gt; tried to finish the attack, he couldn't get enough power on the shot to seriously challenge the keeper.</EventText>
+      </Event>
+      <Event Index="23">
+        <Minute>50</Minute>
+        <SubjectPlayerID>478962284</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>479170026</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>141</EventTypeID>
+        <EventVariation>2</EventVariation>
+        <EventText>&lt;span class="hometeam"&gt;Panormus&lt;/span&gt; showed their counterattack skill 50 minutes into the match by breaking through the middle, with &lt;a href="/Club/Players/Player.aspx?playerId=478962284" title="Anuiyelewa Zondi" class="homeplayer"&gt;Anuiyelewa Zondi&lt;/a&gt; scoring uncontested for 4 - 2.</EventText>
+      </Event>
+      <Event Index="24">
+        <Minute>51</Minute>
+        <SubjectPlayerID>478962284</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>46</EventTypeID>
+        <EventVariation>1</EventVariation>
+        <EventText>At that, &lt;a href="/Club/Players/Player.aspx?playerId=478962284" title="Anuiyelewa Zondi" class="homeplayer"&gt;Anuiyelewa Zondi&lt;/a&gt; was noted down for a hattrick!</EventText>
+      </Event>
+      <Event Index="25">
+        <Minute>53</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>0</SubjectTeamID>
+        <ObjectPlayerID>7988</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>464</EventTypeID>
+        <EventVariation>2</EventVariation>
+        <EventText></EventText>
+      </Event>
+      <Event Index="26">
+        <Minute>55</Minute>
+        <SubjectPlayerID>462730731</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>479170026</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>231</EventTypeID>
+        <EventVariation>2</EventVariation>
+        <EventText>After 55 minutes, a couple of quick and successful challenges followed by a shot from just outside the penalty area by &lt;a href="/Club/Players/Player.aspx?playerId=462730731" title="Jan Lubczyk" class="homeplayer"&gt;Jan Lubczyk&lt;/a&gt; might have resulted in another goal for &lt;span class="hometeam"&gt;Panormus&lt;/span&gt;. However, &lt;a href="/Club/Players/Player.aspx?playerId=479170026" title="Antonio Zaffarano" class="awayplayer"&gt;Antonio Zaffarano&lt;/a&gt; made a spectacular save.</EventText>
+      </Event>
+      <Event Index="27">
+        <Minute>58</Minute>
+        <SubjectPlayerID>492636372</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>462730731</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>118</EventTypeID>
+        <EventVariation>1</EventVariation>
+        <EventText>&lt;a href="/Club/Players/Player.aspx?playerId=462730731" title="Jan Lubczyk" class="homeplayer"&gt;Jan Lubczyk&lt;/a&gt; curled his corner straight toward the goal, but the tricky shot was somehow blocked by the keeper. However, &lt;span class="hometeam"&gt;Panormus&lt;/span&gt;'s &lt;a href="/Club/Players/Player.aspx?playerId=492636372" title="Jens Kilicaslan" class="homeplayer"&gt;Jens Kilicaslan&lt;/a&gt; managed to get hold of the rebound and scored the 5-2 goal.</EventText>
+      </Event>
+      <Event Index="28">
+        <Minute>58</Minute>
+        <SubjectPlayerID>476351223</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>56</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>459</EventTypeID>
+        <EventVariation>1</EventVariation>
+        <EventText></EventText>
+      </Event>
+      <Event Index="29">
+        <Minute>63</Minute>
+        <SubjectPlayerID>478885885</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>479170026</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>232</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText>&lt;span class="hometeam"&gt;Panormus&lt;/span&gt;'s &lt;a href="/Club/Players/Player.aspx?playerId=478885885" title="Ra&amp;#250;l Tapias" class="homeplayer"&gt;Raúl Tapias&lt;/a&gt; swung in a good chance from the left, but the visitors' defence were able to clear the ball.</EventText>
+      </Event>
+      <Event Index="30">
+        <Minute>66</Minute>
+        <SubjectPlayerID>500639202</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>476351223</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>352</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText>As the 66 minute mark approached, the  &lt;span class="awayteam"&gt;Parmareggio&lt;/span&gt; coach decided it was time for a substitution. &lt;a href="/Club/Players/Player.aspx?playerId=500639202" title="Valentino Pioggia" class="awayplayer"&gt;Valentino Pioggia&lt;/a&gt; reluctantly made way for &lt;a href="/Club/Players/Player.aspx?playerId=476351223" title="Erland L&amp;#248;gstrup" class="awayplayer"&gt;Erland Løgstrup&lt;/a&gt; on the pitch.</EventText>
+      </Event>
+      <Event Index="31">
+        <Minute>82</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>1345</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>451</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText></EventText>
+      </Event>
+      <Event Index="32">
+        <Minute>89</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>0</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>75</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText>The referee decided to let play continue for an additional 2 minutes beyond the regular 90 minutes.</EventText>
+      </Event>
+      <Event Index="33">
+        <Minute>89</Minute>
+        <SubjectPlayerID>476351223</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>1</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>402</EventTypeID>
+        <EventVariation>2</EventVariation>
+        <EventText>&lt;a href="/Club/Players/Player.aspx?playerId=476351223" title="Erland L&amp;#248;gstrup" class="awayplayer"&gt;Erland Løgstrup&lt;/a&gt; was unable to continue, following a slight injury to his right knee after 89 minutes.</EventText>
+      </Event>
+      <Event Index="34">
+        <Minute>89</Minute>
+        <SubjectPlayerID>476351223</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>488716727</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>424</EventTypeID>
+        <EventVariation>2</EventVariation>
+        <EventText>This gave &lt;a href="/Club/Players/Player.aspx?playerId=488716727" title="Antonio Persavalli" class="awayplayer"&gt;Antonio Persavalli&lt;/a&gt; a chance to take to the field instead.</EventText>
+      </Event>
+      <Event Index="35">
+        <Minute>90</Minute>
+        <SubjectPlayerID>488936547</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>482473123</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>253</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText>90 minutes into the game, &lt;span class="awayteam"&gt;Parmareggio&lt;/span&gt;'s attack got through on the right, but &lt;a href="/Club/Players/Player.aspx?playerId=488936547" title="Nuno Calqueiro" class="awayplayer"&gt;Nuno Calqueiro&lt;/a&gt; couldn't handle the ball and his feeble kick wound up in the keeper's arms.</EventText>
+      </Event>
+      <Event Index="36">
+        <Minute>92</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>0</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>599</EventTypeID>
+        <EventVariation>3</EventVariation>
+        <EventText>The match ends 5 - 2.</EventText>
+      </Event>
+      <Event Index="37">
+        <Minute>92</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>601</EventTypeID>
+        <EventVariation>5</EventVariation>
+        <EventText></EventText>
+      </Event>
+      <Event Index="38">
+        <Minute>92</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>1345</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>603</EventTypeID>
+        <EventVariation>3</EventVariation>
+        <EventText></EventText>
+      </Event>
+      <Event Index="39">
+        <Minute>92</Minute>
+        <SubjectPlayerID>0</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>54</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>40</EventTypeID>
+        <EventVariation>1</EventVariation>
+        <EventText>Possession in the forty-five minutes was dominated by &lt;span class="hometeam"&gt;Panormus&lt;/span&gt;, with 54 percent of the ball.&lt;br /&gt;&lt;br /&gt;</EventText>
+      </Event>
+      <Event Index="40">
+        <Minute>92</Minute>
+        <SubjectPlayerID>478962284</SubjectPlayerID>
+        <SubjectTeamID>2241372</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>41</EventTypeID>
+        <EventVariation>1</EventVariation>
+        <EventText>&lt;span class="hometeam"&gt;Panormus&lt;/span&gt;'s best player was &lt;a href="/Club/Players/Player.aspx?playerId=478962284" title="Anuiyelewa Zondi" class="homeplayer"&gt;Anuiyelewa Zondi&lt;/a&gt;.</EventText>
+      </Event>
+      <Event Index="41">
+        <Minute>92</Minute>
+        <SubjectPlayerID>485815338</SubjectPlayerID>
+        <SubjectTeamID>2554706</SubjectTeamID>
+        <ObjectPlayerID>0</ObjectPlayerID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>41</EventTypeID>
+        <EventVariation>4</EventVariation>
+        <EventText>&lt;span class="awayteam"&gt;Parmareggio&lt;/span&gt;'s top performer was clearly &lt;a href="/Club/Players/Player.aspx?playerId=485815338" title="Pedro P&amp;#233;rez" class="awayplayer"&gt;Pedro Pérez&lt;/a&gt;.</EventText>
+      </Event>
+    </EventList>
+  </Match>
+</HattrickData>

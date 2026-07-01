@@ -1,5 +1,5 @@
 import { XMLParser } from 'fast-xml-parser';
-import { authHeader, type TokenPair } from './auth.js';
+import { buildSignedUrl, type TokenPair } from './auth.js';
 
 /**
  * Signed CHPP data calls. Every endpoint is the same base URL with a `file` selector
@@ -37,7 +37,7 @@ function buildUrl(params: ChppCallParams): string {
  */
 export async function chppGet(token: TokenPair, params: ChppCallParams): Promise<unknown> {
   const url = buildUrl(params);
-  const res = await fetch(url, { method: 'GET', headers: authHeader(url, 'GET', token) });
+  const res = await fetch(buildSignedUrl(url, 'GET', token), { method: 'GET' });
   const xml = await res.text();
 
   if (!res.ok) {

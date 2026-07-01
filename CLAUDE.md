@@ -43,14 +43,18 @@ docs/     ARCHITECTURE.md
 
 ## Build order (current state)
 1. ✅ Env config + zod validation (`config/env.ts`).
-2. ⬜ **OAuth 1.0a end-to-end** — get an access token, make ONE signed `teamdetails` call that
-   returns parsed data. **Do this before anything else.** Don't move past it until a real signed
-   call succeeds — every later step depends on it and it's where signing bugs surface.
-3. ⬜ Prisma migration (`npm run db:migrate -w server`).
-4. ⬜ `matchesarchive` + season-window pagination → DB (needs samples + real schema).
-5. ⬜ `matchdetails` enrichment, skip-if-stored (needs samples + real schema).
+2. ✅ **OAuth 1.0a end-to-end** — signed `teamdetails` returns parsed data. NB: Hattrick's IIS
+   rejects the OAuth `Authorization` header (IIS 401.2); sign the `oauth_*` params into the URL
+   **query string** instead (`auth.ts` `buildSignedUrl`).
+3. ✅ Prisma migration (SQLite `dev.db`).
+4. ✅ `matchesarchive` + season-window pagination → DB. NB: matchesarchive's date filter only
+   honours **date-only** `YYYY-MM-DD` — a time component makes it ignore the range.
+5. ✅ `matchdetails` enrichment, skip-if-stored (team-level ratings/scorers; per-player lineup
+   would be a future `matchlineup` add).
 6. ✅ JSON read API (`routes/read.ts`).
-7. ◐ React frontend (season selector + table done; detail view + summary next).
+7. ◐ React frontend (champions table + standings + season results done).
+8. ✅ **League champions** per season — `leaguefixtures(unit, season)` serves historical results;
+   reconstruct the table (`sync/standings.ts`) → `SeasonStanding`. `syncLeagueHistory()`.
 
 ## Conventions
 - ESM throughout. Server imports use explicit `.js` extensions (NodeNext resolution).
@@ -74,5 +78,7 @@ process that reads env). `DATABASE_URL=file:./dev.db` is relative to `server/pri
 
 ## When stuck
 - Missing XML to parse → ask the user for the `/samples` file; do not guess shapes.
-- OAuth signing failing → it's almost always the base-string/encoding. Verify the signed
-  `teamdetails` smoke test before touching sync.
+- OAuth call returns an IIS 401 HTML page (not `oauth_problem` text) → it's the `Authorization`
+  header being rejected, NOT signing. Put the `oauth_*` params in the query string (done in
+  `buildSignedUrl`). Only suspect base-string/encoding once a proper OAuth error body appears.
+- matchesarchive ignoring your date range → drop the time component (use `YYYY-MM-DD`).
