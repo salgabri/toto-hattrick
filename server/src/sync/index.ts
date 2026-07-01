@@ -1,15 +1,20 @@
 import { prisma } from '../db/client.js';
 import type { TokenPair } from '../chpp/auth.js';
-import { fetchMatchesArchive, fetchMatchDetails } from '../chpp/endpoints.js';
-import { parseMatchesArchive, parseMatchDetails } from '../schemas/index.js';
-import { seasonWindows } from './season.js';
+import { fetchTeamDetails, fetchMatchesArchive, fetchMatchDetails } from '../chpp/endpoints.js';
+import {
+  parseTeamDetails,
+  parseMatchesArchive,
+  parseMatchDetails,
+  type ArchiveMatchSummary,
+} from '../schemas/index.js';
+import { seasonWindows, deriveSeason } from './season.js';
 
 /**
  * Archive sync. Plain async function so it runs from the manual HTTP trigger today
  * and a cron/scheduler tomorrow — keep all logic here, not in the route handler.
  *
  * Contract (spec): resume-safe. Re-running never duplicates and never re-fetches a
- * match already stored. Polite pacing between calls.
+ * match already stored+enriched. Polite pacing between calls.
  */
 
 const PACING_MS = 500;
@@ -25,48 +30,54 @@ export interface SyncResult {
 export async function syncTeam(
   token: TokenPair,
   teamId: number,
-  opts: { from?: Date; to?: Date } = {},
+  opts: { from?: Date; to?: Date; enrich?: boolean } = {},
 ): Promise<SyncResult> {
+  const enrich = opts.enrich ?? true;
   const from = opts.from ?? new Date();
-  // TODO: default `to` to the team's foundedDate (teamdetails) instead of a hard floor.
-  const to = opts.to ?? new Date('2005-01-01T00:00:00Z');
+
+  // Resolve the team (name + founded date) and make sure the Team row exists before we
+  // insert matches that FK to it. teamdetails returns every team on the account.
+  const { teams } = parseTeamDetails(await fetchTeamDetails(token, teamId));
+  const team = teams.find((t) => t.teamId === teamId);
+  if (!team) {
+    throw new Error(`team ${teamId} not found on this account (have: ${teams.map((t) => t.teamId).join(', ')})`);
+  }
+  await prisma.team.upsert({
+    where: { teamId },
+    update: { name: team.name, foundedDate: team.foundedDate, leagueId: team.leagueId },
+    create: { teamId, name: team.name, foundedDate: team.foundedDate, leagueId: team.leagueId },
+  });
+
+  // Don't walk earlier than the club existed.
+  const to = opts.to ?? team.foundedDate ?? new Date('2005-01-01T00:00:00Z');
 
   const result: SyncResult = { teamId, matchesSeen: 0, matchesInserted: 0, detailsFetched: 0 };
 
   for (const window of seasonWindows(from, to)) {
-    const rawArchive = await fetchMatchesArchive(token, {
-      teamId,
-      firstMatchDate: window.firstMatchDate,
-      lastMatchDate: window.lastMatchDate,
-    });
+    const { matches } = parseMatchesArchive(
+      await fetchMatchesArchive(token, {
+        teamId,
+        firstMatchDate: window.firstMatchDate,
+        lastMatchDate: window.lastMatchDate,
+      }),
+    );
 
-    // Throws until schemas are modelled against /samples — that's intentional.
-    const archive = parseMatchesArchive(rawArchive);
-
-    // TODO: map `archive` -> list of match summaries once the schema is real.
-    const summaries: Array<{ matchId: number; matchDate: Date /* ...spec fields... */ }> =
-      extractSummaries(archive);
-
-    for (const summary of summaries) {
+    for (const summary of matches) {
       result.matchesSeen++;
 
-      // Finished matches never change — skip anything already stored.
       const existing = await prisma.match.findUnique({ where: { matchId: summary.matchId } });
-      if (existing?.detailsFetched) continue;
+      if (existing?.detailsFetched) continue; // finished + enriched → nothing to do
 
       if (!existing) {
-        // TODO: write the full summary row (season derived from matchDate, etc.).
         await insertMatchSummary(teamId, summary);
         result.matchesInserted++;
       }
 
-      // Enrich with matchdetails, then mark detailsFetched.
-      const rawDetails = await fetchMatchDetails(token, summary.matchId, { matchEvents: true });
-      const details = parseMatchDetails(rawDetails);
-      await upsertMatchDetail(summary.matchId, details);
-      result.detailsFetched++;
-
-      await sleep(PACING_MS);
+      if (enrich) {
+        await upsertMatchDetail(summary.matchId, await fetchMatchDetails(token, summary.matchId, { matchEvents: true }));
+        result.detailsFetched++;
+        await sleep(PACING_MS);
+      }
     }
 
     await sleep(PACING_MS);
@@ -75,22 +86,40 @@ export async function syncTeam(
   return result;
 }
 
-// --- helpers to fill in once schemas are modelled ---------------------------
+// --- helpers ----------------------------------------------------------------
 
-function extractSummaries(_archive: unknown): Array<{ matchId: number; matchDate: Date }> {
-  // TODO: pull match rows out of the parsed matchesarchive object.
-  throw new Error('extractSummaries not implemented — model matchesarchive schema first.');
+async function insertMatchSummary(teamId: number, m: ArchiveMatchSummary): Promise<void> {
+  await prisma.match.create({
+    data: {
+      matchId: m.matchId,
+      teamId,
+      season: deriveSeason(m.matchDate), // derive once, store it (spec) — never compute at query time
+      matchDate: m.matchDate,
+      homeTeamId: m.homeTeamId,
+      awayTeamId: m.awayTeamId,
+      homeTeamName: m.homeTeamName,
+      awayTeamName: m.awayTeamName,
+      homeGoals: m.homeGoals,
+      awayGoals: m.awayGoals,
+      matchType: m.matchType,
+    },
+  });
 }
 
-async function insertMatchSummary(
-  _teamId: number,
-  _summary: { matchId: number; matchDate: Date },
-): Promise<void> {
-  // TODO: prisma.match.create({ data: { ...summary, season: deriveSeason(summary.matchDate) } })
-  throw new Error('insertMatchSummary not implemented.');
-}
+async function upsertMatchDetail(matchId: number, rawDetails: unknown): Promise<void> {
+  const d = parseMatchDetails(rawDetails);
+  const lineupJson = JSON.stringify(d.lineup);
+  const scorersJson = JSON.stringify(d.scorers);
+  const ratingsJson = JSON.stringify(d.ratings);
 
-async function upsertMatchDetail(_matchId: number, _details: unknown): Promise<void> {
-  // TODO: prisma.matchDetail.upsert + flip match.detailsFetched = true in one transaction.
-  throw new Error('upsertMatchDetail not implemented.');
+  // Detail + the detailsFetched flag flip in one transaction so a crash can't leave a
+  // match marked done without its detail row.
+  await prisma.$transaction([
+    prisma.matchDetail.upsert({
+      where: { matchId },
+      update: { lineupJson, scorersJson, ratingsJson },
+      create: { matchId, lineupJson, scorersJson, ratingsJson },
+    }),
+    prisma.match.update({ where: { matchId }, data: { detailsFetched: true } }),
+  ]);
 }

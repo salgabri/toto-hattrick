@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>matchesArchive.xml</FileName>
+  <Version>1.4</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-06-30 18:34:14</FetchedDate>
+  <IsYouth>False</IsYouth>
+  <Team>
+    <TeamID>2241372</TeamID>
+    <TeamName>Panormus 2024</TeamName>
+    <MatchList>
+      <Match>
+        <MatchID>761952861</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2241372</HomeTeamID>
+          <HomeTeamName>Panormus 2024</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2554706</AwayTeamID>
+          <AwayTeamName>FC Parmareggio</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-03-31 19:00:00</MatchDate>
+        <MatchType>3</MatchType>
+        <MatchContextId>1332</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>1</CupLevel>
+        <CupLevelIndex>1</CupLevelIndex>
+        <HomeGoals>5</HomeGoals>
+        <AwayGoals>2</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543184</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2241372</HomeTeamID>
+          <HomeTeamName>Panormus 2024</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>234920</AwayTeamID>
+          <AwayTeamName>SPALinD</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-04-04 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>3</HomeGoals>
+        <AwayGoals>3</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>765395112</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2241372</HomeTeamID>
+          <HomeTeamName>Panormus 2024</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>548029</AwayTeamID>
+          <AwayTeamName>Spectra</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-04-07 19:00:00</MatchDate>
+        <MatchType>3</MatchType>
+        <MatchContextId>1332</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>1</CupLevel>
+        <CupLevelIndex>1</CupLevelIndex>
+        <HomeGoals>0</HomeGoals>
+        <AwayGoals>7</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543189</MatchID>
+        <HomeTeam>
+          <HomeTeamID>3250432</HomeTeamID>
+          <HomeTeamName>US Basilicata</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-04-11 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>1</HomeGoals>
+        <AwayGoals>7</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>765598177</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2241372</HomeTeamID>
+          <HomeTeamName>Panormus 2024</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>1935037</AwayTeamID>
+          <AwayTeamName>fcleura</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-04-14 19:30:00</MatchDate>
+        <MatchType>3</MatchType>
+        <MatchContextId>1358</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>2</CupLevel>
+        <CupLevelIndex>2</CupLevelIndex>
+        <HomeGoals>3</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543191</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2320336</HomeTeamID>
+          <HomeTeamName>Roma77</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-04-18 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>3</HomeGoals>
+        <AwayGoals>5</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>765789605</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2241372</HomeTeamID>
+          <HomeTeamName>Panormus 2024</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>546980</AwayTeamID>
+          <AwayTeamName>ROY H</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-04-21 19:30:00</MatchDate>
+        <MatchType>3</MatchType>
+        <MatchContextId>1358</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>2</CupLevel>
+        <CupLevelIndex>2</CupLevelIndex>
+        <HomeGoals>0</HomeGoals>
+        <AwayGoals>2</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543196</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2241372</HomeTeamID>
+          <HomeTeamName>Panormus 2024</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>728351</AwayTeamID>
+          <AwayTeamName>U.S.Sarmeola</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-04-25 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>2</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>766019877</MatchID>
+        <HomeTeam>
+          <HomeTeamID>986659</HomeTeamID>
+          <HomeTeamName>Rejnstrup Mongolians</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-04-29 07:50:00</MatchDate>
+        <MatchType>8</MatchType>
+        <MatchContextId>0</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>0</HomeGoals>
+        <AwayGoals>2</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543200</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2559753</HomeTeamID>
+          <HomeTeamName>Fc VNere Bologna</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-05-02 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>2</HomeGoals>
+        <AwayGoals>3</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>766106065</MatchID>
+        <HomeTeam>
+          <HomeTeamID>1231808</HomeTeamID>
+          <HomeTeamName>Strijdt Met Beleid</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-05-06 17:25:00</MatchDate>
+        <MatchType>9</MatchType>
+        <MatchContextId>0</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>1</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543202</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2241372</HomeTeamID>
+          <HomeTeamName>Panormus 2024</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>1039733</AwayTeamID>
+          <AwayTeamName>Leg-XIII</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-05-09 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>2</HomeGoals>
+        <AwayGoals>2</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>766187993</MatchID>
+        <HomeTeam>
+          <HomeTeamID>409506</HomeTeamID>
+          <HomeTeamName>Promill AFC</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-05-13 12:15:00</MatchDate>
+        <MatchType>9</MatchType>
+        <MatchContextId>0</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>2</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543207</MatchID>
+        <HomeTeam>
+          <HomeTeamID>855002</HomeTeamID>
+          <HomeTeamName>Juventina F.C.</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-05-16 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>5</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>766263415</MatchID>
+        <HomeTeam>
+          <HomeTeamID>203627</HomeTeamID>
+          <HomeTeamName>Tigres UANL.</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-05-20 02:30:00</MatchDate>
+        <MatchType>8</MatchType>
+        <MatchContextId>0</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>6</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543212</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2241372</HomeTeamID>
+          <HomeTeamName>Panormus 2024</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>855002</AwayTeamID>
+          <AwayTeamName>Juventina F.C.</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-05-23 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>1</HomeGoals>
+        <AwayGoals>3</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>766352050</MatchID>
+        <HomeTeam>
+          <HomeTeamID>151525</HomeTeamID>
+          <HomeTeamName>SV Pukki 1987</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-05-27 20:45:00</MatchDate>
+        <MatchType>9</MatchType>
+        <MatchContextId>0</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>4</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543218</MatchID>
+        <HomeTeam>
+          <HomeTeamID>1039733</HomeTeamID>
+          <HomeTeamName>Leg-XIII</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-05-30 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>4</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>766436025</MatchID>
+        <HomeTeam>
+          <HomeTeamID>151525</HomeTeamID>
+          <HomeTeamName>SV Pukki 1987</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-06-03 20:45:00</MatchDate>
+        <MatchType>9</MatchType>
+        <MatchContextId>0</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>2</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543217</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2241372</HomeTeamID>
+          <HomeTeamName>Panormus 2024</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2559753</AwayTeamID>
+          <AwayTeamName>Fc VNere Bologna</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-06-06 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>5</HomeGoals>
+        <AwayGoals>2</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>766521238</MatchID>
+        <HomeTeam>
+          <HomeTeamID>307963</HomeTeamID>
+          <HomeTeamName>CrackNSombra</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-06-10 12:30:00</MatchDate>
+        <MatchType>8</MatchType>
+        <MatchContextId>0</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>8</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543223</MatchID>
+        <HomeTeam>
+          <HomeTeamID>728351</HomeTeamID>
+          <HomeTeamName>U.S.Sarmeola</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-06-13 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>0</HomeGoals>
+        <AwayGoals>7</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>766606803</MatchID>
+        <HomeTeam>
+          <HomeTeamID>151525</HomeTeamID>
+          <HomeTeamName>SV Pukki 1987</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-06-17 20:45:00</MatchDate>
+        <MatchType>9</MatchType>
+        <MatchContextId>0</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>4</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543228</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2241372</HomeTeamID>
+          <HomeTeamName>Panormus 2024</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2320336</AwayTeamID>
+          <AwayTeamName>Roma77</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-06-20 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>1</HomeGoals>
+        <AwayGoals>4</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>766691939</MatchID>
+        <HomeTeam>
+          <HomeTeamID>28629</HomeTeamID>
+          <HomeTeamName>Highland Eagles</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>2241372</AwayTeamID>
+          <AwayTeamName>Panormus 2024</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-06-24 11:30:00</MatchDate>
+        <MatchType>9</MatchType>
+        <MatchContextId>0</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>4</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+      <Match>
+        <MatchID>762543229</MatchID>
+        <HomeTeam>
+          <HomeTeamID>2241372</HomeTeamID>
+          <HomeTeamName>Panormus 2024</HomeTeamName>
+        </HomeTeam>
+        <AwayTeam>
+          <AwayTeamID>3250432</AwayTeamID>
+          <AwayTeamName>US Basilicata</AwayTeamName>
+        </AwayTeam>
+        <MatchDate>2026-06-27 12:30:00</MatchDate>
+        <MatchType>1</MatchType>
+        <MatchContextId>68386</MatchContextId>
+        <MatchRuleId>0</MatchRuleId>
+        <CupLevel>0</CupLevel>
+        <CupLevelIndex>0</CupLevelIndex>
+        <HomeGoals>6</HomeGoals>
+        <AwayGoals>0</AwayGoals>
+      </Match>
+    </MatchList>
+  </Team>
+</HattrickData>

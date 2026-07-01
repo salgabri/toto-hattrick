@@ -3,33 +3,48 @@
  * never to Hattrick, never to XML, never to secrets.
  */
 
-export interface SeasonRow {
-  season: number;
-  matches: number;
+export interface NationalLeagueRow {
+  leagueId: number;
+  country: string;
+  topSeriesId: number;
+  currentSeason: number | null;
+  seasonsStored: number;
 }
 
-export interface Match {
-  matchId: number;
-  teamId: number;
+export interface NationalChampion {
   season: number;
-  matchDate: string;
-  homeTeamId: number;
-  awayTeamId: number;
-  homeTeamName: string;
-  awayTeamName: string;
-  homeGoals: number | null;
-  awayGoals: number | null;
-  matchType: number | null;
-  detailsFetched: boolean;
+  championTeamId: number;
+  champion: string;
+  points: number;
+  played: number;
+  complete: boolean; // false → season in progress (current leader)
 }
 
-export interface SeasonSummary {
+export interface NationalityRow {
+  nationality: string;
+  managers: number;
+}
+
+export interface LeaderboardRow {
+  userId: number;
+  userName: string;
+  nationality: string | null;
+  titles: number;
+}
+
+export interface UserTitle {
+  country: string;
   season: number;
-  wins: number;
-  draws: number;
-  losses: number;
-  goalsFor: number;
-  goalsAgainst: number;
+  club: string;
+  clubId: number;
+  complete: boolean;
+}
+
+export interface UserDetail {
+  userId: number;
+  userName: string;
+  nationality: string | null;
+  titles: UserTitle[];
 }
 
 async function getJson<T>(path: string): Promise<T> {
@@ -39,8 +54,10 @@ async function getJson<T>(path: string): Promise<T> {
 }
 
 export const api = {
-  seasons: () => getJson<SeasonRow[]>('/api/seasons'),
-  seasonMatches: (season: number) => getJson<Match[]>(`/api/seasons/${season}/matches`),
-  match: (matchId: number) => getJson<Match>(`/api/matches/${matchId}`),
-  teamSummary: (teamId: number) => getJson<SeasonSummary[]>(`/api/teams/${teamId}/summary`),
+  nationalLeagues: () => getJson<NationalLeagueRow[]>('/api/national/leagues'),
+  nationalChampions: (leagueId: number) => getJson<NationalChampion[]>(`/api/national/leagues/${leagueId}/champions`),
+  nationalities: () => getJson<NationalityRow[]>('/api/users/nationalities'),
+  leaderboard: (nationality?: string, limit = 50) =>
+    getJson<LeaderboardRow[]>(`/api/users/leaderboard?limit=${limit}${nationality ? `&nationality=${encodeURIComponent(nationality)}` : ''}`),
+  user: (userId: number) => getJson<UserDetail>(`/api/users/${userId}`),
 };

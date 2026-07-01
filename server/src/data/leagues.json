@@ -1,0 +1,1115 @@
+[
+  {
+    "leagueId": 1,
+    "countryName": "Sweden",
+    "topSeriesId": 1,
+    "currentSeason": 94,
+    "isCountry": true
+  },
+  {
+    "leagueId": 2,
+    "countryName": "England",
+    "topSeriesId": 512,
+    "currentSeason": 94,
+    "isCountry": true
+  },
+  {
+    "leagueId": 3,
+    "countryName": "Germany",
+    "topSeriesId": 427,
+    "currentSeason": 94,
+    "isCountry": true
+  },
+  {
+    "leagueId": 4,
+    "countryName": "Italy",
+    "topSeriesId": 724,
+    "currentSeason": 94,
+    "isCountry": true
+  },
+  {
+    "leagueId": 5,
+    "countryName": "France",
+    "topSeriesId": 703,
+    "currentSeason": 94,
+    "isCountry": true
+  },
+  {
+    "leagueId": 6,
+    "countryName": "Mexico",
+    "topSeriesId": 682,
+    "currentSeason": 94,
+    "isCountry": true
+  },
+  {
+    "leagueId": 7,
+    "countryName": "Argentina",
+    "topSeriesId": 342,
+    "currentSeason": 94,
+    "isCountry": true
+  },
+  {
+    "leagueId": 8,
+    "countryName": "USA",
+    "topSeriesId": 597,
+    "currentSeason": 94,
+    "isCountry": true
+  },
+  {
+    "leagueId": 9,
+    "countryName": "Norway",
+    "topSeriesId": 2110,
+    "currentSeason": 83,
+    "isCountry": true
+  },
+  {
+    "leagueId": 11,
+    "countryName": "Denmark",
+    "topSeriesId": 1769,
+    "currentSeason": 94,
+    "isCountry": true
+  },
+  {
+    "leagueId": 12,
+    "countryName": "Finland",
+    "topSeriesId": 2280,
+    "currentSeason": 94,
+    "isCountry": true
+  },
+  {
+    "leagueId": 14,
+    "countryName": "Netherlands",
+    "topSeriesId": 2195,
+    "currentSeason": 83,
+    "isCountry": true
+  },
+  {
+    "leagueId": 15,
+    "countryName": "Oceania",
+    "topSeriesId": 3208,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 16,
+    "countryName": "Brazil",
+    "topSeriesId": 3229,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 17,
+    "countryName": "Canada",
+    "topSeriesId": 3314,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 18,
+    "countryName": "Chile",
+    "topSeriesId": 3335,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 19,
+    "countryName": "Colombia",
+    "topSeriesId": 3377,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 20,
+    "countryName": "India",
+    "topSeriesId": 3488,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 21,
+    "countryName": "Ireland",
+    "topSeriesId": 3573,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 22,
+    "countryName": "Japan",
+    "topSeriesId": 3594,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 23,
+    "countryName": "Peru",
+    "topSeriesId": 3615,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 24,
+    "countryName": "Poland",
+    "topSeriesId": 3620,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 25,
+    "countryName": "Portugal",
+    "topSeriesId": 3705,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 26,
+    "countryName": "Scotland",
+    "topSeriesId": 3166,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 27,
+    "countryName": "South Africa",
+    "topSeriesId": 3161,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 28,
+    "countryName": "Uruguay",
+    "topSeriesId": 3013,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 29,
+    "countryName": "Venezuela",
+    "topSeriesId": 3008,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 30,
+    "countryName": "South Korea",
+    "topSeriesId": 3140,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 31,
+    "countryName": "Thailand",
+    "topSeriesId": 3119,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 32,
+    "countryName": "Turkey",
+    "topSeriesId": 3098,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 33,
+    "countryName": "Egypt",
+    "topSeriesId": 3398,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 34,
+    "countryName": "People's Republic of China",
+    "topSeriesId": 3356,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 35,
+    "countryName": "Russia",
+    "topSeriesId": 3187,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 36,
+    "countryName": "Spain",
+    "topSeriesId": 3403,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 37,
+    "countryName": "Romania",
+    "topSeriesId": 3854,
+    "currentSeason": 82,
+    "isCountry": true
+  },
+  {
+    "leagueId": 38,
+    "countryName": "Iceland",
+    "topSeriesId": 4200,
+    "currentSeason": 81,
+    "isCountry": true
+  },
+  {
+    "leagueId": 39,
+    "countryName": "Austria",
+    "topSeriesId": 4205,
+    "currentSeason": 81,
+    "isCountry": true
+  },
+  {
+    "leagueId": 44,
+    "countryName": "Belgium",
+    "topSeriesId": 8714,
+    "currentSeason": 81,
+    "isCountry": true
+  },
+  {
+    "leagueId": 45,
+    "countryName": "Malaysia",
+    "topSeriesId": 4213,
+    "currentSeason": 81,
+    "isCountry": true
+  },
+  {
+    "leagueId": 46,
+    "countryName": "Switzerland",
+    "topSeriesId": 4206,
+    "currentSeason": 81,
+    "isCountry": true
+  },
+  {
+    "leagueId": 47,
+    "countryName": "Singapore",
+    "topSeriesId": 4211,
+    "currentSeason": 81,
+    "isCountry": true
+  },
+  {
+    "leagueId": 50,
+    "countryName": "Greece",
+    "topSeriesId": 11345,
+    "currentSeason": 79,
+    "isCountry": true
+  },
+  {
+    "leagueId": 51,
+    "countryName": "Hungary",
+    "topSeriesId": 11324,
+    "currentSeason": 79,
+    "isCountry": true
+  },
+  {
+    "leagueId": 52,
+    "countryName": "Czechia",
+    "topSeriesId": 11303,
+    "currentSeason": 79,
+    "isCountry": true
+  },
+  {
+    "leagueId": 53,
+    "countryName": "Latvia",
+    "topSeriesId": 11450,
+    "currentSeason": 79,
+    "isCountry": true
+  },
+  {
+    "leagueId": 54,
+    "countryName": "Indonesia",
+    "topSeriesId": 11408,
+    "currentSeason": 79,
+    "isCountry": true
+  },
+  {
+    "leagueId": 55,
+    "countryName": "Philippines",
+    "topSeriesId": 11429,
+    "currentSeason": 79,
+    "isCountry": true
+  },
+  {
+    "leagueId": 56,
+    "countryName": "Estonia",
+    "topSeriesId": 11366,
+    "currentSeason": 79,
+    "isCountry": true
+  },
+  {
+    "leagueId": 57,
+    "countryName": "Serbia",
+    "topSeriesId": 11471,
+    "currentSeason": 79,
+    "isCountry": true
+  },
+  {
+    "leagueId": 58,
+    "countryName": "Croatia",
+    "topSeriesId": 11387,
+    "currentSeason": 79,
+    "isCountry": true
+  },
+  {
+    "leagueId": 59,
+    "countryName": "Hong Kong",
+    "topSeriesId": 13508,
+    "currentSeason": 78,
+    "isCountry": true
+  },
+  {
+    "leagueId": 60,
+    "countryName": "Chinese Taipei",
+    "topSeriesId": 13531,
+    "currentSeason": 78,
+    "isCountry": true
+  },
+  {
+    "leagueId": 61,
+    "countryName": "Wales",
+    "topSeriesId": 16623,
+    "currentSeason": 78,
+    "isCountry": true
+  },
+  {
+    "leagueId": 62,
+    "countryName": "Bulgaria",
+    "topSeriesId": 14234,
+    "currentSeason": 78,
+    "isCountry": true
+  },
+  {
+    "leagueId": 63,
+    "countryName": "Israel",
+    "topSeriesId": 13680,
+    "currentSeason": 78,
+    "isCountry": true
+  },
+  {
+    "leagueId": 64,
+    "countryName": "Slovenia",
+    "topSeriesId": 14213,
+    "currentSeason": 78,
+    "isCountry": true
+  },
+  {
+    "leagueId": 66,
+    "countryName": "Lithuania",
+    "topSeriesId": 29747,
+    "currentSeason": 76,
+    "isCountry": true
+  },
+  {
+    "leagueId": 67,
+    "countryName": "Slovakia",
+    "topSeriesId": 29768,
+    "currentSeason": 76,
+    "isCountry": true
+  },
+  {
+    "leagueId": 68,
+    "countryName": "Ukraine",
+    "topSeriesId": 33138,
+    "currentSeason": 76,
+    "isCountry": true
+  },
+  {
+    "leagueId": 69,
+    "countryName": "Bosnia and Herzegovina",
+    "topSeriesId": 29726,
+    "currentSeason": 76,
+    "isCountry": true
+  },
+  {
+    "leagueId": 70,
+    "countryName": "Vietnam",
+    "topSeriesId": 28425,
+    "currentSeason": 76,
+    "isCountry": true
+  },
+  {
+    "leagueId": 71,
+    "countryName": "Pakistan",
+    "topSeriesId": 32093,
+    "currentSeason": 76,
+    "isCountry": true
+  },
+  {
+    "leagueId": 72,
+    "countryName": "Paraguay",
+    "topSeriesId": 42133,
+    "currentSeason": 74,
+    "isCountry": true
+  },
+  {
+    "leagueId": 73,
+    "countryName": "Ecuador",
+    "topSeriesId": 34841,
+    "currentSeason": 74,
+    "isCountry": true
+  },
+  {
+    "leagueId": 74,
+    "countryName": "Bolivia",
+    "topSeriesId": 34840,
+    "currentSeason": 74,
+    "isCountry": true
+  },
+  {
+    "leagueId": 75,
+    "countryName": "Nigeria",
+    "topSeriesId": 34872,
+    "currentSeason": 74,
+    "isCountry": true
+  },
+  {
+    "leagueId": 76,
+    "countryName": "Faroe Islands",
+    "topSeriesId": 34871,
+    "currentSeason": 74,
+    "isCountry": true
+  },
+  {
+    "leagueId": 77,
+    "countryName": "Morocco",
+    "topSeriesId": 34870,
+    "currentSeason": 74,
+    "isCountry": true
+  },
+  {
+    "leagueId": 79,
+    "countryName": "Saudi Arabia",
+    "topSeriesId": 48896,
+    "currentSeason": 73,
+    "isCountry": true
+  },
+  {
+    "leagueId": 80,
+    "countryName": "Tunisia",
+    "topSeriesId": 53781,
+    "currentSeason": 73,
+    "isCountry": true
+  },
+  {
+    "leagueId": 81,
+    "countryName": "Costa Rica",
+    "topSeriesId": 56879,
+    "currentSeason": 73,
+    "isCountry": true
+  },
+  {
+    "leagueId": 83,
+    "countryName": "United Arab Emirates",
+    "topSeriesId": 56880,
+    "currentSeason": 73,
+    "isCountry": true
+  },
+  {
+    "leagueId": 84,
+    "countryName": "Luxembourg",
+    "topSeriesId": 57433,
+    "currentSeason": 73,
+    "isCountry": true
+  },
+  {
+    "leagueId": 85,
+    "countryName": "Iran",
+    "topSeriesId": 57518,
+    "currentSeason": 73,
+    "isCountry": true
+  },
+  {
+    "leagueId": 88,
+    "countryName": "Dominican Republic",
+    "topSeriesId": 57539,
+    "currentSeason": 73,
+    "isCountry": true
+  },
+  {
+    "leagueId": 89,
+    "countryName": "Cyprus",
+    "topSeriesId": 57560,
+    "currentSeason": 73,
+    "isCountry": true
+  },
+  {
+    "leagueId": 91,
+    "countryName": "Belarus",
+    "topSeriesId": 60146,
+    "currentSeason": 72,
+    "isCountry": true
+  },
+  {
+    "leagueId": 93,
+    "countryName": "Northern Ireland",
+    "topSeriesId": 60150,
+    "currentSeason": 72,
+    "isCountry": true
+  },
+  {
+    "leagueId": 94,
+    "countryName": "Jamaica",
+    "topSeriesId": 60148,
+    "currentSeason": 72,
+    "isCountry": true
+  },
+  {
+    "leagueId": 95,
+    "countryName": "Kenya",
+    "topSeriesId": 60149,
+    "currentSeason": 72,
+    "isCountry": true
+  },
+  {
+    "leagueId": 96,
+    "countryName": "Panama",
+    "topSeriesId": 60151,
+    "currentSeason": 72,
+    "isCountry": true
+  },
+  {
+    "leagueId": 97,
+    "countryName": "North Macedonia",
+    "topSeriesId": 60147,
+    "currentSeason": 72,
+    "isCountry": true
+  },
+  {
+    "leagueId": 98,
+    "countryName": "Albania",
+    "topSeriesId": 88340,
+    "currentSeason": 71,
+    "isCountry": true
+  },
+  {
+    "leagueId": 99,
+    "countryName": "Honduras",
+    "topSeriesId": 88257,
+    "currentSeason": 71,
+    "isCountry": true
+  },
+  {
+    "leagueId": 100,
+    "countryName": "El Salvador",
+    "topSeriesId": 88256,
+    "currentSeason": 71,
+    "isCountry": true
+  },
+  {
+    "leagueId": 101,
+    "countryName": "Malta",
+    "topSeriesId": 88258,
+    "currentSeason": 71,
+    "isCountry": true
+  },
+  {
+    "leagueId": 102,
+    "countryName": "Kyrgyz Republic",
+    "topSeriesId": 88341,
+    "currentSeason": 71,
+    "isCountry": true
+  },
+  {
+    "leagueId": 103,
+    "countryName": "Moldova",
+    "topSeriesId": 88259,
+    "currentSeason": 71,
+    "isCountry": true
+  },
+  {
+    "leagueId": 104,
+    "countryName": "Georgia",
+    "topSeriesId": 88382,
+    "currentSeason": 70,
+    "isCountry": true
+  },
+  {
+    "leagueId": 105,
+    "countryName": "Andorra",
+    "topSeriesId": 88385,
+    "currentSeason": 70,
+    "isCountry": true
+  },
+  {
+    "leagueId": 106,
+    "countryName": "Jordan",
+    "topSeriesId": 88390,
+    "currentSeason": 70,
+    "isCountry": true
+  },
+  {
+    "leagueId": 107,
+    "countryName": "Guatemala",
+    "topSeriesId": 88447,
+    "currentSeason": 70,
+    "isCountry": true
+  },
+  {
+    "leagueId": 110,
+    "countryName": "Trinidad & Tobago",
+    "topSeriesId": 98772,
+    "currentSeason": 69,
+    "isCountry": true
+  },
+  {
+    "leagueId": 111,
+    "countryName": "Nicaragua",
+    "topSeriesId": 98793,
+    "currentSeason": 69,
+    "isCountry": true
+  },
+  {
+    "leagueId": 112,
+    "countryName": "Kazakhstan",
+    "topSeriesId": 98814,
+    "currentSeason": 69,
+    "isCountry": true
+  },
+  {
+    "leagueId": 113,
+    "countryName": "Suriname",
+    "topSeriesId": 98835,
+    "currentSeason": 69,
+    "isCountry": true
+  },
+  {
+    "leagueId": 117,
+    "countryName": "Liechtenstein",
+    "topSeriesId": 123048,
+    "currentSeason": 68,
+    "isCountry": true
+  },
+  {
+    "leagueId": 118,
+    "countryName": "Algeria",
+    "topSeriesId": 123069,
+    "currentSeason": 68,
+    "isCountry": true
+  },
+  {
+    "leagueId": 119,
+    "countryName": "Mongolia",
+    "topSeriesId": 123090,
+    "currentSeason": 68,
+    "isCountry": true
+  },
+  {
+    "leagueId": 120,
+    "countryName": "Lebanon",
+    "topSeriesId": 123111,
+    "currentSeason": 68,
+    "isCountry": true
+  },
+  {
+    "leagueId": 121,
+    "countryName": "Senegal",
+    "topSeriesId": 123132,
+    "currentSeason": 68,
+    "isCountry": true
+  },
+  {
+    "leagueId": 122,
+    "countryName": "Armenia",
+    "topSeriesId": 123133,
+    "currentSeason": 68,
+    "isCountry": true
+  },
+  {
+    "leagueId": 123,
+    "countryName": "Bahrain",
+    "topSeriesId": 123188,
+    "currentSeason": 67,
+    "isCountry": true
+  },
+  {
+    "leagueId": 124,
+    "countryName": "Barbados",
+    "topSeriesId": 123209,
+    "currentSeason": 67,
+    "isCountry": true
+  },
+  {
+    "leagueId": 125,
+    "countryName": "Cape Verde",
+    "topSeriesId": 123210,
+    "currentSeason": 67,
+    "isCountry": true
+  },
+  {
+    "leagueId": 126,
+    "countryName": "Côte d’Ivoire",
+    "topSeriesId": 123211,
+    "currentSeason": 67,
+    "isCountry": true
+  },
+  {
+    "leagueId": 127,
+    "countryName": "Kuwait",
+    "topSeriesId": 200087,
+    "currentSeason": 66,
+    "isCountry": true
+  },
+  {
+    "leagueId": 128,
+    "countryName": "Iraq",
+    "topSeriesId": 200092,
+    "currentSeason": 66,
+    "isCountry": true
+  },
+  {
+    "leagueId": 129,
+    "countryName": "Azerbaijan",
+    "topSeriesId": 201137,
+    "currentSeason": 66,
+    "isCountry": true
+  },
+  {
+    "leagueId": 130,
+    "countryName": "Angola",
+    "topSeriesId": 209686,
+    "currentSeason": 65,
+    "isCountry": true
+  },
+  {
+    "leagueId": 131,
+    "countryName": "Montenegro",
+    "topSeriesId": 209708,
+    "currentSeason": 65,
+    "isCountry": true
+  },
+  {
+    "leagueId": 132,
+    "countryName": "Bangladesh",
+    "topSeriesId": 209729,
+    "currentSeason": 65,
+    "isCountry": true
+  },
+  {
+    "leagueId": 133,
+    "countryName": "Yemen",
+    "topSeriesId": 225688,
+    "currentSeason": 64,
+    "isCountry": true
+  },
+  {
+    "leagueId": 134,
+    "countryName": "Oman",
+    "topSeriesId": 225713,
+    "currentSeason": 64,
+    "isCountry": true
+  },
+  {
+    "leagueId": 135,
+    "countryName": "Mozambique",
+    "topSeriesId": 225734,
+    "currentSeason": 62,
+    "isCountry": true
+  },
+  {
+    "leagueId": 136,
+    "countryName": "Brunei",
+    "topSeriesId": 229917,
+    "currentSeason": 62,
+    "isCountry": true
+  },
+  {
+    "leagueId": 137,
+    "countryName": "Ghana",
+    "topSeriesId": 229916,
+    "currentSeason": 62,
+    "isCountry": true
+  },
+  {
+    "leagueId": 138,
+    "countryName": "Cambodia",
+    "topSeriesId": 237126,
+    "currentSeason": 62,
+    "isCountry": true
+  },
+  {
+    "leagueId": 139,
+    "countryName": "Benin",
+    "topSeriesId": 238747,
+    "currentSeason": 61,
+    "isCountry": true
+  },
+  {
+    "leagueId": 140,
+    "countryName": "Syria",
+    "topSeriesId": 238748,
+    "currentSeason": 61,
+    "isCountry": true
+  },
+  {
+    "leagueId": 141,
+    "countryName": "Qatar",
+    "topSeriesId": 238789,
+    "currentSeason": 60,
+    "isCountry": true
+  },
+  {
+    "leagueId": 142,
+    "countryName": "Tanzania",
+    "topSeriesId": 238790,
+    "currentSeason": 60,
+    "isCountry": true
+  },
+  {
+    "leagueId": 143,
+    "countryName": "Uganda",
+    "topSeriesId": 245936,
+    "currentSeason": 59,
+    "isCountry": true
+  },
+  {
+    "leagueId": 144,
+    "countryName": "Maldives",
+    "topSeriesId": 245935,
+    "currentSeason": 59,
+    "isCountry": true
+  },
+  {
+    "leagueId": 145,
+    "countryName": "Uzbekistan",
+    "topSeriesId": 252316,
+    "currentSeason": 50,
+    "isCountry": true
+  },
+  {
+    "leagueId": 146,
+    "countryName": "Cameroon",
+    "topSeriesId": 252313,
+    "currentSeason": 50,
+    "isCountry": true
+  },
+  {
+    "leagueId": 147,
+    "countryName": "Cuba",
+    "topSeriesId": 252358,
+    "currentSeason": 50,
+    "isCountry": true
+  },
+  {
+    "leagueId": 148,
+    "countryName": "Palestine",
+    "topSeriesId": 252357,
+    "currentSeason": 50,
+    "isCountry": true
+  },
+  {
+    "leagueId": 149,
+    "countryName": "São Tomé e Príncipe",
+    "topSeriesId": 258094,
+    "currentSeason": 25,
+    "isCountry": true
+  },
+  {
+    "leagueId": 151,
+    "countryName": "Comoros",
+    "topSeriesId": 258136,
+    "currentSeason": 25,
+    "isCountry": true
+  },
+  {
+    "leagueId": 152,
+    "countryName": "Sri Lanka",
+    "topSeriesId": 258052,
+    "currentSeason": 25,
+    "isCountry": true
+  },
+  {
+    "leagueId": 153,
+    "countryName": "Curaçao",
+    "topSeriesId": 258115,
+    "currentSeason": 25,
+    "isCountry": true
+  },
+  {
+    "leagueId": 154,
+    "countryName": "Guam",
+    "topSeriesId": 258073,
+    "currentSeason": 25,
+    "isCountry": true
+  },
+  {
+    "leagueId": 155,
+    "countryName": "Democratic Republic of the Congo",
+    "topSeriesId": 258477,
+    "currentSeason": 22,
+    "isCountry": true
+  },
+  {
+    "leagueId": 156,
+    "countryName": "Federal Democratic Republic of Ethiopia",
+    "topSeriesId": 258498,
+    "currentSeason": 22,
+    "isCountry": true
+  },
+  {
+    "leagueId": 157,
+    "countryName": "Saint Vincent and the Grenadines",
+    "topSeriesId": 258519,
+    "currentSeason": 20,
+    "isCountry": true
+  },
+  {
+    "leagueId": 158,
+    "countryName": "Belize",
+    "topSeriesId": 258540,
+    "currentSeason": 20,
+    "isCountry": true
+  },
+  {
+    "leagueId": 159,
+    "countryName": "Madagascar",
+    "topSeriesId": 258561,
+    "currentSeason": 20,
+    "isCountry": true
+  },
+  {
+    "leagueId": 160,
+    "countryName": "Botswana",
+    "topSeriesId": 258582,
+    "currentSeason": 20,
+    "isCountry": true
+  },
+  {
+    "leagueId": 161,
+    "countryName": "Myanmar",
+    "topSeriesId": 258603,
+    "currentSeason": 19,
+    "isCountry": true
+  },
+  {
+    "leagueId": 162,
+    "countryName": "Zambia",
+    "topSeriesId": 258624,
+    "currentSeason": 19,
+    "isCountry": true
+  },
+  {
+    "leagueId": 163,
+    "countryName": "San Marino",
+    "topSeriesId": 258645,
+    "currentSeason": 19,
+    "isCountry": true
+  },
+  {
+    "leagueId": 164,
+    "countryName": "Haiti",
+    "topSeriesId": 258666,
+    "currentSeason": 19,
+    "isCountry": true
+  },
+  {
+    "leagueId": 165,
+    "countryName": "Puerto Rico",
+    "topSeriesId": 258687,
+    "currentSeason": 19,
+    "isCountry": true
+  },
+  {
+    "leagueId": 166,
+    "countryName": "Grenada",
+    "topSeriesId": 265726,
+    "currentSeason": 11,
+    "isCountry": true
+  },
+  {
+    "leagueId": 167,
+    "countryName": "Burkina Faso",
+    "topSeriesId": 265747,
+    "currentSeason": 11,
+    "isCountry": true
+  },
+  {
+    "leagueId": 168,
+    "countryName": "Nepal",
+    "topSeriesId": 265768,
+    "currentSeason": 11,
+    "isCountry": true
+  },
+  {
+    "leagueId": 169,
+    "countryName": "Guyana",
+    "topSeriesId": 266045,
+    "currentSeason": 8,
+    "isCountry": true
+  },
+  {
+    "leagueId": 170,
+    "countryName": "Tahiti",
+    "topSeriesId": 266066,
+    "currentSeason": 8,
+    "isCountry": true
+  },
+  {
+    "leagueId": 171,
+    "countryName": "Guinea",
+    "topSeriesId": 266940,
+    "currentSeason": 7,
+    "isCountry": true
+  },
+  {
+    "leagueId": 172,
+    "countryName": "Bahamas",
+    "topSeriesId": 268241,
+    "currentSeason": 6,
+    "isCountry": true
+  },
+  {
+    "leagueId": 173,
+    "countryName": "Rwanda",
+    "topSeriesId": 268262,
+    "currentSeason": 6,
+    "isCountry": true
+  },
+  {
+    "leagueId": 174,
+    "countryName": "Saint Kitts and Nevis",
+    "topSeriesId": 268411,
+    "currentSeason": 4,
+    "isCountry": true
+  },
+  {
+    "leagueId": 175,
+    "countryName": "Guinea Ecuatorial",
+    "topSeriesId": 268496,
+    "currentSeason": 4,
+    "isCountry": true
+  },
+  {
+    "leagueId": 176,
+    "countryName": "Gibraltar",
+    "topSeriesId": 269093,
+    "currentSeason": 2,
+    "isCountry": true
+  },
+  {
+    "leagueId": 177,
+    "countryName": "Bhutan",
+    "topSeriesId": 269178,
+    "currentSeason": 2,
+    "isCountry": true
+  },
+  {
+    "leagueId": 1000,
+    "countryName": "Hattrick International",
+    "topSeriesId": 256687,
+    "currentSeason": 31,
+    "isCountry": false
+  },
+  {
+    "leagueId": 1003,
+    "countryName": "Homegrown League",
+    "topSeriesId": 266599,
+    "currentSeason": 7,
+    "isCountry": false
+  },
+  {
+    "leagueId": 3000,
+    "countryName": "Hattrick Femme International",
+    "topSeriesId": 269264,
+    "currentSeason": 1,
+    "isCountry": false
+  }
+]

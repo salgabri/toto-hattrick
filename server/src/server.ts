@@ -5,18 +5,21 @@ import { disconnectDb } from './db/client.js';
 import { registerReadRoutes } from './routes/read.js';
 import { registerAuthRoutes } from './routes/auth.js';
 import { registerSyncRoutes } from './routes/sync.js';
+import { registerScrapeRoutes } from './routes/scrape.js';
 
 async function main() {
   const app = Fastify({ logger: true });
 
-  // The frontend (Vite dev server) calls these JSON endpoints cross-origin.
-  await app.register(cors, { origin: env.WEB_ORIGIN });
+  // Reflect any origin in dev: the frontend AND the user's logged-in Hattrick browser tab
+  // (which drives the history scrape) both call these endpoints cross-origin.
+  await app.register(cors, { origin: true });
 
   app.get('/api/health', async () => ({ ok: true }));
 
   await registerAuthRoutes(app);
   await registerSyncRoutes(app);
   await registerReadRoutes(app);
+  await registerScrapeRoutes(app);
 
   const shutdown = async () => {
     await app.close();

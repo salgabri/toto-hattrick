@@ -12,6 +12,7 @@ const VERSION = {
   matchesarchive: '1.4',
   matchdetails: '3.0',
   matches: '2.9',
+  leaguefixtures: '1.2',
 } as const;
 
 /** Team metadata + founded date. The step-2 smoke test: prove ONE signed call parses. */
@@ -28,9 +29,23 @@ export function fetchMatchesArchive(
     file: 'matchesarchive',
     version: VERSION.matchesarchive,
     teamID: params.teamId,
-    // CHPP expects 'YYYY-MM-DD HH:MM:SS'
+    // CHPP expects date-only 'YYYY-MM-DD' here — a time component makes it ignore the
+    // range and return the latest season instead. seasonWindows() emits date-only strings.
     FirstMatchDate: params.firstMatchDate,
     LastMatchDate: params.lastMatchDate,
+  });
+}
+
+/** Archive for a whole season (CHPP's `season` selector), used to find a team's division. */
+export function fetchMatchesArchiveBySeason(
+  token: TokenPair,
+  params: { teamId: number; season: number },
+): Promise<unknown> {
+  return chppGet(token, {
+    file: 'matchesarchive',
+    version: VERSION.matchesarchive,
+    teamID: params.teamId,
+    season: params.season,
   });
 }
 
@@ -51,4 +66,20 @@ export function fetchMatchDetails(
 /** Recent/upcoming matches in a short window. Keeps the archive current. */
 export function fetchMatches(token: TokenPair, teamId?: number): Promise<unknown> {
   return chppGet(token, { file: 'matches', version: VERSION.matches, teamID: teamId });
+}
+
+/**
+ * All fixtures+results for one division in a given season. `season` accepts past seasons,
+ * so this reconstructs historical league tables. Champion = top of the computed standings.
+ */
+export function fetchLeagueFixtures(
+  token: TokenPair,
+  params: { leagueLevelUnitId: number; season: number },
+): Promise<unknown> {
+  return chppGet(token, {
+    file: 'leaguefixtures',
+    version: VERSION.leaguefixtures,
+    leagueLevelUnitID: params.leagueLevelUnitId,
+    season: params.season,
+  });
 }

@@ -1,6 +1,7 @@
 import type { FastifyInstance } from 'fastify';
 import { prisma } from '../db/client.js';
 import { syncTeam } from '../sync/index.js';
+import { syncLeagueHistory } from '../sync/leagueHistory.js';
 
 /**
  * Manual sync trigger. The route is a thin shell — all sync logic lives in syncTeam()
@@ -18,11 +19,11 @@ export async function registerSyncRoutes(app: FastifyInstance): Promise<void> {
         return reply.code(401).send({ error: 'no CHPP token — run the OAuth flow first' });
       }
 
-      const result = await syncTeam(
-        { token: stored.accessToken, tokenSecret: stored.tokenSecret },
-        teamId,
-      );
-      return result;
+      const token = { token: stored.accessToken, tokenSecret: stored.tokenSecret };
+      const result = await syncTeam(token, teamId);
+      // Reconstruct each season's league table + champion from the seasons just synced.
+      const champions = await syncLeagueHistory(token, teamId);
+      return { ...result, champions };
     },
   );
 }
