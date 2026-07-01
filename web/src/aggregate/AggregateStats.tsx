@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react';
 import type { CSSProperties, Dispatch, SetStateAction } from 'react';
 import {
   getCabinet,
-  getLatestSeason,
   getLeagues,
   getManagers,
   getNationalities,
@@ -362,7 +361,6 @@ function TrophyLeaders({
   const [managers, setManagers] = useState<Manager[]>([]);
   const [loading, setLoading] = useState(true);
   const [cabinets, setCabinets] = useState<Record<number, TrophyCabinet | null>>({});
-  const [latestSeason, setLatestSeason] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -371,10 +369,6 @@ function TrophyLeaders({
       .catch(() => setManagers([]))
       .finally(() => setLoading(false));
   }, [nation]);
-
-  useEffect(() => {
-    getLatestSeason().then(setLatestSeason).catch(() => setLatestSeason(0));
-  }, []);
 
   const toggleInc = (k: keyof IncState) => setInc((s) => ({ ...s, [k]: !s[k] }));
   const toggleExpand = (m: Manager) => {
@@ -402,7 +396,7 @@ function TrophyLeaders({
   const visible = ranked.filter(
     (e) =>
       (!q || e.m.login.toLowerCase().includes(q)) &&
-      (!lastOnly || (latestSeason > 0 && e.m.lastSeason === latestSeason)),
+      (!lastOnly || e.m.lastWin),
   );
 
   const chips: Array<{ k: keyof IncState; label: string }> = [
@@ -491,7 +485,7 @@ function TrophyLeaders({
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-          <label style={filterLabel}>Season</label>
+          <label style={filterLabel}>Champions</label>
           <button
             onClick={() => setLastOnly((v) => !v)}
             style={{
@@ -510,7 +504,7 @@ function TrophyLeaders({
             }}
           >
             {lastOnly && <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11 }}>✓</span>}
-            {latestSeason ? `Last season only (S${latestSeason})` : 'Last season only'}
+            Last winners only
           </button>
         </div>
 

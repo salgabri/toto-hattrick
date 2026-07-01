@@ -22,7 +22,7 @@ export interface Manager {
   lg: number;
   cup: number;
   oth: number;
-  lastSeason: number; // most recent season this manager won a title (0 = none)
+  lastWin: boolean; // holds a title in their country's most recent season (reigning champion)
 }
 
 export interface TrophyItem {
@@ -84,7 +84,18 @@ export async function getLeagues(): Promise<Country[]> {
 }
 
 export async function getManagers(nationality?: string): Promise<Manager[]> {
-  const { managers } = await load();
+  const { managers, leagues } = await load();
+
+  // Each country runs its own season clock, so "last winner" is per-country: the latest
+  // season present in that country's roll of honour. Join on country name (both sides derive
+  // from LeagueChampion.countryName in the bake).
+  const latestByCountry = new Map<string, number>();
+  for (const l of leagues)
+    for (const c of l.champions) {
+      const cur = latestByCountry.get(l.country);
+      if (cur === undefined || c.season > cur) latestByCountry.set(l.country, c.season);
+    }
+
   return managers
     .filter((m) => !nationality || nationality === 'ALL' || m.nationality === nationality)
     .map((m) => ({
@@ -95,16 +106,8 @@ export async function getManagers(nationality?: string): Promise<Manager[]> {
       lg: m.lg,
       cup: 0,
       oth: 0,
-      lastSeason: m.titles?.length ? Math.max(...m.titles.map((t) => t.season)) : 0,
+      lastWin: (m.titles ?? []).some((t) => latestByCountry.get(t.country) === t.season),
     }));
-}
-
-/** Most recent season anyone won a title — the "last season" for the Trophy leaders filter. */
-export async function getLatestSeason(): Promise<number> {
-  const { managers } = await load();
-  let max = 0;
-  for (const m of managers) for (const t of m.titles ?? []) if (t.season > max) max = t.season;
-  return max;
 }
 
 export async function getCabinet(userId: number): Promise<TrophyCabinet> {
