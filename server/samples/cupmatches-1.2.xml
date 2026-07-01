@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>cupmatches.xml</FileName>
+  <Version>1.2</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-07-01 20:22:06</FetchedDate>
+  <Cup>
+    <CupID>7</CupID>
+    <CupSeason>90</CupSeason>
+    <CupRound>14</CupRound>
+    <CupName>Coppa Italia</CupName>
+    <Match>
+      <MatchID>747054745</MatchID>
+      <MatchDate>2025-04-08 19:00:00</MatchDate>
+      <HomeTeamName>Real Pignola</HomeTeamName>
+      <AwayTeamName>milantriste</AwayTeamName>
+      <MatchResult Available="True">
+        <HomeGoals>2</HomeGoals>
+        <AwayGoals>1</AwayGoals>
+      </MatchResult>
+      <LeagueInfo Available="False" />
+    </Match>
+  </Cup>
+</HattrickData>

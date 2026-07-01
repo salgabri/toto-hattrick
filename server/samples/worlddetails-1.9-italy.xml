@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>worlddetails.xml</FileName>
+  <Version>1.9</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-07-01 20:22:06</FetchedDate>
+  <LeagueList>
+    <League>
+      <LeagueID>4</LeagueID>
+      <LeagueName>Italia</LeagueName>
+      <Season>94</Season>
+      <SeasonOffset>0</SeasonOffset>
+      <MatchRound>14</MatchRound>
+      <ShortName>Italia</ShortName>
+      <Continent>Europe</Continent>
+      <ZoneName>Southwestern Europe</ZoneName>
+      <EnglishName>Italy</EnglishName>
+      <LanguageId>4</LanguageId>
+      <LanguageName>Italiano</LanguageName>
+      <Country Available="True">
+        <CountryID>4</CountryID>
+        <CountryName>Italia</CountryName>
+        <CurrencyName>€</CurrencyName>
+        <CurrencyRate>10</CurrencyRate>
+        <CountryCode>IT</CountryCode>
+        <DateFormat>DD/MM/YYYY</DateFormat>
+        <TimeFormat>hh:mm</TimeFormat>
+      </Country>
+      <Cups>
+        <Cup>
+          <CupID>7</CupID>
+          <CupName>Coppa Italia</CupName>
+          <CupLeagueLevel>0</CupLeagueLevel>
+          <CupLevel>1</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>14</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>515</CupID>
+          <CupName>Coppa Alpi</CupName>
+          <CupLeagueLevel>0</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>13</MatchRound>
+          <MatchRoundsLeft>1</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>644</CupID>
+          <CupName>Coppa Appennini</CupName>
+          <CupLeagueLevel>0</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>2</CupLevelIndex>
+          <MatchRound>12</MatchRound>
+          <MatchRoundsLeft>1</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>773</CupID>
+          <CupName>Coppa Mediterraneo</CupName>
+          <CupLeagueLevel>0</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>3</CupLevelIndex>
+          <MatchRound>11</MatchRound>
+          <MatchRoundsLeft>1</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>902</CupID>
+          <CupName>Coppa del Nonno</CupName>
+          <CupLeagueLevel>0</CupLeagueLevel>
+          <CupLevel>3</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>12</MatchRound>
+          <MatchRoundsLeft>1</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1332</CupID>
+          <CupName>Coppa Italia VII Serie</CupName>
+          <CupLeagueLevel>7</CupLeagueLevel>
+          <CupLevel>1</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>13</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1345</CupID>
+          <CupName>Coppa Alpi VII Serie</CupName>
+          <CupLeagueLevel>7</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>13</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1358</CupID>
+          <CupName>Coppa Appennini VII Serie</CupName>
+          <CupLeagueLevel>7</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>2</CupLevelIndex>
+          <MatchRound>12</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1371</CupID>
+          <CupName>Coppa Mediterraneo VII Serie</CupName>
+          <CupLeagueLevel>7</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>3</CupLevelIndex>
+          <MatchRound>11</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1384</CupID>
+          <CupName>Coppa del Nonno VII Serie</CupName>
+          <CupLeagueLevel>7</CupLeagueLevel>
+          <CupLevel>3</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>12</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1395</CupID>
+          <CupName>Coppa Italia VIII Serie</CupName>
+          <CupLeagueLevel>8</CupLeagueLevel>
+          <CupLevel>1</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>12</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1401</CupID>
+          <CupName>Coppa Alpi VIII Serie</CupName>
+          <CupLeagueLevel>8</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>12</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1407</CupID>
+          <CupName>Coppa Appennini VIII Serie</CupName>
+          <CupLeagueLevel>8</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>2</CupLevelIndex>
+          <MatchRound>11</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1413</CupID>
+          <CupName>Coppa Mediterraneo VIII Serie</CupName>
+          <CupLeagueLevel>8</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>3</CupLevelIndex>
+          <MatchRound>10</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1419</CupID>
+          <CupName>Coppa del Nonno VIII Serie</CupName>
+          <CupLeagueLevel>8</CupLeagueLevel>
+          <CupLevel>3</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>11</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1424</CupID>
+          <CupName>Coppa Italia IX Serie</CupName>
+          <CupLeagueLevel>9</CupLeagueLevel>
+          <CupLevel>1</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>11</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1426</CupID>
+          <CupName>Coppa Alpi IX Serie</CupName>
+          <CupLeagueLevel>9</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>11</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1428</CupID>
+          <CupName>Coppa Appennini IX Serie</CupName>
+          <CupLeagueLevel>9</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>2</CupLevelIndex>
+          <MatchRound>10</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1430</CupID>
+          <CupName>Coppa Mediterraneo IX Serie</CupName>
+          <CupLeagueLevel>9</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>3</CupLevelIndex>
+          <MatchRound>9</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1432</CupID>
+          <CupName>Coppa del Nonno IX Serie</CupName>
+          <CupLeagueLevel>9</CupLeagueLevel>
+          <CupLevel>3</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>10</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+      </Cups>
+      <NationalTeamId>3003</NationalTeamId>
+      <U20TeamId>3044</U20TeamId>
+      <ActiveTeams>21390</ActiveTeams>
+      <ActiveUsers>20975</ActiveUsers>
+      <WaitingUsers>1</WaitingUsers>
+      <TrainingDate>2026-07-02 23:45:00</TrainingDate>
+      <EconomyDate>2026-07-04 02:00:00</EconomyDate>
+      <CupMatchDate>2026-06-30 19:00:00</CupMatchDate>
+      <SeriesMatchDate>2026-07-04 12:00:00</SeriesMatchDate>
+      <Sequence1>2026-07-06 04:30:00</Sequence1>
+      <Sequence2>2026-07-06 23:00:00</Sequence2>
+      <Sequence3>2026-07-07 02:00:00</Sequence3>
+      <Sequence5>2026-07-02 04:30:00</Sequence5>
+      <Sequence7>2026-07-03 12:00:00</Sequence7>
+      <NumberOfLevels>8</NumberOfLevels>
+    </League>
+  </LeagueList>
+</HattrickData>

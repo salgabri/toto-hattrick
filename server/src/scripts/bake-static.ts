@@ -47,4 +47,39 @@ writeFileSync(`${OUT}/leagues.json`, JSON.stringify(leagues));
 
 const titleTotal = leagues.reduce((n, l) => n + l.champions.length, 0);
 console.log(`baked ${managers.length} managers, ${leagues.length} leagues, ${titleTotal} champion rows -> ${OUT}`);
+
+// Cups: per-country roll of honour for the five national-level cups (one main + four secondary).
+// Manager is only known for "doubles" — a team that also won its league that same season, which
+// carries a resolved championUserName. Cup-specific ownership scraping is a later pass.
+const doubleMgr = new Map<string, string>(); // `${teamId}:${season}` -> manager name
+for (const c of await prisma.leagueChampion.findMany({
+  where: { championUserId: { gt: 0 } },
+  select: { championTeamId: true, season: true, championUserName: true },
+})) {
+  doubleMgr.set(`${c.championTeamId}:${c.season}`, c.championUserName ?? '—');
+}
+
+const cupRows = await prisma.cup.findMany({ orderBy: [{ leagueId: 'asc' }, { cupLevel: 'asc' }, { cupLevelIndex: 'asc' }] });
+const cupWins = await prisma.cupChampion.findMany({ orderBy: { season: 'desc' }, select: { cupId: true, season: true, championTeamName: true, championTeamId: true } });
+const winsByCup = new Map<number, Array<{ season: number; club: string; manager: string }>>();
+for (const w of cupWins) {
+  const a = winsByCup.get(w.cupId) ?? [];
+  a.push({ season: w.season, club: w.championTeamName, manager: w.championTeamId != null ? (doubleMgr.get(`${w.championTeamId}:${w.season}`) ?? '—') : '—' });
+  winsByCup.set(w.cupId, a);
+}
+
+interface CupOut { cupId: number; cupName: string; isMain: boolean; cupLevel: number; cupLevelIndex: number; winners: Array<{ season: number; club: string; manager: string }> }
+const cupsByLeague = new Map<number, { leagueId: number; country: string; cups: CupOut[] }>();
+for (const c of cupRows) {
+  const winners = winsByCup.get(c.cupId) ?? [];
+  if (winners.length === 0) continue;
+  let e = cupsByLeague.get(c.leagueId);
+  if (!e) { e = { leagueId: c.leagueId, country: c.countryName, cups: [] }; cupsByLeague.set(c.leagueId, e); }
+  e.cups.push({ cupId: c.cupId, cupName: c.cupName, isMain: c.isMain, cupLevel: c.cupLevel, cupLevelIndex: c.cupLevelIndex, winners });
+}
+const cups = [...cupsByLeague.values()].sort((a, b) => a.country.localeCompare(b.country));
+writeFileSync(`${OUT}/cups.json`, JSON.stringify(cups));
+const cupTitleTotal = cups.reduce((n, l) => n + l.cups.reduce((m, c) => m + c.winners.length, 0), 0);
+console.log(`baked ${cups.length} countries' cups, ${cupTitleTotal} cup finals -> ${OUT}/cups.json`);
+
 await prisma.$disconnect();

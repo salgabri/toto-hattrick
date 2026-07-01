@@ -121,6 +121,57 @@ model LeagueChampion {
   @@index([championUserId])
 }
 
+/// A national-level cup (worlddetails CupLeagueLevel 0). Five per country: one MAIN national cup
+/// (cupLevel 1) and four SECONDARY/consolation cups (cupLevel 2 or 3). Per-serie lower-division
+/// cups (CupLeagueLevel > 0) are intentionally excluded. Seeded from worlddetails.
+model Cup {
+  cupId         Int     @id
+  leagueId      Int
+  countryName   String
+  cupName       String
+  cupLevel      Int // 1 = main national cup; 2/3 = secondary/consolation
+  cupLevelIndex Int
+  isMain        Boolean // cupLevel == 1
+  currentSeason Int?
+
+  champions CupChampion[]
+
+  @@index([leagueId])
+}
+
+/// Winner of one cup for one season, reconstructed from `cupmatches` (the final match — the team
+/// with more goals wins; a level final is decided on penalties, flagged by `penalties`). Team ids
+/// come from `matchdetails` on the final. championUserId is the winning team's owner AT that season
+/// (ownership history), same attribution model as LeagueChampion — null until resolved.
+model CupChampion {
+  cupId            Int
+  season           Int
+  leagueId         Int
+  countryName      String
+  cupName          String
+  isMain           Boolean
+  finalMatchId     Int
+  championTeamId   Int? // resolved from matchdetails in a second pass (winner is positional)
+  championTeamName String
+  runnerUpTeamName String
+  homeGoals        Int
+  awayGoals        Int
+  penalties        Boolean @default(false)
+  championUserId   Int?
+  championUserName String?
+
+  cup Cup @relation(fields: [cupId], references: [cupId])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([cupId, season])
+  @@index([season])
+  @@index([championTeamId])
+  @@index([championUserId])
+  @@index([leagueId])
+}
+
 /// A Hattrick manager who has won at least one top-division title. Resolved from the champion
 /// team's CURRENT owner (teamdetails) — historical owners aren't exposed by CHPP. nationality
 /// comes from managercompendium. isBot/abandoned teams have no owner (userId stays unresolved).

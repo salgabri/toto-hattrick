@@ -13,6 +13,8 @@ const VERSION = {
   matchdetails: '3.0',
   matches: '2.9',
   leaguefixtures: '1.2',
+  worlddetails: '1.9',
+  cupmatches: '1.2',
 } as const;
 
 /** Team metadata + founded date. The step-2 smoke test: prove ONE signed call parses. */
@@ -66,6 +68,29 @@ export function fetchMatchDetails(
 /** Recent/upcoming matches in a short window. Keeps the archive current. */
 export function fetchMatches(token: TokenPair, teamId?: number): Promise<unknown> {
   return chppGet(token, { file: 'matches', version: VERSION.matches, teamID: teamId });
+}
+
+/** Country metadata incl. its Cups catalog (CupID/CupLevel/CupLevelIndex/CupLeagueLevel). */
+export function fetchWorldDetails(token: TokenPair, leagueId: number): Promise<unknown> {
+  return chppGet(token, { file: 'worlddetails', version: VERSION.worlddetails, leagueID: leagueId });
+}
+
+/**
+ * Matches of a cup in a given season. With no `cupRound`, CHPP returns the LAST played round —
+ * for a completed cup that is the final (one match), so this reconstructs historical winners.
+ * `season` accepts past seasons. Before the cup existed a season returns round 0 / no matches.
+ */
+export function fetchCupMatches(
+  token: TokenPair,
+  params: { cupId: number; season?: number; cupRound?: number },
+): Promise<unknown> {
+  return chppGet(token, {
+    file: 'cupmatches',
+    version: VERSION.cupmatches,
+    cupId: params.cupId,
+    season: params.season,
+    cupRound: params.cupRound,
+  });
 }
 
 /**

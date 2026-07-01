@@ -43,6 +43,27 @@ export interface Winner {
   manager: string;
 }
 
+export interface CupWinner {
+  season: number;
+  club: string;
+  manager: string;
+}
+
+export interface CupRoll {
+  cupId: number;
+  cupName: string;
+  isMain: boolean;
+  cupLevel: number;
+  cupLevelIndex: number;
+  winners: CupWinner[];
+}
+
+export interface CupCountry {
+  leagueId: number;
+  country: string;
+  cups: CupRoll[];
+}
+
 interface RawManager {
   userId: number;
   userName: string;
@@ -65,6 +86,28 @@ function load() {
     ]).then(([managers, leagues]) => ({ managers, leagues }));
   }
   return bundle;
+}
+
+// Cups load lazily on their own — the Cup winners view is the only consumer, and cups.json is
+// large, so we don't pull it into the initial bundle. Missing file (older bake) → empty list.
+let cupsBundle: Promise<CupCountry[]> | null = null;
+function loadCups() {
+  if (!cupsBundle) {
+    cupsBundle = fetch('/data/cups.json')
+      .then((r) => (r.ok ? (r.json() as Promise<CupCountry[]>) : []))
+      .catch(() => []);
+  }
+  return cupsBundle;
+}
+
+export async function getCupCountries(): Promise<Country[]> {
+  const cups = await loadCups();
+  return cups.map((c) => ({ code: String(c.leagueId), name: c.country }));
+}
+
+export async function getCups(leagueId: string): Promise<CupRoll[]> {
+  const cups = await loadCups();
+  return cups.find((c) => String(c.leagueId) === leagueId)?.cups ?? [];
 }
 
 export async function getNationalities(): Promise<Country[]> {

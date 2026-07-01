@@ -2,11 +2,14 @@ import { useEffect, useMemo, useState } from 'react';
 import type { CSSProperties, Dispatch, SetStateAction } from 'react';
 import {
   getCabinet,
+  getCupCountries,
+  getCups,
   getLeagues,
   getManagers,
   getNationalities,
   getWinners,
   type Country,
+  type CupRoll,
   type Manager,
   type TrophyCabinet,
   type Winner,
@@ -25,7 +28,7 @@ import './aggregate.css';
  * Backend has league titles only (no cup/other trophies yet), so the cup toggles are inert.
  */
 
-export type View = 'trophies' | 'leagues';
+export type View = 'trophies' | 'leagues' | 'cups';
 
 export interface AggregateStatsProps {
   defaultTheme?: Theme;
@@ -48,10 +51,12 @@ export function AggregateStats({
   const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false });
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [league, setLeague] = useState<string>('');
+  const [cupCountry, setCupCountry] = useState<string>('');
 
   // Reference lists (loaded once).
   const [nationalities, setNationalities] = useState<Country[]>([]);
   const [leagues, setLeagues] = useState<Country[]>([]);
+  const [cupCountries, setCupCountries] = useState<Country[]>([]);
 
   useEffect(() => {
     getNationalities().then(setNationalities).catch(() => setNationalities([]));
@@ -61,6 +66,12 @@ export function AggregateStats({
         setLeague((cur) => cur || ls.find((x) => x.code === '4')?.code || ls[0]?.code || '');
       })
       .catch(() => setLeagues([]));
+    getCupCountries()
+      .then((cs) => {
+        setCupCountries(cs);
+        setCupCountry((cur) => cur || cs.find((x) => x.code === '4')?.code || cs[0]?.code || '');
+      })
+      .catch(() => setCupCountries([]));
   }, []);
 
   return (
@@ -90,8 +101,10 @@ export function AggregateStats({
                 expandedId={expandedId}
                 setExpandedId={setExpandedId}
               />
-            ) : (
+            ) : view === 'leagues' ? (
               <LeagueWinners leagues={leagues} league={league} setLeague={setLeague} />
+            ) : (
+              <CupWinners countries={cupCountries} country={cupCountry} setCountry={setCupCountry} />
             )}
           </div>
         </main>
@@ -105,6 +118,7 @@ export function AggregateStats({
 const NAV: Array<{ key: View; label: string; sub: string }> = [
   { key: 'trophies', label: 'Trophy leaders', sub: 'managers by silverware' },
   { key: 'leagues', label: 'League winners', sub: 'champions by season' },
+  { key: 'cups', label: 'Cup winners', sub: 'national cups by season' },
 ];
 
 function Sidebar({
@@ -400,7 +414,8 @@ function TrophyLeaders({
         <div>
           <h1 style={h1Style}>Trophy leaders</h1>
           <p style={{ fontSize: 14, color: 'var(--ink-soft,#776F5D)', margin: '10px 0 0' }}>
-            Managers ranked by top-division titles won. Cup honours aren&apos;t tracked yet, so those toggles are inert for now.
+            Managers ranked by top-division titles won. Cup winners now live under Cup winners; per-manager cup
+            attribution is still landing, so those toggles stay inert for now.
           </p>
         </div>
       </div>
@@ -723,6 +738,26 @@ function LegendSwatch({ color, label }: { color: string; label: string }) {
 
 const WINNER_GRID = '64px minmax(0,1fr) auto';
 
+/** Mark each winner that's part of a back-to-back run, and tag a run's first row with ×N. */
+function withRuns<T extends { club: string; season: number }>(rows: T[]): Array<T & { partOfStreak: boolean; tag: string }> {
+  return rows.map((w, i) => {
+    const below = rows[i + 1];
+    const above = rows[i - 1];
+    const partOfStreak = (!!below && below.club === w.club) || (!!above && above.club === w.club);
+    let tag = '';
+    if (!(above && above.club === w.club)) {
+      let n = 1;
+      let j = i;
+      while (rows[j + 1] && rows[j + 1]!.club === w.club) {
+        n++;
+        j++;
+      }
+      if (n > 1) tag = '×' + n;
+    }
+    return { ...w, partOfStreak, tag };
+  });
+}
+
 function LeagueWinners({
   leagues,
   league,
@@ -894,6 +929,143 @@ function LeagueWinners({
             ))}
           </div>
         </aside>
+      </div>
+    </div>
+  );
+}
+
+/* =========================== CUP WINNERS =========================== */
+
+function CupWinners({
+  countries,
+  country,
+  setCountry,
+}: {
+  countries: Country[];
+  country: string;
+  setCountry: Dispatch<SetStateAction<string>>;
+}) {
+  const [cups, setCups] = useState<CupRoll[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!country) return;
+    setLoading(true);
+    getCups(country)
+      .then(setCups)
+      .catch(() => setCups([]))
+      .finally(() => setLoading(false));
+  }, [country]);
+
+  const main = cups.find((c) => c.isMain) ?? null;
+  const secondary = cups.filter((c) => !c.isMain);
+
+  return (
+    <div>
+      <div style={{ marginBottom: 6 }}>
+        <h1 style={h1Style}>Cup winners</h1>
+        <p style={{ fontSize: 14, color: 'var(--ink-soft,#776F5D)', margin: '10px 0 0' }}>
+          National cup honours, season by season — the main cup plus its secondary and consolation cups.
+        </p>
+      </div>
+
+      <div style={{ display: 'flex', alignItems: 'flex-end', gap: 14, flexWrap: 'wrap', margin: '22px 0 18px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+          <label style={filterLabel}>Country</label>
+          <select value={country} onChange={(e) => setCountry(e.target.value)} style={selectStyle}>
+            {countries.map((o) => (
+              <option key={o.code} value={o.code}>
+                {o.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div style={{ flex: 1 }} />
+      </div>
+
+      {loading && <div style={{ padding: '24px 2px', color: 'var(--ink-faint,#A99E86)', fontSize: 13 }}>Loading…</div>}
+      {!loading && cups.length === 0 && (
+        <div style={{ padding: '24px 2px', color: 'var(--ink-faint,#A99E86)', fontSize: 13 }}>No cup winners stored for this country yet.</div>
+      )}
+
+      {!loading && main && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr)', gap: 20, marginBottom: 20 }}>
+          <CupCard cup={main} accent={MAIN_COLOR} tall />
+        </div>
+      )}
+
+      {!loading && secondary.length > 0 && (
+        <>
+          <div style={{ ...filterLabel, margin: '4px 0 12px' }}>Secondary &amp; consolation cups</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(300px,1fr))', gap: 20, alignItems: 'start' }}>
+            {secondary.map((c) => (
+              <CupCard key={c.cupId} cup={c} accent={C.line2} />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function CupCard({ cup, accent, tall = false }: { cup: CupRoll; accent: string; tall?: boolean }) {
+  const winners = withRuns(cup.winners);
+  const range = cup.winners.length ? `S${cup.winners[cup.winners.length - 1]!.season}–S${cup.winners[0]!.season}` : '—';
+  const showManager = cup.isMain && cup.winners.some((w) => w.manager && w.manager !== '—');
+
+  return (
+    <div style={cardStyle}>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, padding: '16px 22px', borderBottom: '1px solid var(--line,#E6DECB)' }}>
+        <span style={{ width: 10, height: 10, borderRadius: 3, flex: 'none', background: accent }} />
+        <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontWeight: 700, fontSize: tall ? 17 : 15, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          {cup.cupName}
+        </div>
+        <div style={{ ...monoFaint, fontSize: 11.5, color: 'var(--ink-faint,#A99E86)', flex: 'none' }}>{range}</div>
+      </div>
+      <div style={{ maxHeight: tall ? 'none' : 340, overflowY: tall ? 'visible' : 'auto' }}>
+        {winners.map((w) => (
+          <div
+            key={w.season}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: WINNER_GRID,
+              gap: 12,
+              padding: '10px 22px',
+              borderBottom: '1px solid var(--line,#E6DECB)',
+              alignItems: 'center',
+              borderLeft: '3px solid ' + (w.partOfStreak ? accent : 'transparent'),
+            }}
+          >
+            <div style={{ fontFamily: "'JetBrains Mono',monospace", fontWeight: 700, fontSize: 15 }}>{w.season}</div>
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontSize: 13.5, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{w.club}</div>
+              {showManager && w.manager !== '—' && (
+                <div style={{ fontSize: 11.5, color: 'var(--ink-soft,#776F5D)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{w.manager}</div>
+              )}
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              {w.tag && (
+                <span
+                  style={{
+                    flex: 'none',
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: '.03em',
+                    color: C.accent,
+                    background: 'color-mix(in srgb, var(--accent,#B0742A) 14%, transparent)',
+                    padding: '2px 7px',
+                    borderRadius: 999,
+                  }}
+                >
+                  {w.tag}
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ padding: '10px 22px', fontSize: 11.5, color: 'var(--ink-faint,#A99E86)', fontFamily: "'JetBrains Mono',monospace" }}>
+        {cup.winners.length} finals · source: cupmatches
       </div>
     </div>
   );

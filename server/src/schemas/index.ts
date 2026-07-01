@@ -26,6 +26,12 @@ const arrayOf = <T extends z.ZodTypeAny>(schema: T) =>
 
 const num = z.coerce.number();
 
+/** Goal value: "" (unplayed) or missing → null, otherwise a number. */
+const goalOrNull = z.preprocess(
+  (v) => (v === '' || v === undefined || v === null ? null : v),
+  z.coerce.number().nullable(),
+);
+
 // --- teamdetails (3.6) ------------------------------------------------------
 
 const TeamDetailsTeam = z
@@ -245,6 +251,12 @@ export interface MatchDetails {
   matchType: number;
   matchDate: Date;
   finishedDate: Date | null;
+  homeTeamId: number;
+  homeTeamName: string;
+  awayTeamId: number;
+  awayTeamName: string;
+  homeGoals: number | null;
+  awayGoals: number | null;
   lineup: unknown; // { home/away: { formation, tacticType, tacticSkill } }
   scorers: unknown; // Goal[]
   ratings: unknown; // { home, away, possession }
@@ -257,6 +269,12 @@ export function parseMatchDetails(raw: unknown): MatchDetails {
     matchType: m.MatchType,
     matchDate: m.MatchDate,
     finishedDate: m.FinishedDate ?? null,
+    homeTeamId: m.HomeTeam.HomeTeamID,
+    homeTeamName: m.HomeTeam.HomeTeamName,
+    awayTeamId: m.AwayTeam.AwayTeamID,
+    awayTeamName: m.AwayTeam.AwayTeamName,
+    homeGoals: m.HomeTeam.HomeGoals ?? null,
+    awayGoals: m.AwayTeam.AwayGoals ?? null,
     lineup: {
       home: { formation: m.HomeTeam.Formation, tacticType: m.HomeTeam.TacticType, tacticSkill: m.HomeTeam.TacticSkill },
       away: { formation: m.AwayTeam.Formation, tacticType: m.AwayTeam.TacticType, tacticSkill: m.AwayTeam.TacticSkill },
@@ -283,16 +301,150 @@ export function parseMatchDetails(raw: unknown): MatchDetails {
   };
 }
 
+// --- worlddetails (1.9) Cups ------------------------------------------------
+// One League with its Cups catalog. We only need the cup identity + level so the seed can
+// classify main (CupLevel 1) vs secondary (CupLevel 2/3) national-level cups (CupLeagueLevel 0).
+
+const WorldCup = z
+  .object({
+    CupID: num,
+    CupName: z.string(),
+    CupLeagueLevel: num,
+    CupLevel: num,
+    CupLevelIndex: num,
+    MatchRound: num.optional(),
+  })
+  .passthrough();
+
+const WorldDetailsSchema = z.object({
+  HattrickData: z
+    .object({
+      LeagueList: z.object({
+        League: z
+          .object({
+            LeagueID: num,
+            LeagueName: z.string(),
+            EnglishName: z.string().optional(),
+            Season: num,
+            Cups: z
+              .union([z.literal(''), z.object({ Cup: arrayOf(WorldCup) })])
+              .transform((v) => (v === '' ? { Cup: [] } : v)),
+          })
+          .passthrough(),
+      }),
+    })
+    .passthrough(),
+});
+
+export interface WorldCupInfo {
+  cupId: number;
+  cupName: string;
+  cupLeagueLevel: number;
+  cupLevel: number;
+  cupLevelIndex: number;
+}
+
+export function parseWorldDetailsCups(raw: unknown): {
+  leagueId: number;
+  leagueName: string;
+  englishName: string | null;
+  currentSeason: number;
+  cups: WorldCupInfo[];
+} {
+  const l = WorldDetailsSchema.parse(raw).HattrickData.LeagueList.League;
+  return {
+    leagueId: l.LeagueID,
+    leagueName: l.LeagueName,
+    englishName: l.EnglishName ?? null,
+    currentSeason: l.Season,
+    cups: l.Cups.Cup.map((c) => ({
+      cupId: c.CupID,
+      cupName: c.CupName,
+      cupLeagueLevel: c.CupLeagueLevel,
+      cupLevel: c.CupLevel,
+      cupLevelIndex: c.CupLevelIndex,
+    })),
+  };
+}
+
+// --- cupmatches (1.2) -------------------------------------------------------
+// Matches of one cup round. With no cupRound we get the LAST played round; for a finished cup
+// that is the single-match final → the winner. Goals only exist when MatchResult Available=True.
+// Team ids are NOT in this file (names only) — resolve them from matchdetails on the final.
+
+const CupMatchResult = z
+  .object({
+    '@_Available': z.string().optional(),
+    HomeGoals: goalOrNull.optional(),
+    AwayGoals: goalOrNull.optional(),
+  })
+  .passthrough();
+
+const CupMatch = z
+  .object({
+    MatchID: num,
+    MatchDate: HtDate,
+    HomeTeamName: z.string(),
+    AwayTeamName: z.string(),
+    MatchResult: z.union([z.literal(''), CupMatchResult]).transform((v) => (v === '' ? {} : v)),
+  })
+  .passthrough();
+
+const CupMatchesSchema = z.object({
+  HattrickData: z
+    .object({
+      Cup: z
+        .object({
+          CupID: num,
+          CupName: z.string(),
+          CupSeason: num,
+          CupRound: num,
+          Match: z
+            .union([z.literal(''), arrayOf(CupMatch)])
+            .transform((v) => (v === '' ? [] : v)),
+        })
+        .passthrough(),
+    })
+    .passthrough(),
+});
+
+export interface CupMatchResultRow {
+  matchId: number;
+  matchDate: Date;
+  homeTeamName: string;
+  awayTeamName: string;
+  homeGoals: number | null;
+  awayGoals: number | null;
+}
+
+export function parseCupMatches(raw: unknown): {
+  cupId: number;
+  cupName: string;
+  season: number;
+  round: number;
+  matches: CupMatchResultRow[];
+} {
+  const c = CupMatchesSchema.parse(raw).HattrickData.Cup;
+  return {
+    cupId: c.CupID,
+    cupName: c.CupName,
+    season: c.CupSeason,
+    round: c.CupRound,
+    matches: c.Match.map((m) => ({
+      matchId: m.MatchID,
+      matchDate: m.MatchDate,
+      homeTeamName: m.HomeTeamName,
+      awayTeamName: m.AwayTeamName,
+      homeGoals: m.MatchResult.HomeGoals ?? null,
+      awayGoals: m.MatchResult.AwayGoals ?? null,
+    })),
+  };
+}
+
 // --- leaguefixtures (1.2) ---------------------------------------------------
 // All matches for one division (LeagueLevelUnitID) in a given season — including past
 // seasons. Lets us reconstruct a final table and crown the champion. Goals are empty
-// strings for rounds not yet played (current season).
-
-/** Goal value: "" (unplayed) → null, otherwise a number. */
-const goalOrNull = z.preprocess(
-  (v) => (v === '' || v === undefined || v === null ? null : v),
-  z.coerce.number().nullable(),
-);
+// strings for rounds not yet played (current season). (goalOrNull is defined up top.)
 
 const FixtureMatch = z
   .object({
