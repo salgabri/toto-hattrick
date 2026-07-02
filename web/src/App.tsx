@@ -16,12 +16,13 @@ const LOOK_KEY = 'th.look';
 
 export function App() {
   const [look, setLook] = useState<Look>(() => {
-    // Storage can throw synchronously (private mode, sandboxed iframe, blocked cookies) — never
-    // let a preference read crash the whole app.
+    // Default to the retro "2000s" look (the primary handoff design); a saved preference still
+    // wins either way. Storage can throw synchronously (private mode, sandboxed iframe, blocked
+    // cookies) — never let a preference read crash the app.
     try {
-      return localStorage.getItem(LOOK_KEY) === 'retro' ? 'retro' : 'modern';
+      return localStorage.getItem(LOOK_KEY) === 'modern' ? 'modern' : 'retro';
     } catch {
-      return 'modern';
+      return 'retro';
     }
   });
 
