@@ -467,8 +467,7 @@ function RetroTrophyLeaders({
   // Ranks are absolute over the fetched field; category flags change the total.
   const ranked = useMemo(() => {
     const l = managers.map((m) => {
-      const mc = Math.ceil(m.cup / 2);
-      const ft = (inc.champ ? m.lg : 0) + (inc.main ? mc : 0) + (inc.sec ? m.cup - mc + m.oth : 0);
+      const ft = (inc.champ ? m.lg : 0) + (inc.main ? m.main : 0) + (inc.sec ? m.sec + m.oth : 0);
       return { m, ft };
     });
     l.sort((a, b) => b.ft - a.ft || b.m.lg - a.m.lg);
@@ -596,14 +595,12 @@ function RetroTrophyLeaders({
           const r = e.rank;
           const top = r <= 3;
           const isExp = expandedId === String(m.userId);
-          const mc = Math.ceil(m.cup / 2);
-          const sc = m.cup - mc;
           const cab = isExp ? cabinets[m.userId] : undefined;
 
           const segRaw: Array<{ n: number; color: string }> = [];
           if (inc.champ && m.lg) segRaw.push({ n: m.lg, color: R.champ });
-          if (inc.main && mc) segRaw.push({ n: mc, color: R.main });
-          if (inc.sec && sc + m.oth) segRaw.push({ n: sc + m.oth, color: R.sec });
+          if (inc.main && m.main) segRaw.push({ n: m.main, color: R.main });
+          if (inc.sec && m.sec + m.oth) segRaw.push({ n: m.sec + m.oth, color: R.sec });
           const tot = e.ft || 1;
           const breakdown = segRaw.map((s) => s.n).join(' + ') || '0';
           const baseBg = i % 2 ? R.alt : R.panel;
