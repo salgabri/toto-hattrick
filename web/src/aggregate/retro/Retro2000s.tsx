@@ -12,6 +12,7 @@ import {
   type CupRoll,
   type Manager,
   type TrophyCabinet,
+  type TrophyItem,
   type Winner,
 } from '../data.js';
 import { leagueFlagUrl, nationalityFlagUrl } from '../flags.js';
@@ -49,6 +50,7 @@ export function Retro2000s({ defaultSkin = 'green', defaultDensity = 'comfortabl
   const [nation, setNation] = useState<string>('ALL');
   const [query, setQuery] = useState('');
   const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false });
+  const [lastOnly, setLastOnly] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [league, setLeague] = useState<string>('');
   const [cupCountry, setCupCountry] = useState<string>('');
@@ -184,6 +186,8 @@ export function Retro2000s({ defaultSkin = 'green', defaultDensity = 'comfortabl
               setQuery={setQuery}
               inc={inc}
               setInc={setInc}
+              lastOnly={lastOnly}
+              setLastOnly={setLastOnly}
               expandedId={expandedId}
               setExpandedId={setExpandedId}
               onStatus={setStatus}
@@ -409,12 +413,13 @@ function rankBg(r: number): string {
   return r === 1 ? '#D8A93B' : r === 2 ? '#C7C3B8' : r === 3 ? '#C08A52' : 'transparent';
 }
 
-function cabinetCats(tr: TrophyCabinet, inc: IncState) {
+function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean) {
+  const pick = (items: TrophyItem[]) => (lastOnly ? items.filter((it) => it.last) : items);
   return [
-    { label: 'Championships', dot: R.champ, items: tr.champ, excluded: !inc.champ },
-    { label: 'Main cups', dot: R.main, items: tr.main, excluded: !inc.main },
-    { label: 'Secondary cups', dot: R.sec, items: tr.sec, excluded: !inc.sec },
-    { label: 'Other honours', dot: R.sec, items: tr.other, excluded: !inc.sec },
+    { label: 'Championships', dot: R.champ, items: pick(tr.champ), excluded: !inc.champ },
+    { label: 'Main cups', dot: R.main, items: pick(tr.main), excluded: !inc.main },
+    { label: 'Secondary cups', dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
+    { label: 'Other honours', dot: R.sec, items: pick(tr.other), excluded: !inc.sec },
   ].filter((c) => c.items.length);
 }
 
@@ -426,6 +431,8 @@ function RetroTrophyLeaders({
   setQuery,
   inc,
   setInc,
+  lastOnly,
+  setLastOnly,
   expandedId,
   setExpandedId,
   onStatus,
@@ -437,6 +444,8 @@ function RetroTrophyLeaders({
   setQuery: Dispatch<SetStateAction<string>>;
   inc: IncState;
   setInc: Dispatch<SetStateAction<IncState>>;
+  lastOnly: boolean;
+  setLastOnly: Dispatch<SetStateAction<boolean>>;
   expandedId: string | null;
   setExpandedId: Dispatch<SetStateAction<string | null>>;
   onStatus: (s: string) => void;
@@ -464,18 +473,26 @@ function RetroTrophyLeaders({
     }
   };
 
-  // Ranks are absolute over the fetched field; category flags change the total.
+  // Ranks are absolute over the fetched field; category flags change the total. "Reigning only"
+  // swaps career totals for the last-winner counts, then charts that aggregation the same way.
   const ranked = useMemo(() => {
     const l = managers.map((m) => {
-      const ft = (inc.champ ? m.lg : 0) + (inc.main ? m.main : 0) + (inc.sec ? m.sec + m.oth : 0);
-      return { m, ft };
+      const lg = lastOnly ? m.lgLast : m.lg;
+      const main = lastOnly ? m.mainLast : m.main;
+      const sec = lastOnly ? m.secLast : m.sec + m.oth;
+      const ft = (inc.champ ? lg : 0) + (inc.main ? main : 0) + (inc.sec ? sec : 0);
+      return { m, ft, lg, main, sec };
     });
-    l.sort((a, b) => b.ft - a.ft || b.m.lg - a.m.lg);
+    l.sort((a, b) => b.ft - a.ft || b.lg - a.lg);
     return l.map((e, i) => ({ ...e, rank: i + 1 }));
-  }, [managers, inc]);
+  }, [managers, inc, lastOnly]);
 
   const q = query.trim().toLowerCase();
-  const visible = ranked.filter((e) => !q || e.m.login.toLowerCase().includes(q) || (e.m.team && e.m.team.toLowerCase().includes(q)));
+  const visible = ranked.filter(
+    (e) =>
+      (!q || e.m.login.toLowerCase().includes(q) || (e.m.team && e.m.team.toLowerCase().includes(q))) &&
+      (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast > 0),
+  );
 
   useEffect(() => {
     if (!loading) onStatus(`Done. ${visible.length} record(s).`);
@@ -558,6 +575,43 @@ function RetroTrophyLeaders({
               style={{ width: 190, border: '2px inset var(--btn,#EBEFE2)', background: '#fff', color: R.ink, fontSize: 11, padding: '3px 6px', outline: 'none', fontFamily: 'inherit' }}
             />
           </div>
+          <div>
+            <div style={filterLabel}>Recency</div>
+            <button
+              onClick={() => setLastOnly((v) => !v)}
+              title="Count only the last trophy won in each competition — the current champion of every league and holder of every cup"
+              style={
+                lastOnly
+                  ? {
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      cursor: 'pointer',
+                      fontFamily: 'inherit',
+                      fontSize: 11,
+                      padding: '4px 10px',
+                      border: '2px inset var(--btn,#EBEFE2)',
+                      background: R.btn2,
+                      color: R.ink,
+                      fontWeight: 'bold',
+                    }
+                  : {
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      cursor: 'pointer',
+                      fontFamily: 'inherit',
+                      fontSize: 11,
+                      padding: '4px 10px',
+                      border: '2px outset var(--btn,#EBEFE2)',
+                      background: 'linear-gradient(180deg,#fff,var(--btn,#EBEFE2))',
+                      color: R.soft,
+                      fontWeight: 'normal',
+                    }
+              }
+            >
+              {lastOnly && <span>✓&nbsp;</span>}
+              Reigning only
+            </button>
+          </div>
           <div style={{ flex: 1 }} />
           <div style={{ fontSize: 10, color: R.soft }}>{visible.length} shown</div>
         </div>
@@ -598,9 +652,9 @@ function RetroTrophyLeaders({
           const cab = isExp ? cabinets[m.userId] : undefined;
 
           const segRaw: Array<{ n: number; color: string }> = [];
-          if (inc.champ && m.lg) segRaw.push({ n: m.lg, color: R.champ });
-          if (inc.main && m.main) segRaw.push({ n: m.main, color: R.main });
-          if (inc.sec && m.sec + m.oth) segRaw.push({ n: m.sec + m.oth, color: R.sec });
+          if (inc.champ && e.lg) segRaw.push({ n: e.lg, color: R.champ });
+          if (inc.main && e.main) segRaw.push({ n: e.main, color: R.main });
+          if (inc.sec && e.sec) segRaw.push({ n: e.sec, color: R.sec });
           const tot = e.ft || 1;
           const breakdown = segRaw.map((s) => s.n).join(' + ') || '0';
           const baseBg = i % 2 ? R.alt : R.panel;
@@ -727,10 +781,10 @@ function RetroTrophyLeaders({
                   <div style={{ border: '2px inset var(--btn,#EBEFE2)', background: R.panel, padding: 10, display: 'flex', flexWrap: 'wrap', gap: 10 }}>
                     {cab == null ? (
                       <div style={{ color: R.faint, fontSize: 11 }}>Loading cabinet…</div>
-                    ) : cabinetCats(cab, inc).length === 0 ? (
+                    ) : cabinetCats(cab, inc, lastOnly).length === 0 ? (
                       <div style={{ color: R.faint, fontSize: 11 }}>No trophies on record.</div>
                     ) : (
-                      cabinetCats(cab, inc).map((g) => (
+                      cabinetCats(cab, inc, lastOnly).map((g) => (
                         <div key={g.label} style={{ flex: 1, minWidth: 190, border: '1px solid var(--line,#CDD7C3)', background: R.panel, padding: '8px 10px', opacity: g.excluded ? 0.5 : 1 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 9, borderBottom: '1px solid var(--line,#CDD7C3)', paddingBottom: 5 }}>
                             <span style={{ width: 9, height: 9, flex: 'none', border: '1px solid rgba(0,0,0,.3)', background: g.dot }} />
