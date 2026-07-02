@@ -398,8 +398,7 @@ function TrophyLeaders({
   // Ranks are absolute over the fetched field; category flags change the total.
   const ranked = useMemo(() => {
     const l = managers.map((m) => {
-      const mc = Math.ceil(m.cup / 2);
-      const ft = (inc.champ ? m.lg : 0) + (inc.main ? mc : 0) + (inc.sec ? m.cup - mc + m.oth : 0);
+      const ft = (inc.champ ? m.lg : 0) + (inc.main ? m.main : 0) + (inc.sec ? m.sec + m.oth : 0);
       return { m, ft };
     });
     l.sort((a, b) => b.ft - a.ft || b.m.lg - a.m.lg);
@@ -425,8 +424,8 @@ function TrophyLeaders({
         <div>
           <h1 style={h1Style}>Trophy leaders</h1>
           <p style={{ fontSize: 14, color: 'var(--ink-soft,#776F5D)', margin: '10px 0 0' }}>
-            Managers ranked by top-division titles won. Cup winners now live under Cup winners; per-manager cup
-            attribution is still landing, so those toggles stay inert for now.
+            Managers ranked by silverware. Cup wins count where the winner&apos;s owner is known
+            (league+cup doubles so far); the rest fill in as ownership history is resolved.
           </p>
         </div>
       </div>
@@ -557,14 +556,12 @@ function TrophyLeaders({
           const r = e.rank;
           const top = r <= 3;
           const isExp = expandedId === String(m.userId);
-          const mc = Math.ceil(m.cup / 2);
-          const sc = m.cup - mc;
           const cab = isExp ? cabinets[m.userId] : undefined;
 
           const segRaw: Array<{ n: number; color: string }> = [];
           if (inc.champ && m.lg) segRaw.push({ n: m.lg, color: CHAMP_COLOR });
-          if (inc.main && mc) segRaw.push({ n: mc, color: MAIN_COLOR });
-          if (inc.sec && sc + m.oth) segRaw.push({ n: sc + m.oth, color: C.line2 });
+          if (inc.main && m.main) segRaw.push({ n: m.main, color: MAIN_COLOR });
+          if (inc.sec && m.sec + m.oth) segRaw.push({ n: m.sec + m.oth, color: C.line2 });
           const tot = e.ft || 1;
           const breakdown = segRaw.map((s) => s.n).join(' · ') || '0';
 

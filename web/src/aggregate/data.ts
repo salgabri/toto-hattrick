@@ -20,7 +20,8 @@ export interface Manager {
   c: string;
   team: string;
   lg: number;
-  cup: number;
+  main: number; // main national cup wins (attributed)
+  sec: number; // secondary/consolation cup wins (attributed)
   oth: number;
   lastWin: boolean; // holds a title in their country's most recent season (reigning champion)
 }
@@ -65,12 +66,22 @@ export interface CupCountry {
   cups: CupRoll[];
 }
 
+interface RawCup {
+  country: string;
+  season: number;
+  club: string;
+  cup: string;
+}
 interface RawManager {
   userId: number;
   userName: string;
   nationality: string;
   lg: number;
+  main: number;
+  sec: number;
   titles: Array<{ country: string; season: number; club: string }>;
+  cupsMain: RawCup[];
+  cupsSec: RawCup[];
 }
 interface RawLeague {
   leagueId: number;
@@ -147,7 +158,8 @@ export async function getManagers(nationality?: string): Promise<Manager[]> {
       c: m.nationality,
       team: '',
       lg: m.lg,
-      cup: 0,
+      main: m.main ?? 0,
+      sec: m.sec ?? 0,
       oth: 0,
       lastWin: (m.titles ?? []).some((t) => latestByCountry.get(t.country) === t.season),
     }));
@@ -157,7 +169,8 @@ export async function getCabinet(userId: number): Promise<TrophyCabinet> {
   const { managers } = await load();
   const m = managers.find((x) => x.userId === userId);
   const champ = (m?.titles ?? []).map((t) => ({ main: `${t.country} champions`, sub: t.club, season: 'S' + t.season }));
-  return { champ, main: [], sec: [], other: [] };
+  const cupItems = (cups?: RawCup[]) => (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, season: 'S' + t.season }));
+  return { champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec), other: [] };
 }
 
 export async function getWinners(leagueId: string): Promise<Winner[]> {

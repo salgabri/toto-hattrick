@@ -11,23 +11,53 @@ import { prisma } from '../db/client.js';
 const OUT = process.env.OUT!;
 mkdirSync(OUT, { recursive: true });
 
-// Managers: complete titles grouped by championUserId (>0), with nationality attached.
-const champs = await prisma.leagueChampion.findMany({
-  where: { complete: true, championUserId: { gt: 0 } },
-  select: { championUserId: true, championUserName: true, countryName: true, season: true, championTeamName: true },
-});
+// Managers: league titles + attributed cup wins (main/secondary), grouped by championUserId (>0).
 const users = await prisma.hattrickUser.findMany({ select: { userId: true, nationality: true } });
 const natById = new Map(users.map((u) => [u.userId, u.nationality]));
 
-interface Mgr { userId: number; userName: string; nationality: string; lg: number; titles: Array<{ country: string; season: number; club: string }> }
-const mgr = new Map<number, Mgr>();
-for (const c of champs) {
-  const uid = c.championUserId!;
-  let e = mgr.get(uid);
-  if (!e) { e = { userId: uid, userName: c.championUserName ?? `user ${uid}`, nationality: natById.get(uid) ?? 'Unknown', lg: 0, titles: [] }; mgr.set(uid, e); }
-  e.titles.push({ country: c.countryName, season: c.season, club: c.championTeamName });
+interface CupItem { country: string; season: number; club: string; cup: string }
+interface Mgr {
+  userId: number; userName: string; nationality: string; lg: number;
+  titles: Array<{ country: string; season: number; club: string }>;
+  cupsMain: CupItem[]; cupsSec: CupItem[];
 }
-const managers = [...mgr.values()].map((m) => ({ ...m, lg: m.titles.length, titles: m.titles.sort((a, b) => b.season - a.season) })).sort((a, b) => b.lg - a.lg);
+const mgr = new Map<number, Mgr>();
+const get = (uid: number, name: string | null) => {
+  let e = mgr.get(uid);
+  if (!e) { e = { userId: uid, userName: name ?? `user ${uid}`, nationality: natById.get(uid) ?? 'Unknown', lg: 0, titles: [], cupsMain: [], cupsSec: [] }; mgr.set(uid, e); }
+  return e;
+};
+
+for (const c of await prisma.leagueChampion.findMany({
+  where: { complete: true, championUserId: { gt: 0 } },
+  select: { championUserId: true, championUserName: true, countryName: true, season: true, championTeamName: true },
+})) {
+  get(c.championUserId!, c.championUserName).titles.push({ country: c.countryName, season: c.season, club: c.championTeamName });
+}
+
+for (const c of await prisma.cupChampion.findMany({
+  where: { championUserId: { gt: 0 } },
+  select: { championUserId: true, championUserName: true, countryName: true, season: true, championTeamName: true, cupName: true, isMain: true },
+})) {
+  const e = get(c.championUserId!, c.championUserName);
+  const item = { country: c.countryName, season: c.season, club: c.championTeamName, cup: c.cupName };
+  (c.isMain ? e.cupsMain : e.cupsSec).push(item);
+}
+
+const bySeasonDesc = <T extends { season: number }>(a: T, b: T) => b.season - a.season;
+const managers = [...mgr.values()]
+  .map((m) => ({
+    userId: m.userId,
+    userName: m.userName,
+    nationality: m.nationality,
+    lg: m.titles.length,
+    main: m.cupsMain.length,
+    sec: m.cupsSec.length,
+    titles: m.titles.sort(bySeasonDesc),
+    cupsMain: m.cupsMain.sort(bySeasonDesc),
+    cupsSec: m.cupsSec.sort(bySeasonDesc),
+  }))
+  .sort((a, b) => b.lg + b.main + b.sec - (a.lg + a.main + a.sec) || b.lg - a.lg);
 writeFileSync(`${OUT}/managers.json`, JSON.stringify(managers));
 
 // Leagues: per-country champions (complete), newest first.
@@ -49,22 +79,14 @@ const titleTotal = leagues.reduce((n, l) => n + l.champions.length, 0);
 console.log(`baked ${managers.length} managers, ${leagues.length} leagues, ${titleTotal} champion rows -> ${OUT}`);
 
 // Cups: per-country roll of honour for the five national-level cups (one main + four secondary).
-// Manager is only known for "doubles" — a team that also won its league that same season, which
-// carries a resolved championUserName. Cup-specific ownership scraping is a later pass.
-const doubleMgr = new Map<string, string>(); // `${teamId}:${season}` -> manager name
-for (const c of await prisma.leagueChampion.findMany({
-  where: { championUserId: { gt: 0 } },
-  select: { championTeamId: true, season: true, championUserName: true },
-})) {
-  doubleMgr.set(`${c.championTeamId}:${c.season}`, c.championUserName ?? '—');
-}
-
+// Manager comes from CupChampion.championUserId — set for league+cup doubles now, and filled by
+// the ownership-history scrape for the rest.
 const cupRows = await prisma.cup.findMany({ orderBy: [{ leagueId: 'asc' }, { cupLevel: 'asc' }, { cupLevelIndex: 'asc' }] });
-const cupWins = await prisma.cupChampion.findMany({ orderBy: { season: 'desc' }, select: { cupId: true, season: true, championTeamName: true, championTeamId: true } });
+const cupWins = await prisma.cupChampion.findMany({ orderBy: { season: 'desc' }, select: { cupId: true, season: true, championTeamName: true, championUserName: true } });
 const winsByCup = new Map<number, Array<{ season: number; club: string; manager: string }>>();
 for (const w of cupWins) {
   const a = winsByCup.get(w.cupId) ?? [];
-  a.push({ season: w.season, club: w.championTeamName, manager: w.championTeamId != null ? (doubleMgr.get(`${w.championTeamId}:${w.season}`) ?? '—') : '—' });
+  a.push({ season: w.season, club: w.championTeamName, manager: w.championUserName ?? '—' });
   winsByCup.set(w.cupId, a);
 }
 
