@@ -35,12 +35,15 @@ export interface AggregateStatsProps {
   defaultTheme?: Theme;
   accent?: string;
   density?: Density;
+  /** Switch to the retro "2000s" look (rendered as a sidebar button when provided). */
+  onRetro?: () => void;
 }
 
 export function AggregateStats({
   defaultTheme = 'paper',
   accent = '#B0742A',
   density = 'comfortable',
+  onRetro,
 }: AggregateStatsProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
   const [view, setView] = useState<View>('trophies');
@@ -88,7 +91,7 @@ export function AggregateStats({
           WebkitFontSmoothing: 'antialiased',
         }}
       >
-        <Sidebar view={view} setView={setView} theme={theme} toggleTheme={toggleTheme} />
+        <Sidebar view={view} setView={setView} theme={theme} toggleTheme={toggleTheme} onRetro={onRetro} />
         <main style={{ flex: 1, minWidth: 0, padding: '34px 40px 64px' }}>
           <div style={{ maxWidth: 1080, margin: '0 auto' }}>
             {view === 'trophies' ? (
@@ -130,11 +133,13 @@ function Sidebar({
   setView,
   theme,
   toggleTheme,
+  onRetro,
 }: {
   view: View;
   setView: (v: View) => void;
   theme: Theme;
   toggleTheme: () => void;
+  onRetro?: () => void;
 }) {
   return (
     <aside
@@ -275,6 +280,31 @@ function Sidebar({
         <span style={{ fontSize: 15 }}>{theme === 'paper' ? '☾' : '☀'}</span>
         {theme === 'paper' ? 'Floodlit theme' : 'Paper theme'}
       </button>
+      {onRetro && (
+        <button
+          onClick={onRetro}
+          title="Switch to the 2000s retro look"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 9,
+            width: '100%',
+            marginTop: 8,
+            padding: '9px 10px',
+            borderRadius: 9,
+            border: '1px solid var(--line-2,#D8CDB4)',
+            background: 'var(--paper,#F4EFE4)',
+            color: 'var(--ink-soft,#776F5D)',
+            cursor: 'pointer',
+            fontFamily: 'inherit',
+            fontSize: 12.5,
+            fontWeight: 600,
+          }}
+        >
+          <span style={{ fontSize: 15 }}>🖥️</span>
+          2000s look
+        </button>
+      )}
     </aside>
   );
 }
