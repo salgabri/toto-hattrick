@@ -23,13 +23,16 @@ export interface Manager {
   main: number; // main national cup wins (attributed)
   sec: number; // secondary/consolation cup wins (attributed)
   oth: number;
-  lastWin: boolean; // holds a title in their country's most recent season (reigning champion)
+  lgLast: number; // reigning league titles (current champion of that league)
+  mainLast: number; // reigning main-cup titles (current holder of that cup)
+  secLast: number; // reigning secondary/consolation-cup titles
 }
 
 export interface TrophyItem {
   main: string;
   sub: string;
   season: string;
+  last?: boolean; // the reigning/most-recent trophy of its competition
 }
 
 export interface TrophyCabinet {
@@ -71,6 +74,7 @@ interface RawCup {
   season: number;
   club: string;
   cup: string;
+  last?: boolean;
 }
 interface RawManager {
   userId: number;
@@ -79,7 +83,10 @@ interface RawManager {
   lg: number;
   main: number;
   sec: number;
-  titles: Array<{ country: string; season: number; club: string }>;
+  lgLast?: number;
+  mainLast?: number;
+  secLast?: number;
+  titles: Array<{ country: string; season: number; club: string; last?: boolean }>;
   cupsMain: RawCup[];
   cupsSec: RawCup[];
 }
@@ -137,39 +144,63 @@ export async function getLeagues(): Promise<Country[]> {
   return leagues.map((l) => ({ code: String(l.leagueId), name: l.country }));
 }
 
-export async function getManagers(nationality?: string): Promise<Manager[]> {
-  const { managers, leagues } = await load();
-
-  // Each country runs its own season clock, so "last winner" is per-country: the latest
-  // season present in that country's roll of honour. Join on country name (both sides derive
-  // from LeagueChampion.countryName in the bake).
-  const latestByCountry = new Map<string, number>();
+/**
+ * Fallback for bakes that predate the per-item `last` flag: each country's latest league season.
+ * Each country runs its own season clock, so the reigning season is per-country. Lets league
+ * reigning resolve client-side before a re-bake; baked `last` flags take precedence when present.
+ */
+function latestLeagueSeasonByCountry(leagues: RawLeague[]): Map<string, number> {
+  const latest = new Map<string, number>();
   for (const l of leagues)
     for (const c of l.champions) {
-      const cur = latestByCountry.get(l.country);
-      if (cur === undefined || c.season > cur) latestByCountry.set(l.country, c.season);
+      const cur = latest.get(l.country);
+      if (cur === undefined || c.season > cur) latest.set(l.country, c.season);
     }
+  return latest;
+}
+
+export async function getManagers(nationality?: string): Promise<Manager[]> {
+  const { managers, leagues } = await load();
+  const latestByCountry = latestLeagueSeasonByCountry(leagues);
 
   return managers
     .filter((m) => !nationality || nationality === 'ALL' || m.nationality === nationality)
-    .map((m) => ({
-      userId: m.userId,
-      login: m.userName,
-      c: m.nationality,
-      team: '',
-      lg: m.lg,
-      main: m.main ?? 0,
-      sec: m.sec ?? 0,
-      oth: 0,
-      lastWin: (m.titles ?? []).some((t) => latestByCountry.get(t.country) === t.season),
-    }));
+    .map((m) => {
+      const titles = m.titles ?? [];
+      const lgLast =
+        m.lgLast ??
+        (titles.some((t) => t.last !== undefined)
+          ? titles.filter((t) => t.last).length
+          : titles.filter((t) => latestByCountry.get(t.country) === t.season).length);
+      return {
+        userId: m.userId,
+        login: m.userName,
+        c: m.nationality,
+        team: '',
+        lg: m.lg,
+        main: m.main ?? 0,
+        sec: m.sec ?? 0,
+        oth: 0,
+        lgLast,
+        mainLast: m.mainLast ?? (m.cupsMain ?? []).filter((c) => c.last).length,
+        secLast: m.secLast ?? (m.cupsSec ?? []).filter((c) => c.last).length,
+      };
+    });
 }
 
 export async function getCabinet(userId: number): Promise<TrophyCabinet> {
-  const { managers } = await load();
+  const { managers, leagues } = await load();
   const m = managers.find((x) => x.userId === userId);
-  const champ = (m?.titles ?? []).map((t) => ({ main: `${t.country} champions`, sub: t.club, season: 'S' + t.season }));
-  const cupItems = (cups?: RawCup[]) => (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, season: 'S' + t.season }));
+  // Mirror getManagers' league fallback so an expanded cabinet stays consistent with the chart
+  // under "Reigning only" even before a re-bake (cups need the bake — no `last`, no fallback).
+  const latestByCountry = latestLeagueSeasonByCountry(leagues);
+  const champ = (m?.titles ?? []).map((t) => ({
+    main: `${t.country} champions`,
+    sub: t.club,
+    season: 'S' + t.season,
+    last: t.last ?? latestByCountry.get(t.country) === t.season,
+  }));
+  const cupItems = (cups?: RawCup[]) => (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, season: 'S' + t.season, last: t.last }));
   return { champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec), other: [] };
 }
 
