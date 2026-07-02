@@ -15,6 +15,7 @@ import {
   type Winner,
 } from './data.js';
 import { C, CHAMP_COLOR, MAIN_COLOR, rootStyle, type Density, type Theme } from './theme.js';
+import { leagueFlagUrl, nationalityFlagUrl } from './flags.js';
 import './aggregate.css';
 
 /**
@@ -34,12 +35,15 @@ export interface AggregateStatsProps {
   defaultTheme?: Theme;
   accent?: string;
   density?: Density;
+  /** Switch to the retro "2000s" look (rendered as a sidebar button when provided). */
+  onRetro?: () => void;
 }
 
 export function AggregateStats({
   defaultTheme = 'paper',
   accent = '#B0742A',
   density = 'comfortable',
+  onRetro,
 }: AggregateStatsProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
   const [view, setView] = useState<View>('trophies');
@@ -87,7 +91,7 @@ export function AggregateStats({
           WebkitFontSmoothing: 'antialiased',
         }}
       >
-        <Sidebar view={view} setView={setView} theme={theme} toggleTheme={toggleTheme} />
+        <Sidebar view={view} setView={setView} theme={theme} toggleTheme={toggleTheme} onRetro={onRetro} />
         <main style={{ flex: 1, minWidth: 0, padding: '34px 40px 64px' }}>
           <div style={{ maxWidth: 1080, margin: '0 auto' }}>
             {view === 'trophies' ? (
@@ -129,11 +133,13 @@ function Sidebar({
   setView,
   theme,
   toggleTheme,
+  onRetro,
 }: {
   view: View;
   setView: (v: View) => void;
   theme: Theme;
   toggleTheme: () => void;
+  onRetro?: () => void;
 }) {
   return (
     <aside
@@ -274,6 +280,31 @@ function Sidebar({
         <span style={{ fontSize: 15 }}>{theme === 'paper' ? '☾' : '☀'}</span>
         {theme === 'paper' ? 'Floodlit theme' : 'Paper theme'}
       </button>
+      {onRetro && (
+        <button
+          onClick={onRetro}
+          title="Switch to the 2000s retro look"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 9,
+            width: '100%',
+            marginTop: 8,
+            padding: '9px 10px',
+            borderRadius: 9,
+            border: '1px solid var(--line-2,#D8CDB4)',
+            background: 'var(--paper,#F4EFE4)',
+            color: 'var(--ink-soft,#776F5D)',
+            cursor: 'pointer',
+            fontFamily: 'inherit',
+            fontSize: 12.5,
+            fontWeight: 600,
+          }}
+        >
+          <span style={{ fontSize: 15 }}>🖥️</span>
+          2000s look
+        </button>
+      )}
     </aside>
   );
 }
@@ -323,6 +354,27 @@ const cardStyle: CSSProperties = {
 };
 
 const monoFaint: CSSProperties = { fontFamily: "'JetBrains Mono',monospace" };
+
+/** Small country flag (flagcdn SVG). Renders nothing when the country has no flag/unknown code. */
+function Flag({ url, label, size = 15 }: { url: string | null; label?: string; size?: number }) {
+  if (!url) return null;
+  return (
+    <img
+      src={url}
+      alt=""
+      title={label}
+      loading="lazy"
+      style={{
+        width: size,
+        height: 'auto',
+        borderRadius: 2,
+        boxShadow: '0 0 0 1px rgba(0,0,0,.14)',
+        flex: 'none',
+        display: 'block',
+      }}
+    />
+  );
+}
 
 /* ========================== TROPHY LEADERS ========================== */
 
@@ -613,11 +665,13 @@ function TrophyLeaders({
                   </div>
                   <div style={{ fontSize: 11.5, color: 'var(--ink-soft,#776F5D)', ...monoFaint }}>#{m.userId}</div>
                 </div>
-                <div style={{ minWidth: 0 }}>
+                <div style={{ minWidth: 0, display: 'flex', alignItems: 'center', gap: 7 }}>
+                  <Flag url={nationalityFlagUrl(m.c)} label={m.c} />
                   <span
                     title={m.c}
                     style={{
                       display: 'inline-block',
+                      minWidth: 0,
                       maxWidth: '100%',
                       fontFamily: "'JetBrains Mono',monospace",
                       fontSize: 11,
@@ -865,7 +919,8 @@ function LeagueWinners({
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 300px', gap: 20, alignItems: 'start' }}>
         {/* Roll of honour */}
         <div style={cardStyle}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, padding: '16px 22px', borderBottom: '1px solid var(--line,#E6DECB)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '16px 22px', borderBottom: '1px solid var(--line,#E6DECB)' }}>
+            <Flag url={leagueFlagUrl(league)} label={leagueName} size={22} />
             <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontWeight: 700, fontSize: 16 }}>{leagueName}</div>
             <div style={{ fontSize: 12, color: 'var(--ink-faint,#A99E86)' }}>Division I · roll of honour</div>
           </div>
@@ -944,7 +999,8 @@ function LeagueWinners({
         {/* Most titles tally */}
         <aside style={{ ...cardStyle, overflow: 'visible', padding: 20 }}>
           <div style={{ fontFamily: "'Bricolage Grotesque',sans-serif", fontWeight: 700, fontSize: 15, marginBottom: 4 }}>Most titles</div>
-          <div style={{ fontSize: 11.5, color: 'var(--ink-faint,#A99E86)', marginBottom: 16 }}>
+          <div style={{ fontSize: 11.5, color: 'var(--ink-faint,#A99E86)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <Flag url={leagueFlagUrl(league)} label={leagueName} size={13} />
             {seasonRange} · {leagueName}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>

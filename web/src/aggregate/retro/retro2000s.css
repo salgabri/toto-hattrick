@@ -1,0 +1,34 @@
+/* Interactive states for the "2000s" retro look. Everything static is inline (to mirror the
+   prototype); only :hover / :focus / :placeholder live here. Scoped to `.th2000s` so nothing
+   leaks — and so it never collides with the modern look's `.ts-aggregate` rules. */
+
+.th2000s,
+.th2000s * {
+  box-sizing: border-box;
+}
+
+.th2000s select,
+.th2000s input,
+.th2000s button {
+  font-family: inherit;
+}
+
+/* Leaderboard / roll-of-honour row highlight — the prototype's
+   style-hover="background:var(--hover,#FFF6C4)". Selected rows carry an inline selrow
+   background which wins over this (later inline styles beat the class). */
+.th2000s .retro-row {
+  cursor: pointer;
+}
+.th2000s .retro-row:hover {
+  background: var(--hover, #fbf5db) !important;
+}
+
+/* Folder tabs lift slightly on hover. */
+.th2000s .retro-tab:hover {
+  color: #fff;
+}
+
+/* Search field placeholder. */
+.th2000s .retro-input::placeholder {
+  color: var(--faint, #8b9c7e);
+}
