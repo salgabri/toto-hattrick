@@ -15,10 +15,24 @@ mkdirSync(OUT, { recursive: true });
 const users = await prisma.hattrickUser.findMany({ select: { userId: true, nationality: true } });
 const natById = new Map(users.map((u) => [u.userId, u.nationality]));
 
-interface CupItem { country: string; season: number; club: string; cup: string }
+// Reigning champion = the winner of each competition's most recent recorded season. Computed
+// over ALL champions (including unattributed/unknown owners) so a manager's older title isn't
+// mis-tagged "current" when a later season was won by someone we can't attribute yet.
+const leagueReignSeason = new Map<number, number>();
+for (const c of await prisma.leagueChampion.findMany({ where: { complete: true }, select: { leagueId: true, season: true } })) {
+  const cur = leagueReignSeason.get(c.leagueId);
+  if (cur === undefined || c.season > cur) leagueReignSeason.set(c.leagueId, c.season);
+}
+const cupReignSeason = new Map<number, number>();
+for (const c of await prisma.cupChampion.findMany({ select: { cupId: true, season: true } })) {
+  const cur = cupReignSeason.get(c.cupId);
+  if (cur === undefined || c.season > cur) cupReignSeason.set(c.cupId, c.season);
+}
+
+interface CupItem { country: string; season: number; club: string; cup: string; last: boolean }
 interface Mgr {
   userId: number; userName: string; nationality: string; lg: number;
-  titles: Array<{ country: string; season: number; club: string }>;
+  titles: Array<{ country: string; season: number; club: string; last: boolean }>;
   cupsMain: CupItem[]; cupsSec: CupItem[];
 }
 const mgr = new Map<number, Mgr>();
@@ -30,17 +44,20 @@ const get = (uid: number, name: string | null) => {
 
 for (const c of await prisma.leagueChampion.findMany({
   where: { complete: true, championUserId: { gt: 0 } },
-  select: { championUserId: true, championUserName: true, countryName: true, season: true, championTeamName: true },
+  select: { championUserId: true, championUserName: true, countryName: true, season: true, championTeamName: true, leagueId: true },
 })) {
-  get(c.championUserId!, c.championUserName).titles.push({ country: c.countryName, season: c.season, club: c.championTeamName });
+  get(c.championUserId!, c.championUserName).titles.push({
+    country: c.countryName, season: c.season, club: c.championTeamName,
+    last: leagueReignSeason.get(c.leagueId) === c.season,
+  });
 }
 
 for (const c of await prisma.cupChampion.findMany({
   where: { championUserId: { gt: 0 } },
-  select: { championUserId: true, championUserName: true, countryName: true, season: true, championTeamName: true, cupName: true, isMain: true },
+  select: { championUserId: true, championUserName: true, countryName: true, season: true, championTeamName: true, cupName: true, isMain: true, cupId: true },
 })) {
   const e = get(c.championUserId!, c.championUserName);
-  const item = { country: c.countryName, season: c.season, club: c.championTeamName, cup: c.cupName };
+  const item = { country: c.countryName, season: c.season, club: c.championTeamName, cup: c.cupName, last: cupReignSeason.get(c.cupId) === c.season };
   (c.isMain ? e.cupsMain : e.cupsSec).push(item);
 }
 
@@ -53,6 +70,9 @@ const managers = [...mgr.values()]
     lg: m.titles.length,
     main: m.cupsMain.length,
     sec: m.cupsSec.length,
+    lgLast: m.titles.filter((t) => t.last).length,
+    mainLast: m.cupsMain.filter((c) => c.last).length,
+    secLast: m.cupsSec.filter((c) => c.last).length,
     titles: m.titles.sort(bySeasonDesc),
     cupsMain: m.cupsMain.sort(bySeasonDesc),
     cupsSec: m.cupsSec.sort(bySeasonDesc),

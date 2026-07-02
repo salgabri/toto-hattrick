@@ -12,6 +12,7 @@ import {
   type CupRoll,
   type Manager,
   type TrophyCabinet,
+  type TrophyItem,
   type Winner,
 } from './data.js';
 import { C, CHAMP_COLOR, MAIN_COLOR, rootStyle, type Density, type Theme } from './theme.js';
@@ -390,12 +391,13 @@ function rankBg(r: number): string {
   return r === 1 ? '#D8A93B' : r === 2 ? '#C7C3B8' : r === 3 ? '#C08A52' : 'transparent';
 }
 
-function cabinetCats(tr: TrophyCabinet, inc: IncState) {
+function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean) {
+  const pick = (items: TrophyItem[]) => (lastOnly ? items.filter((it) => it.last) : items);
   return [
-    { label: 'Championships', dot: CHAMP_COLOR, items: tr.champ, excluded: !inc.champ },
-    { label: 'Main cups', dot: MAIN_COLOR, items: tr.main, excluded: !inc.main },
-    { label: 'Secondary cups', dot: C.line2, items: tr.sec, excluded: !inc.sec },
-    { label: 'Other honours', dot: C.line2, items: tr.other, excluded: !inc.sec },
+    { label: 'Championships', dot: CHAMP_COLOR, items: pick(tr.champ), excluded: !inc.champ },
+    { label: 'Main cups', dot: MAIN_COLOR, items: pick(tr.main), excluded: !inc.main },
+    { label: 'Secondary cups', dot: C.line2, items: pick(tr.sec), excluded: !inc.sec },
+    { label: 'Other honours', dot: C.line2, items: pick(tr.other), excluded: !inc.sec },
   ].filter((c) => c.items.length);
 }
 
@@ -447,21 +449,25 @@ function TrophyLeaders({
     }
   };
 
-  // Ranks are absolute over the fetched field; category flags change the total.
+  // Ranks are absolute over the fetched field; category flags change the total. "Reigning only"
+  // swaps career totals for the last-winner counts, then charts that aggregation the same way.
   const ranked = useMemo(() => {
     const l = managers.map((m) => {
-      const ft = (inc.champ ? m.lg : 0) + (inc.main ? m.main : 0) + (inc.sec ? m.sec + m.oth : 0);
-      return { m, ft };
+      const lg = lastOnly ? m.lgLast : m.lg;
+      const main = lastOnly ? m.mainLast : m.main;
+      const sec = lastOnly ? m.secLast : m.sec + m.oth;
+      const ft = (inc.champ ? lg : 0) + (inc.main ? main : 0) + (inc.sec ? sec : 0);
+      return { m, ft, lg, main, sec };
     });
-    l.sort((a, b) => b.ft - a.ft || b.m.lg - a.m.lg);
+    l.sort((a, b) => b.ft - a.ft || b.lg - a.lg);
     return l.map((e, i) => ({ ...e, rank: i + 1 }));
-  }, [managers, inc]);
+  }, [managers, inc, lastOnly]);
 
   const q = query.trim().toLowerCase();
   const visible = ranked.filter(
     (e) =>
       (!q || e.m.login.toLowerCase().includes(q)) &&
-      (!lastOnly || e.m.lastWin),
+      (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast > 0),
   );
 
   const chips: Array<{ k: keyof IncState; label: string }> = [
@@ -551,9 +557,10 @@ function TrophyLeaders({
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-          <label style={filterLabel}>Champions</label>
+          <label style={filterLabel}>Recency</label>
           <button
             onClick={() => setLastOnly((v) => !v)}
+            title="Count only the last trophy won in each competition — the current champion of every league and holder of every cup"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -570,7 +577,7 @@ function TrophyLeaders({
             }}
           >
             {lastOnly && <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11 }}>✓</span>}
-            Last winners only
+            Reigning only
           </button>
         </div>
 
@@ -611,9 +618,9 @@ function TrophyLeaders({
           const cab = isExp ? cabinets[m.userId] : undefined;
 
           const segRaw: Array<{ n: number; color: string }> = [];
-          if (inc.champ && m.lg) segRaw.push({ n: m.lg, color: CHAMP_COLOR });
-          if (inc.main && m.main) segRaw.push({ n: m.main, color: MAIN_COLOR });
-          if (inc.sec && m.sec + m.oth) segRaw.push({ n: m.sec + m.oth, color: C.line2 });
+          if (inc.champ && e.lg) segRaw.push({ n: e.lg, color: CHAMP_COLOR });
+          if (inc.main && e.main) segRaw.push({ n: e.main, color: MAIN_COLOR });
+          if (inc.sec && e.sec) segRaw.push({ n: e.sec, color: C.line2 });
           const tot = e.ft || 1;
           const breakdown = segRaw.map((s) => s.n).join(' · ') || '0';
 
@@ -718,7 +725,7 @@ function TrophyLeaders({
                     <div style={{ color: 'var(--ink-faint,#A99E86)', fontSize: 12.5 }}>Loading cabinet…</div>
                   ) : (
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px 34px' }}>
-                      {cabinetCats(cab, inc).map((g) => (
+                      {cabinetCats(cab, inc, lastOnly).map((g) => (
                         <div key={g.label} style={{ flex: 1, minWidth: 186, opacity: g.excluded ? 0.45 : 1 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 11 }}>
                             <span style={{ width: 9, height: 9, borderRadius: 3, flex: 'none', background: g.dot }} />
