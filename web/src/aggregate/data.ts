@@ -22,6 +22,7 @@ export interface Manager {
   lg: number;
   cup: number;
   oth: number;
+  lastWin: boolean; // holds a title in their country's most recent season (reigning champion)
 }
 
 export interface TrophyItem {
@@ -126,10 +127,30 @@ export async function getLeagues(): Promise<Country[]> {
 }
 
 export async function getManagers(nationality?: string): Promise<Manager[]> {
-  const { managers } = await load();
+  const { managers, leagues } = await load();
+
+  // Each country runs its own season clock, so "last winner" is per-country: the latest
+  // season present in that country's roll of honour. Join on country name (both sides derive
+  // from LeagueChampion.countryName in the bake).
+  const latestByCountry = new Map<string, number>();
+  for (const l of leagues)
+    for (const c of l.champions) {
+      const cur = latestByCountry.get(l.country);
+      if (cur === undefined || c.season > cur) latestByCountry.set(l.country, c.season);
+    }
+
   return managers
     .filter((m) => !nationality || nationality === 'ALL' || m.nationality === nationality)
-    .map((m) => ({ userId: m.userId, login: m.userName, c: m.nationality, team: '', lg: m.lg, cup: 0, oth: 0 }));
+    .map((m) => ({
+      userId: m.userId,
+      login: m.userName,
+      c: m.nationality,
+      team: '',
+      lg: m.lg,
+      cup: 0,
+      oth: 0,
+      lastWin: (m.titles ?? []).some((t) => latestByCountry.get(t.country) === t.season),
+    }));
 }
 
 export async function getCabinet(userId: number): Promise<TrophyCabinet> {

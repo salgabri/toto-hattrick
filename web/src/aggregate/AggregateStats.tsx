@@ -49,6 +49,7 @@ export function AggregateStats({
   const [nation, setNation] = useState<string>('ALL');
   const [query, setQuery] = useState('');
   const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false });
+  const [lastOnly, setLastOnly] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [league, setLeague] = useState<string>('');
   const [cupCountry, setCupCountry] = useState<string>('');
@@ -98,6 +99,8 @@ export function AggregateStats({
                 setQuery={setQuery}
                 inc={inc}
                 setInc={setInc}
+                lastOnly={lastOnly}
+                setLastOnly={setLastOnly}
                 expandedId={expandedId}
                 setExpandedId={setExpandedId}
               />
@@ -352,6 +355,8 @@ function TrophyLeaders({
   setQuery,
   inc,
   setInc,
+  lastOnly,
+  setLastOnly,
   expandedId,
   setExpandedId,
 }: {
@@ -362,6 +367,8 @@ function TrophyLeaders({
   setQuery: Dispatch<SetStateAction<string>>;
   inc: IncState;
   setInc: Dispatch<SetStateAction<IncState>>;
+  lastOnly: boolean;
+  setLastOnly: Dispatch<SetStateAction<boolean>>;
   expandedId: string | null;
   setExpandedId: Dispatch<SetStateAction<string | null>>;
 }) {
@@ -400,7 +407,11 @@ function TrophyLeaders({
   }, [managers, inc]);
 
   const q = query.trim().toLowerCase();
-  const visible = ranked.filter((e) => !q || e.m.login.toLowerCase().includes(q));
+  const visible = ranked.filter(
+    (e) =>
+      (!q || e.m.login.toLowerCase().includes(q)) &&
+      (!lastOnly || e.m.lastWin),
+  );
 
   const chips: Array<{ k: keyof IncState; label: string }> = [
     { k: 'champ', label: 'Championships' },
@@ -486,6 +497,30 @@ function TrophyLeaders({
               outline: 'none',
             }}
           />
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+          <label style={filterLabel}>Champions</label>
+          <button
+            onClick={() => setLastOnly((v) => !v)}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              cursor: 'pointer',
+              fontFamily: 'inherit',
+              fontSize: 12.5,
+              fontWeight: 600,
+              padding: '9px 13px',
+              borderRadius: 10,
+              border: lastOnly ? '1px solid var(--accent,#B0742A)' : '1px solid var(--line-2,#D8CDB4)',
+              background: lastOnly ? 'color-mix(in srgb, var(--accent,#B0742A) 12%, transparent)' : 'var(--card,#FCFAF4)',
+              color: lastOnly ? C.ink : C.soft,
+            }}
+          >
+            {lastOnly && <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11 }}>✓</span>}
+            Last winners only
+          </button>
         </div>
 
         <div style={{ flex: 1 }} />
