@@ -17,8 +17,11 @@
 (() => {
   const SRV = 'http://localhost:3001';
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  const isCup = (l) => /cup|coppa|copa|cupen|pokal|taça|taca|coupe|beker|puchar|kup|куп|чаш|κύπελλο|kupa|cupa/i.test(l);
-  const isWin = (l) => /victorious|won|title|winner|emerged|leadership|memorable|led .* to the title/i.test(l);
+  // Cup names are language-specific (Coppa, Pohár, Puchar, Κύπελλο…) so we DON'T match on them.
+  // Only cup-victory events carry a manager link (league-finish events don't), so a manager link +
+  // a victory phrasing = a cup win, in any language. Exclude ownership events (also carry a link).
+  const isOwner = (l) => /took control|took over|changed owner|has taken over|now managed by|left the club|abandoned|bought the club/i.test(l);
+  const isWin = (l) => !isOwner(l) && /victorious|\bwon\b|winner|to the title|leadership of|memorable for/i.test(l);
 
   // Parse one history document → { season: {userId, name} } for cup victories. null = no events
   // container (a Cloudflare/rate-limit challenge rather than a real page).
@@ -35,7 +38,7 @@
       if (el.tagName === 'A' && /\/Club\/Manager\//.test(el.getAttribute('href') || '')) {
         const host = el.closest('td') || el.parentElement;
         const line = (host?.innerText || '').replace(/\s+/g, ' ').trim();
-        if (!isCup(line) || !isWin(line)) continue;
+        if (!isWin(line)) continue;
         const uid = Number((el.getAttribute('href').match(/userId=(\d+)/) || [])[1]);
         const sm = line.match(/season (\d+)/i);
         const s = sm ? Number(sm[1]) : cur;
