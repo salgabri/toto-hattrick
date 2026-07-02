@@ -9,8 +9,12 @@ import { readFileSync, appendFileSync, existsSync } from 'node:fs';
  */
 export async function registerScrapeRoutes(app: FastifyInstance): Promise<void> {
   const dir = process.env.SCRAPE_DIR;
-  const targetsFile = () => `${dir}/unresolved.json`;
-  const resultsFile = () => `${dir}/managers.jsonl`;
+  // SCRAPE_PHASE=cup serves cup-winner targets and collects results in cups.jsonl, so the SAME
+  // in-browser scraper (it only knows the generic endpoints) can be re-run for cups without
+  // colliding with the league scrape's files or being wrongly skipped by /done.
+  const cup = process.env.SCRAPE_PHASE === 'cup';
+  const targetsFile = () => `${dir}/${cup ? 'cup-unresolved.json' : 'unresolved.json'}`;
+  const resultsFile = () => `${dir}/${cup ? 'cups.jsonl' : 'managers.jsonl'}`;
 
   app.get('/api/scrape/targets', async () => {
     if (!dir || !existsSync(targetsFile())) return [];
