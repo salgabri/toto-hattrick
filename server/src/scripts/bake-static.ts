@@ -1,3 +1,4 @@
+import 'dotenv/config'; // load DATABASE_URL from .env (bake needs the DB, not CHPP keys)
 import { prisma } from '../db/client.js';
 import { bakeStatic } from '../sync/bake.js';
 
