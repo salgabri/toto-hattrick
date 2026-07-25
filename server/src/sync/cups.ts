@@ -174,7 +174,9 @@ export async function syncAllCupChampions(token: TokenPair, opts: { onlyCupIds?:
  */
 export async function enrichCupTeamIds(token: TokenPair, opts: { limit?: number } = {}): Promise<void> {
   const pending = await prisma.cupChampion.findMany({
-    where: { championTeamId: null },
+    // finalMatchId > 0 skips reconstructed finals (placeholder id 0) — they have no real match to
+    // resolve a teamId from. Genuinely new finals carry a real finalMatchId from cupmatches.
+    where: { championTeamId: null, finalMatchId: { gt: 0 } },
     orderBy: [{ season: 'desc' }],
     take: opts.limit,
   });
