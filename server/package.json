@@ -9,6 +9,7 @@
     "smoke": "tsx src/scripts/smoke.ts",
     "token": "tsx src/scripts/get-token.ts",
     "refresh:latest": "tsx src/scripts/refresh-latest.ts",
+    "backfill:special": "tsx src/scripts/backfill-special.ts",
     "reconstruct": "tsx src/scripts/reconstruct-from-bake.ts",
     "bake": "tsx src/scripts/bake-static.ts",
     "build": "tsc -p tsconfig.json",

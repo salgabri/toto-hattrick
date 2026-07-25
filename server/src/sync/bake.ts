@@ -92,8 +92,9 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     .sort((a, b) => b.lg + b.main + b.sec - (a.lg + a.main + a.sec) || b.lg - a.lg);
   writeFileSync(`${out}/managers.json`, JSON.stringify(managers));
 
-  // Leagues: per-country champions (complete), newest first.
-  const leaguesRows = await prisma.nationalLeague.findMany({ where: { isCountry: true }, select: { leagueId: true, countryName: true } });
+  // Leagues: champions (complete), newest first. Includes the non-country leagues (Hattrick
+  // International / Homegrown / Femme) — only leagues that actually have champions are emitted below.
+  const leaguesRows = await prisma.nationalLeague.findMany({ select: { leagueId: true, countryName: true } });
   const allChamps = await prisma.leagueChampion.findMany({ where: { complete: true }, orderBy: { season: 'desc' }, select: { leagueId: true, season: true, championTeamName: true, championUserName: true } });
   const byLeague = new Map<number, Array<{ season: number; club: string; manager: string }>>();
   for (const c of allChamps) {

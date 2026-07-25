@@ -44,7 +44,8 @@ export async function refreshCurrentSeasons(
   opts: { onlyLeagueIds?: number[] } = {},
 ): Promise<SeasonAdvance[]> {
   const leagues = await prisma.nationalLeague.findMany({
-    where: { isCountry: true, ...(opts.onlyLeagueIds ? { leagueId: { in: opts.onlyLeagueIds } } : {}) },
+    // All tracked leagues, including the non-country ones (Hattrick International / Homegrown / Femme).
+    where: opts.onlyLeagueIds ? { leagueId: { in: opts.onlyLeagueIds } } : {},
     orderBy: { leagueId: 'asc' },
   });
 
@@ -112,9 +113,9 @@ export async function refreshLatestChampions(
   console.log(`currentSeason refreshed — ${advanced.length} countries advanced`);
   for (const a of advanced) console.log(`  ${a.country}: S${a.from ?? '—'} -> S${a.to}`);
 
-  // 2) League champions — bounded forward walk per country (re-reads the just-refreshed season).
+  // 2) League champions — bounded forward walk per league (re-reads the just-refreshed season).
   const leagues = await prisma.nationalLeague.findMany({
-    where: { isCountry: true, ...leagueFilter },
+    where: leagueFilter,
     orderBy: { leagueId: 'asc' },
   });
   let leagueChampionsAdded = 0;
