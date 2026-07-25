@@ -25,14 +25,21 @@ export interface LeagueSyncResult {
   latestChampion: string | null;
 }
 
-export async function syncNationalChampions(token: TokenPair, leagueId: number): Promise<LeagueSyncResult> {
+export async function syncNationalChampions(
+  token: TokenPair,
+  leagueId: number,
+  opts: { minSeason?: number } = {},
+): Promise<LeagueSyncResult> {
   const league = await prisma.nationalLeague.findUnique({ where: { leagueId } });
   if (!league) throw new Error(`league ${leagueId} not seeded`);
   const start = league.currentSeason ?? 100;
+  // Floor for the backward walk. Backfill leaves it at 1 (whole history); the "latest" refresh
+  // passes a recent floor so it fetches only new/unsettled seasons instead of re-walking to S1.
+  const floor = Math.max(1, opts.minSeason ?? 1);
 
   const result: LeagueSyncResult = { leagueId, countryName: league.countryName, seasonsStored: 0, earliestSeason: null, latestChampion: null };
 
-  for (let season = start; season >= 1; season--) {
+  for (let season = start; season >= floor; season--) {
     const existing = await prisma.leagueChampion.findUnique({ where: { leagueId_season: { leagueId, season } } });
     if (existing?.complete) {
       result.earliestSeason = season;

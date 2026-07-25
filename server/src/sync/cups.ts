@@ -77,14 +77,21 @@ export interface CupSyncResult {
 }
 
 /** Harvest every season's winner of one cup. Stores the winner NAME; teamId is a later pass. */
-export async function syncCupChampions(token: TokenPair, cupId: number): Promise<CupSyncResult> {
+export async function syncCupChampions(
+  token: TokenPair,
+  cupId: number,
+  opts: { minSeason?: number } = {},
+): Promise<CupSyncResult> {
   const cup = await prisma.cup.findUnique({ where: { cupId } });
   if (!cup) throw new Error(`cup ${cupId} not seeded`);
   const start = cup.currentSeason ?? 100;
+  // Floor for the backward walk (see syncNationalChampions): the "latest" refresh passes a recent
+  // floor so it fetches only new finals instead of re-walking every season to S1.
+  const floor = Math.max(1, opts.minSeason ?? 1);
 
   const result: CupSyncResult = { cupId, cupName: cup.cupName, seasonsStored: 0, earliestSeason: null, latestChampion: null };
 
-  for (let season = start; season >= 1; season--) {
+  for (let season = start; season >= floor; season--) {
     const existing = await prisma.cupChampion.findUnique({ where: { cupId_season: { cupId, season } } });
     if (existing) {
       result.earliestSeason = season;
