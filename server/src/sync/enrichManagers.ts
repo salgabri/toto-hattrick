@@ -41,7 +41,9 @@ async function resolveTeamOwner(token: TokenPair, teamId: number): Promise<TeamO
 
 export async function enrichChampionManagers(token: TokenPair, opts: { limit?: number } = {}): Promise<{ processed: number; resolved: number }> {
   const teams = await prisma.leagueChampion.findMany({
-    where: { championUserId: null },
+    // championTeamId > 0 skips reconstructed champions (placeholder team id 0) — no real team to
+    // resolve an owner from. New champions carry a real teamId from leaguefixtures/standings.
+    where: { championUserId: null, championTeamId: { gt: 0 } },
     distinct: ['championTeamId'],
     select: { championTeamId: true },
   });

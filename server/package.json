@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "smoke": "tsx src/scripts/smoke.ts",
+    "token": "tsx src/scripts/get-token.ts",
     "refresh:latest": "tsx src/scripts/refresh-latest.ts",
     "reconstruct": "tsx src/scripts/reconstruct-from-bake.ts",
     "bake": "tsx src/scripts/bake-static.ts",

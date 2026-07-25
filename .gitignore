@@ -10,6 +10,8 @@ build/
 .env
 .env.*
 !.env.example
+# OAuth token stashes written by scripts/get-token.ts — secrets, NEVER commit
+.oauth-*.json
 
 # database
 *.db
