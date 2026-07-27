@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { prisma } from '../db/client.js';
 import { refreshLatestChampions } from '../sync/refreshLatest.js';
 import { enrichChampionManagers, enrichRecentCupManagers, enrichUserNationalities } from '../sync/enrichManagers.js';
+import { attributeCupsByClub } from '../sync/attributeCupsByClub.js';
 import { bakeStatic } from '../sync/bake.js';
 import type { TokenPair } from '../chpp/auth.js';
 
@@ -40,6 +41,10 @@ if (!process.env.SKIP_MANAGERS) {
   const c = await enrichRecentCupManagers(access, { lookback });
   const n = await enrichUserNationalities(access, {});
   console.log(`managers: league ${m.resolved}/${m.processed}, cup ${c.resolved}/${c.processed} newly resolved; +${n.processed} nationalities`);
+  // Bridge remaining unattributed cup finals (incl. older ones, and placeholders with no teamId that
+  // the current-owner/scrape paths can't reach) via their winning club's league-title owner. No API.
+  const cb = await attributeCupsByClub();
+  console.log(`cup-by-club: +${cb.attributed} finals attributed (${cb.ambiguousFinals} ambiguous left for the scrape)`);
 }
 
 if (!process.env.SKIP_BAKE) {

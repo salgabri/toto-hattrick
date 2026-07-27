@@ -15,7 +15,7 @@ import { chppGet } from '../chpp/client.js';
  */
 
 const PACING_MS = 500;
-const UNKNOWN = 0; // championUserId sentinel for bot/abandoned/deleted teams
+export const UNKNOWN = 0; // championUserId sentinel for bot/abandoned/deleted teams
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const asArray = (x: unknown): any[] => (Array.isArray(x) ? x : x ? [x] : []);
 
@@ -26,7 +26,7 @@ export interface TeamOwner {
 }
 
 /** teamdetails(teamId) → the team's CURRENT owner, or null if deleted/bot/no owner. */
-async function resolveTeamOwner(token: TokenPair, teamId: number): Promise<TeamOwner | null> {
+export async function resolveTeamOwner(token: TokenPair, teamId: number): Promise<TeamOwner | null> {
   try {
     const h = ((await chppGet(token, { file: 'teamdetails', version: '3.6', teamID: teamId })) as any).HattrickData;
     const userId = Number(h?.User?.UserID) || null;

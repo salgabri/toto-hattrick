@@ -79,14 +79,17 @@ async function leagueFloor(leagueId: number, currentSeason: number, lookback: nu
   return lastComplete?.season ?? Math.max(1, currentSeason - lookback);
 }
 
-/** Highest already-stored cup final → the walk floor (cup finals never change once stored). */
-async function cupFloor(cupId: number, currentSeason: number, lookback: number): Promise<number> {
-  const last = await prisma.cupChampion.findFirst({
-    where: { cupId },
-    orderBy: { season: 'desc' },
-    select: { season: true },
-  });
-  return last?.season ?? Math.max(1, currentSeason - lookback);
+/**
+ * Floor for a cup's bounded forward walk. Always cover the recent window (currentSeason - lookback):
+ * a real final in that window is skipped cheaply by syncCupChampions (DB read, no API call), but a
+ * reconstructed placeholder there is re-walked and upgraded to a real final so it becomes
+ * attributable (see syncCupChampions' skip rule). NB: this must not ceiling at the highest STORED
+ * season — reconstruct-from-bake fills every season with a placeholder, so that would freeze the
+ * walk above the placeholders and they'd never materialize. Older placeholders (below the window)
+ * stay for the ownership-history scrape. Mirrors enrichRecentCupManagers' own lookback window.
+ */
+function cupFloor(currentSeason: number, lookback: number): number {
+  return Math.max(1, currentSeason - lookback);
 }
 
 export interface RefreshLatestResult {
@@ -143,7 +146,7 @@ export async function refreshLatestChampions(
   for (const cup of cups) {
     j++;
     const current = cup.currentSeason ?? 1;
-    const floor = await cupFloor(cup.cupId, current, lookback);
+    const floor = cupFloor(current, lookback);
     try {
       const r = await syncCupChampions(token, cup.cupId, { minSeason: floor });
       cupChampionsAdded += r.seasonsStored;

@@ -93,9 +93,15 @@ export async function syncCupChampions(
 
   for (let season = start; season >= floor; season--) {
     const existing = await prisma.cupChampion.findUnique({ where: { cupId_season: { cupId, season } } });
-    if (existing) {
+    // Skip only finals we already have USABLE data for. A real fetched final (finalMatchId > 0)
+    // never changes, and a final that already has a manager needs nothing more. What must NOT be
+    // skipped is a reconstructed placeholder that is still unattributed (finalMatchId 0 AND
+    // championUserId null — see scripts/reconstruct-from-bake.ts): those fall through so we fetch
+    // the real final, which is what unlocks teamId → current-owner attribution downstream
+    // (enrichCupTeamIds → enrichRecentCupManagers). Resume-safe: once upgraded, later runs skip it.
+    if (existing && (existing.finalMatchId > 0 || existing.championUserId !== null)) {
       result.earliestSeason = season;
-      continue; // finals never change
+      continue;
     }
 
     let cm;
@@ -107,8 +113,14 @@ export async function syncCupChampions(
     }
     await sleep(PACING_MS);
 
-    // round 0 / no matches → the cup didn't exist this season → stop walking further back.
-    if (cm.round === 0 || cm.matches.length === 0) break;
+    // An empty / round-0 bracket normally means the cup didn't exist this season → stop walking
+    // further back. EXCEPTION: at the current (in-progress) season it just means the cup hasn't
+    // started yet — skip it and keep walking down, so older in-window placeholders still get
+    // materialized rather than the whole walk aborting before it reaches them.
+    if (cm.round === 0 || cm.matches.length === 0) {
+      if (season === start) continue;
+      break;
+    }
 
     // The final is a single played match. More/fewer, or an unplayed result, means this season's
     // cup isn't finished (the current in-progress season) — skip it without breaking.
@@ -124,8 +136,20 @@ export async function syncCupChampions(
     }
     const homeWon = f.homeGoals > f.awayGoals;
 
-    await prisma.cupChampion.create({
-      data: {
+    // upsert, not create: a genuinely new season is inserted; a reconstructed placeholder is
+    // upgraded in place with the real match facts. Deliberately leave championTeamId null so the
+    // enrichCupTeamIds pass resolves it, and never touch championUserId/Name here — an already-set
+    // attribution (e.g. from the ownership scrape) must survive a re-fetch.
+    await prisma.cupChampion.upsert({
+      where: { cupId_season: { cupId, season } },
+      update: {
+        finalMatchId: f.matchId,
+        championTeamName: homeWon ? f.homeTeamName : f.awayTeamName,
+        runnerUpTeamName: homeWon ? f.awayTeamName : f.homeTeamName,
+        homeGoals: f.homeGoals,
+        awayGoals: f.awayGoals,
+      },
+      create: {
         cupId,
         season,
         leagueId: cup.leagueId,

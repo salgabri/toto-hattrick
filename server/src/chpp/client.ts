@@ -8,6 +8,12 @@ import { buildSignedUrl, type TokenPair } from './auth.js';
 
 const BASE_URL = 'https://chpp.hattrick.org/chppxml.ashx';
 
+// Hard ceiling per request so a stalled connection can't hang an unattended multi-hour sync. On
+// timeout fetch rejects, which callers treat as a normal call failure (and which trips the
+// backfill's consecutive-failure abort) — a slow-but-alive throttled call still completes well
+// under this.
+const REQUEST_TIMEOUT_MS = 30_000;
+
 const parser = new XMLParser({
   ignoreAttributes: false,
   attributeNamePrefix: '@_',
@@ -37,7 +43,7 @@ function buildUrl(params: ChppCallParams): string {
  */
 export async function chppGet(token: TokenPair, params: ChppCallParams): Promise<unknown> {
   const url = buildUrl(params);
-  const res = await fetch(buildSignedUrl(url, 'GET', token), { method: 'GET' });
+  const res = await fetch(buildSignedUrl(url, 'GET', token), { method: 'GET', signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) });
   const xml = await res.text();
 
   if (!res.ok) {
