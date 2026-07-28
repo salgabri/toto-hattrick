@@ -15,7 +15,7 @@ import {
   type TrophyItem,
   type Winner,
 } from './data.js';
-import { C, CHAMP_COLOR, MAIN_COLOR, rootStyle, type Density, type Theme } from './theme.js';
+import { C, CHAMP_COLOR, MAIN_COLOR, MASTERS_COLOR, rootStyle, type Density, type Theme } from './theme.js';
 import { leagueFlagUrl, nationalityFlagUrl } from './flags.js';
 import './aggregate.css';
 
@@ -53,7 +53,7 @@ export function AggregateStats({
   // View state lives on the parent so it survives nav switches.
   const [nation, setNation] = useState<string>('ALL');
   const [query, setQuery] = useState('');
-  const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false });
+  const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false, hm: true });
   const [lastOnly, setLastOnly] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [league, setLeague] = useState<string>('');
@@ -385,6 +385,7 @@ interface IncState {
   champ: boolean;
   main: boolean;
   sec: boolean;
+  hm: boolean;
 }
 
 function rankBg(r: number): string {
@@ -397,7 +398,7 @@ function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean) {
     { label: 'Championships', dot: CHAMP_COLOR, items: pick(tr.champ), excluded: !inc.champ },
     { label: 'Main cups', dot: MAIN_COLOR, items: pick(tr.main), excluded: !inc.main },
     { label: 'Secondary cups', dot: C.line2, items: pick(tr.sec), excluded: !inc.sec },
-    { label: 'Other honours', dot: C.line2, items: pick(tr.other), excluded: !inc.sec },
+    { label: 'Hattrick Masters', dot: MASTERS_COLOR, items: pick(tr.other), excluded: !inc.hm },
   ].filter((c) => c.items.length);
 }
 
@@ -456,8 +457,9 @@ function TrophyLeaders({
       const lg = lastOnly ? m.lgLast : m.lg;
       const main = lastOnly ? m.mainLast : m.main;
       const sec = lastOnly ? m.secLast : m.sec + m.oth;
-      const ft = (inc.champ ? lg : 0) + (inc.main ? main : 0) + (inc.sec ? sec : 0);
-      return { m, ft, lg, main, sec };
+      const hm = lastOnly ? m.hmLast : m.hm;
+      const ft = (inc.champ ? lg : 0) + (inc.main ? main : 0) + (inc.sec ? sec : 0) + (inc.hm ? hm : 0);
+      return { m, ft, lg, main, sec, hm };
     });
     l.sort((a, b) => b.ft - a.ft || b.lg - a.lg);
     return l.map((e, i) => ({ ...e, rank: i + 1 }));
@@ -467,13 +469,14 @@ function TrophyLeaders({
   const visible = ranked.filter(
     (e) =>
       (!q || e.m.login.toLowerCase().includes(q)) &&
-      (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast > 0),
+      (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast + e.m.hmLast > 0),
   );
 
   const chips: Array<{ k: keyof IncState; label: string }> = [
     { k: 'champ', label: 'Championships' },
     { k: 'main', label: 'Main cups' },
     { k: 'sec', label: 'Secondary' },
+    { k: 'hm', label: 'Masters' },
   ];
 
   return (
@@ -482,8 +485,8 @@ function TrophyLeaders({
         <div>
           <h1 style={h1Style}>Trophy leaders</h1>
           <p style={{ fontSize: 14, color: 'var(--ink-soft,#776F5D)', margin: '10px 0 0' }}>
-            Managers ranked by silverware. Cup wins count where the winner&apos;s owner is known
-            (league+cup doubles so far); the rest fill in as ownership history is resolved.
+            Managers ranked by silverware — league titles, national cups, and the Hattrick Masters.
+            Choose which trophies count toward the total below.
           </p>
         </div>
       </div>
@@ -621,6 +624,7 @@ function TrophyLeaders({
           if (inc.champ && e.lg) segRaw.push({ n: e.lg, color: CHAMP_COLOR });
           if (inc.main && e.main) segRaw.push({ n: e.main, color: MAIN_COLOR });
           if (inc.sec && e.sec) segRaw.push({ n: e.sec, color: C.line2 });
+          if (inc.hm && e.hm) segRaw.push({ n: e.hm, color: MASTERS_COLOR });
           const tot = e.ft || 1;
           const breakdown = segRaw.map((s) => s.n).join(' · ') || '0';
 
@@ -811,6 +815,7 @@ function TrophyLeaders({
         <LegendSwatch color="#2A5140" label="Championships" />
         <LegendSwatch color="#B0742A" label="Main cups" />
         <LegendSwatch color="var(--line-2,#D8CDB4)" label="Secondary" />
+        <LegendSwatch color="#7A5EA6" label="Masters" />
         <span style={{ flex: 1 }} />
         <span style={{ ...monoFaint, color: 'var(--ink-soft,#776F5D)', fontWeight: 400 }}>source: leaguefixtures · team history</span>
       </div>

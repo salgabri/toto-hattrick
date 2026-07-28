@@ -22,10 +22,12 @@ export interface Manager {
   lg: number;
   main: number; // main national cup wins (attributed)
   sec: number; // secondary/consolation cup wins (attributed)
+  hm: number; // Hattrick Masters wins (the global champions-of-champions cup)
   oth: number;
   lgLast: number; // reigning league titles (current champion of that league)
   mainLast: number; // reigning main-cup titles (current holder of that cup)
   secLast: number; // reigning secondary/consolation-cup titles
+  hmLast: number; // reigning Hattrick Masters title (holder of the most recent edition)
 }
 
 export interface TrophyItem {
@@ -83,12 +85,15 @@ interface RawManager {
   lg: number;
   main: number;
   sec: number;
+  hm?: number;
   lgLast?: number;
   mainLast?: number;
   secLast?: number;
+  hmLast?: number;
   titles: Array<{ country: string; season: number; club: string; last?: boolean }>;
   cupsMain: RawCup[];
   cupsSec: RawCup[];
+  masters?: RawCup[];
 }
 interface RawLeague {
   leagueId: number;
@@ -180,10 +185,12 @@ export async function getManagers(nationality?: string): Promise<Manager[]> {
         lg: m.lg,
         main: m.main ?? 0,
         sec: m.sec ?? 0,
+        hm: m.hm ?? 0,
         oth: 0,
         lgLast,
         mainLast: m.mainLast ?? (m.cupsMain ?? []).filter((c) => c.last).length,
         secLast: m.secLast ?? (m.cupsSec ?? []).filter((c) => c.last).length,
+        hmLast: m.hmLast ?? (m.masters ?? []).filter((c) => c.last).length,
       };
     });
 }
@@ -201,7 +208,8 @@ export async function getCabinet(userId: number): Promise<TrophyCabinet> {
     last: t.last ?? latestByCountry.get(t.country) === t.season,
   }));
   const cupItems = (cups?: RawCup[]) => (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, season: 'S' + t.season, last: t.last }));
-  return { champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec), other: [] };
+  // `other` carries the Hattrick Masters (its own category — see bake.ts / sync/masters.ts).
+  return { champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec), other: cupItems(m?.masters) };
 }
 
 export async function getWinners(leagueId: string): Promise<Winner[]> {

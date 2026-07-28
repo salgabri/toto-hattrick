@@ -4,6 +4,7 @@ import { fetchWorldDetails } from '../chpp/endpoints.js';
 import { parseWorldDetailsCups } from '../schemas/index.js';
 import { syncNationalChampions } from './nationalChampions.js';
 import { syncCupChampions, enrichCupTeamIds } from './cups.js';
+import { seedMasters } from './masters.js';
 
 /**
  * "Latest champions only" — the forward counterpart to the backfill.
@@ -121,6 +122,16 @@ export async function refreshLatestChampions(
     where: leagueFilter,
     orderBy: { leagueId: 'asc' },
   });
+
+  // Keep the global Hattrick Masters on the live season. It belongs to no country, so
+  // refreshCurrentSeasons (which updates cups per league) never touches it; seed/bump it to the
+  // highest league season so the cup walk below harvests each new edition (attributed by the
+  // recent-cup pass like any final). Only on a full run — a league-scoped refresh leaves it alone.
+  if (!onlyLeagueIds) {
+    const globalSeason = leagues.reduce((mx, l) => Math.max(mx, l.currentSeason ?? 0), 0);
+    if (globalSeason > 0) await seedMasters(globalSeason);
+  }
+
   let leagueChampionsAdded = 0;
   let i = 0;
   for (const league of leagues) {

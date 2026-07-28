@@ -49,7 +49,7 @@ export function Retro2000s({ defaultSkin = 'green', defaultDensity = 'comfortabl
   // View state lives on the parent so it survives tab switches.
   const [nation, setNation] = useState<string>('ALL');
   const [query, setQuery] = useState('');
-  const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false });
+  const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false, hm: true });
   const [lastOnly, setLastOnly] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [league, setLeague] = useState<string>('');
@@ -407,6 +407,7 @@ interface IncState {
   champ: boolean;
   main: boolean;
   sec: boolean;
+  hm: boolean;
 }
 
 function rankBg(r: number): string {
@@ -419,7 +420,7 @@ function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean) {
     { label: 'Championships', dot: R.champ, items: pick(tr.champ), excluded: !inc.champ },
     { label: 'Main cups', dot: R.main, items: pick(tr.main), excluded: !inc.main },
     { label: 'Secondary cups', dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
-    { label: 'Other honours', dot: R.sec, items: pick(tr.other), excluded: !inc.sec },
+    { label: 'Hattrick Masters', dot: R.masters, items: pick(tr.other), excluded: !inc.hm },
   ].filter((c) => c.items.length);
 }
 
@@ -480,8 +481,9 @@ function RetroTrophyLeaders({
       const lg = lastOnly ? m.lgLast : m.lg;
       const main = lastOnly ? m.mainLast : m.main;
       const sec = lastOnly ? m.secLast : m.sec + m.oth;
-      const ft = (inc.champ ? lg : 0) + (inc.main ? main : 0) + (inc.sec ? sec : 0);
-      return { m, ft, lg, main, sec };
+      const hm = lastOnly ? m.hmLast : m.hm;
+      const ft = (inc.champ ? lg : 0) + (inc.main ? main : 0) + (inc.sec ? sec : 0) + (inc.hm ? hm : 0);
+      return { m, ft, lg, main, sec, hm };
     });
     l.sort((a, b) => b.ft - a.ft || b.lg - a.lg);
     return l.map((e, i) => ({ ...e, rank: i + 1 }));
@@ -491,7 +493,7 @@ function RetroTrophyLeaders({
   const visible = ranked.filter(
     (e) =>
       (!q || e.m.login.toLowerCase().includes(q) || (e.m.team && e.m.team.toLowerCase().includes(q))) &&
-      (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast > 0),
+      (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast + e.m.hmLast > 0),
   );
 
   useEffect(() => {
@@ -502,13 +504,14 @@ function RetroTrophyLeaders({
     { k: 'champ', label: 'Championships' },
     { k: 'main', label: 'Main cups' },
     { k: 'sec', label: 'Secondary' },
+    { k: 'hm', label: 'Masters' },
   ];
 
   return (
     <div>
       <div style={intro}>
-        Managers ranked by top-division titles won across all of their clubs. Cup attribution is still landing, so the Main
-        &amp; Secondary toggles stay inert for now &mdash; set what counts below.
+        Managers ranked by silverware across all of their clubs &mdash; league titles, national cups, and the Hattrick
+        Masters. Toggle which trophies count toward the total below.
       </div>
 
       {/* Filters */}
@@ -655,6 +658,7 @@ function RetroTrophyLeaders({
           if (inc.champ && e.lg) segRaw.push({ n: e.lg, color: R.champ });
           if (inc.main && e.main) segRaw.push({ n: e.main, color: R.main });
           if (inc.sec && e.sec) segRaw.push({ n: e.sec, color: R.sec });
+          if (inc.hm && e.hm) segRaw.push({ n: e.hm, color: R.masters });
           const tot = e.ft || 1;
           const breakdown = segRaw.map((s) => s.n).join(' + ') || '0';
           const baseBg = i % 2 ? R.alt : R.panel;
@@ -827,6 +831,7 @@ function RetroTrophyLeaders({
         <LegendSwatch color={R.champ} label="Championships" />
         <LegendSwatch color={R.main} label="Main cups" />
         <LegendSwatch color={R.sec} label="Secondary" />
+        <LegendSwatch color={R.masters} label="Masters" />
         <span style={{ flex: 1 }} />
         <span style={{ fontFamily: MONO, color: R.faint }}>src: leaguefixtures &middot; team history</span>
       </div>

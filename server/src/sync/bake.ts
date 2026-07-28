@@ -1,5 +1,6 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { prisma } from '../db/client.js';
+import { MASTERS_CUP_ID } from './masters.js';
 
 /**
  * Bake the read-only aggregate data into static JSON for a pure-static deploy (Vercel/Netlify).
@@ -18,6 +19,7 @@ export interface BakeResult {
   champions: number;
   cups: number;
   cupFinals: number;
+  masters: number;
 }
 
 export async function bakeStatic(out: string): Promise<BakeResult> {
@@ -45,12 +47,12 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   interface Mgr {
     userId: number; userName: string; nationality: string; lg: number;
     titles: Array<{ country: string; season: number; club: string; last: boolean }>;
-    cupsMain: CupItem[]; cupsSec: CupItem[];
+    cupsMain: CupItem[]; cupsSec: CupItem[]; masters: CupItem[];
   }
   const mgr = new Map<number, Mgr>();
   const get = (uid: number, name: string | null) => {
     let e = mgr.get(uid);
-    if (!e) { e = { userId: uid, userName: name ?? `user ${uid}`, nationality: natById.get(uid) ?? 'Unknown', lg: 0, titles: [], cupsMain: [], cupsSec: [] }; mgr.set(uid, e); }
+    if (!e) { e = { userId: uid, userName: name ?? `user ${uid}`, nationality: natById.get(uid) ?? 'Unknown', lg: 0, titles: [], cupsMain: [], cupsSec: [], masters: [] }; mgr.set(uid, e); }
     return e;
   };
 
@@ -70,7 +72,9 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   })) {
     const e = get(c.championUserId!, c.championUserName);
     const item = { country: c.countryName, season: c.season, club: c.championTeamName, cup: c.cupName, last: cupReignSeason.get(c.cupId) === c.season };
-    (c.isMain ? e.cupsMain : e.cupsSec).push(item);
+    // The Hattrick Masters is its own category, not a national cup (see sync/masters.ts).
+    if (c.cupId === MASTERS_CUP_ID) e.masters.push(item);
+    else (c.isMain ? e.cupsMain : e.cupsSec).push(item);
   }
 
   const bySeasonDesc = <T extends { season: number }>(a: T, b: T) => b.season - a.season;
@@ -82,14 +86,17 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
       lg: m.titles.length,
       main: m.cupsMain.length,
       sec: m.cupsSec.length,
+      hm: m.masters.length,
       lgLast: m.titles.filter((t) => t.last).length,
       mainLast: m.cupsMain.filter((c) => c.last).length,
       secLast: m.cupsSec.filter((c) => c.last).length,
+      hmLast: m.masters.filter((c) => c.last).length,
       titles: m.titles.sort(bySeasonDesc),
       cupsMain: m.cupsMain.sort(bySeasonDesc),
       cupsSec: m.cupsSec.sort(bySeasonDesc),
+      masters: m.masters.sort(bySeasonDesc),
     }))
-    .sort((a, b) => b.lg + b.main + b.sec - (a.lg + a.main + a.sec) || b.lg - a.lg);
+    .sort((a, b) => b.lg + b.main + b.sec + b.hm - (a.lg + a.main + a.sec + a.hm) || b.hm - a.hm || b.lg - a.lg);
   writeFileSync(`${out}/managers.json`, JSON.stringify(managers));
 
   // Leagues: champions (complete), newest first. Includes the non-country leagues (Hattrick
@@ -124,6 +131,7 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   interface CupOut { cupId: number; cupName: string; isMain: boolean; cupLevel: number; cupLevelIndex: number; winners: Array<{ season: number; club: string; manager: string }> }
   const cupsByLeague = new Map<number, { leagueId: number; country: string; cups: CupOut[] }>();
   for (const c of cupRows) {
+    if (c.cupId === MASTERS_CUP_ID) continue; // the Masters is a global category, not a national cup
     const winners = winsByCup.get(c.cupId) ?? [];
     if (winners.length === 0) continue;
     let e = cupsByLeague.get(c.leagueId);
@@ -134,5 +142,9 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   writeFileSync(`${out}/cups.json`, JSON.stringify(cups));
   const cupTitleTotal = cups.reduce((n, l) => n + l.cups.reduce((m, c) => m + c.winners.length, 0), 0);
 
-  return { managers: managers.length, leagues: leagues.length, champions: titleTotal, cups: cups.length, cupFinals: cupTitleTotal };
+  // Hattrick Masters: the global roll of honour (season → winner), newest first, as its own file.
+  const mastersWinners = winsByCup.get(MASTERS_CUP_ID) ?? [];
+  writeFileSync(`${out}/masters.json`, JSON.stringify(mastersWinners));
+
+  return { managers: managers.length, leagues: leagues.length, champions: titleTotal, cups: cups.length, cupFinals: cupTitleTotal, masters: mastersWinners.length };
 }

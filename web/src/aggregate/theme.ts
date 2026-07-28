@@ -71,3 +71,4 @@ export const C = {
 /** Trophy-mix category colors — fixed independent of the accent so the split always reads. */
 export const CHAMP_COLOR = '#2A5140'; // Championships — deep pine green
 export const MAIN_COLOR = '#B0742A'; // Main cups — ochre
+export const MASTERS_COLOR = '#7A5EA6'; // Hattrick Masters — regal violet (the world title)
