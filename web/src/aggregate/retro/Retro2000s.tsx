@@ -800,10 +800,13 @@ function RetroTrophyLeaders({
                           </div>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                             {g.items.map((it, ix) => (
-                              <div key={ix} style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 10 }}>
-                                <div style={{ minWidth: 0 }}>
-                                  <div style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{it.main}</div>
-                                  <div style={{ fontSize: 10, color: R.faint, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{it.sub}</div>
+                              <div key={ix} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
+                                  {it.flag && <img src={it.flag} alt="" width={17} style={{ height: 'auto', flex: 'none', border: '1px solid ' + R.line }} />}
+                                  <div style={{ minWidth: 0 }}>
+                                    <div style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{it.main}</div>
+                                    <div style={{ fontSize: 10, color: R.faint, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{it.sub}</div>
+                                  </div>
                                 </div>
                                 <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 'bold', color: R.soft, flex: 'none' }}>{it.season}</span>
                               </div>

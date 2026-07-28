@@ -764,13 +764,18 @@ function TrophyLeaders({
                           </div>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                             {g.items.map((it, i) => (
-                              <div key={i} style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 10 }}>
-                                <div style={{ minWidth: 0 }}>
-                                  <div style={{ fontSize: 12.5, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                    {it.main}
-                                  </div>
-                                  <div style={{ fontSize: 11, color: 'var(--ink-faint,#A99E86)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                    {it.sub}
+                              <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 7, minWidth: 0 }}>
+                                  {it.flag && (
+                                    <img src={it.flag} alt="" width={18} style={{ height: 'auto', flex: 'none', borderRadius: 2, boxShadow: '0 0 0 0.5px rgba(0,0,0,.2)' }} />
+                                  )}
+                                  <div style={{ minWidth: 0 }}>
+                                    <div style={{ fontSize: 12.5, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                      {it.main}
+                                    </div>
+                                    <div style={{ fontSize: 11, color: 'var(--ink-faint,#A99E86)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                      {it.sub}
+                                    </div>
                                   </div>
                                 </div>
                                 <span style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11.5, color: 'var(--ink-soft,#776F5D)', flex: 'none' }}>

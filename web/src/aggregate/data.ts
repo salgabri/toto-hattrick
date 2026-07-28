@@ -9,6 +9,8 @@
  * re-deploy to refresh.
  */
 
+import { leagueFlagUrl } from './flags.js';
+
 export interface Country {
   code: string;
   name: string;
@@ -35,6 +37,7 @@ export interface TrophyItem {
   sub: string;
   season: string;
   last?: boolean; // the reigning/most-recent trophy of its competition
+  flag?: string | null; // country-flag URL (by leagueId); null for the country-less Masters
 }
 
 export interface TrophyCabinet {
@@ -73,6 +76,7 @@ export interface CupCountry {
 
 interface RawCup {
   country: string;
+  leagueId?: number;
   season: number;
   club: string;
   cup: string;
@@ -90,7 +94,7 @@ interface RawManager {
   mainLast?: number;
   secLast?: number;
   hmLast?: number;
-  titles: Array<{ country: string; season: number; club: string; last?: boolean }>;
+  titles: Array<{ country: string; leagueId?: number; season: number; club: string; last?: boolean }>;
   cupsMain: RawCup[];
   cupsSec: RawCup[];
   masters?: RawCup[];
@@ -206,8 +210,9 @@ export async function getCabinet(userId: number): Promise<TrophyCabinet> {
     sub: t.club,
     season: 'S' + t.season,
     last: t.last ?? latestByCountry.get(t.country) === t.season,
+    flag: leagueFlagUrl(t.leagueId),
   }));
-  const cupItems = (cups?: RawCup[]) => (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, season: 'S' + t.season, last: t.last }));
+  const cupItems = (cups?: RawCup[]) => (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, season: 'S' + t.season, last: t.last, flag: leagueFlagUrl(t.leagueId) }));
   // `other` carries the Hattrick Masters (its own category — see bake.ts / sync/masters.ts).
   return { champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec), other: cupItems(m?.masters) };
 }

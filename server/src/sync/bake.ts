@@ -43,10 +43,10 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     if (cur === undefined || c.season > cur) cupReignSeason.set(c.cupId, c.season);
   }
 
-  interface CupItem { country: string; season: number; club: string; cup: string; last: boolean }
+  interface CupItem { country: string; leagueId: number; season: number; club: string; cup: string; last: boolean }
   interface Mgr {
     userId: number; userName: string; nationality: string; lg: number;
-    titles: Array<{ country: string; season: number; club: string; last: boolean }>;
+    titles: Array<{ country: string; leagueId: number; season: number; club: string; last: boolean }>;
     cupsMain: CupItem[]; cupsSec: CupItem[]; masters: CupItem[];
   }
   const mgr = new Map<number, Mgr>();
@@ -61,17 +61,17 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     select: { championUserId: true, championUserName: true, countryName: true, season: true, championTeamName: true, leagueId: true },
   })) {
     get(c.championUserId!, c.championUserName).titles.push({
-      country: c.countryName, season: c.season, club: c.championTeamName,
+      country: c.countryName, leagueId: c.leagueId, season: c.season, club: c.championTeamName,
       last: leagueReignSeason.get(c.leagueId) === c.season,
     });
   }
 
   for (const c of await prisma.cupChampion.findMany({
     where: { championUserId: { gt: 0 } },
-    select: { championUserId: true, championUserName: true, countryName: true, season: true, championTeamName: true, cupName: true, isMain: true, cupId: true },
+    select: { championUserId: true, championUserName: true, countryName: true, leagueId: true, season: true, championTeamName: true, cupName: true, isMain: true, cupId: true },
   })) {
     const e = get(c.championUserId!, c.championUserName);
-    const item = { country: c.countryName, season: c.season, club: c.championTeamName, cup: c.cupName, last: cupReignSeason.get(c.cupId) === c.season };
+    const item = { country: c.countryName, leagueId: c.leagueId, season: c.season, club: c.championTeamName, cup: c.cupName, last: cupReignSeason.get(c.cupId) === c.season };
     // The Hattrick Masters is its own category, not a national cup (see sync/masters.ts).
     if (c.cupId === MASTERS_CUP_ID) e.masters.push(item);
     else (c.isMain ? e.cupsMain : e.cupsSec).push(item);
