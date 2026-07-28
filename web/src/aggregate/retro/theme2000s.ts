@@ -1,8 +1,8 @@
 /**
  * Theming for the "Toto Hattrick 2000s" retro look — the Windows-98/early-web skin from
- * `Toto Hattrick 2000s.dc.html`. Two skins (bottle-green, steel-blue) and a density switch,
+ * `Toto Hattrick 2000s.dc.html`. Two skins (bottle-green, steel-blue),
  * flowed through CSS custom properties on the root wrapper. Inline styles read them via
- * `var(--x, fallback)`, exactly like the modern look's `theme.ts`.
+ * `var(--x, fallback)`.
  *
  * System fonts only (Verdana / Tahoma / MS Sans Serif) — no web fonts, so the retro look stays
  * self-contained just like the flags. Monospace figures use 'Courier New' for the LCD feel.
@@ -10,7 +10,6 @@
 import type { CSSProperties } from 'react';
 
 export type Skin = 'green' | 'blue';
-export type Density2000s = 'comfortable' | 'compact';
 
 export const SKINS: Record<Skin, Record<string, string>> = {
   green: {
@@ -33,16 +32,11 @@ export const SKINS: Record<Skin, Record<string, string>> = {
   },
 };
 
-export const DENS2000s: Record<Density2000s, Record<string, string>> = {
-  comfortable: { '--rp': '7px' },
-  compact: { '--rp': '3px' },
-};
-
-/** Root style: skin + density CSS vars, plus the desktop backdrop the framed window sits on. */
-export function rootStyle2000s(skin: Skin, density: Density2000s): CSSProperties {
+/** Root style: skin CSS vars, plus the desktop backdrop the framed window sits on. */
+export function rootStyle2000s(skin: Skin): CSSProperties {
   const vars: Record<string, string> = {
     ...SKINS[skin],
-    ...DENS2000s[density],
+    '--rp': '7px',
     minHeight: '100vh',
     background: 'var(--desk,#C6CDBF)',
     padding: '18px 14px',

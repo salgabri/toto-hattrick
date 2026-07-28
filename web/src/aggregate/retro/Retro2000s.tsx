@@ -16,7 +16,7 @@ import {
   type Winner,
 } from '../data.js';
 import { leagueFlagUrl, nationalityFlagUrl } from '../flags.js';
-import { R, MONO, rootStyle2000s, type Density2000s, type Skin } from './theme2000s.js';
+import { R, MONO, rootStyle2000s, type Skin } from './theme2000s.js';
 import './retro2000s.css';
 
 /**
@@ -24,10 +24,10 @@ import './retro2000s.css';
  *
  * A Windows-98/early-web reskin of the Aggregate records: a framed window with a gradient banner,
  * folder tabs, groove fieldsets, outset/inset buttons, a status bar and a hit-counter footer.
- * Wired to the SAME real baked data as the modern look (`../data.js`), and carries the newer
- * features the original mock never had — country flags and the full Cup winners view.
+ * Wired to the real baked data (`../data.js`), and carries the newer features the original mock
+ * never had — country flags and the full Cup winners view.
  *
- * Backend honesty (identical to the modern look): only top-division LEAGUE titles exist, so a
+ * Backend honesty: only top-division LEAGUE titles exist, so a
  * manager's `cup`/`oth` are 0 and their cabinet holds championships only. The Main/Secondary
  * toggles therefore stay inert for the total — kept for fidelity to the design.
  */
@@ -36,14 +36,10 @@ export type RetroView = 'trophies' | 'leagues' | 'cups';
 
 export interface Retro2000sProps {
   defaultSkin?: Skin;
-  defaultDensity?: Density2000s;
-  /** Switch back to the modern look (rendered as a banner button when provided). */
-  onExit?: () => void;
 }
 
-export function Retro2000s({ defaultSkin = 'green', defaultDensity = 'comfortable', onExit }: Retro2000sProps) {
+export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
   const [skin, setSkin] = useState<Skin>(defaultSkin);
-  const [density, setDensity] = useState<Density2000s>(defaultDensity);
   const [view, setView] = useState<RetroView>('trophies');
 
   // View state lives on the parent so it survives tab switches.
@@ -93,7 +89,7 @@ export function Retro2000s({ defaultSkin = 'green', defaultDensity = 'comfortabl
   };
 
   return (
-    <div className="th2000s" style={rootStyle2000s(skin, density)}>
+    <div className="th2000s" style={rootStyle2000s(skin)}>
       <div
         style={{
           maxWidth: 980,
@@ -148,14 +144,6 @@ export function Retro2000s({ defaultSkin = 'green', defaultDensity = 'comfortabl
               <button onClick={() => setSkin((s) => (s === 'green' ? 'blue' : 'green'))} style={skinBtn}>
                 Skin: {skin === 'green' ? 'Green' : 'Blue'}
               </button>
-              <button onClick={() => setDensity((d) => (d === 'comfortable' ? 'compact' : 'comfortable'))} style={skinBtn}>
-                {density === 'comfortable' ? 'Compact' : 'Comfortable'}
-              </button>
-              {onExit && (
-                <button onClick={onExit} style={skinBtn}>
-                  Modern view »
-                </button>
-              )}
             </div>
           </div>
         </div>
@@ -402,6 +390,7 @@ const runTag: CSSProperties = {
 /* ========================== TROPHY LEADERS ========================== */
 
 const RETRO_TROPHY_GRID = '46px minmax(0,1fr) 92px minmax(110px,200px) 56px 22px';
+const PAGE_SIZE = 50;
 
 interface IncState {
   champ: boolean;
@@ -419,8 +408,8 @@ function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean) {
   return [
     { label: 'Championships', dot: R.champ, items: pick(tr.champ), excluded: !inc.champ },
     { label: 'Main cups', dot: R.main, items: pick(tr.main), excluded: !inc.main },
-    { label: 'Secondary cups', dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
     { label: 'Hattrick Masters', dot: R.masters, items: pick(tr.other), excluded: !inc.hm },
+    { label: 'Secondary cups', dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
   ].filter((c) => c.items.length);
 }
 
@@ -454,6 +443,7 @@ function RetroTrophyLeaders({
   const [managers, setManagers] = useState<Manager[]>([]);
   const [loading, setLoading] = useState(true);
   const [cabinets, setCabinets] = useState<Record<number, TrophyCabinet | null>>({});
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     setLoading(true);
@@ -462,6 +452,11 @@ function RetroTrophyLeaders({
       .catch(() => setManagers([]))
       .finally(() => setLoading(false));
   }, [nation]);
+
+  // Any filter change reshuffles the ranked list, so drop back to the first page.
+  useEffect(() => {
+    setPage(1);
+  }, [nation, query, inc, lastOnly]);
 
   const toggleInc = (k: keyof IncState) => setInc((s) => ({ ...s, [k]: !s[k] }));
   const toggleExpand = (m: Manager) => {
@@ -496,6 +491,13 @@ function RetroTrophyLeaders({
       (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast + e.m.hmLast > 0),
   );
 
+  // Show at most PAGE_SIZE managers at a time. Ranks stay absolute over the whole
+  // filtered list, so page 2 continues from rank 51, not from 1.
+  const pageCount = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
+  const curPage = Math.min(page, pageCount);
+  const pageStart = (curPage - 1) * PAGE_SIZE;
+  const pageRows = visible.slice(pageStart, pageStart + PAGE_SIZE);
+
   useEffect(() => {
     if (!loading) onStatus(`Done. ${visible.length} record(s).`);
   }, [loading, visible.length, onStatus]);
@@ -503,8 +505,8 @@ function RetroTrophyLeaders({
   const chips: Array<{ k: keyof IncState; label: string }> = [
     { k: 'champ', label: 'Championships' },
     { k: 'main', label: 'Main cups' },
-    { k: 'sec', label: 'Secondary' },
     { k: 'hm', label: 'Masters' },
+    { k: 'sec', label: 'Secondary' },
   ];
 
   return (
@@ -616,7 +618,9 @@ function RetroTrophyLeaders({
             </button>
           </div>
           <div style={{ flex: 1 }} />
-          <div style={{ fontSize: 10, color: R.soft }}>{visible.length} shown</div>
+          <div style={{ fontSize: 10, color: R.soft }}>
+            {visible.length > PAGE_SIZE ? `${pageStart + 1}–${pageStart + pageRows.length} of ${visible.length}` : `${visible.length} shown`}
+          </div>
         </div>
       </fieldset>
 
@@ -647,7 +651,7 @@ function RetroTrophyLeaders({
           <div />
         </div>
 
-        {visible.map((e, i) => {
+        {pageRows.map((e, i) => {
           const m = e.m;
           const r = e.rank;
           const top = r <= 3;
@@ -657,8 +661,8 @@ function RetroTrophyLeaders({
           const segRaw: Array<{ n: number; color: string }> = [];
           if (inc.champ && e.lg) segRaw.push({ n: e.lg, color: R.champ });
           if (inc.main && e.main) segRaw.push({ n: e.main, color: R.main });
-          if (inc.sec && e.sec) segRaw.push({ n: e.sec, color: R.sec });
           if (inc.hm && e.hm) segRaw.push({ n: e.hm, color: R.masters });
+          if (inc.sec && e.sec) segRaw.push({ n: e.sec, color: R.sec });
           const tot = e.ft || 1;
           const breakdown = segRaw.map((s) => s.n).join(' + ') || '0';
           const baseBg = i % 2 ? R.alt : R.panel;
@@ -828,13 +832,15 @@ function RetroTrophyLeaders({
         )}
       </div>
 
+      {!loading && pageCount > 1 && <RetroPager page={curPage} pageCount={pageCount} setPage={setPage} />}
+
       {/* Legend */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 9, fontSize: 10, color: R.ink, flexWrap: 'wrap' }}>
         <b style={{ color: R.soft, textTransform: 'uppercase', letterSpacing: '.04em' }}>Legend:</b>
         <LegendSwatch color={R.champ} label="Championships" />
         <LegendSwatch color={R.main} label="Main cups" />
-        <LegendSwatch color={R.sec} label="Secondary" />
         <LegendSwatch color={R.masters} label="Masters" />
+        <LegendSwatch color={R.sec} label="Secondary" />
         <span style={{ flex: 1 }} />
         <span style={{ fontFamily: MONO, color: R.faint }}>src: leaguefixtures &middot; team history</span>
       </div>
@@ -848,6 +854,42 @@ function LegendSwatch({ color, label }: { color: string; label: string }) {
       <span style={{ width: 10, height: 10, border: '1px solid rgba(0,0,0,.3)', background: color }} />
       {label}
     </span>
+  );
+}
+
+/** Numbered pager for the trophy leaderboard — 50 managers per page, in the 2000s outset-button style. */
+function RetroPager({ page, pageCount, setPage }: { page: number; pageCount: number; setPage: Dispatch<SetStateAction<number>> }) {
+  const btn = (disabled: boolean): CSSProperties => ({
+    minWidth: 26,
+    padding: '3px 9px',
+    border: disabled ? '2px inset var(--btn,#EBEFE2)' : '2px outset var(--btn,#EBEFE2)',
+    background: disabled ? R.panel2 : R.btn,
+    color: disabled ? R.faint : '#222',
+    cursor: disabled ? 'default' : 'pointer',
+    fontFamily: MONO,
+    fontSize: 11,
+    fontWeight: 'bold',
+  });
+  const first = page <= 1;
+  const last = page >= pageCount;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10 }}>
+      <button style={btn(first)} disabled={first} onClick={() => setPage(1)} title="First page">
+        |«
+      </button>
+      <button style={btn(first)} disabled={first} onClick={() => setPage((p) => Math.max(1, p - 1))} title="Previous page">
+        «
+      </button>
+      <span style={{ fontFamily: MONO, fontSize: 11, color: R.soft, padding: '0 6px', fontWeight: 'bold' }}>
+        Page {page} / {pageCount}
+      </span>
+      <button style={btn(last)} disabled={last} onClick={() => setPage((p) => Math.min(pageCount, p + 1))} title="Next page">
+        »
+      </button>
+      <button style={btn(last)} disabled={last} onClick={() => setPage(pageCount)} title="Last page">
+        »|
+      </button>
+    </div>
   );
 }
 
