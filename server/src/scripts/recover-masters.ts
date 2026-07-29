@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { prisma } from '../db/client.js';
 import { chppGet } from '../chpp/client.js';
 import { seedMasters, MASTERS_CUP_ID } from '../sync/masters.js';
-import { resolveTeamOwner, UNKNOWN } from '../sync/enrichManagers.js';
+import { resolveTeamOwner, enrichUserNationalities, UNKNOWN } from '../sync/enrichManagers.js';
 import type { TokenPair } from '../chpp/auth.js';
 
 /**
@@ -96,4 +96,9 @@ for (const c of CANDIDATES) {
 
 console.log(`\nrecovered ${stored}/${CANDIDATES.length}; unresolved ${unresolved}`);
 console.log(`Masters editions in DB: ${await prisma.cupChampion.count({ where: { cupId: MASTERS_CUP_ID } })}/67`);
+
+// Resolve nationality for any owners just upserted so they don't bake as "Unknown".
+const nat = await enrichUserNationalities(access);
+if (nat.processed) console.log(`nationalities: ${nat.resolved} resolved, ${nat.unknown} unknown, ${nat.errors} errors (${nat.processed} attempted)`);
+
 await prisma.$disconnect();

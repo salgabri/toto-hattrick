@@ -66,24 +66,49 @@ export async function enrichChampionManagers(token: TokenPair, opts: { limit?: n
   return { processed, resolved };
 }
 
-export async function enrichUserNationalities(token: TokenPair, opts: { limit?: number } = {}): Promise<{ processed: number }> {
+/**
+ * Resolve nationality for every manager whose row still has `nationality = null` (never attempted)
+ * via managercompendium(userId) → Country. Resume-safe and self-healing:
+ *   - success WITH a country  → store the country (+ countryId).
+ *   - success WITHOUT a country (valid response, deleted/hidden manager) → store the "Unknown"
+ *     sentinel so we don't keep re-querying a user CHPP will never resolve.
+ *   - THROWN error (rate-limit/outage/network) → leave the row `null` so a later run retries it.
+ *     This is the key fix: a transient failure must NOT poison the row to "Unknown" permanently,
+ *     otherwise the `WHERE nationality IS NULL` filter would never pick it up again.
+ * Because only errors leave a row null, re-running converges to full coverage across runs — safe
+ * to chunk with `limit` to stay under the daily CHPP quota.
+ */
+export async function enrichUserNationalities(
+  token: TokenPair,
+  opts: { limit?: number } = {},
+): Promise<{ processed: number; resolved: number; unknown: number; errors: number }> {
   const users = await prisma.hattrickUser.findMany({ where: { nationality: null }, select: { userId: true } });
   let processed = 0;
+  let resolved = 0;
+  let unknown = 0;
+  let errors = 0;
   for (const { userId } of users) {
     if (opts.limit && processed >= opts.limit) break;
     processed++;
     try {
       const m = ((await chppGet(token, { file: 'managercompendium', version: '1.5', userId })) as any).HattrickData?.Manager;
-      const countryId = Number(m?.Country?.CountryId) || null;
-      const nationality = m?.Country?.CountryName ?? 'Unknown';
-      await prisma.hattrickUser.update({ where: { userId }, data: { countryId, nationality } });
+      const countryName = m?.Country?.CountryName;
+      if (countryName) {
+        await prisma.hattrickUser.update({ where: { userId }, data: { countryId: Number(m?.Country?.CountryId) || null, nationality: countryName } });
+        resolved++;
+      } else {
+        // Valid response, no country → genuinely unresolvable (deleted/hidden). Sentinel it.
+        await prisma.hattrickUser.update({ where: { userId }, data: { nationality: 'Unknown' } });
+        unknown++;
+      }
     } catch {
-      await prisma.hattrickUser.update({ where: { userId }, data: { nationality: 'Unknown' } });
+      // Transient failure — leave the row null so the next run retries it (do not poison to "Unknown").
+      errors++;
     }
-    if (processed % 100 === 0) console.log(`  nationalities: ${processed}/${users.length} users`);
+    if (processed % 100 === 0) console.log(`  nationalities: ${processed}/${users.length} users (${resolved} resolved, ${unknown} unknown, ${errors} errors)`);
     await sleep(PACING_MS);
   }
-  return { processed };
+  return { processed, resolved, unknown, errors };
 }
 
 /**

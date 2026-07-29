@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { prisma } from '../db/client.js';
 import { backfillCups } from '../sync/backfillCups.js';
 import { attributeCupsByClub } from '../sync/attributeCupsByClub.js';
+import { enrichUserNationalities } from '../sync/enrichManagers.js';
 import { bakeStatic } from '../sync/bake.js';
 import type { TokenPair } from '../chpp/auth.js';
 
@@ -51,6 +52,11 @@ if (cb.attributed) console.log(`cup-by-club bridge: +${cb.attributed} more attri
 
 const after = await prisma.cupChampion.count({ where: { championUserId: { gt: 0 } } });
 console.log(`end: ${after}/${total} finals attributed (+${after - before} this run)`);
+
+// Resolve nationality for any managers this run just upserted, so they don't bake as "Unknown".
+// Self-healing and quota-friendly: only touches rows still null, so a partial run finishes next time.
+const nat = await enrichUserNationalities(access);
+if (nat.processed) console.log(`nationalities: ${nat.resolved} resolved, ${nat.unknown} unknown, ${nat.errors} errors (${nat.processed} attempted)`);
 
 if (!process.env.SKIP_BAKE) {
   const out = process.env.OUT ?? '../web/public/data';

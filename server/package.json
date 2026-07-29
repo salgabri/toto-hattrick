@@ -11,6 +11,7 @@
     "refresh:latest": "tsx src/scripts/refresh-latest.ts",
     "attribute:cups": "tsx src/scripts/attribute-cups-by-club.ts",
     "backfill:cups": "tsx src/scripts/backfill-cups.ts",
+    "backfill:nationalities": "tsx src/scripts/backfill-nationalities.ts",
     "sync:masters": "tsx src/scripts/sync-masters.ts",
     "backfill:special": "tsx src/scripts/backfill-special.ts",
     "reconstruct": "tsx src/scripts/reconstruct-from-bake.ts",

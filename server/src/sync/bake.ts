@@ -99,6 +99,18 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     .sort((a, b) => b.lg + b.main + b.sec + b.hm - (a.lg + a.main + a.sec + a.hm) || b.hm - a.hm || b.lg - a.lg);
   writeFileSync(`${out}/managers.json`, JSON.stringify(managers));
 
+  // Guardrail: a manager appears here only if they won a title, yet may still have an unresolved
+  // nationality (null in the DB → rendered "Unknown" above) if a scrape upserted them without ever
+  // running the nationality pass. Surface it loudly on EVERY bake — including token-less paths that
+  // can't resolve it themselves — so the gap can't silently reach production. Warn, don't throw.
+  const unresolvedNat = [...mgr.keys()].filter((uid) => natById.get(uid) == null).length;
+  if (unresolvedNat > 0) {
+    console.warn(
+      `⚠ bake: ${unresolvedNat} baked manager(s) have no nationality (shown as "Unknown"). ` +
+        `Run \`npm run backfill:nationalities -w server\` to resolve them, then re-bake.`,
+    );
+  }
+
   // Leagues: champions (complete), newest first. Includes the non-country leagues (Hattrick
   // International / Homegrown / Femme) — only leagues that actually have champions are emitted below.
   const leaguesRows = await prisma.nationalLeague.findMany({ select: { leagueId: true, countryName: true } });
