@@ -488,6 +488,7 @@ function RetroTrophyLeaders({
   const visible = ranked.filter(
     (e) =>
       (!q || e.m.login.toLowerCase().includes(q) || (e.m.team && e.m.team.toLowerCase().includes(q))) &&
+      e.ft > 0 &&
       (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast + e.m.hmLast > 0),
   );
 
