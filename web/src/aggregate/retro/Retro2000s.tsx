@@ -45,7 +45,7 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
   // View state lives on the parent so it survives tab switches.
   const [nation, setNation] = useState<string>('ALL');
   const [query, setQuery] = useState('');
-  const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false, hm: true });
+  const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false, hm: true, sn: true });
   const [lastOnly, setLastOnly] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [league, setLeague] = useState<string>('');
@@ -356,6 +356,7 @@ interface IncState {
   main: boolean;
   sec: boolean;
   hm: boolean;
+  sn: boolean;
 }
 
 function rankBg(r: number): string {
@@ -368,6 +369,7 @@ function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean) {
     { label: 'Championships', dot: R.champ, items: pick(tr.champ), excluded: !inc.champ },
     { label: 'Main cups', dot: R.main, items: pick(tr.main), excluded: !inc.main },
     { label: 'Hattrick Masters', dot: R.masters, items: pick(tr.other), excluded: !inc.hm },
+    { label: 'Seasonal cups', dot: R.seasonal, items: pick(tr.seasonal), excluded: !inc.sn },
     { label: 'Secondary cups', dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
   ].filter((c) => c.items.length);
 }
@@ -424,7 +426,7 @@ function RetroTrophyLeaders({
       setCabinets((c) => ({ ...c, [m.userId]: null }));
       getCabinet(m.userId)
         .then((cab) => setCabinets((c) => ({ ...c, [m.userId]: cab })))
-        .catch(() => setCabinets((c) => ({ ...c, [m.userId]: { champ: [], main: [], sec: [], other: [] } })));
+        .catch(() => setCabinets((c) => ({ ...c, [m.userId]: { champ: [], main: [], sec: [], other: [], seasonal: [] } })));
     }
   };
 
@@ -436,8 +438,9 @@ function RetroTrophyLeaders({
       const main = lastOnly ? m.mainLast : m.main;
       const sec = lastOnly ? m.secLast : m.sec + m.oth;
       const hm = lastOnly ? m.hmLast : m.hm;
-      const ft = (inc.champ ? lg : 0) + (inc.main ? main : 0) + (inc.sec ? sec : 0) + (inc.hm ? hm : 0);
-      return { m, ft, lg, main, sec, hm };
+      const sn = lastOnly ? m.snLast : m.sn;
+      const ft = (inc.champ ? lg : 0) + (inc.main ? main : 0) + (inc.sec ? sec : 0) + (inc.hm ? hm : 0) + (inc.sn ? sn : 0);
+      return { m, ft, lg, main, sec, hm, sn };
     });
     l.sort((a, b) => b.ft - a.ft || b.lg - a.lg);
     return l.map((e, i) => ({ ...e, rank: i + 1 }));
@@ -448,7 +451,7 @@ function RetroTrophyLeaders({
     (e) =>
       (!q || e.m.login.toLowerCase().includes(q) || (e.m.team && e.m.team.toLowerCase().includes(q))) &&
       e.ft > 0 &&
-      (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast + e.m.hmLast > 0),
+      (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast + e.m.hmLast + e.m.snLast > 0),
   );
 
   // Show at most PAGE_SIZE managers at a time. Ranks stay absolute over the whole
@@ -466,14 +469,15 @@ function RetroTrophyLeaders({
     { k: 'champ', label: 'Championships' },
     { k: 'main', label: 'Main cups' },
     { k: 'hm', label: 'Masters' },
+    { k: 'sn', label: 'Seasonal' },
     { k: 'sec', label: 'Secondary' },
   ];
 
   return (
     <div>
       <div style={intro}>
-        Managers ranked by silverware across all of their clubs &mdash; league titles, national cups, and the Hattrick
-        Masters. Toggle which trophies count toward the total below.
+        Managers ranked by silverware across all of their clubs &mdash; league titles, national cups, the Hattrick
+        Masters, and Seasonal Cups. Toggle which trophies count toward the total below.
       </div>
 
       {/* Filters */}
@@ -622,6 +626,7 @@ function RetroTrophyLeaders({
           if (inc.champ && e.lg) segRaw.push({ n: e.lg, color: R.champ });
           if (inc.main && e.main) segRaw.push({ n: e.main, color: R.main });
           if (inc.hm && e.hm) segRaw.push({ n: e.hm, color: R.masters });
+          if (inc.sn && e.sn) segRaw.push({ n: e.sn, color: R.seasonal });
           if (inc.sec && e.sec) segRaw.push({ n: e.sec, color: R.sec });
           const tot = e.ft || 1;
           const breakdown = segRaw.map((s) => s.n).join(' + ') || '0';
@@ -800,6 +805,7 @@ function RetroTrophyLeaders({
         <LegendSwatch color={R.champ} label="Championships" />
         <LegendSwatch color={R.main} label="Main cups" />
         <LegendSwatch color={R.masters} label="Masters" />
+        <LegendSwatch color={R.seasonal} label="Seasonal" />
         <LegendSwatch color={R.sec} label="Secondary" />
         <span style={{ flex: 1 }} />
         <span style={{ fontFamily: MONO, color: R.faint }}>src: leaguefixtures &middot; team history</span>

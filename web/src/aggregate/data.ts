@@ -25,11 +25,13 @@ export interface Manager {
   main: number; // main national cup wins (attributed)
   sec: number; // secondary/consolation cup wins (attributed)
   hm: number; // Hattrick Masters wins (the global champions-of-champions cup)
+  sn: number; // Seasonal Cups wins (global recurring tournaments, e.g. Supporter Week Trophy)
   oth: number;
   lgLast: number; // reigning league titles (current champion of that league)
   mainLast: number; // reigning main-cup titles (current holder of that cup)
   secLast: number; // reigning secondary/consolation-cup titles
   hmLast: number; // reigning Hattrick Masters title (holder of the most recent edition)
+  snLast: number; // reigning Seasonal Cups titles (holder of the most recent edition)
 }
 
 export interface TrophyItem {
@@ -44,7 +46,8 @@ export interface TrophyCabinet {
   champ: TrophyItem[];
   main: TrophyItem[];
   sec: TrophyItem[];
-  other: TrophyItem[];
+  other: TrophyItem[]; // the Hattrick Masters
+  seasonal: TrophyItem[]; // Seasonal Cups (Supporter Week Trophy)
 }
 
 export interface Winner {
@@ -90,14 +93,17 @@ interface RawManager {
   main: number;
   sec: number;
   hm?: number;
+  sn?: number;
   lgLast?: number;
   mainLast?: number;
   secLast?: number;
   hmLast?: number;
+  snLast?: number;
   titles: Array<{ country: string; leagueId?: number; season: number; club: string; last?: boolean }>;
   cupsMain: RawCup[];
   cupsSec: RawCup[];
   masters?: RawCup[];
+  seasonal?: RawCup[];
 }
 interface RawLeague {
   leagueId: number;
@@ -190,11 +196,13 @@ export async function getManagers(nationality?: string): Promise<Manager[]> {
         main: m.main ?? 0,
         sec: m.sec ?? 0,
         hm: m.hm ?? 0,
+        sn: m.sn ?? 0,
         oth: 0,
         lgLast,
         mainLast: m.mainLast ?? (m.cupsMain ?? []).filter((c) => c.last).length,
         secLast: m.secLast ?? (m.cupsSec ?? []).filter((c) => c.last).length,
         hmLast: m.hmLast ?? (m.masters ?? []).filter((c) => c.last).length,
+        snLast: m.snLast ?? (m.seasonal ?? []).filter((c) => c.last).length,
       };
     });
 }
@@ -213,8 +221,9 @@ export async function getCabinet(userId: number): Promise<TrophyCabinet> {
     flag: leagueFlagUrl(t.leagueId),
   }));
   const cupItems = (cups?: RawCup[]) => (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, season: 'S' + t.season, last: t.last, flag: leagueFlagUrl(t.leagueId) }));
-  // `other` carries the Hattrick Masters (its own category — see bake.ts / sync/masters.ts).
-  return { champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec), other: cupItems(m?.masters) };
+  // `other` carries the Hattrick Masters and `seasonal` the Seasonal Cups — each its own category
+  // (see bake.ts / sync/masters.ts / sync/seasonal.ts). Both are country-less, so no flag.
+  return { champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec), other: cupItems(m?.masters), seasonal: cupItems(m?.seasonal) };
 }
 
 export async function getWinners(leagueId: string): Promise<Winner[]> {

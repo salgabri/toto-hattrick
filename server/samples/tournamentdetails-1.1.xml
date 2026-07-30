@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>tournamentdetails.xml</FileName>
+  <Version>1.0</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-07-30 22:38:33</FetchedDate>
+  <Tournament>
+    <TournamentId>2108472</TournamentId>
+    <Name>Supporter Week Trophy</Name>
+    <TournamentType>8</TournamentType>
+    <Season>36</Season>
+    <LogoUrl>//www.hattrick.org/Img/Icons/hattrick_supporter_174px.png</LogoUrl>
+    <TrophyType>99</TrophyType>
+    <NumberOfTeams>27124</NumberOfTeams>
+    <NumberOfGroups>1</NumberOfGroups>
+    <LastMatchRound>16</LastMatchRound>
+    <FirstMatchRoundDate>2026-03-23 18:00:00</FirstMatchRoundDate>
+    <NextMatchRoundDate>0001-01-01 00:00:00</NextMatchRoundDate>
+    <IsMatchesOngoing>0</IsMatchesOngoing>
+    <Creator>
+      <UserId>3</UserId>
+      <Loginname>HT-Daniel</Loginname>
+    </Creator>
+  </Tournament>
+</HattrickData>

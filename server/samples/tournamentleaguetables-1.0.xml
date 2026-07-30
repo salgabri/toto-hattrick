@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>tournamentleaguetables.xml</FileName>
+  <Version>1.0</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-07-30 22:39:25</FetchedDate>
+  <TournamentId>2108472</TournamentId>
+  <Season>36</Season>
+  <TournamentLeagueTables>
+    <TournamentLeagueTable>
+      <GroupId>1</GroupId>
+      <Teams />
+    </TournamentLeagueTable>
+  </TournamentLeagueTables>
+</HattrickData>
