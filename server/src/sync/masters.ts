@@ -1,7 +1,7 @@
 import { prisma } from '../db/client.js';
 import type { TokenPair } from '../chpp/auth.js';
 import { syncCupChampions, enrichCupTeamIds } from './cups.js';
-import { enrichRecentCupManagers } from './enrichManagers.js';
+import { enrichRecentCupManagers, UNKNOWN } from './enrichManagers.js';
 
 /**
  * The Hattrick Masters — the global champions-of-champions cup ("the world title for clubs"),
@@ -43,9 +43,24 @@ export interface MastersSyncResult { seasonsStored: number; earliestSeason: numb
  * a teamdetails per winner). Attribution is by CURRENT owner across ALL seasons — the same
  * approximation the league leaderboard accepts; for the Masters the winners are elite, still-active
  * clubs, so it resolves well. Resume-safe: stored finals are skipped, so re-runs only add new ones.
+ *
+ * Self-healing (why we keep no hand-maintained list of Masters owners): a Hattrick manager keeps ONE
+ * team across renames, so the winning club's CURRENT owner IS the manager who won it — e.g. the team
+ * that won as "Orda Balorda Cuba" is the same one now called "Orda Balorda Urbino" (zagortenay). An
+ * edition shows an unresolved winner ("—") only because a PAST attribution attempt hit a team that
+ * was momentarily unreadable (rate-limited, or briefly bot/abandoned) and got pinned to the UNKNOWN
+ * sentinel, which the enrichment passes then skip forever. So before re-attributing we RE-OPEN those
+ * sentinel rows (below): the same automatic teamId + current-owner passes then fill them in with no
+ * manual owner list. A genuinely dead club simply returns to the sentinel next time.
  */
 export async function syncMasters(token: TokenPair, opts: { currentSeason: number }): Promise<MastersSyncResult> {
   await seedMasters(opts.currentSeason);
+  // Re-open editions stuck on the UNKNOWN sentinel so the passes below retry them (see the note above).
+  const reopened = await prisma.cupChampion.updateMany({
+    where: { cupId: MASTERS_CUP_ID, championUserId: UNKNOWN },
+    data: { championUserId: null },
+  });
+  if (reopened.count) console.log(`re-opened ${reopened.count} previously-unresolved Masters edition(s) for another attribution attempt`);
   const r = await syncCupChampions(token, MASTERS_CUP_ID); // walks currentSeason → 1, stops before S28 (round 0)
   await enrichCupTeamIds(token, {}); // resolve teamIds for the new Masters finals (only pending ones)
   // Attribute every season via current owner — lookback wide enough to cover the whole history.

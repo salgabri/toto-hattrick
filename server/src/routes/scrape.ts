@@ -9,12 +9,19 @@ import { readFileSync, appendFileSync, existsSync } from 'node:fs';
  */
 export async function registerScrapeRoutes(app: FastifyInstance): Promise<void> {
   const dir = process.env.SCRAPE_DIR;
-  // SCRAPE_PHASE=cup serves cup-winner targets and collects results in cups.jsonl, so the SAME
-  // in-browser scraper (it only knows the generic endpoints) can be re-run for cups without
-  // colliding with the league scrape's files or being wrongly skipped by /done.
-  const cup = process.env.SCRAPE_PHASE === 'cup';
-  const targetsFile = () => `${dir}/${cup ? 'cup-unresolved.json' : 'unresolved.json'}`;
-  const resultsFile = () => `${dir}/${cup ? 'cups.jsonl' : 'managers.jsonl'}`;
+  // SCRAPE_PHASE selects which target/result files the SAME in-browser scraper (it only knows the
+  // generic endpoints) reads and writes, so each phase's files — and its /done skip-set — stay
+  // isolated from the others:
+  //   undefined -> league (unresolved.json / managers.jsonl)
+  //   'cup'     -> national cups (cup-unresolved.json / cups.jsonl)
+  //   'masters' -> Hattrick Masters (masters-unresolved.json / masters-owners.jsonl). A separate
+  //                done-set matters here: a team already scraped for its national cups (its cup
+  //                seasons) still needs scraping for its Masters season, which the cup pass filtered out.
+  const phase = process.env.SCRAPE_PHASE;
+  const targetsName = phase === 'masters' ? 'masters-unresolved.json' : phase === 'cup' ? 'cup-unresolved.json' : 'unresolved.json';
+  const resultsName = phase === 'masters' ? 'masters-owners.jsonl' : phase === 'cup' ? 'cups.jsonl' : 'managers.jsonl';
+  const targetsFile = () => `${dir}/${targetsName}`;
+  const resultsFile = () => `${dir}/${resultsName}`;
 
   app.get('/api/scrape/targets', async () => {
     if (!dir || !existsSync(targetsFile())) return [];
