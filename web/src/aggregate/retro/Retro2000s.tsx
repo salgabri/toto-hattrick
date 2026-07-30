@@ -23,7 +23,7 @@ import './retro2000s.css';
  * Toto Hattrick — the "2000s" retro look (from `Toto Hattrick 2000s.dc.html`).
  *
  * A Windows-98/early-web reskin of the Aggregate records: a framed window with a gradient banner,
- * folder tabs, groove fieldsets, outset/inset buttons, a status bar and a hit-counter footer.
+ * folder tabs, groove fieldsets, outset/inset buttons, and a disclaimer footer.
  * Wired to the real baked data (`../data.js`), and carries the newer features the original mock
  * never had — country flags and the full Cup winners view.
  *
@@ -50,7 +50,7 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [league, setLeague] = useState<string>('');
   const [cupCountry, setCupCountry] = useState<string>('');
-  const [status, setStatus] = useState('Ready.');
+  const [, setStatus] = useState('Ready.');
 
   // Reference lists (loaded once).
   const [nationalities, setNationalities] = useState<Country[]>([]);
@@ -187,25 +187,6 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
           )}
         </div>
 
-        {/* ===================== STATUS BAR ===================== */}
-        <div
-          style={{
-            borderTop: '1px solid var(--framelt,#9DB491)',
-            background: R.panel2,
-            padding: '3px 10px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-            fontSize: 10,
-            color: R.soft,
-          }}
-        >
-          <span style={statusChip}>{status}</span>
-          <span style={{ flex: 1 }} />
-          <span style={statusChip}>CHPP</span>
-          <span style={statusChip}>Aggregate archive</span>
-        </div>
-
         {/* ===================== FOOTER ===================== */}
         <div
           style={{
@@ -223,12 +204,6 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
           <span style={{ opacity: 0.92 }}>
             &copy; Toto Hattrick. Fan project, not affiliated with Hattrick / Extralives AB. Data via CHPP.
           </span>
-          <span style={{ flex: 1 }} />
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6, opacity: 0.95 }}>
-            Visitors:
-            <span style={counterStyle}>137492</span>
-          </span>
-          <span style={{ opacity: 0.85 }}>Best viewed at 1024&times;768</span>
         </div>
       </div>
     </div>
@@ -272,22 +247,6 @@ function Tab({ label, active, onClick }: { label: string; active: boolean; onCli
 }
 
 /* ============================== SHARED ============================== */
-
-const statusChip: CSSProperties = {
-  border: '1px inset var(--btn,#EBEFE2)',
-  background: R.panel,
-  padding: '1px 8px',
-};
-
-const counterStyle: CSSProperties = {
-  fontFamily: MONO,
-  background: '#0b0b0b',
-  color: '#63f06a',
-  border: '2px inset #3a3a3a',
-  padding: '1px 6px',
-  letterSpacing: '3px',
-  fontWeight: 'bold',
-};
 
 const fieldset: CSSProperties = {
   border: '2px groove var(--btn,#EBEFE2)',
