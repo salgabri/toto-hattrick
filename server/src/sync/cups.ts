@@ -196,11 +196,12 @@ export async function syncAllCupChampions(token: TokenPair, opts: { onlyCupIds?:
  * Resolve the winning teamId for stored cup finals (winner is positional: home team in the
  * cupmatches final is the home team in matchdetails). Second pass so the winners land fast first.
  */
-export async function enrichCupTeamIds(token: TokenPair, opts: { limit?: number } = {}): Promise<void> {
+export async function enrichCupTeamIds(token: TokenPair, opts: { limit?: number; cupIds?: number[] } = {}): Promise<void> {
   const pending = await prisma.cupChampion.findMany({
     // finalMatchId > 0 skips reconstructed finals (placeholder id 0) — they have no real match to
     // resolve a teamId from. Genuinely new finals carry a real finalMatchId from cupmatches.
-    where: { championTeamId: null, finalMatchId: { gt: 0 } },
+    // cupIds scopes the pass to specific cups (e.g. the Masters self-heal); default is every cup.
+    where: { championTeamId: null, finalMatchId: { gt: 0 }, ...(opts.cupIds ? { cupId: { in: opts.cupIds } } : {}) },
     orderBy: [{ season: 'desc' }],
     take: opts.limit,
   });

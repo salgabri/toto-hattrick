@@ -124,16 +124,20 @@ export async function enrichUserNationalities(
  */
 export async function enrichRecentCupManagers(
   token: TokenPair,
-  opts: { lookback?: number } = {},
+  opts: { lookback?: number; onlyCupIds?: number[] } = {},
 ): Promise<{ processed: number; resolved: number }> {
   const lookback = opts.lookback ?? 3;
-  const cups = await prisma.cup.findMany({ select: { cupId: true, currentSeason: true } });
+  // onlyCupIds scopes the whole pass to specific cups. The Masters self-heal uses it with a wide
+  // lookback so its wide window can't spill onto national cups (whose old finals must stay queued for
+  // the ownership-history scrape, not be current-owner attributed).
+  const cupFilter = opts.onlyCupIds ? { cupId: { in: opts.onlyCupIds } } : {};
+  const cups = await prisma.cup.findMany({ where: cupFilter, select: { cupId: true, currentSeason: true } });
   // Per-cup floor (season numbering is per-country). A cup with no known currentSeason is skipped
   // (Infinity) rather than risk mis-attributing everything.
   const floorByCup = new Map(cups.map((c) => [c.cupId, c.currentSeason == null ? Number.POSITIVE_INFINITY : c.currentSeason - lookback]));
 
   const pending = await prisma.cupChampion.findMany({
-    where: { championUserId: null, championTeamId: { not: null } },
+    where: { championUserId: null, championTeamId: { not: null }, ...cupFilter },
     select: { cupId: true, season: true, championTeamId: true },
     orderBy: { season: 'desc' },
   });

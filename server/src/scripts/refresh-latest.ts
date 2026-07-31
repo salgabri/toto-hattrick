@@ -3,6 +3,7 @@ import { prisma } from '../db/client.js';
 import { refreshLatestChampions } from '../sync/refreshLatest.js';
 import { enrichChampionManagers, enrichRecentCupManagers, enrichUserNationalities } from '../sync/enrichManagers.js';
 import { attributeCupsByClub } from '../sync/attributeCupsByClub.js';
+import { syncMasters } from '../sync/masters.js';
 import { bakeStatic } from '../sync/bake.js';
 import type { TokenPair } from '../chpp/auth.js';
 
@@ -39,6 +40,18 @@ if (!process.env.SKIP_MANAGERS) {
   // Attribute the recent cup winners we just added (current owner == the actual winner for a
   // recent season). Older unattributed finals stay queued for the ownership-history scrape.
   const c = await enrichRecentCupManagers(access, { lookback });
+  // Self-heal the global Hattrick Masters. It belongs to no country (leagueId 0), so neither the
+  // national-cup pass above nor attributeCupsByClub below can reach it — and an edition once pinned
+  // to the UNKNOWN(0) sentinel is skipped forever by every null-only filter. syncMasters re-opens
+  // those sentinels and re-attributes by current owner (Masters winners are elite, still-active
+  // clubs, so the current owner == the actual winner even for old seasons). Runs before the
+  // nationality pass so freshly-resolved owners get their country here too. Full runs only — a
+  // league-scoped refresh leaves the global Masters alone.
+  if (!onlyLeagueIds) {
+    const globalSeason = (await prisma.nationalLeague.aggregate({ _max: { currentSeason: true } }))._max.currentSeason ?? 95;
+    const mr = await syncMasters(access, { currentSeason: globalSeason });
+    console.log(`masters self-heal: +${mr.seasonsStored} new edition(s); latest ${mr.latestChampion ?? '—'}`);
+  }
   const n = await enrichUserNationalities(access, {});
   console.log(`managers: league ${m.resolved}/${m.processed}, cup ${c.resolved}/${c.processed} newly resolved; +${n.processed} nationalities`);
   // Bridge remaining unattributed cup finals (incl. older ones, and placeholders with no teamId that

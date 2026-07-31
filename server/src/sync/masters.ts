@@ -62,8 +62,10 @@ export async function syncMasters(token: TokenPair, opts: { currentSeason: numbe
   });
   if (reopened.count) console.log(`re-opened ${reopened.count} previously-unresolved Masters edition(s) for another attribution attempt`);
   const r = await syncCupChampions(token, MASTERS_CUP_ID); // walks currentSeason → 1, stops before S28 (round 0)
-  await enrichCupTeamIds(token, {}); // resolve teamIds for the new Masters finals (only pending ones)
-  // Attribute every season via current owner — lookback wide enough to cover the whole history.
-  await enrichRecentCupManagers(token, { lookback: 1000 });
+  await enrichCupTeamIds(token, { cupIds: [MASTERS_CUP_ID] }); // resolve teamIds for the new Masters finals (only pending ones)
+  // Attribute every Masters season via current owner — lookback wide enough to cover the whole
+  // history. Scoped to the Masters cup so the wide window never spills onto national cups (their old
+  // finals belong to the ownership-history scrape, not current-owner attribution).
+  await enrichRecentCupManagers(token, { lookback: 1000, onlyCupIds: [MASTERS_CUP_ID] });
   return { seasonsStored: r.seasonsStored, earliestSeason: r.earliestSeason, latestChampion: r.latestChampion };
 }
