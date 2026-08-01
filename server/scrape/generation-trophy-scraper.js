@@ -40,11 +40,18 @@
     if (!box) return null;
     const teamA = box.querySelector('a[href*="/Club/?TeamID="], a[href*="/Club/?teamId="]');
     const mgrA = box.querySelector('a[href*="/Club/Manager/"]');
-    if (!teamA || !mgrA) return null;
-    const teamId = Number((teamA.getAttribute('href').match(/TeamID=(\d+)/i) || [])[1]);
-    const userId = Number((mgrA.getAttribute('href').match(/userId=(\d+)/i) || [])[1]);
-    if (!teamId || !userId) return null;
-    return { teamId, team: teamA.textContent.trim(), userId, manager: mgrA.textContent.trim() };
+    if (teamA && mgrA) {
+      const teamId = Number((teamA.getAttribute('href').match(/TeamID=(\d+)/i) || [])[1]);
+      const userId = Number((mgrA.getAttribute('href').match(/userId=(\d+)/i) || [])[1]);
+      if (teamId && userId) return { teamId, team: teamA.textContent.trim(), userId, manager: mgrA.textContent.trim() };
+    }
+    // "(A former user)": both the team and manager accounts are gone, so the page drops all links
+    // and shows plain text instead. No identity is recoverable, but the team NAME still survives —
+    // record that so the edition isn't silently dropped from the roll of honour.
+    const text = box.textContent.replace(/\s+/g, ' ').trim();
+    const m = text.match(/^(.*?)\s*\(A former user\)$/i);
+    if (m && m[1].trim()) return { teamId: null, team: m[1].trim(), userId: null, manager: null };
+    return null;
   }
 
   async function run() {

@@ -18,7 +18,7 @@ import type { TokenPair } from '../chpp/auth.js';
  * per line) instead of the committed seed — e.g. after re-scraping newer seasons.
  */
 const access: TokenPair = JSON.parse(readFileSync(process.env.OAUTH_ACCESS_STASH ?? '.oauth-access.json', 'utf8'));
-type Winner = { cupId: number; name: string; season: number; teamId: number; team: string; userId: number; manager: string };
+type Winner = { cupId: number; name: string; season: number; teamId: number | null; team: string; userId: number | null; manager: string | null };
 const recs: Winner[] = process.env.IN
   ? readFileSync(process.env.IN, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l))
   : JSON.parse(readFileSync(new URL('../sync/generation-trophy-winners.json', import.meta.url), 'utf8'));

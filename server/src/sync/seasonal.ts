@@ -48,10 +48,13 @@ const SEASONAL_LEAGUE_SENTINEL = 0; // no real NationalLeague; keeps it out of p
 export interface SeasonalWinner {
   /** The tournament's own season counter (1..N), NOT the HT national/global season. */
   season: number;
-  teamId: number;
+  /** Null when the page shows "(A former user)" with no links at all — team AND manager accounts
+   *  both gone, so not even the team is identifiable, only its name as plain text. Permanently
+   *  unresolvable (no CHPP or website path recovers an identity Hattrick itself no longer exposes). */
+  teamId: number | null;
   team: string;
-  userId: number;
-  manager: string;
+  userId: number | null;
+  manager: string | null;
 }
 
 export interface SeasonalIngestResult { seasons: number; latestSeason: number; latestChampion: string | null }
@@ -78,21 +81,27 @@ export async function seedSeasonalCup(cupId: number, name: string, currentSeason
  * Ingest a seasonal tournament's roll of honour. Sets championUserId/Name straight from the scrape,
  * then resolves nationality for any new managers so they don't bake as "Unknown". Idempotent:
  * re-running upserts the same rows. Re-bake afterwards to refresh the static JSON.
+ *
+ * A winner with userId/teamId null (the "(A former user)" case — see SeasonalWinner) is still
+ * stored, by team name only, so the edition isn't silently dropped from the roll of honour; it just
+ * has no attributable manager, the same way an unattributed national-cup final does.
  */
 export async function ingestSeasonalWinners(
   token: TokenPair,
   opts: { cupId: number; name: string; winners: SeasonalWinner[] },
 ): Promise<SeasonalIngestResult> {
-  const valid = opts.winners.filter((w) => w.userId && w.teamId && w.season);
+  const valid = opts.winners.filter((w) => w.season && w.team);
   const latestSeason = valid.reduce((m, w) => Math.max(m, w.season), 0);
   await seedSeasonalCup(opts.cupId, opts.name, latestSeason);
 
   for (const w of valid) {
-    await prisma.hattrickUser.upsert({
-      where: { userId: w.userId },
-      update: { loginName: w.manager },
-      create: { userId: w.userId, loginName: w.manager },
-    });
+    if (w.userId) {
+      await prisma.hattrickUser.upsert({
+        where: { userId: w.userId },
+        update: { loginName: w.manager ?? undefined },
+        create: { userId: w.userId, loginName: w.manager ?? `user ${w.userId}` },
+      });
+    }
     await prisma.cupChampion.upsert({
       where: { cupId_season: { cupId: opts.cupId, season: w.season } },
       update: {
@@ -122,5 +131,5 @@ export async function ingestSeasonalWinners(
 
   await enrichUserNationalities(token);
   const latest = valid.find((w) => w.season === latestSeason) ?? null;
-  return { seasons: valid.length, latestSeason, latestChampion: latest ? latest.manager : null };
+  return { seasons: valid.length, latestSeason, latestChampion: latest ? (latest.manager ?? latest.team) : null };
 }
