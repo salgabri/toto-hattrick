@@ -121,11 +121,21 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   // Leagues: champions (complete), newest first. Includes the non-country leagues (Hattrick
   // International / Homegrown / Femme) — only leagues that actually have champions are emitted below.
   const leaguesRows = await prisma.nationalLeague.findMany({ select: { leagueId: true, countryName: true } });
-  const allChamps = await prisma.leagueChampion.findMany({ where: { complete: true }, orderBy: { season: 'desc' }, select: { leagueId: true, season: true, championTeamName: true, championUserName: true } });
-  const byLeague = new Map<number, Array<{ season: number; club: string; manager: string }>>();
+  const allChamps = await prisma.leagueChampion.findMany({
+    where: { complete: true },
+    orderBy: { season: 'desc' },
+    select: { leagueId: true, season: true, championTeamName: true, championUserName: true, championTeamId: true, championUserId: true },
+  });
+  // Link out to hattrick.org only for a REAL id — reconstructed placeholders (teamId 0) and the
+  // UNKNOWN(0) attribution sentinel must never render as a link to team/manager "0".
+  const byLeague = new Map<number, Array<{ season: number; club: string; manager: string; teamId?: number; userId?: number }>>();
   for (const c of allChamps) {
     const a = byLeague.get(c.leagueId) ?? [];
-    a.push({ season: c.season, club: c.championTeamName, manager: c.championUserName ?? '—' });
+    a.push({
+      season: c.season, club: c.championTeamName, manager: c.championUserName ?? '—',
+      teamId: c.championTeamId > 0 ? c.championTeamId : undefined,
+      userId: c.championUserId && c.championUserId > 0 ? c.championUserId : undefined,
+    });
     byLeague.set(c.leagueId, a);
   }
   const leagues = leaguesRows
@@ -139,15 +149,22 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   // Manager comes from CupChampion.championUserId — set for league+cup doubles now, and filled by
   // the ownership-history scrape for the rest.
   const cupRows = await prisma.cup.findMany({ orderBy: [{ leagueId: 'asc' }, { cupLevel: 'asc' }, { cupLevelIndex: 'asc' }] });
-  const cupWins = await prisma.cupChampion.findMany({ orderBy: { season: 'desc' }, select: { cupId: true, season: true, championTeamName: true, championUserName: true } });
-  const winsByCup = new Map<number, Array<{ season: number; club: string; manager: string }>>();
+  const cupWins = await prisma.cupChampion.findMany({
+    orderBy: { season: 'desc' },
+    select: { cupId: true, season: true, championTeamName: true, championUserName: true, championTeamId: true, championUserId: true },
+  });
+  const winsByCup = new Map<number, Array<{ season: number; club: string; manager: string; teamId?: number; userId?: number }>>();
   for (const w of cupWins) {
     const a = winsByCup.get(w.cupId) ?? [];
-    a.push({ season: w.season, club: w.championTeamName, manager: w.championUserName ?? '—' });
+    a.push({
+      season: w.season, club: w.championTeamName, manager: w.championUserName ?? '—',
+      teamId: w.championTeamId && w.championTeamId > 0 ? w.championTeamId : undefined,
+      userId: w.championUserId && w.championUserId > 0 ? w.championUserId : undefined,
+    });
     winsByCup.set(w.cupId, a);
   }
 
-  interface CupOut { cupId: number; cupName: string; isMain: boolean; cupLevel: number; cupLevelIndex: number; winners: Array<{ season: number; club: string; manager: string }> }
+  interface CupOut { cupId: number; cupName: string; isMain: boolean; cupLevel: number; cupLevelIndex: number; winners: Array<{ season: number; club: string; manager: string; teamId?: number; userId?: number }> }
   const cupsByLeague = new Map<number, { leagueId: number; country: string; cups: CupOut[] }>();
   for (const c of cupRows) {
     if (c.cupId === MASTERS_CUP_ID || isSeasonalCup(c.cupId)) continue; // global categories, not national cups

@@ -1111,5 +1111,12 @@
     "topSeriesId": 269264,
     "currentSeason": 1,
     "isCountry": false
+  },
+  {
+    "leagueId": 1002,
+    "countryName": "Hattrick Anniversary League",
+    "topSeriesId": 260265,
+    "currentSeason": 7,
+    "isCountry": false
   }
 ]

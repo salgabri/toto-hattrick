@@ -6,11 +6,14 @@ import {
   getCups,
   getLeagues,
   getManagers,
+  getMastersWinners,
   getNationalities,
+  getSeasonalCups,
   getWinners,
   type Country,
   type CupRoll,
   type Manager,
+  type SeasonalCupRoll,
   type TrophyCabinet,
   type TrophyItem,
   type Winner,
@@ -301,8 +304,22 @@ function SectionBar({ children }: { children: ReactNode }) {
   );
 }
 
+const hattrickTeamUrl = (teamId: number) => `https://www.hattrick.org/en/Club/?TeamID=${teamId}`;
+const hattrickManagerUrl = (userId: number) => `https://www.hattrick.org/en/Club/Manager/?userId=${userId}`;
+
+/** Wraps children in a hattrick.org link when an id is available, otherwise renders them plain —
+ *  team/manager id coverage varies a lot by competition (see Winner.teamId/userId in data.ts). */
+function HtLink({ href, children }: { href: string | null; children: ReactNode }) {
+  if (!href) return <>{children}</>;
+  return (
+    <a href={href} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} style={{ color: 'inherit', textDecoration: 'none' }}>
+      {children}
+    </a>
+  );
+}
+
 /** Small country flag (self-hosted SVG). Renders nothing for unknown/missing codes. */
-function Flag({ url, label, size = 14 }: { url: string | null; label?: string; size?: number }) {
+function Flag({ url, label, size = 20 }: { url: string | null; label?: string; size?: number }) {
   if (!url) return null;
   return (
     <img
@@ -348,7 +365,7 @@ const runTag: CSSProperties = {
 
 /* ========================== TROPHY LEADERS ========================== */
 
-const RETRO_TROPHY_GRID = '46px minmax(0,1fr) 92px minmax(110px,200px) 56px 22px';
+const RETRO_TROPHY_GRID = '46px minmax(0,1fr) 160px minmax(110px,200px) 56px 22px';
 const PAGE_SIZE = 50;
 
 interface IncState {
@@ -609,7 +626,7 @@ function RetroTrophyLeaders({
         >
           <div>Rank</div>
           <div>Manager</div>
-          <div>Nat.</div>
+          <div>Nationality</div>
           <div>Trophy mix</div>
           <div style={{ textAlign: 'right' }}>Total</div>
           <div />
@@ -892,14 +909,6 @@ function RetroLeagueWinners({
   }, [loading, winnersRaw.length, onStatus]);
 
   const winners = withRuns(winnersRaw);
-  const tally: Record<string, number> = {};
-  winnersRaw.forEach((w) => {
-    tally[w.club] = (tally[w.club] || 0) + 1;
-  });
-  const tallyArr = Object.entries(tally)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5);
-  const maxT = tallyArr.length ? tallyArr[0]![1] : 1;
   const span = winnersRaw.length ? `Seasons ${winnersRaw[winnersRaw.length - 1]!.season}–${winnersRaw[0]!.season} · ${leagueName}` : leagueName;
 
   return (
@@ -928,7 +937,7 @@ function RetroLeagueWinners({
         {/* Roll of honour */}
         <div style={{ border: '1px solid var(--frame,#617D54)' }}>
           <SectionBar>
-            <Flag url={leagueFlagUrl(league)} label={leagueName} size={16} />
+            <Flag url={leagueFlagUrl(league)} label={leagueName} size={24} />
             {leagueName} &mdash; Division I roll of honour
           </SectionBar>
           <div
@@ -967,8 +976,15 @@ function RetroLeagueWinners({
             >
               <div style={{ fontFamily: MONO, fontWeight: 'bold', fontSize: 14, color: R.ink }}>S{w.season}</div>
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{w.club}</div>
-                <div style={{ fontSize: 10, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{w.manager}</div>
+                <div style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <HtLink href={w.teamId ? hattrickTeamUrl(w.teamId) : null}>{w.club}</HtLink>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 10, color: R.soft, overflow: 'hidden' }}>
+                  <Flag url={nationalityFlagUrl(w.nationality)} label={w.nationality} />
+                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    <HtLink href={w.userId ? hattrickManagerUrl(w.userId) : null}>{w.manager}</HtLink>
+                  </span>
+                </div>
               </div>
               <div style={{ textAlign: 'right' }}>{w.tag && <span style={runTag}>{w.tag}</span>}</div>
             </div>
@@ -984,30 +1000,97 @@ function RetroLeagueWinners({
           </div>
         </div>
 
-        {/* Most titles */}
-        <div style={{ border: '1px solid var(--frame,#617D54)' }}>
-          <SectionBar>Most titles</SectionBar>
-          <div style={{ padding: 11, background: R.panel, display: 'flex', flexDirection: 'column', gap: 11 }}>
-            {tallyArr.length === 0 && <div style={{ fontSize: 11, color: R.faint }}>—</div>}
-            {tallyArr.map(([club, count], i) => (
-              <div key={club}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4, gap: 8 }}>
-                  <span style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{club}</span>
-                  <span style={{ fontFamily: MONO, fontSize: 12, fontWeight: 'bold', flex: 'none', color: R.ink }}>{count}</span>
-                </div>
-                <div style={{ height: 12, border: '1px solid var(--frame,#617D54)', background: R.panel2, overflow: 'hidden' }}>
-                  <span style={{ display: 'block', height: '100%', width: (count / maxT) * 100 + '%', background: i === 0 ? R.main : R.sec }} />
-                </div>
-              </div>
-            ))}
+        <TopManagersPanel winners={winnersRaw} />
+      </div>
+    </div>
+  );
+}
+
+/* ===================== TOP MANAGERS (shared) ===================== */
+
+/**
+ * Manager win-count leaderboard for any single roll of honour (a league, one cup, Masters, or one
+ * Seasonal Cup). Tracks the distinct club(s) each manager won with — a manager can appear under more
+ * than one club across seasons (a rename, or a genuinely different team they later took over) — and
+ * shows their nationality flag. Excludes the '—' sentinel (unattributed champion — see
+ * hattrick-owner-attribution-model).
+ */
+function TopManagersPanel({ winners, limit = 10 }: { winners: Winner[]; limit?: number }) {
+  const tally: Record<string, { count: number; teams: Array<{ name: string; teamId?: number }>; nationality?: string; userId?: number }> = {};
+  winners.forEach((w) => {
+    if (!w.manager || w.manager === '—') return;
+    const e = (tally[w.manager] ??= { count: 0, teams: [], nationality: w.nationality, userId: w.userId });
+    e.count++;
+    if (!e.teams.some((t) => t.name === w.club)) e.teams.push({ name: w.club, teamId: w.teamId });
+  });
+  const arr = Object.entries(tally)
+    .sort((a, b) => b[1].count - a[1].count)
+    .slice(0, limit);
+  const max = arr.length ? arr[0]![1].count : 1;
+
+  return (
+    <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+      <SectionBar>Top managers (top {limit})</SectionBar>
+      <div style={{ padding: 11, background: R.panel, display: 'flex', flexDirection: 'column', gap: 11 }}>
+        {arr.length === 0 && <div style={{ fontSize: 11, color: R.faint }}>—</div>}
+        {arr.map(([manager, { count, teams, nationality, userId }], i) => (
+          <div key={manager}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 2, gap: 8 }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                <Flag url={nationalityFlagUrl(nationality)} label={nationality} />
+                <span style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <HtLink href={userId ? hattrickManagerUrl(userId) : null}>{manager}</HtLink>
+                </span>
+              </span>
+              <span style={{ fontFamily: MONO, fontSize: 12, fontWeight: 'bold', flex: 'none', color: R.ink }}>{count}</span>
+            </div>
+            <div style={{ fontSize: 10, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 4 }}>
+              {teams.map((t, ti) => (
+                <span key={t.name}>
+                  {ti > 0 && ', '}
+                  <HtLink href={t.teamId ? hattrickTeamUrl(t.teamId) : null}>{t.name}</HtLink>
+                </span>
+              ))}
+            </div>
+            <div style={{ height: 12, border: '1px solid var(--frame,#617D54)', background: R.panel2, overflow: 'hidden' }}>
+              <span style={{ display: 'block', height: '100%', width: (count / max) * 100 + '%', background: i === 0 ? R.main : R.sec }} />
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
 }
 
 /* =========================== CUP WINNERS =========================== */
+
+type CupCategory = 'main' | 'secondary' | 'masters' | 'seasonal';
+
+const CUP_CATEGORIES: Array<{ k: CupCategory; label: string }> = [
+  { k: 'main', label: 'National cup' },
+  { k: 'secondary', label: 'National secondary cup' },
+  { k: 'masters', label: 'Hattrick Masters' },
+  { k: 'seasonal', label: 'Seasonal Cups' },
+];
+
+/** Outset/inset toggle button matching the retro Windows-98 chip look used for the trophy filters. */
+function CategoryChip({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+  const style: CSSProperties = active
+    ? {
+        display: 'inline-flex', alignItems: 'center', cursor: 'pointer', fontFamily: 'inherit', fontSize: 11,
+        padding: '4px 10px', border: '2px inset var(--btn,#EBEFE2)', background: R.btn2, color: R.ink, fontWeight: 'bold',
+      }
+    : {
+        display: 'inline-flex', alignItems: 'center', cursor: 'pointer', fontFamily: 'inherit', fontSize: 11,
+        padding: '4px 10px', border: '2px outset var(--btn,#EBEFE2)', background: 'linear-gradient(180deg,#fff,var(--btn,#EBEFE2))',
+        color: R.soft, fontWeight: 'normal',
+      };
+  return (
+    <span onClick={onClick} style={style}>
+      {label}
+    </span>
+  );
+}
 
 function RetroCupWinners({
   countries,
@@ -1020,85 +1103,242 @@ function RetroCupWinners({
   setCountry: Dispatch<SetStateAction<string>>;
   onStatus: (s: string) => void;
 }) {
+  const [category, setCategory] = useState<CupCategory>('main');
+
+  // National cups (main + secondary) — nation-based, keyed by the selected country.
   const [cups, setCups] = useState<CupRoll[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [cupsLoading, setCupsLoading] = useState(true);
+  const [secondaryCupId, setSecondaryCupId] = useState<number | null>(null);
   const countryName = countries.find((c) => c.code === country)?.name ?? '';
+
+  // Hattrick Masters — international, no country. Loaded once, lazily.
+  const [masters, setMasters] = useState<Winner[] | null>(null);
+  const [mastersLoading, setMastersLoading] = useState(false);
+
+  // Seasonal Cups — international: Supporter Week Trophy (one recurring cup) plus every
+  // "Heroes/Titans of YYYY Trophy" (Generation) cohort, each its own perpetual tournament. Loaded
+  // once, lazily.
+  const [seasonalCups, setSeasonalCups] = useState<SeasonalCupRoll[]>([]);
+  const [seasonalLoading, setSeasonalLoading] = useState(false);
+  const [seasonalCupId, setSeasonalCupId] = useState<number | null>(null);
 
   useEffect(() => {
     if (!country) return;
-    setLoading(true);
+    setCupsLoading(true);
     getCups(country)
       .then(setCups)
       .catch(() => setCups([]))
-      .finally(() => setLoading(false));
+      .finally(() => setCupsLoading(false));
   }, [country]);
 
   useEffect(() => {
-    if (!loading) onStatus(`Done. ${cups.length} cup(s) loaded.`);
-  }, [loading, cups.length, onStatus]);
+    if (category !== 'masters' || masters !== null) return;
+    setMastersLoading(true);
+    getMastersWinners()
+      .then(setMasters)
+      .catch(() => setMasters([]))
+      .finally(() => setMastersLoading(false));
+  }, [category, masters]);
+
+  useEffect(() => {
+    if (category !== 'seasonal' || seasonalCups.length > 0) return;
+    setSeasonalLoading(true);
+    getSeasonalCups()
+      .then((cs) => {
+        setSeasonalCups(cs);
+        setSeasonalCupId((cur) => cur ?? cs.find((c) => !c.isGeneration)?.cupId ?? cs[0]?.cupId ?? null);
+      })
+      .catch(() => setSeasonalCups([]))
+      .finally(() => setSeasonalLoading(false));
+  }, [category, seasonalCups.length]);
 
   const main = cups.find((c) => c.isMain) ?? null;
-  const secondary = cups.filter((c) => !c.isMain);
+  const secondaryCups = cups.filter((c) => !c.isMain);
+
+  // Keep the secondary-cup selection valid whenever the country (and thus its secondary cups) changes.
+  useEffect(() => {
+    if (!secondaryCups.some((c) => c.cupId === secondaryCupId)) {
+      setSecondaryCupId(secondaryCups[0]?.cupId ?? null);
+    }
+  }, [secondaryCups]);
+
+  const selectedSecondary = secondaryCups.find((c) => c.cupId === secondaryCupId) ?? null;
+  const supporterWeek = seasonalCups.find((c) => !c.isGeneration) ?? null;
+  const generationCohorts = seasonalCups.filter((c) => c.isGeneration).sort((a, b) => a.cupId - b.cupId);
+  const selectedSeasonal = seasonalCups.find((c) => c.cupId === seasonalCupId) ?? null;
+
+  const loading = category === 'main' || category === 'secondary' ? cupsLoading : category === 'masters' ? mastersLoading : seasonalLoading;
+
+  useEffect(() => {
+    if (loading) return;
+    const n =
+      category === 'main' ? (main ? 1 : 0)
+      : category === 'secondary' ? (selectedSecondary ? 1 : 0)
+      : category === 'masters' ? (masters ? 1 : 0)
+      : selectedSeasonal ? 1 : 0;
+    onStatus(n ? 'Done.' : 'No data stored yet.');
+  }, [loading, category, main, selectedSecondary, masters, selectedSeasonal]);
+
+  const showCountryPicker = category === 'main' || category === 'secondary';
 
   return (
     <div>
-      <div style={intro}>National cup honours, season by season &mdash; the main cup plus its secondary and consolation cups.</div>
+      <div style={intro}>
+        National and international cup honours, season by season. The national cup and its secondary/consolation cups
+        are per country; the Hattrick Masters and Seasonal Cups are global &mdash; every manager competes in the same one.
+      </div>
 
       <fieldset style={fieldset}>
-        <legend style={legend}>Select country</legend>
+        <legend style={legend}>Select competition</legend>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px 20px', alignItems: 'flex-end' }}>
           <div>
-            <div style={filterLabel}>Country</div>
-            <select value={country} onChange={(e) => setCountry(e.target.value)} style={selectStyle}>
-              {countries.map((o) => (
-                <option key={o.code} value={o.code}>
-                  {o.name}
-                </option>
+            <div style={filterLabel}>Competition</div>
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+              {CUP_CATEGORIES.map((c) => (
+                <CategoryChip key={c.k} label={c.label} active={category === c.k} onClick={() => setCategory(c.k)} />
               ))}
-            </select>
+            </div>
           </div>
+
+          {showCountryPicker && (
+            <div>
+              <div style={filterLabel}>Country</div>
+              <select value={country} onChange={(e) => setCountry(e.target.value)} style={selectStyle}>
+                {countries.map((o) => (
+                  <option key={o.code} value={o.code}>
+                    {o.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {category === 'secondary' && (
+            <div>
+              <div style={filterLabel}>Secondary cup</div>
+              <select
+                value={secondaryCupId ?? ''}
+                onChange={(e) => setSecondaryCupId(Number(e.target.value))}
+                style={selectStyle}
+                disabled={secondaryCups.length === 0}
+              >
+                {secondaryCups.map((c) => (
+                  <option key={c.cupId} value={c.cupId}>
+                    {c.cupName}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {category === 'seasonal' && (
+            <div>
+              <div style={filterLabel}>Seasonal cup</div>
+              <select
+                value={seasonalCupId ?? ''}
+                onChange={(e) => setSeasonalCupId(Number(e.target.value))}
+                style={selectStyle}
+                disabled={seasonalCups.length === 0}
+              >
+                {supporterWeek && <option value={supporterWeek.cupId}>{supporterWeek.cupName}</option>}
+                {generationCohorts.length > 0 && (
+                  <optgroup label="Heroes / Titans of YYYY (Generation)">
+                    {generationCohorts.map((c) => (
+                      <option key={c.cupId} value={c.cupId}>
+                        {c.cupName}
+                      </option>
+                    ))}
+                  </optgroup>
+                )}
+              </select>
+            </div>
+          )}
+
           <div style={{ flex: 1 }} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: R.soft }}>
-            <Flag url={leagueFlagUrl(country)} label={countryName} size={14} />
-            {countryName}
-          </div>
+          {showCountryPicker && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: R.soft }}>
+              <Flag url={leagueFlagUrl(country)} label={countryName} size={20} />
+              {countryName}
+            </div>
+          )}
         </div>
       </fieldset>
 
       {loading && <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>Loading…</div>}
-      {!loading && cups.length === 0 && (
+
+      {!loading && category === 'main' && !main && (
         <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>No cup winners stored for this country yet.</div>
       )}
-
-      {!loading && main && (
-        <div style={{ marginBottom: 14 }}>
-          <RetroCupCard cup={main} accent={R.main} tall />
+      {!loading && category === 'main' && main && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
+          <RetroCupCard name={main.cupName} winners={main.winners} accent={R.main} tall />
+          <TopManagersPanel winners={main.winners} />
         </div>
       )}
 
-      {!loading && secondary.length > 0 && (
-        <>
-          <div style={{ ...filterLabel, margin: '4px 0 10px' }}>Secondary &amp; consolation cups</div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(280px,1fr))', gap: 14, alignItems: 'start' }}>
-            {secondary.map((c) => (
-              <RetroCupCard key={c.cupId} cup={c} accent={R.sec} />
-            ))}
-          </div>
-        </>
+      {!loading && category === 'secondary' && !selectedSecondary && (
+        <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>No secondary cup winners stored for this country yet.</div>
+      )}
+      {!loading && category === 'secondary' && selectedSecondary && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
+          <RetroCupCard name={selectedSecondary.cupName} winners={selectedSecondary.winners} accent={R.sec} tall />
+          <TopManagersPanel winners={selectedSecondary.winners} />
+        </div>
+      )}
+
+      {!loading && category === 'masters' && (!masters || masters.length === 0) && (
+        <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>No Masters winners stored yet.</div>
+      )}
+      {!loading && category === 'masters' && masters && masters.length > 0 && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
+          <RetroCupCard name="Hattrick Masters" winners={masters} accent={R.main} tall sourceLabel="cupmatches (global)" />
+          <TopManagersPanel winners={masters} />
+        </div>
+      )}
+
+      {!loading && category === 'seasonal' && !selectedSeasonal && (
+        <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>No Seasonal Cup winners stored yet.</div>
+      )}
+      {!loading && category === 'seasonal' && selectedSeasonal && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
+          <RetroCupCard
+            name={selectedSeasonal.cupName}
+            winners={selectedSeasonal.winners}
+            accent={R.main}
+            tall
+            sourceLabel="ArenaHub tournament history"
+          />
+          <TopManagersPanel winners={selectedSeasonal.winners} />
+        </div>
       )}
     </div>
   );
 }
 
-function RetroCupCard({ cup, accent, tall = false }: { cup: CupRoll; accent: string; tall?: boolean }) {
-  const winners = withRuns(cup.winners);
-  const range = cup.winners.length ? `S${cup.winners[cup.winners.length - 1]!.season}–S${cup.winners[0]!.season}` : '—';
-  const showManager = cup.isMain && cup.winners.some((w) => w.manager && w.manager !== '—');
+/** A roll-of-honour card for any single competition (a cup, Masters, or one Seasonal Cup) — not
+ *  tied to CupRoll, so the same card serves national cups, the country-less international ones,
+ *  and (paired with TopManagersPanel) a single-competition drill-down. */
+function RetroCupCard({
+  name,
+  winners: winnersIn,
+  accent,
+  tall = false,
+  sourceLabel = 'cupmatches',
+}: {
+  name: string;
+  winners: Winner[];
+  accent: string;
+  tall?: boolean;
+  sourceLabel?: string;
+}) {
+  const winners = withRuns(winnersIn);
+  const range = winnersIn.length ? `S${winnersIn[winnersIn.length - 1]!.season}–S${winnersIn[0]!.season}` : '—';
+  const showManager = winnersIn.some((w) => w.manager && w.manager !== '—');
 
   return (
     <div style={{ border: '1px solid var(--frame,#617D54)' }}>
       <SectionBar>
-        <span style={{ minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{cup.cupName}</span>
+        <span style={{ minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{name}</span>
         <span style={{ flex: 1 }} />
         <span style={{ fontFamily: MONO, fontWeight: 'normal', fontSize: 10, opacity: 0.9 }}>{range}</span>
       </SectionBar>
@@ -1119,9 +1359,16 @@ function RetroCupCard({ cup, accent, tall = false }: { cup: CupRoll; accent: str
           >
             <div style={{ fontFamily: MONO, fontWeight: 'bold', fontSize: 14, color: R.ink }}>S{w.season}</div>
             <div style={{ minWidth: 0 }}>
-              <div style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{w.club}</div>
-              {showManager && w.manager !== '—' && (
-                <div style={{ fontSize: 10, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{w.manager}</div>
+              <div style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <HtLink href={w.teamId ? hattrickTeamUrl(w.teamId) : null}>{w.club}</HtLink>
+              </div>
+              {showManager && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 10, color: R.soft, overflow: 'hidden' }}>
+                  <Flag url={nationalityFlagUrl(w.nationality)} label={w.nationality} />
+                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    <HtLink href={w.userId ? hattrickManagerUrl(w.userId) : null}>{w.manager}</HtLink>
+                  </span>
+                </div>
               )}
             </div>
             <div style={{ textAlign: 'right' }}>{w.tag && <span style={runTag}>{w.tag}</span>}</div>
@@ -1129,7 +1376,7 @@ function RetroCupCard({ cup, accent, tall = false }: { cup: CupRoll; accent: str
         ))}
       </div>
       <div style={{ padding: '6px 10px', fontSize: 10, color: R.faint, fontFamily: MONO, background: R.panel2 }}>
-        {cup.winners.length} finals &middot; src: cupmatches
+        {winnersIn.length} finals &middot; src: {sourceLabel}
       </div>
     </div>
   );

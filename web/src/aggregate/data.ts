@@ -54,13 +54,18 @@ export interface Winner {
   season: number;
   club: string;
   manager: string;
+  /** Manager's nationality (country name, matches NATIONALITY_ISO in flags.ts), joined by login name
+   *  from managers.json — best-effort like the rest of the retro views' name-based joins. */
+  nationality?: string;
+  /** Real Hattrick ids, present only where the sync pipeline actually resolved them — link out to
+   *  hattrick.org when set, render as plain text otherwise. Coverage varies a lot by category:
+   *  league/national-cup champions rarely have a stored teamId (the manager is attributed directly,
+   *  without ever resolving a team), while Masters and Seasonal Cups usually do (see bake.ts). */
+  teamId?: number;
+  userId?: number;
 }
 
-export interface CupWinner {
-  season: number;
-  club: string;
-  manager: string;
-}
+export type CupWinner = Winner;
 
 export interface CupRoll {
   cupId: number;
@@ -139,9 +144,68 @@ export async function getCupCountries(): Promise<Country[]> {
   return cups.map((c) => ({ code: String(c.leagueId), name: c.country }));
 }
 
+/** International cupId of the Supporter Week Trophy — mirrors server/src/sync/seasonal.ts. Every
+ *  other entry in seasonal.json is a "Heroes/Titans of YYYY Trophy" (Generation) cohort. */
+export const SUPPORTER_WEEK_CUP_ID = 2108472;
+
+interface RawSeasonalCup {
+  cupId: number;
+  cupName: string;
+  winners: Array<{ season: number; club: string; manager: string }>;
+}
+let seasonalBundle: Promise<RawSeasonalCup[]> | null = null;
+function loadSeasonal() {
+  if (!seasonalBundle) {
+    seasonalBundle = fetch('/data/seasonal.json')
+      .then((r) => (r.ok ? (r.json() as Promise<RawSeasonalCup[]>) : []))
+      .catch(() => []);
+  }
+  return seasonalBundle;
+}
+
+export interface SeasonalCupRoll {
+  cupId: number;
+  cupName: string;
+  isGeneration: boolean; // false for Supporter Week Trophy, true for every "Heroes/Titans of YYYY" cohort
+  winners: Winner[];
+}
+
+/** Every Seasonal Cup's roll of honour — Supporter Week Trophy plus all "Heroes/Titans of YYYY"
+ *  (Generation) cohorts, each its own perpetual tournament (see sync/seasonal.ts). */
+export async function getSeasonalCups(): Promise<SeasonalCupRoll[]> {
+  const [raw, { managers }] = await Promise.all([loadSeasonal(), load()]);
+  const natByLogin = new Map(managers.map((m) => [m.userName, m.nationality]));
+  return raw.map((c) => ({
+    cupId: c.cupId,
+    cupName: c.cupName,
+    isGeneration: c.cupId !== SUPPORTER_WEEK_CUP_ID,
+    winners: c.winners.map((w) => ({ ...w, nationality: natByLogin.get(w.manager) })),
+  }));
+}
+
+let mastersBundle: Promise<Array<{ season: number; club: string; manager: string }>> | null = null;
+function loadMasters() {
+  if (!mastersBundle) {
+    mastersBundle = fetch('/data/masters.json')
+      .then((r) => (r.ok ? (r.json() as Promise<Array<{ season: number; club: string; manager: string }>>) : []))
+      .catch(() => []);
+  }
+  return mastersBundle;
+}
+
+/** The Hattrick Masters roll of honour — international, no country (see sync/masters.ts). */
+export async function getMastersWinners(): Promise<Winner[]> {
+  const [raw, { managers }] = await Promise.all([loadMasters(), load()]);
+  const natByLogin = new Map(managers.map((m) => [m.userName, m.nationality]));
+  return raw.map((w) => ({ ...w, nationality: natByLogin.get(w.manager) }));
+}
+
 export async function getCups(leagueId: string): Promise<CupRoll[]> {
-  const cups = await loadCups();
-  return cups.find((c) => String(c.leagueId) === leagueId)?.cups ?? [];
+  const [cups, { managers }] = await Promise.all([loadCups(), load()]);
+  const country = cups.find((c) => String(c.leagueId) === leagueId);
+  if (!country) return [];
+  const natByLogin = new Map(managers.map((m) => [m.userName, m.nationality]));
+  return country.cups.map((c) => ({ ...c, winners: c.winners.map((w) => ({ ...w, nationality: natByLogin.get(w.manager) })) }));
 }
 
 export async function getNationalities(): Promise<Country[]> {
@@ -227,7 +291,9 @@ export async function getCabinet(userId: number): Promise<TrophyCabinet> {
 }
 
 export async function getWinners(leagueId: string): Promise<Winner[]> {
-  const { leagues } = await load();
+  const { leagues, managers } = await load();
   const l = leagues.find((x) => String(x.leagueId) === leagueId);
-  return l ? l.champions : [];
+  if (!l) return [];
+  const natByLogin = new Map(managers.map((m) => [m.userName, m.nationality]));
+  return l.champions.map((c) => ({ ...c, nationality: natByLogin.get(c.manager) }));
 }
