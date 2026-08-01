@@ -92,7 +92,7 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
     <div className="th2000s" style={rootStyle2000s(skin)}>
       <div
         style={{
-          maxWidth: 980,
+          maxWidth: 1280,
           margin: '0 auto',
           border: '2px solid var(--frame,#617D54)',
           background: R.panel,
