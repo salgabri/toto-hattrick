@@ -10,6 +10,7 @@ import {
   getNationalities,
   getSeasonalCups,
   getWinners,
+  getWorldCup,
   type Country,
   type CupRoll,
   type Manager,
@@ -17,6 +18,7 @@ import {
   type TrophyCabinet,
   type TrophyItem,
   type Winner,
+  type WorldCupEdition,
 } from '../data.js';
 import { leagueFlagUrl, nationalityFlagUrl } from '../flags.js';
 import { R, MONO, rootStyle2000s, type Skin } from './theme2000s.js';
@@ -35,7 +37,7 @@ import './retro2000s.css';
  * toggles therefore stay inert for the total — kept for fidelity to the design.
  */
 
-export type RetroView = 'trophies' | 'leagues' | 'cups';
+export type RetroView = 'trophies' | 'leagues' | 'cups' | 'worldcup';
 
 export interface Retro2000sProps {
   defaultSkin?: Skin;
@@ -185,8 +187,10 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
             />
           ) : view === 'leagues' ? (
             <RetroLeagueWinners leagues={leagues} league={league} setLeague={setLeague} onStatus={setStatus} />
-          ) : (
+          ) : view === 'cups' ? (
             <RetroCupWinners countries={cupCountries} country={cupCountry} setCountry={setCupCountry} onStatus={setStatus} />
+          ) : (
+            <RetroWorldCup onStatus={setStatus} />
           )}
         </div>
 
@@ -219,6 +223,7 @@ const NAV: Array<{ key: RetroView; label: string }> = [
   { key: 'trophies', label: 'Trophy leaders' },
   { key: 'leagues', label: 'League winners' },
   { key: 'cups', label: 'Cup winners' },
+  { key: 'worldcup', label: 'World Cup' },
 ];
 
 function Tab({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
@@ -1378,6 +1383,144 @@ function RetroCupCard({
       <div style={{ padding: '6px 10px', fontSize: 10, color: R.faint, fontFamily: MONO, background: R.panel2 }}>
         {winnersIn.length} finals &middot; src: {sourceLabel}
       </div>
+    </div>
+  );
+}
+
+/* =========================== WORLD CUP =========================== */
+
+const WORLD_CUP_GRID = '70px minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.3fr) 90px';
+
+function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
+  const [bracket, setBracket] = useState<'senior' | 'youth'>('senior');
+  const [data, setData] = useState<{ senior: WorldCupEdition[]; youth: WorldCupEdition[] } | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    getWorldCup()
+      .then(setData)
+      .catch(() => setData({ senior: [], youth: [] }))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const editions = (data ? data[bracket] : []).slice().sort((a, b) => b.edition - a.edition);
+
+  useEffect(() => {
+    if (!loading) onStatus(`Done. ${editions.length} edition(s) loaded.`);
+  }, [loading, editions.length, onStatus]);
+
+  const tally: Record<string, number> = {};
+  for (const e of editions) if (e.champion) tally[e.champion] = (tally[e.champion] || 0) + 1;
+  const tallyArr = Object.entries(tally).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  const maxT = tallyArr.length ? tallyArr[0]![1] : 1;
+
+  return (
+    <div>
+      <div style={intro}>
+        Hattrick's international World Cup &mdash; a champion NATION per edition, not a manager. No CHPP
+        history exists for national-team competitions; this roll of honour is read from hattrick.org directly.
+      </div>
+
+      <fieldset style={fieldset}>
+        <legend style={legend}>Select bracket</legend>
+        <div style={{ display: 'flex', gap: 6 }}>
+          <CategoryChip label="Senior" active={bracket === 'senior'} onClick={() => setBracket('senior')} />
+          <CategoryChip label="Youth (U20/U21)" active={bracket === 'youth'} onClick={() => setBracket('youth')} />
+        </div>
+      </fieldset>
+
+      {loading && <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>Loading…</div>}
+
+      {!loading && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
+          <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+            <SectionBar>{bracket === 'senior' ? 'World Cup' : 'World Cup (Youth)'} &mdash; roll of honour</SectionBar>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: WORLD_CUP_GRID,
+                gap: 10,
+                padding: '6px 10px',
+                background: R.panel2,
+                borderBottom: '2px solid var(--frame,#617D54)',
+                fontSize: 10,
+                fontWeight: 'bold',
+                textTransform: 'uppercase',
+                letterSpacing: '.03em',
+                color: R.soft,
+              }}
+            >
+              <div>Ed.</div>
+              <div>Host</div>
+              <div>Champion</div>
+              <div>Runner-up</div>
+              <div>3rd/4th</div>
+              <div style={{ textAlign: 'right' }}>Finished</div>
+            </div>
+            {editions.map((e, i) => (
+              <div
+                key={e.edition}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: WORLD_CUP_GRID,
+                  gap: 10,
+                  padding: 'var(--rp,7px) 10px',
+                  borderBottom: '1px solid var(--line,#CDD7C3)',
+                  alignItems: 'center',
+                  background: i % 2 ? R.alt : R.panel,
+                }}
+              >
+                <div style={{ fontFamily: MONO, fontWeight: 'bold', fontSize: 13, color: R.ink }}>
+                  {e.edition}
+                  {e.ageGroup ? <span style={{ fontSize: 9, color: R.faint }}> {e.ageGroup}</span> : null}
+                </div>
+                <div style={{ fontSize: 11, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.host}</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                  {e.champion ? (
+                    <>
+                      <Flag url={nationalityFlagUrl(e.champion)} label={e.champion} size={16} />
+                      <span style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {e.champion}
+                      </span>
+                    </>
+                  ) : (
+                    <span style={{ fontSize: 11, color: R.faint, fontStyle: 'italic' }}>Ongoing</span>
+                  )}
+                </div>
+                <div style={{ fontSize: 11, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.runnerUp ?? '—'}</div>
+                <div style={{ fontSize: 10, color: R.faint, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {e.thirdFourth.length ? e.thirdFourth.join(', ') : '—'}
+                </div>
+                <div style={{ textAlign: 'right', fontSize: 10, color: R.faint, fontFamily: MONO }}>{e.finished ?? '—'}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+            <SectionBar>Most titles (top 10)</SectionBar>
+            <div style={{ padding: 11, background: R.panel, display: 'flex', flexDirection: 'column', gap: 11 }}>
+              {tallyArr.length === 0 && <div style={{ fontSize: 11, color: R.faint }}>—</div>}
+              {tallyArr.map(([nation, count], i) => (
+                <div key={nation}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4, gap: 8 }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                      <Flag url={nationalityFlagUrl(nation)} label={nation} />
+                      <span style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {nation}
+                      </span>
+                    </span>
+                    <span style={{ fontFamily: MONO, fontSize: 12, fontWeight: 'bold', flex: 'none', color: R.ink }}>{count}</span>
+                  </div>
+                  <div style={{ height: 12, border: '1px solid var(--frame,#617D54)', background: R.panel2, overflow: 'hidden' }}>
+                    <span style={{ display: 'block', height: '100%', width: (count / maxT) * 100 + '%', background: i === 0 ? R.main : R.sec }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -172,6 +172,27 @@ model CupChampion {
   @@index([leagueId])
 }
 
+/// A Hattrick World Cup edition (senior or youth) — international, one champion NATION per
+/// edition, not a manager/club. No CHPP path exists (cupmatches(137,*) returns nothing for
+/// national-team competitions, unlike club cups) — scraped once from the single roll-of-honour
+/// table at World/WorldCup/History.aspx (see sync/worldCup.ts). The youth bracket was called
+/// "U20" through edition 31 and "U21" from edition 32 on; ageGroup keeps the exact label shown.
+model WorldCupChampion {
+  isYouth      Boolean
+  edition      Int
+  ageGroup     String? // "U20" | "U21", set only when isYouth
+  host         String
+  finishedDate String? // "DD.MM.YYYY", null while the edition is still ongoing
+  champion     String? // nation name, null while ongoing
+  runnerUp     String?
+  thirdFourth  String  @default("") // 0-2 nation names, comma-separated (SQLite has no array type)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([isYouth, edition])
+}
+
 /// A Hattrick manager who has won at least one top-division title. Resolved from the champion
 /// team's CURRENT owner (teamdetails) — historical owners aren't exposed by CHPP. nationality
 /// comes from managercompendium. isBot/abandoned teams have no owner (userId stays unresolved).

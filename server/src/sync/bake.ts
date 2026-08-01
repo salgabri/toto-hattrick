@@ -191,5 +191,23 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   writeFileSync(`${out}/seasonal.json`, JSON.stringify(seasonalRolls));
   const seasonalTotal = seasonalRolls.reduce((n, c) => n + c.winners.length, 0);
 
-  return { managers: managers.length, leagues: leagues.length, champions: titleTotal, cups: cups.length, cupFinals: cupTitleTotal, masters: mastersWinners.length, seasonal: seasonalTotal };
+  // World Cup (senior + youth): champion is a NATION, not a manager/club — see sync/worldCup.ts.
+  // Scraped once (no CHPP path), stored in its own table, baked as its own file.
+  const wcRows = await prisma.worldCupChampion.findMany({ orderBy: [{ isYouth: 'asc' }, { edition: 'asc' }] });
+  const wcOut = (r: (typeof wcRows)[number]) => ({
+    edition: r.edition,
+    ageGroup: r.ageGroup ?? undefined,
+    host: r.host,
+    finished: r.finishedDate,
+    champion: r.champion,
+    runnerUp: r.runnerUp,
+    thirdFourth: r.thirdFourth ? r.thirdFourth.split(', ') : [],
+  });
+  const worldCup = { senior: wcRows.filter((r) => !r.isYouth).map(wcOut), youth: wcRows.filter((r) => r.isYouth).map(wcOut) };
+  writeFileSync(`${out}/worldcup.json`, JSON.stringify(worldCup));
+
+  return {
+    managers: managers.length, leagues: leagues.length, champions: titleTotal, cups: cups.length,
+    cupFinals: cupTitleTotal, masters: mastersWinners.length, seasonal: seasonalTotal,
+  };
 }

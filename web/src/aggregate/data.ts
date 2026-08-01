@@ -297,3 +297,33 @@ export async function getWinners(leagueId: string): Promise<Winner[]> {
   const natByLogin = new Map(managers.map((m) => [m.userName, m.nationality]));
   return l.champions.map((c) => ({ ...c, nationality: natByLogin.get(c.manager) }));
 }
+
+/**
+ * World Cup (senior + youth) — the champion is a NATION, not a manager/club, so it's a completely
+ * separate shape from Winner. No CHPP path exists for national-team competitions (cupmatches
+ * returns nothing); the full roll of honour was scraped once from World/WorldCup/History.aspx
+ * (see server/sync/worldCup.ts). The youth bracket was "U20" through edition 31, "U21" after.
+ */
+export interface WorldCupEdition {
+  edition: number;
+  ageGroup?: string;
+  host: string;
+  finished: string | null; // "DD.MM.YYYY", null while ongoing
+  champion: string | null; // nation name, null while ongoing
+  runnerUp: string | null;
+  thirdFourth: string[];
+}
+export interface WorldCupHistory {
+  senior: WorldCupEdition[];
+  youth: WorldCupEdition[];
+}
+
+let worldCupBundle: Promise<WorldCupHistory> | null = null;
+export async function getWorldCup(): Promise<WorldCupHistory> {
+  if (!worldCupBundle) {
+    worldCupBundle = fetch('/data/worldcup.json')
+      .then((r) => (r.ok ? (r.json() as Promise<WorldCupHistory>) : { senior: [], youth: [] }))
+      .catch(() => ({ senior: [], youth: [] }));
+  }
+  return worldCupBundle;
+}

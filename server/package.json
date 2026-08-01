@@ -16,6 +16,7 @@
     "sync:masters": "tsx src/scripts/sync-masters.ts",
     "sync:seasonal": "tsx src/scripts/sync-seasonal.ts",
     "sync:generation": "tsx src/scripts/sync-generation.ts",
+    "sync:worldcup": "tsx src/scripts/sync-worldcup.ts",
     "export:masters-unresolved": "tsx src/scripts/export-masters-unresolved.ts",
     "ingest:cup-managers": "tsx src/scripts/ingest-cup-managers.ts",
     "backfill:special": "tsx src/scripts/backfill-special.ts",
