@@ -21,7 +21,9 @@
   // Only cup-victory events carry a manager link (league-finish events don't), so a manager link +
   // a victory phrasing = a cup win, in any language. Exclude ownership events (also carry a link).
   const isOwner = (l) => /took control|took over|changed owner|has taken over|now managed by|left the club|abandoned|bought the club/i.test(l);
-  const isWin = (l) => !isOwner(l) && /victorious|\bwon\b|winner|to the title|leadership of|memorable for/i.test(l);
+  // "under the ownership of X became [global title] champions" is the Hattrick Masters win phrasing
+  // (distinct from national cups' "emerged victorious"/"managed by"/"leadership of"/"memorable for").
+  const isWin = (l) => !isOwner(l) && /victorious|\bwon\b|winner|to the title|leadership of|memorable for|became .*champions/i.test(l);
 
   // Parse one history document → { season: {userId, name} } for cup victories. null = no events
   // container (a Cloudflare/rate-limit challenge rather than a real page).
