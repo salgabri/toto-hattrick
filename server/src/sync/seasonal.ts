@@ -20,9 +20,27 @@ import { enrichUserNationalities } from './enrichManagers.js';
  * sentinel leagueId, its winners stored as CupChampion rows keyed by (cupId, tournament season). The
  * bake and frontend route these cupIds to their own "Seasonal Cups" category by id — never a national
  * cup. Add more seasonal tournaments by extending SEASONAL_CUP_IDS and ingesting their winners.
+ *
+ * "Heroes of YYYY Trophy" (the "Generation" trophies) are a SEPARATE perpetual tournament launched
+ * every real-world year since 2004 — each one keeps recurring on its own season counter forever
+ * (e.g. "Heroes of 2013 Trophy" was at S26+ while "Heroes of 2023 Trophy" had only reached S12), so
+ * unlike Supporter Week Trophy this is 23 distinct cupIds, not one. Same ingestion story: no CHPP
+ * history, read once from TournamentHistory.aspx?tournamentId=X&season=N per cohort/season — the
+ * winner sits in a `.tournamentBoxBody p` block (team link + "Managed by" manager link).
  */
 export const SUPPORTER_WEEK_CUP_ID = 2108472;
-export const SEASONAL_CUP_IDS: ReadonlySet<number> = new Set([SUPPORTER_WEEK_CUP_ID]);
+/** tournamentId of each "Heroes of YYYY Trophy" cohort, keyed by its launch year. */
+export const GENERATION_TROPHY_IDS: Readonly<Record<number, number>> = {
+  2004: 3116034, 2005: 3116057, 2006: 3116058, 2007: 3116059, 2008: 3116060,
+  2009: 3116061, 2010: 3116062, 2011: 3116063, 2012: 3116064, 2013: 3116065,
+  2014: 3116067, 2015: 3116068, 2016: 3116070, 2017: 3116071, 2018: 3195190,
+  2019: 3427550, 2020: 3704867, 2021: 4945473, 2022: 5255320, 2023: 5555820,
+  2024: 5873608, 2025: 6320224, 2026: 6758706,
+};
+export const SEASONAL_CUP_IDS: ReadonlySet<number> = new Set([
+  SUPPORTER_WEEK_CUP_ID,
+  ...Object.values(GENERATION_TROPHY_IDS),
+]);
 export const isSeasonalCup = (cupId: number): boolean => SEASONAL_CUP_IDS.has(cupId);
 
 const SEASONAL_LEAGUE_SENTINEL = 0; // no real NationalLeague; keeps it out of per-country groupings

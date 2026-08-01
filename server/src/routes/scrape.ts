@@ -17,9 +17,14 @@ export async function registerScrapeRoutes(app: FastifyInstance): Promise<void> 
   //   'masters' -> Hattrick Masters (masters-unresolved.json / masters-owners.jsonl). A separate
   //                done-set matters here: a team already scraped for its national cups (its cup
   //                seasons) still needs scraping for its Masters season, which the cup pass filtered out.
+  //   'generation' -> the "Heroes of YYYY Trophy" cohorts (generation-unresolved.json /
+  //                   generation-owners.jsonl). /done is unused for this phase (its browser script
+  //                   runs start-to-finish in one pass, not team-resumable — the same teamId can
+  //                   legitimately win multiple cohort/season editions, so teamId is not a valid
+  //                   dedup key here the way it is for the other phases).
   const phase = process.env.SCRAPE_PHASE;
-  const targetsName = phase === 'masters' ? 'masters-unresolved.json' : phase === 'cup' ? 'cup-unresolved.json' : 'unresolved.json';
-  const resultsName = phase === 'masters' ? 'masters-owners.jsonl' : phase === 'cup' ? 'cups.jsonl' : 'managers.jsonl';
+  const targetsName = phase === 'masters' ? 'masters-unresolved.json' : phase === 'cup' ? 'cup-unresolved.json' : phase === 'generation' ? 'generation-unresolved.json' : 'unresolved.json';
+  const resultsName = phase === 'masters' ? 'masters-owners.jsonl' : phase === 'cup' ? 'cups.jsonl' : phase === 'generation' ? 'generation-owners.jsonl' : 'managers.jsonl';
   const targetsFile = () => `${dir}/${targetsName}`;
   const resultsFile = () => `${dir}/${resultsName}`;
 
