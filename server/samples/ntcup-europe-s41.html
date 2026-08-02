@@ -1,0 +1,107 @@
+<!--
+  SAMPLE — Europe Cup (cupId 5001273), season 41, from
+  https://www88.hattrick.org/World/WorldCup/Cup.aspx?cupId=5001273&season=41
+
+  An excerpt of the real page as supplied on 2026-08-02, keeping every element the scraper reads:
+  the tournament + season dropdowns, the h1/byline (name + host), the status/date block, the
+  podium (champion, runner-up, JOINT third — two nations in the third slot), and the play-off tree
+  down to the Final. The eight group-standings tables and the forum/press boxes are trimmed; the
+  scrape does not read them. Do not "tidy" the markup — the selectors are modelled on it verbatim.
+-->
+<div class="sorting">
+  <select name="ctl00$ctl00$CPContent$CPMain$ddlTournaments" id="ctl00_ctl00_CPContent_CPMain_ddlTournaments" style="width:135px;">
+    <option value="5001315">World Cup</option>
+    <option value="5001278">Africa Cup</option>
+    <option value="5001277">America Cup</option>
+    <option value="5001279">Asia and Oceania Cup</option>
+    <option selected="selected" value="5001273">Europe Cup</option>
+    <option value="5001319">Nations Cup</option>
+    <option value="6244933">Contender League</option>
+  </select>
+  <select name="ctl00$ctl00$CPContent$CPMain$ddlSeasons" id="ctl00_ctl00_CPContent_CPMain_ddlSeasons">
+    <option value="33">Season 33</option>
+    <option value="34">Season 34</option>
+    <option value="35">Season 35</option>
+    <option value="36">Season 36</option>
+    <option value="37">Season 37</option>
+    <option value="38">Season 38</option>
+    <option value="39">Season 39</option>
+    <option value="40">Season 40</option>
+    <option selected="selected" value="41">Season 41</option>
+  </select>
+</div>
+
+<h1 class="hasByline">
+  Europe Cup
+</h1>
+<div class="byline">
+  Host: <a href="/Club/NationalTeam/NationalTeam.aspx?LeagueID=9&amp;LeagueOfficeTypeID=2" title="Norge">Norge</a>
+  <a href="/World/Leagues/League.aspx?LeagueID=9" class="flag inner"><img src="/Img/flags/9.png" alt="Norge" title="Norge"></a>
+</div>
+
+<div class="tournamentInfo flex">
+  <div class="tournamentInfo flex-grow">
+    <p>
+      <b>Status:</b>
+      Finished
+    </p>
+    <p>
+      <b><span id="ctl00_ctl00_CPContent_CPMain_lblNextMatch">Started on</span>:</b>
+      17-04-2026 20:00
+    </p>
+    <p>
+      <b>Final:</b>
+      19-06-2026 20:00
+    </p>
+    <div id="ctl00_ctl00_CPContent_CPMain_ucPodium_pnlPodium" class="podium podium-small ">
+      <div>
+        <div class="podium-name">
+          <div><a href="/World/Leagues/League.aspx?LeagueID=37" class="flag inner"><img src="/Img/flags/37.png" alt="România" title="România"></a> <a href="/Club/NationalTeam/NationalTeam.aspx?teamId=3020" title="România">România</a></div>
+        </div>
+        <div class="podium-kits podium-nt-kits">
+          <img id="ctl00_ctl00_CPContent_CPMain_ucPodium_imgKit1" src="//res.hattrick.org/kits/31/302/3017/3016157/preview.png" style="border-width:0px;">
+        </div>
+      </div>
+      <div>
+        <div class="podium-name">
+          <div><a href="/World/Leagues/League.aspx?LeagueID=67" class="flag inner"><img src="/Img/flags/67.png" alt="Slovensko" title="Slovensko"></a> <a href="/Club/NationalTeam/NationalTeam.aspx?teamId=3116" title="Slovensko">Slovensko</a></div>
+        </div>
+        <div class="podium-kits podium-nt-kits">
+          <img id="ctl00_ctl00_CPContent_CPMain_ucPodium_imgKit2" src="//res.hattrick.org/kits/11/102/1019/1018311/preview.png" style="border-width:0px;">
+        </div>
+      </div>
+      <div>
+        <div class="podium-name">
+          <div><a href="/World/Leagues/League.aspx?LeagueID=9" class="flag inner"><img src="/Img/flags/9.png" alt="Norge" title="Norge"></a> <a href="/Club/NationalTeam/NationalTeam.aspx?teamId=3008" title="Norge">Norge</a></div>
+          <div><a href="/World/Leagues/League.aspx?LeagueID=52" class="flag inner"><img src="/Img/flags/52.png" alt="Česko" title="Česko"></a> <a href="/Club/NationalTeam/NationalTeam.aspx?teamId=3090" title="Česko">Česko</a></div>
+        </div>
+        <div class="podium-kits podium-nt-kits">
+          <img id="ctl00_ctl00_CPContent_CPMain_ucPodium_imgKit3" src="//res.hattrick.org/kits/31/302/3019/3018561/preview.png" style="border-width:0px;">
+          <img id="ctl00_ctl00_CPContent_CPMain_ucPodium_imgKit4" src="//res.hattrick.org/kits/32/319/3189/3188453/preview.png" style="border-width:0px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>Play-offs</h2>
+<div id="ctl00_ctl00_CPContent_CPMain_ucPlayoffTree_pnlTreeWrapper">
+  <!-- NB: the tree lives inside a declarative shadow root (<template shadowrootmode="open">), so a
+       DOMParser'd copy of the page canNOT query into it — only the live rendered page can, via
+       el.shadowRoot. The podium above is plain light DOM and is the reliable champion source. -->
+  <hattrick-playoff-tree dir="ltr" pyjamas="" class="hydrated"><template shadowrootmode="open">
+    <div class="stages upper">
+      <div class="stage current-stage highlight-stage expanded expanded-next">
+        <div class="header" title="Final (19-06-2026 20:00)"><div><b>Final</b></div><span>19-06-2026 20:00</span></div>
+        <div class="matches">
+          <div class="match-wrapper" data-match-id="41231144">
+            <a class="match" href="/Club/Matches/Match.aspx?matchID=41231144&amp;SourceSystem=HTOIntegrated">
+              <div data-team-id="3020" class="team winner" title="România"><div class="name">România</div><div class="goals">3</div></div>
+              <div data-team-id="3116" class="team loser" title="Slovensko"><div class="name">Slovensko</div><div class="goals">2</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template></hattrick-playoff-tree>
+</div>

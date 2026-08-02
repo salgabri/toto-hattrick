@@ -13,28 +13,37 @@
 (() => {
   const SRV = 'http://localhost:3001';
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  // Hattrick prints dates in the ACCOUNT's chosen format — 26.02.2002 on one login, 26-08-2006 on
+  // another. Match any separator and normalise to the dots that CoachTenure and the committed
+  // worldcup-coaches.json seed use; a dot-only matcher silently produces zero tenures.
+  const DATE = /(\d{1,2})[.\-\/](\d{1,2})[.\-\/](\d{4})/;
+  const pad = (n) => (n.length < 2 ? '0' + n : n);
 
   async function scrapeTeam(teamId) {
     const url = `/en/Club/NationalTeam/NTFormerCoaches.aspx?teamId=${teamId}`;
     const res = await fetch(url);
     const html = await res.text();
     const doc = new DOMParser().parseFromString(html, 'text/html');
-    const rows = [...doc.querySelectorAll('table tr')]
-      .map((tr) => [...tr.querySelectorAll('td')])
-      .filter((cells) => cells.length === 2);
-    if (rows.length === 0) return { blocked: true };
+    // NB: identify a tenure row by "contains a date", not by cell count — the fetched page also
+    // carries the site shell's hidden shop/payment tables, whose rows have 2-3 cells too.
     const out = [];
-    for (const [dateCell, userCell] of rows) {
-      const date = dateCell.textContent.trim();
-      if (!/^\d{2}\.\d{2}\.\d{4}$/.test(date)) continue;
-      const a = userCell.querySelector('a[href*="userId="]');
+    for (const tr of doc.querySelectorAll('tr')) {
+      const cells = [...tr.querySelectorAll('td')];
+      if (!cells.length) continue;
+      const dateCell = cells.find((c) => DATE.test(c.textContent.trim()));
+      if (!dateCell) continue;
+      const m = dateCell.textContent.trim().match(DATE);
+      const a = tr.querySelector('a[href*="userId="]');
+      const other = cells.filter((c) => c !== dateCell).map((c) => c.textContent.trim()).filter(Boolean);
+      const date = `${pad(m[1])}.${pad(m[2])}.${m[3]}`;
       if (a) {
         const userId = Number((a.getAttribute('href').match(/userId=(\d+)/) || [])[1]);
         out.push({ teamId, date, userId, name: a.textContent.trim() });
       } else {
-        out.push({ teamId, date, userId: 0, name: userCell.textContent.trim() });
+        out.push({ teamId, date, userId: 0, name: other[0] || '' });
       }
     }
+    if (out.length === 0) return { blocked: true };
     return { rows: out };
   }
 

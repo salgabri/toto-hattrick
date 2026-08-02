@@ -49,8 +49,10 @@ export interface CoachTenure {
   name: string;
 }
 
+/** "DD.MM.YYYY" — but tolerate "-" and "/" too: Hattrick renders dates in the account's chosen
+ *  format, so a scrape from a different login can arrive hyphenated. */
 function parseDMY(d: string): number {
-  const [dd, mm, yyyy] = d.split('.').map(Number);
+  const [dd, mm, yyyy] = d.trim().split(' ')[0]!.split(/[.\-/]/).map(Number);
   return new Date(yyyy!, mm! - 1, dd).getTime();
 }
 
