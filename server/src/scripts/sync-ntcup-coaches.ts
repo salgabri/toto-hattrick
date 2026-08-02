@@ -30,6 +30,7 @@ console.log(`tenures: ${seed.length} seed + ${extra.length} scraped -> ${tenures
 
 const r = await attributeNtCupCoaches(access, tenures);
 console.log(`attributed ${r.attributed}/${r.eligible} national-cup seasons to a coach`);
+console.log(`medal places (silver + bronze): ${r.medals}/${r.medalSlots} attributed`);
 
 const rows = await prisma.nationalCupChampion.findMany({ where: { champion: { not: null } }, orderBy: [{ cupName: 'asc' }, { season: 'desc' }] });
 for (const row of rows) {

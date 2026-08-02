@@ -66,7 +66,14 @@ export interface NtCupSeason {
   championTeamId?: number | null;
   championLeagueId?: number | null;
   runnerUp?: string | null;
+  /** Podium ids beyond the champion — present only from the medal-capable scrape onwards, so they
+   *  are all optional and an older scrape still ingests cleanly. */
+  runnerUpTeamId?: number | null;
+  runnerUpLeagueId?: number | null;
   thirdFourth?: string[];
+  /** Index-aligned with `thirdFourth` (0-2 joint-third nations). */
+  thirdFourthTeamIds?: Array<number | null>;
+  thirdFourthLeagueIds?: Array<number | null>;
 }
 
 export interface NtCupIngestResult { seasons: number; skipped: number; withChampion: number }
@@ -103,12 +110,22 @@ export async function ingestNtCupSeasons(rows: NtCupSeason[]): Promise<NtCupInge
       championTeamId: r.championTeamId ?? null,
       championLeagueId: r.championLeagueId ?? null,
       runnerUp: r.runnerUp ?? null,
-      thirdFourth: (r.thirdFourth ?? []).join(', '),
     };
+    // Podium ids are only written when the scrape actually carried them, so re-ingesting a
+    // pre-medal file refreshes the season without blanking ids a later scrape already stored.
+    const ids = r.runnerUpTeamId !== undefined || r.thirdFourthTeamIds !== undefined
+      ? {
+          runnerUpTeamId: r.runnerUpTeamId ?? null,
+          runnerUpLeagueId: r.runnerUpLeagueId ?? null,
+          thirdFourthTeamIds: (r.thirdFourthTeamIds ?? []).map((n) => n ?? '').join(','),
+          thirdFourthLeagueIds: (r.thirdFourthLeagueIds ?? []).map((n) => n ?? '').join(','),
+        }
+      : {};
+    const thirdFourth = { thirdFourth: (r.thirdFourth ?? []).join(', ') };
     await prisma.nationalCupChampion.upsert({
       where: { cupId_season: { cupId: r.cupId, season: r.season } },
-      update: data,
-      create: { cupId: r.cupId, season: r.season, ...data },
+      update: { ...data, ...thirdFourth, ...ids },
+      create: { cupId: r.cupId, season: r.season, ...data, ...thirdFourth, ...ids },
     });
     seasons++;
     if (r.champion) withChampion++;
@@ -122,7 +139,7 @@ function parseDate(d: string): number {
   return new Date(yyyy!, mm! - 1, dd).getTime();
 }
 
-export interface NtCupAttributionResult { attributed: number; eligible: number }
+export interface NtCupAttributionResult { attributed: number; eligible: number; medals: number; medalSlots: number }
 
 /**
  * Credit each finished season to the manager coaching the champion nation when the final was
@@ -148,40 +165,66 @@ export async function attributeNtCupCoaches(token: TokenPair, tenures: CoachTenu
     readFileSync(new URL('../data/national-team-ids.json', import.meta.url), 'utf8'),
   );
 
-  const rows = await prisma.nationalCupChampion.findMany();
-  let attributed = 0;
-  let eligible = 0;
-  for (const r of rows) {
-    if (!r.champion || !r.finalDate) continue;
-    eligible++;
-    const byName = teamIds[r.champion];
-    const teamId = r.championTeamId ?? (r.isYouth ? byName?.u20TeamId : byName?.nationalTeamId);
-    if (!teamId) continue;
+  /** Whoever's tenure started most recently on/before the final — the one attribution rule, applied
+   *  to every podium place. Returns null when the team is unknown or has no tenure that far back. */
+  const coachAt = (teamId: number | null | undefined, finalMs: number): CoachTenure | null => {
+    if (!teamId) return null;
     const teamTenures = byTeam.get(teamId);
-    if (!teamTenures) continue;
-
-    const finalMs = parseDate(r.finalDate);
+    if (!teamTenures) return null;
     let coach: CoachTenure | null = null;
     for (const tn of teamTenures) {
       if (parseDate(tn.date) <= finalMs) coach = tn;
       else break;
     }
-    if (!coach) continue;
+    return coach;
+  };
+  const remember = async (coach: CoachTenure | null) => {
+    if (!coach?.userId) return;
+    await prisma.hattrickUser.upsert({
+      where: { userId: coach.userId },
+      update: { loginName: coach.name },
+      create: { userId: coach.userId, loginName: coach.name },
+    });
+  };
 
-    if (coach.userId) {
-      await prisma.hattrickUser.upsert({
-        where: { userId: coach.userId },
-        update: { loginName: coach.name },
-        create: { userId: coach.userId, loginName: coach.name },
-      });
-      attributed++;
-    }
+  const rows = await prisma.nationalCupChampion.findMany();
+  let attributed = 0;
+  let eligible = 0;
+  let medals = 0;
+  let medalSlots = 0;
+  for (const r of rows) {
+    if (!r.champion || !r.finalDate) continue;
+    eligible++;
+    const byName = teamIds[r.champion];
+    const teamId = r.championTeamId ?? (r.isYouth ? byName?.u20TeamId : byName?.nationalTeamId);
+    const finalMs = parseDate(r.finalDate);
+
+    const coach = coachAt(teamId, finalMs);
+    if (coach?.userId) attributed++;
+    await remember(coach);
+
+    // Silver and bronze, on identical evidence. Bronze is a list because both losing semi-finalists
+    // place jointly third; an unattributable slot stays empty rather than shifting the alignment.
+    const second = coachAt(r.runnerUpTeamId, finalMs);
+    const thirds = (r.thirdFourthTeamIds || '')
+      .split(',')
+      .filter((s) => s.trim())
+      .map((s) => coachAt(Number(s), finalMs));
+    await remember(second);
+    for (const t of thirds) await remember(t);
+    medalSlots += (r.runnerUpTeamId ? 1 : 0) + thirds.length;
+    medals += (second?.userId ? 1 : 0) + thirds.filter((t) => t?.userId).length;
+
     await prisma.nationalCupChampion.update({
       where: { cupId_season: { cupId: r.cupId, season: r.season } },
-      data: { championUserId: coach.userId, championUserName: coach.userId ? coach.name : null },
+      data: {
+        ...(coach ? { championUserId: coach.userId, championUserName: coach.userId ? coach.name : null } : {}),
+        runnerUpUserId: second?.userId || null,
+        thirdFourthUserIds: thirds.map((t) => t?.userId || '').join(','),
+      },
     });
   }
 
   await enrichUserNationalities(token);
-  return { attributed, eligible };
+  return { attributed, eligible, medals, medalSlots };
 }
