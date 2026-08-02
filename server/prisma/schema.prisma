@@ -204,6 +204,47 @@ model WorldCupChampion {
   @@id([isYouth, edition])
 }
 
+/// One season of a REGIONAL national-team cup — Africa / America / Asia and Oceania / Europe /
+/// Nations Cup (see sync/ntCups.ts for the registry). Same nature as WorldCupChampion (a champion
+/// NATION, no CHPP path) but a different page shape: each cup is perpetual with one champion per
+/// SEASON, read from World/WorldCup/Cup.aspx?cupId=X&season=N — which is why this is keyed
+/// (cupId, season) rather than by edition number.
+///
+/// The World Cup itself is deliberately NOT stored here: it keeps its History.aspx roll of honour
+/// in WorldCupChampion, so a title can never be counted twice. isYouth is carried per row (fed
+/// from the registry) so the U21 cup ids can be added without a migration — it selects which team
+/// entity coach attribution resolves against (nationalTeamId vs u20TeamId).
+model NationalCupChampion {
+  cupId   Int
+  season  Int
+  cupName String
+  isYouth Boolean @default(false)
+  host    String  @default("")
+  /// "DD-MM-YYYY" as printed on the page (NB: hyphens here, unlike WorldCupChampion's dots) — the
+  /// final's date, and the instant coach attribution is measured at. Null while a season is running.
+  finalDate   String?
+  startedDate String?
+  status      String? // "Finished" | "Ongoing" | … as printed
+  champion    String? // nation name, null until the final is played
+  runnerUp    String?
+  thirdFourth String  @default("") // 0-2 nation names, comma-separated (SQLite has no array type)
+  /// Nation team ids from the podium links — the champion's is what coach attribution keys off, so
+  /// no name-matching against national-team-ids.json is needed for rows that carry it.
+  championTeamId Int?
+  championLeagueId Int?
+  /// The manager coaching the champion nation when the final was played, same tenure cross-reference
+  /// as WorldCupChampion. Null when unattributed.
+  championUserId   Int?
+  championUserName String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([cupId, season])
+  @@index([season])
+  @@index([championUserId])
+}
+
 /// A country's National Coach election result for one World Cup cycle — who the community voted
 /// to lead their national team, independent of whether that country ever won anything. No CHPP
 /// path (same story as WorldCupChampion); scraped once per country from World/Elections/

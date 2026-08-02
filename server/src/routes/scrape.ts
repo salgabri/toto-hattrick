@@ -28,6 +28,10 @@ export async function registerScrapeRoutes(app: FastifyInstance): Promise<void> 
   //   'elections' -> a country's National Coach election history (elections-unresolved.json /
   //                  elections.jsonl). "teamId" here is actually a leagueId — the generic /done
   //                  dedup only cares that it's a stable numeric key, scraped once per country.
+  //   'ntcups'  -> the regional national-team cups (-> ntcups.jsonl). The ONLY target-less phase:
+  //                its console script carries the five cup ids itself and runs standalone, so
+  //                /targets is unused — only /results and /done (keyed by cupId) apply. Running the
+  //                phase is optional; the script downloads a .jsonl either way (see sync/ntCups.ts).
   const phase = process.env.SCRAPE_PHASE;
   const targetsName =
     phase === 'masters' ? 'masters-unresolved.json'
@@ -42,6 +46,7 @@ export async function registerScrapeRoutes(app: FastifyInstance): Promise<void> 
     : phase === 'generation' ? 'generation-owners.jsonl'
     : phase === 'worldcup-coaches' ? 'worldcup-coaches.jsonl'
     : phase === 'elections' ? 'elections.jsonl'
+    : phase === 'ntcups' ? 'ntcups.jsonl'
     : 'managers.jsonl';
   const targetsFile = () => `${dir}/${targetsName}`;
   const resultsFile = () => `${dir}/${resultsName}`;
