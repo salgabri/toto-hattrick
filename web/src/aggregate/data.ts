@@ -345,3 +345,48 @@ export async function getWorldCup(): Promise<WorldCupHistory> {
   }
   return worldCupBundle;
 }
+
+/**
+ * National Coach elections — who a country's community voted to lead their national team for a
+ * given World Cup cycle, independent of whether that country ever won anything. No CHPP path
+ * exists; scraped once per country from World/Elections/History.aspx (see server/sync/elections.ts).
+ * A country can list the SAME edition twice (a mid-cycle re-election) — that's intentional, not a
+ * duplicate to collapse.
+ */
+export interface ElectionResult {
+  leagueId: number;
+  countryName: string;
+  edition: number;
+  host: string;
+  winnerUserId?: number;
+  winner?: string; // undefined = "A former user" (unattributed sentinel)
+  winnerNationality?: string;
+  votes?: string; // raw "37 (44%)" text
+}
+
+let electionsBundle: Promise<ElectionResult[]> | null = null;
+function loadElections() {
+  if (!electionsBundle) {
+    electionsBundle = fetch('/data/elections.json')
+      .then((r) => (r.ok ? (r.json() as Promise<ElectionResult[]>) : []))
+      .catch(() => []);
+  }
+  return electionsBundle;
+}
+
+export async function getElectionCountries(): Promise<Country[]> {
+  const rows = await loadElections();
+  const seen = new Map<number, string>();
+  for (const r of rows) if (!seen.has(r.leagueId)) seen.set(r.leagueId, r.countryName);
+  return [...seen.entries()].map(([code, name]) => ({ code: String(code), name })).sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export async function getElections(leagueId: string): Promise<ElectionResult[]> {
+  const rows = await loadElections();
+  return rows.filter((r) => String(r.leagueId) === leagueId).sort((a, b) => b.edition - a.edition);
+}
+
+/** Every election result, for the global "most elected" leaderboard (not scoped to one country). */
+export async function getAllElections(): Promise<ElectionResult[]> {
+  return loadElections();
+}

@@ -25,18 +25,23 @@ export async function registerScrapeRoutes(app: FastifyInstance): Promise<void> 
   //   'worldcup-coaches' -> a national team's full coaching-tenure history (World Cup manager
   //                         attribution — worldcup-coaches-unresolved.json / worldcup-coaches.jsonl).
   //                         teamId IS a valid /done key here: each team's history is scraped once.
+  //   'elections' -> a country's National Coach election history (elections-unresolved.json /
+  //                  elections.jsonl). "teamId" here is actually a leagueId — the generic /done
+  //                  dedup only cares that it's a stable numeric key, scraped once per country.
   const phase = process.env.SCRAPE_PHASE;
   const targetsName =
     phase === 'masters' ? 'masters-unresolved.json'
     : phase === 'cup' ? 'cup-unresolved.json'
     : phase === 'generation' ? 'generation-unresolved.json'
     : phase === 'worldcup-coaches' ? 'worldcup-coaches-unresolved.json'
+    : phase === 'elections' ? 'elections-unresolved.json'
     : 'unresolved.json';
   const resultsName =
     phase === 'masters' ? 'masters-owners.jsonl'
     : phase === 'cup' ? 'cups.jsonl'
     : phase === 'generation' ? 'generation-owners.jsonl'
     : phase === 'worldcup-coaches' ? 'worldcup-coaches.jsonl'
+    : phase === 'elections' ? 'elections.jsonl'
     : 'managers.jsonl';
   const targetsFile = () => `${dir}/${targetsName}`;
   const resultsFile = () => `${dir}/${resultsName}`;

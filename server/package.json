@@ -20,6 +20,8 @@
     "backfill:national-team-ids": "tsx src/scripts/backfill-national-team-ids.ts",
     "export:worldcup-coach-targets": "tsx src/scripts/export-worldcup-coach-targets.ts",
     "sync:worldcup-coaches": "tsx src/scripts/sync-worldcup-coaches.ts",
+    "export:election-targets": "tsx src/scripts/export-election-targets.ts",
+    "sync:elections": "tsx src/scripts/sync-elections.ts",
     "export:masters-unresolved": "tsx src/scripts/export-masters-unresolved.ts",
     "ingest:cup-managers": "tsx src/scripts/ingest-cup-managers.ts",
     "backfill:special": "tsx src/scripts/backfill-special.ts",

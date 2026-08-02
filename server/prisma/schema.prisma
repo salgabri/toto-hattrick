@@ -204,6 +204,34 @@ model WorldCupChampion {
   @@id([isYouth, edition])
 }
 
+/// A country's National Coach election result for one World Cup cycle — who the community voted
+/// to lead their national team, independent of whether that country ever won anything. No CHPP
+/// path (same story as WorldCupChampion); scraped once per country from World/Elections/
+/// History.aspx?LeagueID=X, which — unlike NTFormerCoaches — links the winner's userId directly,
+/// no date-matching needed. "A former user" (no link) is the same unattributed sentinel used
+/// everywhere else.
+///
+/// (leagueId, edition) is NOT unique: a re-election can happen within the same cycle (a coach
+/// stepping down mid-term triggers a new vote for the same World Cup N), so this ingests as a
+/// re-sync — clear each country's rows and reinsert — rather than a per-row upsert, or the earlier
+/// winner in a repeated cycle would be silently lost.
+model NationalCoachElection {
+  id          Int    @id @default(autoincrement())
+  leagueId    Int
+  countryName String
+  edition     Int // the "World Cup N" cycle this election was held for
+  host        String
+  winnerUserId   Int?
+  winnerUserName String?
+  votes          String? // raw "37 (44%)" text from the page
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([leagueId])
+  @@index([winnerUserId])
+}
+
 /// A Hattrick manager who has won at least one top-division title. Resolved from the champion
 /// team's CURRENT owner (teamdetails) — historical owners aren't exposed by CHPP. nationality
 /// comes from managercompendium. isBot/abandoned teams have no owner (userId stays unresolved).

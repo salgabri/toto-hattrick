@@ -233,6 +233,20 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   const worldCup = { senior: wcRows.filter((r) => !r.isYouth).map(wcOut), youth: wcRows.filter((r) => r.isYouth).map(wcOut) };
   writeFileSync(`${out}/worldcup.json`, JSON.stringify(worldCup));
 
+  // National Coach elections — per-country, independent of World Cup outcome (see sync/elections.ts).
+  const electionRows = await prisma.nationalCoachElection.findMany({ orderBy: [{ countryName: 'asc' }, { edition: 'asc' }] });
+  const elections = electionRows.map((r) => ({
+    leagueId: r.leagueId,
+    countryName: r.countryName,
+    edition: r.edition,
+    host: r.host,
+    winnerUserId: r.winnerUserId ?? undefined,
+    winner: r.winnerUserName ?? undefined,
+    winnerNationality: r.winnerUserId ? natById.get(r.winnerUserId) : undefined,
+    votes: r.votes ?? undefined,
+  }));
+  writeFileSync(`${out}/elections.json`, JSON.stringify(elections));
+
   return {
     managers: managers.length, leagues: leagues.length, champions: titleTotal, cups: cups.length,
     cupFinals: cupTitleTotal, masters: mastersWinners.length, seasonal: seasonalTotal,

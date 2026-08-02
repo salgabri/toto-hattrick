@@ -1,9 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { CSSProperties, Dispatch, ReactNode, SetStateAction } from 'react';
 import {
+  getAllElections,
   getCabinet,
   getCupCountries,
   getCups,
+  getElectionCountries,
+  getElections,
   getLeagues,
   getManagers,
   getMastersWinners,
@@ -13,6 +16,7 @@ import {
   getWorldCup,
   type Country,
   type CupRoll,
+  type ElectionResult,
   type Manager,
   type SeasonalCupRoll,
   type TrophyCabinet,
@@ -37,7 +41,7 @@ import './retro2000s.css';
  * toggles therefore stay inert for the total — kept for fidelity to the design.
  */
 
-export type RetroView = 'trophies' | 'leagues' | 'cups' | 'worldcup';
+export type RetroView = 'trophies' | 'leagues' | 'cups' | 'worldcup' | 'elections';
 
 export interface Retro2000sProps {
   defaultSkin?: Skin;
@@ -55,12 +59,14 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [league, setLeague] = useState<string>('');
   const [cupCountry, setCupCountry] = useState<string>('');
+  const [electionCountry, setElectionCountry] = useState<string>('');
   const [, setStatus] = useState('Ready.');
 
   // Reference lists (loaded once).
   const [nationalities, setNationalities] = useState<Country[]>([]);
   const [leagues, setLeagues] = useState<Country[]>([]);
   const [cupCountries, setCupCountries] = useState<Country[]>([]);
+  const [electionCountries, setElectionCountries] = useState<Country[]>([]);
   const [managersTracked, setManagersTracked] = useState<number | null>(null);
 
   useEffect(() => {
@@ -80,6 +86,12 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
         setCupCountry((cur) => cur || cs.find((x) => x.code === '4')?.code || cs[0]?.code || '');
       })
       .catch(() => setCupCountries([]));
+    getElectionCountries()
+      .then((cs) => {
+        setElectionCountries(cs);
+        setElectionCountry((cur) => cur || cs[0]?.code || '');
+      })
+      .catch(() => setElectionCountries([]));
   }, []);
 
   const skinBtn: CSSProperties = {
@@ -189,8 +201,10 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
             <RetroLeagueWinners leagues={leagues} league={league} setLeague={setLeague} onStatus={setStatus} />
           ) : view === 'cups' ? (
             <RetroCupWinners countries={cupCountries} country={cupCountry} setCountry={setCupCountry} onStatus={setStatus} />
-          ) : (
+          ) : view === 'worldcup' ? (
             <RetroWorldCup onStatus={setStatus} />
+          ) : (
+            <RetroElections countries={electionCountries} country={electionCountry} setCountry={setElectionCountry} onStatus={setStatus} />
           )}
         </div>
 
@@ -224,6 +238,7 @@ const NAV: Array<{ key: RetroView; label: string }> = [
   { key: 'leagues', label: 'League winners' },
   { key: 'cups', label: 'Cup winners' },
   { key: 'worldcup', label: 'World Cup' },
+  { key: 'elections', label: 'Elections' },
 ];
 
 function Tab({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
@@ -392,8 +407,8 @@ function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean) {
     { label: 'Championships', dot: R.champ, items: pick(tr.champ), excluded: !inc.champ },
     { label: 'Main cups', dot: R.main, items: pick(tr.main), excluded: !inc.main },
     { label: 'Hattrick Masters', dot: R.masters, items: pick(tr.other), excluded: !inc.hm },
-    { label: 'Seasonal cups', dot: R.seasonal, items: pick(tr.seasonal), excluded: !inc.sn },
     { label: 'World Cup', dot: R.worldCup, items: pick(tr.worldCup), excluded: !inc.wc },
+    { label: 'Seasonal cups', dot: R.seasonal, items: pick(tr.seasonal), excluded: !inc.sn },
     { label: 'Secondary cups', dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
   ].filter((c) => c.items.length);
 }
@@ -494,8 +509,8 @@ function RetroTrophyLeaders({
     { k: 'champ', label: 'Championships' },
     { k: 'main', label: 'Main cups' },
     { k: 'hm', label: 'Masters' },
-    { k: 'sn', label: 'Seasonal' },
     { k: 'wc', label: 'World Cup' },
+    { k: 'sn', label: 'Seasonal' },
     { k: 'sec', label: 'Secondary' },
   ];
 
@@ -652,8 +667,8 @@ function RetroTrophyLeaders({
           if (inc.champ && e.lg) segRaw.push({ n: e.lg, color: R.champ });
           if (inc.main && e.main) segRaw.push({ n: e.main, color: R.main });
           if (inc.hm && e.hm) segRaw.push({ n: e.hm, color: R.masters });
-          if (inc.sn && e.sn) segRaw.push({ n: e.sn, color: R.seasonal });
           if (inc.wc && e.wc) segRaw.push({ n: e.wc, color: R.worldCup });
+          if (inc.sn && e.sn) segRaw.push({ n: e.sn, color: R.seasonal });
           if (inc.sec && e.sec) segRaw.push({ n: e.sec, color: R.sec });
           const tot = e.ft || 1;
           const breakdown = segRaw.map((s) => s.n).join(' + ') || '0';
@@ -832,8 +847,8 @@ function RetroTrophyLeaders({
         <LegendSwatch color={R.champ} label="Championships" />
         <LegendSwatch color={R.main} label="Main cups" />
         <LegendSwatch color={R.masters} label="Masters" />
-        <LegendSwatch color={R.seasonal} label="Seasonal" />
         <LegendSwatch color={R.worldCup} label="World Cup" />
+        <LegendSwatch color={R.seasonal} label="Seasonal" />
         <LegendSwatch color={R.sec} label="Secondary" />
         <span style={{ flex: 1 }} />
         <span style={{ fontFamily: MONO, color: R.faint }}>src: leaguefixtures &middot; team history</span>
@@ -1571,6 +1586,172 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+/* =========================== ELECTIONS =========================== */
+
+const ELECTION_GRID = '60px minmax(0,1fr) minmax(0,1fr) 100px';
+
+function RetroElections({
+  countries,
+  country,
+  setCountry,
+  onStatus,
+}: {
+  countries: Country[];
+  country: string;
+  setCountry: Dispatch<SetStateAction<string>>;
+  onStatus: (s: string) => void;
+}) {
+  const [rows, setRows] = useState<ElectionResult[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [allRows, setAllRows] = useState<ElectionResult[]>([]);
+  const countryName = countries.find((c) => c.code === country)?.name ?? '';
+
+  useEffect(() => {
+    if (!country) return;
+    setLoading(true);
+    getElections(country)
+      .then(setRows)
+      .catch(() => setRows([]))
+      .finally(() => setLoading(false));
+  }, [country]);
+
+  useEffect(() => {
+    getAllElections().then(setAllRows).catch(() => setAllRows([]));
+  }, []);
+
+  useEffect(() => {
+    if (!loading) onStatus(`Done. ${rows.length} election(s) loaded.`);
+  }, [loading, rows.length, onStatus]);
+
+  const tally: Record<string, { count: number; userId?: number; nationality?: string }> = {};
+  for (const r of allRows) {
+    if (!r.winner) continue;
+    const e = (tally[r.winner] ??= { count: 0, userId: r.winnerUserId, nationality: r.winnerNationality });
+    e.count++;
+  }
+  const tallyArr = Object.entries(tally).sort((a, b) => b[1].count - a[1].count).slice(0, 10);
+  const maxT = tallyArr.length ? tallyArr[0]![1].count : 1;
+
+  return (
+    <div>
+      <div style={intro}>
+        National Coach elections &mdash; who each country's community voted to lead their national team for a
+        given World Cup cycle, independent of whether that country ever won anything.
+      </div>
+
+      <fieldset style={fieldset}>
+        <legend style={legend}>Select country</legend>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px 20px', alignItems: 'flex-end' }}>
+          <div>
+            <div style={filterLabel}>Country</div>
+            <select value={country} onChange={(e) => setCountry(e.target.value)} style={selectStyle}>
+              {countries.map((o) => (
+                <option key={o.code} value={o.code}>
+                  {o.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div style={{ flex: 1 }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: R.soft }}>
+            <Flag url={leagueFlagUrl(country)} label={countryName} size={20} />
+            {countryName}
+          </div>
+        </div>
+      </fieldset>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
+        <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+          <SectionBar>{countryName} &mdash; National Coach elections</SectionBar>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: ELECTION_GRID,
+              gap: 10,
+              padding: '6px 10px',
+              background: R.panel2,
+              borderBottom: '2px solid var(--frame,#617D54)',
+              fontSize: 10,
+              fontWeight: 'bold',
+              textTransform: 'uppercase',
+              letterSpacing: '.03em',
+              color: R.soft,
+            }}
+          >
+            <div>WC</div>
+            <div>Host</div>
+            <div>Winner</div>
+            <div style={{ textAlign: 'right' }}>Votes</div>
+          </div>
+
+          {rows.map((r, i) => (
+            <div
+              key={`${r.edition}-${i}`}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: ELECTION_GRID,
+                gap: 10,
+                padding: 'var(--rp,7px) 10px',
+                borderBottom: '1px solid var(--line,#CDD7C3)',
+                alignItems: 'center',
+                background: i % 2 ? R.alt : R.panel,
+              }}
+            >
+              <div style={{ fontFamily: MONO, fontWeight: 'bold', fontSize: 13, color: R.ink }}>{r.edition}</div>
+              <div style={{ fontSize: 11, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.host}</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                {r.winner ? (
+                  <>
+                    <Flag url={nationalityFlagUrl(r.winnerNationality)} label={r.winnerNationality} size={14} />
+                    <span style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <HtLink href={r.winnerUserId ? hattrickManagerUrl(r.winnerUserId) : null}>{r.winner}</HtLink>
+                    </span>
+                  </>
+                ) : (
+                  <span style={{ fontSize: 12, color: R.faint }}>—</span>
+                )}
+              </div>
+              <div style={{ textAlign: 'right', fontSize: 10, color: R.faint, fontFamily: MONO }}>{r.votes ?? '—'}</div>
+            </div>
+          ))}
+
+          {loading && <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>Loading…</div>}
+          {!loading && rows.length === 0 && (
+            <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>No elections stored for this country yet.</div>
+          )}
+
+          <div style={{ padding: '6px 10px', fontSize: 10, color: R.faint, fontFamily: MONO, background: R.panel2 }}>
+            src: World/Elections/History.aspx
+          </div>
+        </div>
+
+        <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+          <SectionBar>Most elected (top 10)</SectionBar>
+          <div style={{ padding: 11, background: R.panel, display: 'flex', flexDirection: 'column', gap: 11 }}>
+            {tallyArr.length === 0 && <div style={{ fontSize: 11, color: R.faint }}>—</div>}
+            {tallyArr.map(([name, { count, userId, nationality }], i) => (
+              <div key={name}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4, gap: 8 }}>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                    <Flag url={nationalityFlagUrl(nationality)} label={nationality} />
+                    <span style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <HtLink href={userId ? hattrickManagerUrl(userId) : null}>{name}</HtLink>
+                    </span>
+                  </span>
+                  <span style={{ fontFamily: MONO, fontSize: 12, fontWeight: 'bold', flex: 'none', color: R.ink }}>{count}</span>
+                </div>
+                <div style={{ height: 12, border: '1px solid var(--frame,#617D54)', background: R.panel2, overflow: 'hidden' }}>
+                  <span style={{ display: 'block', height: '100%', width: (count / maxT) * 100 + '%', background: i === 0 ? R.main : R.sec }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
