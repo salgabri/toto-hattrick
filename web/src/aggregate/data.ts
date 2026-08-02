@@ -9,7 +9,7 @@
  * re-deploy to refresh.
  */
 
-import { leagueFlagUrl } from './flags.js';
+import { leagueFlagUrl, nationFlagUrl } from './flags.js';
 
 export interface Country {
   code: string;
@@ -62,6 +62,10 @@ export interface TrophyCabinet {
   other: TrophyItem[]; // the Hattrick Masters
   seasonal: TrophyItem[]; // Seasonal Cups (Supporter Week Trophy)
   worldCup: TrophyItem[]; // "National trophies" — titles won as a national coach (World Cup today)
+  /** Podium places short of the title, in those same national competitions. Kept apart from
+   *  `worldCup` so a medal is never mistaken for a trophy — the UI shows them as their own groups. */
+  silver: TrophyItem[];
+  bronze: TrophyItem[];
 }
 
 export interface Winner {
@@ -129,6 +133,8 @@ interface RawManager {
   masters?: RawCup[];
   seasonal?: RawCup[];
   worldCup?: RawCup[];
+  /** One entry per podium place short of the title: place 2 = silver, 3 = bronze. */
+  medals?: Array<{ cup: string; season: number; nation: string; leagueId?: number; place: number }>;
 }
 interface RawLeague {
   leagueId: number;
@@ -314,9 +320,18 @@ export async function getCabinet(userId: number): Promise<TrophyCabinet> {
   // `other` carries the Hattrick Masters, `seasonal` the Seasonal Cups, `worldCup` the World Cup
   // (senior + youth) — each its own category (see bake.ts / sync/masters.ts / sync/seasonal.ts /
   // sync/worldCup.ts). All three are country-less, so no flag.
+  // National-team rows flag by id first, name second — see flags.ts nationFlagUrl for why.
+  const nationFlag = nationFlagUrl;
+  const nationalItems = (cups?: RawCup[]) =>
+    (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, teamId: t.teamId, season: 'S' + t.season, last: t.last, flag: nationFlag(t.club, t.leagueId) }));
+  const medalItems = (place: number) =>
+    (m?.medals ?? [])
+      .filter((x) => x.place === place)
+      .map((x) => ({ main: x.cup, sub: x.nation, season: 'S' + x.season, flag: nationFlag(x.nation, x.leagueId) }));
   return {
     champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec),
-    other: cupItems(m?.masters), seasonal: cupItems(m?.seasonal), worldCup: cupItems(m?.worldCup),
+    other: cupItems(m?.masters), seasonal: cupItems(m?.seasonal), worldCup: nationalItems(m?.worldCup),
+    silver: medalItems(2), bronze: medalItems(3),
   };
 }
 
@@ -342,6 +357,11 @@ export interface WorldCupEdition {
   champion: string | null; // nation name, null while ongoing
   runnerUp: string | null;
   thirdFourth: string[];
+  /** Set for the regional cups (scraped from Cup.aspx podium links); absent for World Cup editions,
+   *  whose History.aspx source carries names only. Flags fall back to the name there. */
+  championLeagueId?: number;
+  runnerUpLeagueId?: number;
+  thirdFourthLeagueIds?: number[];
   /** The manager coaching the champion nation when the edition finished (cross-referenced from
    *  NTFormerCoaches.aspx — see sync/worldCup.ts). Undefined when unattributed: "Retired user"
    *  tenure, no tenure recorded that far back, or the nation's team id never resolved. */
@@ -362,6 +382,10 @@ export interface RegionalCupSeason {
   champion: string | null;
   runnerUp: string | null;
   thirdFourth: string[];
+  /** Podium league ids, index-aligned with `thirdFourth` — the reliable flag key (see flags.ts). */
+  championLeagueId?: number;
+  runnerUpLeagueId?: number;
+  thirdFourthLeagueIds?: number[];
   coachUserId?: number;
   coach?: string;
   coachNationality?: string;
@@ -399,6 +423,9 @@ export async function getWorldCup(): Promise<WorldCupHistory> {
  */
 export interface NationalCompetition {
   key: string;
+  /** Cup names as they appear in a manager's baked record — the join key for per-coach medals.
+   *  Usually one, and NOT always the display label (the youth World Cup bakes as "World Cup (Youth)"). */
+  matchCups: string[];
   /** Full name, e.g. "U21 Europe Cup" — always shown on the roll of honour itself. */
   label: string;
   /** Bracket-independent name, e.g. "Europe Cup". Lets the senior and U21 lists read as the same
@@ -412,12 +439,13 @@ export interface NationalCompetition {
 export async function getNationalCompetitions(): Promise<NationalCompetition[]> {
   const wc = await getWorldCup();
   const comps: NationalCompetition[] = [
-    { key: 'senior', label: 'World Cup', shortLabel: 'World Cup', isYouth: false, unitLabel: 'Ed.', rows: wc.senior },
-    { key: 'youth', label: 'World Cup (Youth U20/U21)', shortLabel: 'World Cup', isYouth: true, unitLabel: 'Ed.', rows: wc.youth },
+    { key: 'senior', matchCups: ['World Cup'], label: 'World Cup', shortLabel: 'World Cup', isYouth: false, unitLabel: 'Ed.', rows: wc.senior },
+    { key: 'youth', matchCups: ['World Cup (Youth)'], label: 'World Cup (Youth U20/U21)', shortLabel: 'World Cup', isYouth: true, unitLabel: 'Ed.', rows: wc.youth },
   ];
   for (const cup of wc.regional ?? []) {
     comps.push({
       key: `cup-${cup.cupId}`,
+      matchCups: [cup.cupName],
       label: cup.cupName,
       shortLabel: cup.cupName.replace(/^U21\s+/, ''),
       isYouth: cup.isYouth,
@@ -429,6 +457,9 @@ export async function getNationalCompetitions(): Promise<NationalCompetition[]> 
         champion: s.champion,
         runnerUp: s.runnerUp,
         thirdFourth: s.thirdFourth,
+        championLeagueId: s.championLeagueId,
+        runnerUpLeagueId: s.runnerUpLeagueId,
+        thirdFourthLeagueIds: s.thirdFourthLeagueIds,
         coachUserId: s.coachUserId,
         coach: s.coach,
         coachNationality: s.coachNationality,
@@ -436,6 +467,38 @@ export async function getNationalCompetitions(): Promise<NationalCompetition[]> 
     });
   }
   return comps.filter((c) => c.rows.length > 0);
+}
+
+/** A coach's podium record in national-team competitions. */
+export interface CoachMedals {
+  userId: number;
+  name: string;
+  nationality?: string;
+  g: number;
+  s: number;
+  b: number;
+}
+
+/**
+ * Medal table by COACH, for the given competitions (matched on the cup names a manager's record
+ * carries). Built from managers.json rather than worldcup.json: the rolls of honour name the
+ * champion's coach only, while a manager's own record holds every podium place they took.
+ *
+ * World Cup editions therefore show golds but no medals — their History.aspx source never carried
+ * a runner-up coach, unlike the regional cups scraped from the podium.
+ */
+export async function getCoachMedals(matchCups: string[]): Promise<CoachMedals[]> {
+  const { managers } = await load();
+  const want = new Set(matchCups);
+  const out: CoachMedals[] = [];
+  for (const m of managers) {
+    const g = (m.worldCup ?? []).filter((t) => want.has(t.cup)).length;
+    const medals = (m.medals ?? []).filter((x) => want.has(x.cup));
+    const s = medals.filter((x) => x.place === 2).length;
+    const b = medals.filter((x) => x.place === 3).length;
+    if (g + s + b > 0) out.push({ userId: m.userId, name: m.userName, nationality: m.nationality, g, s, b });
+  }
+  return out.sort((a, b2) => b2.g - a.g || b2.s - a.s || b2.b - a.b || a.name.localeCompare(b2.name));
 }
 
 /**
