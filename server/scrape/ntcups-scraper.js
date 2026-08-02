@@ -37,6 +37,11 @@
     { cupId: 5001279, name: 'Asia and Oceania Cup' },
     { cupId: 5001273, name: 'Europe Cup' },
     { cupId: 5001319, name: 'Nations Cup' },
+    { cupId: 4878492, name: 'U21 Africa Cup' },
+    { cupId: 4878490, name: 'U21 America Cup' },
+    { cupId: 4878493, name: 'U21 Asia and Oceania Cup' },
+    { cupId: 4878483, name: 'U21 Europe Cup' },
+    { cupId: 4892615, name: 'U21 Nations Cup' },
   ];
 
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -101,7 +106,13 @@
       championTeamId: first ? first.teamId : null,
       championLeagueId: first ? first.leagueId : null,
       runnerUp: second ? second.name : null,
+      // The whole podium's ids, not just the champion's — a medal table has to be attributable to
+      // coaches the same way a title is, and these ids are the only thing the page can give us.
+      runnerUpTeamId: second ? second.teamId : null,
+      runnerUpLeagueId: second ? second.leagueId : null,
       thirdFourth: third.map((n) => n.name),
+      thirdFourthTeamIds: third.map((n) => n.teamId),
+      thirdFourthLeagueIds: third.map((n) => n.leagueId),
     };
   }
 

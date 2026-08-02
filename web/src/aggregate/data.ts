@@ -30,6 +30,10 @@ export interface Manager {
    *  the regional and alternate cups will land in this same bucket (see sync/worldCup.ts). The
    *  `wc`/`worldCup` names are the baked wire format and stay as they are. */
   wc: number;
+  /** Podium places short of the title, in those same national competitions. Never folded into `wc`:
+   *  a runner-up is not a trophy, so titles-only totals stay exactly what they always were. */
+  wcSilver: number;
+  wcBronze: number;
   oth: number;
   lgLast: number; // reigning league titles (current champion of that league)
   mainLast: number; // reigning main-cup titles (current holder of that cup)
@@ -111,6 +115,8 @@ interface RawManager {
   hm?: number;
   sn?: number;
   wc?: number;
+  wcSilver?: number;
+  wcBronze?: number;
   lgLast?: number;
   mainLast?: number;
   secLast?: number;
@@ -276,6 +282,8 @@ export async function getManagers(nationality?: string): Promise<Manager[]> {
         hm: m.hm ?? 0,
         sn: m.sn ?? 0,
         wc: m.wc ?? 0,
+        wcSilver: m.wcSilver ?? 0,
+        wcBronze: m.wcBronze ?? 0,
         oth: 0,
         lgLast,
         mainLast: m.mainLast ?? (m.cupsMain ?? []).filter((c) => c.last).length,
@@ -391,7 +399,12 @@ export async function getWorldCup(): Promise<WorldCupHistory> {
  */
 export interface NationalCompetition {
   key: string;
+  /** Full name, e.g. "U21 Europe Cup" — always shown on the roll of honour itself. */
   label: string;
+  /** Bracket-independent name, e.g. "Europe Cup". Lets the senior and U21 lists read as the same
+   *  set of competitions, and lets a bracket switch stay on the competition you were looking at. */
+  shortLabel: string;
+  isYouth: boolean;
   unitLabel: string;
   rows: WorldCupEdition[];
 }
@@ -399,13 +412,15 @@ export interface NationalCompetition {
 export async function getNationalCompetitions(): Promise<NationalCompetition[]> {
   const wc = await getWorldCup();
   const comps: NationalCompetition[] = [
-    { key: 'senior', label: 'World Cup', unitLabel: 'Ed.', rows: wc.senior },
-    { key: 'youth', label: 'World Cup (Youth U20/U21)', unitLabel: 'Ed.', rows: wc.youth },
+    { key: 'senior', label: 'World Cup', shortLabel: 'World Cup', isYouth: false, unitLabel: 'Ed.', rows: wc.senior },
+    { key: 'youth', label: 'World Cup (Youth U20/U21)', shortLabel: 'World Cup', isYouth: true, unitLabel: 'Ed.', rows: wc.youth },
   ];
   for (const cup of wc.regional ?? []) {
     comps.push({
       key: `cup-${cup.cupId}`,
       label: cup.cupName,
+      shortLabel: cup.cupName.replace(/^U21\s+/, ''),
+      isYouth: cup.isYouth,
       unitLabel: 'Season',
       rows: cup.seasons.map((s) => ({
         edition: s.season,

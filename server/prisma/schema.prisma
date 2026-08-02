@@ -232,10 +232,26 @@ model NationalCupChampion {
   /// no name-matching against national-team-ids.json is needed for rows that carry it.
   championTeamId Int?
   championLeagueId Int?
+  /// The rest of the podium, kept so a MEDAL table can be attributed to coaches the same way the
+  /// champion is (a runner-up is not a trophy and never counts toward Trophy leaders). Null/empty
+  /// on rows scraped before these were captured — the ids are the only thing a re-scrape adds.
+  runnerUpTeamId   Int?
+  runnerUpLeagueId Int?
+  /// Comma-separated, index-aligned with `thirdFourth`: both losing semi-finalists place jointly
+  /// third (Hattrick plays no third-place match), so this holds 0-2 ids.
+  thirdFourthTeamIds   String @default("")
+  thirdFourthLeagueIds String @default("")
   /// The manager coaching the champion nation when the final was played, same tenure cross-reference
   /// as WorldCupChampion. Null when unattributed.
   championUserId   Int?
   championUserName String?
+  /// The rest of the podium's coaches, resolved the same way. Only ids are stored — names and
+  /// nationalities come from HattrickUser at bake time, so a rename can't leave a stale copy here.
+  /// A medal is NOT a trophy: these never reach a manager's title count.
+  runnerUpUserId     Int?
+  /// Comma-separated, index-aligned with `thirdFourthTeamIds` (0-2 joint-third nations). An empty
+  /// slot means that nation's coach was unattributable (a deleted account, or no tenure that far back).
+  thirdFourthUserIds String @default("")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
