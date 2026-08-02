@@ -56,6 +56,7 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
   const [query, setQuery] = useState('');
   const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false, hm: true, sn: true, wc: true });
   const [lastOnly, setLastOnly] = useState(false);
+  const [medals, setMedals] = useState(false);
   const [groupBy, setGroupBy] = useState<TrophyGroupBy>('manager');
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [league, setLeague] = useState<string>('');
@@ -194,6 +195,8 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
               setInc={setInc}
               lastOnly={lastOnly}
               setLastOnly={setLastOnly}
+              medals={medals}
+              setMedals={setMedals}
               groupBy={groupBy}
               setGroupBy={setGroupBy}
               expandedId={expandedId}
@@ -601,6 +604,8 @@ function RetroTrophyLeaders({
   setInc,
   lastOnly,
   setLastOnly,
+  medals,
+  setMedals,
   groupBy,
   setGroupBy,
   expandedId,
@@ -616,6 +621,8 @@ function RetroTrophyLeaders({
   setInc: Dispatch<SetStateAction<IncState>>;
   lastOnly: boolean;
   setLastOnly: Dispatch<SetStateAction<boolean>>;
+  medals: boolean;
+  setMedals: Dispatch<SetStateAction<boolean>>;
   groupBy: TrophyGroupBy;
   setGroupBy: Dispatch<SetStateAction<TrophyGroupBy>>;
   expandedId: string | null;
@@ -640,7 +647,7 @@ function RetroTrophyLeaders({
   // Any filter change reshuffles the ranked list, so drop back to the first page.
   useEffect(() => {
     setPage(1);
-  }, [nation, query, inc, lastOnly, groupBy]);
+  }, [nation, query, inc, lastOnly, groupBy, medals]);
 
   // Row ids mean different things per mode (userId vs nation name) — never carry one over.
   useEffect(() => {
@@ -668,13 +675,19 @@ function RetroTrophyLeaders({
       const sec = lastOnly ? m.secLast : m.sec + m.oth;
       const hm = lastOnly ? m.hmLast : m.hm;
       const sn = lastOnly ? m.snLast : m.sn;
-      const wc = lastOnly ? m.wcLast : m.wc;
+      // "Medal winners" widens ONLY the national-trophy component — it's the one category with
+      // podium data at all (no league or cup runner-up is recorded anywhere in the bake), so a
+      // silver never inflates a championship count. Reigning-only stays titles-only: there is no
+      // such thing as a reigning runner-up.
+      const podium = medals && !lastOnly ? m.wcSilver + m.wcBronze : 0;
+      const wc = (lastOnly ? m.wcLast : m.wc) + podium;
       const ft = (inc.champ ? lg : 0) + (inc.main ? main : 0) + (inc.sec ? sec : 0) + (inc.hm ? hm : 0) + (inc.sn ? sn : 0) + (inc.wc ? wc : 0);
       return { m, ft, lg, main, sec, hm, sn, wc };
     });
-    l.sort((a, b) => b.ft - a.ft || b.lg - a.lg);
+    // Golds still outrank silver: ties break on titles won, so a medal never leapfrogs a champion.
+    l.sort((a, b) => b.ft - a.ft || b.m.wc - a.m.wc || b.lg - a.lg);
     return l.map((e, i) => ({ ...e, rank: i + 1 }));
-  }, [managers, inc, lastOnly]);
+  }, [managers, inc, lastOnly, medals]);
 
   // Pool the very same per-manager numbers by nationality, so both modes always agree: a nation's
   // total is exactly the sum of its managers' totals under the current toggles.
@@ -784,6 +797,28 @@ function RetroTrophyLeaders({
                   {o.label}
                 </button>
               ))}
+            </div>
+          </div>
+          <div>
+            <div style={filterLabel}>National trophies count</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+              <button onClick={() => setMedals(false)} style={toggleBtn(!medals)} title="Titles only — the winner of each edition">
+                {!medals && <span>✓&nbsp;</span>}
+                Winners
+              </button>
+              <button
+                onClick={() => setMedals(true)}
+                disabled={lastOnly}
+                style={{ ...toggleBtn(medals), opacity: lastOnly ? 0.45 : 1, cursor: lastOnly ? 'default' : 'pointer' }}
+                title={
+                  lastOnly
+                    ? 'Not available with Reigning only — there is no reigning runner-up'
+                    : 'Also count silver and bronze places. Only national trophies have podium data; no league or cup runner-up is recorded.'
+                }
+              >
+                {medals && <span>✓&nbsp;</span>}
+                Medal winners
+              </button>
             </div>
           </div>
         </FilterRow>
@@ -1673,6 +1708,8 @@ const WORLD_CUP_GRID = '70px minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) minmax(0,
 function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
   const [comps, setComps] = useState<NationalCompetition[]>([]);
   const [compKey, setCompKey] = useState('senior');
+  const [youth, setYouth] = useState(false);
+  const [medalScope, setMedalScope] = useState<'comp' | 'all'>('comp');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -1683,8 +1720,18 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
       .finally(() => setLoading(false));
   }, []);
 
+  // Senior and U21 are the same set of competitions run for two different national teams, so the
+  // bracket is a switch and the competitions below it stay a short, stable list.
+  const inBracket = comps.filter((c) => c.isYouth === youth);
   // Fall back to the first competition on offer, so a bake without World Cup data still shows.
-  const comp = comps.find((c) => c.key === compKey) ?? comps[0];
+  const comp = inBracket.find((c) => c.key === compKey) ?? inBracket[0];
+
+  /** Stay on the same competition across a bracket switch when it exists on both sides. */
+  const switchBracket = (toYouth: boolean) => {
+    setYouth(toYouth);
+    const same = comps.find((c) => c.isYouth === toYouth && c.shortLabel === comp?.shortLabel);
+    setCompKey((same ?? comps.find((c) => c.isYouth === toYouth))?.key ?? compKey);
+  };
   const editions = (comp?.rows ?? []).slice().sort((a, b) => b.edition - a.edition);
 
   useEffect(() => {
@@ -1705,6 +1752,31 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
   const coachTallyArr = Object.entries(coachTally).sort((a, b) => b[1].count - a[1].count).slice(0, 10);
   const maxCoachT = coachTallyArr.length ? coachTallyArr[0]![1].count : 1;
 
+  /**
+   * Medal table. Podium places are a National-trophies-only idea: a runner-up is not a trophy, so
+   * these never reach Trophy leaders' totals — that stays titles-only.
+   *
+   * Both nations in `thirdFourth` count as bronze: Hattrick's podium places the losing semi-finalists
+   * jointly third and plays no third-place match, so there is no 4th to separate out.
+   */
+  const medals = useMemo(() => {
+    const src = medalScope === 'all' ? inBracket.flatMap((c) => c.rows) : (comp?.rows ?? []);
+    const t: Record<string, { g: number; s: number; b: number }> = {};
+    const add = (nation: string | null | undefined, k: 'g' | 's' | 'b') => {
+      if (!nation) return;
+      (t[nation] ??= { g: 0, s: 0, b: 0 })[k]++;
+    };
+    for (const e of src) {
+      add(e.champion, 'g');
+      add(e.runnerUp, 's');
+      for (const n of e.thirdFourth) add(n, 'b');
+    }
+    return Object.entries(t)
+      .sort((a, b) => b[1].g - a[1].g || b[1].s - a[1].s || b[1].b - a[1].b || a[0].localeCompare(b[0]))
+      .slice(0, 12);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [comp, medalScope, youth, comps]);
+
   return (
     <div>
       <div style={intro}>
@@ -1716,11 +1788,33 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
 
       <fieldset style={fieldset}>
         <legend style={legend}>Select competition</legend>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-          {comps.length === 0 && <span style={{ fontSize: 11, color: R.faint }}>{loading ? 'Loading…' : 'No competitions on record.'}</span>}
-          {comps.map((c) => (
-            <CategoryChip key={c.key} label={c.label} active={c.key === comp?.key} onClick={() => setCompKey(c.key)} />
-          ))}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px 20px', alignItems: 'flex-end' }}>
+          <div>
+            <div style={filterLabel}>National team</div>
+            <div style={{ display: 'flex', gap: 6 }}>
+              <button onClick={() => switchBracket(false)} style={toggleBtn(!youth)} title="Senior national teams">
+                {!youth && <span>✓&nbsp;</span>}
+                Senior
+              </button>
+              <button onClick={() => switchBracket(true)} style={toggleBtn(youth)} title="Youth national teams (U20/U21)">
+                {youth && <span>✓&nbsp;</span>}
+                U21
+              </button>
+            </div>
+          </div>
+          <div style={{ minWidth: 0 }}>
+            <div style={filterLabel}>Competition</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+              {inBracket.length === 0 && (
+                <span style={{ fontSize: 11, color: R.faint }}>{loading ? 'Loading…' : 'No competitions on record.'}</span>
+              )}
+              {/* The bracket is already chosen above, so the redundant "U21 " prefix comes off here —
+                  the roll of honour below still names the competition in full. */}
+              {inBracket.map((c) => (
+                <CategoryChip key={c.key} label={c.shortLabel} active={c.key === comp?.key} onClick={() => setCompKey(c.key)} />
+              ))}
+            </div>
+          </div>
         </div>
       </fieldset>
 
@@ -1802,6 +1896,72 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+              <SectionBar>Medal table</SectionBar>
+              <div style={{ padding: '8px 10px 11px', background: R.panel }}>
+                <div style={{ display: 'flex', gap: 5, marginBottom: 9 }}>
+                  <button onClick={() => setMedalScope('comp')} style={{ ...toggleBtn(medalScope === 'comp'), fontSize: 10, padding: '3px 8px' }}>
+                    This cup
+                  </button>
+                  <button
+                    onClick={() => setMedalScope('all')}
+                    style={{ ...toggleBtn(medalScope === 'all'), fontSize: 10, padding: '3px 8px' }}
+                    title={youth ? 'Every U21 competition combined' : 'Every senior competition combined'}
+                  >
+                    All {youth ? 'U21' : 'senior'}
+                  </button>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 22px 22px 22px', gap: 6, fontSize: 9, fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '.03em', color: R.soft, paddingBottom: 4, borderBottom: '1px solid var(--line,#CDD7C3)' }}>
+                  <div>Nation</div>
+                  <div style={{ textAlign: 'center' }} title="Champion">1st</div>
+                  <div style={{ textAlign: 'center' }} title="Runner-up">2nd</div>
+                  <div style={{ textAlign: 'center' }} title="Losing semi-finalists — both count, there is no third-place match">3rd</div>
+                </div>
+                {medals.length === 0 && <div style={{ fontSize: 11, color: R.faint, paddingTop: 8 }}>—</div>}
+                {medals.map(([nation, m], i) => (
+                  <div
+                    key={nation}
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'minmax(0,1fr) 22px 22px 22px',
+                      gap: 6,
+                      alignItems: 'center',
+                      padding: '4px 0',
+                      borderBottom: '1px solid var(--line,#CDD7C3)',
+                      background: i % 2 ? R.alt : 'transparent',
+                    }}
+                  >
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                      <Flag url={nationalityFlagUrl(nation)} label={nation} size={15} />
+                      <span style={{ fontSize: 10, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {nation}
+                      </span>
+                    </span>
+                    {([['g', '#D8A93B'], ['s', '#C7C3B8'], ['b', '#C08A52']] as const).map(([k, bg]) => (
+                      <span
+                        key={k}
+                        style={{
+                          textAlign: 'center',
+                          fontFamily: MONO,
+                          fontSize: 10,
+                          fontWeight: 'bold',
+                          color: m[k] ? '#241c08' : R.faint,
+                          background: m[k] ? bg : 'transparent',
+                          border: '1px solid ' + (m[k] ? 'rgba(0,0,0,.35)' : 'transparent'),
+                        }}
+                      >
+                        {m[k] || '·'}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+                <div style={{ fontSize: 9, color: R.faint, marginTop: 7, lineHeight: 1.5 }}>
+                  Podium places, not trophies &mdash; they never count toward Trophy leaders. Both losing
+                  semi-finalists count as 3rd.
+                </div>
+              </div>
+            </div>
+
             <div style={{ border: '1px solid var(--frame,#617D54)' }}>
               <SectionBar>Most titles (top 10)</SectionBar>
               <div style={{ padding: 11, background: R.panel, display: 'flex', flexDirection: 'column', gap: 11 }}>

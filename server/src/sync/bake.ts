@@ -128,6 +128,37 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     });
   }
 
+  // Medals — silver and bronze places in the same cups. Deliberately a SEPARATE tally from titles:
+  // a runner-up is not a trophy, so these never touch `wc` or the cabinet. Both losing semi-finalists
+  // count as bronze (no third-place match is played).
+  const medalRows = await prisma.nationalCupChampion.findMany({
+    where: { champion: { not: null } },
+    select: { cupName: true, season: true, runnerUp: true, runnerUpUserId: true, thirdFourth: true, thirdFourthUserIds: true },
+  });
+  interface MedalItem { cup: string; season: number; nation: string; place: 2 | 3 }
+  const medalsByUser = new Map<number, MedalItem[]>();
+  const addMedal = (uid: number | null | undefined, item: MedalItem) => {
+    if (!uid || uid <= 0) return;
+    const arr = medalsByUser.get(uid) ?? [];
+    arr.push(item);
+    medalsByUser.set(uid, arr);
+  };
+  for (const r of medalRows) {
+    addMedal(r.runnerUpUserId, { cup: r.cupName, season: r.season, nation: r.runnerUp ?? '', place: 2 });
+    const names = (r.thirdFourth || '').split(', ').filter(Boolean);
+    (r.thirdFourthUserIds || '').split(',').forEach((raw, i) => {
+      const uid = Number(raw);
+      if (uid) addMedal(uid, { cup: r.cupName, season: r.season, nation: names[i] ?? '', place: 3 });
+    });
+  }
+  // A medallist who never won anything still belongs in managers.json, so seed an entry for them —
+  // `get` creates one on demand and the name comes from HattrickUser (attribution upserts it).
+  const medalUserNames = new Map(
+    (await prisma.hattrickUser.findMany({ where: { userId: { in: [...medalsByUser.keys()] } }, select: { userId: true, loginName: true } }))
+      .map((u) => [u.userId, u.loginName]),
+  );
+  for (const uid of medalsByUser.keys()) get(uid, medalUserNames.get(uid) ?? null);
+
   const bySeasonDesc = <T extends { season: number }>(a: T, b: T) => b.season - a.season;
   const managers = [...mgr.values()]
     .map((m) => ({
@@ -140,6 +171,10 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
       hm: m.masters.length,
       sn: m.seasonal.length,
       wc: m.worldCup.length,
+      // Medals ride alongside the title counts, never inside them (see the medal tally above).
+      wcSilver: (medalsByUser.get(m.userId) ?? []).filter((x) => x.place === 2).length,
+      wcBronze: (medalsByUser.get(m.userId) ?? []).filter((x) => x.place === 3).length,
+      medals: (medalsByUser.get(m.userId) ?? []).sort((a, b) => b.season - a.season),
       lgLast: m.titles.filter((t) => t.last).length,
       mainLast: m.cupsMain.filter((c) => c.last).length,
       secLast: m.cupsSec.filter((c) => c.last).length,
