@@ -49,12 +49,12 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   interface Mgr {
     userId: number; userName: string; nationality: string; lg: number;
     titles: Array<{ country: string; leagueId: number; season: number; club: string; last: boolean }>;
-    cupsMain: CupItem[]; cupsSec: CupItem[]; masters: CupItem[]; seasonal: CupItem[];
+    cupsMain: CupItem[]; cupsSec: CupItem[]; masters: CupItem[]; seasonal: CupItem[]; worldCup: CupItem[];
   }
   const mgr = new Map<number, Mgr>();
   const get = (uid: number, name: string | null) => {
     let e = mgr.get(uid);
-    if (!e) { e = { userId: uid, userName: name ?? `user ${uid}`, nationality: natById.get(uid) ?? 'Unknown', lg: 0, titles: [], cupsMain: [], cupsSec: [], masters: [], seasonal: [] }; mgr.set(uid, e); }
+    if (!e) { e = { userId: uid, userName: name ?? `user ${uid}`, nationality: natById.get(uid) ?? 'Unknown', lg: 0, titles: [], cupsMain: [], cupsSec: [], masters: [], seasonal: [], worldCup: [] }; mgr.set(uid, e); }
     return e;
   };
 
@@ -81,6 +81,27 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     else (c.isMain ? e.cupsMain : e.cupsSec).push(item);
   }
 
+  // World Cup (senior + youth) — a champion NATION, attributed to the coach in charge at the time
+  // (see sync/worldCup.ts). Lumped into one "wc" category the same way secondary cups lump
+  // Emerald/Ruby/Sapphire/Consolation; the cup label on each item keeps senior vs youth visible in
+  // the manager's cabinet drill-down. "Reigning" is computed per bracket (edition number), since a
+  // senior and a youth edition finishing around the same time aren't really "the same" title.
+  const wcReignEdition = new Map<boolean, number>();
+  for (const c of await prisma.worldCupChampion.findMany({ where: { champion: { not: null } }, select: { isYouth: true, edition: true } })) {
+    const cur = wcReignEdition.get(c.isYouth);
+    if (cur === undefined || c.edition > cur) wcReignEdition.set(c.isYouth, c.edition);
+  }
+  for (const c of await prisma.worldCupChampion.findMany({
+    where: { championUserId: { gt: 0 } },
+    select: { championUserId: true, championUserName: true, champion: true, edition: true, isYouth: true },
+  })) {
+    const e = get(c.championUserId!, c.championUserName);
+    e.worldCup.push({
+      country: 'World Cup', leagueId: 0, season: c.edition, club: c.champion!,
+      cup: c.isYouth ? 'World Cup (Youth)' : 'World Cup', last: wcReignEdition.get(c.isYouth) === c.edition,
+    });
+  }
+
   const bySeasonDesc = <T extends { season: number }>(a: T, b: T) => b.season - a.season;
   const managers = [...mgr.values()]
     .map((m) => ({
@@ -92,18 +113,21 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
       sec: m.cupsSec.length,
       hm: m.masters.length,
       sn: m.seasonal.length,
+      wc: m.worldCup.length,
       lgLast: m.titles.filter((t) => t.last).length,
       mainLast: m.cupsMain.filter((c) => c.last).length,
       secLast: m.cupsSec.filter((c) => c.last).length,
       hmLast: m.masters.filter((c) => c.last).length,
       snLast: m.seasonal.filter((c) => c.last).length,
+      wcLast: m.worldCup.filter((c) => c.last).length,
       titles: m.titles.sort(bySeasonDesc),
       cupsMain: m.cupsMain.sort(bySeasonDesc),
       cupsSec: m.cupsSec.sort(bySeasonDesc),
       masters: m.masters.sort(bySeasonDesc),
       seasonal: m.seasonal.sort(bySeasonDesc),
+      worldCup: m.worldCup.sort(bySeasonDesc),
     }))
-    .sort((a, b) => b.lg + b.main + b.sec + b.hm + b.sn - (a.lg + a.main + a.sec + a.hm + a.sn) || b.hm - a.hm || b.lg - a.lg);
+    .sort((a, b) => b.lg + b.main + b.sec + b.hm + b.sn + b.wc - (a.lg + a.main + a.sec + a.hm + a.sn + a.wc) || b.hm - a.hm || b.wc - a.wc || b.lg - a.lg);
   writeFileSync(`${out}/managers.json`, JSON.stringify(managers));
 
   // Guardrail: a manager appears here only if they won a title, yet may still have an unresolved
@@ -202,6 +226,9 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     champion: r.champion,
     runnerUp: r.runnerUp,
     thirdFourth: r.thirdFourth ? r.thirdFourth.split(', ') : [],
+    coachUserId: r.championUserId && r.championUserId > 0 ? r.championUserId : undefined,
+    coach: r.championUserName ?? undefined,
+    coachNationality: r.championUserId ? natById.get(r.championUserId) : undefined,
   });
   const worldCup = { senior: wcRows.filter((r) => !r.isYouth).map(wcOut), youth: wcRows.filter((r) => r.isYouth).map(wcOut) };
   writeFileSync(`${out}/worldcup.json`, JSON.stringify(worldCup));

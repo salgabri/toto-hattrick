@@ -90,6 +90,11 @@ model NationalLeague {
   topSeriesId   Int
   currentSeason Int?
   isCountry     Boolean @default(true)
+  /// worlddetails' NationalTeamId/U20TeamId — the country's senior/youth NATIONAL team (distinct
+  /// from any club team). Backfilled once (scripts/backfill-national-team-ids.ts) to cross-reference
+  /// World Cup champion nations against their coaching history (sync/worldCup.ts attribution pass).
+  nationalTeamId Int?
+  u20TeamId      Int?
 
   champions LeagueChampion[]
 }
@@ -186,6 +191,12 @@ model WorldCupChampion {
   champion     String? // nation name, null while ongoing
   runnerUp     String?
   thirdFourth  String  @default("") // 0-2 nation names, comma-separated (SQLite has no array type)
+  /// The manager coaching the champion nation's team when the edition finished — cross-referenced
+  /// from NTFormerCoaches.aspx (per-team coaching-tenure history, scraped) against `finishedDate`.
+  /// Null when unattributed: "Retired user" tenure, no tenure recorded that early, or the nation's
+  /// team id never resolved (see sync/worldCup.ts).
+  championUserId   Int?
+  championUserName String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

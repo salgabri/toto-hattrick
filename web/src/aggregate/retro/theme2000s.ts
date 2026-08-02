@@ -68,6 +68,7 @@ export const R = {
   sec: 'var(--sec,#BAC3AF)',
   masters: 'var(--masters,#7A5EA6)', // Hattrick Masters — regal violet, its own category
   seasonal: 'var(--seasonal,#2E8C8C)', // Seasonal Cups (Supporter Week Trophy) — teal, its own category
+  worldCup: 'var(--worldcup,#A6423A)', // World Cup (senior + youth, as coach) — brick red, its own category
   btn: 'var(--btn,#EBEFE2)',
   btn2: 'var(--btn2,#D4DEC9)',
   hover: 'var(--hover,#FBF5DB)',

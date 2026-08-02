@@ -22,9 +22,22 @@ export async function registerScrapeRoutes(app: FastifyInstance): Promise<void> 
   //                   runs start-to-finish in one pass, not team-resumable — the same teamId can
   //                   legitimately win multiple cohort/season editions, so teamId is not a valid
   //                   dedup key here the way it is for the other phases).
+  //   'worldcup-coaches' -> a national team's full coaching-tenure history (World Cup manager
+  //                         attribution — worldcup-coaches-unresolved.json / worldcup-coaches.jsonl).
+  //                         teamId IS a valid /done key here: each team's history is scraped once.
   const phase = process.env.SCRAPE_PHASE;
-  const targetsName = phase === 'masters' ? 'masters-unresolved.json' : phase === 'cup' ? 'cup-unresolved.json' : phase === 'generation' ? 'generation-unresolved.json' : 'unresolved.json';
-  const resultsName = phase === 'masters' ? 'masters-owners.jsonl' : phase === 'cup' ? 'cups.jsonl' : phase === 'generation' ? 'generation-owners.jsonl' : 'managers.jsonl';
+  const targetsName =
+    phase === 'masters' ? 'masters-unresolved.json'
+    : phase === 'cup' ? 'cup-unresolved.json'
+    : phase === 'generation' ? 'generation-unresolved.json'
+    : phase === 'worldcup-coaches' ? 'worldcup-coaches-unresolved.json'
+    : 'unresolved.json';
+  const resultsName =
+    phase === 'masters' ? 'masters-owners.jsonl'
+    : phase === 'cup' ? 'cups.jsonl'
+    : phase === 'generation' ? 'generation-owners.jsonl'
+    : phase === 'worldcup-coaches' ? 'worldcup-coaches.jsonl'
+    : 'managers.jsonl';
   const targetsFile = () => `${dir}/${targetsName}`;
   const resultsFile = () => `${dir}/${resultsName}`;
 

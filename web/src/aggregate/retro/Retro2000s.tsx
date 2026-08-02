@@ -50,7 +50,7 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
   // View state lives on the parent so it survives tab switches.
   const [nation, setNation] = useState<string>('ALL');
   const [query, setQuery] = useState('');
-  const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false, hm: true, sn: true });
+  const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false, hm: true, sn: true, wc: true });
   const [lastOnly, setLastOnly] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [league, setLeague] = useState<string>('');
@@ -379,6 +379,7 @@ interface IncState {
   sec: boolean;
   hm: boolean;
   sn: boolean;
+  wc: boolean;
 }
 
 function rankBg(r: number): string {
@@ -392,6 +393,7 @@ function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean) {
     { label: 'Main cups', dot: R.main, items: pick(tr.main), excluded: !inc.main },
     { label: 'Hattrick Masters', dot: R.masters, items: pick(tr.other), excluded: !inc.hm },
     { label: 'Seasonal cups', dot: R.seasonal, items: pick(tr.seasonal), excluded: !inc.sn },
+    { label: 'World Cup', dot: R.worldCup, items: pick(tr.worldCup), excluded: !inc.wc },
     { label: 'Secondary cups', dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
   ].filter((c) => c.items.length);
 }
@@ -448,7 +450,7 @@ function RetroTrophyLeaders({
       setCabinets((c) => ({ ...c, [m.userId]: null }));
       getCabinet(m.userId)
         .then((cab) => setCabinets((c) => ({ ...c, [m.userId]: cab })))
-        .catch(() => setCabinets((c) => ({ ...c, [m.userId]: { champ: [], main: [], sec: [], other: [], seasonal: [] } })));
+        .catch(() => setCabinets((c) => ({ ...c, [m.userId]: { champ: [], main: [], sec: [], other: [], seasonal: [], worldCup: [] } })));
     }
   };
 
@@ -461,8 +463,9 @@ function RetroTrophyLeaders({
       const sec = lastOnly ? m.secLast : m.sec + m.oth;
       const hm = lastOnly ? m.hmLast : m.hm;
       const sn = lastOnly ? m.snLast : m.sn;
-      const ft = (inc.champ ? lg : 0) + (inc.main ? main : 0) + (inc.sec ? sec : 0) + (inc.hm ? hm : 0) + (inc.sn ? sn : 0);
-      return { m, ft, lg, main, sec, hm, sn };
+      const wc = lastOnly ? m.wcLast : m.wc;
+      const ft = (inc.champ ? lg : 0) + (inc.main ? main : 0) + (inc.sec ? sec : 0) + (inc.hm ? hm : 0) + (inc.sn ? sn : 0) + (inc.wc ? wc : 0);
+      return { m, ft, lg, main, sec, hm, sn, wc };
     });
     l.sort((a, b) => b.ft - a.ft || b.lg - a.lg);
     return l.map((e, i) => ({ ...e, rank: i + 1 }));
@@ -473,7 +476,7 @@ function RetroTrophyLeaders({
     (e) =>
       (!q || e.m.login.toLowerCase().includes(q) || (e.m.team && e.m.team.toLowerCase().includes(q))) &&
       e.ft > 0 &&
-      (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast + e.m.hmLast + e.m.snLast > 0),
+      (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast + e.m.hmLast + e.m.snLast + e.m.wcLast > 0),
   );
 
   // Show at most PAGE_SIZE managers at a time. Ranks stay absolute over the whole
@@ -492,6 +495,7 @@ function RetroTrophyLeaders({
     { k: 'main', label: 'Main cups' },
     { k: 'hm', label: 'Masters' },
     { k: 'sn', label: 'Seasonal' },
+    { k: 'wc', label: 'World Cup' },
     { k: 'sec', label: 'Secondary' },
   ];
 
@@ -649,6 +653,7 @@ function RetroTrophyLeaders({
           if (inc.main && e.main) segRaw.push({ n: e.main, color: R.main });
           if (inc.hm && e.hm) segRaw.push({ n: e.hm, color: R.masters });
           if (inc.sn && e.sn) segRaw.push({ n: e.sn, color: R.seasonal });
+          if (inc.wc && e.wc) segRaw.push({ n: e.wc, color: R.worldCup });
           if (inc.sec && e.sec) segRaw.push({ n: e.sec, color: R.sec });
           const tot = e.ft || 1;
           const breakdown = segRaw.map((s) => s.n).join(' + ') || '0';
@@ -828,6 +833,7 @@ function RetroTrophyLeaders({
         <LegendSwatch color={R.main} label="Main cups" />
         <LegendSwatch color={R.masters} label="Masters" />
         <LegendSwatch color={R.seasonal} label="Seasonal" />
+        <LegendSwatch color={R.worldCup} label="World Cup" />
         <LegendSwatch color={R.sec} label="Secondary" />
         <span style={{ flex: 1 }} />
         <span style={{ fontFamily: MONO, color: R.faint }}>src: leaguefixtures &middot; team history</span>
@@ -1415,6 +1421,15 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
   const tallyArr = Object.entries(tally).sort((a, b) => b[1] - a[1]).slice(0, 10);
   const maxT = tallyArr.length ? tallyArr[0]![1] : 1;
 
+  const coachTally: Record<string, { count: number; nationality?: string; userId?: number }> = {};
+  for (const e of editions) {
+    if (!e.coach) continue;
+    const c = (coachTally[e.coach] ??= { count: 0, nationality: e.coachNationality, userId: e.coachUserId });
+    c.count++;
+  }
+  const coachTallyArr = Object.entries(coachTally).sort((a, b) => b[1].count - a[1].count).slice(0, 10);
+  const maxCoachT = coachTallyArr.length ? coachTallyArr[0]![1].count : 1;
+
   return (
     <div>
       <div style={intro}>
@@ -1476,13 +1491,23 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
                   {e.ageGroup ? <span style={{ fontSize: 9, color: R.faint }}> {e.ageGroup}</span> : null}
                 </div>
                 <div style={{ fontSize: 11, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.host}</div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                <div style={{ minWidth: 0 }}>
                   {e.champion ? (
                     <>
-                      <Flag url={nationalityFlagUrl(e.champion)} label={e.champion} size={16} />
-                      <span style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {e.champion}
-                      </span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                        <Flag url={nationalityFlagUrl(e.champion)} label={e.champion} size={16} />
+                        <span style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {e.champion}
+                        </span>
+                      </div>
+                      {e.coach && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 10, color: R.soft, overflow: 'hidden' }}>
+                          <Flag url={nationalityFlagUrl(e.coachNationality)} label={e.coachNationality} size={12} />
+                          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            <HtLink href={e.coachUserId ? hattrickManagerUrl(e.coachUserId) : null}>{e.coach}</HtLink>
+                          </span>
+                        </div>
+                      )}
                     </>
                   ) : (
                     <span style={{ fontSize: 11, color: R.faint, fontStyle: 'italic' }}>Ongoing</span>
@@ -1497,26 +1522,51 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
             ))}
           </div>
 
-          <div style={{ border: '1px solid var(--frame,#617D54)' }}>
-            <SectionBar>Most titles (top 10)</SectionBar>
-            <div style={{ padding: 11, background: R.panel, display: 'flex', flexDirection: 'column', gap: 11 }}>
-              {tallyArr.length === 0 && <div style={{ fontSize: 11, color: R.faint }}>—</div>}
-              {tallyArr.map(([nation, count], i) => (
-                <div key={nation}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4, gap: 8 }}>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
-                      <Flag url={nationalityFlagUrl(nation)} label={nation} />
-                      <span style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {nation}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+              <SectionBar>Most titles (top 10)</SectionBar>
+              <div style={{ padding: 11, background: R.panel, display: 'flex', flexDirection: 'column', gap: 11 }}>
+                {tallyArr.length === 0 && <div style={{ fontSize: 11, color: R.faint }}>—</div>}
+                {tallyArr.map(([nation, count], i) => (
+                  <div key={nation}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4, gap: 8 }}>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                        <Flag url={nationalityFlagUrl(nation)} label={nation} />
+                        <span style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {nation}
+                        </span>
                       </span>
-                    </span>
-                    <span style={{ fontFamily: MONO, fontSize: 12, fontWeight: 'bold', flex: 'none', color: R.ink }}>{count}</span>
+                      <span style={{ fontFamily: MONO, fontSize: 12, fontWeight: 'bold', flex: 'none', color: R.ink }}>{count}</span>
+                    </div>
+                    <div style={{ height: 12, border: '1px solid var(--frame,#617D54)', background: R.panel2, overflow: 'hidden' }}>
+                      <span style={{ display: 'block', height: '100%', width: (count / maxT) * 100 + '%', background: i === 0 ? R.main : R.sec }} />
+                    </div>
                   </div>
-                  <div style={{ height: 12, border: '1px solid var(--frame,#617D54)', background: R.panel2, overflow: 'hidden' }}>
-                    <span style={{ display: 'block', height: '100%', width: (count / maxT) * 100 + '%', background: i === 0 ? R.main : R.sec }} />
+                ))}
+              </div>
+            </div>
+
+            <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+              <SectionBar>Top coaches (top 10)</SectionBar>
+              <div style={{ padding: 11, background: R.panel, display: 'flex', flexDirection: 'column', gap: 11 }}>
+                {coachTallyArr.length === 0 && <div style={{ fontSize: 11, color: R.faint }}>—</div>}
+                {coachTallyArr.map(([coach, { count, nationality, userId }], i) => (
+                  <div key={coach}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4, gap: 8 }}>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                        <Flag url={nationalityFlagUrl(nationality)} label={nationality} />
+                        <span style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          <HtLink href={userId ? hattrickManagerUrl(userId) : null}>{coach}</HtLink>
+                        </span>
+                      </span>
+                      <span style={{ fontFamily: MONO, fontSize: 12, fontWeight: 'bold', flex: 'none', color: R.ink }}>{count}</span>
+                    </div>
+                    <div style={{ height: 12, border: '1px solid var(--frame,#617D54)', background: R.panel2, overflow: 'hidden' }}>
+                      <span style={{ display: 'block', height: '100%', width: (count / maxCoachT) * 100 + '%', background: i === 0 ? R.main : R.sec }} />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
