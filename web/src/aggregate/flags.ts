@@ -7,9 +7,10 @@
  *   LEAGUE_ISO      — league country by stable numeric leagueId → ISO alpha-2.
  *
  * Codes are lowercase ISO 3166-1 alpha-2, plus the UK home-nation subdivisions
- * (gb-eng/gb-sct/gb-wls/gb-nir). Countries with no real flag (Hattrick's regional "Oceania"
- * league, the international leagues) are simply absent — a missing key renders nothing rather
- * than a broken image.
+ * (gb-eng/gb-sct/gb-wls/gb-nir) and "oceania.png" — Hattrick's regional Oceania has no ISO code,
+ * so its flag is Hattrick's own asset (Img/flags/15.png), self-hosted like the rest. The
+ * international leagues have no flag at all and stay absent — a missing key renders nothing
+ * rather than a broken image.
  *
  * Flags are SELF-HOSTED under web/public/flags/{code}.svg (sourced from the `flag-icons`
  * package — regenerate with `npm run flags:sync -w web`). No external CDN at runtime, so the
@@ -36,10 +37,13 @@ export const NATIONALITY_ISO: Record<string, string> = {
   'Lëtzebuerg': 'lu', 'Magyarország': 'hu', Malaysia: 'my', Malta: 'mt', Misr: 'eg',
   Moldova: 'md', 'Mongol Uls': 'mn', 'Moçambique': 'mz', Myanmar: 'mm', 'México': 'mx',
   Nederland: 'nl', Nepal: 'np', Nicaragua: 'ni', Nigeria: 'ng', Nippon: 'jp',
-  Norge: 'no', 'Northern Ireland': 'gb-nir', Oman: 'om', Pakistan: 'pk', Palestine: 'ps',
+  Norge: 'no', 'Northern Ireland': 'gb-nir', Oceania: 'oceania.png', Oman: 'om', Pakistan: 'pk', Palestine: 'ps',
   'Panamá': 'pa', Paraguay: 'py', 'Perú': 'pe', Pilipinas: 'ph', Polska: 'pl',
   Portugal: 'pt', 'Prathet Thai': 'th', 'Puerto Rico': 'pr', Qatar: 'qa', 'República Dominicana': 'do',
   'România': 'ro', Rossiya: 'ru', Sakartvelo: 'ge', 'Saudi Arabia': 'sa', Schweiz: 'ch',
+  // National-team names that appear only in the World Cup rolls of honour, whose History.aspx
+  // source carries no league id to fall back on.
+  'San Marino': 'sm', Comoros: 'km', 'São Tomé e Príncipe': 'st',
   Scotland: 'gb-sct', 'Severna Makedonija': 'mk', 'Shqipëria': 'al', Singapore: 'sg', Slovenija: 'si',
   Slovensko: 'sk', 'South Africa': 'za', Srbija: 'rs', Suomi: 'fi', Suriname: 'sr',
   Suriyah: 'sy', Sverige: 'se', 'Sénégal': 'sn', Tanzania: 'tz', Tounes: 'tn',
@@ -51,7 +55,7 @@ export const NATIONALITY_ISO: Record<string, string> = {
 // leagueId -> flagcdn code. (Non-country leagues 15/1000/1003/3000 have no flag → omitted.)
 export const LEAGUE_ISO: Record<number, string> = {
   1: 'se', 2: 'gb-eng', 3: 'de', 4: 'it', 5: 'fr', 6: 'mx', 7: 'ar', 8: 'us', 9: 'no',
-  11: 'dk', 12: 'fi', 14: 'nl', 16: 'br', 17: 'ca', 18: 'cl', 19: 'co', 20: 'in', 21: 'ie',
+  11: 'dk', 12: 'fi', 14: 'nl', 15: 'oceania.png', 16: 'br', 17: 'ca', 18: 'cl', 19: 'co', 20: 'in', 21: 'ie',
   22: 'jp', 23: 'pe', 24: 'pl', 25: 'pt', 26: 'gb-sct', 27: 'za', 28: 'uy', 29: 've', 30: 'kr',
   31: 'th', 32: 'tr', 33: 'eg', 34: 'cn', 35: 'ru', 36: 'es', 37: 'ro', 38: 'is', 39: 'at',
   44: 'be', 45: 'my', 46: 'ch', 47: 'sg', 50: 'gr', 51: 'hu', 52: 'cz', 53: 'lv', 54: 'id',
@@ -70,9 +74,16 @@ export const LEAGUE_ISO: Record<number, string> = {
   176: 'gi', 177: 'bt',
 };
 
-/** Self-hosted SVG URL for a code, or null when the code is empty/unknown. */
+/**
+ * Self-hosted flag URL for a code, or null when the code is empty/unknown.
+ *
+ * Codes are ISO alpha-2 and resolve to the flag-icons SVGs. A code carrying its own extension
+ * ("oceania.png") is used verbatim — Oceania is a Hattrick invention with no ISO code and no
+ * flag-icons entry, so its flag comes from Hattrick's own asset (Img/flags/15.png) instead.
+ */
 export function flagUrl(iso: string | undefined | null): string | null {
-  return iso ? `/flags/${iso}.svg` : null;
+  if (!iso) return null;
+  return iso.includes('.') ? `/flags/${iso}` : `/flags/${iso}.svg`;
 }
 
 /** Flag URL for a manager nationality string (native-language name), or null. */
@@ -84,4 +95,19 @@ export function nationalityFlagUrl(nationality: string | undefined | null): stri
 export function leagueFlagUrl(leagueId: number | string | undefined | null): string | null {
   if (leagueId == null || leagueId === '') return null;
   return flagUrl(LEAGUE_ISO[Number(leagueId)]);
+}
+
+/**
+ * Flag for a NATIONAL TEAM — the one lookup every national-team view should use.
+ *
+ * leagueId wins because it's stable: Hattrick spells nation names inconsistently across pages
+ * ("Bénin"/"Benin", curly vs straight apostrophe in "Côte d'Ivoire") and several have no
+ * NATIONALITY_ISO entry at all. The name is the fallback for World Cup editions, which carry no
+ * league id (they aren't any single country's competition). The U21 brackets prefix the name
+ * ("U21 Sverige"), so that comes off before matching.
+ *
+ * Hattrick's regional "Oceania" has no real flag and is absent from both maps by design.
+ */
+export function nationFlagUrl(nation: string | undefined | null, leagueId?: number | null): string | null {
+  return leagueFlagUrl(leagueId) ?? nationalityFlagUrl((nation ?? '').replace(/^U21\s+/, ''));
 }
