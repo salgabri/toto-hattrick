@@ -197,6 +197,13 @@ model WorldCupChampion {
   /// team id never resolved (see sync/worldCup.ts).
   championUserId   Int?
   championUserName String?
+  /// The rest of the podium's coaches, resolved by the same rule. Unlike the regional cups (whose
+  /// scrape captured podium team ids), these nations are known by NAME only — History.aspx never
+  /// linked them — so the team id comes from national-team-ids.json. Ids only; names and
+  /// nationalities are looked up from HattrickUser at bake time.
+  runnerUpUserId     Int?
+  /// Comma-separated, index-aligned with `thirdFourth`. An empty slot = unattributable.
+  thirdFourthUserIds String @default("")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

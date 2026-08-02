@@ -56,7 +56,7 @@ function parseDMY(d: string): number {
   return new Date(yyyy!, mm! - 1, dd).getTime();
 }
 
-export interface CoachAttributionResult { attributed: number; eligible: number }
+export interface CoachAttributionResult { attributed: number; eligible: number; medals: number; medalSlots: number }
 
 /**
  * Attribute each World Cup edition's champion to whichever manager was coaching that nation's team
@@ -79,40 +79,67 @@ export async function attributeWorldCupCoaches(token: TokenPair, tenures: CoachT
     readFileSync(new URL('../data/national-team-ids.json', import.meta.url), 'utf8'),
   );
 
-  const editions = await prisma.worldCupChampion.findMany();
-  let attributed = 0;
-  let eligible = 0;
-  for (const e of editions) {
-    if (!e.champion || !e.finishedDate) continue;
-    eligible++;
-    const t = teamIds[e.champion];
-    const teamId = e.isYouth ? t?.u20TeamId : t?.nationalTeamId;
-    if (!teamId) continue;
+  /** The nation's team for this bracket — these rolls name nations only, never link a team. */
+  const teamOf = (nation: string | null | undefined, isYouth: boolean) => {
+    if (!nation) return undefined;
+    const t = teamIds[nation];
+    return isYouth ? t?.u20TeamId : t?.nationalTeamId;
+  };
+  /** Whoever's tenure started most recently on/before the final. */
+  const coachAt = (teamId: number | undefined, finishedMs: number): CoachTenure | null => {
+    if (!teamId) return null;
     const teamTenures = byTeam.get(teamId);
-    if (!teamTenures) continue;
-
-    const finishedMs = parseDMY(e.finishedDate);
+    if (!teamTenures) return null;
     let coach: CoachTenure | null = null;
     for (const tn of teamTenures) {
       if (parseDMY(tn.date) <= finishedMs) coach = tn;
       else break;
     }
-    if (!coach) continue;
+    return coach;
+  };
+  const remember = async (coach: CoachTenure | null) => {
+    if (!coach?.userId) return;
+    await prisma.hattrickUser.upsert({
+      where: { userId: coach.userId },
+      update: { loginName: coach.name },
+      create: { userId: coach.userId, loginName: coach.name },
+    });
+  };
 
-    if (coach.userId) {
-      await prisma.hattrickUser.upsert({
-        where: { userId: coach.userId },
-        update: { loginName: coach.name },
-        create: { userId: coach.userId, loginName: coach.name },
-      });
-      attributed++;
-    }
+  const editions = await prisma.worldCupChampion.findMany();
+  let attributed = 0;
+  let eligible = 0;
+  let medals = 0;
+  let medalSlots = 0;
+  for (const e of editions) {
+    if (!e.champion || !e.finishedDate) continue;
+    eligible++;
+    const finishedMs = parseDMY(e.finishedDate);
+
+    const coach = coachAt(teamOf(e.champion, e.isYouth), finishedMs);
+    if (coach?.userId) attributed++;
+    await remember(coach);
+
+    // Silver and bronze, on identical evidence — the same tenure list, the same date rule. Without
+    // this the by-coach medal table for the World Cup could only ever show golds.
+    const second = coachAt(teamOf(e.runnerUp, e.isYouth), finishedMs);
+    const thirdNames = e.thirdFourth ? e.thirdFourth.split(', ').filter(Boolean) : [];
+    const thirds = thirdNames.map((n) => coachAt(teamOf(n, e.isYouth), finishedMs));
+    await remember(second);
+    for (const t of thirds) await remember(t);
+    medalSlots += (e.runnerUp ? 1 : 0) + thirdNames.length;
+    medals += (second?.userId ? 1 : 0) + thirds.filter((t) => t?.userId).length;
+
     await prisma.worldCupChampion.update({
       where: { isYouth_edition: { isYouth: e.isYouth, edition: e.edition } },
-      data: { championUserId: coach.userId, championUserName: coach.userId ? coach.name : null },
+      data: {
+        ...(coach ? { championUserId: coach.userId, championUserName: coach.userId ? coach.name : null } : {}),
+        runnerUpUserId: second?.userId || null,
+        thirdFourthUserIds: thirds.map((t) => t?.userId || '').join(','),
+      },
     });
   }
 
   await enrichUserNationalities(token);
-  return { attributed, eligible };
+  return { attributed, eligible, medals, medalSlots };
 }
