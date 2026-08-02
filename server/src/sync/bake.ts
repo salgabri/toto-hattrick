@@ -45,10 +45,12 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     if (cur === undefined || c.season > cur) cupReignSeason.set(c.cupId, c.season);
   }
 
-  interface CupItem { country: string; leagueId: number; season: number; club: string; cup: string; last: boolean }
+  // teamId is optional throughout: it links the cabinet entry out to the club's hattrick.org page,
+  // and must stay undefined for a reconstructed placeholder (id 0) or an unresolved cup winner.
+  interface CupItem { country: string; leagueId: number; season: number; club: string; teamId?: number; cup: string; last: boolean }
   interface Mgr {
     userId: number; userName: string; nationality: string; lg: number;
-    titles: Array<{ country: string; leagueId: number; season: number; club: string; last: boolean }>;
+    titles: Array<{ country: string; leagueId: number; season: number; club: string; teamId?: number; last: boolean }>;
     cupsMain: CupItem[]; cupsSec: CupItem[]; masters: CupItem[]; seasonal: CupItem[]; worldCup: CupItem[];
   }
   const mgr = new Map<number, Mgr>();
@@ -60,20 +62,25 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
 
   for (const c of await prisma.leagueChampion.findMany({
     where: { complete: true, championUserId: { gt: 0 } },
-    select: { championUserId: true, championUserName: true, countryName: true, season: true, championTeamName: true, leagueId: true },
+    select: { championUserId: true, championUserName: true, countryName: true, season: true, championTeamName: true, championTeamId: true, leagueId: true },
   })) {
     get(c.championUserId!, c.championUserName).titles.push({
       country: c.countryName, leagueId: c.leagueId, season: c.season, club: c.championTeamName,
+      teamId: c.championTeamId > 0 ? c.championTeamId : undefined,
       last: leagueReignSeason.get(c.leagueId) === c.season,
     });
   }
 
   for (const c of await prisma.cupChampion.findMany({
     where: { championUserId: { gt: 0 } },
-    select: { championUserId: true, championUserName: true, countryName: true, leagueId: true, season: true, championTeamName: true, cupName: true, isMain: true, cupId: true },
+    select: { championUserId: true, championUserName: true, countryName: true, leagueId: true, season: true, championTeamName: true, championTeamId: true, cupName: true, isMain: true, cupId: true },
   })) {
     const e = get(c.championUserId!, c.championUserName);
-    const item = { country: c.countryName, leagueId: c.leagueId, season: c.season, club: c.championTeamName, cup: c.cupName, last: cupReignSeason.get(c.cupId) === c.season };
+    const item = {
+      country: c.countryName, leagueId: c.leagueId, season: c.season, club: c.championTeamName,
+      teamId: c.championTeamId && c.championTeamId > 0 ? c.championTeamId : undefined,
+      cup: c.cupName, last: cupReignSeason.get(c.cupId) === c.season,
+    };
     // The Hattrick Masters and the Seasonal Cups are each their own category, not national cups
     // (see sync/masters.ts, sync/seasonal.ts).
     if (c.cupId === MASTERS_CUP_ID) e.masters.push(item);
@@ -99,6 +106,25 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     e.worldCup.push({
       country: 'World Cup', leagueId: 0, season: c.edition, club: c.champion!,
       cup: c.isYouth ? 'World Cup (Youth)' : 'World Cup', last: wcReignEdition.get(c.isYouth) === c.edition,
+    });
+  }
+
+  // The regional national-team cups land in the SAME cabinet bucket as the World Cup — one
+  // "National trophies" category, the cup label keeping each competition visible in the drill-down.
+  // "Reigning" is per cup (its own latest season), the way each national cup reigns on its own.
+  const ntReignSeason = new Map<number, number>();
+  for (const c of await prisma.nationalCupChampion.findMany({ where: { champion: { not: null } }, select: { cupId: true, season: true } })) {
+    const cur = ntReignSeason.get(c.cupId);
+    if (cur === undefined || c.season > cur) ntReignSeason.set(c.cupId, c.season);
+  }
+  for (const c of await prisma.nationalCupChampion.findMany({
+    where: { championUserId: { gt: 0 } },
+    select: { championUserId: true, championUserName: true, champion: true, cupId: true, cupName: true, season: true, championLeagueId: true },
+  })) {
+    const e = get(c.championUserId!, c.championUserName);
+    e.worldCup.push({
+      country: c.cupName, leagueId: c.championLeagueId ?? 0, season: c.season, club: c.champion!,
+      cup: c.cupName, last: ntReignSeason.get(c.cupId) === c.season,
     });
   }
 
@@ -230,7 +256,33 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     coach: r.championUserName ?? undefined,
     coachNationality: r.championUserId ? natById.get(r.championUserId) : undefined,
   });
-  const worldCup = { senior: wcRows.filter((r) => !r.isYouth).map(wcOut), youth: wcRows.filter((r) => r.isYouth).map(wcOut) };
+  // The regional national-team cups (Africa/America/Asia and Oceania/Europe/Nations) ride in the
+  // same file under `regional`: same nature as the World Cup, but perpetual — one champion per
+  // SEASON per cup, so each is its own roll of honour rather than a numbered edition list. The
+  // World Cup's own cupId is never in this table (see sync/ntCups.ts), so nothing double-counts.
+  const ntRows = await prisma.nationalCupChampion.findMany({ orderBy: [{ cupName: 'asc' }, { season: 'desc' }] });
+  const regionalByCup = new Map<number, { cupId: number; cupName: string; isYouth: boolean; seasons: unknown[] }>();
+  for (const r of ntRows) {
+    const cup = regionalByCup.get(r.cupId) ?? { cupId: r.cupId, cupName: r.cupName, isYouth: r.isYouth, seasons: [] };
+    cup.seasons.push({
+      season: r.season,
+      host: r.host,
+      finished: r.finalDate,
+      status: r.status ?? undefined,
+      champion: r.champion,
+      runnerUp: r.runnerUp,
+      thirdFourth: r.thirdFourth ? r.thirdFourth.split(', ') : [],
+      coachUserId: r.championUserId && r.championUserId > 0 ? r.championUserId : undefined,
+      coach: r.championUserName ?? undefined,
+      coachNationality: r.championUserId ? natById.get(r.championUserId) : undefined,
+    });
+    regionalByCup.set(r.cupId, cup);
+  }
+  const worldCup = {
+    senior: wcRows.filter((r) => !r.isYouth).map(wcOut),
+    youth: wcRows.filter((r) => r.isYouth).map(wcOut),
+    regional: [...regionalByCup.values()],
+  };
   writeFileSync(`${out}/worldcup.json`, JSON.stringify(worldCup));
 
   // National Coach elections — per-country, independent of World Cup outcome (see sync/elections.ts).

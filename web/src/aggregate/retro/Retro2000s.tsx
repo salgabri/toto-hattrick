@@ -10,19 +10,19 @@ import {
   getLeagues,
   getManagers,
   getMastersWinners,
+  getNationalCompetitions,
   getNationalities,
   getSeasonalCups,
   getWinners,
-  getWorldCup,
   type Country,
   type CupRoll,
   type ElectionResult,
   type Manager,
+  type NationalCompetition,
   type SeasonalCupRoll,
   type TrophyCabinet,
   type TrophyItem,
   type Winner,
-  type WorldCupEdition,
 } from '../data.js';
 import { leagueFlagUrl, nationalityFlagUrl } from '../flags.js';
 import { R, MONO, rootStyle2000s, type Skin } from './theme2000s.js';
@@ -56,6 +56,7 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
   const [query, setQuery] = useState('');
   const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false, hm: true, sn: true, wc: true });
   const [lastOnly, setLastOnly] = useState(false);
+  const [groupBy, setGroupBy] = useState<TrophyGroupBy>('manager');
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [league, setLeague] = useState<string>('');
   const [cupCountry, setCupCountry] = useState<string>('');
@@ -193,6 +194,8 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
               setInc={setInc}
               lastOnly={lastOnly}
               setLastOnly={setLastOnly}
+              groupBy={groupBy}
+              setGroupBy={setGroupBy}
               expandedId={expandedId}
               setExpandedId={setExpandedId}
               onStatus={setStatus}
@@ -237,7 +240,7 @@ const NAV: Array<{ key: RetroView; label: string }> = [
   { key: 'trophies', label: 'Trophy leaders' },
   { key: 'leagues', label: 'League winners' },
   { key: 'cups', label: 'Cup winners' },
-  { key: 'worldcup', label: 'World Cup' },
+  { key: 'worldcup', label: 'National trophies' },
   { key: 'elections', label: 'Elections' },
 ];
 
@@ -387,6 +390,8 @@ const runTag: CSSProperties = {
 
 const RETRO_TROPHY_GRID = '46px minmax(0,1fr) 160px minmax(110px,200px) 56px 22px';
 const PAGE_SIZE = 50;
+/** How many of a nation's top managers the expanded nation row lists. */
+const NATION_TOP_N = 12;
 
 interface IncState {
   champ: boolean;
@@ -397,9 +402,182 @@ interface IncState {
   wc: boolean;
 }
 
+/** The leaderboard's unit of aggregation: one row per manager, or one row per manager NATIONALITY
+ *  (every trophy its citizens ever won, pooled). */
+export type TrophyGroupBy = 'manager' | 'nation';
+
+/** A nationality's pooled haul. Counts are whatever the current filters resolved per manager
+ *  (career totals, or reigning-only), so the toggles apply identically in both modes. */
+interface NationAgg {
+  nation: string;
+  winners: number; // managers of that nationality with at least one counted trophy
+  lg: number;
+  main: number;
+  sec: number;
+  hm: number;
+  sn: number;
+  wc: number;
+  ft: number;
+  top: Array<{ userId: number; login: string; ft: number }>;
+}
+
+/**
+ * One meaning-group inside the Filters box. The rows stack — what gets counted (which
+ * competitions, over what stretch of history), then how the counted field is shown — so each can
+ * grow its own controls without reflowing the other.
+ */
+function FilterRow({ divider, children }: { divider?: boolean; children: ReactNode }) {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '14px 20px',
+        alignItems: 'flex-end',
+        ...(divider ? { borderTop: '1px solid var(--line,#CDD7C3)', marginTop: 11, paddingTop: 11 } : null),
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+/**
+ * How much of a manager's history counts. Only the two states the baked data can answer today —
+ * career totals, or reigning-only (the last winner of each competition). Season windows ("last 5
+ * seasons") need a per-title season filter, so they'd become their own state, not another flag.
+ */
+const RECENCY_OPTS: Array<{ label: string; reigning: boolean; title: string }> = [
+  { label: 'All time', reigning: false, title: 'Every trophy ever won' },
+  {
+    label: 'Reigning only',
+    reigning: true,
+    title: 'Count only the last trophy won in each competition — the current champion of every league and holder of every cup',
+  },
+];
+
+/** The 2000s pressed/unpressed toggle button — inset when on, outset when off. */
+function toggleBtn(on: boolean): CSSProperties {
+  return {
+    display: 'inline-flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+    fontSize: 11,
+    padding: '4px 10px',
+    border: on ? '2px inset var(--btn,#EBEFE2)' : '2px outset var(--btn,#EBEFE2)',
+    background: on ? R.btn2 : 'linear-gradient(180deg,#fff,var(--btn,#EBEFE2))',
+    color: on ? R.ink : R.soft,
+    fontWeight: on ? 'bold' : 'normal',
+  };
+}
+
 function rankBg(r: number): string {
   return r === 1 ? '#D8A93B' : r === 2 ? '#C7C3B8' : r === 3 ? '#C08A52' : 'transparent';
 }
+
+/** Medal-plated for the podium, plain otherwise. */
+function RankBadge({ rank }: { rank: number }) {
+  const top = rank <= 3;
+  return (
+    <span
+      style={
+        top
+          ? {
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 26,
+              height: 18,
+              border: '1px solid rgba(0,0,0,.4)',
+              background: rankBg(rank),
+              color: '#241c08',
+              fontWeight: 'bold',
+              fontSize: 12,
+              fontFamily: MONO,
+            }
+          : { display: 'inline-block', textAlign: 'center', width: 26, color: R.soft, fontWeight: 'bold', fontSize: 13, fontFamily: MONO }
+      }
+    >
+      {rank}
+    </span>
+  );
+}
+
+type TrophyCounts = { lg: number; main: number; sec: number; hm: number; sn: number; wc: number };
+
+/** The counted categories in legend order — excluded ones contribute no segment. */
+function mixSegments(c: TrophyCounts, inc: IncState): Array<{ n: number; color: string }> {
+  const segs: Array<{ n: number; color: string }> = [];
+  if (inc.champ && c.lg) segs.push({ n: c.lg, color: R.champ });
+  if (inc.main && c.main) segs.push({ n: c.main, color: R.main });
+  if (inc.hm && c.hm) segs.push({ n: c.hm, color: R.masters });
+  if (inc.wc && c.wc) segs.push({ n: c.wc, color: R.worldCup });
+  if (inc.sn && c.sn) segs.push({ n: c.sn, color: R.seasonal });
+  if (inc.sec && c.sec) segs.push({ n: c.sec, color: R.sec });
+  return segs;
+}
+
+/** Stacked proportion bar + the `a + b + c` breakdown underneath it. */
+function MixBar({ segs, total }: { segs: Array<{ n: number; color: string }>; total: number }) {
+  const tot = total || 1;
+  return (
+    <div style={{ minWidth: 0 }}>
+      <div style={{ height: 11, border: '1px solid var(--frame,#617D54)', background: R.panel2, display: 'flex', overflow: 'hidden' }}>
+        {segs.map((sg, ix) => (
+          <span key={ix} style={{ width: (sg.n / tot) * 100 + '%', background: sg.color, borderRight: '1px solid rgba(0,0,0,.2)' }} />
+        ))}
+      </div>
+      <div style={{ fontFamily: MONO, fontSize: 10, color: R.faint, marginTop: 4 }}>{segs.map((s) => s.n).join(' + ') || '0'}</div>
+    </div>
+  );
+}
+
+/** The +/− affordance on an expandable leaderboard row. */
+function ExpandGlyph({ open }: { open: boolean }) {
+  return (
+    <span
+      aria-hidden
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 15,
+        height: 15,
+        border: '1px solid var(--line,#CDD7C3)',
+        background: R.panel2,
+        color: R.soft,
+        fontWeight: 'bold',
+        fontSize: 12,
+        lineHeight: 1,
+        fontFamily: MONO,
+      }}
+    >
+      {open ? '−' : '+'}
+    </span>
+  );
+}
+
+/** Category → colour → the `NationAgg` field holding its count. Legend order, as everywhere else. */
+const NATION_CATS: Array<{ label: string; dot: string; k: keyof IncState; f: keyof TrophyCounts }> = [
+  { label: 'Championships', dot: R.champ, k: 'champ', f: 'lg' },
+  { label: 'Main cups', dot: R.main, k: 'main', f: 'main' },
+  { label: 'Hattrick Masters', dot: R.masters, k: 'hm', f: 'hm' },
+  { label: 'National trophies', dot: R.worldCup, k: 'wc', f: 'wc' },
+  { label: 'Seasonal cups', dot: R.seasonal, k: 'sn', f: 'sn' },
+  { label: 'Secondary cups', dot: R.sec, k: 'sec', f: 'sec' },
+];
+
+/** Shared header style for the panels inside an expanded row. */
+const cabinetHead: CSSProperties = {
+  fontSize: 10,
+  letterSpacing: '.05em',
+  textTransform: 'uppercase',
+  fontWeight: 'bold',
+  color: R.soft,
+  borderBottom: '1px solid var(--line,#CDD7C3)',
+  paddingBottom: 5,
+};
 
 function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean) {
   const pick = (items: TrophyItem[]) => (lastOnly ? items.filter((it) => it.last) : items);
@@ -407,7 +585,7 @@ function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean) {
     { label: 'Championships', dot: R.champ, items: pick(tr.champ), excluded: !inc.champ },
     { label: 'Main cups', dot: R.main, items: pick(tr.main), excluded: !inc.main },
     { label: 'Hattrick Masters', dot: R.masters, items: pick(tr.other), excluded: !inc.hm },
-    { label: 'World Cup', dot: R.worldCup, items: pick(tr.worldCup), excluded: !inc.wc },
+    { label: 'National trophies', dot: R.worldCup, items: pick(tr.worldCup), excluded: !inc.wc },
     { label: 'Seasonal cups', dot: R.seasonal, items: pick(tr.seasonal), excluded: !inc.sn },
     { label: 'Secondary cups', dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
   ].filter((c) => c.items.length);
@@ -423,6 +601,8 @@ function RetroTrophyLeaders({
   setInc,
   lastOnly,
   setLastOnly,
+  groupBy,
+  setGroupBy,
   expandedId,
   setExpandedId,
   onStatus,
@@ -436,6 +616,8 @@ function RetroTrophyLeaders({
   setInc: Dispatch<SetStateAction<IncState>>;
   lastOnly: boolean;
   setLastOnly: Dispatch<SetStateAction<boolean>>;
+  groupBy: TrophyGroupBy;
+  setGroupBy: Dispatch<SetStateAction<TrophyGroupBy>>;
   expandedId: string | null;
   setExpandedId: Dispatch<SetStateAction<string | null>>;
   onStatus: (s: string) => void;
@@ -445,20 +627,28 @@ function RetroTrophyLeaders({
   const [cabinets, setCabinets] = useState<Record<number, TrophyCabinet | null>>({});
   const [page, setPage] = useState(1);
 
+  // Nationality is the grouping dimension in nation mode, so it can't also be a filter there —
+  // always pull the whole field.
   useEffect(() => {
     setLoading(true);
-    getManagers(nation === 'ALL' ? undefined : nation)
+    getManagers(groupBy === 'nation' || nation === 'ALL' ? undefined : nation)
       .then(setManagers)
       .catch(() => setManagers([]))
       .finally(() => setLoading(false));
-  }, [nation]);
+  }, [nation, groupBy]);
 
   // Any filter change reshuffles the ranked list, so drop back to the first page.
   useEffect(() => {
     setPage(1);
-  }, [nation, query, inc, lastOnly]);
+  }, [nation, query, inc, lastOnly, groupBy]);
+
+  // Row ids mean different things per mode (userId vs nation name) — never carry one over.
+  useEffect(() => {
+    setExpandedId(null);
+  }, [groupBy, setExpandedId]);
 
   const toggleInc = (k: keyof IncState) => setInc((s) => ({ ...s, [k]: !s[k] }));
+  const toggleNation = (name: string) => setExpandedId((cur) => (cur === name ? null : name));
   const toggleExpand = (m: Manager) => {
     setExpandedId((cur) => (cur === String(m.userId) ? null : String(m.userId)));
     if (!(m.userId in cabinets)) {
@@ -486,6 +676,37 @@ function RetroTrophyLeaders({
     return l.map((e, i) => ({ ...e, rank: i + 1 }));
   }, [managers, inc, lastOnly]);
 
+  // Pool the very same per-manager numbers by nationality, so both modes always agree: a nation's
+  // total is exactly the sum of its managers' totals under the current toggles.
+  const rankedNations = useMemo(() => {
+    const by = new Map<string, NationAgg>();
+    for (const e of ranked) {
+      const key = e.m.c || 'Unknown';
+      let a = by.get(key);
+      if (!a) {
+        a = { nation: key, winners: 0, lg: 0, main: 0, sec: 0, hm: 0, sn: 0, wc: 0, ft: 0, top: [] };
+        by.set(key, a);
+      }
+      a.lg += e.lg;
+      a.main += e.main;
+      a.sec += e.sec;
+      a.hm += e.hm;
+      a.sn += e.sn;
+      a.wc += e.wc;
+      a.ft += e.ft;
+      if (e.ft > 0) {
+        a.winners++;
+        a.top.push({ userId: e.m.userId, login: e.m.login, ft: e.ft });
+      }
+    }
+    const list = [...by.values()];
+    // `ranked` is already sorted by total, so each nation's contributors come out in order —
+    // just cap the list we render in the expanded panel.
+    for (const a of list) a.top = a.top.slice(0, NATION_TOP_N);
+    list.sort((a, b) => b.ft - a.ft || b.lg - a.lg || a.nation.localeCompare(b.nation));
+    return list.map((a, i) => ({ ...a, rank: i + 1 }));
+  }, [ranked]);
+
   const q = query.trim().toLowerCase();
   const visible = ranked.filter(
     (e) =>
@@ -493,23 +714,28 @@ function RetroTrophyLeaders({
       e.ft > 0 &&
       (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast + e.m.hmLast + e.m.snLast + e.m.wcLast > 0),
   );
+  const visibleNations = rankedNations.filter((n) => n.ft > 0 && (!q || n.nation.toLowerCase().includes(q)));
 
-  // Show at most PAGE_SIZE managers at a time. Ranks stay absolute over the whole
+  const byNation = groupBy === 'nation';
+  const rowCount = byNation ? visibleNations.length : visible.length;
+
+  // Show at most PAGE_SIZE rows at a time. Ranks stay absolute over the whole
   // filtered list, so page 2 continues from rank 51, not from 1.
-  const pageCount = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
+  const pageCount = Math.max(1, Math.ceil(rowCount / PAGE_SIZE));
   const curPage = Math.min(page, pageCount);
   const pageStart = (curPage - 1) * PAGE_SIZE;
   const pageRows = visible.slice(pageStart, pageStart + PAGE_SIZE);
+  const pageNations = visibleNations.slice(pageStart, pageStart + PAGE_SIZE);
 
   useEffect(() => {
-    if (!loading) onStatus(`Done. ${visible.length} record(s).`);
-  }, [loading, visible.length, onStatus]);
+    if (!loading) onStatus(`Done. ${rowCount} record(s).`);
+  }, [loading, rowCount, onStatus]);
 
   const chips: Array<{ k: keyof IncState; label: string }> = [
     { k: 'champ', label: 'Championships' },
     { k: 'main', label: 'Main cups' },
     { k: 'hm', label: 'Masters' },
-    { k: 'wc', label: 'World Cup' },
+    { k: 'wc', label: 'National' },
     { k: 'sn', label: 'Seasonal' },
     { k: 'sec', label: 'Secondary' },
   ];
@@ -517,46 +743,31 @@ function RetroTrophyLeaders({
   return (
     <div>
       <div style={intro}>
-        Managers ranked by silverware across all of their clubs &mdash; league titles, national cups, the Hattrick
-        Masters, and Seasonal Cups. Toggle which trophies count toward the total below.
+        {byNation ? (
+          <>
+            Nations ranked by the silverware their managers won &mdash; every trophy pooled by the manager&apos;s
+            nationality, not by where the club plays. Toggle which trophies count toward the total below.
+          </>
+        ) : (
+          <>
+            Managers ranked by silverware across all of their clubs &mdash; league titles, national cups, the Hattrick
+            Masters, and Seasonal Cups. Toggle which trophies count toward the total below.
+          </>
+        )}
       </div>
 
-      {/* Filters */}
+      {/* Filters — two meaning-groups: what gets counted, then how the counted field is shown. */}
       <fieldset style={fieldset}>
         <legend style={legend}>Filters</legend>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px 20px', alignItems: 'flex-end' }}>
+
+        <FilterRow>
           <div>
-            <div style={filterLabel}>Counting toward total</div>
-            <div style={{ display: 'flex', gap: 6 }}>
+            <div style={filterLabel}>Competitions</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {chips.map((c) => {
                 const on = inc[c.k];
-                const style: CSSProperties = on
-                  ? {
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      cursor: 'pointer',
-                      fontFamily: 'inherit',
-                      fontSize: 11,
-                      padding: '4px 10px',
-                      border: '2px inset var(--btn,#EBEFE2)',
-                      background: R.btn2,
-                      color: R.ink,
-                      fontWeight: 'bold',
-                    }
-                  : {
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      cursor: 'pointer',
-                      fontFamily: 'inherit',
-                      fontSize: 11,
-                      padding: '4px 10px',
-                      border: '2px outset var(--btn,#EBEFE2)',
-                      background: 'linear-gradient(180deg,#fff,var(--btn,#EBEFE2))',
-                      color: R.soft,
-                      fontWeight: 'normal',
-                    };
                 return (
-                  <button key={c.k} onClick={() => toggleInc(c.k)} style={style}>
+                  <button key={c.k} onClick={() => toggleInc(c.k)} style={toggleBtn(on)}>
                     {on && <span>✓&nbsp;</span>}
                     {c.label}
                   </button>
@@ -565,73 +776,71 @@ function RetroTrophyLeaders({
             </div>
           </div>
           <div>
-            <div style={filterLabel}>Nationality</div>
-            <select value={nation} onChange={(e) => setNation(e.target.value)} style={selectStyle}>
-              <option value="ALL">All nationalities</option>
-              {nationalities.map((o) => (
-                <option key={o.code} value={o.code}>
-                  {o.name}
-                </option>
+            <div style={filterLabel}>Recency</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+              {RECENCY_OPTS.map((o) => (
+                <button key={o.label} onClick={() => setLastOnly(o.reigning)} style={toggleBtn(lastOnly === o.reigning)} title={o.title}>
+                  {lastOnly === o.reigning && <span>✓&nbsp;</span>}
+                  {o.label}
+                </button>
               ))}
-            </select>
+            </div>
           </div>
+        </FilterRow>
+
+        <FilterRow divider>
+          <div>
+            <div style={filterLabel}>Group by</div>
+            <div style={{ display: 'flex', gap: 6 }}>
+              <button onClick={() => setGroupBy('manager')} style={toggleBtn(!byNation)} title="One row per manager">
+                {!byNation && <span>✓&nbsp;</span>}
+                Managers
+              </button>
+              <button
+                onClick={() => setGroupBy('nation')}
+                style={toggleBtn(byNation)}
+                title="Pool every manager's trophies by their nationality"
+              >
+                {byNation && <span>✓&nbsp;</span>}
+                Nations
+              </button>
+            </div>
+          </div>
+          {!byNation && (
+            <div>
+              <div style={filterLabel}>Nationality</div>
+              <select value={nation} onChange={(e) => setNation(e.target.value)} style={selectStyle}>
+                <option value="ALL">All nationalities</option>
+                {nationalities.map((o) => (
+                  <option key={o.code} value={o.code}>
+                    {o.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
           <div>
             <div style={filterLabel}>Search</div>
             <input
               className="retro-input"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Manager or club…"
+              placeholder={byNation ? 'Nation…' : 'Manager or club…'}
               style={{ width: 190, border: '2px inset var(--btn,#EBEFE2)', background: '#fff', color: R.ink, fontSize: 11, padding: '3px 6px', outline: 'none', fontFamily: 'inherit' }}
             />
           </div>
-          <div>
-            <div style={filterLabel}>Recency</div>
-            <button
-              onClick={() => setLastOnly((v) => !v)}
-              title="Count only the last trophy won in each competition — the current champion of every league and holder of every cup"
-              style={
-                lastOnly
-                  ? {
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      cursor: 'pointer',
-                      fontFamily: 'inherit',
-                      fontSize: 11,
-                      padding: '4px 10px',
-                      border: '2px inset var(--btn,#EBEFE2)',
-                      background: R.btn2,
-                      color: R.ink,
-                      fontWeight: 'bold',
-                    }
-                  : {
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      cursor: 'pointer',
-                      fontFamily: 'inherit',
-                      fontSize: 11,
-                      padding: '4px 10px',
-                      border: '2px outset var(--btn,#EBEFE2)',
-                      background: 'linear-gradient(180deg,#fff,var(--btn,#EBEFE2))',
-                      color: R.soft,
-                      fontWeight: 'normal',
-                    }
-              }
-            >
-              {lastOnly && <span>✓&nbsp;</span>}
-              Reigning only
-            </button>
-          </div>
           <div style={{ flex: 1 }} />
-          <div style={{ fontSize: 10, color: R.soft }}>
-            {visible.length > PAGE_SIZE ? `${pageStart + 1}–${pageStart + pageRows.length} of ${visible.length}` : `${visible.length} shown`}
+          <div style={{ fontSize: 10, color: R.soft, paddingBottom: 4 }}>
+            {rowCount > PAGE_SIZE
+              ? `${pageStart + 1}–${pageStart + (byNation ? pageNations.length : pageRows.length)} of ${rowCount}`
+              : `${rowCount} shown`}
           </div>
-        </div>
+        </FilterRow>
       </fieldset>
 
       {/* Leaderboard */}
       <div style={{ border: '1px solid var(--frame,#617D54)' }}>
-        <SectionBar>Trophy leaders</SectionBar>
+        <SectionBar>{byNation ? 'Trophy leaders — by nation' : 'Trophy leaders'}</SectionBar>
         <div
           style={{
             display: 'grid',
@@ -649,29 +858,119 @@ function RetroTrophyLeaders({
           }}
         >
           <div>Rank</div>
-          <div>Manager</div>
-          <div>Nationality</div>
+          <div>{byNation ? 'Nation' : 'Manager'}</div>
+          <div>{byNation ? 'Winners' : 'Nationality'}</div>
           <div>Trophy mix</div>
           <div style={{ textAlign: 'right' }}>Total</div>
           <div />
         </div>
 
-        {pageRows.map((e, i) => {
+        {byNation &&
+          pageNations.map((n, i) => {
+            const isExp = expandedId === n.nation;
+            const segs = mixSegments(n, inc);
+            return (
+              <div key={n.nation}>
+                <div
+                  className="retro-row"
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={isExp}
+                  onClick={() => toggleNation(n.nation)}
+                  onKeyDown={(ev) => {
+                    if (ev.key === 'Enter' || ev.key === ' ') {
+                      ev.preventDefault();
+                      toggleNation(n.nation);
+                    }
+                  }}
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: RETRO_TROPHY_GRID,
+                    gap: 10,
+                    padding: 'var(--rp,7px) 10px',
+                    borderBottom: '1px solid var(--line,#CDD7C3)',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                    background: isExp ? R.selrow : i % 2 ? R.alt : R.panel,
+                  }}
+                >
+                  <div>
+                    <RankBadge rank={n.rank} />
+                  </div>
+                  <div style={{ minWidth: 0, display: 'flex', alignItems: 'center', gap: 7 }}>
+                    <Flag url={nationalityFlagUrl(n.nation)} label={n.nation} size={24} />
+                    <div style={{ minWidth: 0, fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {n.nation}
+                    </div>
+                  </div>
+                  <div style={{ fontFamily: MONO, fontSize: 12, color: R.soft }}>
+                    {n.winners.toLocaleString()}
+                    <span style={{ fontSize: 10, color: R.faint }}> manager{n.winners === 1 ? '' : 's'}</span>
+                  </div>
+                  <MixBar segs={segs} total={n.ft} />
+                  <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 17, fontWeight: 'bold', color: R.ink }}>{n.ft}</div>
+                  <div style={{ textAlign: 'center' }}>
+                    <ExpandGlyph open={isExp} />
+                  </div>
+                </div>
+
+                {isExp && (
+                  <div style={{ padding: '10px 12px 12px 66px', background: R.panel2, borderBottom: '1px solid var(--line,#CDD7C3)' }}>
+                    <div style={{ border: '2px inset var(--btn,#EBEFE2)', background: R.panel, padding: 10, display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                      <div style={{ flex: 1, minWidth: 190, border: '1px solid var(--line,#CDD7C3)', background: R.panel, padding: '8px 10px' }}>
+                        <div style={{ ...cabinetHead, marginBottom: 9 }}>By competition</div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+                          {NATION_CATS.map((c) => (
+                            <div key={c.label} style={{ display: 'flex', alignItems: 'center', gap: 7, opacity: inc[c.k] ? 1 : 0.5 }}>
+                              <span style={{ width: 9, height: 9, flex: 'none', border: '1px solid rgba(0,0,0,.3)', background: c.dot }} />
+                              <span style={{ fontSize: 11, color: R.ink, flex: 1 }}>{c.label}</span>
+                              {!inc[c.k] && (
+                                <span style={{ fontSize: 9, fontWeight: 'bold', letterSpacing: '.03em', textTransform: 'uppercase', color: R.faint }}>
+                                  [excluded]
+                                </span>
+                              )}
+                              <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 'bold', color: R.soft }}>{n[c.f]}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div style={{ flex: 2, minWidth: 240, border: '1px solid var(--line,#CDD7C3)', background: R.panel, padding: '8px 10px' }}>
+                        <div style={{ ...cabinetHead, marginBottom: 9 }}>
+                          Top managers {n.winners > NATION_TOP_N ? `(${NATION_TOP_N} of ${n.winners})` : ''}
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+                          {n.top.map((t, ix) => (
+                            <div key={t.userId} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                              <span style={{ fontFamily: MONO, fontSize: 10, color: R.faint, width: 18, flex: 'none', textAlign: 'right' }}>{ix + 1}.</span>
+                              <a
+                                href={hattrickManagerUrl(t.userId)}
+                                target="_blank"
+                                rel="noreferrer"
+                                onClick={(ev) => ev.stopPropagation()}
+                                style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, textDecoration: 'none', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                              >
+                                {t.login}
+                              </a>
+                              <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 'bold', color: R.soft, flex: 'none' }}>{t.ft}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
+        {!byNation &&
+          pageRows.map((e, i) => {
           const m = e.m;
           const r = e.rank;
-          const top = r <= 3;
           const isExp = expandedId === String(m.userId);
           const cab = isExp ? cabinets[m.userId] : undefined;
 
-          const segRaw: Array<{ n: number; color: string }> = [];
-          if (inc.champ && e.lg) segRaw.push({ n: e.lg, color: R.champ });
-          if (inc.main && e.main) segRaw.push({ n: e.main, color: R.main });
-          if (inc.hm && e.hm) segRaw.push({ n: e.hm, color: R.masters });
-          if (inc.wc && e.wc) segRaw.push({ n: e.wc, color: R.worldCup });
-          if (inc.sn && e.sn) segRaw.push({ n: e.sn, color: R.seasonal });
-          if (inc.sec && e.sec) segRaw.push({ n: e.sec, color: R.sec });
-          const tot = e.ft || 1;
-          const breakdown = segRaw.map((s) => s.n).join(' + ') || '0';
+          const segRaw = mixSegments(e, inc);
           const baseBg = i % 2 ? R.alt : R.panel;
 
           return (
@@ -700,32 +999,12 @@ function RetroTrophyLeaders({
                 }}
               >
                 <div>
-                  <span
-                    style={
-                      top
-                        ? {
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: 26,
-                            height: 18,
-                            border: '1px solid rgba(0,0,0,.4)',
-                            background: rankBg(r),
-                            color: '#241c08',
-                            fontWeight: 'bold',
-                            fontSize: 12,
-                            fontFamily: MONO,
-                          }
-                        : { display: 'inline-block', textAlign: 'center', width: 26, color: R.soft, fontWeight: 'bold', fontSize: 13, fontFamily: MONO }
-                    }
-                  >
-                    {r}
-                  </span>
+                  <RankBadge rank={r} />
                 </div>
                 <div style={{ minWidth: 0 }}>
                   <div style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     <a
-                      href={`https://www.hattrick.org/en/Club/Manager/?userId=${m.userId}`}
+                      href={hattrickManagerUrl(m.userId)}
                       target="_blank"
                       rel="noreferrer"
                       onClick={(ev) => ev.stopPropagation()}
@@ -759,35 +1038,10 @@ function RetroTrophyLeaders({
                     {m.c}
                   </span>
                 </div>
-                <div style={{ minWidth: 0 }}>
-                  <div style={{ height: 11, border: '1px solid var(--frame,#617D54)', background: R.panel2, display: 'flex', overflow: 'hidden' }}>
-                    {segRaw.map((sg, ix) => (
-                      <span key={ix} style={{ width: (sg.n / tot) * 100 + '%', background: sg.color, borderRight: '1px solid rgba(0,0,0,.2)' }} />
-                    ))}
-                  </div>
-                  <div style={{ fontFamily: MONO, fontSize: 10, color: R.faint, marginTop: 4 }}>{breakdown}</div>
-                </div>
+                <MixBar segs={segRaw} total={e.ft} />
                 <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 17, fontWeight: 'bold', color: R.ink }}>{e.ft}</div>
                 <div style={{ textAlign: 'center' }}>
-                  <span
-                    aria-hidden
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: 15,
-                      height: 15,
-                      border: '1px solid var(--line,#CDD7C3)',
-                      background: R.panel2,
-                      color: R.soft,
-                      fontWeight: 'bold',
-                      fontSize: 12,
-                      lineHeight: 1,
-                      fontFamily: MONO,
-                    }}
-                  >
-                    {isExp ? '−' : '+'}
-                  </span>
+                  <ExpandGlyph open={isExp} />
                 </div>
               </div>
 
@@ -816,7 +1070,9 @@ function RetroTrophyLeaders({
                                   {it.flag && <img src={it.flag} alt="" width={17} style={{ height: 'auto', flex: 'none', border: '1px solid ' + R.line }} />}
                                   <div style={{ minWidth: 0 }}>
                                     <div style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{it.main}</div>
-                                    <div style={{ fontSize: 10, color: R.faint, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{it.sub}</div>
+                                    <div style={{ fontSize: 10, color: R.faint, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                      <HtLink href={it.teamId ? hattrickTeamUrl(it.teamId) : null}>{it.sub}</HtLink>
+                                    </div>
                                   </div>
                                 </div>
                                 <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 'bold', color: R.soft, flex: 'none' }}>{it.season}</span>
@@ -834,8 +1090,10 @@ function RetroTrophyLeaders({
         })}
 
         {loading && <div style={{ padding: '22px 12px', textAlign: 'center', color: R.faint, fontSize: 11 }}>Loading managers…</div>}
-        {!loading && visible.length === 0 && (
-          <div style={{ padding: '22px 12px', textAlign: 'center', color: R.faint, fontSize: 11 }}>No managers match your search.</div>
+        {!loading && rowCount === 0 && (
+          <div style={{ padding: '22px 12px', textAlign: 'center', color: R.faint, fontSize: 11 }}>
+            No {byNation ? 'nations' : 'managers'} match your search.
+          </div>
         )}
       </div>
 
@@ -847,7 +1105,7 @@ function RetroTrophyLeaders({
         <LegendSwatch color={R.champ} label="Championships" />
         <LegendSwatch color={R.main} label="Main cups" />
         <LegendSwatch color={R.masters} label="Masters" />
-        <LegendSwatch color={R.worldCup} label="World Cup" />
+        <LegendSwatch color={R.worldCup} label="National trophies" />
         <LegendSwatch color={R.seasonal} label="Seasonal" />
         <LegendSwatch color={R.sec} label="Secondary" />
         <span style={{ flex: 1 }} />
@@ -1413,23 +1671,25 @@ function RetroCupCard({
 const WORLD_CUP_GRID = '70px minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.3fr) 90px';
 
 function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
-  const [bracket, setBracket] = useState<'senior' | 'youth'>('senior');
-  const [data, setData] = useState<{ senior: WorldCupEdition[]; youth: WorldCupEdition[] } | null>(null);
+  const [comps, setComps] = useState<NationalCompetition[]>([]);
+  const [compKey, setCompKey] = useState('senior');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    getWorldCup()
-      .then(setData)
-      .catch(() => setData({ senior: [], youth: [] }))
+    getNationalCompetitions()
+      .then(setComps)
+      .catch(() => setComps([]))
       .finally(() => setLoading(false));
   }, []);
 
-  const editions = (data ? data[bracket] : []).slice().sort((a, b) => b.edition - a.edition);
+  // Fall back to the first competition on offer, so a bake without World Cup data still shows.
+  const comp = comps.find((c) => c.key === compKey) ?? comps[0];
+  const editions = (comp?.rows ?? []).slice().sort((a, b) => b.edition - a.edition);
 
   useEffect(() => {
-    if (!loading) onStatus(`Done. ${editions.length} edition(s) loaded.`);
-  }, [loading, editions.length, onStatus]);
+    if (!loading) onStatus(`Done. ${editions.length} ${comp?.unitLabel === 'Season' ? 'season' : 'edition'}(s) loaded.`);
+  }, [loading, editions.length, comp?.unitLabel, onStatus]);
 
   const tally: Record<string, number> = {};
   for (const e of editions) if (e.champion) tally[e.champion] = (tally[e.champion] || 0) + 1;
@@ -1448,15 +1708,19 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
   return (
     <div>
       <div style={intro}>
-        Hattrick's international World Cup &mdash; a champion NATION per edition, not a manager. No CHPP
-        history exists for national-team competitions; this roll of honour is read from hattrick.org directly.
+        Trophies won by NATIONS, not by managers &mdash; one champion nation per edition, credited to the coach in
+        charge at the time. No CHPP history exists for national-team competitions, so these rolls of honour are read
+        from hattrick.org directly. The World Cup (senior and youth) is covered today; the regional and alternate
+        cups are still to come.
       </div>
 
       <fieldset style={fieldset}>
-        <legend style={legend}>Select bracket</legend>
-        <div style={{ display: 'flex', gap: 6 }}>
-          <CategoryChip label="Senior" active={bracket === 'senior'} onClick={() => setBracket('senior')} />
-          <CategoryChip label="Youth (U20/U21)" active={bracket === 'youth'} onClick={() => setBracket('youth')} />
+        <legend style={legend}>Select competition</legend>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+          {comps.length === 0 && <span style={{ fontSize: 11, color: R.faint }}>{loading ? 'Loading…' : 'No competitions on record.'}</span>}
+          {comps.map((c) => (
+            <CategoryChip key={c.key} label={c.label} active={c.key === comp?.key} onClick={() => setCompKey(c.key)} />
+          ))}
         </div>
       </fieldset>
 
@@ -1465,7 +1729,7 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
       {!loading && (
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
           <div style={{ border: '1px solid var(--frame,#617D54)' }}>
-            <SectionBar>{bracket === 'senior' ? 'World Cup' : 'World Cup (Youth)'} &mdash; roll of honour</SectionBar>
+            <SectionBar>{comp?.label ?? 'National trophies'} &mdash; roll of honour</SectionBar>
             <div
               style={{
                 display: 'grid',
@@ -1481,7 +1745,7 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
                 color: R.soft,
               }}
             >
-              <div>Ed.</div>
+              <div>{comp?.unitLabel ?? 'Ed.'}</div>
               <div>Host</div>
               <div>Champion</div>
               <div>Runner-up</div>
