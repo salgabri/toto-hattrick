@@ -133,9 +133,16 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   // count as bronze (no third-place match is played).
   const medalRows = await prisma.nationalCupChampion.findMany({
     where: { champion: { not: null } },
-    select: { cupName: true, season: true, runnerUp: true, runnerUpUserId: true, thirdFourth: true, thirdFourthUserIds: true },
+    select: {
+      cupName: true, season: true, runnerUp: true, runnerUpUserId: true, runnerUpLeagueId: true,
+      thirdFourth: true, thirdFourthUserIds: true, thirdFourthLeagueIds: true,
+    },
   });
-  interface MedalItem { cup: string; season: number; nation: string; place: 2 | 3 }
+  // leagueId travels with each medal so the frontend can flag it by ID. Nation NAMES don't all
+  // resolve — Hattrick spells them inconsistently across pages ("Bénin"/"Benin", curly vs straight
+  // apostrophe in "Côte d'Ivoire") and some have no nationality entry at all — but every one of
+  // them has a league id, which is stable.
+  interface MedalItem { cup: string; season: number; nation: string; leagueId?: number; place: 2 | 3 }
   const medalsByUser = new Map<number, MedalItem[]>();
   const addMedal = (uid: number | null | undefined, item: MedalItem) => {
     if (!uid || uid <= 0) return;
@@ -143,12 +150,32 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     arr.push(item);
     medalsByUser.set(uid, arr);
   };
+  // World Cup podiums too — same rule, different source. These carry no league id (History.aspx
+  // names nations without linking them), so the frontend falls back to the name for the flag.
+  for (const e of await prisma.worldCupChampion.findMany({
+    where: { champion: { not: null } },
+    select: { isYouth: true, edition: true, runnerUp: true, runnerUpUserId: true, thirdFourth: true, thirdFourthUserIds: true },
+  })) {
+    const cup = e.isYouth ? 'World Cup (Youth)' : 'World Cup';
+    addMedal(e.runnerUpUserId, { cup, season: e.edition, nation: e.runnerUp ?? '', place: 2 });
+    const wcThirds = (e.thirdFourth || '').split(', ').filter(Boolean);
+    (e.thirdFourthUserIds || '').split(',').forEach((raw, i) => {
+      const uid = Number(raw);
+      if (uid) addMedal(uid, { cup, season: e.edition, nation: wcThirds[i] ?? '', place: 3 });
+    });
+  }
+
   for (const r of medalRows) {
-    addMedal(r.runnerUpUserId, { cup: r.cupName, season: r.season, nation: r.runnerUp ?? '', place: 2 });
+    addMedal(r.runnerUpUserId, {
+      cup: r.cupName, season: r.season, nation: r.runnerUp ?? '', leagueId: r.runnerUpLeagueId ?? undefined, place: 2,
+    });
     const names = (r.thirdFourth || '').split(', ').filter(Boolean);
+    const leagueIds = (r.thirdFourthLeagueIds || '').split(',');
     (r.thirdFourthUserIds || '').split(',').forEach((raw, i) => {
       const uid = Number(raw);
-      if (uid) addMedal(uid, { cup: r.cupName, season: r.season, nation: names[i] ?? '', place: 3 });
+      if (uid) addMedal(uid, {
+        cup: r.cupName, season: r.season, nation: names[i] ?? '', leagueId: Number(leagueIds[i]) || undefined, place: 3,
+      });
     });
   }
   // A medallist who never won anything still belongs in managers.json, so seed an entry for them —
@@ -307,6 +334,11 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
       champion: r.champion,
       runnerUp: r.runnerUp,
       thirdFourth: r.thirdFourth ? r.thirdFourth.split(', ') : [],
+      // League ids for the whole podium, so the frontend flags every nation by ID rather than by a
+      // name that Hattrick spells inconsistently (see flags.ts nationFlagUrl).
+      championLeagueId: r.championLeagueId ?? undefined,
+      runnerUpLeagueId: r.runnerUpLeagueId ?? undefined,
+      thirdFourthLeagueIds: (r.thirdFourthLeagueIds || '').split(',').map((s) => Number(s) || 0),
       coachUserId: r.championUserId && r.championUserId > 0 ? r.championUserId : undefined,
       coach: r.championUserName ?? undefined,
       coachNationality: r.championUserId ? natById.get(r.championUserId) : undefined,
