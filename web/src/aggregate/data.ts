@@ -26,7 +26,10 @@ export interface Manager {
   sec: number; // secondary/consolation cup wins (attributed)
   hm: number; // Hattrick Masters wins (the global champions-of-champions cup)
   sn: number; // Seasonal Cups wins (global recurring tournaments, e.g. Supporter Week Trophy)
-  wc: number; // World Cup wins as coach (senior + youth combined — see sync/worldCup.ts)
+  /** "National trophies": titles won as a NATIONAL COACH. The World Cup (senior + youth) today —
+   *  the regional and alternate cups will land in this same bucket (see sync/worldCup.ts). The
+   *  `wc`/`worldCup` names are the baked wire format and stay as they are. */
+  wc: number;
   oth: number;
   lgLast: number; // reigning league titles (current champion of that league)
   mainLast: number; // reigning main-cup titles (current holder of that cup)
@@ -40,6 +43,10 @@ export interface TrophyItem {
   main: string;
   sub: string;
   season: string;
+  /** The winning club's real Hattrick id, when the pipeline resolved one — links `sub` out to
+   *  hattrick.org. Absent for reconstructed placeholders and for the World Cup, whose "club" is a
+   *  nation with no team id at all. */
+  teamId?: number;
   last?: boolean; // the reigning/most-recent trophy of its competition
   flag?: string | null; // country-flag URL (by leagueId); null for the country-less Masters/World Cup
 }
@@ -50,7 +57,7 @@ export interface TrophyCabinet {
   sec: TrophyItem[];
   other: TrophyItem[]; // the Hattrick Masters
   seasonal: TrophyItem[]; // Seasonal Cups (Supporter Week Trophy)
-  worldCup: TrophyItem[]; // World Cup wins as coach (senior + youth)
+  worldCup: TrophyItem[]; // "National trophies" — titles won as a national coach (World Cup today)
 }
 
 export interface Winner {
@@ -90,6 +97,7 @@ interface RawCup {
   leagueId?: number;
   season: number;
   club: string;
+  teamId?: number;
   cup: string;
   last?: boolean;
 }
@@ -109,7 +117,7 @@ interface RawManager {
   hmLast?: number;
   snLast?: number;
   wcLast?: number;
-  titles: Array<{ country: string; leagueId?: number; season: number; club: string; last?: boolean }>;
+  titles: Array<{ country: string; leagueId?: number; season: number; club: string; teamId?: number; last?: boolean }>;
   cupsMain: RawCup[];
   cupsSec: RawCup[];
   masters?: RawCup[];
@@ -288,11 +296,13 @@ export async function getCabinet(userId: number): Promise<TrophyCabinet> {
   const champ = (m?.titles ?? []).map((t) => ({
     main: `${t.country} champions`,
     sub: t.club,
+    teamId: t.teamId,
     season: 'S' + t.season,
     last: t.last ?? latestByCountry.get(t.country) === t.season,
     flag: leagueFlagUrl(t.leagueId),
   }));
-  const cupItems = (cups?: RawCup[]) => (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, season: 'S' + t.season, last: t.last, flag: leagueFlagUrl(t.leagueId) }));
+  const cupItems = (cups?: RawCup[]) =>
+    (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, teamId: t.teamId, season: 'S' + t.season, last: t.last, flag: leagueFlagUrl(t.leagueId) }));
   // `other` carries the Hattrick Masters, `seasonal` the Seasonal Cups, `worldCup` the World Cup
   // (senior + youth) — each its own category (see bake.ts / sync/masters.ts / sync/seasonal.ts /
   // sync/worldCup.ts). All three are country-less, so no flag.
@@ -331,19 +341,86 @@ export interface WorldCupEdition {
   coach?: string;
   coachNationality?: string;
 }
+/**
+ * A regional national-team cup — Africa / America / Asia and Oceania / Europe / Nations Cup (see
+ * server/sync/ntCups.ts). Same nature as the World Cup, but perpetual: a champion per SEASON rather
+ * than a numbered edition, which is the only reason it isn't just more WorldCupEditions.
+ */
+export interface RegionalCupSeason {
+  season: number;
+  host: string;
+  finished: string | null; // "DD-MM-YYYY HH:MM" as printed, null while the season is running
+  status?: string;
+  champion: string | null;
+  runnerUp: string | null;
+  thirdFourth: string[];
+  coachUserId?: number;
+  coach?: string;
+  coachNationality?: string;
+}
+export interface RegionalCupRoll {
+  cupId: number;
+  cupName: string;
+  isYouth: boolean;
+  seasons: RegionalCupSeason[];
+}
 export interface WorldCupHistory {
   senior: WorldCupEdition[];
   youth: WorldCupEdition[];
+  /** Absent in bakes that predate the regional cups — treated as an empty list. */
+  regional?: RegionalCupRoll[];
 }
+
+const EMPTY_WC: WorldCupHistory = { senior: [], youth: [], regional: [] };
 
 let worldCupBundle: Promise<WorldCupHistory> | null = null;
 export async function getWorldCup(): Promise<WorldCupHistory> {
   if (!worldCupBundle) {
     worldCupBundle = fetch('/data/worldcup.json')
-      .then((r) => (r.ok ? (r.json() as Promise<WorldCupHistory>) : { senior: [], youth: [] }))
-      .catch(() => ({ senior: [], youth: [] }));
+      .then((r) => (r.ok ? (r.json() as Promise<WorldCupHistory>) : EMPTY_WC))
+      .catch(() => EMPTY_WC);
   }
   return worldCupBundle;
+}
+
+/**
+ * Every national-team competition as one uniform list for the National trophies view: the World
+ * Cup brackets keyed by edition, each regional cup keyed by season. Regional seasons are mapped
+ * onto the same row shape (`edition` carries the season number) so one table renders them all —
+ * `unitLabel` is what tells the reader which number they're looking at.
+ */
+export interface NationalCompetition {
+  key: string;
+  label: string;
+  unitLabel: string;
+  rows: WorldCupEdition[];
+}
+
+export async function getNationalCompetitions(): Promise<NationalCompetition[]> {
+  const wc = await getWorldCup();
+  const comps: NationalCompetition[] = [
+    { key: 'senior', label: 'World Cup', unitLabel: 'Ed.', rows: wc.senior },
+    { key: 'youth', label: 'World Cup (Youth U20/U21)', unitLabel: 'Ed.', rows: wc.youth },
+  ];
+  for (const cup of wc.regional ?? []) {
+    comps.push({
+      key: `cup-${cup.cupId}`,
+      label: cup.cupName,
+      unitLabel: 'Season',
+      rows: cup.seasons.map((s) => ({
+        edition: s.season,
+        host: s.host,
+        finished: s.finished,
+        champion: s.champion,
+        runnerUp: s.runnerUp,
+        thirdFourth: s.thirdFourth,
+        coachUserId: s.coachUserId,
+        coach: s.coach,
+        coachNationality: s.coachNationality,
+      })),
+    });
+  }
+  return comps.filter((c) => c.rows.length > 0);
 }
 
 /**
