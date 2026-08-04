@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { CSSProperties, Dispatch, ReactNode, SetStateAction } from 'react';
 import {
-  getAllElections,
   getCabinet,
   getCupCountries,
   getCups,
+  ELECTION_NATION_TOP_N,
+  getElectionAggregates,
   getElectionCountries,
   getElections,
   getLeagues,
@@ -18,6 +19,7 @@ import {
   type CoachMedals,
   type Country,
   type CupRoll,
+  type ElectionAggregates,
   type ElectionResult,
   type Manager,
   type NationalCompetition,
@@ -27,6 +29,7 @@ import {
   type Winner,
 } from '../data.js';
 import { leagueFlagUrl, nationFlagUrl, nationalityFlagUrl } from '../flags.js';
+import { LANGS, useI18n, useT, type Lang, type TFn, type TranslationKey } from '../../i18n/index.js';
 import { R, MONO, rootStyle2000s, type Skin } from './theme2000s.js';
 import './retro2000s.css';
 
@@ -46,11 +49,13 @@ import './retro2000s.css';
 export type RetroView = 'trophies' | 'leagues' | 'cups' | 'worldcup' | 'elections';
 
 export interface Retro2000sProps {
-  defaultSkin?: Skin;
+  /** Fixed at render time — there is no in-app skin picker, so a caller choosing 'blue' is the
+   *  only way off the bottle-green default. */
+  skin?: Skin;
 }
 
-export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
-  const [skin, setSkin] = useState<Skin>(defaultSkin);
+export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
+  const { lang, setLang, t } = useI18n();
   const [view, setView] = useState<RetroView>('trophies');
 
   // View state lives on the parent so it survives tab switches.
@@ -64,6 +69,7 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
   const [league, setLeague] = useState<string>('');
   const [cupCountry, setCupCountry] = useState<string>('');
   const [electionCountry, setElectionCountry] = useState<string>('');
+  const [electionTab, setElectionTab] = useState<ElectionTab>('managers');
   const [, setStatus] = useState('Ready.');
 
   // Reference lists (loaded once).
@@ -98,13 +104,13 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
       .catch(() => setElectionCountries([]));
   }, []);
 
-  const skinBtn: CSSProperties = {
-    border: '2px outset var(--btn,#EBEFE2)',
+  /** The one banner control: the language picker, in the 2000s inset-field look. */
+  const langSelect: CSSProperties = {
+    border: '2px inset var(--btn,#EBEFE2)',
     background: R.btn,
     color: '#222',
-    padding: '3px 10px',
+    padding: '3px 4px',
     cursor: 'pointer',
-    fontWeight: 'bold',
     fontSize: 10,
     fontFamily: 'inherit',
   };
@@ -152,20 +158,26 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
             <div style={{ fontSize: 22, fontWeight: 'bold', fontStyle: 'italic', letterSpacing: '.4px', textShadow: '1px 1px 0 rgba(0,0,0,.45)', lineHeight: 1 }}>
               Toto&nbsp;Hattrick
             </div>
-            <div style={{ fontSize: 10, marginTop: 5, letterSpacing: '.3px', opacity: 0.92 }}>
-              The Hattrick Almanac &middot; aggregate records
-            </div>
+            <div style={{ fontSize: 10, marginTop: 5, letterSpacing: '.3px', opacity: 0.92 }}>{t('app.tagline')}</div>
           </div>
           <div style={{ flex: 1 }} />
           <div style={{ display: 'flex', flexDirection: 'column', gap: 7, alignItems: 'flex-end' }}>
             <div style={{ fontSize: 10, opacity: 0.92 }}>
-              {managersTracked == null ? 'loading…' : `${managersTracked.toLocaleString()} managers tracked`}
+              {managersTracked == null ? t('app.loading') : t('app.managersTracked', { n: managersTracked.toLocaleString(lang) })}
             </div>
-            <div style={{ display: 'flex', gap: 6 }}>
-              <button onClick={() => setSkin((s) => (s === 'green' ? 'blue' : 'green'))} style={skinBtn}>
-                Skin: {skin === 'green' ? 'Green' : 'Blue'}
-              </button>
-            </div>
+            <select
+              value={lang}
+              onChange={(e) => setLang(e.target.value as Lang)}
+              title={t('app.language')}
+              aria-label={t('app.language')}
+              style={langSelect}
+            >
+              {LANGS.map((l) => (
+                <option key={l.code} value={l.code}>
+                  {l.label}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -180,7 +192,7 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
           }}
         >
           {NAV.map((n) => (
-            <Tab key={n.key} label={n.label} active={view === n.key} onClick={() => setView(n.key)} />
+            <Tab key={n.key} label={t(n.labelKey)} active={view === n.key} onClick={() => setView(n.key)} />
           ))}
         </div>
 
@@ -212,7 +224,14 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
           ) : view === 'worldcup' ? (
             <RetroWorldCup onStatus={setStatus} />
           ) : (
-            <RetroElections countries={electionCountries} country={electionCountry} setCountry={setElectionCountry} onStatus={setStatus} />
+            <RetroElections
+              countries={electionCountries}
+              country={electionCountry}
+              setCountry={setElectionCountry}
+              tab={electionTab}
+              setTab={setElectionTab}
+              onStatus={setStatus}
+            />
           )}
         </div>
 
@@ -230,9 +249,7 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
             flexWrap: 'wrap',
           }}
         >
-          <span style={{ opacity: 0.92 }}>
-            &copy; Toto Hattrick. Fan project, not affiliated with Hattrick / Extralives AB. Data via CHPP.
-          </span>
+          <span style={{ opacity: 0.92 }}>{t('app.footer')}</span>
         </div>
       </div>
     </div>
@@ -241,12 +258,12 @@ export function Retro2000s({ defaultSkin = 'green' }: Retro2000sProps) {
 
 /* ============================== NAV / TABS ============================== */
 
-const NAV: Array<{ key: RetroView; label: string }> = [
-  { key: 'trophies', label: 'Trophy leaders' },
-  { key: 'leagues', label: 'League winners' },
-  { key: 'cups', label: 'Cup winners' },
-  { key: 'worldcup', label: 'National trophies' },
-  { key: 'elections', label: 'Elections' },
+const NAV: Array<{ key: RetroView; labelKey: TranslationKey }> = [
+  { key: 'trophies', labelKey: 'nav.trophies' },
+  { key: 'leagues', labelKey: 'nav.leagues' },
+  { key: 'cups', labelKey: 'nav.cups' },
+  { key: 'worldcup', labelKey: 'nav.worldcup' },
+  { key: 'elections', labelKey: 'nav.elections' },
 ];
 
 function Tab({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
@@ -450,13 +467,9 @@ function FilterRow({ divider, children }: { divider?: boolean; children: ReactNo
  * career totals, or reigning-only (the last winner of each competition). Season windows ("last 5
  * seasons") need a per-title season filter, so they'd become their own state, not another flag.
  */
-const RECENCY_OPTS: Array<{ label: string; reigning: boolean; title: string }> = [
-  { label: 'All time', reigning: false, title: 'Every trophy ever won' },
-  {
-    label: 'Reigning only',
-    reigning: true,
-    title: 'Count only the last trophy won in each competition — the current champion of every league and holder of every cup',
-  },
+const RECENCY_OPTS: Array<{ labelKey: TranslationKey; reigning: boolean; titleKey: TranslationKey }> = [
+  { labelKey: 'recency.allTime', reigning: false, titleKey: 'recency.allTime.title' },
+  { labelKey: 'recency.reigning', reigning: true, titleKey: 'recency.reigning.title' },
 ];
 
 /** The 2000s pressed/unpressed toggle button — inset when on, outset when off. */
@@ -539,11 +552,41 @@ function MixBar({ segs, total }: { segs: Array<{ n: number; color: string }>; to
 /** A gold/silver/bronze table — one row per nation or per coach, same shape either way. */
 interface MedalRow { key: string; label: string; flag: string | null; href?: string | null; g: number; s: number; b: number }
 
-function MedalTable({ title, rows, empty }: { title: string; rows: MedalRow[]; empty: string }) {
-  const cols = 'minmax(0,1fr) 24px 24px 24px';
-  // Ordered like an Olympic table (gold, then silver, then bronze), which means every medallist
-  // without a gold sorts below every champion. The list therefore SCROLLS rather than being capped:
-  // a 12-row cut hid 8 silvers and 17 bronzes in the Europe Cup, making the medal columns look empty.
+/**
+ * A gold/silver/bronze table, laid out like every other full-width table in the app: rank badge,
+ * flag, name, then the three podium columns. It used to be a compact side panel squeezed beside
+ * the roll of honour — that constraint is gone now that the medal view is its own tab showing one
+ * table at a time, so it no longer needs the tiny type or the internal scroller.
+ *
+ * Rows are ordered like an Olympic table (gold, then silver, then bronze), which puts every
+ * medallist without a gold below every champion. Nothing is capped: a 12-row cut once hid 8 silvers
+ * and 17 bronzes in the Europe Cup, making the medal columns look empty.
+ */
+const MEDAL_GRID = '46px minmax(0,1fr) 70px 70px 70px 22px';
+
+/**
+ * `detail` turns a row into an expandable one: it renders what sits behind that row's totals, and
+ * each of the three groupings supplies a different panel (the podiums themselves, or the coaches
+ * pooled into a nationality). Returning null for a row leaves it inert.
+ *
+ * Expansion state is local, so switch the grouping or the scope with a `key` on this component —
+ * an open row id means something different in each mode.
+ */
+function MedalTable({
+  title,
+  rows,
+  empty,
+  headerKey,
+  detail,
+}: {
+  title: string;
+  rows: MedalRow[];
+  empty: string;
+  headerKey: TranslationKey;
+  detail?: (row: MedalRow) => ReactNode;
+}) {
+  const t = useT();
+  const [open, setOpen] = useState<string | null>(null);
   const goldsOnly = rows.length > 0 && rows.every((r) => r.s + r.b === 0);
   return (
     <div style={{ border: '1px solid var(--frame,#617D54)' }}>
@@ -551,59 +594,104 @@ function MedalTable({ title, rows, empty }: { title: string; rows: MedalRow[]; e
         {title}
         <span style={{ marginLeft: 'auto', fontFamily: MONO, fontSize: 10, opacity: 0.85 }}>{rows.length}</span>
       </SectionBar>
-      <div style={{ padding: '8px 10px 11px', background: R.panel }}>
-        <div style={{ display: 'grid', gridTemplateColumns: cols, gap: 6, fontSize: 9, fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '.03em', color: R.soft, paddingBottom: 4, borderBottom: '1px solid var(--line,#CDD7C3)' }}>
-          <div>{title.includes('coach') ? 'Coach' : 'Nation'}</div>
-          <div style={{ textAlign: 'center' }} title="Champion">1st</div>
-          <div style={{ textAlign: 'center' }} title="Runner-up">2nd</div>
-          <div style={{ textAlign: 'center' }} title="Losing semi-finalists — both count, there is no third-place match">3rd</div>
-        </div>
-        {rows.length === 0 && <div style={{ fontSize: 11, color: R.faint, paddingTop: 8 }}>{empty}</div>}
-        {goldsOnly && (
-          <div style={{ fontSize: 9, color: R.faint, padding: '5px 0 2px', lineHeight: 1.4 }}>
-            Golds only &mdash; this competition&rsquo;s source names the champion&rsquo;s coach alone.
-          </div>
-        )}
-        <div style={{ maxHeight: 300, overflowY: 'auto' }}>
-        {rows.map((r, i) => (
-          <div
-            key={r.key}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: cols,
-              gap: 6,
-              alignItems: 'center',
-              padding: '4px 0',
-              borderBottom: '1px solid var(--line,#CDD7C3)',
-              background: i % 2 ? R.alt : 'transparent',
-            }}
-          >
-            <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
-              <Flag url={r.flag} label={r.label} size={15} />
-              <span style={{ fontSize: 10, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                <HtLink href={r.href ?? null}>{r.label}</HtLink>
-              </span>
-            </span>
-            {([['g', MEDAL_GOLD], ['s', MEDAL_SILVER], ['b', MEDAL_BRONZE]] as const).map(([k, bg]) => (
-              <span
-                key={k}
-                style={{
-                  textAlign: 'center',
-                  fontFamily: MONO,
-                  fontSize: 10,
-                  fontWeight: 'bold',
-                  color: r[k] ? '#241c08' : R.faint,
-                  background: r[k] ? bg : 'transparent',
-                  border: '1px solid ' + (r[k] ? 'rgba(0,0,0,.35)' : 'transparent'),
-                }}
-              >
-                {r[k] || '·'}
-              </span>
-            ))}
-          </div>
-        ))}
-        </div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: MEDAL_GRID,
+          gap: 10,
+          padding: '6px 10px',
+          background: R.panel2,
+          borderBottom: '2px solid var(--frame,#617D54)',
+          fontSize: 10,
+          fontWeight: 'bold',
+          textTransform: 'uppercase',
+          letterSpacing: '.03em',
+          color: R.soft,
+          alignItems: 'center',
+        }}
+      >
+        <div>{t('col.rank')}</div>
+        <div>{t(headerKey)}</div>
+        <div style={{ textAlign: 'center' }} title={t('place.champion')}>{t('place.1')}</div>
+        <div style={{ textAlign: 'center' }} title={t('place.runnerUp')}>{t('place.2')}</div>
+        <div style={{ textAlign: 'center' }} title={t('place.thirdTitle')}>{t('place.3')}</div>
+        <div />
       </div>
+
+      {goldsOnly && (
+        <div style={{ fontSize: 9, color: R.faint, padding: '6px 10px', lineHeight: 1.4, background: R.panel, borderBottom: '1px solid var(--line,#CDD7C3)' }}>
+          {t('medal.goldsOnly')}
+        </div>
+      )}
+
+      {rows.map((r, i) => {
+        const body = detail?.(r);
+        const isExp = open === r.key && !!body;
+        const toggle = () => body && setOpen((cur) => (cur === r.key ? null : r.key));
+        return (
+          <div key={r.key}>
+            <div
+              className={body ? 'retro-row' : undefined}
+              role={body ? 'button' : undefined}
+              tabIndex={body ? 0 : undefined}
+              aria-expanded={body ? isExp : undefined}
+              onClick={toggle}
+              onKeyDown={(ev) => {
+                if (body && (ev.key === 'Enter' || ev.key === ' ')) {
+                  ev.preventDefault();
+                  toggle();
+                }
+              }}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: MEDAL_GRID,
+                gap: 10,
+                alignItems: 'center',
+                padding: 'var(--rp,7px) 10px',
+                borderBottom: '1px solid var(--line,#CDD7C3)',
+                cursor: body ? 'pointer' : 'default',
+                background: isExp ? R.selrow : i % 2 ? R.alt : R.panel,
+              }}
+            >
+              <div>
+                <RankBadge rank={i + 1} />
+              </div>
+              <div style={{ minWidth: 0, display: 'flex', alignItems: 'center', gap: 7 }}>
+                <Flag url={r.flag} label={r.label} size={24} />
+                <span style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <HtLink href={r.href ?? null}>{r.label}</HtLink>
+                </span>
+              </div>
+              {([['g', MEDAL_GOLD], ['s', MEDAL_SILVER], ['b', MEDAL_BRONZE]] as const).map(([k, bg]) => (
+                <span
+                  key={k}
+                  style={{
+                    textAlign: 'center',
+                    fontFamily: MONO,
+                    fontSize: 13,
+                    fontWeight: 'bold',
+                    padding: '2px 0',
+                    color: r[k] ? '#241c08' : R.faint,
+                    background: r[k] ? bg : 'transparent',
+                    border: '1px solid ' + (r[k] ? 'rgba(0,0,0,.35)' : 'transparent'),
+                  }}
+                >
+                  {r[k] || '·'}
+                </span>
+              ))}
+              <div style={{ textAlign: 'center' }}>{body ? <ExpandGlyph open={isExp} /> : null}</div>
+            </div>
+
+            {isExp && (
+              <div style={{ padding: '10px 12px 12px 56px', background: R.panel2, borderBottom: '1px solid var(--line,#CDD7C3)' }}>
+                <div style={{ border: '2px inset var(--btn,#EBEFE2)', background: R.panel, padding: '8px 10px 10px' }}>{body}</div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {rows.length === 0 && <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>{empty}</div>}
     </div>
   );
 }
@@ -634,13 +722,13 @@ function ExpandGlyph({ open }: { open: boolean }) {
 }
 
 /** Category → colour → the `NationAgg` field holding its count. Legend order, as everywhere else. */
-const NATION_CATS: Array<{ label: string; dot: string; k: keyof IncState; f: keyof TrophyCounts }> = [
-  { label: 'Championships', dot: R.champ, k: 'champ', f: 'lg' },
-  { label: 'Main cups', dot: R.main, k: 'main', f: 'main' },
-  { label: 'Hattrick Masters', dot: R.masters, k: 'hm', f: 'hm' },
-  { label: 'National trophies', dot: R.worldCup, k: 'wc', f: 'wc' },
-  { label: 'Seasonal cups', dot: R.seasonal, k: 'sn', f: 'sn' },
-  { label: 'Secondary cups', dot: R.sec, k: 'sec', f: 'sec' },
+const NATION_CATS: Array<{ labelKey: TranslationKey; dot: string; k: keyof IncState; f: keyof TrophyCounts }> = [
+  { labelKey: 'cat.champ', dot: R.champ, k: 'champ', f: 'lg' },
+  { labelKey: 'cat.main', dot: R.main, k: 'main', f: 'main' },
+  { labelKey: 'cat.masters', dot: R.masters, k: 'hm', f: 'hm' },
+  { labelKey: 'cat.national', dot: R.worldCup, k: 'wc', f: 'wc' },
+  { labelKey: 'cat.seasonal', dot: R.seasonal, k: 'sn', f: 'sn' },
+  { labelKey: 'cat.sec', dot: R.sec, k: 'sec', f: 'sec' },
 ];
 
 /** Shared header style for the panels inside an expanded row. */
@@ -663,7 +751,10 @@ const MEDAL_BRONZE = '#C08A52';
 /** A cabinet row, plus which podium place it was — 0 for anything that isn't a national trophy. */
 type CabinetItem = TrophyItem & { medal?: number };
 
-function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean, medals = false) {
+/** What a failed cabinet fetch renders as: empty, rather than a row stuck on "Loading…". */
+const EMPTY_CABINET: TrophyCabinet = { champ: [], main: [], sec: [], other: [], seasonal: [], worldCup: [], silver: [], bronze: [] };
+
+function cabinetCats(t: TFn, tr: TrophyCabinet, inc: IncState, lastOnly: boolean, medals = false) {
   const pick = (items: TrophyItem[]): CabinetItem[] => (lastOnly ? items.filter((it) => it.last) : items);
   // One National box, ordered by place: every 1st, then every 2nd, then every 3rd (each already
   // newest-first). The place badge rides on the row, so one group stays unambiguous.
@@ -675,12 +766,12 @@ function cabinetCats(tr: TrophyCabinet, inc: IncState, lastOnly: boolean, medals
       ]
     : pick(tr.worldCup);
   return [
-    { label: 'Championships', dot: R.champ, items: pick(tr.champ), excluded: !inc.champ },
-    { label: 'Main cups', dot: R.main, items: pick(tr.main), excluded: !inc.main },
-    { label: 'Hattrick Masters', dot: R.masters, items: pick(tr.other), excluded: !inc.hm },
-    { label: medals ? 'National trophies & medals' : 'National trophies', dot: R.worldCup, items: national, excluded: !inc.wc },
-    { label: 'Seasonal cups', dot: R.seasonal, items: pick(tr.seasonal), excluded: !inc.sn },
-    { label: 'Secondary cups', dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
+    { label: t('cat.champ'), dot: R.champ, items: pick(tr.champ), excluded: !inc.champ },
+    { label: t('cat.main'), dot: R.main, items: pick(tr.main), excluded: !inc.main },
+    { label: t('cat.masters'), dot: R.masters, items: pick(tr.other), excluded: !inc.hm },
+    { label: t(medals ? 'cat.nationalMedals' : 'cat.national'), dot: R.worldCup, items: national, excluded: !inc.wc },
+    { label: t('cat.seasonal'), dot: R.seasonal, items: pick(tr.seasonal), excluded: !inc.sn },
+    { label: t('cat.sec'), dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
   ].filter((c) => c.items.length);
 }
 
@@ -719,6 +810,7 @@ function RetroTrophyLeaders({
   setExpandedId: Dispatch<SetStateAction<string | null>>;
   onStatus: (s: string) => void;
 }) {
+  const { lang, t } = useI18n();
   const [managers, setManagers] = useState<Manager[]>([]);
   const [loading, setLoading] = useState(true);
   const [cabinets, setCabinets] = useState<Record<number, TrophyCabinet | null>>({});
@@ -744,15 +836,36 @@ function RetroTrophyLeaders({
     setExpandedId(null);
   }, [groupBy, setExpandedId]);
 
+  const loadCabinet = (userId: number) =>
+    getCabinet(userId, (country) => t('cabinet.champTitle', { country }));
+
+  // A cached cabinet holds a translated "<country> champions" heading, so a language switch has to
+  // drop the cache — and re-fetch whichever row is open, which would otherwise sit on "Loading…"
+  // with nothing left to fill it.
+  useEffect(() => {
+    setCabinets({});
+    if (groupBy !== 'manager' || !expandedId) return;
+    const userId = Number(expandedId);
+    let cancelled = false;
+    loadCabinet(userId)
+      .then((cab) => !cancelled && setCabinets((c) => ({ ...c, [userId]: cab })))
+      .catch(() => !cancelled && setCabinets((c) => ({ ...c, [userId]: EMPTY_CABINET })));
+    return () => {
+      cancelled = true;
+    };
+    // Language only — opening a row is handled by toggleExpand.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang]);
+
   const toggleInc = (k: keyof IncState) => setInc((s) => ({ ...s, [k]: !s[k] }));
   const toggleNation = (name: string) => setExpandedId((cur) => (cur === name ? null : name));
   const toggleExpand = (m: Manager) => {
     setExpandedId((cur) => (cur === String(m.userId) ? null : String(m.userId)));
     if (!(m.userId in cabinets)) {
       setCabinets((c) => ({ ...c, [m.userId]: null }));
-      getCabinet(m.userId)
+      loadCabinet(m.userId)
         .then((cab) => setCabinets((c) => ({ ...c, [m.userId]: cab })))
-        .catch(() => setCabinets((c) => ({ ...c, [m.userId]: { champ: [], main: [], sec: [], other: [], seasonal: [], worldCup: [], silver: [], bronze: [] } })));
+        .catch(() => setCabinets((c) => ({ ...c, [m.userId]: EMPTY_CABINET })));
     }
   };
 
@@ -835,23 +948,23 @@ function RetroTrophyLeaders({
   }, [loading, rowCount, onStatus]);
 
   const chips: Array<{ k: keyof IncState; label: string }> = [
-    { k: 'champ', label: 'Championships' },
-    { k: 'main', label: 'Main cups' },
-    { k: 'hm', label: 'Masters' },
-    { k: 'wc', label: 'National' },
-    { k: 'sn', label: 'Seasonal' },
-    { k: 'sec', label: 'Secondary' },
+    { k: 'champ', label: t('cat.champ') },
+    { k: 'main', label: t('cat.main') },
+    { k: 'hm', label: t('chip.masters') },
+    { k: 'wc', label: t('chip.national') },
+    { k: 'sn', label: t('chip.seasonal') },
+    { k: 'sec', label: t('chip.sec') },
   ];
 
   return (
     <div>
       {/* Filters — two meaning-groups: what gets counted, then how the counted field is shown. */}
       <fieldset style={fieldset}>
-        <legend style={legend}>Filters</legend>
+        <legend style={legend}>{t('filters.title')}</legend>
 
         <FilterRow>
           <div>
-            <div style={filterLabel}>Competitions</div>
+            <div style={filterLabel}>{t('filters.competitions')}</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {chips.map((c) => {
                 const on = inc[c.k];
@@ -865,11 +978,11 @@ function RetroTrophyLeaders({
             </div>
           </div>
           <div>
-            <div style={filterLabel}>Recency</div>
+            <div style={filterLabel}>{t('filters.recency')}</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {RECENCY_OPTS.map((o) => (
                 <button
-                  key={o.label}
+                  key={o.labelKey}
                   onClick={() => {
                     setLastOnly(o.reigning);
                     // Reigning-only and medals are mutually exclusive (see below) — rather than
@@ -877,20 +990,20 @@ function RetroTrophyLeaders({
                     if (o.reigning) setMedals(false);
                   }}
                   style={toggleBtn(lastOnly === o.reigning)}
-                  title={o.title}
+                  title={t(o.titleKey)}
                 >
                   {lastOnly === o.reigning && <span>✓&nbsp;</span>}
-                  {o.label}
+                  {t(o.labelKey)}
                 </button>
               ))}
             </div>
           </div>
           <div>
-            <div style={filterLabel}>National trophies count</div>
+            <div style={filterLabel}>{t('filters.nationalCount')}</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              <button onClick={() => setMedals(false)} style={toggleBtn(!medals)} title="Titles only — the winner of each edition">
+              <button onClick={() => setMedals(false)} style={toggleBtn(!medals)} title={t('count.winners.title')}>
                 {!medals && <span>✓&nbsp;</span>}
-                Winners
+                {t('count.winners')}
               </button>
               <button
                 onClick={() => {
@@ -900,10 +1013,10 @@ function RetroTrophyLeaders({
                   setLastOnly(false);
                 }}
                 style={toggleBtn(medals)}
-                title="Also count silver and bronze places. Only national trophies have podium data; no league or cup runner-up is recorded. Switches Recency to All time — there is no reigning runner-up."
+                title={t('count.medals.title')}
               >
                 {medals && <span>✓&nbsp;</span>}
-                Medal winners
+                {t('count.medals')}
               </button>
             </div>
           </div>
@@ -911,27 +1024,23 @@ function RetroTrophyLeaders({
 
         <FilterRow divider>
           <div>
-            <div style={filterLabel}>Group by</div>
+            <div style={filterLabel}>{t('filters.groupBy')}</div>
             <div style={{ display: 'flex', gap: 6 }}>
-              <button onClick={() => setGroupBy('manager')} style={toggleBtn(!byNation)} title="One row per manager">
+              <button onClick={() => setGroupBy('manager')} style={toggleBtn(!byNation)} title={t('group.managers.title')}>
                 {!byNation && <span>✓&nbsp;</span>}
-                Managers
+                {t('group.managers')}
               </button>
-              <button
-                onClick={() => setGroupBy('nation')}
-                style={toggleBtn(byNation)}
-                title="Pool every manager's trophies by their own nationality — not by the country their club or national team plays for"
-              >
+              <button onClick={() => setGroupBy('nation')} style={toggleBtn(byNation)} title={t('group.nation.title')}>
                 {byNation && <span>✓&nbsp;</span>}
-                Manager nation
+                {t('group.nation')}
               </button>
             </div>
           </div>
           {!byNation && (
             <div>
-              <div style={filterLabel}>Nationality</div>
+              <div style={filterLabel}>{t('filters.nationality')}</div>
               <select value={nation} onChange={(e) => setNation(e.target.value)} style={selectStyle}>
-                <option value="ALL">All nationalities</option>
+                <option value="ALL">{t('filters.allNationalities')}</option>
                 {nationalities.map((o) => (
                   <option key={o.code} value={o.code}>
                     {o.name}
@@ -941,27 +1050,31 @@ function RetroTrophyLeaders({
             </div>
           )}
           <div>
-            <div style={filterLabel}>Search</div>
+            <div style={filterLabel}>{t('filters.search')}</div>
             <input
               className="retro-input"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder={byNation ? 'Nation…' : 'Manager or club…'}
+              placeholder={byNation ? t('search.nation') : t('search.manager')}
               style={{ width: 190, border: '2px inset var(--btn,#EBEFE2)', background: '#fff', color: R.ink, fontSize: 11, padding: '3px 6px', outline: 'none', fontFamily: 'inherit' }}
             />
           </div>
           <div style={{ flex: 1 }} />
           <div style={{ fontSize: 10, color: R.soft, paddingBottom: 4 }}>
             {rowCount > PAGE_SIZE
-              ? `${pageStart + 1}–${pageStart + (byNation ? pageNations.length : pageRows.length)} of ${rowCount}`
-              : `${rowCount} shown`}
+              ? t('paging.range', {
+                  from: pageStart + 1,
+                  to: pageStart + (byNation ? pageNations.length : pageRows.length),
+                  total: rowCount,
+                })
+              : t('paging.shown', { n: rowCount })}
           </div>
         </FilterRow>
       </fieldset>
 
       {/* Leaderboard */}
       <div style={{ border: '1px solid var(--frame,#617D54)' }}>
-        <SectionBar>{byNation ? 'Trophy leaders — by manager nation' : 'Trophy leaders'}</SectionBar>
+        <SectionBar>{t(byNation ? 'board.trophyLeadersByNation' : 'board.trophyLeaders')}</SectionBar>
         <div
           style={{
             display: 'grid',
@@ -978,11 +1091,11 @@ function RetroTrophyLeaders({
             alignItems: 'center',
           }}
         >
-          <div>Rank</div>
-          <div>{byNation ? 'Manager nation' : 'Manager'}</div>
-          <div>{byNation ? 'Winners' : 'Nationality'}</div>
-          <div>Trophy mix</div>
-          <div style={{ textAlign: 'right' }}>Total</div>
+          <div>{t('col.rank')}</div>
+          <div>{t(byNation ? 'col.managerNation' : 'col.manager')}</div>
+          <div>{t(byNation ? 'col.winners' : 'col.nationality')}</div>
+          <div>{t('col.trophyMix')}</div>
+          <div style={{ textAlign: 'right' }}>{t('col.total')}</div>
           <div />
         </div>
 
@@ -1025,8 +1138,8 @@ function RetroTrophyLeaders({
                     </div>
                   </div>
                   <div style={{ fontFamily: MONO, fontSize: 12, color: R.soft }}>
-                    {n.winners.toLocaleString()}
-                    <span style={{ fontSize: 10, color: R.faint }}> manager{n.winners === 1 ? '' : 's'}</span>
+                    {n.winners.toLocaleString(lang)}
+                    <span style={{ fontSize: 10, color: R.faint }}> {t(n.winners === 1 ? 'unit.manager' : 'unit.managers')}</span>
                   </div>
                   <MixBar segs={segs} total={n.ft} />
                   <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 17, fontWeight: 'bold', color: R.ink }}>{n.ft}</div>
@@ -1039,15 +1152,15 @@ function RetroTrophyLeaders({
                   <div style={{ padding: '10px 12px 12px 66px', background: R.panel2, borderBottom: '1px solid var(--line,#CDD7C3)' }}>
                     <div style={{ border: '2px inset var(--btn,#EBEFE2)', background: R.panel, padding: 10, display: 'flex', flexWrap: 'wrap', gap: 10 }}>
                       <div style={{ flex: 1, minWidth: 190, border: '1px solid var(--line,#CDD7C3)', background: R.panel, padding: '8px 10px' }}>
-                        <div style={{ ...cabinetHead, marginBottom: 9 }}>By competition</div>
+                        <div style={{ ...cabinetHead, marginBottom: 9 }}>{t('panel.byCompetition')}</div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                           {NATION_CATS.map((c) => (
-                            <div key={c.label} style={{ display: 'flex', alignItems: 'center', gap: 7, opacity: inc[c.k] ? 1 : 0.5 }}>
+                            <div key={c.labelKey} style={{ display: 'flex', alignItems: 'center', gap: 7, opacity: inc[c.k] ? 1 : 0.5 }}>
                               <span style={{ width: 9, height: 9, flex: 'none', border: '1px solid rgba(0,0,0,.3)', background: c.dot }} />
-                              <span style={{ fontSize: 11, color: R.ink, flex: 1 }}>{c.label}</span>
+                              <span style={{ fontSize: 11, color: R.ink, flex: 1 }}>{t(c.labelKey)}</span>
                               {!inc[c.k] && (
                                 <span style={{ fontSize: 9, fontWeight: 'bold', letterSpacing: '.03em', textTransform: 'uppercase', color: R.faint }}>
-                                  [excluded]
+                                  {t('label.excluded')}
                                 </span>
                               )}
                               <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 'bold', color: R.soft }}>{n[c.f]}</span>
@@ -1057,7 +1170,8 @@ function RetroTrophyLeaders({
                       </div>
                       <div style={{ flex: 2, minWidth: 240, border: '1px solid var(--line,#CDD7C3)', background: R.panel, padding: '8px 10px' }}>
                         <div style={{ ...cabinetHead, marginBottom: 9 }}>
-                          Top managers {n.winners > NATION_TOP_N ? `(${NATION_TOP_N} of ${n.winners})` : ''}
+                          {t('panel.topManagers')}{' '}
+                          {n.winners > NATION_TOP_N ? t('panel.topManagersOf', { shown: NATION_TOP_N, total: n.winners }) : ''}
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                           {n.top.map((t, ix) => (
@@ -1170,18 +1284,20 @@ function RetroTrophyLeaders({
                 <div style={{ padding: '10px 12px 12px 66px', background: R.panel2, borderBottom: '1px solid var(--line,#CDD7C3)' }}>
                   <div style={{ border: '2px inset var(--btn,#EBEFE2)', background: R.panel, padding: 10, display: 'flex', flexWrap: 'wrap', gap: 10 }}>
                     {cab == null ? (
-                      <div style={{ color: R.faint, fontSize: 11 }}>Loading cabinet…</div>
-                    ) : cabinetCats(cab, inc, lastOnly, medals).length === 0 ? (
-                      <div style={{ color: R.faint, fontSize: 11 }}>No trophies on record.</div>
+                      <div style={{ color: R.faint, fontSize: 11 }}>{t('cabinet.loading')}</div>
+                    ) : cabinetCats(t, cab, inc, lastOnly, medals).length === 0 ? (
+                      <div style={{ color: R.faint, fontSize: 11 }}>{t('cabinet.empty')}</div>
                     ) : (
-                      cabinetCats(cab, inc, lastOnly, medals).map((g) => (
+                      cabinetCats(t, cab, inc, lastOnly, medals).map((g) => (
                         <div key={g.label} style={{ flex: 1, minWidth: 190, border: '1px solid var(--line,#CDD7C3)', background: R.panel, padding: '8px 10px', opacity: g.excluded ? 0.5 : 1 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 9, borderBottom: '1px solid var(--line,#CDD7C3)', paddingBottom: 5 }}>
                             <span style={{ width: 9, height: 9, flex: 'none', border: '1px solid rgba(0,0,0,.3)', background: g.dot }} />
                             <span style={{ fontSize: 10, letterSpacing: '.05em', textTransform: 'uppercase', fontWeight: 'bold', color: R.soft }}>{g.label}</span>
                             <span style={{ fontFamily: MONO, fontSize: 11, color: R.faint }}>×{g.items.length}</span>
                             {g.excluded && (
-                              <span style={{ fontSize: 9, fontWeight: 'bold', letterSpacing: '.03em', textTransform: 'uppercase', color: R.faint }}>[excluded]</span>
+                              <span style={{ fontSize: 9, fontWeight: 'bold', letterSpacing: '.03em', textTransform: 'uppercase', color: R.faint }}>
+                                {t('label.excluded')}
+                              </span>
                             )}
                           </div>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
@@ -1201,7 +1317,7 @@ function RetroTrophyLeaders({
                                       a title when a cabinet is read at a glance. */}
                                   {!!it.medal && (
                                     <span
-                                      title={it.medal === 1 ? 'Champion' : it.medal === 2 ? 'Runner-up' : 'Losing semi-finalist (joint 3rd)'}
+                                      title={t(it.medal === 1 ? 'place.champion' : it.medal === 2 ? 'place.runnerUp' : 'place.thirdShort')}
                                       style={{
                                         fontFamily: MONO,
                                         fontSize: 9,
@@ -1212,7 +1328,7 @@ function RetroTrophyLeaders({
                                         padding: '0 4px',
                                       }}
                                     >
-                                      {it.medal === 1 ? '1st' : it.medal === 2 ? '2nd' : '3rd'}
+                                      {t(it.medal === 1 ? 'place.1' : it.medal === 2 ? 'place.2' : 'place.3')}
                                     </span>
                                   )}
                                   <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 'bold', color: R.soft }}>{it.season}</span>
@@ -1230,10 +1346,10 @@ function RetroTrophyLeaders({
           );
         })}
 
-        {loading && <div style={{ padding: '22px 12px', textAlign: 'center', color: R.faint, fontSize: 11 }}>Loading managers…</div>}
+        {loading && <div style={{ padding: '22px 12px', textAlign: 'center', color: R.faint, fontSize: 11 }}>{t('list.loadingManagers')}</div>}
         {!loading && rowCount === 0 && (
           <div style={{ padding: '22px 12px', textAlign: 'center', color: R.faint, fontSize: 11 }}>
-            No {byNation ? 'nations' : 'managers'} match your search.
+            {t(byNation ? 'list.noNations' : 'list.noManagers')}
           </div>
         )}
       </div>
@@ -1242,15 +1358,15 @@ function RetroTrophyLeaders({
 
       {/* Legend */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 9, fontSize: 10, color: R.ink, flexWrap: 'wrap' }}>
-        <b style={{ color: R.soft, textTransform: 'uppercase', letterSpacing: '.04em' }}>Legend:</b>
-        <LegendSwatch color={R.champ} label="Championships" />
-        <LegendSwatch color={R.main} label="Main cups" />
-        <LegendSwatch color={R.masters} label="Masters" />
-        <LegendSwatch color={R.worldCup} label="National trophies" />
-        <LegendSwatch color={R.seasonal} label="Seasonal" />
-        <LegendSwatch color={R.sec} label="Secondary" />
+        <b style={{ color: R.soft, textTransform: 'uppercase', letterSpacing: '.04em' }}>{t('legend.title')}</b>
+        <LegendSwatch color={R.champ} label={t('cat.champ')} />
+        <LegendSwatch color={R.main} label={t('cat.main')} />
+        <LegendSwatch color={R.masters} label={t('chip.masters')} />
+        <LegendSwatch color={R.worldCup} label={t('cat.national')} />
+        <LegendSwatch color={R.seasonal} label={t('chip.seasonal')} />
+        <LegendSwatch color={R.sec} label={t('chip.sec')} />
         <span style={{ flex: 1 }} />
-        <span style={{ fontFamily: MONO, color: R.faint }}>src: leaguefixtures &middot; team history</span>
+        <span style={{ fontFamily: MONO, color: R.faint }}>{t('src.league')}</span>
       </div>
     </div>
   );
@@ -1267,6 +1383,7 @@ function LegendSwatch({ color, label }: { color: string; label: string }) {
 
 /** Numbered pager for the trophy leaderboard — 50 managers per page, in the 2000s outset-button style. */
 function RetroPager({ page, pageCount, setPage }: { page: number; pageCount: number; setPage: Dispatch<SetStateAction<number>> }) {
+  const t = useT();
   const btn = (disabled: boolean): CSSProperties => ({
     minWidth: 26,
     padding: '3px 9px',
@@ -1282,19 +1399,19 @@ function RetroPager({ page, pageCount, setPage }: { page: number; pageCount: num
   const last = page >= pageCount;
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10 }}>
-      <button style={btn(first)} disabled={first} onClick={() => setPage(1)} title="First page">
+      <button style={btn(first)} disabled={first} onClick={() => setPage(1)} title={t('pager.first')}>
         |«
       </button>
-      <button style={btn(first)} disabled={first} onClick={() => setPage((p) => Math.max(1, p - 1))} title="Previous page">
+      <button style={btn(first)} disabled={first} onClick={() => setPage((p) => Math.max(1, p - 1))} title={t('pager.prev')}>
         «
       </button>
       <span style={{ fontFamily: MONO, fontSize: 11, color: R.soft, padding: '0 6px', fontWeight: 'bold' }}>
-        Page {page} / {pageCount}
+        {t('pager.page', { page, count: pageCount })}
       </span>
-      <button style={btn(last)} disabled={last} onClick={() => setPage((p) => Math.min(pageCount, p + 1))} title="Next page">
+      <button style={btn(last)} disabled={last} onClick={() => setPage((p) => Math.min(pageCount, p + 1))} title={t('pager.next')}>
         »
       </button>
-      <button style={btn(last)} disabled={last} onClick={() => setPage(pageCount)} title="Last page">
+      <button style={btn(last)} disabled={last} onClick={() => setPage(pageCount)} title={t('pager.last')}>
         »|
       </button>
     </div>
@@ -1316,6 +1433,7 @@ function RetroLeagueWinners({
   setLeague: Dispatch<SetStateAction<string>>;
   onStatus: (s: string) => void;
 }) {
+  const t = useT();
   const [winnersRaw, setWinnersRaw] = useState<Winner[]>([]);
   const [loading, setLoading] = useState(true);
   const leagueName = leagues.find((l) => l.code === league)?.name ?? '';
@@ -1334,15 +1452,17 @@ function RetroLeagueWinners({
   }, [loading, winnersRaw.length, onStatus]);
 
   const winners = withRuns(winnersRaw);
-  const span = winnersRaw.length ? `Seasons ${winnersRaw[winnersRaw.length - 1]!.season}–${winnersRaw[0]!.season} · ${leagueName}` : leagueName;
+  const span = winnersRaw.length
+    ? t('leagues.span', { from: winnersRaw[winnersRaw.length - 1]!.season, to: winnersRaw[0]!.season, name: leagueName })
+    : leagueName;
 
   return (
     <div>
       <fieldset style={fieldset}>
-        <legend style={legend}>Select league</legend>
+        <legend style={legend}>{t('leagues.select')}</legend>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px 20px', alignItems: 'flex-end' }}>
           <div>
-            <div style={filterLabel}>Country</div>
+            <div style={filterLabel}>{t('common.country')}</div>
             <select value={league} onChange={(e) => setLeague(e.target.value)} style={selectStyle}>
               {leagues.map((o) => (
                 <option key={o.code} value={o.code}>
@@ -1361,7 +1481,7 @@ function RetroLeagueWinners({
         <div style={{ border: '1px solid var(--frame,#617D54)' }}>
           <SectionBar>
             <Flag url={leagueFlagUrl(league)} label={leagueName} size={24} />
-            {leagueName} &mdash; Division I roll of honour
+            {t('leagues.rollOfHonour', { country: leagueName })}
           </SectionBar>
           <div
             style={{
@@ -1378,9 +1498,9 @@ function RetroLeagueWinners({
               color: R.soft,
             }}
           >
-            <div>Season</div>
-            <div>Champion</div>
-            <div style={{ textAlign: 'right' }}>Run</div>
+            <div>{t('col.season')}</div>
+            <div>{t('col.champion')}</div>
+            <div style={{ textAlign: 'right' }}>{t('col.run')}</div>
           </div>
 
           {winners.map((w, i) => (
@@ -1413,14 +1533,12 @@ function RetroLeagueWinners({
             </div>
           ))}
 
-          {loading && <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>Loading…</div>}
+          {loading && <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>{t('common.loading')}</div>}
           {!loading && winnersRaw.length === 0 && (
-            <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>No champions stored for this country yet.</div>
+            <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>{t('leagues.empty')}</div>
           )}
 
-          <div style={{ padding: '6px 10px', fontSize: 10, color: R.faint, fontFamily: MONO, background: R.panel2 }}>
-            src: leaguefixtures &middot; team history
-          </div>
+          <div style={{ padding: '6px 10px', fontSize: 10, color: R.faint, fontFamily: MONO, background: R.panel2 }}>{t('src.league')}</div>
         </div>
 
         <TopManagersPanel winners={winnersRaw} />
@@ -1439,6 +1557,7 @@ function RetroLeagueWinners({
  * hattrick-owner-attribution-model).
  */
 function TopManagersPanel({ winners, limit = 10 }: { winners: Winner[]; limit?: number }) {
+  const t = useT();
   const tally: Record<string, { count: number; teams: Array<{ name: string; teamId?: number }>; nationality?: string; userId?: number }> = {};
   winners.forEach((w) => {
     if (!w.manager || w.manager === '—') return;
@@ -1453,7 +1572,7 @@ function TopManagersPanel({ winners, limit = 10 }: { winners: Winner[]; limit?: 
 
   return (
     <div style={{ border: '1px solid var(--frame,#617D54)' }}>
-      <SectionBar>Top managers (top {limit})</SectionBar>
+      <SectionBar>{t('panel.topManagersTop', { n: limit })}</SectionBar>
       <div style={{ padding: 11, background: R.panel, display: 'flex', flexDirection: 'column', gap: 11 }}>
         {arr.length === 0 && <div style={{ fontSize: 11, color: R.faint }}>—</div>}
         {arr.map(([manager, { count, teams, nationality, userId }], i) => (
@@ -1489,11 +1608,11 @@ function TopManagersPanel({ winners, limit = 10 }: { winners: Winner[]; limit?: 
 
 type CupCategory = 'main' | 'secondary' | 'masters' | 'seasonal';
 
-const CUP_CATEGORIES: Array<{ k: CupCategory; label: string }> = [
-  { k: 'main', label: 'National cup' },
-  { k: 'secondary', label: 'National secondary cup' },
-  { k: 'masters', label: 'Hattrick Masters' },
-  { k: 'seasonal', label: 'Seasonal Cups' },
+const CUP_CATEGORIES: Array<{ k: CupCategory; labelKey: TranslationKey }> = [
+  { k: 'main', labelKey: 'cupcat.main' },
+  { k: 'secondary', labelKey: 'cupcat.secondary' },
+  { k: 'masters', labelKey: 'cupcat.masters' },
+  { k: 'seasonal', labelKey: 'cupcat.seasonal' },
 ];
 
 /** Outset/inset toggle button matching the retro Windows-98 chip look used for the trophy filters. */
@@ -1526,6 +1645,7 @@ function RetroCupWinners({
   setCountry: Dispatch<SetStateAction<string>>;
   onStatus: (s: string) => void;
 }) {
+  const t = useT();
   const [category, setCategory] = useState<CupCategory>('main');
 
   // National cups (main + secondary) — nation-based, keyed by the selected country.
@@ -1607,20 +1727,20 @@ function RetroCupWinners({
   return (
     <div>
       <fieldset style={fieldset}>
-        <legend style={legend}>Select competition</legend>
+        <legend style={legend}>{t('cups.select')}</legend>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px 20px', alignItems: 'flex-end' }}>
           <div>
-            <div style={filterLabel}>Competition</div>
+            <div style={filterLabel}>{t('cups.competition')}</div>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {CUP_CATEGORIES.map((c) => (
-                <CategoryChip key={c.k} label={c.label} active={category === c.k} onClick={() => setCategory(c.k)} />
+                <CategoryChip key={c.k} label={t(c.labelKey)} active={category === c.k} onClick={() => setCategory(c.k)} />
               ))}
             </div>
           </div>
 
           {showCountryPicker && (
             <div>
-              <div style={filterLabel}>Country</div>
+              <div style={filterLabel}>{t('common.country')}</div>
               <select value={country} onChange={(e) => setCountry(e.target.value)} style={selectStyle}>
                 {countries.map((o) => (
                   <option key={o.code} value={o.code}>
@@ -1633,7 +1753,7 @@ function RetroCupWinners({
 
           {category === 'secondary' && (
             <div>
-              <div style={filterLabel}>Secondary cup</div>
+              <div style={filterLabel}>{t('cups.secondaryCup')}</div>
               <select
                 value={secondaryCupId ?? ''}
                 onChange={(e) => setSecondaryCupId(Number(e.target.value))}
@@ -1651,7 +1771,7 @@ function RetroCupWinners({
 
           {category === 'seasonal' && (
             <div>
-              <div style={filterLabel}>Seasonal cup</div>
+              <div style={filterLabel}>{t('cups.seasonalCup')}</div>
               <select
                 value={seasonalCupId ?? ''}
                 onChange={(e) => setSeasonalCupId(Number(e.target.value))}
@@ -1660,7 +1780,7 @@ function RetroCupWinners({
               >
                 {supporterWeek && <option value={supporterWeek.cupId}>{supporterWeek.cupName}</option>}
                 {generationCohorts.length > 0 && (
-                  <optgroup label="Heroes / Titans of YYYY (Generation)">
+                  <optgroup label={t('cups.generationGroup')}>
                     {generationCohorts.map((c) => (
                       <option key={c.cupId} value={c.cupId}>
                         {c.cupName}
@@ -1682,10 +1802,10 @@ function RetroCupWinners({
         </div>
       </fieldset>
 
-      {loading && <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>Loading…</div>}
+      {loading && <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('common.loading')}</div>}
 
       {!loading && category === 'main' && !main && (
-        <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>No cup winners stored for this country yet.</div>
+        <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('cups.emptyMain')}</div>
       )}
       {!loading && category === 'main' && main && (
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
@@ -1695,7 +1815,7 @@ function RetroCupWinners({
       )}
 
       {!loading && category === 'secondary' && !selectedSecondary && (
-        <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>No secondary cup winners stored for this country yet.</div>
+        <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('cups.emptySecondary')}</div>
       )}
       {!loading && category === 'secondary' && selectedSecondary && (
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
@@ -1705,7 +1825,7 @@ function RetroCupWinners({
       )}
 
       {!loading && category === 'masters' && (!masters || masters.length === 0) && (
-        <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>No Masters winners stored yet.</div>
+        <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('cups.emptyMasters')}</div>
       )}
       {!loading && category === 'masters' && masters && masters.length > 0 && (
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
@@ -1715,7 +1835,7 @@ function RetroCupWinners({
       )}
 
       {!loading && category === 'seasonal' && !selectedSeasonal && (
-        <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>No Seasonal Cup winners stored yet.</div>
+        <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('cups.emptySeasonal')}</div>
       )}
       {!loading && category === 'seasonal' && selectedSeasonal && (
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
@@ -1749,6 +1869,7 @@ function RetroCupCard({
   tall?: boolean;
   sourceLabel?: string;
 }) {
+  const t = useT();
   const winners = withRuns(winnersIn);
   const range = winnersIn.length ? `S${winnersIn[winnersIn.length - 1]!.season}–S${winnersIn[0]!.season}` : '—';
   const showManager = winnersIn.some((w) => w.manager && w.manager !== '—');
@@ -1794,7 +1915,7 @@ function RetroCupCard({
         ))}
       </div>
       <div style={{ padding: '6px 10px', fontSize: 10, color: R.faint, fontFamily: MONO, background: R.panel2 }}>
-        {winnersIn.length} finals &middot; src: {sourceLabel}
+        {t('cups.finals', { n: winnersIn.length, src: sourceLabel })}
       </div>
     </div>
   );
@@ -1806,11 +1927,43 @@ function RetroCupCard({
 // than the host nation does (it's still on hattrick.org for anyone who wants it).
 const WORLD_CUP_GRID = '54px minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.2fr) 84px';
 
+/**
+ * The two World Cup brackets are synthesized in the data layer with English labels (the regional
+ * cups' names come from Hattrick itself and stay untranslated, like every other proper name here).
+ * Translate just those two, and the unit column header that goes with them.
+ */
+/** World Cup rows number by EDITION, the regional cups by season — decides "Ed. 36" vs "S36". */
+const isWorldCupName = (cup: string) => cup === 'World Cup' || cup === 'World Cup (Youth)';
+
+function compLabel(t: TFn, c: NationalCompetition | undefined, short = false): string {
+  if (!c) return t('cat.national');
+  if (c.key === 'senior') return t('wc.worldCup');
+  if (c.key === 'youth') return short ? t('wc.worldCup') : t('wc.worldCupYouth');
+  return short ? c.shortLabel : c.label;
+}
+
+/** What the medal table counts by. The nation that won, the coach who led it, or that coach's own
+ *  nationality — the last being to the second what "Manager nation" is to Trophy leaders. */
+type MedalBy = 'nation' | 'coach' | 'coachNation';
+
+const MEDAL_BY: Array<{ k: MedalBy; chip: TranslationKey; title: TranslationKey; header: TranslationKey }> = [
+  { k: 'nation', chip: 'medal.nation', title: 'medal.byNation', header: 'medal.nation' },
+  { k: 'coach', chip: 'medal.coach', title: 'medal.byCoach', header: 'medal.coach' },
+  { k: 'coachNation', chip: 'medal.coachNation', title: 'medal.byCoachNation', header: 'col.nationality' },
+];
+
 function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
+  const t = useT();
   const [comps, setComps] = useState<NationalCompetition[]>([]);
   const [compKey, setCompKey] = useState('senior');
-  const [youth, setYouth] = useState(false);
+  // Multi-select, not a switch: senior and U21 are separate competitions, but they're also two
+  // halves of one national-team record, and only pooling them answers "who has the most, overall".
+  const [brackets, setBrackets] = useState({ senior: true, youth: false });
   const [medalScope, setMedalScope] = useState<'comp' | 'all'>('comp');
+  const [medalBy, setMedalBy] = useState<MedalBy>('nation');
+  // The roll of honour and the medal tables answer different questions and were crowding each
+  // other three-across; the competition picker above stays shared between them.
+  const [wcView, setWcView] = useState<'roll' | 'medals'>('roll');
   const [coachMedals, setCoachMedals] = useState<CoachMedals[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -1822,9 +1975,12 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
       .finally(() => setLoading(false));
   }, []);
 
-  // Senior and U21 are the same set of competitions run for two different national teams, so the
-  // bracket is a switch and the competitions below it stay a short, stable list.
-  const inBracket = comps.filter((c) => c.isYouth === youth);
+  // With both brackets on, the competition list doubles and the "U21 " prefix stops being
+  // redundant — it becomes the only thing telling two same-named cups apart, so chips show the
+  // full label there and the short one when a single bracket is selected.
+  const bothBrackets = brackets.senior && brackets.youth;
+  const onlyYouth = brackets.youth && !brackets.senior;
+  const inBracket = comps.filter((c) => (c.isYouth ? brackets.youth : brackets.senior));
   // Fall back to the first competition on offer, so a bake without World Cup data still shows.
   const comp = inBracket.find((c) => c.key === compKey) ?? inBracket[0];
 
@@ -1840,12 +1996,19 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
       .catch(() => setCoachMedals([]));
   }, [scopedCups]);
 
-  /** Stay on the same competition across a bracket switch when it exists on both sides. */
-  const switchBracket = (toYouth: boolean) => {
-    setYouth(toYouth);
-    const same = comps.find((c) => c.isYouth === toYouth && c.shortLabel === comp?.shortLabel);
-    setCompKey((same ?? comps.find((c) => c.isYouth === toYouth))?.key ?? compKey);
-  };
+  /**
+   * Toggle a bracket in or out. Turning the last one off is ignored rather than disabled — there is
+   * nothing to show with neither selected, and a dead-looking button invites more confusion than a
+   * click that declines to empty the view.
+   *
+   * When the selection still contains the competition on screen, it stays put; otherwise the render
+   * falls back to the first on offer, so no effect is needed to repair `compKey`.
+   */
+  const toggleBracket = (k: 'senior' | 'youth') =>
+    setBrackets((b) => {
+      const next = { ...b, [k]: !b[k] };
+      return next.senior || next.youth ? next : b;
+    });
   const editions = (comp?.rows ?? []).slice().sort((a, b) => b.edition - a.edition);
 
   useEffect(() => {
@@ -1882,65 +2045,265 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
     // below every champion) stay reachable.
     return Object.entries(t).sort((a, b) => b[1].g - a[1].g || b[1].s - a[1].s || b[1].b - a[1].b || a[0].localeCompare(b[0]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [comp, medalScope, youth, comps]);
+  }, [comp, medalScope, brackets, comps]);
+
+  /**
+   * The individual podiums behind the by-nation totals, so a row can show WHERE its medals came
+   * from. Same source and same scope as `medals` above — kept separate rather than folded in, so
+   * the count and the detail can't drift apart in only one of the two.
+   */
+  const nationPodiums = useMemo(() => {
+    const scoped = medalScope === 'all' ? inBracket : comp ? [comp] : [];
+    const by = new Map<string, Array<{ label: string; unit: string; edition: number; place: number; coach?: string; coachUserId?: number }>>();
+    for (const c of scoped)
+      for (const e of c.rows) {
+        // Only the champion's coach is on record — the rolls never named a runner-up's.
+        const push = (nation: string | null | undefined, place: number, withCoach = false) => {
+          if (!nation) return;
+          const arr = by.get(nation) ?? [];
+          arr.push({
+            label: compLabel(t, c, true),
+            unit: c.unitLabel,
+            edition: e.edition,
+            place,
+            coach: withCoach ? e.coach : undefined,
+            coachUserId: withCoach ? e.coachUserId : undefined,
+          });
+          by.set(nation, arr);
+        };
+        push(e.champion, 1, true);
+        push(e.runnerUp, 2);
+        e.thirdFourth.forEach((n) => push(n, 3));
+      }
+    for (const arr of by.values()) arr.sort((a, b) => a.place - b.place || b.edition - a.edition);
+    return by;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [comp, medalScope, brackets, comps, t]);
+
+  /** Coach medals pooled by the coach's OWN nationality — every podium their citizens took. */
+  const coachNationMedals = useMemo(() => {
+    const t: Record<string, { g: number; s: number; b: number }> = {};
+    for (const c of coachMedals) {
+      if (!c.nationality) continue;
+      const row = (t[c.nationality] ??= { g: 0, s: 0, b: 0 });
+      row.g += c.g;
+      row.s += c.s;
+      row.b += c.b;
+    }
+    return Object.entries(t).sort((a, b) => b[1].g - a[1].g || b[1].s - a[1].s || b[1].b - a[1].b || a[0].localeCompare(b[0]));
+  }, [coachMedals]);
+
+  const medalCfg = MEDAL_BY.find((m) => m.k === medalBy) ?? MEDAL_BY[0]!;
+  const medalRows: MedalRow[] =
+    medalBy === 'nation'
+      ? medals.map(([nation, m]) => ({ key: nation, label: nation, flag: nationFlagUrl(nation, m.leagueId), g: m.g, s: m.s, b: m.b }))
+      : medalBy === 'coach'
+        ? coachMedals.map((c) => ({
+            key: String(c.userId),
+            label: c.name,
+            flag: nationalityFlagUrl(c.nationality),
+            href: hattrickManagerUrl(c.userId),
+            g: c.g,
+            s: c.s,
+            b: c.b,
+          }))
+        : coachNationMedals.map(([nat, m]) => ({ key: nat, label: nat, flag: nationalityFlagUrl(nat), g: m.g, s: m.s, b: m.b }));
+
+  /** Small place plate — 1st/2nd/3rd, gold/silver/bronze, as everywhere else. */
+  const placePlate = (place: number) => (
+    <span
+      style={{
+        fontFamily: MONO,
+        fontSize: 9,
+        fontWeight: 'bold',
+        color: '#241c08',
+        background: place === 1 ? MEDAL_GOLD : place === 2 ? MEDAL_SILVER : MEDAL_BRONZE,
+        border: '1px solid rgba(0,0,0,.35)',
+        padding: '0 4px',
+        flex: 'none',
+      }}
+    >
+      {t(place === 1 ? 'place.1' : place === 2 ? 'place.2' : 'place.3')}
+    </span>
+  );
+
+  /** One line per podium, shared by the by-nation and by-coach expansions. */
+  const podiumList = (items: Array<{ place: number; left: ReactNode; right?: ReactNode }>) => (
+    <>
+      <div style={{ ...cabinetHead, marginBottom: 8 }}>
+        {t('medal.podiums')} <span style={{ fontFamily: MONO, color: R.faint }}>×{items.length}</span>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        {items.map((it, ix) => (
+          <div key={ix} style={{ display: 'flex', alignItems: 'center', gap: 7, minWidth: 0 }}>
+            {placePlate(it.place)}
+            <span style={{ flex: 1, minWidth: 0, fontSize: 11, color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {it.left}
+            </span>
+            {it.right}
+          </div>
+        ))}
+      </div>
+    </>
+  );
+
+  const medalDetail = (row: MedalRow): ReactNode => {
+    if (medalBy === 'nation') {
+      const items = nationPodiums.get(row.key) ?? [];
+      if (!items.length) return null;
+      return podiumList(
+        items.map((p) => ({
+          place: p.place,
+          left: (
+            <>
+              <b>{p.label}</b> <span style={{ color: R.soft }}>{p.unit === 'Season' ? `S${p.edition}` : `${t('col.edition')} ${p.edition}`}</span>
+            </>
+          ),
+          right: p.coach ? (
+            <span style={{ fontSize: 10, color: R.soft, flex: 'none' }}>
+              <HtLink href={p.coachUserId ? hattrickManagerUrl(p.coachUserId) : null}>{p.coach}</HtLink>
+            </span>
+          ) : undefined,
+        })),
+      );
+    }
+
+    if (medalBy === 'coach') {
+      const c = coachMedals.find((x) => String(x.userId) === row.key);
+      if (!c?.results.length) return null;
+      return podiumList(
+        c.results.map((r) => ({
+          place: r.place,
+          left: (
+            <>
+              <b>{r.cup}</b>{' '}
+              <span style={{ color: R.soft }}>
+                {isWorldCupName(r.cup) ? `${t('col.wc')} ${r.season}` : `S${r.season}`}
+              </span>
+            </>
+          ),
+          right: (
+            <span style={{ display: 'flex', alignItems: 'center', gap: 4, flex: 'none' }}>
+              <Flag url={nationFlagUrl(r.nation)} label={r.nation} size={14} />
+              <span style={{ fontSize: 10, color: R.soft }}>{r.nation}</span>
+            </span>
+          ),
+        })),
+      );
+    }
+
+    // Coach nationality → the citizens who actually won those medals.
+    const mates = coachMedals.filter((c) => c.nationality === row.key);
+    if (!mates.length) return null;
+    return (
+      <>
+        <div style={{ ...cabinetHead, marginBottom: 8 }}>
+          {t('medal.coaches')} <span style={{ fontFamily: MONO, color: R.faint }}>×{mates.length}</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {mates.map((c, ix) => (
+            <div key={c.userId} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontFamily: MONO, fontSize: 10, color: R.faint, width: 18, flex: 'none', textAlign: 'right' }}>{ix + 1}.</span>
+              <span style={{ flex: 1, minWidth: 0, fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <HtLink href={hattrickManagerUrl(c.userId)}>{c.name}</HtLink>
+              </span>
+              <span style={{ fontFamily: MONO, fontSize: 11, color: R.soft, flex: 'none' }}>
+                {c.g}/{c.s}/{c.b}
+              </span>
+            </div>
+          ))}
+        </div>
+      </>
+    );
+  };
 
   return (
     <div>
       <fieldset style={fieldset}>
-        <legend style={legend}>Select competition</legend>
+        <legend style={legend}>{t('cups.select')}</legend>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px 20px', alignItems: 'flex-end' }}>
           <div>
-            <div style={filterLabel}>National team</div>
-            <div style={{ display: 'flex', gap: 6 }}>
-              <button onClick={() => switchBracket(false)} style={toggleBtn(!youth)} title="Senior national teams">
-                {!youth && <span>✓&nbsp;</span>}
-                Senior
+            <div style={filterLabel}>{t('wc.nationalTeam')}</div>
+            <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+              <button onClick={() => toggleBracket('senior')} style={toggleBtn(brackets.senior)} title={t('wc.senior.title')}>
+                {brackets.senior && <span>✓&nbsp;</span>}
+                {t('wc.senior')}
               </button>
-              <button onClick={() => switchBracket(true)} style={toggleBtn(youth)} title="Youth national teams (U20/U21)">
-                {youth && <span>✓&nbsp;</span>}
-                U21
+              <button onClick={() => toggleBracket('youth')} style={toggleBtn(brackets.youth)} title={t('wc.u21.title')}>
+                {brackets.youth && <span>✓&nbsp;</span>}
+                {t('wc.u21')}
               </button>
+              <span style={{ fontSize: 9, color: R.faint, marginLeft: 2 }}>{t('wc.bracketHint')}</span>
             </div>
           </div>
           <div style={{ minWidth: 0 }}>
-            <div style={filterLabel}>Competition</div>
+            <div style={filterLabel}>{t('cups.competition')}</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {inBracket.length === 0 && (
-                <span style={{ fontSize: 11, color: R.faint }}>{loading ? 'Loading…' : 'No competitions on record.'}</span>
+                <span style={{ fontSize: 11, color: R.faint }}>{loading ? t('common.loading') : t('wc.noComps')}</span>
               )}
               {/* The bracket is already chosen above, so the redundant "U21 " prefix comes off here —
                   the roll of honour below still names the competition in full. */}
               {inBracket.map((c) => (
-                <CategoryChip key={c.key} label={c.shortLabel} active={c.key === comp?.key} onClick={() => setCompKey(c.key)} />
+                <CategoryChip key={c.key} label={compLabel(t, c, !bothBrackets)} active={c.key === comp?.key} onClick={() => setCompKey(c.key)} />
               ))}
             </div>
           </div>
         </div>
       </fieldset>
 
-      {loading && <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>Loading…</div>}
+      <fieldset style={fieldset}>
+        <legend style={legend}>{t('common.view')}</legend>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+          <CategoryChip label={t('wc.tab.roll')} active={wcView === 'roll'} onClick={() => setWcView('roll')} />
+          <CategoryChip label={t('wc.tab.medals')} active={wcView === 'medals'} onClick={() => setWcView('medals')} />
+        </div>
+      </fieldset>
 
-      {!loading && (
+      {loading && <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('common.loading')}</div>}
+
+      {!loading && wcView === 'medals' && (
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 8, flexWrap: 'wrap' }}>
-            <span style={{ ...filterLabel, marginBottom: 0, marginRight: 3 }}>Medal tables cover</span>
+            <span style={{ ...filterLabel, marginBottom: 0, marginRight: 3 }}>{t('wc.medalScope')}</span>
             <button onClick={() => setMedalScope('comp')} style={{ ...toggleBtn(medalScope === 'comp'), fontSize: 10, padding: '3px 8px' }}>
-              This cup
+              {t('wc.thisCup')}
             </button>
             <button
               onClick={() => setMedalScope('all')}
               style={{ ...toggleBtn(medalScope === 'all'), fontSize: 10, padding: '3px 8px' }}
-              title={youth ? 'Every U21 competition combined' : 'Every senior competition combined'}
+              title={t(bothBrackets ? 'wc.allBoth.title' : onlyYouth ? 'wc.allU21.title' : 'wc.allSenior.title')}
             >
-              All {youth ? 'U21' : 'senior'}
+              {t(bothBrackets ? 'wc.allBoth' : onlyYouth ? 'wc.allU21' : 'wc.allSenior')}
             </button>
+            <span style={{ width: 10 }} />
+            <span style={{ ...filterLabel, marginBottom: 0, marginRight: 3 }}>{t('medal.by')}</span>
+            {MEDAL_BY.map((m) => (
+              <button key={m.k} onClick={() => setMedalBy(m.k)} style={{ ...toggleBtn(medalBy === m.k), fontSize: 10, padding: '3px 8px' }}>
+                {t(m.chip)}
+              </button>
+            ))}
           </div>
 
-          {/* All three side by side. Flex rather than a fixed grid so the medal tables drop below
-              the roll of honour on a narrow window instead of crushing its podium columns. */}
-          <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', flexWrap: 'wrap' }}>
-          <div style={{ flex: '4 1 460px', minWidth: 0, border: '1px solid var(--frame,#617D54)' }}>
-            <SectionBar>{comp?.label ?? 'National trophies'} &mdash; roll of honour</SectionBar>
+          {/* Remount on any change of what the table means, so an open row can't survive into a
+              mode where its id addresses something else. */}
+          <MedalTable
+            key={`${medalBy}|${medalScope}|${brackets.senior}${brackets.youth}|${comp?.key}`}
+            title={t(medalCfg.title)}
+            headerKey={medalCfg.header}
+            empty={medalBy === 'nation' ? '—' : loading ? t('common.loading') : t('medal.noCoach')}
+            rows={medalRows}
+            detail={medalDetail}
+          />
+
+          <div style={{ fontSize: 9, color: R.faint, marginTop: 9, lineHeight: 1.5 }}>{t('wc.footnote')}</div>
+        </div>
+      )}
+
+      {!loading && wcView === 'roll' && (
+        <div>
+          <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+            <SectionBar>{t('wc.rollOfHonour', { name: compLabel(t, comp) })}</SectionBar>
             <div
               style={{
                 display: 'grid',
@@ -1956,11 +2319,11 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
                 color: R.soft,
               }}
             >
-              <div>{comp?.unitLabel ?? 'Ed.'}</div>
-              <div>Champion</div>
-              <div>Runner-up</div>
-              <div>3rd/4th</div>
-              <div style={{ textAlign: 'right' }}>Finished</div>
+              <div>{t(comp?.unitLabel === 'Season' ? 'col.season' : 'col.edition')}</div>
+              <div>{t('col.champion')}</div>
+              <div>{t('col.runnerUp')}</div>
+              <div>{t('col.thirdFourth')}</div>
+              <div style={{ textAlign: 'right' }}>{t('col.finished')}</div>
             </div>
             {editions.map((e, i) => (
               <div
@@ -1998,7 +2361,7 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
                       )}
                     </>
                   ) : (
-                    <span style={{ fontSize: 11, color: R.faint, fontStyle: 'italic' }}>Ongoing</span>
+                    <span style={{ fontSize: 11, color: R.faint, fontStyle: 'italic' }}>{t('wc.ongoing')}</span>
                   )}
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
@@ -2018,36 +2381,6 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
               </div>
             ))}
           </div>
-
-          <div style={{ flex: '1 1 250px', minWidth: 250 }}>
-            <MedalTable
-              title={'Medal table — by nation'}
-              empty={'—'}
-              rows={medals.map(([nation, m]) => ({ key: nation, label: nation, flag: nationFlagUrl(nation, m.leagueId), g: m.g, s: m.s, b: m.b }))}
-            />
-          </div>
-          <div style={{ flex: '1 1 250px', minWidth: 250 }}>
-            <MedalTable
-              title={'Medal table — by coach'}
-              empty={loading ? 'Loading…' : 'No coach attributed for this competition.'}
-              rows={coachMedals.map((c) => ({
-                key: String(c.userId),
-                label: c.name,
-                flag: nationalityFlagUrl(c.nationality),
-                href: hattrickManagerUrl(c.userId),
-                g: c.g,
-                s: c.s,
-                b: c.b,
-              }))}
-            />
-          </div>
-          </div>
-
-          <div style={{ fontSize: 9, color: R.faint, marginTop: 7, lineHeight: 1.5 }}>
-            Podium places, not trophies &mdash; they never count toward Trophy leaders unless you turn on
-            &lsquo;Medal winners&rsquo; there. Both losing semi-finalists count as 3rd. The World Cup rolls list the
-            champion&rsquo;s coach only, so its by-coach table shows golds alone.
-          </div>
         </div>
       )}
     </div>
@@ -2058,7 +2391,533 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
 
 const ELECTION_GRID = '60px minmax(0,1fr) minmax(0,1fr) 100px';
 
+/** The three ways to read the election record. Aggregations first — the per-country roll is the
+ *  raw material they're built from, and the least interesting on its own. */
+export type ElectionTab = 'managers' | 'nations' | 'countries';
+
+const ELECTION_TABS: Array<{ k: ElectionTab; labelKey: TranslationKey }> = [
+  { k: 'managers', labelKey: 'elections.tab.managers' },
+  { k: 'nations', labelKey: 'elections.tab.nations' },
+  { k: 'countries', labelKey: 'elections.tab.countries' },
+];
+
 function RetroElections({
+  countries,
+  country,
+  setCountry,
+  tab,
+  setTab,
+  onStatus,
+}: {
+  countries: Country[];
+  country: string;
+  setCountry: Dispatch<SetStateAction<string>>;
+  tab: ElectionTab;
+  setTab: Dispatch<SetStateAction<ElectionTab>>;
+  onStatus: (s: string) => void;
+}) {
+  const t = useT();
+  return (
+    <div>
+      <fieldset style={fieldset}>
+        <legend style={legend}>{t('common.view')}</legend>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+          {ELECTION_TABS.map((x) => (
+            <CategoryChip key={x.k} label={t(x.labelKey)} active={tab === x.k} onClick={() => setTab(x.k)} />
+          ))}
+        </div>
+      </fieldset>
+
+      {tab === 'countries' ? (
+        <RetroElectionsByCountry countries={countries} country={country} setCountry={setCountry} onStatus={onStatus} />
+      ) : (
+        <RetroElectionAggregates byNation={tab === 'nations'} onStatus={onStatus} />
+      )}
+    </div>
+  );
+}
+
+/* ---- aggregations: by manager, and by manager nationality ---- */
+
+// The manager column is capped rather than proportional: logins run 8 characters at the median and
+// 12 at p90, so a fraction of the row was mostly empty space. Capping it hands the slack to
+// "Elected for", the one column that genuinely runs long (up to seven countries). minmax lets it
+// still shrink on a narrow window instead of forcing a horizontal scroll.
+const ELECTION_LEADER_GRID = '46px minmax(0,130px) 150px minmax(0,1fr) 66px 22px';
+const ELECTION_NATION_GRID = '46px minmax(0,1fr) 90px minmax(110px,200px) 56px 22px';
+// Host dropped in favour of what the mandate actually produced — the host nation is a property of
+// the World Cup, not of this manager's tenure, and it's still on the National trophies tab.
+const ELECTION_TIMELINE_GRID = '52px 42px minmax(0,1fr) minmax(0,1.5fr) 84px 88px';
+
+/** "Italy ×3", or plain "Italy" for a single election — used for the hover title, which can't
+ *  carry the markup the cell itself uses. */
+const countryTally = (c: { country: string; count: number }) => (c.count > 1 ? `${c.country} ×${c.count}` : c.country);
+
+/** Senior/U21 marker, in the same plate style the medal places use. */
+function BracketBadge({ youth, label }: { youth: boolean; label: string }) {
+  return (
+    <span
+      style={{
+        display: 'inline-block',
+        fontFamily: MONO,
+        fontSize: 9,
+        fontWeight: 'bold',
+        letterSpacing: '.02em',
+        padding: '0 4px',
+        color: youth ? '#241c08' : R.soft,
+        background: youth ? R.selrow : 'transparent',
+        border: '1px solid ' + (youth ? 'var(--main,#B07E2A)' : 'var(--line,#CDD7C3)'),
+      }}
+    >
+      {label}
+    </span>
+  );
+}
+
+function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; onStatus: (s: string) => void }) {
+  const { lang, t } = useI18n();
+  const [agg, setAgg] = useState<ElectionAggregates | null>(null);
+  const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  useEffect(() => {
+    getElectionAggregates()
+      .then(setAgg)
+      .catch(() => setAgg({ leaders: [], nations: [], unattributed: 0, withoutNationality: 0 }));
+  }, []);
+
+  // Switching mode or narrowing the search reshuffles the ranking — back to page one, and let go
+  // of a row that is about to sit somewhere else (or nowhere).
+  useEffect(() => {
+    setPage(1);
+    setExpanded(null);
+  }, [byNation, query]);
+
+  const q = query.trim().toLowerCase();
+  const leaders = (agg?.leaders ?? []).filter(
+    (l) => !q || l.name.toLowerCase().includes(q) || l.countries.some((c) => c.country.toLowerCase().includes(q)),
+  );
+  const nations = (agg?.nations ?? []).filter((n) => !q || n.nationality.toLowerCase().includes(q));
+
+  const rowCount = byNation ? nations.length : leaders.length;
+  const pageCount = Math.max(1, Math.ceil(rowCount / PAGE_SIZE));
+  const curPage = Math.min(page, pageCount);
+  const pageStart = (curPage - 1) * PAGE_SIZE;
+  // Ranks stay absolute over the whole filtered list, so page 2 continues from 51.
+  const pageLeaders = leaders.slice(pageStart, pageStart + PAGE_SIZE);
+  const pageNations = nations.slice(pageStart, pageStart + PAGE_SIZE);
+
+  // The bar is scaled to the leader of the WHOLE list, not of the page, so page 2's bars stay
+  // short instead of restarting at full width.
+  const max = byNation ? nations[0]?.count ?? 1 : leaders[0]?.count ?? 1;
+
+  // Whether this bake carries any U21 election at all — decides between showing the split and
+  // saying plainly that the data is senior-only.
+  const hasYouth = !!agg?.leaders.some((l) => l.youth > 0);
+
+  useEffect(() => {
+    if (agg) onStatus(`Done. ${rowCount} record(s).`);
+  }, [agg, rowCount, onStatus]);
+
+  return (
+    <div>
+      <fieldset style={fieldset}>
+        <legend style={legend}>{t('filters.title')}</legend>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px 20px', alignItems: 'flex-end' }}>
+          <div>
+            <div style={filterLabel}>{t('filters.search')}</div>
+            <input
+              className="retro-input"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={byNation ? t('search.nation') : t('elections.searchManager')}
+              style={{ width: 190, border: '2px inset var(--btn,#EBEFE2)', background: '#fff', color: R.ink, fontSize: 11, padding: '3px 6px', outline: 'none', fontFamily: 'inherit' }}
+            />
+          </div>
+          <div style={{ flex: 1 }} />
+          <div style={{ fontSize: 10, color: R.soft, paddingBottom: 4 }}>
+            {rowCount > PAGE_SIZE
+              ? t('paging.range', {
+                  from: pageStart + 1,
+                  to: pageStart + (byNation ? pageNations.length : pageLeaders.length),
+                  total: rowCount,
+                })
+              : t('paging.shown', { n: rowCount })}
+          </div>
+        </div>
+      </fieldset>
+
+      <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+        <SectionBar>{t(byNation ? 'elections.nationsTitle' : 'elections.leadersTitle')}</SectionBar>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: byNation ? ELECTION_NATION_GRID : ELECTION_LEADER_GRID,
+            gap: 10,
+            padding: '6px 10px',
+            background: R.panel2,
+            borderBottom: '2px solid var(--frame,#617D54)',
+            fontSize: 10,
+            fontWeight: 'bold',
+            textTransform: 'uppercase',
+            letterSpacing: '.03em',
+            color: R.soft,
+            alignItems: 'center',
+          }}
+        >
+          <div>{t('col.rank')}</div>
+          <div>{t(byNation ? 'col.nationality' : 'col.manager')}</div>
+          <div>{t(byNation ? 'col.managersElected' : 'col.nationality')}</div>
+          {/* The nation row's bar needs no header — it's the share of the column beside it. */}
+          <div>{byNation ? '' : t('col.electedFor')}</div>
+          <div style={{ textAlign: 'right' }}>{t('col.elections')}</div>
+          <div />
+        </div>
+
+        {byNation &&
+          pageNations.map((n, i) => {
+            const isExp = expanded === n.nationality;
+            const toggle = () => setExpanded((cur) => (cur === n.nationality ? null : n.nationality));
+            return (
+              <div key={n.nationality}>
+                <div
+                  className="retro-row"
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={isExp}
+                  onClick={toggle}
+                  onKeyDown={(ev) => {
+                    if (ev.key === 'Enter' || ev.key === ' ') {
+                      ev.preventDefault();
+                      toggle();
+                    }
+                  }}
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: ELECTION_NATION_GRID,
+                    gap: 10,
+                    padding: 'var(--rp,7px) 10px',
+                    borderBottom: '1px solid var(--line,#CDD7C3)',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                    background: isExp ? R.selrow : i % 2 ? R.alt : R.panel,
+                  }}
+                >
+                  <div>
+                    <RankBadge rank={pageStart + i + 1} />
+                  </div>
+                  <div style={{ minWidth: 0, display: 'flex', alignItems: 'center', gap: 7 }}>
+                    <Flag url={nationalityFlagUrl(n.nationality)} label={n.nationality} size={24} />
+                    <span style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {n.nationality}
+                    </span>
+                  </div>
+                  <div style={{ fontFamily: MONO, fontSize: 12, color: R.soft }}>{n.managers.toLocaleString(lang)}</div>
+                  <div style={{ height: 12, border: '1px solid var(--frame,#617D54)', background: R.panel2, overflow: 'hidden' }}>
+                    <span style={{ display: 'block', height: '100%', width: (n.count / max) * 100 + '%', background: i === 0 && curPage === 1 ? R.main : R.sec }} />
+                  </div>
+                  <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 17, fontWeight: 'bold', color: R.ink }}>{n.count}</div>
+                  <div style={{ textAlign: 'center' }}>
+                    <ExpandGlyph open={isExp} />
+                  </div>
+                </div>
+
+                {isExp && (
+                  <div style={{ padding: '10px 12px 12px 56px', background: R.panel2, borderBottom: '1px solid var(--line,#CDD7C3)' }}>
+                    <div style={{ border: '2px inset var(--btn,#EBEFE2)', background: R.panel, padding: '8px 10px 10px' }}>
+                      <div style={{ ...cabinetHead, marginBottom: 8 }}>
+                        {t('panel.topManagers')}{' '}
+                        {n.managers > ELECTION_NATION_TOP_N ? t('panel.topManagersOf', { shown: ELECTION_NATION_TOP_N, total: n.managers }) : ''}
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                        {n.top.map((m, ix) => (
+                          <div key={m.name} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <span style={{ fontFamily: MONO, fontSize: 10, color: R.faint, width: 18, flex: 'none', textAlign: 'right' }}>{ix + 1}.</span>
+                            <span style={{ flex: 1, minWidth: 0, fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              <HtLink href={m.userId ? hattrickManagerUrl(m.userId) : null}>{m.name}</HtLink>
+                            </span>
+                            {/* Same rule as the leaderboard: name the U21 share only, the rest is senior. */}
+                            {m.youth > 0 && (
+                              <span
+                                title={`${m.count - m.youth} ${t('wc.senior')} · ${m.youth} ${t('wc.u21')}`}
+                                style={{ fontFamily: MONO, fontSize: 9, fontWeight: 'bold', color: R.main, flex: 'none' }}
+                              >
+                                {m.youth} {t('wc.u21')}
+                              </span>
+                            )}
+                            <span style={{ fontFamily: MONO, fontSize: 12, fontWeight: 'bold', color: R.ink, flex: 'none', width: 26, textAlign: 'right' }}>
+                              {m.count}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
+        {!byNation &&
+          pageLeaders.map((l, i) => {
+          const isExp = expanded === l.name;
+          const toggle = () => setExpanded((cur) => (cur === l.name ? null : l.name));
+          return (
+            <div key={l.name}>
+            <div
+              className="retro-row"
+              role="button"
+              tabIndex={0}
+              aria-expanded={isExp}
+              onClick={toggle}
+              onKeyDown={(ev) => {
+                if (ev.key === 'Enter' || ev.key === ' ') {
+                  ev.preventDefault();
+                  toggle();
+                }
+              }}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: ELECTION_LEADER_GRID,
+                gap: 10,
+                padding: 'var(--rp,7px) 10px',
+                borderBottom: '1px solid var(--line,#CDD7C3)',
+                alignItems: 'center',
+                cursor: 'pointer',
+                background: isExp ? R.selrow : i % 2 ? R.alt : R.panel,
+              }}
+            >
+              <div>
+                <RankBadge rank={pageStart + i + 1} />
+              </div>
+              {/* Titled, because the 25 logins longer than 16 characters now ellipsise. */}
+              <div
+                title={l.name}
+                style={{ minWidth: 0, fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+              >
+                <HtLink href={l.userId ? hattrickManagerUrl(l.userId) : null}>{l.name}</HtLink>
+              </div>
+              <div style={{ minWidth: 0, display: 'flex', alignItems: 'center', gap: 5 }}>
+                <Flag url={nationalityFlagUrl(l.nationality)} label={l.nationality} />
+                <span
+                  title={l.nationality}
+                  style={{
+                    display: 'inline-block',
+                    minWidth: 0,
+                    fontWeight: 'bold',
+                    fontSize: 10,
+                    padding: '1px 5px',
+                    border: '1px solid var(--line,#CDD7C3)',
+                    background: R.panel2,
+                    color: R.soft,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {l.nationality ?? '—'}
+                </span>
+              </div>
+              {/* The countries that elected them, most-elected first. A coach can serve several
+                  national teams over a career, and it's rarely their own. */}
+              <div
+                title={l.countries.map(countryTally).join(', ')}
+                style={{ fontSize: 10, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+              >
+                {l.countries.map((c, ci) => (
+                  <span key={c.country}>
+                    {ci > 0 && ', '}
+                    {c.country}
+                    {/* ×N only when it means something — a lone election reads as just the country,
+                        the same rule the roll-of-honour streak tags use. */}
+                    {c.count > 1 && <span style={{ color: R.main, fontWeight: 'bold' }}>&nbsp;×{c.count}</span>}
+                  </span>
+                ))}
+              </div>
+              {/* Total, with how many of them were U21 underneath. Only the youth figure is
+                  spelled out — the senior count is the remainder, and the full breakdown is on
+                  hover. Naming both ('13 Senior · 5 U21') overflowed the 56px column and ran
+                  under the expand glyph, and it grows further in German. Shown only once a bake
+                  actually carries a U21 election, so it never reads as '0 U21' on senior data. */}
+              <div style={{ textAlign: 'right', minWidth: 0, overflow: 'hidden' }}>
+                <div style={{ fontFamily: MONO, fontSize: 17, fontWeight: 'bold', color: R.ink, lineHeight: 1.1 }}>{l.count}</div>
+                {l.youth > 0 && (
+                  <div
+                    title={`${l.senior} ${t('wc.senior')} · ${l.youth} ${t('wc.u21')}`}
+                    style={{ fontFamily: MONO, fontSize: 9, fontWeight: 'bold', color: R.main, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
+                  >
+                    {l.youth} {t('wc.u21')}
+                  </div>
+                )}
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <ExpandGlyph open={isExp} />
+              </div>
+            </div>
+
+            {isExp && (
+              <div style={{ padding: '10px 12px 12px 56px', background: R.panel2, borderBottom: '1px solid var(--line,#CDD7C3)' }}>
+                <div style={{ border: '2px inset var(--btn,#EBEFE2)', background: R.panel, padding: '8px 10px 10px' }}>
+                  <div style={{ ...cabinetHead, marginBottom: 7 }}>{t('elections.timeline')}</div>
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: ELECTION_TIMELINE_GRID,
+                      gap: 8,
+                      fontSize: 9,
+                      fontWeight: 'bold',
+                      textTransform: 'uppercase',
+                      letterSpacing: '.03em',
+                      color: R.soft,
+                      paddingBottom: 4,
+                      borderBottom: '1px solid var(--line,#CDD7C3)',
+                    }}
+                  >
+                    <div>{t('col.wc')}</div>
+                    <div>{t('wc.nationalTeam')}</div>
+                    <div>{t('common.country')}</div>
+                    <div>{t('col.result')}</div>
+                    <div style={{ textAlign: 'right' }}>{t('col.votes')}</div>
+                    <div style={{ textAlign: 'right' }}>{t('col.wcFinished')}</div>
+                  </div>
+                  {l.elections.map((e, ix) => (
+                    <div
+                      key={`${e.edition}-${e.leagueId}-${ix}`}
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: ELECTION_TIMELINE_GRID,
+                        gap: 8,
+                        alignItems: 'center',
+                        padding: '4px 0',
+                        borderBottom: '1px solid var(--line,#CDD7C3)',
+                        background: ix % 2 ? R.alt : 'transparent',
+                      }}
+                    >
+                      <div style={{ fontFamily: MONO, fontSize: 12, fontWeight: 'bold', color: R.ink }}>{e.edition}</div>
+                      <div>
+                        <BracketBadge youth={e.isYouth} label={e.isYouth ? t('wc.u21') : t('wc.senior')} />
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                        <Flag url={leagueFlagUrl(e.leagueId)} label={e.countryName} size={15} />
+                        <span style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {e.countryName}
+                        </span>
+                      </div>
+                      {/* What the mandate produced. Empty for most — being elected is not winning. */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0, overflow: 'hidden' }}>
+                        {e.trophies.length === 0 && <span style={{ fontSize: 10, color: R.faint }}>—</span>}
+                        {e.trophies.map((tr, ti) => (
+                          <span
+                            key={ti}
+                            title={tr.exact ? undefined : t('elections.duringCycle')}
+                            style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}
+                          >
+                            <span
+                              style={{
+                                fontFamily: MONO,
+                                fontSize: 9,
+                                fontWeight: 'bold',
+                                color: '#241c08',
+                                background: tr.place === 1 ? MEDAL_GOLD : tr.place === 2 ? MEDAL_SILVER : MEDAL_BRONZE,
+                                border: '1px solid rgba(0,0,0,.35)',
+                                padding: '0 4px',
+                                flex: 'none',
+                              }}
+                            >
+                              {t(tr.place === 1 ? 'place.1' : tr.place === 2 ? 'place.2' : 'place.3')}
+                            </span>
+                            {/* Italic marks the weaker join: won inside the cycle, not the cup voted for. */}
+                            <span
+                              style={{
+                                fontSize: 10,
+                                color: R.ink,
+                                fontWeight: tr.exact ? 'bold' : 'normal',
+                                fontStyle: tr.exact ? 'normal' : 'italic',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              {tr.cup}
+                            </span>
+                          </span>
+                        ))}
+                      </div>
+                      <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 10, color: R.soft }}>{e.votes ?? '—'}</div>
+                      <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 10, color: R.faint }}>
+                        {e.finished ?? t('wc.ongoing')}
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Anything their record holds that no mandate above can explain — almost always
+                      a title from before World Cup 16, where the election history begins. Without
+                      this the timeline silently denies real trophies. */}
+                  {l.otherResults.length > 0 && (
+                    <div style={{ marginTop: 9, paddingTop: 7, borderTop: '1px solid var(--line,#CDD7C3)' }}>
+                      <div style={{ fontSize: 9, color: R.faint, lineHeight: 1.45, marginBottom: 6 }}>{t('elections.otherResults')}</div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px 12px' }}>
+                        {l.otherResults.map((o, oi) => (
+                          <span key={oi} style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
+                            <span
+                              style={{
+                                fontFamily: MONO,
+                                fontSize: 9,
+                                fontWeight: 'bold',
+                                color: '#241c08',
+                                background: o.place === 1 ? MEDAL_GOLD : o.place === 2 ? MEDAL_SILVER : MEDAL_BRONZE,
+                                border: '1px solid rgba(0,0,0,.35)',
+                                padding: '0 4px',
+                                flex: 'none',
+                              }}
+                            >
+                              {t(o.place === 1 ? 'place.1' : o.place === 2 ? 'place.2' : 'place.3')}
+                            </span>
+                            <span style={{ fontSize: 10, color: R.ink, fontWeight: o.place === 1 ? 'bold' : 'normal' }}>{o.cup}</span>
+                            <span style={{ fontSize: 10, color: R.soft }}>{o.nation}</span>
+                            <span style={{ fontFamily: MONO, fontSize: 9, color: R.faint }}>
+                              {o.isWorldCupResult ? `${t('col.wc')} ${o.season}` : `S${o.season}`}
+                            </span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+            </div>
+          );
+        })}
+
+        {!agg && <div style={{ padding: '22px 12px', textAlign: 'center', color: R.faint, fontSize: 11 }}>{t('common.loading')}</div>}
+        {agg && rowCount === 0 && (
+          <div style={{ padding: '22px 12px', textAlign: 'center', color: R.faint, fontSize: 11 }}>
+            {t(byNation ? 'list.noNations' : 'list.noManagers')}
+          </div>
+        )}
+      </div>
+
+      {agg && pageCount > 1 && <RetroPager page={curPage} pageCount={pageCount} setPage={setPage} />}
+
+      {/* What these totals can't cover, said out loud rather than quietly rolled into an
+          "Unknown" row that would top the nationality ranking. */}
+      {agg && (
+        <div style={{ fontSize: 9, color: R.faint, marginTop: 9, lineHeight: 1.5 }}>
+          {/* Drops itself the moment a bake actually carries U21 elections. */}
+          {!hasYouth && t('elections.seniorOnly') + ' '}
+          {t('elections.unattributedNote', { n: agg.unattributed })}
+          {byNation && agg.withoutNationality > 0 && ' ' + t('elections.noNationalityNote', { n: agg.withoutNationality })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---- the per-country roll of honour ---- */
+
+function RetroElectionsByCountry({
   countries,
   country,
   setCountry,
@@ -2069,9 +2928,9 @@ function RetroElections({
   setCountry: Dispatch<SetStateAction<string>>;
   onStatus: (s: string) => void;
 }) {
+  const t = useT();
   const [rows, setRows] = useState<ElectionResult[]>([]);
   const [loading, setLoading] = useState(true);
-  const [allRows, setAllRows] = useState<ElectionResult[]>([]);
   const countryName = countries.find((c) => c.code === country)?.name ?? '';
 
   useEffect(() => {
@@ -2084,15 +2943,12 @@ function RetroElections({
   }, [country]);
 
   useEffect(() => {
-    getAllElections().then(setAllRows).catch(() => setAllRows([]));
-  }, []);
-
-  useEffect(() => {
     if (!loading) onStatus(`Done. ${rows.length} election(s) loaded.`);
   }, [loading, rows.length, onStatus]);
 
+  // Scoped to the country on screen — the global ranking is the "By manager" tab's job now.
   const tally: Record<string, { count: number; userId?: number; nationality?: string }> = {};
-  for (const r of allRows) {
+  for (const r of rows) {
     if (!r.winner) continue;
     const e = (tally[r.winner] ??= { count: 0, userId: r.winnerUserId, nationality: r.winnerNationality });
     e.count++;
@@ -2103,10 +2959,10 @@ function RetroElections({
   return (
     <div>
       <fieldset style={fieldset}>
-        <legend style={legend}>Select country</legend>
+        <legend style={legend}>{t('elections.select')}</legend>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px 20px', alignItems: 'flex-end' }}>
           <div>
-            <div style={filterLabel}>Country</div>
+            <div style={filterLabel}>{t('common.country')}</div>
             <select value={country} onChange={(e) => setCountry(e.target.value)} style={selectStyle}>
               {countries.map((o) => (
                 <option key={o.code} value={o.code}>
@@ -2125,7 +2981,7 @@ function RetroElections({
 
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
         <div style={{ border: '1px solid var(--frame,#617D54)' }}>
-          <SectionBar>{countryName} &mdash; National Coach elections</SectionBar>
+          <SectionBar>{t('elections.rollOfHonour', { country: countryName })}</SectionBar>
           <div
             style={{
               display: 'grid',
@@ -2141,10 +2997,10 @@ function RetroElections({
               color: R.soft,
             }}
           >
-            <div>WC</div>
-            <div>Host</div>
-            <div>Winner</div>
-            <div style={{ textAlign: 'right' }}>Votes</div>
+            <div>{t('col.wc')}</div>
+            <div>{t('col.host')}</div>
+            <div>{t('col.winner')}</div>
+            <div style={{ textAlign: 'right' }}>{t('col.votes')}</div>
           </div>
 
           {rows.map((r, i) => (
@@ -2178,18 +3034,18 @@ function RetroElections({
             </div>
           ))}
 
-          {loading && <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>Loading…</div>}
+          {loading && <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>{t('common.loading')}</div>}
           {!loading && rows.length === 0 && (
-            <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>No elections stored for this country yet.</div>
+            <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>{t('elections.empty')}</div>
           )}
 
           <div style={{ padding: '6px 10px', fontSize: 10, color: R.faint, fontFamily: MONO, background: R.panel2 }}>
-            src: World/Elections/History.aspx
+            {t('elections.src')}
           </div>
         </div>
 
         <div style={{ border: '1px solid var(--frame,#617D54)' }}>
-          <SectionBar>Most elected (top 10)</SectionBar>
+          <SectionBar>{t('elections.mostElected')}</SectionBar>
           <div style={{ padding: 11, background: R.panel, display: 'flex', flexDirection: 'column', gap: 11 }}>
             {tallyArr.length === 0 && <div style={{ fontSize: 11, color: R.faint }}>—</div>}
             {tallyArr.map(([name, { count, userId, nationality }], i) => (
