@@ -14,13 +14,23 @@
   const SRV = 'http://localhost:3001';
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-  function findElectionsTable(doc) {
-    const tables = [...doc.querySelectorAll('table')];
-    for (const t of tables) {
+  // The page carries TWO identical-looking tables — the senior National Coach elections and the
+  // U20/U21 ones. Both have the same "World Cup | Host | Winner | Votes" header, so returning the
+  // first match (as this scraper originally did) silently dropped every U21 election.
+  function findElectionsTables(doc) {
+    return [...doc.querySelectorAll('table')].filter((t) => {
       const headerText = (t.querySelector('tr')?.textContent || '').trim();
-      if (/World Cup/i.test(headerText) && /Host/i.test(headerText) && /Winner/i.test(headerText)) return t;
-    }
-    return null;
+      return /World Cup/i.test(headerText) && /Host/i.test(headerText) && /Winner/i.test(headerText);
+    });
+  }
+
+  // ASP.NET names the youth repeater in every one of its row ids
+  // ("...CPMain_repElectionsU20_ctl01_tblRow"), which beats relying on table order. Falls back to
+  // position (first table senior, any later one youth) if Hattrick ever drops the ids.
+  function isYouthRow(tr, tableIndex) {
+    const id = tr.id || '';
+    if (/repElections/i.test(id)) return /repElectionsU20/i.test(id);
+    return tableIndex > 0;
   }
 
   async function scrapeCountry(leagueId, label) {
@@ -28,25 +38,29 @@
     const res = await fetch(url);
     const html = await res.text();
     const doc = new DOMParser().parseFromString(html, 'text/html');
-    const table = findElectionsTable(doc);
-    if (!table) return { blocked: true };
+    const tables = findElectionsTables(doc);
+    if (!tables.length) return { blocked: true };
 
-    const rows = [...table.querySelectorAll('tr')].slice(1);
     const out = [];
-    for (const tr of rows) {
-      const cells = [...tr.querySelectorAll('td')];
-      if (cells.length < 4) continue;
-      const cycleText = cells[0].textContent.trim();
-      const m = cycleText.match(/World Cup (\d+)/i);
-      if (!m) continue;
-      const edition = Number(m[1]);
-      const host = cells[1].textContent.trim();
-      const a = cells[2].querySelector('a[href*="userId="]');
-      const winnerUserId = a ? Number((a.getAttribute('href').match(/userId=(\d+)/) || [])[1]) : null;
-      const winnerUserName = a ? a.textContent.trim() : null;
-      const votes = cells[3].textContent.trim() || null;
-      out.push({ leagueId, countryName: label, edition, host, winnerUserId, winnerUserName, votes });
-    }
+    tables.forEach((table, tableIndex) => {
+      for (const tr of [...table.querySelectorAll('tr')].slice(1)) {
+        const cells = [...tr.querySelectorAll('td')];
+        if (cells.length < 4) continue;
+        // The cycle cell is a link now ("World Cup 16" -> /World/Elections/?...ElectionID=N);
+        // textContent reads through it either way.
+        const cycleText = cells[0].textContent.trim();
+        const m = cycleText.match(/World Cup (\d+)/i);
+        if (!m) continue;
+        const edition = Number(m[1]);
+        // The running cycle can have an empty host cell — kept as '' rather than skipped.
+        const host = cells[1].textContent.trim();
+        const a = cells[2].querySelector('a[href*="userId="]');
+        const winnerUserId = a ? Number((a.getAttribute('href').match(/userId=(\d+)/) || [])[1]) : null;
+        const winnerUserName = a ? a.textContent.trim() : null;
+        const votes = cells[3].textContent.trim() || null;
+        out.push({ leagueId, countryName: label, edition, host, winnerUserId, winnerUserName, votes, isYouth: isYouthRow(tr, tableIndex) });
+      }
+    });
     return { rows: out };
   }
 

@@ -12,6 +12,9 @@ export interface ElectionRecord {
   countryName: string;
   edition: number;
   host: string;
+  /** The U20/U21 election rather than the senior one. Absent in payloads scraped before the page's
+   *  second table was read — those are all senior, so it defaults false. */
+  isYouth?: boolean;
   winnerUserId: number | null; // null = "A former user" (unattributed sentinel)
   winnerUserName: string | null;
   votes: string | null;
@@ -47,6 +50,7 @@ export async function ingestElections(records: ElectionRecord[]): Promise<number
     await prisma.nationalCoachElection.createMany({
       data: rows.map((r) => ({
         leagueId: r.leagueId, countryName: r.countryName, edition: r.edition, host: r.host,
+        isYouth: r.isYouth ?? false,
         winnerUserId: r.winnerUserId, winnerUserName: r.winnerUserName, votes: r.votes,
       })),
     });

@@ -218,15 +218,29 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     .sort((a, b) => b.lg + b.main + b.sec + b.hm + b.sn + b.wc - (a.lg + a.main + a.sec + a.hm + a.sn + a.wc) || b.hm - a.hm || b.wc - a.wc || b.lg - a.lg);
   writeFileSync(`${out}/managers.json`, JSON.stringify(managers));
 
-  // Guardrail: a manager appears here only if they won a title, yet may still have an unresolved
-  // nationality (null in the DB → rendered "Unknown" above) if a scrape upserted them without ever
-  // running the nationality pass. Surface it loudly on EVERY bake — including token-less paths that
-  // can't resolve it themselves — so the gap can't silently reach production. Warn, don't throw.
-  const unresolvedNat = [...mgr.keys()].filter((uid) => natById.get(uid) == null).length;
+  // Guardrail: a user may appear in the bake with an unresolved nationality (null in the DB →
+  // "Unknown") if a scrape upserted them without ever running the nationality pass. Surface it
+  // loudly on EVERY bake — including token-less paths that can't resolve it themselves — so the gap
+  // can't silently reach production. Warn, don't throw.
+  //
+  // NB: this deliberately looks beyond `mgr`, which only holds users who won a TITLE. Election
+  // winners are upserted by ingestElections with a login name and nothing else, and most never won
+  // anything, so checking `mgr` alone reported a clean bake while 583 of them had no nationality —
+  // dropping 1,261 elections out of the by-nationality aggregation with no warning at all.
+  const electionWinnerIds = (
+    await prisma.nationalCoachElection.findMany({
+      where: { winnerUserId: { not: null } },
+      select: { winnerUserId: true },
+      distinct: ['winnerUserId'],
+    })
+  ).map((r) => r.winnerUserId!);
+  const bakedUserIds = new Set<number>([...mgr.keys(), ...electionWinnerIds]);
+  const unresolvedNat = [...bakedUserIds].filter((uid) => natById.get(uid) == null).length;
   if (unresolvedNat > 0) {
     console.warn(
-      `⚠ bake: ${unresolvedNat} baked manager(s) have no nationality (shown as "Unknown"). ` +
-        `Run \`npm run backfill:nationalities -w server\` to resolve them, then re-bake.`,
+      `⚠ bake: ${unresolvedNat} baked user(s) have no nationality (shown as "Unknown", and left out ` +
+        `of by-nationality aggregations). Run \`npm run backfill:nationalities -w server\` to resolve ` +
+        `them, then re-bake.`,
     );
   }
 
@@ -359,6 +373,9 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     countryName: r.countryName,
     edition: r.edition,
     host: r.host,
+    // Only carried when true — the senior election is the default and would otherwise add a false
+    // to every one of ~3,500 rows in the shipped JSON.
+    isYouth: r.isYouth || undefined,
     winnerUserId: r.winnerUserId ?? undefined,
     winner: r.winnerUserName ?? undefined,
     winnerNationality: r.winnerUserId ? natById.get(r.winnerUserId) : undefined,

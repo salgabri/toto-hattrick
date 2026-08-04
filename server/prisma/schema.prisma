@@ -285,6 +285,10 @@ model NationalCoachElection {
   countryName String
   edition     Int // the "World Cup N" cycle this election was held for
   host        String
+  /// Senior National Coach election, or the U20/U21 one — both live on the same History.aspx page,
+  /// in two separate tables. Defaults false so rows scraped before the youth table was read stay
+  /// senior, which is what they are.
+  isYouth        Boolean @default(false)
   winnerUserId   Int?
   winnerUserName String?
   votes          String? // raw "37 (44%)" text from the page
