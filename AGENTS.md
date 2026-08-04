@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-Guidance for Claude Code working in this repo. Read [the spec](hattrick-archive-spec.md) and
+Guidance for Codex working in this repo. Read [the spec](hattrick-archive-spec.md) and
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) before non-trivial changes.
 
 ## What this is
@@ -26,7 +26,6 @@ server/   Fastify backend (TS, ESM, NodeNext)
   prisma/      schema.prisma
   samples/     real CHPP XML goes here  ← gates the schema work
 web/      React + Vite frontend (JSON only)
-  src/i18n/    translations.ts (en/de/fr/es/it) · index.tsx (provider + useT)
 docs/     ARCHITECTURE.md
 ```
 
@@ -63,9 +62,6 @@ docs/     ARCHITECTURE.md
 - One shared Prisma client from `db/client.ts`.
 - `chpp/client.ts` returns `unknown`; the caller validates with a zod schema.
 - Derive `season` from `matchDate` and store it — don't compute it at query time.
-- **No user-facing string literals in the web UI.** Add a key to `i18n/translations.ts` (`en` is the
-  source of truth and defines `TranslationKey`) and render it with `t('key')`. Names that come out
-  of the bake — clubs, managers, countries, competitions — stay in the data's own language.
 
 ## Commands
 ```bash

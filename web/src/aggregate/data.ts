@@ -9,7 +9,7 @@
  * re-deploy to refresh.
  */
 
-import { leagueFlagUrl, nationFlagUrl } from './flags.js';
+import { LEAGUE_ISO, NATIONALITY_ISO, leagueFlagUrl, nationFlagUrl } from './flags.js';
 
 export interface Country {
   code: string;
@@ -301,14 +301,25 @@ export async function getManagers(nationality?: string): Promise<Manager[]> {
     });
 }
 
-export async function getCabinet(userId: number): Promise<TrophyCabinet> {
+/**
+ * A manager's full trophy cabinet.
+ *
+ * `championsLabel` builds the "<country> champions" heading — the ONE user-facing sentence this
+ * data layer composes, so the caller passes the translated form rather than the module reaching
+ * for a language it has no business knowing about. Every other label here is a proper name that
+ * came out of the bake and stays exactly as Hattrick spells it.
+ */
+export async function getCabinet(
+  userId: number,
+  championsLabel: (country: string) => string = (c) => `${c} champions`,
+): Promise<TrophyCabinet> {
   const { managers, leagues } = await load();
   const m = managers.find((x) => x.userId === userId);
   // Mirror getManagers' league fallback so an expanded cabinet stays consistent with the chart
   // under "Reigning only" even before a re-bake (cups need the bake — no `last`, no fallback).
   const latestByCountry = latestLeagueSeasonByCountry(leagues);
   const champ = (m?.titles ?? []).map((t) => ({
-    main: `${t.country} champions`,
+    main: championsLabel(t.country),
     sub: t.club,
     teamId: t.teamId,
     season: 'S' + t.season,
@@ -469,6 +480,14 @@ export async function getNationalCompetitions(): Promise<NationalCompetition[]> 
   return comps.filter((c) => c.rows.length > 0);
 }
 
+/** One podium a coach took, for the expanded row. */
+export interface CoachMedalResult {
+  cup: string;
+  season: number; // the EDITION for World Cup rows, a real season for the regional cups
+  nation: string;
+  place: number;
+}
+
 /** A coach's podium record in national-team competitions. */
 export interface CoachMedals {
   userId: number;
@@ -477,6 +496,8 @@ export interface CoachMedals {
   g: number;
   s: number;
   b: number;
+  /** The individual podiums behind those totals, best placing first. */
+  results: CoachMedalResult[];
 }
 
 /**
@@ -492,11 +513,17 @@ export async function getCoachMedals(matchCups: string[]): Promise<CoachMedals[]
   const want = new Set(matchCups);
   const out: CoachMedals[] = [];
   for (const m of managers) {
-    const g = (m.worldCup ?? []).filter((t) => want.has(t.cup)).length;
+    const titles = (m.worldCup ?? []).filter((t) => want.has(t.cup));
     const medals = (m.medals ?? []).filter((x) => want.has(x.cup));
+    const g = titles.length;
     const s = medals.filter((x) => x.place === 2).length;
     const b = medals.filter((x) => x.place === 3).length;
-    if (g + s + b > 0) out.push({ userId: m.userId, name: m.userName, nationality: m.nationality, g, s, b });
+    if (g + s + b === 0) continue;
+    const results: CoachMedalResult[] = [
+      ...titles.map((t) => ({ cup: t.cup, season: t.season, nation: t.club, place: 1 })),
+      ...medals.map((x) => ({ cup: x.cup, season: x.season, nation: x.nation, place: x.place })),
+    ].sort((a, b2) => a.place - b2.place || b2.season - a.season || a.cup.localeCompare(b2.cup));
+    out.push({ userId: m.userId, name: m.userName, nationality: m.nationality, g, s, b, results });
   }
   return out.sort((a, b2) => b2.g - a.g || b2.s - a.s || b2.b - a.b || a.name.localeCompare(b2.name));
 }
@@ -513,6 +540,9 @@ export interface ElectionResult {
   countryName: string;
   edition: number;
   host: string;
+  /** The U20/U21 National Coach election rather than the senior one — both are published on the
+   *  same page, in two tables. Absent means senior (the bake only writes it when true). */
+  isYouth?: boolean;
   winnerUserId?: number;
   winner?: string; // undefined = "A former user" (unattributed sentinel)
   winnerNationality?: string;
@@ -544,4 +574,288 @@ export async function getElections(leagueId: string): Promise<ElectionResult[]> 
 /** Every election result, for the global "most elected" leaderboard (not scoped to one country). */
 export async function getAllElections(): Promise<ElectionResult[]> {
   return loadElections();
+}
+
+/**
+ * One election a manager won, placed in time.
+ *
+ * The scraped roll carries a World Cup EDITION, never a season and never a date — so the cycle's
+ * own finishing date is borrowed from worldcup.json (which covers every edition the elections
+ * span) to give the timeline a real anchor. It is the date the cycle ENDED, not the date of the
+ * vote, which is why it's labelled as the World Cup's date and not the election's.
+ */
+export interface ElectionEntry {
+  leagueId: number;
+  countryName: string;
+  edition: number;
+  host: string;
+  isYouth: boolean;
+  votes?: string;
+  finished: string | null; // "DD.MM.YYYY", null while that cycle is still running
+  /** What the mandate produced — see `ElectionTrophy` and `matchTrophies`. Empty for most. */
+  trophies: ElectionTrophy[];
+}
+
+/** A national-team result won under one election's mandate. */
+export interface ElectionTrophy {
+  cup: string;
+  place: number; // 1 = won it, 2 = runner-up, 3 = losing semi-finalist
+  /**
+   * How the result was tied to this election:
+   *   true  — the World Cup this mandate was literally for (edition == edition, an exact join).
+   *   false — a regional cup whose final fell inside the mandate's date window.
+   * The UI marks the second kind, because "during the cycle" is a weaker claim than "this cup".
+   */
+  exact: boolean;
+}
+
+/** One manager's election record: how often elected, and which countries elected them. */
+export interface ElectionLeader {
+  userId?: number;
+  name: string;
+  nationality?: string;
+  count: number;
+  /** The same total, split by bracket — senior National Coach elections and the U20/U21 ones,
+   *  which Hattrick publishes in a second table on the same page. */
+  senior: number;
+  youth: number;
+  /** Countries that elected them and how often, most-elected first. A coach can serve several over
+   *  a career — it's the national team's community that votes, not their own country's — and can be
+   *  re-elected by the same one across cycles, so the count carries real information. Senior and
+   *  U21 elections for one country both land in the same tally. */
+  countries: Array<{ country: string; count: number }>;
+  /** Every election they won, newest cycle first. */
+  elections: ElectionEntry[];
+  /**
+   * National-team results that no election of theirs can account for — overwhelmingly because the
+   * election record only starts at World Cup 16, while the competitions go back to edition 1.
+   * Without these the timeline reads as a complete career and quietly denies real trophies:
+   * HPE-regia5 won the World Cup with Norge in cycle 15 and was elected by Norway in 17, 18 and 19,
+   * so every Norway row would otherwise show no result at all.
+   */
+  otherResults: OtherResult[];
+}
+
+/** A trophy or medal that falls outside every recorded mandate. */
+export interface OtherResult {
+  cup: string;
+  place: number;
+  nation: string;
+  /** The EDITION for World Cup rows, a real season for the regional cups — `isWorldCupResult` says
+   *  which, so the UI can label it "WC 15" rather than "S15". */
+  season: number;
+  isWorldCupResult: boolean;
+}
+
+/** How many of a nationality's managers the expanded row lists. */
+export const ELECTION_NATION_TOP_N = 10;
+
+/** A nationality's pooled election record. */
+export interface ElectionNation {
+  nationality: string;
+  managers: number; // distinct managers of that nationality who were ever elected
+  count: number;
+  senior: number;
+  youth: number;
+  /** Its most-elected managers, best first, capped at ELECTION_NATION_TOP_N. */
+  top: Array<{ name: string; userId?: number; count: number; youth: number }>;
+}
+
+/**
+ * Both aggregations plus the rows neither can honestly count, from one pass.
+ *
+ * Elections are joined to managers BY NAME, like every other name-based join in these views. Two
+ * kinds of row can't be attributed and are reported rather than silently dropped:
+ * `unattributed` (Hattrick prints "A former user" instead of a name) and `withoutNationality`
+ * (a named winner whose nationality never resolved). The latter is deliberately NOT pooled into an
+ * "Unknown" nation — at ~a fifth of all named winners it would top the nationality ranking and
+ * mean nothing.
+ */
+export interface ElectionAggregates {
+  leaders: ElectionLeader[];
+  nations: ElectionNation[];
+  unattributed: number;
+  withoutNationality: number;
+}
+
+/** "DD.MM.YYYY" (World Cup) or "DD-MM-YYYY HH:MM" (regional cups) → epoch ms, or null. */
+function parseHtDate(s: string | null | undefined): number | null {
+  const m = (s ?? '').match(/(\d{1,2})[.\-/](\d{1,2})[.\-/](\d{4})/);
+  return m ? Date.UTC(Number(m[3]), Number(m[2]) - 1, Number(m[1])) : null;
+}
+
+/** A national-team result flattened out of a manager's baked record. */
+interface NationalResult {
+  cup: string;
+  season: number; // the EDITION for World Cup rows, a real season for the regional cups
+  nation: string; // native name, "U21 "-prefixed on the youth side
+  leagueId?: number; // 0/absent for the World Cup, which is nobody's league
+  place: number;
+  isYouth: boolean;
+}
+
+const isYouthCup = (cup: string) => cup.startsWith('U21 ') || cup === 'World Cup (Youth)';
+const isWorldCup = (cup: string) => cup === 'World Cup' || cup === 'World Cup (Youth)';
+
+/**
+ * Does a national result belong to the nation that held this election?
+ *
+ * Regional results carry the nation's leagueId and join on it directly. World Cup results carry
+ * leagueId 0 (the World Cup is nobody's league) and only a NATIVE nation name ("Nederland"), while
+ * the election carries an English one ("Netherlands") — so those reconcile through the ISO code,
+ * the same bridge `nationFlagUrl` uses for exactly this mismatch.
+ */
+function sameNation(r: NationalResult, leagueId: number): boolean {
+  if (r.leagueId) return r.leagueId === leagueId;
+  const iso = NATIONALITY_ISO[r.nation.replace(/^U21\s+/, '')];
+  return !!iso && iso === LEAGUE_ISO[leagueId];
+}
+
+export async function getElectionAggregates(): Promise<ElectionAggregates> {
+  const [rows, wc, { managers }] = await Promise.all([loadElections(), getWorldCup(), load()]);
+  // Elections span editions 16–41 and worldcup.json carries every one of them, so this join is
+  // total in practice; a miss degrades to a dateless row rather than dropping the election.
+  const finishedByEdition = new Map(wc.senior.map((e) => [e.edition, e.finished]));
+
+  // A mandate's window: from the previous cycle's final to its own. Editions are consecutive, so
+  // the previous edition's finish is the natural start; the running cycle has no end yet.
+  const editionsAsc = wc.senior.slice().sort((a, b) => a.edition - b.edition);
+  const cycleWindow = new Map<number, { from: number; to: number }>();
+  editionsAsc.forEach((e, i) => {
+    const prev = i > 0 ? parseHtDate(editionsAsc[i - 1]!.finished) : null;
+    cycleWindow.set(e.edition, { from: prev ?? -Infinity, to: parseHtDate(e.finished) ?? Infinity });
+  });
+
+  // When each regional-cup season's final was played, so a per-season trophy can be placed inside
+  // a per-edition mandate.
+  const regionalFinal = new Map<string, number>();
+  for (const cup of wc.regional ?? []) {
+    for (const s of cup.seasons) {
+      const ms = parseHtDate(s.finished);
+      if (ms != null) regionalFinal.set(`${cup.cupName}|${s.season}`, ms);
+    }
+  }
+
+  // Every manager's national-team results — titles and podium places alike — in one flat list.
+  const resultsByUser = new Map<number, NationalResult[]>();
+  for (const m of managers) {
+    const out: NationalResult[] = [];
+    for (const t of m.worldCup ?? [])
+      out.push({ cup: t.cup, season: t.season, nation: t.club, leagueId: t.leagueId, place: 1, isYouth: isYouthCup(t.cup) });
+    for (const x of m.medals ?? [])
+      out.push({ cup: x.cup, season: x.season, nation: x.nation, leagueId: x.leagueId, place: x.place, isYouth: isYouthCup(x.cup) });
+    if (out.length) resultsByUser.set(m.userId, out);
+  }
+
+  /**
+   * What one election's mandate produced for the nation that voted.
+   *
+   * Only ever looks at results ALREADY attributed to this manager (by coaching tenure at the
+   * final), so a title can't be credited to someone who had been replaced — the question here is
+   * narrower: of the trophies this manager did win with this nation, which fall under this mandate.
+   */
+  // Which of a manager's results some mandate accounted for, so the remainder can be surfaced
+  // rather than silently dropped.
+  const claimed = new Map<number, Set<number>>();
+
+  const matchTrophies = (userId: number | undefined, leagueId: number, edition: number, isYouth: boolean): ElectionTrophy[] => {
+    const all = userId ? resultsByUser.get(userId) : undefined;
+    if (!all || userId == null) return [];
+    const win = cycleWindow.get(edition);
+    const out: ElectionTrophy[] = [];
+    all.forEach((r, ix) => {
+      if (r.isYouth !== isYouth || !sameNation(r, leagueId)) return;
+      let hit = false;
+      if (isWorldCup(r.cup)) {
+        // Exact: for World Cup rows the bake stores the edition in `season` (see sync/bake.ts).
+        if (r.season === edition) hit = out.push({ cup: r.cup, place: r.place, exact: true }) > 0;
+      } else if (win) {
+        const ms = regionalFinal.get(`${r.cup}|${r.season}`);
+        if (ms != null && ms > win.from && ms <= win.to) hit = out.push({ cup: r.cup, place: r.place, exact: false }) > 0;
+      }
+      if (hit) {
+        let s = claimed.get(userId);
+        if (!s) claimed.set(userId, (s = new Set()));
+        s.add(ix);
+      }
+    });
+    // The World Cup itself first, then better placings — the headline result leads.
+    return out.sort((a, b) => Number(b.exact) - Number(a.exact) || a.place - b.place || a.cup.localeCompare(b.cup));
+  };
+
+  const byUser = new Map<string, ElectionLeader & { byCountry: Map<string, number> }>();
+  let unattributed = 0;
+  for (const r of rows) {
+    if (!r.winner) {
+      unattributed++;
+      continue;
+    }
+    let e = byUser.get(r.winner);
+    if (!e) {
+      // otherResults is filled in the mapping pass below, once every mandate has had its say.
+      e = { name: r.winner, userId: r.winnerUserId, nationality: r.winnerNationality, count: 0, senior: 0, youth: 0, countries: [], elections: [], otherResults: [], byCountry: new Map() };
+      byUser.set(r.winner, e);
+    }
+    const isYouth = !!r.isYouth;
+    e.count++;
+    if (isYouth) e.youth++;
+    else e.senior++;
+    e.userId ??= r.winnerUserId;
+    e.nationality ??= r.winnerNationality;
+    e.byCountry.set(r.countryName, (e.byCountry.get(r.countryName) ?? 0) + 1);
+    e.elections.push({
+      leagueId: r.leagueId,
+      countryName: r.countryName,
+      edition: r.edition,
+      host: r.host,
+      isYouth,
+      votes: r.votes,
+      finished: finishedByEdition.get(r.edition) ?? null,
+      trophies: matchTrophies(r.winnerUserId, r.leagueId, r.edition, isYouth),
+    });
+  }
+
+  const leaders = [...byUser.values()]
+    .map(({ byCountry, ...e }) => ({
+      ...e,
+      countries: [...byCountry.entries()]
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .map(([country, count]) => ({ country, count })),
+      // Newest cycle first, matching every other roll in the app. A country can re-elect mid-cycle,
+      // and the senior and U21 votes of one cycle both land here, so the same edition legitimately
+      // appears more than once — order those by bracket then country to stay stable.
+      elections: e.elections
+        .slice()
+        .sort((a, b) => b.edition - a.edition || Number(a.isYouth) - Number(b.isYouth) || a.countryName.localeCompare(b.countryName)),
+      otherResults: (e.userId == null ? [] : resultsByUser.get(e.userId) ?? [])
+        .map((r, ix) => ({ r, ix }))
+        .filter(({ ix }) => !claimed.get(e.userId!)?.has(ix))
+        .map(({ r }) => ({ cup: r.cup, place: r.place, nation: r.nation, season: r.season, isWorldCupResult: isWorldCup(r.cup) }))
+        .sort((a, b) => a.place - b.place || b.season - a.season || a.cup.localeCompare(b.cup)),
+    }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
+  const byNation = new Map<string, ElectionNation>();
+  let withoutNationality = 0;
+  for (const l of leaders) {
+    if (!l.nationality) {
+      withoutNationality += l.count;
+      continue;
+    }
+    let n = byNation.get(l.nationality);
+    if (!n) {
+      n = { nationality: l.nationality, managers: 0, count: 0, senior: 0, youth: 0, top: [] };
+      byNation.set(l.nationality, n);
+    }
+    n.managers++;
+    n.count += l.count;
+    n.senior += l.senior;
+    n.youth += l.youth;
+    // `leaders` is already sorted by election count, so each nation's contributors arrive in
+    // order — the cap alone is enough, no second sort.
+    if (n.top.length < ELECTION_NATION_TOP_N) n.top.push({ name: l.name, userId: l.userId, count: l.count, youth: l.youth });
+  }
+  const nations = [...byNation.values()].sort((a, b) => b.count - a.count || a.nationality.localeCompare(b.nationality));
+
+  return { leaders, nations, unattributed, withoutNationality };
 }

@@ -56,13 +56,23 @@ export async function registerScrapeRoutes(app: FastifyInstance): Promise<void> 
     return JSON.parse(readFileSync(targetsFile(), 'utf8'));
   });
 
-  // teamIds already scraped (so the browser can resume after an interruption).
+  // Keys already scraped (so the browser can resume after an interruption).
+  //
+  // Each phase writes its own record shape, and only the team-history ones actually carry a
+  // `teamId`: elections records are keyed by `leagueId` and the regional cups by `cupId`. Reading
+  // `teamId` alone yielded a Set containing nothing but `undefined` (serialised as `[null]`), so
+  // `done` never matched a target and an interrupted run silently restarted from the top —
+  // re-scraping every country and appending a duplicate of everything already collected.
   app.get('/api/scrape/done', async () => {
     if (!dir || !existsSync(resultsFile())) return [];
     const ids = new Set<number>();
     for (const line of readFileSync(resultsFile(), 'utf8').split('\n')) {
       if (!line.trim()) continue;
-      try { ids.add(JSON.parse(line).teamId); } catch { /* skip */ }
+      try {
+        const r = JSON.parse(line);
+        const id = r.teamId ?? r.leagueId ?? r.cupId;
+        if (typeof id === 'number') ids.add(id);
+      } catch { /* skip */ }
     }
     return [...ids];
   });
