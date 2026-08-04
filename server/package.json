@@ -35,7 +35,9 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "repair:leagues": "tsx src/scripts/repair-league-placeholders.ts",
+    "backfill:managers": "tsx src/scripts/backfill-managers.ts"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.1",

@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { readFileSync } from 'node:fs';
 import { prisma } from '../db/client.js';
 import { backfillCups } from '../sync/backfillCups.js';
-import { attributeCupsByClub } from '../sync/attributeCupsByClub.js';
+import { attributeByClub } from '../sync/attributeByClub.js';
 import { enrichUserNationalities } from '../sync/enrichManagers.js';
 import { bakeStatic } from '../sync/bake.js';
 import type { TokenPair } from '../chpp/auth.js';
@@ -47,8 +47,8 @@ console.log(`  owner unresolvable (deleted/bot):   ${r.unresolvedOwners}`);
 console.log(`  cup finals still without a manager: ${r.remaining}`);
 
 // Cheap wins that need no API: bridge any freshly-materialised final whose club won a league.
-const cb = await attributeCupsByClub();
-if (cb.attributed) console.log(`cup-by-club bridge: +${cb.attributed} more attributed`);
+const cb = await attributeByClub();
+if (cb.cupFinals || cb.leagueTitles) console.log(`by-club bridge: +${cb.cupFinals} cup finals, +${cb.leagueTitles} league titles`);
 
 const after = await prisma.cupChampion.count({ where: { championUserId: { gt: 0 } } });
 console.log(`end: ${after}/${total} finals attributed (+${after - before} this run)`);
