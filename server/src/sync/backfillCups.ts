@@ -6,7 +6,7 @@ import { resolveTeamOwner, UNKNOWN, type TeamOwner } from './enrichManagers.js';
 
 /**
  * Full cup materialisation, batched and resume-safe, for the reconstructed placeholder finals that
- * no other path can attribute (finalMatchId 0 / championTeamId null — see attributeCupsByClub.ts
+ * no other path can attribute (finalMatchId 0 / championTeamId null — see attributeByClub.ts
  * for why the current-owner and scrape paths can't touch them). For each still-unattributed final
  * it runs the three CHPP steps IN SEQUENCE, committing after each:
  *

@@ -24,6 +24,7 @@ import {
   type Manager,
   type NationalCompetition,
   type SeasonalCupRoll,
+  type SeasonWindow,
   type TrophyCabinet,
   type TrophyItem,
   type Winner,
@@ -46,7 +47,7 @@ import './retro2000s.css';
  * toggles therefore stay inert for the total — kept for fidelity to the design.
  */
 
-export type RetroView = 'trophies' | 'leagues' | 'cups' | 'worldcup' | 'elections';
+export type RetroView = 'trophies' | 'leagues' | 'cups' | 'worldcup' | 'medals' | 'elections';
 
 export interface Retro2000sProps {
   /** Fixed at render time — there is no in-app skin picker, so a caller choosing 'blue' is the
@@ -63,6 +64,8 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
   const [query, setQuery] = useState('');
   const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false, hm: true, sn: true, wc: true });
   const [lastOnly, setLastOnly] = useState(false);
+  // Independent of `lastOnly`: undefined = all time. Both live on the one Recency control.
+  const [seasonWindow, setSeasonWindow] = useState<SeasonWindow | undefined>(undefined);
   const [medals, setMedals] = useState(false);
   const [groupBy, setGroupBy] = useState<TrophyGroupBy>('manager');
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -209,6 +212,8 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
               setInc={setInc}
               lastOnly={lastOnly}
               setLastOnly={setLastOnly}
+              seasonWindow={seasonWindow}
+              setSeasonWindow={setSeasonWindow}
               medals={medals}
               setMedals={setMedals}
               groupBy={groupBy}
@@ -222,7 +227,9 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
           ) : view === 'cups' ? (
             <RetroCupWinners countries={cupCountries} country={cupCountry} setCountry={setCupCountry} onStatus={setStatus} />
           ) : view === 'worldcup' ? (
-            <RetroWorldCup onStatus={setStatus} />
+            <RetroNationalTrophies onStatus={setStatus} />
+          ) : view === 'medals' ? (
+            <RetroMedalTables onStatus={setStatus} />
           ) : (
             <RetroElections
               countries={electionCountries}
@@ -263,6 +270,7 @@ const NAV: Array<{ key: RetroView; labelKey: TranslationKey }> = [
   { key: 'leagues', labelKey: 'nav.leagues' },
   { key: 'cups', labelKey: 'nav.cups' },
   { key: 'worldcup', labelKey: 'nav.worldcup' },
+  { key: 'medals', labelKey: 'nav.medals' },
   { key: 'elections', labelKey: 'nav.elections' },
 ];
 
@@ -467,9 +475,24 @@ function FilterRow({ divider, children }: { divider?: boolean; children: ReactNo
  * career totals, or reigning-only (the last winner of each competition). Season windows ("last 5
  * seasons") need a per-title season filter, so they'd become their own state, not another flag.
  */
-const RECENCY_OPTS: Array<{ labelKey: TranslationKey; reigning: boolean; titleKey: TranslationKey }> = [
+/**
+ * The recency choices, one row of mutually exclusive buttons.
+ *
+ * "Reigning only" IS the one-instalment window — it keeps each competition's current holder, which
+ * is exactly what `ago === 0` means (see data.ts `inWindow`). So there is no separate "Last season"
+ * button: it would be a second control producing byte-identical results. Reigning keeps the name
+ * because "the current champion" says more than "a window of one".
+ *
+ * Windows count a competition's own instalments, so for the World Cup "Last 5" is the last five
+ * World Cups rather than five Hattrick seasons — see `agoOf` in server/sync/bake.ts for why that
+ * trade buys the exact agreement with Reigning above.
+ */
+const RECENCY_OPTS: Array<{ labelKey: TranslationKey; reigning: boolean; window?: SeasonWindow; titleKey: TranslationKey }> = [
   { labelKey: 'recency.allTime', reigning: false, titleKey: 'recency.allTime.title' },
   { labelKey: 'recency.reigning', reigning: true, titleKey: 'recency.reigning.title' },
+  { labelKey: 'recency.last5', reigning: false, window: 5, titleKey: 'recency.last5.title' },
+  { labelKey: 'recency.last10', reigning: false, window: 10, titleKey: 'recency.last10.title' },
+  { labelKey: 'recency.last20', reigning: false, window: 20, titleKey: 'recency.last20.title' },
 ];
 
 /** The 2000s pressed/unpressed toggle button — inset when on, outset when off. */
@@ -555,7 +578,7 @@ interface MedalRow { key: string; label: string; flag: string | null; href?: str
 /**
  * A gold/silver/bronze table, laid out like every other full-width table in the app: rank badge,
  * flag, name, then the three podium columns. It used to be a compact side panel squeezed beside
- * the roll of honour — that constraint is gone now that the medal view is its own tab showing one
+ * the champions list — that constraint is gone now that the medal view is its own tab showing one
  * table at a time, so it no longer needs the tiny type or the internal scroller.
  *
  * Rows are ordered like an Olympic table (gold, then silver, then bronze), which puts every
@@ -785,6 +808,8 @@ function RetroTrophyLeaders({
   setInc,
   lastOnly,
   setLastOnly,
+  seasonWindow,
+  setSeasonWindow,
   medals,
   setMedals,
   groupBy,
@@ -802,6 +827,8 @@ function RetroTrophyLeaders({
   setInc: Dispatch<SetStateAction<IncState>>;
   lastOnly: boolean;
   setLastOnly: Dispatch<SetStateAction<boolean>>;
+  seasonWindow: SeasonWindow | undefined;
+  setSeasonWindow: Dispatch<SetStateAction<SeasonWindow | undefined>>;
   medals: boolean;
   setMedals: Dispatch<SetStateAction<boolean>>;
   groupBy: TrophyGroupBy;
@@ -820,16 +847,16 @@ function RetroTrophyLeaders({
   // always pull the whole field.
   useEffect(() => {
     setLoading(true);
-    getManagers(groupBy === 'nation' || nation === 'ALL' ? undefined : nation)
+    getManagers(groupBy === 'nation' || nation === 'ALL' ? undefined : nation, seasonWindow)
       .then(setManagers)
       .catch(() => setManagers([]))
       .finally(() => setLoading(false));
-  }, [nation, groupBy]);
+  }, [nation, groupBy, seasonWindow]);
 
   // Any filter change reshuffles the ranked list, so drop back to the first page.
   useEffect(() => {
     setPage(1);
-  }, [nation, query, inc, lastOnly, groupBy, medals]);
+  }, [nation, query, inc, lastOnly, seasonWindow, groupBy, medals]);
 
   // Row ids mean different things per mode (userId vs nation name) — never carry one over.
   useEffect(() => {
@@ -837,7 +864,7 @@ function RetroTrophyLeaders({
   }, [groupBy, setExpandedId]);
 
   const loadCabinet = (userId: number) =>
-    getCabinet(userId, (country) => t('cabinet.champTitle', { country }));
+    getCabinet(userId, (country) => t('cabinet.champTitle', { country }), seasonWindow);
 
   // A cached cabinet holds a translated "<country> champions" heading, so a language switch has to
   // drop the cache — and re-fetch whichever row is open, which would otherwise sit on "Loading…"
@@ -980,22 +1007,26 @@ function RetroTrophyLeaders({
           <div>
             <div style={filterLabel}>{t('filters.recency')}</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              {RECENCY_OPTS.map((o) => (
-                <button
-                  key={o.labelKey}
-                  onClick={() => {
-                    setLastOnly(o.reigning);
-                    // Reigning-only and medals are mutually exclusive (see below) — rather than
-                    // leaving a dead button, each switch just turns the other one off.
-                    if (o.reigning) setMedals(false);
-                  }}
-                  style={toggleBtn(lastOnly === o.reigning)}
-                  title={t(o.titleKey)}
-                >
-                  {lastOnly === o.reigning && <span>✓&nbsp;</span>}
-                  {t(o.labelKey)}
-                </button>
-              ))}
+              {RECENCY_OPTS.map((o) => {
+                const on = lastOnly === o.reigning && seasonWindow === o.window;
+                return (
+                  <button
+                    key={o.labelKey}
+                    onClick={() => {
+                      setLastOnly(o.reigning);
+                      setSeasonWindow(o.window);
+                      // Reigning-only and medals are mutually exclusive (see below) — rather than
+                      // leaving a dead button, each switch just turns the other one off.
+                      if (o.reigning) setMedals(false);
+                    }}
+                    style={toggleBtn(on)}
+                    title={t(o.titleKey)}
+                  >
+                    {on && <span>✓&nbsp;</span>}
+                    {t(o.labelKey)}
+                  </button>
+                );
+              })}
             </div>
           </div>
           <div>
@@ -1368,6 +1399,12 @@ function RetroTrophyLeaders({
         <span style={{ flex: 1 }} />
         <span style={{ fontFamily: MONO, color: R.faint }}>{t('src.league')}</span>
       </div>
+
+      {/* A window counts each competition's own instalments, which for the World Cup and the regional
+          cups is not the same span of time as five league seasons. Worth saying once, in place. */}
+      {seasonWindow !== undefined && (
+        <div style={{ fontSize: 9, color: R.faint, marginTop: 7, lineHeight: 1.5 }}>{t('recency.windowNote')}</div>
+      )}
     </div>
   );
 }
@@ -1616,7 +1653,7 @@ const CUP_CATEGORIES: Array<{ k: CupCategory; labelKey: TranslationKey }> = [
 ];
 
 /** Outset/inset toggle button matching the retro Windows-98 chip look used for the trophy filters. */
-function CategoryChip({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+function CategoryChip({ label, active, onClick, title }: { label: string; active: boolean; onClick: () => void; title?: string }) {
   const style: CSSProperties = active
     ? {
         display: 'inline-flex', alignItems: 'center', cursor: 'pointer', fontFamily: 'inherit', fontSize: 11,
@@ -1628,7 +1665,7 @@ function CategoryChip({ label, active, onClick }: { label: string; active: boole
         color: R.soft, fontWeight: 'normal',
       };
   return (
-    <span onClick={onClick} style={style}>
+    <span onClick={onClick} style={style} title={title}>
       {label}
     </span>
   );
@@ -1925,7 +1962,19 @@ function RetroCupCard({
 
 // No Host column: the three panels sit side by side, and the podium columns earn the space more
 // than the host nation does (it's still on hattrick.org for anyone who wants it).
-const WORLD_CUP_GRID = '54px minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.2fr) 84px';
+// All three podium columns carry a nation plus its coach now, so they get near-equal width rather
+// than the champion-heavy split that suited a champion-only roll. 3rd/4th keeps a shade more: it
+// stacks two of those pairs.
+const WORLD_CUP_GRID = '56px minmax(0,1.1fr) minmax(0,1.1fr) minmax(0,1.15fr) 86px';
+
+/**
+ * This table's own row padding, instead of the shared `--rp` (7px).
+ *
+ * Every other table in the app puts one line in a row. A podium row now holds up to four — two
+ * joint-third nations, each with a coach beneath — so the shared value that reads as comfortable
+ * elsewhere reads as cramped here.
+ */
+const WORLD_CUP_ROW_PAD = '11px';
 
 /**
  * The two World Cup brackets are synthesized in the data layer with English labels (the regional
@@ -1952,21 +2001,67 @@ const MEDAL_BY: Array<{ k: MedalBy; chip: TranslationKey; title: TranslationKey;
   { k: 'coachNation', chip: 'medal.coachNation', title: 'medal.byCoachNation', header: 'col.nationality' },
 ];
 
-function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
-  const t = useT();
-  const [comps, setComps] = useState<NationalCompetition[]>([]);
-  const [compKey, setCompKey] = useState('senior');
-  // Multi-select, not a switch: senior and U21 are separate competitions, but they're also two
-  // halves of one national-team record, and only pooling them answers "who has the most, overall".
-  const [brackets, setBrackets] = useState({ senior: true, youth: false });
-  const [medalScope, setMedalScope] = useState<'comp' | 'all'>('comp');
-  const [medalBy, setMedalBy] = useState<MedalBy>('nation');
-  // The roll of honour and the medal tables answer different questions and were crowding each
-  // other three-across; the competition picker above stays shared between them.
-  const [wcView, setWcView] = useState<'roll' | 'medals'>('roll');
-  const [coachMedals, setCoachMedals] = useState<CoachMedals[]>([]);
-  const [loading, setLoading] = useState(true);
+/** Which age bracket's competitions to show. Single-select everywhere: both views render one
+ *  bracket's list at a time, and the medal tables express "pool them" as a SCOPE instead. */
+type Bracket = 'senior' | 'youth';
 
+/**
+ * Senior/U21 picker.
+ *
+ * Deliberately not a multi-select. It used to be one, which read as if it widened what you were
+ * looking at — but the champions table renders exactly one competition, so ticking both only ever
+ * doubled the chip list. Pooling is a real question, and it now lives where it belongs, as
+ * `MEDAL_SCOPES` on the medal tables.
+ */
+function BracketSwitch({ value, onChange }: { value: Bracket; onChange: (b: Bracket) => void }) {
+  const t = useT();
+  return (
+    <div>
+      <div style={filterLabel}>{t('wc.nationalTeam')}</div>
+      <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+        <button onClick={() => onChange('senior')} style={toggleBtn(value === 'senior')} title={t('wc.senior.title')}>
+          {t('wc.senior')}
+        </button>
+        <button onClick={() => onChange('youth')} style={toggleBtn(value === 'youth')} title={t('wc.u21.title')}>
+          {t('wc.u21')}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/** Competition chips for one bracket. The bracket is already chosen, so the short label is
+ *  unambiguous here — no "U21 " prefix needed to tell a cup from its twin. */
+function CompetitionChips({
+  comps,
+  activeKey,
+  onPick,
+  loading,
+}: {
+  comps: NationalCompetition[];
+  activeKey?: string;
+  onPick: (key: string) => void;
+  loading: boolean;
+}) {
+  const t = useT();
+  return (
+    <div style={{ minWidth: 0 }}>
+      <div style={filterLabel}>{t('cups.competition')}</div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+        {comps.length === 0 && <span style={{ fontSize: 11, color: R.faint }}>{loading ? t('common.loading') : t('wc.noComps')}</span>}
+        {comps.map((c) => (
+          <CategoryChip key={c.key} label={compLabel(t, c, true)} active={c.key === activeKey} onClick={() => onPick(c.key)} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Loads the national-team competitions. Both views need the identical list out of one baked file,
+ *  so neither owns it. */
+function useNationalCompetitions() {
+  const [comps, setComps] = useState<NationalCompetition[]>([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
     getNationalCompetitions()
@@ -1974,18 +2069,245 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
       .catch(() => setComps([]))
       .finally(() => setLoading(false));
   }, []);
+  return { comps, loading };
+}
 
-  // With both brackets on, the competition list doubles and the "U21 " prefix stops being
-  // redundant — it becomes the only thing telling two same-named cups apart, so chips show the
-  // full label there and the short one when a single bracket is selected.
-  const bothBrackets = brackets.senior && brackets.youth;
-  const onlyYouth = brackets.youth && !brackets.senior;
-  const inBracket = comps.filter((c) => (c.isYouth ? brackets.youth : brackets.senior));
-  // Fall back to the first competition on offer, so a bake without World Cup data still shows.
+/** Picks one bracket's competitions, and keeps a selection that survives a bracket switch. */
+function useBracketedComp(comps: NationalCompetition[]) {
+  const [bracket, setBracket] = useState<Bracket>('senior');
+  const [compKey, setCompKey] = useState('senior');
+  const inBracket = comps.filter((c) => c.isYouth === (bracket === 'youth'));
+  // Falling back to the first on offer means a bracket switch repairs a now-invalid `compKey` during
+  // render — no effect, no flash of an empty table, and a bake missing a competition still shows.
   const comp = inBracket.find((c) => c.key === compKey) ?? inBracket[0];
+  return { bracket, setBracket, compKey, setCompKey, inBracket, comp };
+}
 
-  // Coach medals follow the same scope as the nation table: this cup, or the whole bracket.
-  const scopedCups = (medalScope === 'all' ? inBracket : comp ? [comp] : []).flatMap((c) => c.matchCups).join('|');
+/**
+ * One podium slot: the nation, with its coach and the coach's OWN nationality underneath.
+ *
+ * The coach is often unattributed, and more often for the losing places than for the champion —
+ * attribution is a tenure cross-reference (NTFormerCoaches.aspx, see server/sync/worldCup.ts) that
+ * can't reach deleted accounts or the earliest editions. Those show an em dash rather than nothing,
+ * so the line is always present: a nation with no manager reads as unattributed instead of looking
+ * like a rendering gap, and the three podium columns stay on the same baselines.
+ */
+function PodiumSlot({
+  nation,
+  leagueId,
+  coach,
+  coachUserId,
+  coachNationality,
+  emphasis = false,
+}: {
+  nation: string | null | undefined;
+  leagueId?: number;
+  coach?: string;
+  coachUserId?: number;
+  coachNationality?: string;
+  /** The champion's slot, which carries the row — bigger and in full ink. */
+  emphasis?: boolean;
+}) {
+  if (!nation) return <span style={{ fontSize: 11, color: R.faint }}>—</span>;
+  return (
+    <div style={{ minWidth: 0 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
+        <Flag url={nationFlagUrl(nation, leagueId)} label={nation} size={emphasis ? 18 : 16} />
+        <span
+          style={{
+            fontSize: emphasis ? 13 : 12,
+            fontWeight: emphasis ? 'bold' : 'normal',
+            color: emphasis ? R.ink : R.soft,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {nation}
+        </span>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: R.soft, overflow: 'hidden', marginTop: 3 }}>
+        {coach ? (
+          <>
+            <Flag url={nationalityFlagUrl(coachNationality)} label={coachNationality} size={14} />
+            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <HtLink href={coachUserId ? hattrickManagerUrl(coachUserId) : null}>{coach}</HtLink>
+            </span>
+          </>
+        ) : (
+          <span style={{ color: R.faint }}>—</span>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ---- National trophies: one competition, edition by edition ---- */
+
+function RetroNationalTrophies({ onStatus }: { onStatus: (s: string) => void }) {
+  const t = useT();
+  const { comps, loading } = useNationalCompetitions();
+  const { bracket, setBracket, setCompKey, inBracket, comp } = useBracketedComp(comps);
+
+  const editions = (comp?.rows ?? []).slice().sort((a, b) => b.edition - a.edition);
+
+  useEffect(() => {
+    if (!loading) onStatus(`Done. ${editions.length} ${comp?.unitLabel === 'Season' ? 'season' : 'edition'}(s) loaded.`);
+  }, [loading, editions.length, comp?.unitLabel, onStatus]);
+
+  return (
+    <div>
+      <fieldset style={fieldset}>
+        <legend style={legend}>{t('cups.select')}</legend>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px 20px', alignItems: 'flex-end' }}>
+          <BracketSwitch value={bracket} onChange={setBracket} />
+          <CompetitionChips comps={inBracket} activeKey={comp?.key} onPick={setCompKey} loading={loading} />
+        </div>
+      </fieldset>
+
+      {loading && <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('common.loading')}</div>}
+
+      {!loading && (
+        <div>
+          <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+            {/* Named in full here even though the chips are short — the heading is the one place that
+                has to state which bracket you are looking at. */}
+            <SectionBar>{t('wc.champions', { name: compLabel(t, comp) })}</SectionBar>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: WORLD_CUP_GRID,
+                gap: 14,
+                padding: '8px 12px',
+                background: R.panel2,
+                borderBottom: '2px solid var(--frame,#617D54)',
+                fontSize: 11,
+                fontWeight: 'bold',
+                textTransform: 'uppercase',
+                letterSpacing: '.03em',
+                color: R.soft,
+              }}
+            >
+              <div>{t(comp?.unitLabel === 'Season' ? 'col.season' : 'col.edition')}</div>
+              <div>{t('col.champion')}</div>
+              <div>{t('col.runnerUp')}</div>
+              <div>{t('col.thirdFourth')}</div>
+              <div style={{ textAlign: 'right' }}>{t('col.finished')}</div>
+            </div>
+            {editions.map((e, i) => (
+              <div
+                key={e.edition}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: WORLD_CUP_GRID,
+                  gap: 14,
+                  padding: `${WORLD_CUP_ROW_PAD} 12px`,
+                  borderBottom: '1px solid var(--line,#CDD7C3)',
+                  // Top-aligned: a 3rd/4th cell with two coached nations is twice the height of the
+                  // runner-up beside it, and centring would leave the columns visibly out of step.
+                  alignItems: 'start',
+                  background: i % 2 ? R.alt : R.panel,
+                }}
+              >
+                <div style={{ fontFamily: MONO, fontWeight: 'bold', fontSize: 14, color: R.ink }}>
+                  {e.edition}
+                  {e.ageGroup ? <span style={{ fontSize: 10, color: R.faint }}> {e.ageGroup}</span> : null}
+                </div>
+                <div style={{ minWidth: 0 }}>
+                  {e.champion ? (
+                    <PodiumSlot
+                      nation={e.champion}
+                      leagueId={e.championLeagueId}
+                      coach={e.coach}
+                      coachUserId={e.coachUserId}
+                      coachNationality={e.coachNationality}
+                      emphasis
+                    />
+                  ) : (
+                    <span style={{ fontSize: 12, color: R.faint, fontStyle: 'italic' }}>{t('wc.ongoing')}</span>
+                  )}
+                </div>
+                <PodiumSlot
+                  nation={e.runnerUp}
+                  leagueId={e.runnerUpLeagueId}
+                  coach={e.runnerUpCoach}
+                  coachUserId={e.runnerUpCoachUserId}
+                  coachNationality={e.runnerUpCoachNationality}
+                />
+                {/* Stacked, not side by side: both joint-third nations now carry a coach line of their
+                    own, which wrapping would interleave into an unreadable block. */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 0 }}>
+                  {e.thirdFourth.length === 0 && <span style={{ fontSize: 11, color: R.faint }}>—</span>}
+                  {e.thirdFourth.map((n, ix) => (
+                    <PodiumSlot
+                      key={n + ix}
+                      nation={n}
+                      leagueId={e.thirdFourthLeagueIds?.[ix]}
+                      coach={e.thirdFourthCoaches?.[ix]?.name}
+                      coachUserId={e.thirdFourthCoaches?.[ix]?.userId}
+                      coachNationality={e.thirdFourthCoaches?.[ix]?.nationality}
+                    />
+                  ))}
+                </div>
+                <div style={{ textAlign: 'right', fontSize: 11, color: R.faint, fontFamily: MONO }}>{e.finished ?? '—'}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---- Medal tables: the same podiums, counted up ---- */
+
+/**
+ * What a medal table counts over.
+ *
+ * This replaces a bracket multi-select crossed with a This cup/All toggle whose third button
+ * relabelled itself from the checkboxes above it. Same four reachable scopes, but you read them off
+ * one control instead of inferring them from two.
+ */
+type MedalScope = 'one' | 'senior' | 'u21' | 'all';
+
+const MEDAL_SCOPES: Array<{ k: MedalScope; chip: TranslationKey; title: TranslationKey }> = [
+  { k: 'one', chip: 'medal.scope.one', title: 'medal.scope.one.title' },
+  { k: 'senior', chip: 'medal.scope.senior', title: 'medal.scope.senior.title' },
+  { k: 'u21', chip: 'medal.scope.u21', title: 'medal.scope.u21.title' },
+  { k: 'all', chip: 'medal.scope.all', title: 'medal.scope.all.title' },
+];
+
+function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
+  const t = useT();
+  const { comps, loading } = useNationalCompetitions();
+  const { bracket, setBracket, setCompKey, inBracket, comp } = useBracketedComp(comps);
+  const [scope, setScope] = useState<MedalScope>('senior');
+  const [medalBy, setMedalBy] = useState<MedalBy>('nation');
+  const [coachMedals, setCoachMedals] = useState<CoachMedals[]>([]);
+
+  /** The competitions the active scope covers. */
+  const scoped: NationalCompetition[] =
+    scope === 'all'
+      ? comps
+      : scope === 'senior'
+        ? comps.filter((c) => !c.isYouth)
+        : scope === 'u21'
+          ? comps.filter((c) => c.isYouth)
+          : comp
+            ? [comp]
+            : [];
+
+  /**
+   * Whether this scope pools the two brackets.
+   *
+   * It matters because a short label stops identifying a competition once it does: the youth World
+   * Cup shortens to "World Cup" exactly like the senior one, and "U21 Europe Cup" shortens to
+   * "Europe Cup". Pooled podium rows would then read as duplicates of each other — Sverige really
+   * did win World Cup 1 in both brackets — so they carry a bracket badge instead.
+   */
+  const mixesBrackets = scoped.some((c) => c.isYouth) && scoped.some((c) => !c.isYouth);
+
+  const scopedCups = scoped.flatMap((c) => c.matchCups).join('|');
   useEffect(() => {
     if (!scopedCups) {
       setCoachMedals([]);
@@ -1997,28 +2319,6 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
   }, [scopedCups]);
 
   /**
-   * Toggle a bracket in or out. Turning the last one off is ignored rather than disabled — there is
-   * nothing to show with neither selected, and a dead-looking button invites more confusion than a
-   * click that declines to empty the view.
-   *
-   * When the selection still contains the competition on screen, it stays put; otherwise the render
-   * falls back to the first on offer, so no effect is needed to repair `compKey`.
-   */
-  const toggleBracket = (k: 'senior' | 'youth') =>
-    setBrackets((b) => {
-      const next = { ...b, [k]: !b[k] };
-      return next.senior || next.youth ? next : b;
-    });
-  const editions = (comp?.rows ?? []).slice().sort((a, b) => b.edition - a.edition);
-
-  useEffect(() => {
-    if (!loading) onStatus(`Done. ${editions.length} ${comp?.unitLabel === 'Season' ? 'season' : 'edition'}(s) loaded.`);
-  }, [loading, editions.length, comp?.unitLabel, onStatus]);
-
-  // NB: the old "Most titles" and "Top coaches" panels are gone — the two medal tables below carry
-  // the same information in their 1st column, without repeating it in three places.
-
-  /**
    * Medal table. Podium places are a National-trophies-only idea: a runner-up is not a trophy, so
    * these never reach Trophy leaders' totals — that stays titles-only.
    *
@@ -2026,26 +2326,26 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
    * jointly third and plays no third-place match, so there is no 4th to separate out.
    */
   const medals = useMemo(() => {
-    const src = medalScope === 'all' ? inBracket.flatMap((c) => c.rows) : (comp?.rows ?? []);
-    const t: Record<string, { g: number; s: number; b: number; leagueId?: number }> = {};
+    const tally: Record<string, { g: number; s: number; b: number; leagueId?: number }> = {};
     // The nation's leagueId rides along so the flag resolves by ID — names alone leave the likes of
     // Curaçao and São Tomé e Príncipe unflagged (see flags.ts nationFlagUrl).
     const add = (nation: string | null | undefined, k: 'g' | 's' | 'b', leagueId?: number) => {
       if (!nation) return;
-      const row = (t[nation] ??= { g: 0, s: 0, b: 0 });
+      const row = (tally[nation] ??= { g: 0, s: 0, b: 0 });
       row[k]++;
       if (leagueId) row.leagueId ??= leagueId;
     };
-    for (const e of src) {
-      add(e.champion, 'g', e.championLeagueId);
-      add(e.runnerUp, 's', e.runnerUpLeagueId);
-      e.thirdFourth.forEach((n, ix) => add(n, 'b', e.thirdFourthLeagueIds?.[ix]));
-    }
+    for (const c of scoped)
+      for (const e of c.rows) {
+        add(e.champion, 'g', e.championLeagueId);
+        add(e.runnerUp, 's', e.runnerUpLeagueId);
+        e.thirdFourth.forEach((n, ix) => add(n, 'b', e.thirdFourthLeagueIds?.[ix]));
+      }
     // Not capped — the table scrolls instead, so nations holding only silver or bronze (which sort
     // below every champion) stay reachable.
-    return Object.entries(t).sort((a, b) => b[1].g - a[1].g || b[1].s - a[1].s || b[1].b - a[1].b || a[0].localeCompare(b[0]));
+    return Object.entries(tally).sort((a, b) => b[1].g - a[1].g || b[1].s - a[1].s || b[1].b - a[1].b || a[0].localeCompare(b[0]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [comp, medalScope, brackets, comps]);
+  }, [scopedCups]);
 
   /**
    * The individual podiums behind the by-nation totals, so a row can show WHERE its medals came
@@ -2053,44 +2353,67 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
    * the count and the detail can't drift apart in only one of the two.
    */
   const nationPodiums = useMemo(() => {
-    const scoped = medalScope === 'all' ? inBracket : comp ? [comp] : [];
-    const by = new Map<string, Array<{ label: string; unit: string; edition: number; place: number; coach?: string; coachUserId?: number }>>();
+    const by = new Map<
+      string,
+      Array<{
+        label: string;
+        isYouth: boolean;
+        unit: string;
+        edition: number;
+        place: number;
+        coach?: string;
+        coachUserId?: number;
+        coachNationality?: string;
+      }>
+    >();
     for (const c of scoped)
       for (const e of c.rows) {
-        // Only the champion's coach is on record — the rolls never named a runner-up's.
-        const push = (nation: string | null | undefined, place: number, withCoach = false) => {
+        // The row IS the nation, so each podium carries the manager who led THAT nation to THAT
+        // placing — not the edition's winner. Silver and bronze slots used to carry nothing here,
+        // back when only the champion's coach was baked.
+        const push = (
+          nation: string | null | undefined,
+          place: number,
+          coach: { userId?: number; name?: string; nationality?: string },
+        ) => {
           if (!nation) return;
           const arr = by.get(nation) ?? [];
           arr.push({
             label: compLabel(t, c, true),
+            isYouth: c.isYouth,
             unit: c.unitLabel,
             edition: e.edition,
             place,
-            coach: withCoach ? e.coach : undefined,
-            coachUserId: withCoach ? e.coachUserId : undefined,
+            coach: coach.name,
+            coachUserId: coach.userId,
+            coachNationality: coach.nationality,
           });
           by.set(nation, arr);
         };
-        push(e.champion, 1, true);
-        push(e.runnerUp, 2);
-        e.thirdFourth.forEach((n) => push(n, 3));
+        push(e.champion, 1, { userId: e.coachUserId, name: e.coach, nationality: e.coachNationality });
+        push(e.runnerUp, 2, { userId: e.runnerUpCoachUserId, name: e.runnerUpCoach, nationality: e.runnerUpCoachNationality });
+        // Index-aligned with `thirdFourth`; an empty slot is a nation whose coach never resolved.
+        e.thirdFourth.forEach((n, i) => push(n, 3, e.thirdFourthCoaches?.[i] ?? {}));
       }
-    for (const arr of by.values()) arr.sort((a, b) => a.place - b.place || b.edition - a.edition);
+    // Youth after senior at equal placing, so a pooled row groups the twins next to each other
+    // instead of interleaving them by edition.
+    for (const arr of by.values())
+      arr.sort((a, b) => a.place - b.place || Number(a.isYouth) - Number(b.isYouth) || b.edition - a.edition);
     return by;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [comp, medalScope, brackets, comps, t]);
+  }, [scopedCups, t]);
 
   /** Coach medals pooled by the coach's OWN nationality — every podium their citizens took. */
   const coachNationMedals = useMemo(() => {
-    const t: Record<string, { g: number; s: number; b: number }> = {};
+    const tally: Record<string, { g: number; s: number; b: number }> = {};
     for (const c of coachMedals) {
       if (!c.nationality) continue;
-      const row = (t[c.nationality] ??= { g: 0, s: 0, b: 0 });
+      const row = (tally[c.nationality] ??= { g: 0, s: 0, b: 0 });
       row.g += c.g;
       row.s += c.s;
       row.b += c.b;
     }
-    return Object.entries(t).sort((a, b) => b[1].g - a[1].g || b[1].s - a[1].s || b[1].b - a[1].b || a[0].localeCompare(b[0]));
+    return Object.entries(tally).sort((a, b) => b[1].g - a[1].g || b[1].s - a[1].s || b[1].b - a[1].b || a[0].localeCompare(b[0]));
   }, [coachMedals]);
 
   const medalCfg = MEDAL_BY.find((m) => m.k === medalBy) ?? MEDAL_BY[0]!;
@@ -2109,6 +2432,10 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
           }))
         : coachNationMedals.map(([nat, m]) => ({ key: nat, label: nat, flag: nationalityFlagUrl(nat), g: m.g, s: m.s, b: m.b }));
 
+  useEffect(() => {
+    if (!loading) onStatus(`Done. ${medalRows.length} row(s) loaded.`);
+  }, [loading, medalRows.length, onStatus]);
+
   /** Small place plate — 1st/2nd/3rd, gold/silver/bronze, as everywhere else. */
   const placePlate = (place: number) => (
     <span
@@ -2126,6 +2453,10 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
       {t(place === 1 ? 'place.1' : place === 2 ? 'place.2' : 'place.3')}
     </span>
   );
+
+  /** Bracket marker for pooled lists — deliberately the same faint monospace treatment as the
+   *  ageGroup marker in the champions table, so it reads as a qualifier and not as part of the name. */
+  const bracketBadge = <span style={{ fontFamily: MONO, fontSize: 9, color: R.faint, fontWeight: 'normal' }}> {t('wc.u21')}</span>;
 
   /** One line per podium, shared by the by-nation and by-coach expansions. */
   const podiumList = (items: Array<{ place: number; left: ReactNode; right?: ReactNode }>) => (
@@ -2156,14 +2487,25 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
           place: p.place,
           left: (
             <>
-              <b>{p.label}</b> <span style={{ color: R.soft }}>{p.unit === 'Season' ? `S${p.edition}` : `${t('col.edition')} ${p.edition}`}</span>
+              <b>{p.label}</b>
+              {mixesBrackets && p.isYouth ? bracketBadge : null}{' '}
+              <span style={{ color: R.soft }}>{p.unit === 'Season' ? `S${p.edition}` : `${t('col.edition')} ${p.edition}`}</span>
             </>
           ),
-          right: p.coach ? (
-            <span style={{ fontSize: 10, color: R.soft, flex: 'none' }}>
-              <HtLink href={p.coachUserId ? hattrickManagerUrl(p.coachUserId) : null}>{p.coach}</HtLink>
+          // The manager who led this nation to this placing, with their own nationality — an em dash
+          // where attribution failed, so a blank never reads as "no manager was involved".
+          right: (
+            <span style={{ display: 'flex', alignItems: 'center', gap: 4, flex: 'none', fontSize: 10, color: R.soft }}>
+              {p.coach ? (
+                <>
+                  <Flag url={nationalityFlagUrl(p.coachNationality)} label={p.coachNationality} size={12} />
+                  <HtLink href={p.coachUserId ? hattrickManagerUrl(p.coachUserId) : null}>{p.coach}</HtLink>
+                </>
+              ) : (
+                <span style={{ color: R.faint }}>—</span>
+              )}
             </span>
-          ) : undefined,
+          ),
         })),
       );
     }
@@ -2171,15 +2513,14 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
     if (medalBy === 'coach') {
       const c = coachMedals.find((x) => String(x.userId) === row.key);
       if (!c?.results.length) return null;
+      // No badge needed: these names come straight off the bake, which already spells out
+      // "World Cup (Youth)" and "U21 Europe Cup".
       return podiumList(
         c.results.map((r) => ({
           place: r.place,
           left: (
             <>
-              <b>{r.cup}</b>{' '}
-              <span style={{ color: R.soft }}>
-                {isWorldCupName(r.cup) ? `${t('col.wc')} ${r.season}` : `S${r.season}`}
-              </span>
+              <b>{r.cup}</b> <span style={{ color: R.soft }}>{isWorldCupName(r.cup) ? `${t('col.wc')} ${r.season}` : `S${r.season}`}</span>
             </>
           ),
           right: (
@@ -2220,75 +2561,39 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
   return (
     <div>
       <fieldset style={fieldset}>
-        <legend style={legend}>{t('cups.select')}</legend>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px 20px', alignItems: 'flex-end' }}>
-          <div>
-            <div style={filterLabel}>{t('wc.nationalTeam')}</div>
-            <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-              <button onClick={() => toggleBracket('senior')} style={toggleBtn(brackets.senior)} title={t('wc.senior.title')}>
-                {brackets.senior && <span>✓&nbsp;</span>}
-                {t('wc.senior')}
-              </button>
-              <button onClick={() => toggleBracket('youth')} style={toggleBtn(brackets.youth)} title={t('wc.u21.title')}>
-                {brackets.youth && <span>✓&nbsp;</span>}
-                {t('wc.u21')}
-              </button>
-              <span style={{ fontSize: 9, color: R.faint, marginLeft: 2 }}>{t('wc.bracketHint')}</span>
-            </div>
-          </div>
-          <div style={{ minWidth: 0 }}>
-            <div style={filterLabel}>{t('cups.competition')}</div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              {inBracket.length === 0 && (
-                <span style={{ fontSize: 11, color: R.faint }}>{loading ? t('common.loading') : t('wc.noComps')}</span>
-              )}
-              {/* The bracket is already chosen above, so the redundant "U21 " prefix comes off here —
-                  the roll of honour below still names the competition in full. */}
-              {inBracket.map((c) => (
-                <CategoryChip key={c.key} label={compLabel(t, c, !bothBrackets)} active={c.key === comp?.key} onClick={() => setCompKey(c.key)} />
-              ))}
-            </div>
-          </div>
+        <legend style={legend}>{t('medal.scope')}</legend>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+          {MEDAL_SCOPES.map((s) => (
+            <CategoryChip key={s.k} label={t(s.chip)} title={t(s.title)} active={scope === s.k} onClick={() => setScope(s.k)} />
+          ))}
         </div>
+        {/* Only "One competition" needs to know WHICH one, so the pickers stay out of the way for
+            the three pooled scopes. */}
+        {scope === 'one' && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px 20px', alignItems: 'flex-end', marginTop: 12 }}>
+            <BracketSwitch value={bracket} onChange={setBracket} />
+            <CompetitionChips comps={inBracket} activeKey={comp?.key} onPick={setCompKey} loading={loading} />
+          </div>
+        )}
       </fieldset>
 
       <fieldset style={fieldset}>
-        <legend style={legend}>{t('common.view')}</legend>
+        <legend style={legend}>{t('medal.by')}</legend>
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-          <CategoryChip label={t('wc.tab.roll')} active={wcView === 'roll'} onClick={() => setWcView('roll')} />
-          <CategoryChip label={t('wc.tab.medals')} active={wcView === 'medals'} onClick={() => setWcView('medals')} />
+          {MEDAL_BY.map((m) => (
+            <CategoryChip key={m.k} label={t(m.chip)} active={medalBy === m.k} onClick={() => setMedalBy(m.k)} />
+          ))}
         </div>
       </fieldset>
 
       {loading && <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('common.loading')}</div>}
 
-      {!loading && wcView === 'medals' && (
+      {!loading && (
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 8, flexWrap: 'wrap' }}>
-            <span style={{ ...filterLabel, marginBottom: 0, marginRight: 3 }}>{t('wc.medalScope')}</span>
-            <button onClick={() => setMedalScope('comp')} style={{ ...toggleBtn(medalScope === 'comp'), fontSize: 10, padding: '3px 8px' }}>
-              {t('wc.thisCup')}
-            </button>
-            <button
-              onClick={() => setMedalScope('all')}
-              style={{ ...toggleBtn(medalScope === 'all'), fontSize: 10, padding: '3px 8px' }}
-              title={t(bothBrackets ? 'wc.allBoth.title' : onlyYouth ? 'wc.allU21.title' : 'wc.allSenior.title')}
-            >
-              {t(bothBrackets ? 'wc.allBoth' : onlyYouth ? 'wc.allU21' : 'wc.allSenior')}
-            </button>
-            <span style={{ width: 10 }} />
-            <span style={{ ...filterLabel, marginBottom: 0, marginRight: 3 }}>{t('medal.by')}</span>
-            {MEDAL_BY.map((m) => (
-              <button key={m.k} onClick={() => setMedalBy(m.k)} style={{ ...toggleBtn(medalBy === m.k), fontSize: 10, padding: '3px 8px' }}>
-                {t(m.chip)}
-              </button>
-            ))}
-          </div>
-
           {/* Remount on any change of what the table means, so an open row can't survive into a
               mode where its id addresses something else. */}
           <MedalTable
-            key={`${medalBy}|${medalScope}|${brackets.senior}${brackets.youth}|${comp?.key}`}
+            key={`${medalBy}|${scope}|${scopedCups}`}
             title={t(medalCfg.title)}
             headerKey={medalCfg.header}
             empty={medalBy === 'nation' ? '—' : loading ? t('common.loading') : t('medal.noCoach')}
@@ -2297,90 +2602,6 @@ function RetroWorldCup({ onStatus }: { onStatus: (s: string) => void }) {
           />
 
           <div style={{ fontSize: 9, color: R.faint, marginTop: 9, lineHeight: 1.5 }}>{t('wc.footnote')}</div>
-        </div>
-      )}
-
-      {!loading && wcView === 'roll' && (
-        <div>
-          <div style={{ border: '1px solid var(--frame,#617D54)' }}>
-            <SectionBar>{t('wc.rollOfHonour', { name: compLabel(t, comp) })}</SectionBar>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: WORLD_CUP_GRID,
-                gap: 10,
-                padding: '6px 10px',
-                background: R.panel2,
-                borderBottom: '2px solid var(--frame,#617D54)',
-                fontSize: 10,
-                fontWeight: 'bold',
-                textTransform: 'uppercase',
-                letterSpacing: '.03em',
-                color: R.soft,
-              }}
-            >
-              <div>{t(comp?.unitLabel === 'Season' ? 'col.season' : 'col.edition')}</div>
-              <div>{t('col.champion')}</div>
-              <div>{t('col.runnerUp')}</div>
-              <div>{t('col.thirdFourth')}</div>
-              <div style={{ textAlign: 'right' }}>{t('col.finished')}</div>
-            </div>
-            {editions.map((e, i) => (
-              <div
-                key={e.edition}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: WORLD_CUP_GRID,
-                  gap: 10,
-                  padding: 'var(--rp,7px) 10px',
-                  borderBottom: '1px solid var(--line,#CDD7C3)',
-                  alignItems: 'center',
-                  background: i % 2 ? R.alt : R.panel,
-                }}
-              >
-                <div style={{ fontFamily: MONO, fontWeight: 'bold', fontSize: 13, color: R.ink }}>
-                  {e.edition}
-                  {e.ageGroup ? <span style={{ fontSize: 9, color: R.faint }}> {e.ageGroup}</span> : null}
-                </div>
-                <div style={{ minWidth: 0 }}>
-                  {e.champion ? (
-                    <>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
-                        <Flag url={nationFlagUrl(e.champion, e.championLeagueId)} label={e.champion} size={16} />
-                        <span style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                          {e.champion}
-                        </span>
-                      </div>
-                      {e.coach && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 10, color: R.soft, overflow: 'hidden' }}>
-                          <Flag url={nationalityFlagUrl(e.coachNationality)} label={e.coachNationality} size={12} />
-                          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                            <HtLink href={e.coachUserId ? hattrickManagerUrl(e.coachUserId) : null}>{e.coach}</HtLink>
-                          </span>
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <span style={{ fontSize: 11, color: R.faint, fontStyle: 'italic' }}>{t('wc.ongoing')}</span>
-                  )}
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
-                  {e.runnerUp && <Flag url={nationFlagUrl(e.runnerUp, e.runnerUpLeagueId)} label={e.runnerUp} size={14} />}
-                  <span style={{ fontSize: 11, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.runnerUp ?? '—'}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0, flexWrap: 'wrap' }}>
-                  {e.thirdFourth.length === 0 && <span style={{ fontSize: 10, color: R.faint }}>—</span>}
-                  {e.thirdFourth.map((n, ix) => (
-                    <span key={n + ix} style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
-                      <Flag url={nationFlagUrl(n, e.thirdFourthLeagueIds?.[ix])} label={n} size={13} />
-                      <span style={{ fontSize: 10, color: R.faint, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{n}</span>
-                    </span>
-                  ))}
-                </div>
-                <div style={{ textAlign: 'right', fontSize: 10, color: R.faint, fontFamily: MONO }}>{e.finished ?? '—'}</div>
-              </div>
-            ))}
-          </div>
         </div>
       )}
     </div>
@@ -2915,7 +3136,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
   );
 }
 
-/* ---- the per-country roll of honour ---- */
+/* ---- the per-country election roll ---- */
 
 function RetroElectionsByCountry({
   countries,
@@ -2981,7 +3202,7 @@ function RetroElectionsByCountry({
 
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
         <div style={{ border: '1px solid var(--frame,#617D54)' }}>
-          <SectionBar>{t('elections.rollOfHonour', { country: countryName })}</SectionBar>
+          <SectionBar>{t('elections.title', { country: countryName })}</SectionBar>
           <div
             style={{
               display: 'grid',

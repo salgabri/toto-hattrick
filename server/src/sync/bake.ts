@@ -28,8 +28,49 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   mkdirSync(out, { recursive: true });
 
   // Managers: league titles + attributed cup wins (main/secondary), grouped by championUserId (>0).
-  const users = await prisma.hattrickUser.findMany({ select: { userId: true, nationality: true } });
+  const users = await prisma.hattrickUser.findMany({ select: { userId: true, nationality: true, loginName: true } });
   const natById = new Map(users.map((u) => [u.userId, u.nationality]));
+  // Podium coaches short of the champion are stored as IDS ONLY (see WorldCupChampion's
+  // runnerUpUserId / thirdFourthUserIds) so a rename can't leave a stale copy in that table —
+  // which means the bake is where their names get attached.
+  const nameById = new Map(users.map((u) => [u.userId, u.loginName]));
+
+  /**
+   * A podium slot's coach, as the frontend renders one.
+   *
+   * An id of 0/null means nobody could be attributed — a deleted account, or no coaching tenure
+   * recorded that far back. That yields an EMPTY object rather than a dropped entry, so the
+   * third/fourth array stays index-aligned with the nations it describes.
+   */
+  const podiumCoach = (uid: number | null | undefined) =>
+    uid && uid > 0 ? { userId: uid, name: nameById.get(uid) ?? undefined, nationality: natById.get(uid) ?? undefined } : {};
+
+  /**
+   * Leagues that no longer run.
+   *
+   * Their season numbering froze when they closed, so their final champion is NOT the reigning
+   * champion of anything and none of their titles is recent — "season 7" there is years in the past
+   * while a live league is on season 94. The titles were really won, so they still count all-time;
+   * they are only barred from `last` and from `ago`, which is what "current" and "recent" are built
+   * on (see `agoOf`).
+   *
+   * The list is explicit because nothing in the data marks a league as closed: worlddetails still
+   * reports a currentSeason for these, equal to their last played season, so every one of the 160
+   * leagues shows a zero gap between currentSeason and its newest recorded champion. There is no
+   * staleness signal to detect them by.
+   *
+   * Checked by leagueId, which covers a closed league's CUPS as well as its championship — every
+   * league's cups carry its own id (Homegrown's are on 1003, Hattrick International's on 1000). The
+   * Anniversary Cup is not in the DB at all right now: cups are seeded from worlddetails, which no
+   * longer lists them for a closed league. If it is ever back-filled it will arrive on 1002 and be
+   * excluded without another change here.
+   *
+   * The other three non-country leagues (1000 Hattrick International, 1003 Homegrown,
+   * 3000 Hattrick Femme International) are still running and must NOT be added.
+   */
+  const DEFUNCT_LEAGUE_IDS = new Set<number>([
+    1002, // Hattrick Anniversary League, and its cup — both closed.
+  ]);
 
   // Reigning champion = the winner of each competition's most recent recorded season. Computed
   // over ALL champions (including unattributed/unknown owners) so a manager's older title isn't
@@ -45,12 +86,34 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     if (cur === undefined || c.season > cur) cupReignSeason.set(c.cupId, c.season);
   }
 
+  /**
+   * How many of a competition's own instalments back a trophy is: 0 = the current holder, 1 = the
+   * one before it. This is what Trophy leaders' recency windows count, and the bake is the only
+   * place it can be computed correctly.
+   *
+   * Two reasons it cannot be derived in the frontend. First, Hattrick numbers league seasons PER
+   * LEAGUE from that league's founding — Italy is on 94 while Rwanda is on 6 — so there is no global
+   * "season 90" to compare against, and every competition has to be measured from its own latest.
+   * Second, the reign maps above are built over EVERY row, including champions never attributed to
+   * a manager; managers.json carries only attributed ones, so a frontend re-derivation lands early
+   * whenever a competition's most recent winner is unknown, and an older trophy then counts as
+   * current. Baking it from the same anchors that decide `last` makes `ago === 0` and
+   * `last` the same statement by construction.
+   *
+   * The World Cup and the regional cups are numbered by CYCLE rather than season, so their "5 most
+   * recent" spans about ten seasons of real time. That is the deliberate trade for having the
+   * one-instalment window agree exactly with "Reigning only" in every competition.
+   */
+  const agoOf = (latest: number | undefined, season: number) => (latest === undefined ? undefined : latest - season);
+
   // teamId is optional throughout: it links the cabinet entry out to the club's hattrick.org page,
   // and must stay undefined for a reconstructed placeholder (id 0) or an unresolved cup winner.
-  interface CupItem { country: string; leagueId: number; season: number; club: string; teamId?: number; cup: string; last: boolean }
+  /** `ago` = how many of this competition's own instalments back the trophy is: 0 is the current
+   *  holder, 1 the one before, and so on. See `agoOf` for why the bake computes it. */
+  interface CupItem { country: string; leagueId: number; season: number; club: string; teamId?: number; cup: string; last: boolean; ago?: number }
   interface Mgr {
     userId: number; userName: string; nationality: string; lg: number;
-    titles: Array<{ country: string; leagueId: number; season: number; club: string; teamId?: number; last: boolean }>;
+    titles: Array<{ country: string; leagueId: number; season: number; club: string; teamId?: number; last: boolean; ago?: number }>;
     cupsMain: CupItem[]; cupsSec: CupItem[]; masters: CupItem[]; seasonal: CupItem[]; worldCup: CupItem[];
   }
   const mgr = new Map<number, Mgr>();
@@ -67,7 +130,8 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     get(c.championUserId!, c.championUserName).titles.push({
       country: c.countryName, leagueId: c.leagueId, season: c.season, club: c.championTeamName,
       teamId: c.championTeamId > 0 ? c.championTeamId : undefined,
-      last: leagueReignSeason.get(c.leagueId) === c.season,
+      last: !DEFUNCT_LEAGUE_IDS.has(c.leagueId) && leagueReignSeason.get(c.leagueId) === c.season,
+      ago: DEFUNCT_LEAGUE_IDS.has(c.leagueId) ? undefined : agoOf(leagueReignSeason.get(c.leagueId), c.season),
     });
   }
 
@@ -79,7 +143,9 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     const item = {
       country: c.countryName, leagueId: c.leagueId, season: c.season, club: c.championTeamName,
       teamId: c.championTeamId && c.championTeamId > 0 ? c.championTeamId : undefined,
-      cup: c.cupName, last: cupReignSeason.get(c.cupId) === c.season,
+      // A closed league's cups closed with it — same rule as its championship.
+      cup: c.cupName, last: !DEFUNCT_LEAGUE_IDS.has(c.leagueId) && cupReignSeason.get(c.cupId) === c.season,
+      ago: DEFUNCT_LEAGUE_IDS.has(c.leagueId) ? undefined : agoOf(cupReignSeason.get(c.cupId), c.season),
     };
     // The Hattrick Masters and the Seasonal Cups are each their own category, not national cups
     // (see sync/masters.ts, sync/seasonal.ts).
@@ -106,6 +172,7 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     e.worldCup.push({
       country: 'World Cup', leagueId: 0, season: c.edition, club: c.champion!,
       cup: c.isYouth ? 'World Cup (Youth)' : 'World Cup', last: wcReignEdition.get(c.isYouth) === c.edition,
+      ago: agoOf(wcReignEdition.get(c.isYouth), c.edition),
     });
   }
 
@@ -125,6 +192,7 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     e.worldCup.push({
       country: c.cupName, leagueId: c.championLeagueId ?? 0, season: c.season, club: c.champion!,
       cup: c.cupName, last: ntReignSeason.get(c.cupId) === c.season,
+      ago: agoOf(ntReignSeason.get(c.cupId), c.season),
     });
   }
 
@@ -134,7 +202,7 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   const medalRows = await prisma.nationalCupChampion.findMany({
     where: { champion: { not: null } },
     select: {
-      cupName: true, season: true, runnerUp: true, runnerUpUserId: true, runnerUpLeagueId: true,
+      cupId: true, cupName: true, season: true, runnerUp: true, runnerUpUserId: true, runnerUpLeagueId: true,
       thirdFourth: true, thirdFourthUserIds: true, thirdFourthLeagueIds: true,
     },
   });
@@ -142,7 +210,7 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   // resolve — Hattrick spells them inconsistently across pages ("Bénin"/"Benin", curly vs straight
   // apostrophe in "Côte d'Ivoire") and some have no nationality entry at all — but every one of
   // them has a league id, which is stable.
-  interface MedalItem { cup: string; season: number; nation: string; leagueId?: number; place: 2 | 3 }
+  interface MedalItem { cup: string; season: number; nation: string; leagueId?: number; place: 2 | 3; ago?: number }
   const medalsByUser = new Map<number, MedalItem[]>();
   const addMedal = (uid: number | null | undefined, item: MedalItem) => {
     if (!uid || uid <= 0) return;
@@ -157,24 +225,26 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     select: { isYouth: true, edition: true, runnerUp: true, runnerUpUserId: true, thirdFourth: true, thirdFourthUserIds: true },
   })) {
     const cup = e.isYouth ? 'World Cup (Youth)' : 'World Cup';
-    addMedal(e.runnerUpUserId, { cup, season: e.edition, nation: e.runnerUp ?? '', place: 2 });
+    const ago = agoOf(wcReignEdition.get(e.isYouth), e.edition);
+    addMedal(e.runnerUpUserId, { cup, season: e.edition, nation: e.runnerUp ?? '', place: 2, ago });
     const wcThirds = (e.thirdFourth || '').split(', ').filter(Boolean);
     (e.thirdFourthUserIds || '').split(',').forEach((raw, i) => {
       const uid = Number(raw);
-      if (uid) addMedal(uid, { cup, season: e.edition, nation: wcThirds[i] ?? '', place: 3 });
+      if (uid) addMedal(uid, { cup, season: e.edition, nation: wcThirds[i] ?? '', place: 3, ago });
     });
   }
 
   for (const r of medalRows) {
+    const ago = agoOf(ntReignSeason.get(r.cupId), r.season);
     addMedal(r.runnerUpUserId, {
-      cup: r.cupName, season: r.season, nation: r.runnerUp ?? '', leagueId: r.runnerUpLeagueId ?? undefined, place: 2,
+      cup: r.cupName, season: r.season, nation: r.runnerUp ?? '', leagueId: r.runnerUpLeagueId ?? undefined, place: 2, ago,
     });
     const names = (r.thirdFourth || '').split(', ').filter(Boolean);
     const leagueIds = (r.thirdFourthLeagueIds || '').split(',');
     (r.thirdFourthUserIds || '').split(',').forEach((raw, i) => {
       const uid = Number(raw);
       if (uid) addMedal(uid, {
-        cup: r.cupName, season: r.season, nation: names[i] ?? '', leagueId: Number(leagueIds[i]) || undefined, place: 3,
+        cup: r.cupName, season: r.season, nation: names[i] ?? '', leagueId: Number(leagueIds[i]) || undefined, place: 3, ago,
       });
     });
   }
@@ -320,18 +390,32 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   // World Cup (senior + youth): champion is a NATION, not a manager/club — see sync/worldCup.ts.
   // Scraped once (no CHPP path), stored in its own table, baked as its own file.
   const wcRows = await prisma.worldCupChampion.findMany({ orderBy: [{ isYouth: 'asc' }, { edition: 'asc' }] });
-  const wcOut = (r: (typeof wcRows)[number]) => ({
-    edition: r.edition,
-    ageGroup: r.ageGroup ?? undefined,
-    host: r.host,
-    finished: r.finishedDate,
-    champion: r.champion,
-    runnerUp: r.runnerUp,
-    thirdFourth: r.thirdFourth ? r.thirdFourth.split(', ') : [],
-    coachUserId: r.championUserId && r.championUserId > 0 ? r.championUserId : undefined,
-    coach: r.championUserName ?? undefined,
-    coachNationality: r.championUserId ? natById.get(r.championUserId) : undefined,
-  });
+  const wcOut = (r: (typeof wcRows)[number]) => {
+    // Built from the NATIONS array so the coach slots can't drift out of alignment: the two columns
+    // are stored with different separators (', ' vs ',') and an all-empty id string would otherwise
+    // split to one element against zero nations.
+    const thirdFourth = r.thirdFourth ? r.thirdFourth.split(', ') : [];
+    const tfIds = (r.thirdFourthUserIds || '').split(',');
+    const ru = podiumCoach(r.runnerUpUserId);
+    return {
+      edition: r.edition,
+      ageGroup: r.ageGroup ?? undefined,
+      host: r.host,
+      finished: r.finishedDate,
+      champion: r.champion,
+      runnerUp: r.runnerUp,
+      thirdFourth,
+      coachUserId: r.championUserId && r.championUserId > 0 ? r.championUserId : undefined,
+      coach: r.championUserName ?? undefined,
+      coachNationality: r.championUserId ? natById.get(r.championUserId) : undefined,
+      // The rest of the podium's coaches. A medal is not a trophy — these never reach a manager's
+      // title count — but the roll should still say who lost the final and the semis.
+      runnerUpCoachUserId: ru.userId,
+      runnerUpCoach: ru.name,
+      runnerUpCoachNationality: ru.nationality,
+      thirdFourthCoaches: thirdFourth.map((_, i) => podiumCoach(Number(tfIds[i]) || 0)),
+    };
+  };
   // The regional national-team cups (Africa/America/Asia and Oceania/Europe/Nations) ride in the
   // same file under `regional`: same nature as the World Cup, but perpetual — one champion per
   // SEASON per cup, so each is its own roll of honour rather than a numbered edition list. The
@@ -340,6 +424,10 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   const regionalByCup = new Map<number, { cupId: number; cupName: string; isYouth: boolean; seasons: unknown[] }>();
   for (const r of ntRows) {
     const cup = regionalByCup.get(r.cupId) ?? { cupId: r.cupId, cupName: r.cupName, isYouth: r.isYouth, seasons: [] };
+    // Same alignment rule as wcOut above — index off the nations, never off the id string.
+    const thirdFourth = r.thirdFourth ? r.thirdFourth.split(', ') : [];
+    const tfIds = (r.thirdFourthUserIds || '').split(',');
+    const ru = podiumCoach(r.runnerUpUserId);
     cup.seasons.push({
       season: r.season,
       host: r.host,
@@ -347,7 +435,7 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
       status: r.status ?? undefined,
       champion: r.champion,
       runnerUp: r.runnerUp,
-      thirdFourth: r.thirdFourth ? r.thirdFourth.split(', ') : [],
+      thirdFourth,
       // League ids for the whole podium, so the frontend flags every nation by ID rather than by a
       // name that Hattrick spells inconsistently (see flags.ts nationFlagUrl).
       championLeagueId: r.championLeagueId ?? undefined,
@@ -356,6 +444,10 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
       coachUserId: r.championUserId && r.championUserId > 0 ? r.championUserId : undefined,
       coach: r.championUserName ?? undefined,
       coachNationality: r.championUserId ? natById.get(r.championUserId) : undefined,
+      runnerUpCoachUserId: ru.userId,
+      runnerUpCoach: ru.name,
+      runnerUpCoachNationality: ru.nationality,
+      thirdFourthCoaches: thirdFourth.map((_, i) => podiumCoach(Number(tfIds[i]) || 0)),
     });
     regionalByCup.set(r.cupId, cup);
   }

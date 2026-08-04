@@ -108,6 +108,9 @@ interface RawCup {
   teamId?: number;
   cup: string;
   last?: boolean;
+  /** How many of this competition's own instalments back the trophy is: 0 = current holder.
+   *  Baked, not derived — see `SeasonWindow`. */
+  ago?: number;
 }
 interface RawManager {
   userId: number;
@@ -127,14 +130,15 @@ interface RawManager {
   hmLast?: number;
   snLast?: number;
   wcLast?: number;
-  titles: Array<{ country: string; leagueId?: number; season: number; club: string; teamId?: number; last?: boolean }>;
+  titles: Array<{ country: string; leagueId?: number; season: number; club: string; teamId?: number; last?: boolean; ago?: number }>;
   cupsMain: RawCup[];
   cupsSec: RawCup[];
   masters?: RawCup[];
   seasonal?: RawCup[];
   worldCup?: RawCup[];
-  /** One entry per podium place short of the title: place 2 = silver, 3 = bronze. */
-  medals?: Array<{ cup: string; season: number; nation: string; leagueId?: number; place: number }>;
+  /** One entry per podium place short of the title: place 2 = silver, 3 = bronze. `ago` follows
+   *  the same rule as RawCup. */
+  medals?: Array<{ cup: string; season: number; nation: string; leagueId?: number; place: number; ago?: number }>;
 }
 interface RawLeague {
   leagueId: number;
@@ -264,7 +268,32 @@ function latestLeagueSeasonByCountry(leagues: RawLeague[]): Map<string, number> 
   return latest;
 }
 
-export async function getManagers(nationality?: string): Promise<Manager[]> {
+/**
+ * Trophies within a recency window, and the reason this is one field comparison.
+ *
+ * Hattrick numbers league seasons PER LEAGUE from that league's founding: Italy and England are on
+ * season 94 while Rwanda is on 6 and Gibraltar on 2. There is no global "season 90", so a window
+ * has to be measured from each competition's own latest instalment. The bake does exactly that and
+ * stores the distance as `ago` — 0 for the current holder, 1 for the one before it (see
+ * server/sync/bake.ts `agoOf`).
+ *
+ * Deliberately NOT re-derived here. The bake anchors on every champion on record, including ones
+ * never attributed to a manager, while managers.json holds only the attributed ones — so deriving
+ * the anchor from this file lands early wherever a competition's newest winner is unknown, and an
+ * older trophy counts as current. That cost 7 cups their correct "Last season" count before `ago`
+ * existed. Taking it from the bake makes a window of 1 and "Reigning only" agree by construction.
+ */
+export type SeasonWindow = 1 | 5 | 10 | 20;
+
+/** The `window` most recent instalments of each competition, or everything when unwindowed. A row
+ *  with no `ago` predates the field and is dropped rather than guessed at. */
+function inWindow<T extends { ago?: number }>(rows: T[] | undefined, window: SeasonWindow | undefined): T[] {
+  if (!rows) return [];
+  if (window === undefined) return rows;
+  return rows.filter((r) => r.ago !== undefined && r.ago < window);
+}
+
+export async function getManagers(nationality?: string, window?: SeasonWindow): Promise<Manager[]> {
   const { managers, leagues } = await load();
   const latestByCountry = latestLeagueSeasonByCountry(leagues);
 
@@ -277,19 +306,26 @@ export async function getManagers(nationality?: string): Promise<Manager[]> {
         (titles.some((t) => t.last !== undefined)
           ? titles.filter((t) => t.last).length
           : titles.filter((t) => latestByCountry.get(t.country) === t.season).length);
+      // With a window active every total is recounted from the trophy lists, each against its own
+      // competition's clock. Without one the bake's precomputed totals are used as-is — identical
+      // results, and no per-row work.
+      const windowed = window !== undefined;
+      const medalsIn = inWindow(m.medals, window);
       return {
         userId: m.userId,
         login: m.userName,
         c: m.nationality,
         team: '',
-        lg: m.lg,
-        main: m.main ?? 0,
-        sec: m.sec ?? 0,
-        hm: m.hm ?? 0,
-        sn: m.sn ?? 0,
-        wc: m.wc ?? 0,
-        wcSilver: m.wcSilver ?? 0,
-        wcBronze: m.wcBronze ?? 0,
+        lg: windowed ? inWindow(titles, window).length : m.lg,
+        main: windowed ? inWindow(m.cupsMain, window).length : (m.main ?? 0),
+        sec: windowed ? inWindow(m.cupsSec, window).length : (m.sec ?? 0),
+        hm: windowed ? inWindow(m.masters, window).length : (m.hm ?? 0),
+        // Seasonal Cups count like everything else now: each is its own perpetual tournament, so a
+        // window of N means its N most recent instalments.
+        sn: windowed ? inWindow(m.seasonal, window).length : (m.sn ?? 0),
+        wc: windowed ? inWindow(m.worldCup, window).length : (m.wc ?? 0),
+        wcSilver: windowed ? medalsIn.filter((x) => x.place === 2).length : (m.wcSilver ?? 0),
+        wcBronze: windowed ? medalsIn.filter((x) => x.place === 3).length : (m.wcBronze ?? 0),
         oth: 0,
         lgLast,
         mainLast: m.mainLast ?? (m.cupsMain ?? []).filter((c) => c.last).length,
@@ -312,13 +348,15 @@ export async function getManagers(nationality?: string): Promise<Manager[]> {
 export async function getCabinet(
   userId: number,
   championsLabel: (country: string) => string = (c) => `${c} champions`,
+  window?: SeasonWindow,
 ): Promise<TrophyCabinet> {
   const { managers, leagues } = await load();
   const m = managers.find((x) => x.userId === userId);
   // Mirror getManagers' league fallback so an expanded cabinet stays consistent with the chart
   // under "Reigning only" even before a re-bake (cups need the bake — no `last`, no fallback).
   const latestByCountry = latestLeagueSeasonByCountry(leagues);
-  const champ = (m?.titles ?? []).map((t) => ({
+  // Same window as the row's total, or the cabinet would list trophies the count doesn't include.
+  const champ = inWindow(m?.titles, window).map((t) => ({
     main: championsLabel(t.country),
     sub: t.club,
     teamId: t.teamId,
@@ -327,21 +365,23 @@ export async function getCabinet(
     flag: leagueFlagUrl(t.leagueId),
   }));
   const cupItems = (cups?: RawCup[]) =>
-    (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, teamId: t.teamId, season: 'S' + t.season, last: t.last, flag: leagueFlagUrl(t.leagueId) }));
+    inWindow(cups, window).map((t) => ({ main: t.cup, sub: t.club, teamId: t.teamId, season: 'S' + t.season, last: t.last, flag: leagueFlagUrl(t.leagueId) }));
   // `other` carries the Hattrick Masters, `seasonal` the Seasonal Cups, `worldCup` the World Cup
   // (senior + youth) — each its own category (see bake.ts / sync/masters.ts / sync/seasonal.ts /
   // sync/worldCup.ts). All three are country-less, so no flag.
   // National-team rows flag by id first, name second — see flags.ts nationFlagUrl for why.
   const nationFlag = nationFlagUrl;
   const nationalItems = (cups?: RawCup[]) =>
-    (cups ?? []).map((t) => ({ main: t.cup, sub: t.club, teamId: t.teamId, season: 'S' + t.season, last: t.last, flag: nationFlag(t.club, t.leagueId) }));
+    inWindow(cups, window).map((t) => ({ main: t.cup, sub: t.club, teamId: t.teamId, season: 'S' + t.season, last: t.last, flag: nationFlag(t.club, t.leagueId) }));
   const medalItems = (place: number) =>
-    (m?.medals ?? [])
+    inWindow(m?.medals, window)
       .filter((x) => x.place === place)
       .map((x) => ({ main: x.cup, sub: x.nation, season: 'S' + x.season, flag: nationFlag(x.nation, x.leagueId) }));
   return {
     champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec),
-    other: cupItems(m?.masters), seasonal: cupItems(m?.seasonal), worldCup: nationalItems(m?.worldCup),
+    other: cupItems(m?.masters),
+    seasonal: cupItems(m?.seasonal),
+    worldCup: nationalItems(m?.worldCup),
     silver: medalItems(2), bronze: medalItems(3),
   };
 }
@@ -357,7 +397,7 @@ export async function getWinners(leagueId: string): Promise<Winner[]> {
 /**
  * World Cup (senior + youth) — the champion is a NATION, not a manager/club, so it's a completely
  * separate shape from Winner. No CHPP path exists for national-team competitions (cupmatches
- * returns nothing); the full roll of honour was scraped once from World/WorldCup/History.aspx
+ * returns nothing); the full record was scraped once from World/WorldCup/History.aspx
  * (see server/sync/worldCup.ts). The youth bracket was "U20" through edition 31, "U21" after.
  */
 export interface WorldCupEdition {
@@ -379,6 +419,13 @@ export interface WorldCupEdition {
   coachUserId?: number;
   coach?: string;
   coachNationality?: string;
+  /** The coach who lost the final, resolved by the same tenure rule and equally often missing. */
+  runnerUpCoachUserId?: number;
+  runnerUpCoach?: string;
+  runnerUpCoachNationality?: string;
+  /** The losing semi-finalists' coaches, INDEX-ALIGNED with `thirdFourth`. An empty object is an
+   *  attributable-nation-with-unattributable-coach, kept in place so the indices still line up. */
+  thirdFourthCoaches?: Array<{ userId?: number; name?: string; nationality?: string }>;
 }
 /**
  * A regional national-team cup — Africa / America / Asia and Oceania / Europe / Nations Cup (see
@@ -400,6 +447,11 @@ export interface RegionalCupSeason {
   coachUserId?: number;
   coach?: string;
   coachNationality?: string;
+  /** The rest of the podium's coaches — same shape and same caveats as on WorldCupEdition. */
+  runnerUpCoachUserId?: number;
+  runnerUpCoach?: string;
+  runnerUpCoachNationality?: string;
+  thirdFourthCoaches?: Array<{ userId?: number; name?: string; nationality?: string }>;
 }
 export interface RegionalCupRoll {
   cupId: number;
@@ -437,7 +489,7 @@ export interface NationalCompetition {
   /** Cup names as they appear in a manager's baked record — the join key for per-coach medals.
    *  Usually one, and NOT always the display label (the youth World Cup bakes as "World Cup (Youth)"). */
   matchCups: string[];
-  /** Full name, e.g. "U21 Europe Cup" — always shown on the roll of honour itself. */
+  /** Full name, e.g. "U21 Europe Cup" — always shown on the champions list itself. */
   label: string;
   /** Bracket-independent name, e.g. "Europe Cup". Lets the senior and U21 lists read as the same
    *  set of competitions, and lets a bracket switch stay on the competition you were looking at. */
@@ -474,6 +526,10 @@ export async function getNationalCompetitions(): Promise<NationalCompetition[]> 
         coachUserId: s.coachUserId,
         coach: s.coach,
         coachNationality: s.coachNationality,
+        runnerUpCoachUserId: s.runnerUpCoachUserId,
+        runnerUpCoach: s.runnerUpCoach,
+        runnerUpCoachNationality: s.runnerUpCoachNationality,
+        thirdFourthCoaches: s.thirdFourthCoaches,
       })),
     });
   }
