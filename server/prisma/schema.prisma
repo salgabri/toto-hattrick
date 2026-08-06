@@ -158,6 +158,11 @@ model CupChampion {
   finalMatchId     Int
   championTeamId   Int? // resolved from matchdetails in a second pass (winner is positional)
   championTeamName String
+  /// The winning TEAM's own country (its league id) — not `leagueId` above, which is the COMPETITION's
+  /// country and is the sentinel 0 for the international cups (Masters, Seasonal). Only those need it:
+  /// a national cup's winner is by definition from that cup's country. Resolved from teamdetails
+  /// (see sync/intlTeamCountries.ts); 0 is the "tried, unresolvable" sentinel, null = never tried.
+  championLeagueId Int?
   runnerUpTeamName String
   homeGoals        Int
   awayGoals        Int
