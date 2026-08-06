@@ -137,7 +137,7 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
 
   for (const c of await prisma.cupChampion.findMany({
     where: { championUserId: { gt: 0 } },
-    select: { championUserId: true, championUserName: true, countryName: true, leagueId: true, season: true, championTeamName: true, championTeamId: true, cupName: true, isMain: true, cupId: true },
+    select: { championUserId: true, championUserName: true, countryName: true, leagueId: true, season: true, championTeamName: true, championTeamId: true, championLeagueId: true, cupName: true, isMain: true, cupId: true },
   })) {
     const e = get(c.championUserId!, c.championUserName);
     const item = {
@@ -148,9 +148,12 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
       ago: DEFUNCT_LEAGUE_IDS.has(c.leagueId) ? undefined : agoOf(cupReignSeason.get(c.cupId), c.season),
     };
     // The Hattrick Masters and the Seasonal Cups are each their own category, not national cups
-    // (see sync/masters.ts, sync/seasonal.ts).
-    if (c.cupId === MASTERS_CUP_ID) e.masters.push(item);
-    else if (isSeasonalCup(c.cupId)) e.seasonal.push(item);
+    // (see sync/masters.ts, sync/seasonal.ts). They belong to no country, so the item's leagueId —
+    // the flag key — carries the WINNING CLUB's country instead of the competition's sentinel 0
+    // (see sync/intlTeamCountries.ts). `last`/`ago` above stay keyed on the competition, unchanged.
+    const intl = { ...item, leagueId: c.championLeagueId ?? 0 };
+    if (c.cupId === MASTERS_CUP_ID) e.masters.push(intl);
+    else if (isSeasonalCup(c.cupId)) e.seasonal.push(intl);
     else (c.isMain ? e.cupsMain : e.cupsSec).push(item);
   }
 
@@ -347,20 +350,27 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   const cupRows = await prisma.cup.findMany({ orderBy: [{ leagueId: 'asc' }, { cupLevel: 'asc' }, { cupLevelIndex: 'asc' }] });
   const cupWins = await prisma.cupChampion.findMany({
     orderBy: { season: 'desc' },
-    select: { cupId: true, season: true, championTeamName: true, championUserName: true, championTeamId: true, championUserId: true },
+    select: { cupId: true, season: true, championTeamName: true, championUserName: true, championTeamId: true, championUserId: true, championLeagueId: true },
   });
-  const winsByCup = new Map<number, Array<{ season: number; club: string; manager: string; teamId?: number; userId?: number }>>();
+  // `leagueId` is the WINNING CLUB's country, and only the international cups carry it: their
+  // competition has no country of its own, so each roll of honour flies a flag per team instead
+  // (see sync/intlTeamCountries.ts). A national cup's winners are all from its one country, which
+  // the view already shows — no per-row flag, no bytes spent on one.
+  interface WinnerOut { season: number; club: string; manager: string; teamId?: number; userId?: number; leagueId?: number }
+  const winsByCup = new Map<number, WinnerOut[]>();
   for (const w of cupWins) {
     const a = winsByCup.get(w.cupId) ?? [];
+    const intl = w.cupId === MASTERS_CUP_ID || isSeasonalCup(w.cupId);
     a.push({
       season: w.season, club: w.championTeamName, manager: w.championUserName ?? '—',
       teamId: w.championTeamId && w.championTeamId > 0 ? w.championTeamId : undefined,
       userId: w.championUserId && w.championUserId > 0 ? w.championUserId : undefined,
+      leagueId: intl && w.championLeagueId ? w.championLeagueId : undefined,
     });
     winsByCup.set(w.cupId, a);
   }
 
-  interface CupOut { cupId: number; cupName: string; isMain: boolean; cupLevel: number; cupLevelIndex: number; winners: Array<{ season: number; club: string; manager: string; teamId?: number; userId?: number }> }
+  interface CupOut { cupId: number; cupName: string; isMain: boolean; cupLevel: number; cupLevelIndex: number; winners: WinnerOut[] }
   const cupsByLeague = new Map<number, { leagueId: number; country: string; cups: CupOut[] }>();
   for (const c of cupRows) {
     if (c.cupId === MASTERS_CUP_ID || isSeasonalCup(c.cupId)) continue; // global categories, not national cups
