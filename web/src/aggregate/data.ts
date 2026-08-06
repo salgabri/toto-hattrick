@@ -52,7 +52,9 @@ export interface TrophyItem {
    *  nation with no team id at all. */
   teamId?: number;
   last?: boolean; // the reigning/most-recent trophy of its competition
-  flag?: string | null; // country-flag URL (by leagueId); null for the country-less Masters/World Cup
+  /** Country-flag URL (by leagueId). For a national title that's the competition's country; for the
+   *  country-less international cups it's the winning CLUB's own country. Null when unresolved. */
+  flag?: string | null;
 }
 
 export interface TrophyCabinet {
@@ -81,6 +83,11 @@ export interface Winner {
    *  without ever resolving a team), while Masters and Seasonal Cups usually do (see bake.ts). */
   teamId?: number;
   userId?: number;
+  /** The winning CLUB's own country, as a league id — the flag key. Baked only for the international
+   *  competitions (Hattrick Masters, Seasonal Cups), whose entrants come from everywhere and whose
+   *  competition has no country of its own; a national cup's rows leave it undefined because the view
+   *  already names the one country they can all be from. Absent where the club never resolved. */
+  leagueId?: number;
 }
 
 export type CupWinner = Winner;
@@ -181,7 +188,7 @@ export const SUPPORTER_WEEK_CUP_ID = 2108472;
 interface RawSeasonalCup {
   cupId: number;
   cupName: string;
-  winners: Array<{ season: number; club: string; manager: string }>;
+  winners: Winner[];
 }
 let seasonalBundle: Promise<RawSeasonalCup[]> | null = null;
 function loadSeasonal() {
@@ -213,11 +220,11 @@ export async function getSeasonalCups(): Promise<SeasonalCupRoll[]> {
   }));
 }
 
-let mastersBundle: Promise<Array<{ season: number; club: string; manager: string }>> | null = null;
+let mastersBundle: Promise<Winner[]> | null = null;
 function loadMasters() {
   if (!mastersBundle) {
     mastersBundle = fetch('/data/masters.json')
-      .then((r) => (r.ok ? (r.json() as Promise<Array<{ season: number; club: string; manager: string }>>) : []))
+      .then((r) => (r.ok ? (r.json() as Promise<Winner[]>) : []))
       .catch(() => []);
   }
   return mastersBundle;
@@ -368,7 +375,9 @@ export async function getCabinet(
     inWindow(cups, window).map((t) => ({ main: t.cup, sub: t.club, teamId: t.teamId, season: 'S' + t.season, last: t.last, flag: leagueFlagUrl(t.leagueId) }));
   // `other` carries the Hattrick Masters, `seasonal` the Seasonal Cups, `worldCup` the World Cup
   // (senior + youth) — each its own category (see bake.ts / sync/masters.ts / sync/seasonal.ts /
-  // sync/worldCup.ts). All three are country-less, so no flag.
+  // sync/worldCup.ts). None of the three is a country's competition, so the flag can't come from
+  // one: the two club cups are baked with the WINNING CLUB's country in `leagueId` (which is why
+  // they go through `cupItems` like any national cup), and the World Cup flies the champion NATION's.
   // National-team rows flag by id first, name second — see flags.ts nationFlagUrl for why.
   const nationFlag = nationFlagUrl;
   const nationalItems = (cups?: RawCup[]) =>

@@ -416,7 +416,15 @@ const runTag: CSSProperties = {
 
 /* ========================== TROPHY LEADERS ========================== */
 
-const RETRO_TROPHY_GRID = '46px minmax(0,1fr) 160px minmax(110px,200px) 56px 22px';
+/**
+ * The bar is the column that earns extra width, so it takes the slack.
+ *
+ * The manager column used to be the `1fr` one and swallowed every spare pixel — on a wide screen
+ * that meant ~700px of white space beside a login name while the mix bar stayed pinned at its 200px
+ * cap. A name and a nation need what they need and no more; the bar gets longer the more room there
+ * is, which is exactly where extra length is worth something.
+ */
+const RETRO_TROPHY_GRID = '46px minmax(150px,290px) 160px minmax(200px,1fr) 56px 22px';
 const PAGE_SIZE = 50;
 /** How many of a nation's top managers the expanded nation row lists. */
 const NATION_TOP_N = 12;
@@ -545,29 +553,75 @@ function RankBadge({ rank }: { rank: number }) {
 
 type TrophyCounts = { lg: number; main: number; sec: number; hm: number; sn: number; wc: number };
 
+/**
+ * Category → colour → the count field holding it, in legend order. The single source for the trophy
+ * mix bar, the per-nation breakdown panel and anything else that has to name these six.
+ *
+ * `ink` is the colour the category's NUMBER is printed in, which is the swatch colour everywhere it
+ * reads as text. Secondary cups are the exception: their pale grey-green swatch is meant to recede
+ * inside a bar and would be barely legible as 10px type, so their figure borrows the body colour.
+ */
+const TROPHY_CATS: Array<{ labelKey: TranslationKey; dot: string; ink: string; k: keyof IncState; f: keyof TrophyCounts }> = [
+  { labelKey: 'cat.champ', dot: R.champ, ink: R.champ, k: 'champ', f: 'lg' },
+  { labelKey: 'cat.main', dot: R.main, ink: R.main, k: 'main', f: 'main' },
+  { labelKey: 'cat.masters', dot: R.masters, ink: R.masters, k: 'hm', f: 'hm' },
+  { labelKey: 'cat.national', dot: R.worldCup, ink: R.worldCup, k: 'wc', f: 'wc' },
+  { labelKey: 'cat.seasonal', dot: R.seasonal, ink: R.seasonal, k: 'sn', f: 'sn' },
+  { labelKey: 'cat.sec', dot: R.sec, ink: R.soft, k: 'sec', f: 'sec' },
+];
+
+interface MixSegment { n: number; color: string; ink: string; labelKey: TranslationKey }
+
 /** The counted categories in legend order — excluded ones contribute no segment. */
-function mixSegments(c: TrophyCounts, inc: IncState): Array<{ n: number; color: string }> {
-  const segs: Array<{ n: number; color: string }> = [];
-  if (inc.champ && c.lg) segs.push({ n: c.lg, color: R.champ });
-  if (inc.main && c.main) segs.push({ n: c.main, color: R.main });
-  if (inc.hm && c.hm) segs.push({ n: c.hm, color: R.masters });
-  if (inc.wc && c.wc) segs.push({ n: c.wc, color: R.worldCup });
-  if (inc.sn && c.sn) segs.push({ n: c.sn, color: R.seasonal });
-  if (inc.sec && c.sec) segs.push({ n: c.sec, color: R.sec });
-  return segs;
+function mixSegments(c: TrophyCounts, inc: IncState): MixSegment[] {
+  return TROPHY_CATS.filter((cat) => inc[cat.k] && c[cat.f]).map((cat) => ({ n: c[cat.f], color: cat.dot, ink: cat.ink, labelKey: cat.labelKey }));
 }
 
-/** Stacked proportion bar + the `a + b + c` breakdown underneath it. */
-function MixBar({ segs, total }: { segs: Array<{ n: number; color: string }>; total: number }) {
-  const tot = total || 1;
+/** Smallest slice of the track a single trophy may render as, so a lone one is never invisible. */
+const MIX_MIN_SEGMENT_PX = 3;
+
+/**
+ * A row's trophies: bar LENGTH is the total, segments are the mix.
+ *
+ * `max` is the biggest total on the page, so the leader fills the track and everyone else reads
+ * against them — the descending skyline a ranked table wants. It used to be a 100%-stacked bar,
+ * which made every row exactly as long as every other and left the eye no way to tell 55 trophies
+ * from 29 (the figure in the TOTAL column was doing all the work). Re-normalising per PAGE rather
+ * than across all 4,879 managers is what keeps page 40 legible instead of a column of slivers;
+ * TOTAL remains the absolute number, and it sits right there for the comparison across pages.
+ */
+function MixBar({ segs, total, max }: { segs: MixSegment[]; total: number; max: number }) {
+  const t = useT();
+  // Never let a real total round away to nothing.
+  const width = max > 0 ? Math.max((total / max) * 100, 1.5) : 0;
   return (
     <div style={{ minWidth: 0 }}>
-      <div style={{ height: 11, border: '1px solid var(--frame,#617D54)', background: R.panel2, display: 'flex', overflow: 'hidden' }}>
+      <div style={{ height: 11, border: '1px solid var(--frame,#617D54)', background: R.panel2, overflow: 'hidden' }}>
+        <div style={{ display: 'flex', height: '100%', width: width + '%' }}>
+          {segs.map((sg, ix) => (
+            <span
+              key={ix}
+              title={`${t(sg.labelKey)}: ${sg.n}`}
+              style={{
+                // Weighted by count, so the slices inside the bar still read as the mix.
+                flex: `${sg.n} 1 0`,
+                minWidth: MIX_MIN_SEGMENT_PX,
+                background: sg.color,
+                borderRight: ix < segs.length - 1 ? '1px solid rgba(0,0,0,.25)' : undefined,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 'bold', marginTop: 4, display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+        {segs.length === 0 && <span style={{ color: R.faint }}>0</span>}
         {segs.map((sg, ix) => (
-          <span key={ix} style={{ width: (sg.n / tot) * 100 + '%', background: sg.color, borderRight: '1px solid rgba(0,0,0,.2)' }} />
+          <span key={ix} title={t(sg.labelKey)} style={{ color: sg.ink }}>
+            {ix > 0 && <span style={{ color: R.faint, fontWeight: 'normal' }}>+ </span>}
+            {sg.n}
+          </span>
         ))}
       </div>
-      <div style={{ fontFamily: MONO, fontSize: 10, color: R.faint, marginTop: 4 }}>{segs.map((s) => s.n).join(' + ') || '0'}</div>
     </div>
   );
 }
@@ -743,16 +797,6 @@ function ExpandGlyph({ open }: { open: boolean }) {
     </span>
   );
 }
-
-/** Category → colour → the `NationAgg` field holding its count. Legend order, as everywhere else. */
-const NATION_CATS: Array<{ labelKey: TranslationKey; dot: string; k: keyof IncState; f: keyof TrophyCounts }> = [
-  { labelKey: 'cat.champ', dot: R.champ, k: 'champ', f: 'lg' },
-  { labelKey: 'cat.main', dot: R.main, k: 'main', f: 'main' },
-  { labelKey: 'cat.masters', dot: R.masters, k: 'hm', f: 'hm' },
-  { labelKey: 'cat.national', dot: R.worldCup, k: 'wc', f: 'wc' },
-  { labelKey: 'cat.seasonal', dot: R.seasonal, k: 'sn', f: 'sn' },
-  { labelKey: 'cat.sec', dot: R.sec, k: 'sec', f: 'sec' },
-];
 
 /** Shared header style for the panels inside an expanded row. */
 const cabinetHead: CSSProperties = {
@@ -969,6 +1013,10 @@ function RetroTrophyLeaders({
   const pageStart = (curPage - 1) * PAGE_SIZE;
   const pageRows = visible.slice(pageStart, pageStart + PAGE_SIZE);
   const pageNations = visibleNations.slice(pageStart, pageStart + PAGE_SIZE);
+  // What the mix bars are drawn against (see MixBar): the page's own leader. Rows are already
+  // sorted by total, so that's the first one — but take the max rather than assume it, since the
+  // filters can leave a page where it isn't.
+  const pageMax = (byNation ? pageNations : pageRows).reduce((m, r) => Math.max(m, r.ft), 0);
 
   useEffect(() => {
     if (!loading) onStatus(`Done. ${rowCount} record(s).`);
@@ -1172,7 +1220,7 @@ function RetroTrophyLeaders({
                     {n.winners.toLocaleString(lang)}
                     <span style={{ fontSize: 10, color: R.faint }}> {t(n.winners === 1 ? 'unit.manager' : 'unit.managers')}</span>
                   </div>
-                  <MixBar segs={segs} total={n.ft} />
+                  <MixBar segs={segs} total={n.ft} max={pageMax} />
                   <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 17, fontWeight: 'bold', color: R.ink }}>{n.ft}</div>
                   <div style={{ textAlign: 'center' }}>
                     <ExpandGlyph open={isExp} />
@@ -1185,7 +1233,7 @@ function RetroTrophyLeaders({
                       <div style={{ flex: 1, minWidth: 190, border: '1px solid var(--line,#CDD7C3)', background: R.panel, padding: '8px 10px' }}>
                         <div style={{ ...cabinetHead, marginBottom: 9 }}>{t('panel.byCompetition')}</div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-                          {NATION_CATS.map((c) => (
+                          {TROPHY_CATS.map((c) => (
                             <div key={c.labelKey} style={{ display: 'flex', alignItems: 'center', gap: 7, opacity: inc[c.k] ? 1 : 0.5 }}>
                               <span style={{ width: 9, height: 9, flex: 'none', border: '1px solid rgba(0,0,0,.3)', background: c.dot }} />
                               <span style={{ fontSize: 11, color: R.ink, flex: 1 }}>{t(c.labelKey)}</span>
@@ -1304,7 +1352,7 @@ function RetroTrophyLeaders({
                     {m.c}
                   </span>
                 </div>
-                <MixBar segs={segRaw} total={e.ft} />
+                <MixBar segs={segRaw} total={e.ft} max={pageMax} />
                 <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 17, fontWeight: 'bold', color: R.ink }}>{e.ft}</div>
                 <div style={{ textAlign: 'center' }}>
                   <ExpandGlyph open={isExp} />
@@ -1595,12 +1643,12 @@ function RetroLeagueWinners({
  */
 function TopManagersPanel({ winners, limit = 10 }: { winners: Winner[]; limit?: number }) {
   const t = useT();
-  const tally: Record<string, { count: number; teams: Array<{ name: string; teamId?: number }>; nationality?: string; userId?: number }> = {};
+  const tally: Record<string, { count: number; teams: Array<{ name: string; teamId?: number; leagueId?: number }>; nationality?: string; userId?: number }> = {};
   winners.forEach((w) => {
     if (!w.manager || w.manager === '—') return;
     const e = (tally[w.manager] ??= { count: 0, teams: [], nationality: w.nationality, userId: w.userId });
     e.count++;
-    if (!e.teams.some((t) => t.name === w.club)) e.teams.push({ name: w.club, teamId: w.teamId });
+    if (!e.teams.some((t) => t.name === w.club)) e.teams.push({ name: w.club, teamId: w.teamId, leagueId: w.leagueId });
   });
   const arr = Object.entries(tally)
     .sort((a, b) => b[1].count - a[1].count)
@@ -1623,10 +1671,13 @@ function TopManagersPanel({ winners, limit = 10 }: { winners: Winner[]; limit?: 
               </span>
               <span style={{ fontFamily: MONO, fontSize: 12, fontWeight: 'bold', flex: 'none', color: R.ink }}>{count}</span>
             </div>
+            {/* Club flags appear only for the international competitions, the only ones whose winners
+                come from different countries (see Winner.leagueId). */}
             <div style={{ fontSize: 10, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 4 }}>
               {teams.map((t, ti) => (
-                <span key={t.name}>
-                  {ti > 0 && ', '}
+                <span key={t.name} style={{ display: 'inline-flex', alignItems: 'center', gap: 3, verticalAlign: 'middle' }}>
+                  {ti > 0 && <span style={{ marginRight: 3 }}>,</span>}
+                  <Flag url={leagueFlagUrl(t.leagueId)} size={13} />
                   <HtLink href={t.teamId ? hattrickTeamUrl(t.teamId) : null}>{t.name}</HtLink>
                 </span>
               ))}
@@ -1690,6 +1741,10 @@ function RetroCupWinners({
   const [cupsLoading, setCupsLoading] = useState(true);
   const [secondaryCupId, setSecondaryCupId] = useState<number | null>(null);
   const countryName = countries.find((c) => c.code === country)?.name ?? '';
+  // Names the club flags in the international rolls, where the winners come from everywhere. The
+  // picker's own list doubles as the leagueId→country lookup; a country it doesn't carry simply
+  // shows a flag with no tooltip.
+  const countryNames = useMemo(() => new Map(countries.map((c) => [c.code, c.name])), [countries]);
 
   // Hattrick Masters — international, no country. Loaded once, lazily.
   const [masters, setMasters] = useState<Winner[] | null>(null);
@@ -1866,7 +1921,7 @@ function RetroCupWinners({
       )}
       {!loading && category === 'masters' && masters && masters.length > 0 && (
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
-          <RetroCupCard name="Hattrick Masters" winners={masters} accent={R.main} tall sourceLabel="cupmatches (global)" />
+          <RetroCupCard name="Hattrick Masters" winners={masters} accent={R.main} tall sourceLabel="cupmatches (global)" countryNames={countryNames} />
           <TopManagersPanel winners={masters} />
         </div>
       )}
@@ -1882,6 +1937,7 @@ function RetroCupWinners({
             accent={R.main}
             tall
             sourceLabel="ArenaHub tournament history"
+            countryNames={countryNames}
           />
           <TopManagersPanel winners={selectedSeasonal.winners} />
         </div>
@@ -1899,17 +1955,24 @@ function RetroCupCard({
   accent,
   tall = false,
   sourceLabel = 'cupmatches',
+  countryNames,
 }: {
   name: string;
   winners: Winner[];
   accent: string;
   tall?: boolean;
   sourceLabel?: string;
+  /** leagueId (as a string, the Country.code form) → country name, for the club-flag tooltips. */
+  countryNames?: Map<string, string>;
 }) {
   const t = useT();
   const winners = withRuns(winnersIn);
   const range = winnersIn.length ? `S${winnersIn[winnersIn.length - 1]!.season}–S${winnersIn[0]!.season}` : '—';
   const showManager = winnersIn.some((w) => w.manager && w.manager !== '—');
+  // Only the international cups draw from more than one country, and only they bake a per-winner
+  // leagueId. Where they do, every row reserves the flag's width — including the handful whose club
+  // never resolved — so the club names still line up as a column.
+  const showClubFlags = winnersIn.some((w) => w.leagueId);
 
   return (
     <div style={{ border: '1px solid var(--frame,#617D54)' }}>
@@ -1935,8 +1998,16 @@ function RetroCupCard({
           >
             <div style={{ fontFamily: MONO, fontWeight: 'bold', fontSize: 14, color: R.ink }}>S{w.season}</div>
             <div style={{ minWidth: 0 }}>
-              <div style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                <HtLink href={w.teamId ? hattrickTeamUrl(w.teamId) : null}>{w.club}</HtLink>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, fontWeight: 'bold', color: R.ink, minWidth: 0 }}>
+                {showClubFlags &&
+                  (leagueFlagUrl(w.leagueId) ? (
+                    <Flag url={leagueFlagUrl(w.leagueId)} label={countryNames?.get(String(w.leagueId))} size={16} />
+                  ) : (
+                    <span style={{ width: 16, flex: 'none' }} />
+                  ))}
+                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <HtLink href={w.teamId ? hattrickTeamUrl(w.teamId) : null}>{w.club}</HtLink>
+                </span>
               </div>
               {showManager && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 10, color: R.soft, overflow: 'hidden' }}>

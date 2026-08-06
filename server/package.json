@@ -18,6 +18,7 @@
     "sync:generation": "tsx src/scripts/sync-generation.ts",
     "sync:worldcup": "tsx src/scripts/sync-worldcup.ts",
     "backfill:national-team-ids": "tsx src/scripts/backfill-national-team-ids.ts",
+    "backfill:intl-countries": "tsx src/scripts/backfill-intl-countries.ts",
     "export:worldcup-coach-targets": "tsx src/scripts/export-worldcup-coach-targets.ts",
     "sync:worldcup-coaches": "tsx src/scripts/sync-worldcup-coaches.ts",
     "export:election-targets": "tsx src/scripts/export-election-targets.ts",

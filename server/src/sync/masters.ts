@@ -44,10 +44,15 @@ export interface MastersSyncResult { seasonsStored: number; earliestSeason: numb
  * approximation the league leaderboard accepts; for the Masters the winners are elite, still-active
  * clubs, so it resolves well. Resume-safe: stored finals are skipped, so re-runs only add new ones.
  *
- * Self-healing (why we keep no hand-maintained list of Masters owners): a Hattrick manager keeps ONE
- * team across renames, so the winning club's CURRENT owner IS the manager who won it — e.g. the team
- * that won as "Orda Balorda Cuba" is the same one now called "Orda Balorda Urbino" (zagortenay). An
- * edition shows an unresolved winner ("—") only because a PAST attribution attempt hit a team that
+ * Self-healing (why we keep no hand-maintained list of Masters owners): a club survives its own
+ * renames, so resolving the winning club's CURRENT owner still lands on the manager who won it. What
+ * it does NOT survive is the manager moving on: an account can hold several clubs, or drop the
+ * winning one and start again elsewhere, in which case "their club today" is a different club in a
+ * different country — "Orda Balorda Cuba" won Masters S86 and three Cuban cups while that account's
+ * only club today is Italian. Attribution can live with that (it's the same manager either way);
+ * anything that needs the CLUB, not the manager, cannot — see sync/intlTeamCountries.ts, which
+ * prefers the club's own domestic record for exactly this reason. An edition shows an unresolved
+ * winner ("—") only because a PAST attribution attempt hit a team that
  * was momentarily unreadable (rate-limited, or briefly bot/abandoned) and got pinned to the UNKNOWN
  * sentinel, which the enrichment passes then skip forever. So before re-attributing we RE-OPEN those
  * sentinel rows (below): the same automatic teamId + current-owner passes then fill them in with no
