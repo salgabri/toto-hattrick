@@ -227,7 +227,8 @@ async function main() {
   const evidenceSha256 = sha256(primaryText + '\n' + additionalText);
   assert.equal(sha256(readFileSync(backupPath)), primary.databaseSha256, 'Pre-fix database backup fingerprint differs');
   const reportPath = resolve(values.report);
-  assert.ok(reportPath.startsWith(resolve(root, 'qa') + '\\'), 'Report must be inside the repo qa directory');
+  const reportRelative = relative(resolve(root, 'qa'), reportPath);
+  assert.ok(reportRelative && !reportRelative.startsWith('..') && !isAbsolute(reportRelative), 'Report must be inside the repo qa directory');
   const reportFile = openSync(reportPath, 'wx'); // Reserve a new audit output before any mutation.
   const backup = new DatabaseSync(backupPath, { readOnly: true });
   const db = new DatabaseSync(dbPath, { readOnly: !values.apply });
