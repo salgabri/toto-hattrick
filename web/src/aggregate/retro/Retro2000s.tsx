@@ -32,6 +32,12 @@ import {
 import { leagueFlagUrl, nationFlagUrl, nationalityFlagUrl } from '../flags.js';
 import { LANGS, useI18n, useT, type Lang, type TFn, type TranslationKey } from '../../i18n/index.js';
 import { R, MONO, rootStyle2000s, type Skin } from './theme2000s.js';
+import { ShareView } from './ShareView.js';
+import { replaceUrlParam, updateUrlParams, useUrlState } from '../urlState.js';
+import {
+  bracketParam, competitionsParam, countParam, cupCategoryParam, cupIdParam, electionTabParam,
+  medalByParam, medalScopeParam, nationParam, recencyParam, textParam, trophyGroupParam, viewParam,
+} from '../filterParams.js';
 import './retro2000s.css';
 
 /**
@@ -55,24 +61,33 @@ export interface Retro2000sProps {
   skin?: Skin;
 }
 
+/** Wait for reference data before rejecting a shared selection. Empty URLs use the usual default. */
+function useCountryFilter(key: string, countries: Country[], preferred = '') {
+  const [requested, setCountry] = useUrlState(key, textParam);
+  const valid = countries.some((country) => country.code === requested);
+  const fallback = countries.find((country) => country.code === preferred)?.code ?? countries[0]?.code ?? '';
+  useEffect(() => {
+    if (countries.length && requested && !valid) replaceUrlParam(key, textParam, '');
+  }, [key, countries, requested, valid]);
+  return [countries.length ? (valid ? requested : fallback) : requested, setCountry] as const;
+}
+
 export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
   const { lang, setLang, t } = useI18n();
-  const [view, setView] = useState<RetroView>('trophies');
+  const [view, setView] = useUrlState('view', viewParam);
 
-  // View state lives on the parent so it survives tab switches.
-  const [nation, setNation] = useState<string>('ALL');
-  const [query, setQuery] = useState('');
-  const [inc, setInc] = useState<IncState>({ champ: true, main: true, sec: false, hm: true, sn: true, wc: true });
-  const [lastOnly, setLastOnly] = useState(false);
-  // Independent of `lastOnly`: undefined = all time. Both live on the one Recency control.
-  const [seasonWindow, setSeasonWindow] = useState<SeasonWindow | undefined>(undefined);
-  const [medals, setMedals] = useState(false);
-  const [groupBy, setGroupBy] = useState<TrophyGroupBy>('manager');
+  // Namespaced URL filters survive reloads, sharing, tab switches and browser history.
+  const [nation, setNation] = useUrlState('trophies.nation', nationParam);
+  const [query, setQuery] = useUrlState('trophies.q', textParam, { history: 'replace' });
+  const [inc, setInc] = useUrlState('trophies.competitions', competitionsParam);
+  const [recency] = useUrlState('trophies.recency', recencyParam);
+  const [count] = useUrlState('trophies.count', countParam);
+  const lastOnly = recency === 'reigning';
+  const seasonWindow = recency === '5' ? 5 : recency === '10' ? 10 : recency === '20' ? 20 : undefined;
+  const medals = !lastOnly && count === 'medals';
+  const [groupBy, setGroupBy] = useUrlState('trophies.group', trophyGroupParam);
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [league, setLeague] = useState<string>('');
-  const [cupCountry, setCupCountry] = useState<string>('');
-  const [electionCountry, setElectionCountry] = useState<string>('');
-  const [electionTab, setElectionTab] = useState<ElectionTab>('managers');
+  const [electionTab, setElectionTab] = useUrlState('elections.tab', electionTabParam);
   const [, setStatus] = useState('Ready.');
 
   // Reference lists (loaded once).
@@ -81,33 +96,37 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
   const [cupCountries, setCupCountries] = useState<Country[]>([]);
   const [electionCountries, setElectionCountries] = useState<Country[]>([]);
   const [managersTracked, setManagersTracked] = useState<number | null>(null);
+  const [league, setLeague] = useCountryFilter('leagues.country', leagues, '4');
+  const [cupCountry, setCupCountry] = useCountryFilter('cups.country', cupCountries, '4');
+  const [electionCountry, setElectionCountry] = useCountryFilter('elections.country', electionCountries);
+
+  const setRecency = (reigning: boolean, window?: SeasonWindow) => updateUrlParams({
+    'trophies.recency': recencyParam.format(reigning ? 'reigning' : window === 5 ? '5' : window === 10 ? '10' : window === 20 ? '20' : 'all'),
+    ...(reigning ? { 'trophies.count': null } : {}),
+  });
+  const setMedals = (enabled: boolean) => updateUrlParams({
+    'trophies.count': countParam.format(enabled ? 'medals' : 'winners'),
+    ...(enabled && lastOnly ? { 'trophies.recency': null } : {}),
+  });
+
+  useEffect(() => {
+    if (nationalities.length && nation !== 'ALL' && !nationalities.some((country) => country.code === nation)) {
+      replaceUrlParam('trophies.nation', nationParam, 'ALL');
+    }
+    if (lastOnly && count === 'medals') replaceUrlParam('trophies.count', countParam, 'winners');
+  }, [nationalities, nation, lastOnly, count]);
 
   useEffect(() => {
     getNationalities().then(setNationalities).catch(() => setNationalities([]));
     getManagers()
       .then((ms) => setManagersTracked(ms.length))
       .catch(() => setManagersTracked(null));
-    getLeagues()
-      .then((ls) => {
-        setLeagues(ls);
-        setLeague((cur) => cur || ls.find((x) => x.code === '4')?.code || ls[0]?.code || '');
-      })
-      .catch(() => setLeagues([]));
-    getCupCountries()
-      .then((cs) => {
-        setCupCountries(cs);
-        setCupCountry((cur) => cur || cs.find((x) => x.code === '4')?.code || cs[0]?.code || '');
-      })
-      .catch(() => setCupCountries([]));
-    getElectionCountries()
-      .then((cs) => {
-        setElectionCountries(cs);
-        setElectionCountry((cur) => cur || cs[0]?.code || '');
-      })
-      .catch(() => setElectionCountries([]));
+    getLeagues().then(setLeagues).catch(() => setLeagues([]));
+    getCupCountries().then(setCupCountries).catch(() => setCupCountries([]));
+    getElectionCountries().then(setElectionCountries).catch(() => setElectionCountries([]));
   }, []);
 
-  /** The one banner control: the language picker, in the 2000s inset-field look. */
+  /** Banner controls use the same 2000s inset-field look as the filters. */
   const langSelect: CSSProperties = {
     border: '2px inset var(--btn,#EBEFE2)',
     background: R.btn,
@@ -131,6 +150,7 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
       >
         {/* ===================== BANNER ===================== */}
         <div
+          className="retro-banner"
           style={{
             background: 'linear-gradient(180deg,var(--bar1,#729A5F),var(--bar2,#4E7642))',
             color: R.barink,
@@ -164,23 +184,26 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
             <div style={{ fontSize: 10, marginTop: 5, letterSpacing: '.3px', opacity: 0.92 }}>{t('app.tagline')}</div>
           </div>
           <div style={{ flex: 1 }} />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 7, alignItems: 'flex-end' }}>
+          <div className="retro-banner-actions" style={{ display: 'flex', flexDirection: 'column', gap: 7, alignItems: 'flex-end' }}>
             <div style={{ fontSize: 10, opacity: 0.92 }}>
               {managersTracked == null ? t('app.loading') : t('app.managersTracked', { n: managersTracked.toLocaleString(lang) })}
             </div>
-            <select
-              value={lang}
-              onChange={(e) => setLang(e.target.value as Lang)}
-              title={t('app.language')}
-              aria-label={t('app.language')}
-              style={langSelect}
-            >
-              {LANGS.map((l) => (
-                <option key={l.code} value={l.code}>
-                  {l.label}
-                </option>
-              ))}
-            </select>
+            <div className="retro-banner-tools">
+              <ShareView title={t(NAV.find((item) => item.key === view)!.labelKey)} />
+              <select
+                value={lang}
+                onChange={(e) => setLang(e.target.value as Lang)}
+                title={t('app.language')}
+                aria-label={t('app.language')}
+                style={langSelect}
+              >
+                {LANGS.map((l) => (
+                  <option key={l.code} value={l.code}>
+                    {l.label}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 
@@ -211,9 +234,8 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
               inc={inc}
               setInc={setInc}
               lastOnly={lastOnly}
-              setLastOnly={setLastOnly}
               seasonWindow={seasonWindow}
-              setSeasonWindow={setSeasonWindow}
+              setRecency={setRecency}
               medals={medals}
               setMedals={setMedals}
               groupBy={groupBy}
@@ -851,9 +873,8 @@ function RetroTrophyLeaders({
   inc,
   setInc,
   lastOnly,
-  setLastOnly,
   seasonWindow,
-  setSeasonWindow,
+  setRecency,
   medals,
   setMedals,
   groupBy,
@@ -870,11 +891,10 @@ function RetroTrophyLeaders({
   inc: IncState;
   setInc: Dispatch<SetStateAction<IncState>>;
   lastOnly: boolean;
-  setLastOnly: Dispatch<SetStateAction<boolean>>;
   seasonWindow: SeasonWindow | undefined;
-  setSeasonWindow: Dispatch<SetStateAction<SeasonWindow | undefined>>;
+  setRecency: (reigning: boolean, window?: SeasonWindow) => void;
   medals: boolean;
-  setMedals: Dispatch<SetStateAction<boolean>>;
+  setMedals: (enabled: boolean) => void;
   groupBy: TrophyGroupBy;
   setGroupBy: Dispatch<SetStateAction<TrophyGroupBy>>;
   expandedId: string | null;
@@ -890,11 +910,13 @@ function RetroTrophyLeaders({
   // Nationality is the grouping dimension in nation mode, so it can't also be a filter there —
   // always pull the whole field.
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
     getManagers(groupBy === 'nation' || nation === 'ALL' ? undefined : nation, seasonWindow)
-      .then(setManagers)
-      .catch(() => setManagers([]))
-      .finally(() => setLoading(false));
+      .then((managers) => { if (!cancelled) setManagers(managers); })
+      .catch(() => { if (!cancelled) setManagers([]); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
   }, [nation, groupBy, seasonWindow]);
 
   // Any filter change reshuffles the ranked list, so drop back to the first page.
@@ -1060,13 +1082,7 @@ function RetroTrophyLeaders({
                 return (
                   <button
                     key={o.labelKey}
-                    onClick={() => {
-                      setLastOnly(o.reigning);
-                      setSeasonWindow(o.window);
-                      // Reigning-only and medals are mutually exclusive (see below) — rather than
-                      // leaving a dead button, each switch just turns the other one off.
-                      if (o.reigning) setMedals(false);
-                    }}
+                    onClick={() => setRecency(o.reigning, o.window)}
                     style={toggleBtn(on)}
                     title={t(o.titleKey)}
                   >
@@ -1085,12 +1101,7 @@ function RetroTrophyLeaders({
                 {t('count.winners')}
               </button>
               <button
-                onClick={() => {
-                  setMedals(true);
-                  // There is no such thing as a reigning runner-up, so asking for medals means
-                  // asking for all-time. Switch it rather than refusing the click.
-                  setLastOnly(false);
-                }}
+                onClick={() => setMedals(true)}
                 style={toggleBtn(medals)}
                 title={t('count.medals.title')}
               >
@@ -1525,11 +1536,13 @@ function RetroLeagueWinners({
 
   useEffect(() => {
     if (!league) return;
+    let cancelled = false;
     setLoading(true);
     getWinners(league)
-      .then(setWinnersRaw)
-      .catch(() => setWinnersRaw([]))
-      .finally(() => setLoading(false));
+      .then((winners) => { if (!cancelled) setWinnersRaw(winners); })
+      .catch(() => { if (!cancelled) setWinnersRaw([]); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
   }, [league]);
 
   useEffect(() => {
@@ -1734,12 +1747,13 @@ function RetroCupWinners({
   onStatus: (s: string) => void;
 }) {
   const t = useT();
-  const [category, setCategory] = useState<CupCategory>('main');
+  const [category, setCategory] = useUrlState('cups.category', cupCategoryParam);
 
   // National cups (main + secondary) — nation-based, keyed by the selected country.
-  const [cups, setCups] = useState<CupRoll[]>([]);
+  const [cupData, setCupData] = useState<{ country: string; cups: CupRoll[] } | null>(null);
+  const cups = cupData?.country === country ? cupData.cups : [];
   const [cupsLoading, setCupsLoading] = useState(true);
-  const [secondaryCupId, setSecondaryCupId] = useState<number | null>(null);
+  const [secondaryCupId, setSecondaryCupId] = useUrlState('cups.secondary', cupIdParam);
   const countryName = countries.find((c) => c.code === country)?.name ?? '';
   // Names the club flags in the international rolls, where the winners come from everywhere. The
   // picker's own list doubles as the leagueId→country lookup; a country it doesn't carry simply
@@ -1755,15 +1769,17 @@ function RetroCupWinners({
   // once, lazily.
   const [seasonalCups, setSeasonalCups] = useState<SeasonalCupRoll[]>([]);
   const [seasonalLoading, setSeasonalLoading] = useState(false);
-  const [seasonalCupId, setSeasonalCupId] = useState<number | null>(null);
+  const [seasonalCupId, setSeasonalCupId] = useUrlState('cups.seasonal', cupIdParam);
 
   useEffect(() => {
     if (!country) return;
+    let cancelled = false;
     setCupsLoading(true);
     getCups(country)
-      .then(setCups)
-      .catch(() => setCups([]))
-      .finally(() => setCupsLoading(false));
+      .then((cups) => { if (!cancelled) setCupData({ country, cups }); })
+      .catch(() => { if (!cancelled) setCupData(null); })
+      .finally(() => { if (!cancelled) setCupsLoading(false); });
+    return () => { cancelled = true; };
   }, [country]);
 
   useEffect(() => {
@@ -1779,10 +1795,7 @@ function RetroCupWinners({
     if (category !== 'seasonal' || seasonalCups.length > 0) return;
     setSeasonalLoading(true);
     getSeasonalCups()
-      .then((cs) => {
-        setSeasonalCups(cs);
-        setSeasonalCupId((cur) => cur ?? cs.find((c) => !c.isGeneration)?.cupId ?? cs[0]?.cupId ?? null);
-      })
+      .then(setSeasonalCups)
       .catch(() => setSeasonalCups([]))
       .finally(() => setSeasonalLoading(false));
   }, [category, seasonalCups.length]);
@@ -1790,17 +1803,23 @@ function RetroCupWinners({
   const main = cups.find((c) => c.isMain) ?? null;
   const secondaryCups = cups.filter((c) => !c.isMain);
 
-  // Keep the secondary-cup selection valid whenever the country (and thus its secondary cups) changes.
+  // Validate only against the requested country's loaded data, never the initial/stale empty list.
   useEffect(() => {
-    if (!secondaryCups.some((c) => c.cupId === secondaryCupId)) {
-      setSecondaryCupId(secondaryCups[0]?.cupId ?? null);
+    if (cupData?.country === country && secondaryCupId !== null && !secondaryCups.some((c) => c.cupId === secondaryCupId)) {
+      replaceUrlParam('cups.secondary', cupIdParam, null);
     }
-  }, [secondaryCups]);
+  }, [cupData, country, secondaryCupId]);
 
-  const selectedSecondary = secondaryCups.find((c) => c.cupId === secondaryCupId) ?? null;
+  const selectedSecondary = secondaryCups.find((c) => c.cupId === secondaryCupId) ?? secondaryCups[0] ?? null;
   const supporterWeek = seasonalCups.find((c) => !c.isGeneration) ?? null;
   const generationCohorts = seasonalCups.filter((c) => c.isGeneration).sort((a, b) => a.cupId - b.cupId);
-  const selectedSeasonal = seasonalCups.find((c) => c.cupId === seasonalCupId) ?? null;
+  const selectedSeasonal = seasonalCups.find((c) => c.cupId === seasonalCupId) ?? supporterWeek ?? seasonalCups[0] ?? null;
+
+  useEffect(() => {
+    if (seasonalCups.length && seasonalCupId !== null && !seasonalCups.some((c) => c.cupId === seasonalCupId)) {
+      replaceUrlParam('cups.seasonal', cupIdParam, null);
+    }
+  }, [seasonalCups, seasonalCupId]);
 
   const loading = category === 'main' || category === 'secondary' ? cupsLoading : category === 'masters' ? mastersLoading : seasonalLoading;
 
@@ -1847,7 +1866,7 @@ function RetroCupWinners({
             <div>
               <div style={filterLabel}>{t('cups.secondaryCup')}</div>
               <select
-                value={secondaryCupId ?? ''}
+                value={selectedSecondary?.cupId ?? ''}
                 onChange={(e) => setSecondaryCupId(Number(e.target.value))}
                 style={selectStyle}
                 disabled={secondaryCups.length === 0}
@@ -1865,7 +1884,7 @@ function RetroCupWinners({
             <div>
               <div style={filterLabel}>{t('cups.seasonalCup')}</div>
               <select
-                value={seasonalCupId ?? ''}
+                value={selectedSeasonal?.cupId ?? ''}
                 onChange={(e) => setSeasonalCupId(Number(e.target.value))}
                 style={selectStyle}
                 disabled={seasonalCups.length === 0}
@@ -2144,13 +2163,16 @@ function useNationalCompetitions() {
 }
 
 /** Picks one bracket's competitions, and keeps a selection that survives a bracket switch. */
-function useBracketedComp(comps: NationalCompetition[]) {
-  const [bracket, setBracket] = useState<Bracket>('senior');
-  const [compKey, setCompKey] = useState('senior');
+function useBracketedComp(comps: NationalCompetition[], page: 'worldcup' | 'medals') {
+  const [bracket, setBracket] = useUrlState(`${page}.bracket`, bracketParam);
+  const [compKey, setCompKey] = useUrlState(`${page}.competition`, textParam);
   const inBracket = comps.filter((c) => c.isYouth === (bracket === 'youth'));
   // Falling back to the first on offer means a bracket switch repairs a now-invalid `compKey` during
   // render — no effect, no flash of an empty table, and a bake missing a competition still shows.
   const comp = inBracket.find((c) => c.key === compKey) ?? inBracket[0];
+  useEffect(() => {
+    if (comps.length && compKey && !comps.some((c) => c.key === compKey)) replaceUrlParam(`${page}.competition`, textParam, '');
+  }, [comps, page, compKey]);
   return { bracket, setBracket, compKey, setCompKey, inBracket, comp };
 }
 
@@ -2218,7 +2240,7 @@ function PodiumSlot({
 function RetroNationalTrophies({ onStatus }: { onStatus: (s: string) => void }) {
   const t = useT();
   const { comps, loading } = useNationalCompetitions();
-  const { bracket, setBracket, setCompKey, inBracket, comp } = useBracketedComp(comps);
+  const { bracket, setBracket, setCompKey, inBracket, comp } = useBracketedComp(comps, 'worldcup');
 
   const editions = (comp?.rows ?? []).slice().sort((a, b) => b.edition - a.edition);
 
@@ -2351,9 +2373,9 @@ const MEDAL_SCOPES: Array<{ k: MedalScope; chip: TranslationKey; title: Translat
 function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
   const t = useT();
   const { comps, loading } = useNationalCompetitions();
-  const { bracket, setBracket, setCompKey, inBracket, comp } = useBracketedComp(comps);
-  const [scope, setScope] = useState<MedalScope>('senior');
-  const [medalBy, setMedalBy] = useState<MedalBy>('nation');
+  const { bracket, setBracket, setCompKey, inBracket, comp } = useBracketedComp(comps, 'medals');
+  const [scope, setScope] = useUrlState('medals.scope', medalScopeParam);
+  const [medalBy, setMedalBy] = useUrlState('medals.by', medalByParam);
   const [coachMedals, setCoachMedals] = useState<CoachMedals[]>([]);
 
   /** The competitions the active scope covers. */
@@ -2384,9 +2406,11 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
       setCoachMedals([]);
       return;
     }
+    let cancelled = false;
     getCoachMedals(scopedCups.split('|'))
-      .then(setCoachMedals)
-      .catch(() => setCoachMedals([]));
+      .then((medals) => { if (!cancelled) setCoachMedals(medals); })
+      .catch(() => { if (!cancelled) setCoachMedals([]); });
+    return () => { cancelled = true; };
   }, [scopedCups]);
 
   /**
@@ -2769,7 +2793,7 @@ function BracketBadge({ youth, label }: { youth: boolean; label: string }) {
 function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; onStatus: (s: string) => void }) {
   const { lang, t } = useI18n();
   const [agg, setAgg] = useState<ElectionAggregates | null>(null);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useUrlState('elections.q', textParam, { history: 'replace' });
   const [page, setPage] = useState(1);
   const [expanded, setExpanded] = useState<string | null>(null);
 
@@ -3227,11 +3251,13 @@ function RetroElectionsByCountry({
 
   useEffect(() => {
     if (!country) return;
+    let cancelled = false;
     setLoading(true);
     getElections(country)
-      .then(setRows)
-      .catch(() => setRows([]))
-      .finally(() => setLoading(false));
+      .then((rows) => { if (!cancelled) setRows(rows); })
+      .catch(() => { if (!cancelled) setRows([]); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
   }, [country]);
 
   useEffect(() => {

@@ -1,0 +1,221 @@
+.th2000s .retro-share-trigger,
+.th2000s .retro-share-close,
+.th2000s .retro-share-secondary,
+.th2000s .retro-share-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 2px outset var(--btn, #ebefe2);
+  border-radius: 0;
+  padding: 5px 10px;
+  background: linear-gradient(180deg, #fff, var(--btn, #ebefe2));
+  color: var(--ink, #27321f);
+  font: bold 11px Verdana, Tahoma, sans-serif;
+  cursor: pointer;
+}
+
+.th2000s .retro-share-trigger:hover,
+.th2000s .retro-share-close:hover,
+.th2000s .retro-share-secondary:hover {
+  background: var(--hover, #fbf5db);
+}
+
+.th2000s .retro-share-trigger:active,
+.th2000s .retro-share-close:active,
+.th2000s .retro-share-secondary:active,
+.th2000s .retro-share-copy:active {
+  border-style: inset;
+}
+
+.th2000s .retro-share-trigger:focus-visible,
+.th2000s .retro-share-dialog button:focus-visible {
+  outline: 2px solid var(--main, #b07e2a);
+  outline-offset: 3px;
+}
+
+.th2000s .retro-share-dialog {
+  width: min(440px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  border: 3px outset var(--btn, #ebefe2);
+  background: var(--panel, #fff);
+  color: var(--ink, #27321f);
+  box-shadow: 7px 9px 0 rgba(24, 40, 20, .15), 0 16px 48px rgba(24, 40, 20, .22);
+  font-family: Verdana, Tahoma, sans-serif;
+  text-align: left;
+}
+
+.th2000s .retro-share-dialog::backdrop {
+  background: rgba(22, 35, 19, .38);
+}
+
+.th2000s .retro-share-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 8px 7px 12px;
+  background: linear-gradient(90deg, var(--bar2, #4e7642), var(--bar1, #729a5f));
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.th2000s .retro-share-titlebar > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.th2000s .retro-share-close {
+  width: 23px;
+  height: 23px;
+  padding: 0;
+  flex: none;
+}
+
+.th2000s .retro-share-body {
+  padding: 22px 22px 8px;
+}
+
+.th2000s .retro-share-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.th2000s .retro-share-emblem {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border: 2px groove var(--btn, #ebefe2);
+  background: var(--panel2, #f2f5ed);
+  color: var(--mod, #567e47);
+}
+
+.th2000s .retro-share-emblem svg {
+  width: 25px;
+  height: 25px;
+}
+
+.th2000s .retro-share-site,
+.th2000s .retro-share-label {
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--soft, #5e7150);
+}
+
+.th2000s .retro-share-view {
+  margin-top: 5px;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.th2000s .retro-share-description {
+  margin: 17px 0 20px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--soft, #5e7150);
+}
+
+.th2000s .retro-share-label {
+  display: block;
+  margin-bottom: 7px;
+}
+
+.th2000s .retro-share-url {
+  display: block;
+  width: 100%;
+  height: 38px;
+  padding: 8px 9px;
+  border: 2px inset var(--btn, #ebefe2);
+  border-radius: 0;
+  background: var(--panel2, #f2f5ed);
+  color: var(--ink, #27321f);
+  font: 12px 'Courier New', monospace;
+}
+
+.th2000s .retro-share-url:focus {
+  outline: 2px solid var(--mod, #567e47);
+  outline-offset: 2px;
+}
+
+.th2000s .retro-share-feedback {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  min-height: 40px;
+  padding-top: 11px;
+  color: var(--soft, #5e7150);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.th2000s .retro-share-feedback svg {
+  flex: none;
+  width: 13px;
+  height: 13px;
+}
+
+.th2000s .retro-share-feedback.is-copied {
+  color: var(--champ, #427e37);
+}
+
+.th2000s .retro-share-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 22px;
+  border-top: 1px solid var(--line, #cdd7c3);
+  background: var(--panel2, #f2f5ed);
+}
+
+.th2000s .retro-share-copy {
+  min-width: 125px;
+  min-height: 36px;
+  background: var(--bar2, #4e7642);
+  color: #fff;
+  border-color: var(--frame, #617d54);
+}
+
+.th2000s .retro-share-copy:hover {
+  filter: brightness(.92);
+}
+
+.th2000s .retro-share-dialog button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+.th2000s .retro-banner-tools {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+@media (max-width: 600px) {
+  .th2000s .retro-banner {
+    flex-wrap: wrap;
+  }
+
+  .th2000s .retro-banner-actions {
+    margin-left: auto;
+  }
+
+  .th2000s .retro-share-body {
+    padding: 18px 16px 6px;
+  }
+
+  .th2000s .retro-share-actions {
+    padding: 12px 16px;
+  }
+}
