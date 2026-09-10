@@ -23,7 +23,10 @@ import { prisma } from '../db/client.js';
  * than risk a wrong credit. Merging the two donor pools can therefore REDUCE recoveries where league
  * and cup donors disagree — that is the intended behaviour, not a regression.
  *
- * Resume-safe: only rows with championUserId null are touched; existing attributions are untouched.
+ * This is an UNVERIFIED heuristic, disabled unless explicitly requested. A unique donor does not
+ * prove continuity of ownership: the same name or team ID can outlive a manager. Default refreshes
+ * leave these rows for historicalWinners.ts, which checks the exact competition and ownership date.
+ * Only rows with championUserId null are touched; existing attributions are untouched.
  * Note this cannot cascade — a newly attributed row shares its donor's (leagueId, club) key, so it
  * adds no new key to bridge from. Unlocking more requires a real attribution from CHPP first (a
  * resolved league title creates a donor key that no name match could invent).
@@ -39,7 +42,11 @@ export interface AttributeByClubResult {
   ambiguousRows: number;
 }
 
-export async function attributeByClub(): Promise<AttributeByClubResult> {
+export async function attributeByClub(opts: { allowUnverifiedNameMatch?: boolean } = {}): Promise<AttributeByClubResult> {
+  if (opts.allowUnverifiedNameMatch !== true) {
+    console.log('Club-name manager approximation is disabled; use historical winner evidence.');
+    return { cupFinals: 0, leagueTitles: 0, ambiguousClubs: 0, ambiguousRows: 0 };
+  }
   // (leagueId, club name) -> the single agreed owner, or null once a second distinct owner is seen.
   const owners = new Map<string, { id: number; name: string | null } | null>();
   const addDonor = (leagueId: number, club: string, id: number, name: string | null) => {

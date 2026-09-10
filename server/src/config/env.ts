@@ -9,6 +9,7 @@ const EnvSchema = z.object({
   CHPP_CONSUMER_KEY: z.string().min(1, 'CHPP_CONSUMER_KEY is required'),
   CHPP_CONSUMER_SECRET: z.string().min(1, 'CHPP_CONSUMER_SECRET is required'),
   CHPP_CALLBACK_URL: z.string().min(1).default('oob'),
+  OAUTH_ACCESS_STASH: z.string().min(1).default('.oauth-access.json'),
   DATABASE_URL: z.string().min(1, 'DATABASE_URL is required'),
   PORT: z.coerce.number().int().positive().default(3001),
   WEB_ORIGIN: z.string().url().default('http://localhost:5173'),

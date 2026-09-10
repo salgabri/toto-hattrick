@@ -1,0 +1,64 @@
+[
+  {
+    "table": "cupChampion",
+    "competitionId": 183,
+    "season": 81,
+    "teamId": 1629842,
+    "teamName": "DarthFenuz",
+    "userId": 11898902,
+    "name": "LA-DoctorDestiny",
+    "sources": ["https://www.hattrick.org/es-ar/Community/Press/?ArticleID=22809"],
+    "evidence": "Post-victory Hattrick Press interview dated 2022-06-13 explicitly identifies DarthFenuz (1629842) as the season 81 Masters winner and links interviewed manager LA-DoctorDestiny (11898902). The article links final 695918444 against imparartenia, matching the stored final. This is a historical alias; preserve an existing user's current login."
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 183,
+    "season": 60,
+    "teamId": 166187,
+    "teamName": "Wild Oscar",
+    "userId": 3725093,
+    "name": "Thomas-T",
+    "sources": ["https://www.hattrick.org/en-us/Community/Press/?ArticleID=19491"],
+    "evidence": "Hattrick Press explicitly interviews Thomas-T (3725093), manager of Wild Oscar (166187), about winning Masters season 60. Its final link is 555044048, matching this exact stored title. Thomas-T is the historical login; do not replace a current login already stored for user 3725093."
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 183,
+    "season": 56,
+    "teamId": 953281,
+    "teamName": "Thought Police's Unfortunate Victory",
+    "userId": 7908379,
+    "name": "Malk77",
+    "sources": ["https://www.hattrick.org/en/Community/Press/?ArticleID=18443"],
+    "evidence": "Post-victory Hattrick Press interview dated 2014-12-01 links Malk77 (7908379), identifies his team by this exact name, and discusses its Masters win. The linked final 497628283 against Trance Masters is the exact final stored for Masters season 56 and team 953281."
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 183,
+    "season": 54,
+    "teamId": 527438,
+    "teamName": "FC DeRibas",
+    "userId": 2718983,
+    "name": "Sa_Bur",
+    "sources": [
+      "https://www.hattrick.org/en/Community/Press/?ArticleID=17782",
+      "https://www.hattrick.org/en/Community/Press/?ArticleID=21049",
+      "https://wiki.hattrick.org/wiki/FC_DeRibas"
+    ],
+    "evidence": "The first-win Hattrick Press interview dated 2014-02-27 links Sa Bur (2718983) and discusses the final against the Russian manager Antonioni. The FC DeRibas wiki identifies team 527438, manager Sa_Bur and its season 54 title, and reproduces this exact dated interview. Hattrick Press 21049 independently identifies FC DeRibas (527438) as the winner in seasons 54 and 55. This record uses the first-win interview for season 54 only; it does not assume the same owner for season 55 or domestic titles."
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 183,
+    "season": 49,
+    "teamId": 154920,
+    "teamName": "Big Battle Axe",
+    "userId": 536243,
+    "name": "NickMan",
+    "sources": [
+      "https://www.hattrick.org/en/Community/Press/?ArticleID=17034",
+      "https://www.hattrick.org/en/Community/Press/?ArticleID=13684"
+    ],
+    "evidence": "Hattrick Press 17034 interviews NickMan of Big Battle Axe, linking team 154920, about his Masters title in global season 49. Its linked earlier interview, article 13684, identifies NickMan with the numeric user link 536243 and the exact team name Big Battle Axe. The team link 154920 is not mistaken for a user ID."
+  }
+]

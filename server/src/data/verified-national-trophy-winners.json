@@ -1,0 +1,57 @@
+[
+  {
+    "table": "worldCupChampion",
+    "isYouth": true,
+    "edition": 9,
+    "slot": "runnerUp",
+    "country": "México",
+    "finalDate": "2007-07-15",
+    "teamId": 3046,
+    "userId": 215249,
+    "name": "Morelos",
+    "sources": [
+      "https://www.hattrick.org/en/Community/Press/?ArticleID=21925",
+      "https://www.hattrick.org/tr/Community/Press/?ArticleID=23905",
+      "https://wiki.hattrick.org/index.php?title=National_team_U-20_M%C3%A9xico&oldid=420880",
+      "https://wiki.hattrick.org/wiki/Ru/%D0%9C%D0%BE%D0%BB%D0%BE%D0%B4%D1%91%D0%B6%D0%BD%D1%8B%D0%B9_%D0%A7%D0%B5%D0%BC%D0%BF%D0%B8%D0%BE%D0%BD%D0%B0%D1%82_%D0%BC%D0%B8%D1%80%D0%B0_IX"
+    ],
+    "evidence": "Hattrick Press article 21925 identifies Morelos by numeric user ID 215249 and explicitly mentions his U20 World Cup silver medal; article 23905 independently identifies the same numeric account as a historical national coach. The Mexico U20 history assigns its sole silver medal, edition IX, to Swiss manager Morelos. The edition IX record reproduces the 15 July 2007 Hattrick announcement identifying Morelos as Mexico's finalist coach and the final against Germany, match 128673805. The national team is 3046; no club ownership or election-only inference is used."
+  },
+  {
+    "table": "worldCupChampion",
+    "isYouth": true,
+    "edition": 11,
+    "slot": "thirdFourth",
+    "podiumIndex": 1,
+    "country": "Italia",
+    "finalDate": "2008-10-05",
+    "teamId": 3044,
+    "userId": 1585064,
+    "name": "Mokiforever",
+    "sources": [
+      "https://www.hattrick.org/en/Community/Press/?ArticleID=19362",
+      "https://wiki.hattrick.org/wiki/User%3AMokiforever",
+      "https://wiki.hattrick.org/index.php?title=National_team_U-20_Italia&oldid=430891",
+      "https://wiki.hattrick.org/wiki/IT/National_team_U-20_Italia"
+    ],
+    "evidence": "Hattrick Press article 19362 explicitly identifies Mokiforever as user 1585064. His wiki profile independently gives that numeric ID, his Italy U20 tenure from 14 March 2008 to 26 May 2009, and bronze in U20 World Cup XI. The Italy history agrees on that semifinal medal; its Italian-language account, written by Mokiforever, explains that the elected candidate withdrew and Mokiforever took over, so an election winner alone would be wrong. Italy lost its semifinal on 3 October 2008; 5 October is the exact edition final date stored by this archive and is used only as the guarded row key."
+  },
+  {
+    "table": "worldCupChampion",
+    "isYouth": true,
+    "edition": 9,
+    "slot": "champion",
+    "country": "Deutschland",
+    "finalDate": "2007-07-15",
+    "teamId": 3043,
+    "userId": 184069,
+    "name": "Alando-Brinkman",
+    "sources": [
+      "https://www.hattrick.org/en/Club/Manager/?userId=184069",
+      "https://wiki.hattrick.org/index.php?title=De/Deutschland&oldid=420507",
+      "https://wiki.hattrick.org/index.php?title=German_elections_for_U-20_World_Cup_IX&oldid=78110",
+      "https://wiki.hattrick.org/wiki/Ru/%D0%9C%D0%BE%D0%BB%D0%BE%D0%B4%D1%91%D0%B6%D0%BD%D1%8B%D0%B9_%D0%A7%D0%B5%D0%BC%D0%BF%D0%B8%D0%BE%D0%BD%D0%B0%D1%82_%D0%BC%D0%B8%D1%80%D0%B0_IX"
+    ],
+    "evidence": "The German history explicitly names Alando-Brinkman as both the U20 World Cup IX champion and Harsefelder FC's Bundesliga season 30 champion. The numeric Hattrick manager profile 184069, captured on 10 September 2026, no longer displays his name but independently retains Harsefelder FC (team 53861), his uninterrupted club tenure from 29 November 2002 through 14 June 2008, and the exact Bundesliga season 30 trophy (series 427). This historical club/season/tenure evidence identifies the retired numeric account, not a later owner or a name-only lookup. The German election history and the reproduced 15 July 2007 Hattrick final announcement additionally identify Alando-Brinkman for this edition. Relevant primary-profile observations are retained in national-winner-source-observations.json."
+  }
+]

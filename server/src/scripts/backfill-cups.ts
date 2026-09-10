@@ -17,7 +17,7 @@ import type { TokenPair } from '../chpp/auth.js';
  *
  * Env:
  *   MAX_CALLS=1200          CHPP call budget for this run (keep under your remaining daily quota)
- *   OWNERS=0                materialise + resolve teamIds only; leave owners for the scrape
+ *   OWNERS=1                explicitly enable UNVERIFIED current-owner approximation (default off)
  *   LEAGUES=4,11            restrict to these leagueIds
  *   OAUTH_ACCESS_STASH=...  token path (defaults to server/.oauth-access.json)
  *   OUT=../web/public/data  bake target · SKIP_BAKE=1 to update the DB only
@@ -25,7 +25,7 @@ import type { TokenPair } from '../chpp/auth.js';
 const stashPath = process.env.OAUTH_ACCESS_STASH ?? '.oauth-access.json';
 const access: TokenPair = JSON.parse(readFileSync(stashPath, 'utf8'));
 const maxCalls = Number(process.env.MAX_CALLS) || 1200;
-const attributeOwners = process.env.OWNERS !== '0';
+const attributeOwners = process.env.OWNERS === '1';
 const onlyLeagueIds = process.env.LEAGUES
   ? process.env.LEAGUES.split(',').map(Number).filter((n) => !Number.isNaN(n))
   : undefined;

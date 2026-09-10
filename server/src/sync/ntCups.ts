@@ -1,8 +1,8 @@
-import { readFileSync } from 'node:fs';
 import { prisma } from '../db/client.js';
-import { enrichUserNationalities } from './enrichManagers.js';
 import type { TokenPair } from '../chpp/auth.js';
 import type { CoachTenure } from './worldCup.js';
+import { mergeNationalPodiumFacts, validNationalBronzeInput } from './nationalPodiumIngest.js';
+import { validSuppliedNationalDates } from './nationalDates.js';
 
 /**
  * Regional national-team cups — Africa / America / Asia and Oceania / Europe / Nations Cup.
@@ -76,7 +76,7 @@ export interface NtCupSeason {
   thirdFourthLeagueIds?: Array<number | null>;
 }
 
-export interface NtCupIngestResult { seasons: number; skipped: number; withChampion: number }
+export interface NtCupIngestResult { seasons: number; skipped: number; withChampion: number; conflicts: number }
 
 /**
  * Ingest scraped seasons. Upsert per (cupId, season) — a season already stored is refreshed, not
@@ -89,11 +89,20 @@ export async function ingestNtCupSeasons(rows: NtCupSeason[]): Promise<NtCupInge
   let seasons = 0;
   let skipped = 0;
   let withChampion = 0;
+  let conflicts = 0;
 
   for (const r of rows) {
     const cup = byId.get(r.cupId);
-    if (!cup || !Number.isFinite(r.season)) {
+    if (!cup || !Number.isSafeInteger(r.season) || r.season <= 0) {
       skipped++;
+      continue;
+    }
+    if ((r.thirdFourth?.length ?? 0) > 2 || r.thirdFourth?.some((n) => !n.trim()) || !validNationalBronzeInput(r.thirdFourth, r.thirdFourthTeamIds, r.thirdFourthLeagueIds) || !validSuppliedNationalDates(r.startedDate, r.finalDate)) {
+      conflicts++;
+      continue;
+    }
+    if ([r.championTeamId, r.championLeagueId, r.runnerUpTeamId, r.runnerUpLeagueId].some((id) => id !== null && id !== undefined && (!Number.isSafeInteger(id) || id <= 0))) {
+      conflicts++;
       continue;
     }
     const data = {
@@ -122,109 +131,28 @@ export async function ingestNtCupSeasons(rows: NtCupSeason[]): Promise<NtCupInge
         }
       : {};
     const thirdFourth = { thirdFourth: (r.thirdFourth ?? []).join(', ') };
-    await prisma.nationalCupChampion.upsert({
-      where: { cupId_season: { cupId: r.cupId, season: r.season } },
-      update: { ...data, ...thirdFourth, ...ids },
-      create: { cupId: r.cupId, season: r.season, ...data, ...thirdFourth, ...ids },
+    const accepted = await prisma.$transaction(async (tx) => {
+      const where = { cupId_season: { cupId: r.cupId, season: r.season } };
+      const facts = { ...data, ...thirdFourth, ...ids };
+      const stored = await tx.nationalCupChampion.findUnique({ where });
+      const merged = mergeNationalPodiumFacts(stored ?? {}, facts);
+      if (merged.conflicts.length) return false;
+      if (!stored) await tx.nationalCupChampion.create({ data: { cupId: r.cupId, season: r.season, ...facts } });
+      else {
+        if (Object.keys(merged.data).length) await tx.nationalCupChampion.update({ where, data: merged.data });
+      }
+      return true;
     });
+    if (!accepted) { conflicts++; continue; }
     seasons++;
     if (r.champion) withChampion++;
   }
-  return { seasons, skipped, withChampion };
-}
-
-/** "DD-MM-YYYY[ HH:MM]" (Cup.aspx) or "DD.MM.YYYY" (NTFormerCoaches) → epoch ms. */
-function parseDate(d: string): number {
-  const [dd, mm, yyyy] = d.trim().split(' ')[0]!.split(/[.\-/]/).map(Number);
-  return new Date(yyyy!, mm! - 1, dd).getTime();
+  return { seasons, skipped, withChampion, conflicts };
 }
 
 export interface NtCupAttributionResult { attributed: number; eligible: number; medals: number; medalSlots: number }
 
-/**
- * Credit each finished season to the manager coaching the champion nation when the final was
- * played — the tenure (NTFormerCoaches.aspx, already scraped for the World Cup) that started most
- * recently on/before `finalDate`. Same rule and same tenure data as attributeWorldCupCoaches, so a
- * coach's World Cup and regional titles are attributed consistently.
- *
- * The champion's team id normally comes straight off the podium link; national-team-ids.json is
- * only the fallback for rows scraped before that was captured (and the only path for youth cups,
- * whose podium points at the U21 entity anyway).
- */
-export async function attributeNtCupCoaches(token: TokenPair, tenures: CoachTenure[]): Promise<NtCupAttributionResult> {
-  const byTeam = new Map<number, CoachTenure[]>();
-  for (const t of tenures) {
-    if (!t.date) continue; // sentinel row for a team with no parseable tenure data
-    const arr = byTeam.get(t.teamId) ?? [];
-    arr.push(t);
-    byTeam.set(t.teamId, arr);
-  }
-  for (const arr of byTeam.values()) arr.sort((a, b) => parseDate(a.date) - parseDate(b.date));
-
-  const teamIds: Record<string, { nationalTeamId: number; u20TeamId: number }> = JSON.parse(
-    readFileSync(new URL('../data/national-team-ids.json', import.meta.url), 'utf8'),
-  );
-
-  /** Whoever's tenure started most recently on/before the final — the one attribution rule, applied
-   *  to every podium place. Returns null when the team is unknown or has no tenure that far back. */
-  const coachAt = (teamId: number | null | undefined, finalMs: number): CoachTenure | null => {
-    if (!teamId) return null;
-    const teamTenures = byTeam.get(teamId);
-    if (!teamTenures) return null;
-    let coach: CoachTenure | null = null;
-    for (const tn of teamTenures) {
-      if (parseDate(tn.date) <= finalMs) coach = tn;
-      else break;
-    }
-    return coach;
-  };
-  const remember = async (coach: CoachTenure | null) => {
-    if (!coach?.userId) return;
-    await prisma.hattrickUser.upsert({
-      where: { userId: coach.userId },
-      update: { loginName: coach.name },
-      create: { userId: coach.userId, loginName: coach.name },
-    });
-  };
-
-  const rows = await prisma.nationalCupChampion.findMany();
-  let attributed = 0;
-  let eligible = 0;
-  let medals = 0;
-  let medalSlots = 0;
-  for (const r of rows) {
-    if (!r.champion || !r.finalDate) continue;
-    eligible++;
-    const byName = teamIds[r.champion];
-    const teamId = r.championTeamId ?? (r.isYouth ? byName?.u20TeamId : byName?.nationalTeamId);
-    const finalMs = parseDate(r.finalDate);
-
-    const coach = coachAt(teamId, finalMs);
-    if (coach?.userId) attributed++;
-    await remember(coach);
-
-    // Silver and bronze, on identical evidence. Bronze is a list because both losing semi-finalists
-    // place jointly third; an unattributable slot stays empty rather than shifting the alignment.
-    const second = coachAt(r.runnerUpTeamId, finalMs);
-    const thirds = (r.thirdFourthTeamIds || '')
-      .split(',')
-      .filter((s) => s.trim())
-      .map((s) => coachAt(Number(s), finalMs));
-    await remember(second);
-    for (const t of thirds) await remember(t);
-    medalSlots += (r.runnerUpTeamId ? 1 : 0) + thirds.length;
-    medals += (second?.userId ? 1 : 0) + thirds.filter((t) => t?.userId).length;
-
-    await prisma.nationalCupChampion.update({
-      where: { cupId_season: { cupId: r.cupId, season: r.season } },
-      data: {
-        ...(coach ? { championUserId: coach.userId, championUserName: coach.userId ? coach.name : null } : {}),
-        runnerUpUserId: second?.userId || null,
-        thirdFourthUserIds: thirds.map((t) => t?.userId || '').join(','),
-      },
-    });
-  }
-
-  await enrichUserNationalities(token);
-  return { attributed, eligible, medals, medalSlots };
+/** Flat legacy tenure rows cannot establish coverage or safely reconstruct index-aligned medals. */
+export async function attributeNtCupCoaches(_token: TokenPair, _tenures: CoachTenure[]): Promise<NtCupAttributionResult> {
+  throw new Error('Unverified flat coach-tenure attribution is disabled. Use recover:national-coaches with complete captured histories or verified trophy evidence; existing regional-cup attributions are preserved.');
 }

@@ -1,4 +1,6 @@
+import '../config/env.js';
 import { readFileSync } from 'node:fs';
+import { parseArgs } from 'node:util';
 import { prisma } from '../db/client.js';
 import { ingestElections, type ElectionRecord } from '../sync/elections.js';
 
@@ -9,13 +11,15 @@ import { ingestElections, type ElectionRecord } from '../sync/elections.js';
  *
  *   npm run sync:elections -w server
  *
- * Pass IN=<path> (a .jsonl, one record per line) to ingest a fresh scrape instead.
+ * Pass --input <path.jsonl> to merge a fresh scrape. Add --complete only for a verified complete
+ * snapshot to allow insertion of previously absent rows. Existing rows are never deleted.
  */
-const records: ElectionRecord[] = process.env.IN
-  ? readFileSync(process.env.IN, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l))
+const { values } = parseArgs({ options: { input: { type: 'string' }, complete: { type: 'boolean', default: false } } });
+const records: ElectionRecord[] = values.input
+  ? readFileSync(values.input, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l))
   : JSON.parse(readFileSync(new URL('../sync/elections.json', import.meta.url), 'utf8'));
 
-const n = await ingestElections(records);
+const n = await ingestElections(records, { complete: !values.input || values.complete });
 console.log(`ingested ${n} election records`);
 
 const total = await prisma.nationalCoachElection.count();

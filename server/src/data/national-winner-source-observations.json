@@ -1,0 +1,23 @@
+[
+  {
+    "sourceURL": "https://www.hattrick.org/en/Club/Manager/?userId=184069",
+    "capturedAt": "2026-09-10T21:12:10.653Z",
+    "userId": 184069,
+    "displayName": "A former user",
+    "previousTeam": {
+      "teamId": 53861,
+      "name": "Harsefelder FC",
+      "from": "2002-11-29",
+      "until": "2008-06-14",
+      "historyURL": "https://www.hattrick.org/Club/History/?teamId=53861",
+      "trophyURLs": [
+        "https://www.hattrick.org/World/Series/SeriesHistory.aspx?LeagueLevelUnitID=427&RequestedSeason=30&Games=",
+        "https://www.hattrick.org/World/Series/SeriesHistory.aspx?LeagueLevelUnitID=429&RequestedSeason=29&Games=",
+        "https://www.hattrick.org/World/Series/SeriesHistory.aspx?LeagueLevelUnitID=439&RequestedSeason=28&Games=",
+        "https://www.hattrick.org/World/Series/SeriesHistory.aspx?LeagueLevelUnitID=458&RequestedSeason=23&Games=",
+        "https://www.hattrick.org/World/Series/SeriesHistory.aspx?LeagueLevelUnitID=6323&RequestedSeason=18&Games="
+      ]
+    },
+    "notes": "Selected game-history facts from the rendered primary manager page. No numeric national-coach link or national trophy was visible on this retired profile; the historical name and national title require the independent dated sources in verified-national-trophy-winners.json."
+  }
+]

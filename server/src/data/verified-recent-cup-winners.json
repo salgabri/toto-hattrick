@@ -1,0 +1,327 @@
+[
+  {
+    "table": "cupChampion",
+    "competitionId": 1563,
+    "season": 1,
+    "teamId": 2184838,
+    "teamName": "Bahamas Pirates Crew",
+    "userId": 13705247,
+    "name": "iTz__VeNoM",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2184838"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"07-11-2024 In season 1, Bahamas Pirates Crew emerged victorious from Bahamas Cup. They were managed by iTz__VeNoM.\",\"links\":[{\"text\":\"1\",\"href\":\"/Club/Matches/Archive.aspx?season=89&TeamID=2184838&actiontype=viewcup\"},{\"text\":\"Bahamas Pirates Crew\",\"href\":\"/Club/?TeamID=2184838\"},{\"text\":\"Bahamas Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1563\"},{\"text\":\"iTz__VeNoM\",\"href\":\"/Club/Manager/?userId=13705247\"}],\"date\":\"2024-11-07\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2184838\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1543,
+    "season": 3,
+    "teamId": 2125455,
+    "teamName": "Jiroubre C.F",
+    "userId": 12748823,
+    "name": "Balthazar-Boma",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2125455"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"14-11-2024 Jiroubre C.F, under the leadership of Balthazar-Boma, won Guyana Cup season 3.\",\"links\":[{\"text\":\"Jiroubre C.F\",\"href\":\"/Club/?TeamID=2125455\"},{\"text\":\"Balthazar-Boma\",\"href\":\"/Club/Manager/?userId=12748823\"},{\"text\":\"Guyana Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1543\"},{\"text\":\"3\",\"href\":\"/Club/Matches/Archive.aspx?season=89&TeamID=2125455&actiontype=viewcup\"}],\"date\":\"2024-11-14\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2125455\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 205,
+    "season": 55,
+    "teamId": 1961122,
+    "teamName": "Steaua Maldive",
+    "userId": 4723565,
+    "name": "paul_steaua",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1961122"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"19-02-2025 In season 55, Steaua Maldive emerged victorious from Dhivehi Raajje Cup. They were managed by paul_steaua.\",\"links\":[{\"text\":\"55\",\"href\":\"/Club/Matches/Archive.aspx?season=90&TeamID=1961122&actiontype=viewcup\"},{\"text\":\"Steaua Maldive\",\"href\":\"/Club/?TeamID=1961122\"},{\"text\":\"Dhivehi Raajje Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=205\"},{\"text\":\"paul_steaua\",\"href\":\"/Club/Manager/?userId=4723565\"}],\"date\":\"2025-02-19\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1961122\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 636,
+    "season": 53,
+    "teamId": 1961122,
+    "teamName": "Steaua Maldive",
+    "userId": 4723565,
+    "name": "paul_steaua",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1961122"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"17-07-2024 Steaua Maldive, under the leadership of paul_steaua, won Dhivehi Raajje Emerald Challenger Cup season 53.\",\"links\":[{\"text\":\"Steaua Maldive\",\"href\":\"/Club/?TeamID=1961122\"},{\"text\":\"paul_steaua\",\"href\":\"/Club/Manager/?userId=4723565\"},{\"text\":\"Dhivehi Raajje Emerald Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=636\"},{\"text\":\"53\",\"href\":\"/Club/Matches/Archive.aspx?season=88&TeamID=1961122&actiontype=viewcup\"}],\"date\":\"2024-07-17\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1961122\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 636,
+    "season": 52,
+    "teamId": 1961122,
+    "teamName": "Steaua Maldive",
+    "userId": 4723565,
+    "name": "paul_steaua",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1961122"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"27-03-2024 In season 52, Steaua Maldive emerged victorious from Dhivehi Raajje Emerald Challenger Cup. They were managed by paul_steaua.\",\"links\":[{\"text\":\"52\",\"href\":\"/Club/Matches/Archive.aspx?season=87&TeamID=1961122&actiontype=viewcup\"},{\"text\":\"Steaua Maldive\",\"href\":\"/Club/?TeamID=1961122\"},{\"text\":\"Dhivehi Raajje Emerald Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=636\"},{\"text\":\"paul_steaua\",\"href\":\"/Club/Manager/?userId=4723565\"}],\"date\":\"2024-03-27\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1961122\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 765,
+    "season": 51,
+    "teamId": 1961122,
+    "teamName": "Steaua Maldive",
+    "userId": 4723565,
+    "name": "paul_steaua",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1961122"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"06-12-2023 Season 51 was memorable for paul_steaua, who led Steaua Maldive to the title in Dhivehi Raajje Ruby Challenger Cup.\",\"links\":[{\"text\":\"51\",\"href\":\"/Club/Matches/Archive.aspx?season=86&TeamID=1961122&actiontype=viewcup\"},{\"text\":\"paul_steaua\",\"href\":\"/Club/Manager/?userId=4723565\"},{\"text\":\"Steaua Maldive\",\"href\":\"/Club/?TeamID=1961122\"},{\"text\":\"Dhivehi Raajje Ruby Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=765\"}],\"date\":\"2023-12-06\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1961122\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 598,
+    "season": 69,
+    "teamId": 1632892,
+    "teamName": "Village Green Preservation Society",
+    "userId": 10978067,
+    "name": "Fiore---95",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1632892"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"22-10-2025 Season 69 was memorable for Fiore---95, who led Village Green Preservation Society to the title in Tazza ta' Għawdex.\",\"links\":[{\"text\":\"69\",\"href\":\"/Club/Matches/Archive.aspx?season=92&TeamID=1632892&actiontype=viewcup\"},{\"text\":\"Fiore---95\",\"href\":\"/Club/Manager/?userId=10978067\"},{\"text\":\"Village Green Preservation Society\",\"href\":\"/Club/?TeamID=1632892\"},{\"text\":\"Tazza ta' Għawdex\",\"href\":\"/World/Cup/Cup.aspx?CupID=598\"}],\"date\":\"2025-10-22\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1632892\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 161,
+    "season": 68,
+    "teamId": 1632892,
+    "teamName": "Village Green Preservation Society",
+    "userId": 10978067,
+    "name": "Fiore---95",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1632892"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"18-06-2025 Village Green Preservation Society, under the leadership of Fiore---95, won Tazza ta' Malta season 68.\",\"links\":[{\"text\":\"Village Green Preservation Society\",\"href\":\"/Club/?TeamID=1632892\"},{\"text\":\"Fiore---95\",\"href\":\"/Club/Manager/?userId=10978067\"},{\"text\":\"Tazza ta' Malta\",\"href\":\"/World/Cup/Cup.aspx?CupID=161\"},{\"text\":\"68\",\"href\":\"/Club/Matches/Archive.aspx?season=91&TeamID=1632892&actiontype=viewcup\"}],\"date\":\"2025-06-18\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1632892\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 163,
+    "season": 68,
+    "teamId": 936412,
+    "teamName": "Tiki-Taka Barcelona",
+    "userId": 8030717,
+    "name": "dannyme87",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=936412"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"18-06-2025 Tiki-Taka Barcelona, under the leadership of dannyme87, won Cupa Moldovei season 68.\",\"links\":[{\"text\":\"Tiki-Taka Barcelona\",\"href\":\"/Club/?TeamID=936412\"},{\"text\":\"dannyme87\",\"href\":\"/Club/Manager/?userId=8030717\"},{\"text\":\"Cupa Moldovei\",\"href\":\"/World/Cup/Cup.aspx?CupID=163\"},{\"text\":\"68\",\"href\":\"/Club/Matches/Archive.aspx?season=91&TeamID=936412&actiontype=viewcup\"}],\"date\":\"2025-06-18\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=936412\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 163,
+    "season": 66,
+    "teamId": 936412,
+    "teamName": "Tiki-Taka Barcelona",
+    "userId": 8030717,
+    "name": "dannyme87",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=936412"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"06-11-2024 Season 66 was memorable for dannyme87, who led Tiki-Taka Barcelona to the title in Cupa Moldovei.\",\"links\":[{\"text\":\"66\",\"href\":\"/Club/Matches/Archive.aspx?season=89&TeamID=936412&actiontype=viewcup\"},{\"text\":\"dannyme87\",\"href\":\"/Club/Manager/?userId=8030717\"},{\"text\":\"Tiki-Taka Barcelona\",\"href\":\"/Club/?TeamID=936412\"},{\"text\":\"Cupa Moldovei\",\"href\":\"/World/Cup/Cup.aspx?CupID=163\"}],\"date\":\"2024-11-06\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=936412\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 192,
+    "season": 62,
+    "teamId": 1737331,
+    "teamName": "Rends toi !",
+    "userId": 13581795,
+    "name": "SebFa",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1737331"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"18-06-2025 Rends toi !, under the leadership of SebFa, won Kup Crne Gore season 62.\",\"links\":[{\"text\":\"Rends toi !\",\"href\":\"/Club/?TeamID=1737331\"},{\"text\":\"SebFa\",\"href\":\"/Club/Manager/?userId=13581795\"},{\"text\":\"Kup Crne Gore\",\"href\":\"/World/Cup/Cup.aspx?CupID=192\"},{\"text\":\"62\",\"href\":\"/Club/Matches/Archive.aspx?season=91&TeamID=1737331&actiontype=viewcup\"}],\"date\":\"2025-06-18\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1737331\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 135,
+    "season": 72,
+    "teamId": 2014902,
+    "teamName": "Kendalc'h Marok",
+    "userId": 6123790,
+    "name": "Millig",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2014902"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"08-10-2025 Kendalc'h Marok, under the leadership of Millig, won Coupe Du Trône season 72.\",\"links\":[{\"text\":\"Kendalc'h Marok\",\"href\":\"/Club/?TeamID=2014902\"},{\"text\":\"Millig\",\"href\":\"/Club/Manager/?userId=6123790\"},{\"text\":\"Coupe Du Trône\",\"href\":\"/World/Cup/Cup.aspx?CupID=135\"},{\"text\":\"72\",\"href\":\"/Club/Matches/Archive.aspx?season=92&TeamID=2014902&actiontype=viewcup\"}],\"date\":\"2025-10-08\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2014902\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 837,
+    "season": 71,
+    "teamId": 2014902,
+    "teamName": "Kendalc'h Marok",
+    "userId": 6123790,
+    "name": "Millig",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2014902"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"26-06-2025 In season 71, Kendalc'h Marok emerged victorious from Trophée Saphir. They were managed by Millig.\",\"links\":[{\"text\":\"71\",\"href\":\"/Club/Matches/Archive.aspx?season=91&TeamID=2014902&actiontype=viewcup\"},{\"text\":\"Kendalc'h Marok\",\"href\":\"/Club/?TeamID=2014902\"},{\"text\":\"Trophée Saphir\",\"href\":\"/World/Cup/Cup.aspx?CupID=837\"},{\"text\":\"Millig\",\"href\":\"/Club/Manager/?userId=6123790\"}],\"date\":\"2025-06-26\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2014902\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 579,
+    "season": 70,
+    "teamId": 2014902,
+    "teamName": "Kendalc'h Marok",
+    "userId": 6123790,
+    "name": "Millig",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2014902"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"06-03-2025 Season 70 was memorable for Millig, who led Kendalc'h Marok to the title in Trophée Émeraude.\",\"links\":[{\"text\":\"70\",\"href\":\"/Club/Matches/Archive.aspx?season=90&TeamID=2014902&actiontype=viewcup\"},{\"text\":\"Millig\",\"href\":\"/Club/Manager/?userId=6123790\"},{\"text\":\"Kendalc'h Marok\",\"href\":\"/Club/?TeamID=2014902\"},{\"text\":\"Trophée Émeraude\",\"href\":\"/World/Cup/Cup.aspx?CupID=579\"}],\"date\":\"2025-03-06\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2014902\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 708,
+    "season": 68,
+    "teamId": 2014902,
+    "teamName": "Kendalc'h Marok",
+    "userId": 6123790,
+    "name": "Millig",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2014902"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"25-07-2024 In season 68, Kendalc'h Marok emerged victorious from Trophée Rubis. They were managed by Millig.\",\"links\":[{\"text\":\"68\",\"href\":\"/Club/Matches/Archive.aspx?season=88&TeamID=2014902&actiontype=viewcup\"},{\"text\":\"Kendalc'h Marok\",\"href\":\"/Club/?TeamID=2014902\"},{\"text\":\"Trophée Rubis\",\"href\":\"/World/Cup/Cup.aspx?CupID=708\"},{\"text\":\"Millig\",\"href\":\"/Club/Manager/?userId=6123790\"}],\"date\":\"2024-07-25\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2014902\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 196,
+    "season": 57,
+    "teamId": 1799331,
+    "teamName": "Atlético Moçambicano",
+    "userId": 6989759,
+    "name": "Andrey_Souza",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1799331"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"30-10-2024 Atlético Moçambicano, under the leadership of Andrey_Souza, won Taça de Mocambique season 57.\",\"links\":[{\"text\":\"Atlético Moçambicano\",\"href\":\"/Club/?TeamID=1799331\"},{\"text\":\"Andrey_Souza\",\"href\":\"/Club/Manager/?userId=6989759\"},{\"text\":\"Taça de Mocambique\",\"href\":\"/World/Cup/Cup.aspx?CupID=196\"},{\"text\":\"57\",\"href\":\"/Club/Matches/Archive.aspx?season=89&TeamID=1799331&actiontype=viewcup\"}],\"date\":\"2024-10-30\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1799331\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 885,
+    "season": 56,
+    "teamId": 1799331,
+    "teamName": "Atlético Moçambicano",
+    "userId": 6989759,
+    "name": "Andrey_Souza",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1799331"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"17-07-2024 In season 56, Atlético Moçambicano emerged victorious from Taça Challenger Safira de Moçambique. They were managed by Andrey_Souza.\",\"links\":[{\"text\":\"56\",\"href\":\"/Club/Matches/Archive.aspx?season=88&TeamID=1799331&actiontype=viewcup\"},{\"text\":\"Atlético Moçambicano\",\"href\":\"/Club/?TeamID=1799331\"},{\"text\":\"Taça Challenger Safira de Moçambique\",\"href\":\"/World/Cup/Cup.aspx?CupID=885\"},{\"text\":\"Andrey_Souza\",\"href\":\"/Club/Manager/?userId=6989759\"}],\"date\":\"2024-07-17\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1799331\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 627,
+    "season": 55,
+    "teamId": 1799331,
+    "teamName": "Atlético Moçambicano",
+    "userId": 6989759,
+    "name": "Andrey_Souza",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1799331"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"03-04-2024 Season 55 was memorable for Andrey_Souza, who led Atlético Moçambicano to the title in Taça Challenger Esmeralda de Moçambique.\",\"links\":[{\"text\":\"55\",\"href\":\"/Club/Matches/Archive.aspx?season=87&TeamID=1799331&actiontype=viewcup\"},{\"text\":\"Andrey_Souza\",\"href\":\"/Club/Manager/?userId=6989759\"},{\"text\":\"Atlético Moçambicano\",\"href\":\"/Club/?TeamID=1799331\"},{\"text\":\"Taça Challenger Esmeralda de Moçambique\",\"href\":\"/World/Cup/Cup.aspx?CupID=627\"}],\"date\":\"2024-04-03\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1799331\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 627,
+    "season": 54,
+    "teamId": 1799331,
+    "teamName": "Atlético Moçambicano",
+    "userId": 6989759,
+    "name": "Andrey_Souza",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1799331"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"06-12-2023 Atlético Moçambicano, under the leadership of Andrey_Souza, won Taça Challenger Esmeralda de Moçambique season 54.\",\"links\":[{\"text\":\"Atlético Moçambicano\",\"href\":\"/Club/?TeamID=1799331\"},{\"text\":\"Andrey_Souza\",\"href\":\"/Club/Manager/?userId=6989759\"},{\"text\":\"Taça Challenger Esmeralda de Moçambique\",\"href\":\"/World/Cup/Cup.aspx?CupID=627\"},{\"text\":\"54\",\"href\":\"/Club/Matches/Archive.aspx?season=86&TeamID=1799331&actiontype=viewcup\"}],\"date\":\"2023-12-06\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1799331\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 129,
+    "season": 71,
+    "teamId": 260015,
+    "teamName": "NK Los Pollos Hermanos",
+    "userId": 11858943,
+    "name": "LFenomeno9",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=260015"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"30-10-2024 Season 71 was memorable for LFenomeno9, who led NK Los Pollos Hermanos to the title in Pakistan Cup.\",\"links\":[{\"text\":\"71\",\"href\":\"/Club/Matches/Archive.aspx?season=89&TeamID=260015&actiontype=viewcup\"},{\"text\":\"LFenomeno9\",\"href\":\"/Club/Manager/?userId=11858943\"},{\"text\":\"NK Los Pollos Hermanos\",\"href\":\"/Club/?TeamID=260015\"},{\"text\":\"Pakistan Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=129\"}],\"date\":\"2024-10-30\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=260015\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 539,
+    "season": 77,
+    "teamId": 941629,
+    "teamName": "Gwangju Frost FC",
+    "userId": 12985090,
+    "name": "zzzinu",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=941629"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"13-11-2024 Gwangju Frost FC, under the leadership of zzzinu, won Korea Emerald Challenger Cup season 77.\",\"links\":[{\"text\":\"Gwangju Frost FC\",\"href\":\"/Club/?TeamID=941629\"},{\"text\":\"zzzinu\",\"href\":\"/Club/Manager/?userId=12985090\"},{\"text\":\"Korea Emerald Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=539\"},{\"text\":\"77\",\"href\":\"/Club/Matches/Archive.aspx?season=89&TeamID=941629&actiontype=viewcup\"}],\"date\":\"2024-11-13\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=941629\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 23,
+    "season": 76,
+    "teamId": 941629,
+    "teamName": "Gwangju Frost FC",
+    "userId": 12985090,
+    "name": "zzzinu",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=941629"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"17-07-2024 In season 76, Gwangju Frost FC emerged victorious from Korea Cup. They were managed by zzzinu.\",\"links\":[{\"text\":\"76\",\"href\":\"/Club/Matches/Archive.aspx?season=88&TeamID=941629&actiontype=viewcup\"},{\"text\":\"Gwangju Frost FC\",\"href\":\"/Club/?TeamID=941629\"},{\"text\":\"Korea Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=23\"},{\"text\":\"zzzinu\",\"href\":\"/Club/Manager/?userId=12985090\"}],\"date\":\"2024-07-17\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=941629\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 201,
+    "season": 57,
+    "teamId": 2023561,
+    "teamName": "FC Sich",
+    "userId": 8220743,
+    "name": "kapitowka",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2023561"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"19-02-2025 Season 57 was memorable for kapitowka, who led FC Sich to the title in Suriyah Cup.\",\"links\":[{\"text\":\"57\",\"href\":\"/Club/Matches/Archive.aspx?season=90&TeamID=2023561&actiontype=viewcup\"},{\"text\":\"kapitowka\",\"href\":\"/Club/Manager/?userId=8220743\"},{\"text\":\"FC Sich\",\"href\":\"/Club/?TeamID=2023561\"},{\"text\":\"Suriyah Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=201\"}],\"date\":\"2025-02-19\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2023561\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 139,
+    "season": 71,
+    "teamId": 1901389,
+    "teamName": "Inter Monastir",
+    "userId": 13289899,
+    "name": "Petitclub",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1901389"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"01-10-2025 Inter Monastir, under the leadership of Petitclub, won Tunisiyah Cup season 71.\",\"links\":[{\"text\":\"Inter Monastir\",\"href\":\"/Club/?TeamID=1901389\"},{\"text\":\"Petitclub\",\"href\":\"/Club/Manager/?userId=13289899\"},{\"text\":\"Tunisiyah Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=139\"},{\"text\":\"71\",\"href\":\"/Club/Matches/Archive.aspx?season=92&TeamID=1901389&actiontype=viewcup\"}],\"date\":\"2025-10-01\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1901389\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 968,
+    "season": 67,
+    "teamId": 1901389,
+    "teamName": "Monastir International",
+    "userId": 13289899,
+    "name": "Petitclub",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1901389"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"17-07-2024 In season 67, Monastir International emerged victorious from Consolante. They were managed by Petitclub.\",\"links\":[{\"text\":\"67\",\"href\":\"/Club/Matches/Archive.aspx?season=88&TeamID=1901389&actiontype=viewcup\"},{\"text\":\"Monastir International\",\"href\":\"/Club/?TeamID=1901389\"},{\"text\":\"Consolante\",\"href\":\"/World/Cup/Cup.aspx?CupID=968\"},{\"text\":\"Petitclub\",\"href\":\"/Club/Manager/?userId=13289899\"}],\"date\":\"2024-07-17\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1901389\"}}"
+  }
+]

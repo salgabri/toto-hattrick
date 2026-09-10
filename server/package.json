@@ -38,7 +38,11 @@
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
     "repair:leagues": "tsx src/scripts/repair-league-placeholders.ts",
-    "backfill:managers": "tsx src/scripts/backfill-managers.ts"
+    "backfill:managers": "tsx src/scripts/backfill-managers.ts",
+    "recover:historical-winners": "tsx src/scripts/recover-historical-winners.ts",
+    "materialize:recent-winners": "tsx src/scripts/materialize-recent-winners.ts",
+    "recover:national-coaches": "tsx src/scripts/recover-national-coaches.ts",
+    "test:winners": "npm run build && node --test dist/sync/*.test.js dist/scripts/*.test.js"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.1",

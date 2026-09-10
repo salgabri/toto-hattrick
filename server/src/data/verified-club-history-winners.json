@@ -1,0 +1,564 @@
+[
+  {
+    "table": "cupChampion",
+    "competitionId": 7,
+    "season": 88,
+    "teamId": 1726060,
+    "teamName": "Re Picante",
+    "userId": 11687578,
+    "name": "SebasM",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1726060"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"27-08-2024 In season 88, Re Picante emerged victorious from Coppa Italia. They were managed by SebasM.\",\"links\":[{\"text\":\"88\",\"href\":\"/Club/Matches/Archive.aspx?season=88&TeamID=1726060&actiontype=viewcup\"},{\"text\":\"Re Picante\",\"href\":\"/Club/?TeamID=1726060\"},{\"text\":\"Coppa Italia\",\"href\":\"/World/Cup/Cup.aspx?CupID=7\"},{\"text\":\"SebasM\",\"href\":\"/Club/Manager/?userId=11687578\"}],\"date\":\"2024-08-27\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1726060\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 3427550,
+    "season": 17,
+    "teamId": 1726060,
+    "teamLeagueId": 4,
+    "teamName": "Re Picante",
+    "userId": 11687578,
+    "name": "SebasM",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=1726060"
+    ],
+    "evidence": "{\"basis\":\"ownership-tenure\",\"event\":{\"text\":\"28-01-2024 Participated in season 17 of Heroes of 2019 Trophy and finished as number 1.\",\"links\":[{\"text\":\"Heroes of 2019 Trophy\",\"href\":\"/Club/ArenaHub/Tournaments/TournamentHistory.aspx?tournamentId=3427550&season=17\"}],\"date\":\"2024-01-28\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1726060\"},\"ownershipEvent\":{\"text\":\"13-07-2019 The club changed owner as SebasM took control and renamed it Re Picante.\",\"links\":[{\"text\":\"SebasM\",\"href\":\"/Club/Manager/?userId=11687578\"}],\"date\":\"2019-07-13\",\"page\":3,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=1726060\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1433,
+    "season": 8,
+    "teamId": 2053266,
+    "teamName": "HI-Dandy de Tazmania",
+    "userId": 8118689,
+    "name": "ercanto",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2053266"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"28-05-2019 In season 8, HI-Dandy de Tazmania emerged victorious from Hattrick International Cup. They were managed by ercanto.\",\"links\":[{\"text\":\"8\",\"href\":\"/Club/Matches/Archive.aspx?season=71&TeamID=2053266&actiontype=viewcup\"},{\"text\":\"HI-Dandy de Tazmania\",\"href\":\"/Club/?TeamID=2053266\"},{\"text\":\"Hattrick International Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1433\"},{\"text\":\"ercanto\",\"href\":\"/Club/Manager/?userId=8118689\"}],\"date\":\"2019-05-28\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2053266\"}}"
+  },
+  {
+    "table": "leagueChampion",
+    "competitionId": 1000,
+    "season": 7,
+    "teamId": 2053266,
+    "teamName": "HI-Dandy de Tazmania",
+    "userId": 8118689,
+    "name": "ercanto",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2053266"
+    ],
+    "evidence": "{\"basis\":\"ownership-tenure\",\"event\":{\"text\":\"01-03-2019 HI-Dandy de Tazmania finished as number 1 in I.1 season 7.\",\"links\":[{\"text\":\"HI-Dandy de Tazmania\",\"href\":\"/Club/?TeamID=2053266\"},{\"text\":\"I.1\",\"href\":\"/World/Series/SeriesHistory.aspx?LeagueLevelUnitID=256687&RequestedSeason=7&Games=all\"}],\"date\":\"2019-03-01\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2053266\"},\"ownershipEvent\":{\"text\":\"09-01-2017 The club changed owner as ercanto took control and renamed it HI-Dandy de Tazmania.\",\"links\":[{\"text\":\"ercanto\",\"href\":\"/Club/Manager/?userId=8118689\"}],\"date\":\"2017-01-09\",\"page\":3,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2053266\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1433,
+    "season": 7,
+    "teamId": 2053266,
+    "teamName": "HI-Dandy de Tazmania",
+    "userId": 8118689,
+    "name": "ercanto",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2053266"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"05-02-2019 Season 7 was memorable for ercanto, who led HI-Dandy de Tazmania to the title in Hattrick International Cup.\",\"links\":[{\"text\":\"7\",\"href\":\"/Club/Matches/Archive.aspx?season=70&TeamID=2053266&actiontype=viewcup\"},{\"text\":\"ercanto\",\"href\":\"/Club/Manager/?userId=8118689\"},{\"text\":\"HI-Dandy de Tazmania\",\"href\":\"/Club/?TeamID=2053266\"},{\"text\":\"Hattrick International Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1433\"}],\"date\":\"2019-02-05\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2053266\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 3116071,
+    "season": 11,
+    "teamId": 2054069,
+    "teamLeagueId": 1000,
+    "teamName": "- Grande Inverno -",
+    "userId": 13062794,
+    "name": "Grazzzzz",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2054069"
+    ],
+    "evidence": "{\"basis\":\"ownership-tenure\",\"event\":{\"text\":\"03-01-2021 Participated in season 11 of Heroes of 2017 Trophy and finished as number 1.\",\"links\":[{\"text\":\"Heroes of 2017 Trophy\",\"href\":\"/Club/ArenaHub/Tournaments/TournamentHistory.aspx?tournamentId=3116071&season=11\"}],\"date\":\"2021-01-03\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2054069\"},\"ownershipEvent\":{\"text\":\"09-01-2017 The club changed owner as Grazzzzz took control and renamed it - Grande Inverno -.\",\"links\":[{\"text\":\"Grazzzzz\",\"href\":\"/Club/Manager/?userId=13062794\"}],\"date\":\"2017-01-09\",\"page\":4,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2054069\"}}"
+  },
+  {
+    "table": "leagueChampion",
+    "competitionId": 1000,
+    "season": 13,
+    "teamId": 2054069,
+    "teamName": "- Grande Inverno -",
+    "userId": 13062794,
+    "name": "Grazzzzz",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2054069"
+    ],
+    "evidence": "{\"basis\":\"ownership-tenure\",\"event\":{\"text\":\"01-01-2021 - Grande Inverno - finished as number 1 in I.1 season 13.\",\"links\":[{\"text\":\"- Grande Inverno -\",\"href\":\"/Club/?TeamID=2054069\"},{\"text\":\"I.1\",\"href\":\"/World/Series/SeriesHistory.aspx?LeagueLevelUnitID=256687&RequestedSeason=13&Games=all\"}],\"date\":\"2021-01-01\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2054069\"},\"ownershipEvent\":{\"text\":\"09-01-2017 The club changed owner as Grazzzzz took control and renamed it - Grande Inverno -.\",\"links\":[{\"text\":\"Grazzzzz\",\"href\":\"/Club/Manager/?userId=13062794\"}],\"date\":\"2017-01-09\",\"page\":4,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2054069\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 5255320,
+    "season": 8,
+    "teamId": 2102951,
+    "teamLeagueId": 1002,
+    "teamName": "FC Freebie",
+    "userId": 10559120,
+    "name": "Sourtulip",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2102951"
+    ],
+    "evidence": "{\"basis\":\"ownership-tenure\",\"event\":{\"text\":\"19-05-2024 Participated in season 8 of Heroes of 2022 Trophy and finished as number 1.\",\"links\":[{\"text\":\"Heroes of 2022 Trophy\",\"href\":\"/Club/ArenaHub/Tournaments/TournamentHistory.aspx?tournamentId=5255320&season=8\"}],\"date\":\"2024-05-19\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2102951\"},\"ownershipEvent\":{\"text\":\"22-03-2022 The club changed owner as Sourtulip took control and renamed it FC Freebie.\",\"links\":[{\"text\":\"Sourtulip\",\"href\":\"/Club/Manager/?userId=10559120\"}],\"date\":\"2022-03-22\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2102951\"}}"
+  },
+  {
+    "table": "leagueChampion",
+    "competitionId": 1002,
+    "season": 7,
+    "teamId": 2102951,
+    "teamName": "FC Freebie",
+    "userId": 10559120,
+    "name": "Sourtulip",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2102951"
+    ],
+    "evidence": "{\"basis\":\"ownership-tenure\",\"event\":{\"text\":\"17-05-2024 FC Freebie finished as number 1 in I.1 season 7.\",\"links\":[{\"text\":\"FC Freebie\",\"href\":\"/Club/?TeamID=2102951\"},{\"text\":\"I.1\",\"href\":\"/World/Series/SeriesHistory.aspx?LeagueLevelUnitID=260265&RequestedSeason=7&Games=all\"}],\"date\":\"2024-05-17\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2102951\"},\"ownershipEvent\":{\"text\":\"22-03-2022 The club changed owner as Sourtulip took control and renamed it FC Freebie.\",\"links\":[{\"text\":\"Sourtulip\",\"href\":\"/Club/Manager/?userId=10559120\"}],\"date\":\"2022-03-22\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2102951\"}}"
+  },
+  {
+    "table": "leagueChampion",
+    "competitionId": 1000,
+    "season": 8,
+    "teamId": 2055767,
+    "teamName": "Io sono leggenda",
+    "userId": 11147581,
+    "name": "ciuffo-fisc",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2055767"
+    ],
+    "evidence": "{\"basis\":\"ownership-tenure\",\"event\":{\"text\":\"21-06-2019 Io sono leggenda finished as number 1 in I.1 season 8.\",\"links\":[{\"text\":\"Io sono leggenda\",\"href\":\"/Club/?TeamID=2055767\"},{\"text\":\"I.1\",\"href\":\"/World/Series/SeriesHistory.aspx?LeagueLevelUnitID=256687&RequestedSeason=8&Games=all\"}],\"date\":\"2019-06-21\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2055767\"},\"ownershipEvent\":{\"text\":\"10-01-2017 The club changed owner as ciuffo-fisc took control and renamed it Io sono leggenda.\",\"links\":[{\"text\":\"ciuffo-fisc\",\"href\":\"/Club/Manager/?userId=11147581\"}],\"date\":\"2017-01-10\",\"page\":3,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2055767\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1437,
+    "season": 27,
+    "teamId": 2052175,
+    "teamName": "FK Modriča Maksima",
+    "userId": 13431209,
+    "name": "Bosna69",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2052175"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"25-03-2025 Season 27 was memorable for Bosna69, who led FK Modriča Maksima to the title in Hattrick International Consolation Cup.\",\"links\":[{\"text\":\"27\",\"href\":\"/Club/Matches/Archive.aspx?season=90&TeamID=2052175&actiontype=viewcup\"},{\"text\":\"Bosna69\",\"href\":\"/Club/Manager/?userId=13431209\"},{\"text\":\"FK Modriča Maksima\",\"href\":\"/Club/?TeamID=2052175\"},{\"text\":\"Hattrick International Consolation Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1437\"}],\"date\":\"2025-03-25\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2052175\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1433,
+    "season": 1,
+    "teamId": 2052478,
+    "teamName": "Arlekinats 2017",
+    "userId": 3270054,
+    "name": "dealerxx",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2052478"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"04-04-2017 In season 1, Arlekinats 2017 emerged victorious from Hattrick International Cup. They were managed by dealerxx.\",\"links\":[{\"text\":\"1\",\"href\":\"/Club/Matches/Archive.aspx?season=64&TeamID=2052478&actiontype=viewcup\"},{\"text\":\"Arlekinats 2017\",\"href\":\"/Club/?TeamID=2052478\"},{\"text\":\"Hattrick International Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1433\"},{\"text\":\"dealerxx\",\"href\":\"/Club/Manager/?userId=3270054\"}],\"date\":\"2017-04-04\",\"page\":8,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2052478\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1436,
+    "season": 11,
+    "teamId": 2052579,
+    "teamName": "International Monkeys",
+    "userId": 536138,
+    "name": "Gaudeamus",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2052579"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"05-05-2020 In season 11, International Monkeys emerged victorious from Hattrick International Sapphire Challenger Cup. They were managed by Gaudeamus.\",\"links\":[{\"text\":\"11\",\"href\":\"/Club/Matches/Archive.aspx?season=74&TeamID=2052579&actiontype=viewcup\"},{\"text\":\"International Monkeys\",\"href\":\"/Club/?TeamID=2052579\"},{\"text\":\"Hattrick International Sapphire Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1436\"},{\"text\":\"Gaudeamus\",\"href\":\"/Club/Manager/?userId=536138\"}],\"date\":\"2020-05-05\",\"page\":8,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2052579\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1434,
+    "season": 2,
+    "teamId": 2052639,
+    "teamName": "All Roads Leads To Rome",
+    "userId": 12817800,
+    "name": "Edwindb",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2052639"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"08-08-2017 In season 2, All Roads Leads To Rome emerged victorious from Hattrick International Emerald Challenger Cup. They were managed by Edwindb.\",\"links\":[{\"text\":\"2\",\"href\":\"/Club/Matches/Archive.aspx?season=65&TeamID=2052639&actiontype=viewcup\"},{\"text\":\"All Roads Leads To Rome\",\"href\":\"/Club/?TeamID=2052639\"},{\"text\":\"Hattrick International Emerald Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1434\"},{\"text\":\"Edwindb\",\"href\":\"/Club/Manager/?userId=12817800\"}],\"date\":\"2017-08-08\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2052639\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1435,
+    "season": 6,
+    "teamId": 2052682,
+    "teamName": "Caipirinha F.C",
+    "userId": 352538,
+    "name": "LA-Magician",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2052682"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"23-10-2018 Season 6 was memorable for LA-Magician, who led Caipirinha F.C to the title in Hattrick International Ruby Challenger Cup.\",\"links\":[{\"text\":\"6\",\"href\":\"/Club/Matches/Archive.aspx?season=69&TeamID=2052682&actiontype=viewcup\"},{\"text\":\"LA-Magician\",\"href\":\"/Club/Manager/?userId=352538\"},{\"text\":\"Caipirinha F.C\",\"href\":\"/Club/?TeamID=2052682\"},{\"text\":\"Hattrick International Ruby Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1435\"}],\"date\":\"2018-10-23\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2052682\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1434,
+    "season": 5,
+    "teamId": 2052703,
+    "teamName": "United Federation of Planets F.C.",
+    "userId": 7197589,
+    "name": "il-padrone",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2052703"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"03-07-2018 United Federation of Planets F.C., under the leadership of il-padrone, won Hattrick International Emerald Challenger Cup season 5.\",\"links\":[{\"text\":\"United Federation of Planets F.C.\",\"href\":\"/Club/?TeamID=2052703\"},{\"text\":\"il-padrone\",\"href\":\"/Club/Manager/?userId=7197589\"},{\"text\":\"Hattrick International Emerald Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1434\"},{\"text\":\"5\",\"href\":\"/Club/Matches/Archive.aspx?season=68&TeamID=2052703&actiontype=viewcup\"}],\"date\":\"2018-07-03\",\"page\":5,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2052703\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1437,
+    "season": 13,
+    "teamId": 2052722,
+    "teamName": "F.C. Jilguero",
+    "userId": 9686611,
+    "name": "Mafedet",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2052722"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"08-12-2020 F.C. Jilguero, under the leadership of Mafedet, won Hattrick International Consolation Cup season 13.\",\"links\":[{\"text\":\"F.C. Jilguero\",\"href\":\"/Club/?TeamID=2052722\"},{\"text\":\"Mafedet\",\"href\":\"/Club/Manager/?userId=9686611\"},{\"text\":\"Hattrick International Consolation Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1437\"},{\"text\":\"13\",\"href\":\"/Club/Matches/Archive.aspx?season=76&TeamID=2052722&actiontype=viewcup\"}],\"date\":\"2020-12-08\",\"page\":6,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2052722\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1434,
+    "season": 24,
+    "teamId": 2052727,
+    "teamName": "FC Bounty Hunters",
+    "userId": 975879,
+    "name": "Polsters",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2052727"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"23-04-2024 Season 24 was memorable for Polsters, who led FC Bounty Hunters to the title in Hattrick International Emerald Challenger Cup.\",\"links\":[{\"text\":\"24\",\"href\":\"/Club/Matches/Archive.aspx?season=87&TeamID=2052727&actiontype=viewcup\"},{\"text\":\"Polsters\",\"href\":\"/Club/Manager/?userId=975879\"},{\"text\":\"FC Bounty Hunters\",\"href\":\"/Club/?TeamID=2052727\"},{\"text\":\"Hattrick International Emerald Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1434\"}],\"date\":\"2024-04-23\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2052727\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1433,
+    "season": 9,
+    "teamId": 2052747,
+    "teamName": "Red Bull Racing",
+    "userId": 804797,
+    "name": "Schumi-",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2052747"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"17-09-2019 Red Bull Racing, under the leadership of Schumi-, won Hattrick International Cup season 9.\",\"links\":[{\"text\":\"Red Bull Racing\",\"href\":\"/Club/?TeamID=2052747\"},{\"text\":\"Schumi-\",\"href\":\"/Club/Manager/?userId=804797\"},{\"text\":\"Hattrick International Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1433\"},{\"text\":\"9\",\"href\":\"/Club/Matches/Archive.aspx?season=72&TeamID=2052747&actiontype=viewcup\"}],\"date\":\"2019-09-17\",\"page\":3,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2052747\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1436,
+    "season": 5,
+    "teamId": 2052750,
+    "teamName": "Salnas Mariners",
+    "userId": 1582612,
+    "name": "Salnas",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2052750"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"03-07-2018 In season 5, Salnas Mariners emerged victorious from Hattrick International Sapphire Challenger Cup. They were managed by Salnas.\",\"links\":[{\"text\":\"5\",\"href\":\"/Club/Matches/Archive.aspx?season=68&TeamID=2052750&actiontype=viewcup\"},{\"text\":\"Salnas Mariners\",\"href\":\"/Club/?TeamID=2052750\"},{\"text\":\"Hattrick International Sapphire Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1436\"},{\"text\":\"Salnas\",\"href\":\"/Club/Manager/?userId=1582612\"}],\"date\":\"2018-07-03\",\"page\":4,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2052750\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1433,
+    "season": 18,
+    "teamId": 2052967,
+    "teamName": "El Esfuerzo F.C.",
+    "userId": 11942924,
+    "name": "cheche250",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2052967"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"14-06-2022 Season 18 was memorable for cheche250, who led El Esfuerzo F.C. to the title in Hattrick International Cup.\",\"links\":[{\"text\":\"18\",\"href\":\"/Club/Matches/Archive.aspx?season=81&TeamID=2052967&actiontype=viewcup\"},{\"text\":\"cheche250\",\"href\":\"/Club/Manager/?userId=11942924\"},{\"text\":\"El Esfuerzo F.C.\",\"href\":\"/Club/?TeamID=2052967\"},{\"text\":\"Hattrick International Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1433\"}],\"date\":\"2022-06-14\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2052967\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1434,
+    "season": 8,
+    "teamId": 2053004,
+    "teamName": "Hannover Tomahawks FC",
+    "userId": 12751459,
+    "name": "-Millo-",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2053004"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"04-06-2019 Season 8 was memorable for -Millo-, who led Hannover Tomahawks FC to the title in Hattrick International Emerald Challenger Cup.\",\"links\":[{\"text\":\"8\",\"href\":\"/Club/Matches/Archive.aspx?season=71&TeamID=2053004&actiontype=viewcup\"},{\"text\":\"-Millo-\",\"href\":\"/Club/Manager/?userId=12751459\"},{\"text\":\"Hannover Tomahawks FC\",\"href\":\"/Club/?TeamID=2053004\"},{\"text\":\"Hattrick International Emerald Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1434\"}],\"date\":\"2019-06-04\",\"page\":5,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2053004\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1437,
+    "season": 19,
+    "teamId": 2053010,
+    "teamName": "Bahrain Club Suiza",
+    "userId": 1908584,
+    "name": "Keiler_56",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2053010"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"11-10-2022 Bahrain Club Suiza, under the leadership of Keiler_56, won Hattrick International Consolation Cup season 19.\",\"links\":[{\"text\":\"Bahrain Club Suiza\",\"href\":\"/Club/?TeamID=2053010\"},{\"text\":\"Keiler_56\",\"href\":\"/Club/Manager/?userId=1908584\"},{\"text\":\"Hattrick International Consolation Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1437\"},{\"text\":\"19\",\"href\":\"/Club/Matches/Archive.aspx?season=82&TeamID=2053010&actiontype=viewcup\"}],\"date\":\"2022-10-11\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2053010\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1434,
+    "season": 14,
+    "teamId": 2053021,
+    "teamName": "BEN PETER UNITED",
+    "userId": 12368048,
+    "name": "Bigpeteutd",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2053021"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"30-03-2021 BEN PETER UNITED, under the leadership of Bigpeteutd, won Hattrick International Emerald Challenger Cup season 14.\",\"links\":[{\"text\":\"BEN PETER UNITED\",\"href\":\"/Club/?TeamID=2053021\"},{\"text\":\"Bigpeteutd\",\"href\":\"/Club/Manager/?userId=12368048\"},{\"text\":\"Hattrick International Emerald Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1434\"},{\"text\":\"14\",\"href\":\"/Club/Matches/Archive.aspx?season=77&TeamID=2053021&actiontype=viewcup\"}],\"date\":\"2021-03-30\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2053021\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1435,
+    "season": 10,
+    "teamId": 2053475,
+    "teamName": "Dentinhos Int.",
+    "userId": 2426869,
+    "name": "Browarinho",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2053475"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"14-01-2020 Dentinhos Int., under the leadership of Browarinho, won Hattrick International Ruby Challenger Cup season 10.\",\"links\":[{\"text\":\"Dentinhos Int.\",\"href\":\"/Club/?TeamID=2053475\"},{\"text\":\"Browarinho\",\"href\":\"/Club/Manager/?userId=2426869\"},{\"text\":\"Hattrick International Ruby Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1435\"},{\"text\":\"10\",\"href\":\"/Club/Matches/Archive.aspx?season=73&TeamID=2053475&actiontype=viewcup\"}],\"date\":\"2020-01-14\",\"page\":3,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2053475\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1436,
+    "season": 6,
+    "teamId": 2053851,
+    "teamName": "Karmis Forever",
+    "userId": 971938,
+    "name": "Pabllo",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2053851"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"23-10-2018 Karmis Forever, under the leadership of Pabllo, won Hattrick International Sapphire Challenger Cup season 6.\",\"links\":[{\"text\":\"Karmis Forever\",\"href\":\"/Club/?TeamID=2053851\"},{\"text\":\"Pabllo\",\"href\":\"/Club/Manager/?userId=971938\"},{\"text\":\"Hattrick International Sapphire Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1436\"},{\"text\":\"6\",\"href\":\"/Club/Matches/Archive.aspx?season=69&TeamID=2053851&actiontype=viewcup\"}],\"date\":\"2018-10-23\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2053851\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1433,
+    "season": 11,
+    "teamId": 2053870,
+    "teamName": "LEGIA GDAŃSK 2017",
+    "userId": 2715318,
+    "name": "prezes_robus",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2053870"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"28-04-2020 LEGIA GDAŃSK 2017, under the leadership of prezes_robus, won Hattrick International Cup season 11.\",\"links\":[{\"text\":\"LEGIA GDAŃSK 2017\",\"href\":\"/Club/?TeamID=2053870\"},{\"text\":\"prezes_robus\",\"href\":\"/Club/Manager/?userId=2715318\"},{\"text\":\"Hattrick International Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1433\"},{\"text\":\"11\",\"href\":\"/Club/Matches/Archive.aspx?season=74&TeamID=2053870&actiontype=viewcup\"}],\"date\":\"2020-04-28\",\"page\":4,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2053870\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1435,
+    "season": 1,
+    "teamId": 2053969,
+    "teamName": "Barbados Hot Shots",
+    "userId": 9552072,
+    "name": "Chantalr",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2053969"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"11-04-2017 In season 1, Barbados Hot Shots emerged victorious from Hattrick International Ruby Challenger Cup. They were managed by Chantalr.\",\"links\":[{\"text\":\"1\",\"href\":\"/Club/Matches/Archive.aspx?season=64&TeamID=2053969&actiontype=viewcup\"},{\"text\":\"Barbados Hot Shots\",\"href\":\"/Club/?TeamID=2053969\"},{\"text\":\"Hattrick International Ruby Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1435\"},{\"text\":\"Chantalr\",\"href\":\"/Club/Manager/?userId=9552072\"}],\"date\":\"2017-04-11\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2053969\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1437,
+    "season": 3,
+    "teamId": 2054073,
+    "teamName": "One Shot FC",
+    "userId": 11834714,
+    "name": "Hedegaard",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2054073"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"28-11-2017 One Shot FC, under the leadership of Hedegaard, won Hattrick International Consolation Cup season 3.\",\"links\":[{\"text\":\"One Shot FC\",\"href\":\"/Club/?TeamID=2054073\"},{\"text\":\"Hedegaard\",\"href\":\"/Club/Manager/?userId=11834714\"},{\"text\":\"Hattrick International Consolation Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1437\"},{\"text\":\"3\",\"href\":\"/Club/Matches/Archive.aspx?season=66&TeamID=2054073&actiontype=viewcup\"}],\"date\":\"2017-11-28\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2054073\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1437,
+    "season": 7,
+    "teamId": 2055201,
+    "teamName": "The Black-yellow-red Sky Fighters",
+    "userId": 4031466,
+    "name": "redemmi",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2055201"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"12-02-2019 Season 7 was memorable for redemmi, who led The Black-yellow-red Sky Fighters to the title in Hattrick International Consolation Cup.\",\"links\":[{\"text\":\"7\",\"href\":\"/Club/Matches/Archive.aspx?season=70&TeamID=2055201&actiontype=viewcup\"},{\"text\":\"redemmi\",\"href\":\"/Club/Manager/?userId=4031466\"},{\"text\":\"The Black-yellow-red Sky Fighters\",\"href\":\"/Club/?TeamID=2055201\"},{\"text\":\"Hattrick International Consolation Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1437\"}],\"date\":\"2019-02-12\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2055201\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1437,
+    "season": 28,
+    "teamId": 2055727,
+    "teamName": "Lerchenstraße Dreamers",
+    "userId": 9186603,
+    "name": "GOAT-ratinho",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2055727"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"15-07-2025 In season 28, Lerchenstraße Dreamers emerged victorious from Hattrick International Consolation Cup. They were managed by GOAT-ratinho.\",\"links\":[{\"text\":\"28\",\"href\":\"/Club/Matches/Archive.aspx?season=91&TeamID=2055727&actiontype=viewcup\"},{\"text\":\"Lerchenstraße Dreamers\",\"href\":\"/Club/?TeamID=2055727\"},{\"text\":\"Hattrick International Consolation Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1437\"},{\"text\":\"GOAT-ratinho\",\"href\":\"/Club/Manager/?userId=9186603\"}],\"date\":\"2025-07-15\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2055727\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1433,
+    "season": 2,
+    "teamId": 2055889,
+    "teamName": "Toppie International",
+    "userId": 877272,
+    "name": "Rolmop",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2055889"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"01-08-2017 Toppie International, under the leadership of Rolmop, won Hattrick International Cup season 2.\",\"links\":[{\"text\":\"Toppie International\",\"href\":\"/Club/?TeamID=2055889\"},{\"text\":\"Rolmop\",\"href\":\"/Club/Manager/?userId=877272\"},{\"text\":\"Hattrick International Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1433\"},{\"text\":\"2\",\"href\":\"/Club/Matches/Archive.aspx?season=65&TeamID=2055889&actiontype=viewcup\"}],\"date\":\"2017-08-01\",\"page\":3,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2055889\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1437,
+    "season": 2,
+    "teamId": 2056424,
+    "teamName": "Ht Club Bierzo",
+    "userId": 2033988,
+    "name": "Jitto",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2056424"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"08-08-2017 Season 2 was memorable for Jitto, who led Ht Club Bierzo to the title in Hattrick International Consolation Cup.\",\"links\":[{\"text\":\"2\",\"href\":\"/Club/Matches/Archive.aspx?season=65&TeamID=2056424&actiontype=viewcup\"},{\"text\":\"Jitto\",\"href\":\"/Club/Manager/?userId=2033988\"},{\"text\":\"Ht Club Bierzo\",\"href\":\"/Club/?TeamID=2056424\"},{\"text\":\"Hattrick International Consolation Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1437\"}],\"date\":\"2017-08-08\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2056424\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1434,
+    "season": 21,
+    "teamId": 2056482,
+    "teamName": "Crag Hack",
+    "userId": 79512,
+    "name": "valyfl",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2056482"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"23-05-2023 Crag Hack, under the leadership of valyfl, won Hattrick International Emerald Challenger Cup season 21.\",\"links\":[{\"text\":\"Crag Hack\",\"href\":\"/Club/?TeamID=2056482\"},{\"text\":\"valyfl\",\"href\":\"/Club/Manager/?userId=79512\"},{\"text\":\"Hattrick International Emerald Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1434\"},{\"text\":\"21\",\"href\":\"/Club/Matches/Archive.aspx?season=84&TeamID=2056482&actiontype=viewcup\"}],\"date\":\"2023-05-23\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2056482\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1437,
+    "season": 29,
+    "teamId": 2056494,
+    "teamName": "Flotzilla Warszawa",
+    "userId": 13294149,
+    "name": "kartoonjack",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2056494"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"04-11-2025 In season 29, Flotzilla Warszawa emerged victorious from Hattrick International Consolation Cup. They were managed by kartoonjack.\",\"links\":[{\"text\":\"29\",\"href\":\"/Club/Matches/Archive.aspx?season=92&TeamID=2056494&actiontype=viewcup\"},{\"text\":\"Flotzilla Warszawa\",\"href\":\"/Club/?TeamID=2056494\"},{\"text\":\"Hattrick International Consolation Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1437\"},{\"text\":\"kartoonjack\",\"href\":\"/Club/Manager/?userId=13294149\"}],\"date\":\"2025-11-04\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2056494\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1437,
+    "season": 8,
+    "teamId": 2056573,
+    "teamName": "Violeta Emilia FC",
+    "userId": 12259631,
+    "name": "CC-Piscolave",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2056573"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"04-06-2019 Violeta Emilia FC, under the leadership of CC-Piscolave, won Hattrick International Consolation Cup season 8.\",\"links\":[{\"text\":\"Violeta Emilia FC\",\"href\":\"/Club/?TeamID=2056573\"},{\"text\":\"CC-Piscolave\",\"href\":\"/Club/Manager/?userId=12259631\"},{\"text\":\"Hattrick International Consolation Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1437\"},{\"text\":\"8\",\"href\":\"/Club/Matches/Archive.aspx?season=71&TeamID=2056573&actiontype=viewcup\"}],\"date\":\"2019-06-04\",\"page\":3,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2056573\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1435,
+    "season": 7,
+    "teamId": 2056583,
+    "teamName": "Scarponi all' arrembaggio",
+    "userId": 11086479,
+    "name": "DonFabio_in_Mongolia",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2056583"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"12-02-2019 Scarponi all' arrembaggio, under the leadership of DonFabio_in_Mongolia, won Hattrick International Ruby Challenger Cup season 7.\",\"links\":[{\"text\":\"Scarponi all' arrembaggio\",\"href\":\"/Club/?TeamID=2056583\"},{\"text\":\"DonFabio_in_Mongolia\",\"href\":\"/Club/Manager/?userId=11086479\"},{\"text\":\"Hattrick International Ruby Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1435\"},{\"text\":\"7\",\"href\":\"/Club/Matches/Archive.aspx?season=70&TeamID=2056583&actiontype=viewcup\"}],\"date\":\"2019-02-12\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2056583\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1435,
+    "season": 5,
+    "teamId": 2056742,
+    "teamName": "Hattrick International",
+    "userId": 3695547,
+    "name": "machucado",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2056742"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"03-07-2018 Season 5 was memorable for machucado, who led Hattrick International to the title in Hattrick International Ruby Challenger Cup.\",\"links\":[{\"text\":\"5\",\"href\":\"/Club/Matches/Archive.aspx?season=68&TeamID=2056742&actiontype=viewcup\"},{\"text\":\"machucado\",\"href\":\"/Club/Manager/?userId=3695547\"},{\"text\":\"Hattrick International\",\"href\":\"/Club/?TeamID=2056742\"},{\"text\":\"Hattrick International Ruby Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1435\"}],\"date\":\"2018-07-03\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2056742\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1434,
+    "season": 4,
+    "teamId": 2057055,
+    "teamName": "Veskun Palloseura",
+    "userId": 789529,
+    "name": "Wesqu",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2057055"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"20-03-2018 Season 4 was memorable for Wesqu, who led Veskun Palloseura to the title in Hattrick International Emerald Challenger Cup.\",\"links\":[{\"text\":\"4\",\"href\":\"/Club/Matches/Archive.aspx?season=67&TeamID=2057055&actiontype=viewcup\"},{\"text\":\"Wesqu\",\"href\":\"/Club/Manager/?userId=789529\"},{\"text\":\"Veskun Palloseura\",\"href\":\"/Club/?TeamID=2057055\"},{\"text\":\"Hattrick International Emerald Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1434\"}],\"date\":\"2018-03-20\",\"page\":2,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2057055\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1435,
+    "season": 23,
+    "teamId": 2057249,
+    "teamName": "Fessi alla riscossa",
+    "userId": 3258272,
+    "name": "walterformica",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2057249"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"02-01-2024 Season 23 was memorable for walterformica, who led Fessi alla riscossa to the title in Hattrick International Ruby Challenger Cup.\",\"links\":[{\"text\":\"23\",\"href\":\"/Club/Matches/Archive.aspx?season=86&TeamID=2057249&actiontype=viewcup\"},{\"text\":\"walterformica\",\"href\":\"/Club/Manager/?userId=3258272\"},{\"text\":\"Fessi alla riscossa\",\"href\":\"/Club/?TeamID=2057249\"},{\"text\":\"Hattrick International Ruby Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1435\"}],\"date\":\"2024-01-02\",\"page\":3,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2057249\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1436,
+    "season": 28,
+    "teamId": 2058590,
+    "teamName": "The White Stripes",
+    "userId": 303013,
+    "name": "Hatem",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2058590"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"15-07-2025 The White Stripes, under the leadership of Hatem, won Hattrick International Sapphire Challenger Cup season 28.\",\"links\":[{\"text\":\"The White Stripes\",\"href\":\"/Club/?TeamID=2058590\"},{\"text\":\"Hatem\",\"href\":\"/Club/Manager/?userId=303013\"},{\"text\":\"Hattrick International Sapphire Challenger Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1436\"},{\"text\":\"28\",\"href\":\"/Club/Matches/Archive.aspx?season=91&TeamID=2058590&actiontype=viewcup\"}],\"date\":\"2025-07-15\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2058590\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1557,
+    "season": 3,
+    "teamId": 2130441,
+    "teamName": "Dave Gahan FC",
+    "userId": 3770884,
+    "name": "blueocean",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2130441"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"02-04-2025 Dave Gahan FC, under the leadership of blueocean, won Homegrown Consolation Cup season 3.\",\"links\":[{\"text\":\"Dave Gahan FC\",\"href\":\"/Club/?TeamID=2130441\"},{\"text\":\"blueocean\",\"href\":\"/Club/Manager/?userId=3770884\"},{\"text\":\"Homegrown Consolation Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1557\"},{\"text\":\"3\",\"href\":\"/Club/Matches/Archive.aspx?season=90&TeamID=2130441&actiontype=viewcup\"}],\"date\":\"2025-04-02\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2130441\"}}"
+  },
+  {
+    "table": "cupChampion",
+    "competitionId": 1557,
+    "season": 2,
+    "teamId": 2130510,
+    "teamName": "KVC Wilsele",
+    "userId": 8331262,
+    "name": "Xkick",
+    "sources": [
+      "https://www.hattrick.org/en/Club/History/?teamId=2130510"
+    ],
+    "evidence": "{\"basis\":\"direct-manager\",\"event\":{\"text\":\"11-12-2024 In season 2, KVC Wilsele emerged victorious from Homegrown Consolation Cup. They were managed by Xkick.\",\"links\":[{\"text\":\"2\",\"href\":\"/Club/Matches/Archive.aspx?season=89&TeamID=2130510&actiontype=viewcup\"},{\"text\":\"KVC Wilsele\",\"href\":\"/Club/?TeamID=2130510\"},{\"text\":\"Homegrown Consolation Cup\",\"href\":\"/World/Cup/Cup.aspx?CupID=1557\"},{\"text\":\"Xkick\",\"href\":\"/Club/Manager/?userId=8331262\"}],\"date\":\"2024-12-11\",\"page\":1,\"sourceURL\":\"https://www.hattrick.org/en/Club/History/?teamId=2130510\"}}"
+  }
+]

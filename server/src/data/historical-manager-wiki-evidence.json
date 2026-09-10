@@ -1,0 +1,113 @@
+{
+  "researchedAt": "2026-09-10",
+  "purpose": "Historical manager recovery evidence, not current team ownership. Apply only to existing matching competition, season and club rows. Null userId means the historical name is known but no account ID was verified.",
+  "clubs": [
+    {
+      "teamId": 136300,
+      "leagueId": 61,
+      "club": "FC Red Dwarf",
+      "userName": "Stealer",
+      "userId": 3622667,
+      "identitySourceUrl": "https://wiki.hattrick.org/index.php?title=Beanz_Meanz_Heinz&oldid=210963",
+      "identityEvidence": "The Supporters table pairs Stealer (3622667) with FC Red Dwarf (136300).",
+      "leagueSeasons": [20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 43, 44, 46, 47, 48, 49, 50, 51],
+      "cups": [{ "cupId": 60, "seasons": [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 43, 46, 47, 50] }],
+      "honoursSourceUrl": "https://wiki.hattrick.org/index.php?title=Cymru&oldid=421315",
+      "honoursEvidence": "Each listed season names FC Red Dwarf and Stealer in the appropriate league or main-cup column.",
+      "excluded": [{ "cupId": 693, "season": 41, "reason": "The secondary-cup win is stored locally, but these sources do not verify its manager." }]
+    },
+    {
+      "teamId": 136615,
+      "leagueId": 47,
+      "club": "Isle of Flames",
+      "userName": "SkyfireX",
+      "userId": 3500819,
+      "identitySourceUrl": "https://wiki.hattrick.org/wiki/Isle_of_Flames",
+      "identityEvidence": "The club article explicitly pairs team 136615 with former manager skyfirex, linked as userId 3500819.",
+      "leagueSeasons": [27, 28, 31, 32, 33, 34, 37, 38, 39, 40, 42],
+      "cups": [{ "cupId": 40, "seasons": [31, 32, 33, 37] }],
+      "honoursSourceUrl": "https://wiki.hattrick.org/index.php?title=Singapore&oldid=502325",
+      "honoursEvidence": "Each listed season names Isle of Flames and SkyfireX in the appropriate league or main-cup column."
+    },
+    {
+      "teamId": 32048,
+      "leagueId": 22,
+      "club": "Shirayuri Sky",
+      "userName": "saheki",
+      "userId": 34088,
+      "identitySourceUrl": "https://www.hattrick.org/sk/Community/Press/?ArticleID=23325",
+      "identityEvidence": "Hattrick Press article 23325 explicitly links saheki (34088), Seibu Lions (32048), and the club's rename to Shirayuri Sky, with the exact league and cup victory ranges.",
+      "leagueSeasons": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      "cups": [{ "cupId": 22, "seasons": [3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15] }],
+      "honoursSourceUrl": "https://wiki.hattrick.org/wiki/Japan",
+      "honoursEvidence": "The national roll names saheki for league seasons 2 through 15 and main-cup seasons 3 through 15. Only existing local cup seasons are listed here.",
+      "sourceOnlyCupSeasons": [{ "cupId": 22, "season": 7, "reason": "Wiki lists this victory, but there is no corresponding local CupChampion row; excluded from identity repair." }]
+    },
+    {
+      "teamId": 458289,
+      "leagueId": 83,
+      "club": "Azad",
+      "userName": "EsSayed",
+      "userId": null,
+      "identitySourceUrl": "https://wiki.hattrick.org/wiki/United_Arab_Emirates_National_team",
+      "identityEvidence": "The historic national-team coaching table also names EsSayed for World Cup cycles 8 through 13. No numeric account ID was recovered.",
+      "leagueSeasons": [3, 5, 7, 8, 9, 10, 11, 13, 18, 19, 20, 22],
+      "cups": [{ "cupId": 142, "seasons": [7, 11, 13, 18, 21] }],
+      "honoursSourceUrl": "https://wiki.hattrick.org/index.php?title=United_Arab_Emirates&oldid=502335",
+      "honoursEvidence": "Each listed season names Azad and EsSayed in the appropriate league or main-cup column. Local HattrickUser has no EsSayed match, and locally stored UAE senior elections start at World Cup 17, after the relevant coaching period."
+    },
+    {
+      "teamId": 29809,
+      "leagueId": 17,
+      "club": "Barrington Barons",
+      "userName": "ChrisSwimm",
+      "userId": null,
+      "identitySourceUrl": "https://wiki.hattrick.org/index.php?title=Barrington_Barons&oldid=481387",
+      "identityEvidence": "The club article explicitly names ChrisSwimm and team 29809, but no numeric manager ID was recovered. No match exists in local users or election winners.",
+      "leagueSeasons": [3, 4, 5, 6, 7, 8, 9, 10, 11, 13],
+      "cups": [{ "cupId": 16, "seasons": [5, 6, 7, 16] }],
+      "honoursSourceUrl": "https://wiki.hattrick.org/wiki/Canada",
+      "honoursEvidence": "The country table names ChrisSwimm for every listed exact win. Main-cup season 2 is also recorded by the source but absent from the local winner rows."
+    },
+    {
+      "teamId": 31404,
+      "leagueId": 20,
+      "club": "cowabunga kickers",
+      "userName": "thesun",
+      "userId": null,
+      "identitySourceUrl": "https://wiki.hattrick.org/index.php?title=India&oldid=502296",
+      "identityEvidence": "English country and competition histories use thesun. The Russian-language India page uses manish for these same wins; this may be a rename, but neither a numeric ID nor the alias relationship was independently verified. No local user/election match for either name.",
+      "leagueSeasons": [10, 11, 12, 13, 14, 15, 16, 17, 18, 20],
+      "cups": [{ "cupId": 20, "seasons": [11, 12, 15, 21] }],
+      "honoursSourceUrl": "https://wiki.hattrick.org/index.php?title=India&oldid=502296",
+      "honoursEvidence": "The English country honours table gives the listed exact seasons and thesun. Its summary double-title table wrongly includes league season 21, contradicting its own league winner Scarlet Devils; only the detailed competition rows are retained."
+    },
+    {
+      "teamId": 26985,
+      "leagueId": 6,
+      "club": "Palomas Turbo",
+      "userName": "marb1219",
+      "userId": null,
+      "identitySourceUrl": "https://wiki.hattrick.org/wiki/National_team_M%C3%A9xico",
+      "identityEvidence": "The Mexican NT history also names marb1219 for cycles 9, 10, 13 and 14. No numeric ID was recovered and there is no local user/election match.",
+      "leagueSeasons": [31, 33, 34, 35, 36, 37, 38, 39, 40, 42],
+      "cups": [{ "cupId": 5, "seasons": [35, 39] }],
+      "honoursSourceUrl": "https://wiki.hattrick.org/wiki/Mexico",
+      "honoursEvidence": "Each listed exact league or main-cup row pairs Palomas Turbo with marb1219."
+    },
+    {
+      "teamId": 37558,
+      "leagueId": 47,
+      "club": "Herron",
+      "userName": "Borum",
+      "userId": null,
+      "identitySourceUrl": "https://www.hattrick.org/en-us/Community/Press/?ArticleID=13920",
+      "identityEvidence": "The SkyfireX interview independently pairs Herron with Borum, but supplies no numeric ID. No local user/election match was found.",
+      "leagueSeasons": [4, 6, 7, 8, 9, 10, 16, 17, 18, 21],
+      "cups": [{ "cupId": 40, "seasons": [12] }],
+      "honoursSourceUrl": "https://wiki.hattrick.org/index.php?title=Singapore&oldid=502325",
+      "honoursEvidence": "Each listed row pairs Herron with Borum. The source's main-cup season 6 victory has no corresponding local Herron row.",
+      "excluded": [{ "cupId": 40, "season": 10, "reason": "Local winner is Herron, but Singapore's wiki table names Team Singapore and Da_TiGeR. Do not assign a manager until the competition result conflict is checked against primary evidence." }]
+    }
+  ]
+}
