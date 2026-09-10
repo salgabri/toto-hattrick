@@ -380,12 +380,13 @@ export async function getCabinet(
   // they go through `cupItems` like any national cup), and the World Cup flies the champion NATION's.
   // National-team rows flag by id first, name second — see flags.ts nationFlagUrl for why.
   const nationFlag = nationFlagUrl;
+  const nationalPeriod = (cup: string, season: number) => `${isWorldCup(cup) ? 'WC ' : 'S'}${season}`;
   const nationalItems = (cups?: RawCup[]) =>
-    inWindow(cups, window).map((t) => ({ main: t.cup, sub: t.club, teamId: t.teamId, season: 'S' + t.season, last: t.last, flag: nationFlag(t.club, t.leagueId) }));
+    inWindow(cups, window).map((t) => ({ main: t.cup, sub: t.club, teamId: t.teamId, season: nationalPeriod(t.cup, t.season), last: t.last, flag: nationFlag(t.club, t.leagueId) }));
   const medalItems = (place: number) =>
     inWindow(m?.medals, window)
       .filter((x) => x.place === place)
-      .map((x) => ({ main: x.cup, sub: x.nation, season: 'S' + x.season, flag: nationFlag(x.nation, x.leagueId) }));
+      .map((x) => ({ main: x.cup, sub: x.nation, season: nationalPeriod(x.cup, x.season), flag: nationFlag(x.nation, x.leagueId) }));
   return {
     champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec),
     other: cupItems(m?.masters),
@@ -778,18 +779,30 @@ function sameNation(r: NationalResult, leagueId: number): boolean {
 
 export async function getElectionAggregates(): Promise<ElectionAggregates> {
   const [rows, wc, { managers }] = await Promise.all([loadElections(), getWorldCup(), load()]);
-  // Elections span editions 16–41 and worldcup.json carries every one of them, so this join is
-  // total in practice; a miss degrades to a dateless row rather than dropping the election.
-  const finishedByEdition = new Map(wc.senior.map((e) => [e.edition, e.finished]));
-
-  // A mandate's window: from the previous cycle's final to its own. Editions are consecutive, so
-  // the previous edition's finish is the natural start; the running cycle has no end yet.
-  const editionsAsc = wc.senior.slice().sort((a, b) => a.edition - b.edition);
-  const cycleWindow = new Map<number, { from: number; to: number }>();
-  editionsAsc.forEach((e, i) => {
-    const prev = i > 0 ? parseHtDate(editionsAsc[i - 1]!.finished) : null;
-    cycleWindow.set(e.edition, { from: prev ?? -Infinity, to: parseHtDate(e.finished) ?? Infinity });
-  });
+  // Senior and youth editions finish on different dates. Both the displayed date and the regional
+  // result window must use the mandate's own bracket, even when the edition number is identical.
+  const cycleKey = (edition: number, youth: boolean) => `${youth ? 'youth' : 'senior'}:${edition}`;
+  const finishedByEdition = new Map<string, string | null>();
+  const cycleWindow = new Map<string, { from: number; to: number }>();
+  for (const youth of [false, true]) {
+    const editionsAsc = (youth ? wc.youth : wc.senior).slice().sort((a, b) => a.edition - b.edition);
+    // The next election may already exist before its ongoing World Cup has a history row. Its
+    // mandate still starts at the previous bracket final and has an open end.
+    const editions = new Set([
+      ...editionsAsc.map((e) => e.edition),
+      ...rows.filter((r) => !!r.isYouth === youth).map((r) => r.edition),
+    ]);
+    for (const edition of editions) {
+      const current = editionsAsc.find((e) => e.edition === edition);
+      const previous = editionsAsc.filter((e) => e.edition < edition).at(-1);
+      const key = cycleKey(edition, youth);
+      finishedByEdition.set(key, current?.finished ?? null);
+      cycleWindow.set(key, {
+        from: parseHtDate(previous?.finished) ?? -Infinity,
+        to: parseHtDate(current?.finished) ?? Infinity,
+      });
+    }
+  }
 
   // When each regional-cup season's final was played, so a per-season trophy can be placed inside
   // a per-edition mandate.
@@ -826,7 +839,7 @@ export async function getElectionAggregates(): Promise<ElectionAggregates> {
   const matchTrophies = (userId: number | undefined, leagueId: number, edition: number, isYouth: boolean): ElectionTrophy[] => {
     const all = userId ? resultsByUser.get(userId) : undefined;
     if (!all || userId == null) return [];
-    const win = cycleWindow.get(edition);
+    const win = cycleWindow.get(cycleKey(edition, isYouth));
     const out: ElectionTrophy[] = [];
     all.forEach((r, ix) => {
       if (r.isYouth !== isYouth || !sameNation(r, leagueId)) return;
@@ -875,7 +888,7 @@ export async function getElectionAggregates(): Promise<ElectionAggregates> {
       host: r.host,
       isYouth,
       votes: r.votes,
-      finished: finishedByEdition.get(r.edition) ?? null,
+      finished: finishedByEdition.get(cycleKey(r.edition, isYouth)) ?? null,
       trophies: matchTrophies(r.winnerUserId, r.leagueId, r.edition, isYouth),
     });
   }

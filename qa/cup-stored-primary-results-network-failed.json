@@ -1,0 +1,313 @@
+{
+  "checkedAt": "2026-09-10T22:28:12.744Z",
+  "source": {
+    "file": "cupmatches",
+    "version": "1.2"
+  },
+  "scope": "The 30 explicit stored winner-only name-difference candidates; last and preceding cup rounds only.",
+  "requests": 30,
+  "reused": 0,
+  "checks": [
+    {
+      "cupId": 37,
+      "season": 10,
+      "countryName": "Austria",
+      "storedChampion": "databased.at",
+      "wikiChampion": "Gut",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Austria",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 61,
+      "season": 2,
+      "countryName": "Bulgaria",
+      "storedChampion": "Cryout",
+      "wikiChampion": "Levski 1914",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Bulgaria",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 61,
+      "season": 6,
+      "countryName": "Bulgaria",
+      "storedChampion": "White Moon FC",
+      "wikiChampion": "Yellow squad",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Bulgaria",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 17,
+      "season": 9,
+      "countryName": "Chile",
+      "storedChampion": "ManchesterUnited",
+      "wikiChampion": "Universidad de Chile",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Chile",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 17,
+      "season": 11,
+      "countryName": "Chile",
+      "storedChampion": "Escuadron",
+      "wikiChampion": "Sion",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Chile",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 59,
+      "season": 3,
+      "countryName": "Chinese Taipei",
+      "storedChampion": "Passive Agressive",
+      "wikiChampion": "Golden Dragon",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Chinese_Taipei",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 56,
+      "season": 4,
+      "countryName": "Croatia",
+      "storedChampion": "Bjegunci",
+      "wikiChampion": "Folka United",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Croatia",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 19,
+      "season": 6,
+      "countryName": "Egypt",
+      "storedChampion": "Alexandria Pharaons",
+      "wikiChampion": "Alexandria Pharaohs",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Egypt",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 19,
+      "season": 10,
+      "countryName": "Egypt",
+      "storedChampion": "Foxy",
+      "wikiChampion": "amazighteam",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Egypt",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 54,
+      "season": 8,
+      "countryName": "Estonia",
+      "storedChampion": "FC Kallic",
+      "wikiChampion": "K-J Jotad",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Estonia",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 4,
+      "season": 23,
+      "countryName": "Germany",
+      "storedChampion": "FC Teerlunge",
+      "wikiChampion": "FC Martini",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Germany",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 36,
+      "season": 10,
+      "countryName": "Iceland",
+      "storedChampion": "Starkers",
+      "wikiChampion": "sir_mb",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/%C3%8Dsland",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 36,
+      "season": 12,
+      "countryName": "Iceland",
+      "storedChampion": "Valkyries",
+      "wikiChampion": "Mummi",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/%C3%8Dsland",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 52,
+      "season": 3,
+      "countryName": "Indonesia",
+      "storedChampion": "rage against d' machine fc",
+      "wikiChampion": "italy_A",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Indonesia",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 51,
+      "season": 2,
+      "countryName": "Latvia",
+      "storedChampion": "FK sakee",
+      "wikiChampion": "Nokia",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Latvija",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 38,
+      "season": 10,
+      "countryName": "Malaysia",
+      "storedChampion": "badang_fc",
+      "wikiChampion": "Ipoh United",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Malaysia",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 9,
+      "season": 5,
+      "countryName": "Norway",
+      "storedChampion": "Rolf FK",
+      "wikiChampion": "Viking 2",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Norway",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 33,
+      "season": 6,
+      "countryName": "People's Republic of China",
+      "storedChampion": "Tsing Yi's Club",
+      "wikiChampion": "Aztec Warrior",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/China",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 34,
+      "season": 3,
+      "countryName": "Russia",
+      "storedChampion": "Baltika",
+      "wikiChampion": "FK Balashikha",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 34,
+      "season": 6,
+      "countryName": "Russia",
+      "storedChampion": "Killaz",
+      "wikiChampion": "FC Karelia",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 34,
+      "season": 8,
+      "countryName": "Russia",
+      "storedChampion": "FC Karelia",
+      "wikiChampion": "Frozen Karelians",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 27,
+      "season": 4,
+      "countryName": "Scotland",
+      "storedChampion": "Glasgow_CELTIC",
+      "wikiChampion": "Barons Boys",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Scotland",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 55,
+      "season": 1,
+      "countryName": "Serbia",
+      "storedChampion": "S.C Sabac",
+      "wikiChampion": "FC Kotor",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Srbija",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 40,
+      "season": 2,
+      "countryName": "Singapore",
+      "storedChampion": "Soccer Advocates",
+      "wikiChampion": "Intergalactic Stars",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Singapore",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 40,
+      "season": 6,
+      "countryName": "Singapore",
+      "storedChampion": "Hattrick all the time",
+      "wikiChampion": "Herron",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Singapore",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 40,
+      "season": 10,
+      "countryName": "Singapore",
+      "storedChampion": "Herron",
+      "wikiChampion": "Team Singapore",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Singapore",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 63,
+      "season": 7,
+      "countryName": "Slovenia",
+      "storedChampion": "NK Proletarec",
+      "wikiChampion": "NK batman",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Slovenia",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 43,
+      "season": 7,
+      "countryName": "Spain",
+      "storedChampion": "Babylon 5",
+      "wikiChampion": "Alien United",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Spain",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 43,
+      "season": 11,
+      "countryName": "Spain",
+      "storedChampion": "Alien United",
+      "wikiChampion": "Ancestrales",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Spain",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    },
+    {
+      "cupId": 29,
+      "season": 6,
+      "countryName": "Thailand",
+      "storedChampion": "The Spirits of Football",
+      "wikiChampion": "Rama XI",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Prathet_Thai",
+      "errorType": "TypeError",
+      "classification": "primary-request-or-parse-failed"
+    }
+  ],
+  "metadataCorrection": "Original failed-run report mistakenly labelled1.3; actual requests used fetchCupMatches pinned1.2 throughout."
+}

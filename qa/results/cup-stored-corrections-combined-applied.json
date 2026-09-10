@@ -1,0 +1,2063 @@
+{
+  "appliedAt": "2026-09-10T22:32:02.236Z",
+  "applied": 32,
+  "alreadyApplied": 0,
+  "corrections": [
+    {
+      "cupId": 7,
+      "season": 17,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Coppa_Italia",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Coppa_Italia&oldid=442523",
+      "beforeSha256": "fb1b30e82a3bd06a0e9ff3feb11025cb0f6e00e413cfb22f2cf4adf9979c5438",
+      "afterSha256": "72602c52d41a0b1d63318012850f79578e853abfd969c658d1db738e6f53c757",
+      "before": {
+        "cupId": 7,
+        "season": 17,
+        "leagueId": 4,
+        "countryName": "Italy",
+        "cupName": "Coppa Italia",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Kender's F.C.",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 50104,
+        "championUserName": "tasslehoff",
+        "createdAt": 1785681656720,
+        "updatedAt": 1785681656720,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 7,
+        "season": 17,
+        "leagueId": 4,
+        "countryName": "Italy",
+        "cupName": "Coppa Italia",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "A.S. Roma Calcio",
+        "runnerUpTeamName": "Kender's F.C.",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656720,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Kender's F.C.",
+          "after": "A.S. Roma Calcio"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Kender's F.C."
+        },
+        "championUserId": {
+          "before": 50104,
+          "after": null
+        },
+        "championUserName": {
+          "before": "tasslehoff",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681656720,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 25,
+      "season": 3,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Puchar_Polski&oldid=352459",
+      "beforeSha256": "380502d7dfb58c1d5c681e2fb25de634455ab46cda2f7b3cd3ff94d9b88e1d2a",
+      "afterSha256": "2c9bfd82b7d32bdddecb7fc181c19939771cfbe7532120b20df065f9f13e8501",
+      "before": {
+        "cupId": 25,
+        "season": 3,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Legia Gdansk",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 37058,
+        "championUserName": "heinzo",
+        "createdAt": 1785681657621,
+        "updatedAt": 1785681657621,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 25,
+        "season": 3,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Twisters",
+        "runnerUpTeamName": "Legia Gdansk",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657621,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Legia Gdansk",
+          "after": "Twisters"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Legia Gdansk"
+        },
+        "championUserId": {
+          "before": 37058,
+          "after": null
+        },
+        "championUserName": {
+          "before": "heinzo",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681657621,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 25,
+      "season": 7,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Puchar_Polski&oldid=352459",
+      "beforeSha256": "b13d534307b276d72436f3ac8ec9030007a35978d95e6c3188d0ecf18ac7853e",
+      "afterSha256": "ab63fc17debd4cc92c76813f407453965554d0fffc4abdd253cea141ff351be9",
+      "before": {
+        "cupId": 25,
+        "season": 7,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "ZKS Masarnia Miesiw Pcin Dolny",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657621,
+        "updatedAt": 1785681657621,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 25,
+        "season": 7,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Rude Boyz",
+        "runnerUpTeamName": "ZKS Masarnia Miesiw Pcin Dolny",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657621,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "ZKS Masarnia Miesiw Pcin Dolny",
+          "after": "Rude Boyz"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "ZKS Masarnia Miesiw Pcin Dolny"
+        },
+        "updatedAt": {
+          "before": 1785681657621,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 25,
+      "season": 11,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Puchar_Polski&oldid=352459",
+      "beforeSha256": "40d27ef5723c3925bfd55dfdbce1a2fce9413dff7f3602d2478808f75d14dfcd",
+      "afterSha256": "8df376b2c03db3ef6ea151bf7fb7226fcf6ef87c288554722c0953b1b9e5f2fa",
+      "before": {
+        "cupId": 25,
+        "season": 11,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Dziobaki",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 56088,
+        "championUserName": "aniamucha",
+        "createdAt": 1785681657621,
+        "updatedAt": 1785681657621,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 25,
+        "season": 11,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "-Tornado-",
+        "runnerUpTeamName": "Dziobaki",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657621,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Dziobaki",
+          "after": "-Tornado-"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Dziobaki"
+        },
+        "championUserId": {
+          "before": 56088,
+          "after": null
+        },
+        "championUserName": {
+          "before": "aniamucha",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681657621,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 41,
+      "season": 4,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Belgium_Cup",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Belgium_Cup&oldid=201541",
+      "beforeSha256": "49d7a340a1df17af066090af8dbf9de1bde75ea83e417b9be2ce0c7c2a9ab323",
+      "afterSha256": "413aa271c64b2849412a2ea70728c27cb9d340757864eb009d2925d0bd0b2ce9",
+      "before": {
+        "cupId": 41,
+        "season": 4,
+        "leagueId": 44,
+        "countryName": "Belgium",
+        "cupName": "Belgium Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC Drummer",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 54826,
+        "championUserName": "Drummer",
+        "createdAt": 1785681655583,
+        "updatedAt": 1785681655583,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 41,
+        "season": 4,
+        "leagueId": 44,
+        "countryName": "Belgium",
+        "cupName": "Belgium Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Lokomotiv Veltem",
+        "runnerUpTeamName": "FC Drummer",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655583,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "FC Drummer",
+          "after": "Lokomotiv Veltem"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "FC Drummer"
+        },
+        "championUserId": {
+          "before": 54826,
+          "after": null
+        },
+        "championUserName": {
+          "before": "Drummer",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681655583,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 37,
+      "season": 10,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Austria",
+      "revisionUrl": null,
+      "beforeSha256": "bca5c3830906b032ce6ed9552df6ab023f255caaf965568dadb9b6403ec847f0",
+      "afterSha256": "6a09aae0f0923f351d537e7e007ddcc91e0bb08caabea99ac94acb8d1dbb5b6c",
+      "before": {
+        "cupId": 37,
+        "season": 10,
+        "leagueId": 39,
+        "countryName": "Austria",
+        "cupName": "Austria-Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "databased.at",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655469,
+        "updatedAt": 1785681655469,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 37,
+        "season": 10,
+        "leagueId": 39,
+        "countryName": "Austria",
+        "cupName": "Austria-Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Gut",
+        "runnerUpTeamName": "databased.at",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655469,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "databased.at",
+          "after": "Gut"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "databased.at"
+        },
+        "updatedAt": {
+          "before": 1785681655469,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 61,
+      "season": 2,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Bulgaria",
+      "revisionUrl": null,
+      "beforeSha256": "bd290c8b9f884549f28a27511cc82670f173220894f7afedb55dbbd4e0158fec",
+      "afterSha256": "dad357dcacf5185487d749aa5b0c0b66b834207189d6d0ada860d358ebf064d4",
+      "before": {
+        "cupId": 61,
+        "season": 2,
+        "leagueId": 62,
+        "countryName": "Bulgaria",
+        "cupName": "Купа на България",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Cryout",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655775,
+        "updatedAt": 1785681655775,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 61,
+        "season": 2,
+        "leagueId": 62,
+        "countryName": "Bulgaria",
+        "cupName": "Купа на България",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Levski 1914",
+        "runnerUpTeamName": "Cryout",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655775,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Cryout",
+          "after": "Levski 1914"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Cryout"
+        },
+        "updatedAt": {
+          "before": 1785681655775,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 61,
+      "season": 6,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Bulgaria",
+      "revisionUrl": null,
+      "beforeSha256": "2c82daf596cee590266f4b879007aa75334b0bdee02ba3527cd78b6107b651ff",
+      "afterSha256": "e0633aceb13c2f24f6c39fe4fa2ef9b49ff86879cc97304702b1c154c4730546",
+      "before": {
+        "cupId": 61,
+        "season": 6,
+        "leagueId": 62,
+        "countryName": "Bulgaria",
+        "cupName": "Купа на България",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "White Moon FC",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655775,
+        "updatedAt": 1785681655775,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 61,
+        "season": 6,
+        "leagueId": 62,
+        "countryName": "Bulgaria",
+        "cupName": "Купа на България",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Yellow squad",
+        "runnerUpTeamName": "White Moon FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655775,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "White Moon FC",
+          "after": "Yellow squad"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "White Moon FC"
+        },
+        "updatedAt": {
+          "before": 1785681655775,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 17,
+      "season": 9,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Chile",
+      "revisionUrl": null,
+      "beforeSha256": "21879636fc6b376eba8868d72100b81fa66dc204821e7b3bdcb803af4c3c170c",
+      "afterSha256": "1c43c2b51146ff09361f9d493a8fb56cba5b5d22cf7b322d842ad306851a7f4b",
+      "before": {
+        "cupId": 17,
+        "season": 9,
+        "leagueId": 18,
+        "countryName": "Chile",
+        "cupName": "Copa Chile",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "ManchesterUnited",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655877,
+        "updatedAt": 1785681655877,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 17,
+        "season": 9,
+        "leagueId": 18,
+        "countryName": "Chile",
+        "cupName": "Copa Chile",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Universidad de Chile",
+        "runnerUpTeamName": "ManchesterUnited",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655877,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "ManchesterUnited",
+          "after": "Universidad de Chile"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "ManchesterUnited"
+        },
+        "updatedAt": {
+          "before": 1785681655877,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 17,
+      "season": 11,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Chile",
+      "revisionUrl": null,
+      "beforeSha256": "d43df5a7238ac51a6eea63c7b235aebd174fd36ab1b16fdf0d2f52984873ddb4",
+      "afterSha256": "cad9fb1e21a8c1a31e9105f599771d1cd726321aec669921cb8b3f050e36d630",
+      "before": {
+        "cupId": 17,
+        "season": 11,
+        "leagueId": 18,
+        "countryName": "Chile",
+        "cupName": "Copa Chile",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Escuadron",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655877,
+        "updatedAt": 1785681655877,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 17,
+        "season": 11,
+        "leagueId": 18,
+        "countryName": "Chile",
+        "cupName": "Copa Chile",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Sion",
+        "runnerUpTeamName": "Escuadron",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655877,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Escuadron",
+          "after": "Sion"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Escuadron"
+        },
+        "updatedAt": {
+          "before": 1785681655877,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 59,
+      "season": 3,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Chinese_Taipei",
+      "revisionUrl": null,
+      "beforeSha256": "018953bca65c13469548010e045d04548dade284c8488f6dc8b1cc3b0c257541",
+      "afterSha256": "ac474b066d3c4149ade6f162fc4af93ac39e2b75de8c51a6cae7447cc30a020e",
+      "before": {
+        "cupId": 59,
+        "season": 3,
+        "leagueId": 60,
+        "countryName": "Chinese Taipei",
+        "cupName": "Phoenix Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Passive Agressive",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655900,
+        "updatedAt": 1785681655900,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 59,
+        "season": 3,
+        "leagueId": 60,
+        "countryName": "Chinese Taipei",
+        "cupName": "Phoenix Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Golden Dragon",
+        "runnerUpTeamName": "Passive Agressive",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655900,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Passive Agressive",
+          "after": "Golden Dragon"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Passive Agressive"
+        },
+        "updatedAt": {
+          "before": 1785681655900,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 56,
+      "season": 4,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Croatia",
+      "revisionUrl": null,
+      "beforeSha256": "1152b2948f0ad256ed4722a5440bb23df0a5caba80e0fe56eb283ad524145227",
+      "afterSha256": "2694b1d0f325c09d6439a4e94138816568d717f98123a7aea6fdcb56c12f0a2e",
+      "before": {
+        "cupId": 56,
+        "season": 4,
+        "leagueId": 58,
+        "countryName": "Croatia",
+        "cupName": "Kup Hrvatske",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Bjegunci",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 119502,
+        "championUserName": "Alcatraz",
+        "createdAt": 1785681655992,
+        "updatedAt": 1785681655992,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 56,
+        "season": 4,
+        "leagueId": 58,
+        "countryName": "Croatia",
+        "cupName": "Kup Hrvatske",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Folka United",
+        "runnerUpTeamName": "Bjegunci",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655992,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Bjegunci",
+          "after": "Folka United"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Bjegunci"
+        },
+        "championUserId": {
+          "before": 119502,
+          "after": null
+        },
+        "championUserName": {
+          "before": "Alcatraz",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681655992,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 19,
+      "season": 10,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Egypt",
+      "revisionUrl": null,
+      "beforeSha256": "1edd58fb714b128a8ff4ce687a0dbff20c2b3871cafd22067fbdc0ac08d3ec38",
+      "afterSha256": "d87d91f89e0963d87a46290d21d6d3d43b74497fca72b6ff296ed16b9ea09f63",
+      "before": {
+        "cupId": 19,
+        "season": 10,
+        "leagueId": 33,
+        "countryName": "Egypt",
+        "cupName": "Kas Misr",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Foxy",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656162,
+        "updatedAt": 1785681656162,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 19,
+        "season": 10,
+        "leagueId": 33,
+        "countryName": "Egypt",
+        "cupName": "Kas Misr",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "amazighteam",
+        "runnerUpTeamName": "Foxy",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656162,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Foxy",
+          "after": "amazighteam"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Foxy"
+        },
+        "updatedAt": {
+          "before": 1785681656162,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 54,
+      "season": 8,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Estonia",
+      "revisionUrl": null,
+      "beforeSha256": "188f205735129005ced89738d1f105bef84f99e31dc778d465cad9be7f6beb36",
+      "afterSha256": "9846fed66f0ee851d2e4951b84eb17104343fe7ad23ffe97bc79305f386bb094",
+      "before": {
+        "cupId": 54,
+        "season": 8,
+        "leagueId": 56,
+        "countryName": "Estonia",
+        "cupName": "Eesti Karikas",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC Kallic",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656225,
+        "updatedAt": 1785681656225,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 54,
+        "season": 8,
+        "leagueId": 56,
+        "countryName": "Estonia",
+        "cupName": "Eesti Karikas",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "K-J Jotad",
+        "runnerUpTeamName": "FC Kallic",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656225,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "FC Kallic",
+          "after": "K-J Jotad"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "FC Kallic"
+        },
+        "updatedAt": {
+          "before": 1785681656225,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 4,
+      "season": 23,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Germany",
+      "revisionUrl": null,
+      "beforeSha256": "83bd4388c23b8faad91cb3d1784995b0ccb509851309609516031ef26e3ae13a",
+      "afterSha256": "9204f9e826eab2982407953fa6e7c343a28be9ff02de4605982130bf61d280d2",
+      "before": {
+        "cupId": 4,
+        "season": 23,
+        "leagueId": 3,
+        "countryName": "Germany",
+        "cupName": "Deutschland-Pokal",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC Teerlunge",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656347,
+        "updatedAt": 1785681656347,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 4,
+        "season": 23,
+        "leagueId": 3,
+        "countryName": "Germany",
+        "cupName": "Deutschland-Pokal",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC Martini",
+        "runnerUpTeamName": "FC Teerlunge",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656347,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "FC Teerlunge",
+          "after": "FC Martini"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "FC Teerlunge"
+        },
+        "updatedAt": {
+          "before": 1785681656347,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 52,
+      "season": 3,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Indonesia",
+      "revisionUrl": null,
+      "beforeSha256": "4738966db66348f0ba02775c48306e18b919a20c24c85e9f302932d73fccac08",
+      "afterSha256": "e0a5893a2f56186524efbc61c6a2cbfecae211917609d000e240a1047ad3a790",
+      "before": {
+        "cupId": 52,
+        "season": 3,
+        "leagueId": 54,
+        "countryName": "Indonesia",
+        "cupName": "Indonesia Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "rage against d' machine fc",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656604,
+        "updatedAt": 1785681656604,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 52,
+        "season": 3,
+        "leagueId": 54,
+        "countryName": "Indonesia",
+        "cupName": "Indonesia Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "italy_A",
+        "runnerUpTeamName": "rage against d' machine fc",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656604,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "rage against d' machine fc",
+          "after": "italy_A"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "rage against d' machine fc"
+        },
+        "updatedAt": {
+          "before": 1785681656604,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 51,
+      "season": 2,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Latvija",
+      "revisionUrl": null,
+      "beforeSha256": "349ec319fb32eaa3100a858933ac7e7a3794ba5f22f7878248c6955006b44560",
+      "afterSha256": "d4ca269665cb095a99deaec7ffa9ed7b0979a8c717a5b2635ba7b076e70ab2ab",
+      "before": {
+        "cupId": 51,
+        "season": 2,
+        "leagueId": 53,
+        "countryName": "Latvia",
+        "cupName": "Latvijas Nacionālais kauss",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FK sakee",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656905,
+        "updatedAt": 1785681656905,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 51,
+        "season": 2,
+        "leagueId": 53,
+        "countryName": "Latvia",
+        "cupName": "Latvijas Nacionālais kauss",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Nokia",
+        "runnerUpTeamName": "FK sakee",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656905,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "FK sakee",
+          "after": "Nokia"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "FK sakee"
+        },
+        "updatedAt": {
+          "before": 1785681656905,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 38,
+      "season": 10,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Malaysia",
+      "revisionUrl": null,
+      "beforeSha256": "ae88b6387022214d464071ec16fa38bceea744e9e4bc58282ec66993162aaa04",
+      "afterSha256": "06b1be284f4d79934bfe8aafa69729ef1e41e01680581b8708ae336759e0161c",
+      "before": {
+        "cupId": 38,
+        "season": 10,
+        "leagueId": 45,
+        "countryName": "Malaysia",
+        "cupName": "Piala Malaysia",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "badang_fc",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 12187246,
+        "championUserName": "Master_lim",
+        "createdAt": 1785681657033,
+        "updatedAt": 1785681657033,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 38,
+        "season": 10,
+        "leagueId": 45,
+        "countryName": "Malaysia",
+        "cupName": "Piala Malaysia",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Ipoh United",
+        "runnerUpTeamName": "badang_fc",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657033,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "badang_fc",
+          "after": "Ipoh United"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "badang_fc"
+        },
+        "championUserId": {
+          "before": 12187246,
+          "after": null
+        },
+        "championUserName": {
+          "before": "Master_lim",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681657033,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 9,
+      "season": 5,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Norway",
+      "revisionUrl": null,
+      "beforeSha256": "9cdb2e6c15832d555cf9c8a28eaab1e96f11c8d7fb3ad1d36e5f1fd2748c85e9",
+      "afterSha256": "cffe41d9bca154b52dbd48592c00fe48a48fbe5758e0963006ec8457faba291b",
+      "before": {
+        "cupId": 9,
+        "season": 5,
+        "leagueId": 9,
+        "countryName": "Norway",
+        "cupName": "Norgesmesterskapet",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Rolf FK",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657377,
+        "updatedAt": 1785681657377,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 9,
+        "season": 5,
+        "leagueId": 9,
+        "countryName": "Norway",
+        "cupName": "Norgesmesterskapet",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Viking 2",
+        "runnerUpTeamName": "Rolf FK",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657377,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Rolf FK",
+          "after": "Viking 2"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Rolf FK"
+        },
+        "updatedAt": {
+          "before": 1785681657377,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 33,
+      "season": 6,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/China",
+      "revisionUrl": null,
+      "beforeSha256": "e072acb8a315aefe0a05f8473443ba144c0382c6c6a9fe68acc7bb07c2246b95",
+      "afterSha256": "8f1ad5e7922b77a71614fef070ed72eea42805b6736ca8e6fed9761c062d59a4",
+      "before": {
+        "cupId": 33,
+        "season": 6,
+        "leagueId": 34,
+        "countryName": "People's Republic of China",
+        "cupName": "China Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Tsing Yi's Club",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657545,
+        "updatedAt": 1785681657545,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 33,
+        "season": 6,
+        "leagueId": 34,
+        "countryName": "People's Republic of China",
+        "cupName": "China Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Aztec Warrior",
+        "runnerUpTeamName": "Tsing Yi's Club",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657545,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Tsing Yi's Club",
+          "after": "Aztec Warrior"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Tsing Yi's Club"
+        },
+        "updatedAt": {
+          "before": 1785681657545,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 34,
+      "season": 3,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+      "revisionUrl": null,
+      "beforeSha256": "1092029e6b764b3dd2d5c073e8895673a32b8132175e93f81bcf78573ff81b40",
+      "afterSha256": "387b5f3fc4577b83a89a1b5fa60245a9b748a91b7841bd0cb956d66783b7226b",
+      "before": {
+        "cupId": 34,
+        "season": 3,
+        "leagueId": 35,
+        "countryName": "Russia",
+        "cupName": "Кубок России",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Baltika",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657735,
+        "updatedAt": 1785681657735,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 34,
+        "season": 3,
+        "leagueId": 35,
+        "countryName": "Russia",
+        "cupName": "Кубок России",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FK Balashikha",
+        "runnerUpTeamName": "Baltika",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657735,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Baltika",
+          "after": "FK Balashikha"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Baltika"
+        },
+        "updatedAt": {
+          "before": 1785681657735,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 34,
+      "season": 6,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+      "revisionUrl": null,
+      "beforeSha256": "b97cfd00d823a1985ea3bb40d5183ece86ddf861661a8d4a317093553777e4f4",
+      "afterSha256": "1d469af7955e6b419c043b1310c06965de7265c0329701ccc377ffddc2999956",
+      "before": {
+        "cupId": 34,
+        "season": 6,
+        "leagueId": 35,
+        "countryName": "Russia",
+        "cupName": "Кубок России",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Killaz",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657735,
+        "updatedAt": 1785681657735,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 34,
+        "season": 6,
+        "leagueId": 35,
+        "countryName": "Russia",
+        "cupName": "Кубок России",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC Karelia",
+        "runnerUpTeamName": "Killaz",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657735,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Killaz",
+          "after": "FC Karelia"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Killaz"
+        },
+        "updatedAt": {
+          "before": 1785681657735,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 34,
+      "season": 8,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+      "revisionUrl": null,
+      "beforeSha256": "10d8f1db7d6262e09bffbad0d9db28fbab380488930c23aa120417f1f93d771d",
+      "afterSha256": "b23f0612142a1edfc15a478a66a6cc270636473f37840b353e8b8254969f203d",
+      "before": {
+        "cupId": 34,
+        "season": 8,
+        "leagueId": 35,
+        "countryName": "Russia",
+        "cupName": "Кубок России",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC Karelia",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 58957,
+        "championUserName": "yuryan",
+        "createdAt": 1785681657735,
+        "updatedAt": 1785681657735,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 34,
+        "season": 8,
+        "leagueId": 35,
+        "countryName": "Russia",
+        "cupName": "Кубок России",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Frozen Karelians",
+        "runnerUpTeamName": "FC Karelia",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657735,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "FC Karelia",
+          "after": "Frozen Karelians"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "FC Karelia"
+        },
+        "championUserId": {
+          "before": 58957,
+          "after": null
+        },
+        "championUserName": {
+          "before": "yuryan",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681657735,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 27,
+      "season": 4,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Scotland",
+      "revisionUrl": null,
+      "beforeSha256": "6f9b7e40a45194051bf03dc19810b610a9dc26fa3117db9a75d5c0e27ace2621",
+      "afterSha256": "90cb87f16ccec317610da0103910cf6ec5d4ac2c87cadd094272579c8f49517a",
+      "before": {
+        "cupId": 27,
+        "season": 4,
+        "leagueId": 26,
+        "countryName": "Scotland",
+        "cupName": "Scottish Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Glasgow_CELTIC",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657824,
+        "updatedAt": 1785681657824,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 27,
+        "season": 4,
+        "leagueId": 26,
+        "countryName": "Scotland",
+        "cupName": "Scottish Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Barons Boys",
+        "runnerUpTeamName": "Glasgow_CELTIC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657824,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Glasgow_CELTIC",
+          "after": "Barons Boys"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Glasgow_CELTIC"
+        },
+        "updatedAt": {
+          "before": 1785681657824,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 55,
+      "season": 1,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Srbija",
+      "revisionUrl": null,
+      "beforeSha256": "a5c5b48d41bd7201544433446548e8ef42aabe4c5c6b0b3deb27eb9493816849",
+      "afterSha256": "be27620e82891058a9082430b0e10dec284eeac470cd1f8b03824cdf4c68f99a",
+      "before": {
+        "cupId": 55,
+        "season": 1,
+        "leagueId": 57,
+        "countryName": "Serbia",
+        "cupName": "Куп Србије",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "S.C Sabac",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657877,
+        "updatedAt": 1785681657877,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 55,
+        "season": 1,
+        "leagueId": 57,
+        "countryName": "Serbia",
+        "cupName": "Куп Србије",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC Kotor",
+        "runnerUpTeamName": "S.C Sabac",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657877,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "S.C Sabac",
+          "after": "FC Kotor"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "S.C Sabac"
+        },
+        "updatedAt": {
+          "before": 1785681657877,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 40,
+      "season": 2,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore",
+      "revisionUrl": null,
+      "beforeSha256": "0d1ed1f0c523175707f49142b4bf80a33bd641e2bc6c7434e84c19496f124758",
+      "afterSha256": "a4876c89bec69fb7f95c1f98e09ff829a545c3576add19eeac2060618b3e76c5",
+      "before": {
+        "cupId": 40,
+        "season": 2,
+        "leagueId": 47,
+        "countryName": "Singapore",
+        "cupName": "Singapore Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Soccer Advocates",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657904,
+        "updatedAt": 1785681657904,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 40,
+        "season": 2,
+        "leagueId": 47,
+        "countryName": "Singapore",
+        "cupName": "Singapore Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Intergalactic Stars",
+        "runnerUpTeamName": "Soccer Advocates",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657904,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Soccer Advocates",
+          "after": "Intergalactic Stars"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Soccer Advocates"
+        },
+        "updatedAt": {
+          "before": 1785681657904,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 40,
+      "season": 6,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore",
+      "revisionUrl": null,
+      "beforeSha256": "9baab4cd2927e552dd0f8db3ea94aac206ed2523f86b3186c7f861e6f6719238",
+      "afterSha256": "e24252746792a5176e1bc4cd092ff4763a0df082b1dddf0e5134bee73b38a5dc",
+      "before": {
+        "cupId": 40,
+        "season": 6,
+        "leagueId": 47,
+        "countryName": "Singapore",
+        "cupName": "Singapore Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Hattrick all the time",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657904,
+        "updatedAt": 1785681657904,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 40,
+        "season": 6,
+        "leagueId": 47,
+        "countryName": "Singapore",
+        "cupName": "Singapore Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Herron",
+        "runnerUpTeamName": "Hattrick all the time",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657904,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Hattrick all the time",
+          "after": "Herron"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Hattrick all the time"
+        },
+        "updatedAt": {
+          "before": 1785681657904,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 40,
+      "season": 10,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore",
+      "revisionUrl": null,
+      "beforeSha256": "464b1e4b8393136d6bee4caaf748a1698d1e5330441bea67c9b47aaaae307dc7",
+      "afterSha256": "a0552776a43d3a1a8e143274c84e565d35b489f996ee866afbc6c96743f3915d",
+      "before": {
+        "cupId": 40,
+        "season": 10,
+        "leagueId": 47,
+        "countryName": "Singapore",
+        "cupName": "Singapore Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Herron",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657904,
+        "updatedAt": 1785681657904,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 40,
+        "season": 10,
+        "leagueId": 47,
+        "countryName": "Singapore",
+        "cupName": "Singapore Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Team Singapore",
+        "runnerUpTeamName": "Herron",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657904,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Herron",
+          "after": "Team Singapore"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Herron"
+        },
+        "updatedAt": {
+          "before": 1785681657904,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 63,
+      "season": 7,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Slovenia",
+      "revisionUrl": null,
+      "beforeSha256": "67096885458db4df8ce755257e663b09a3acc73c8a97b1a733b5c4b4e00a241b",
+      "afterSha256": "4a399fc7ff7aff68c9c08d1c9b8406a3c3b0f609b51b0dee11c6824b38a5ab11",
+      "before": {
+        "cupId": 63,
+        "season": 7,
+        "leagueId": 64,
+        "countryName": "Slovenia",
+        "cupName": "Pokal Slovenije",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "NK Proletarec",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 187411,
+        "championUserName": "Roberto_K",
+        "createdAt": 1785681657960,
+        "updatedAt": 1785681657960,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 63,
+        "season": 7,
+        "leagueId": 64,
+        "countryName": "Slovenia",
+        "cupName": "Pokal Slovenije",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "NK batman",
+        "runnerUpTeamName": "NK Proletarec",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657960,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "NK Proletarec",
+          "after": "NK batman"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "NK Proletarec"
+        },
+        "championUserId": {
+          "before": 187411,
+          "after": null
+        },
+        "championUserName": {
+          "before": "Roberto_K",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681657960,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 43,
+      "season": 7,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Spain",
+      "revisionUrl": null,
+      "beforeSha256": "9518cec298907155b9f9837b9e2f6f25897c5cd17f8237896265d2ce332437de",
+      "afterSha256": "f1fbc7be7f8449ec26b140bfc2ce665632a7c32ccdbebdbb64a6484a2ede50dc",
+      "before": {
+        "cupId": 43,
+        "season": 7,
+        "leagueId": 36,
+        "countryName": "Spain",
+        "cupName": "Copa de España",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Babylon 5",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 58905,
+        "championUserName": "Lugonal",
+        "createdAt": 1785681658042,
+        "updatedAt": 1785681658042,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 43,
+        "season": 7,
+        "leagueId": 36,
+        "countryName": "Spain",
+        "cupName": "Copa de España",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Alien United",
+        "runnerUpTeamName": "Babylon 5",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658042,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Babylon 5",
+          "after": "Alien United"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Babylon 5"
+        },
+        "championUserId": {
+          "before": 58905,
+          "after": null
+        },
+        "championUserName": {
+          "before": "Lugonal",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681658042,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 43,
+      "season": 11,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Spain",
+      "revisionUrl": null,
+      "beforeSha256": "4fc5f05537e1cc581b5c0174a3209a30358e6bad3bb221d0b9c6a2f3459ecd12",
+      "afterSha256": "19aafb4cc887d1884867d24cf298a2596ba93d77ad7dd3fd02f015eea68827e2",
+      "before": {
+        "cupId": 43,
+        "season": 11,
+        "leagueId": 36,
+        "countryName": "Spain",
+        "cupName": "Copa de España",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Alien United",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658042,
+        "updatedAt": 1785681658042,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 43,
+        "season": 11,
+        "leagueId": 36,
+        "countryName": "Spain",
+        "cupName": "Copa de España",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Ancestrales",
+        "runnerUpTeamName": "Alien United",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658042,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Alien United",
+          "after": "Ancestrales"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Alien United"
+        },
+        "updatedAt": {
+          "before": 1785681658042,
+          "after": 1789079409746
+        }
+      }
+    },
+    {
+      "cupId": 29,
+      "season": 6,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Prathet_Thai",
+      "revisionUrl": null,
+      "beforeSha256": "cba5afd955fe63446e20e4519578633435ea64476538036a032b3bd44cf2739a",
+      "afterSha256": "232491a1b3d6aaff98008a82dabd6df5d4c740b72980be0a641c7b8b0ef45e14",
+      "before": {
+        "cupId": 29,
+        "season": 6,
+        "leagueId": 31,
+        "countryName": "Thailand",
+        "cupName": "Thai Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "The Spirits of Football",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658223,
+        "updatedAt": 1785681658223,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 29,
+        "season": 6,
+        "leagueId": 31,
+        "countryName": "Thailand",
+        "cupName": "Thai Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Rama XI",
+        "runnerUpTeamName": "The Spirits of Football",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658223,
+        "updatedAt": 1789079409746,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "The Spirits of Football",
+          "after": "Rama XI"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "The Spirits of Football"
+        },
+        "updatedAt": {
+          "before": 1785681658223,
+          "after": 1789079409746
+        }
+      }
+    }
+  ]
+}

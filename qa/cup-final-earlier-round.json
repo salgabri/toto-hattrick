@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-09-10T22:18:50.803Z",
+  "requested": {
+    "cupId": 25,
+    "season": 9,
+    "cupRound": 14
+  },
+  "response": {
+    "cupId": 25,
+    "cupName": "Puchar Polski",
+    "season": 9,
+    "round": 14,
+    "matches": [
+      {
+        "matchId": 13915910,
+        "matchDate": "2004-02-11T09:00:00.000Z",
+        "homeTeamName": "Oceana F.C.",
+        "awayTeamName": "MKS Narew Ostroleka",
+        "homeGoals": 1,
+        "awayGoals": 5
+      }
+    ]
+  }
+}

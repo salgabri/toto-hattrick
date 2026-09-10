@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <Match>
+    <MatchID>541334258</MatchID>
+    <MatchType>3</MatchType>
+    <MatchContextId>714</MatchContextId>
+    <MatchDate>2015-09-30 16:15:00</MatchDate>
+    <FinishedDate>2015-09-30 16:15:00</FinishedDate>
+    <HomeTeam>
+      <HomeTeamID>463469</HomeTeamID>
+      <HomeTeamName>mahan</HomeTeamName>
+      <HomeGoals>0</HomeGoals>
+    </HomeTeam>
+    <AwayTeam>
+      <AwayTeamID>1954275</AwayTeamID>
+      <AwayTeamName>Irane Sabz</AwayTeamName>
+      <AwayGoals>0</AwayGoals>
+    </AwayTeam>
+    <EventList>
+      <Event>
+        <Minute>0</Minute>
+        <SubjectTeamID>0</SubjectTeamID>
+        <MatchPart>0</MatchPart>
+        <EventTypeID>500</EventTypeID>
+        <EventText>The game was declared a mutual walkover since neither of the teams could enter a team with a big enough squad, at least 9 players each. The crowd was furious!</EventText>
+      </Event>
+      <Event>
+        <Minute>0</Minute>
+        <SubjectTeamID>0</SubjectTeamID>
+        <MatchPart>0</MatchPart>
+        <EventTypeID>599</EventTypeID>
+        <EventText>The match ends 0 - 0.</EventText>
+      </Event>
+    </EventList>
+  </Match>
+</HattrickData>

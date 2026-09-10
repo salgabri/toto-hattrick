@@ -42,7 +42,8 @@
     "recover:historical-winners": "tsx src/scripts/recover-historical-winners.ts",
     "materialize:recent-winners": "tsx src/scripts/materialize-recent-winners.ts",
     "recover:national-coaches": "tsx src/scripts/recover-national-coaches.ts",
-    "test:winners": "npm run build && node --test dist/sync/*.test.js dist/scripts/*.test.js"
+    "test:winners": "npm run build && node --test dist/sync/*.test.js dist/scripts/*.test.js",
+    "test": "npm run build && node --test dist/sync/*.test.js dist/scripts/*.test.js dist/routes/*.test.js"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.1",

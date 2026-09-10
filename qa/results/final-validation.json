@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-11",
+  "passed": true,
+  "tests": { "server": 218, "web": 15, "dataCorrections": 11, "total": 244 },
+  "numericalAudit": {
+    "dataAssertions": 534450,
+    "dataGroups": 49,
+    "frontendGroups": 28,
+    "apiRequests": 11421,
+    "apiAssertions": 76819,
+    "historicalWinners": 619,
+    "historicalCountries": 88,
+    "unexplainedFailures": 0
+  },
+  "repairs": { "addedWinners": 50, "correctedWinners": 52, "clearedIncorrectManagerAttributions": 20, "unexpectedDatabaseChanges": 0 },
+  "browserRegressions": 12,
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "gitDiffCheck": "passed",
+  "databaseSha256": "224aaae8d7dcb0a4f5d67f69b3bb9576240f24de4019dafa6bbbea4e73861328",
+  "backup": ".backup/qa-fixes-20260911/",
+  "limitations": ["Historical identities and missing source facts remain unknown", "The legacy match archive is empty", "Latest-season completeness is not established", "Local changes have not been deployed"]
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "server/src/data/verified-historical-winners.json",
+    "before": {
+      "country": "Ukraine",
+      "cupId": 126,
+      "season": 6,
+      "finalMatchId": 0,
+      "championTeamId": 268352,
+      "championTeamName": "FC Granit",
+      "championUserId": 652692,
+      "championUserName": "Askon",
+      "globalSeason": 24
+    },
+    "evidence": {
+      "table": "cupChampion",
+      "competitionId": 126,
+      "season": 6,
+      "teamId": 268352,
+      "teamName": "FC Granit",
+      "userId": 652692,
+      "name": "Askon",
+      "sources": [
+        "https://wiki.hattrick.org/index.php?title=Ukraina&oldid=416220",
+        "https://www.hattrick.org/en/Community/Press/?ArticleID=13022"
+      ],
+      "evidence": "Ukraine's honours table names Askon for this exact competition and displayed local season. Hattrick Press article 13022 identifies Askon (652692) and FC Granit (268352) among the three interviewed Ukrainian club owners. Ukraine's historical season-restart numbering is retained exactly as displayed, matching the database key."
+    }
+  }
+]

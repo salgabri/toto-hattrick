@@ -1,0 +1,207 @@
+{
+  "checkedAt": "2026-09-11",
+  "method": "Human-reviewed public historical records. Cup/season and winner must match one of the independently captured CHPP finalists. Names do not authorize inferred user IDs.",
+  "evidence": [
+    {
+      "cupId": 7,
+      "season": 21,
+      "winnerName": "Sgainator F.C.",
+      "managerName": "Cratoremassa",
+      "url": "https://wiki.hattrick.org/wiki/Italia_Hall_of_fame",
+      "fact": "The national cup champions table identifies Sgainator F.C. as local season 21 winner."
+    },
+    {
+      "cupId": 3,
+      "season": 20,
+      "winnerName": "Durham City FC",
+      "managerName": "Ad_the_lad",
+      "url": "https://wiki.hattrick.org/wiki/England",
+      "fact": "The national cup champions table identifies Durham City FC as local season 20 winner."
+    },
+    {
+      "cupId": 51,
+      "season": 5,
+      "winnerName": "Dinaburg FC",
+      "managerName": "Edgars",
+      "url": "https://wiki.hattrick.org/wiki/Latvia",
+      "fact": "The national cup champions table identifies Dinaburg FC as local season 5 winner."
+    },
+    {
+      "cupId": 51,
+      "season": 6,
+      "winnerName": "The Magnificent One",
+      "managerName": "Kechups",
+      "url": "https://wiki.hattrick.org/wiki/Latvia",
+      "fact": "The national cup champions table identifies The Magnificent One as local season 6 winner."
+    },
+    {
+      "cupId": 38,
+      "season": 5,
+      "winnerName": "Katamaran Divers",
+      "managerName": "Dygarn",
+      "url": "https://wiki.hattrick.org/wiki/Malaysia",
+      "fact": "The national cup champions table identifies Katamaran Divers as local season 5 winner."
+    },
+    {
+      "cupId": 38,
+      "season": 9,
+      "winnerName": "Tiger ES",
+      "managerName": "Phycomaster",
+      "url": "https://wiki.hattrick.org/wiki/Malaysia",
+      "fact": "The national cup champions table identifies Tiger ES as local season 9 winner."
+    },
+    {
+      "cupId": 13,
+      "season": 8,
+      "winnerName": "Real Raateland",
+      "managerName": "Raateland",
+      "url": "https://wiki.hattrick.org/wiki/Nederland",
+      "fact": "The national cup champions table identifies Real Raateland as local season 8 winner."
+    },
+    {
+      "cupId": 9,
+      "season": 7,
+      "winnerName": "Birkelunden BK",
+      "managerName": "Birken",
+      "url": "https://wiki.hattrick.org/wiki/Norge",
+      "fact": "The national cup champions table identifies Birkelunden BK as local season 7 winner."
+    },
+    {
+      "cupId": 14,
+      "season": 8,
+      "winnerName": "Sparker",
+      "managerName": "Sparker",
+      "url": "https://wiki.hattrick.org/wiki/Oceania",
+      "fact": "The national cup champions table identifies Sparker as local season 8 winner."
+    },
+    {
+      "cupId": 14,
+      "season": 10,
+      "winnerName": "Burnt Out Koalas FC",
+      "managerName": "sirfire",
+      "url": "https://wiki.hattrick.org/wiki/Oceania",
+      "fact": "The national cup champions table identifies Burnt Out Koalas FC as local season 10 winner."
+    },
+    {
+      "cupId": 33,
+      "season": 5,
+      "winnerName": "Ocean Panda",
+      "managerName": "Gary Y",
+      "url": "https://wiki.hattrick.org/wiki/China",
+      "fact": "The national cup champions table identifies Ocean Panda as local season 5 winner."
+    },
+    {
+      "cupId": 33,
+      "season": 9,
+      "winnerName": "Tsing Yi Friends",
+      "managerName": "andy tsh",
+      "url": "https://wiki.hattrick.org/wiki/China",
+      "fact": "The national cup champions table identifies Tsing Yi Friends as local season 9 winner."
+    },
+    {
+      "cupId": 24,
+      "season": 11,
+      "winnerName": "Real Lima FC",
+      "managerName": "Jugador",
+      "url": "https://wiki.hattrick.org/wiki/Per%C3%BA",
+      "fact": "The national cup champions table identifies Real Lima FC as local season 11 winner."
+    },
+    {
+      "cupId": 25,
+      "season": 9,
+      "winnerName": "MKS Narew Ostroleka",
+      "managerName": null,
+      "url": "https://wiki.hattrick.org/wiki/Puchar_Polski",
+      "fact": "Cup final table identifies MKS Narew Ostroleka as season 9 champion, over Oceana F.C., with leg scores 5–1 and 0–0.",
+      "format": "two-legged"
+    },
+    {
+      "cupId": 34,
+      "season": 4,
+      "winnerName": "Tequila Lovers",
+      "managerName": "m10rost",
+      "url": "https://wiki.hattrick.org/wiki/Rossiya",
+      "fact": "The national cup champions table identifies Tequila Lovers as local season 4 winner."
+    },
+    {
+      "cupId": 34,
+      "season": 7,
+      "winnerName": "KPEMEHb",
+      "managerName": "MAXHO",
+      "url": "https://wiki.hattrick.org/wiki/Rossiya",
+      "fact": "The national cup champions table identifies KPEMEHb as local season 7 winner."
+    },
+    {
+      "cupId": 27,
+      "season": 11,
+      "winnerName": "Bogglers Divided",
+      "managerName": "Boggler",
+      "url": "https://wiki.hattrick.org/wiki/Scotland",
+      "fact": "The national cup champions table identifies Bogglers Divided as local season 11 winner."
+    },
+    {
+      "cupId": 55,
+      "season": 7,
+      "winnerName": "Dostin",
+      "managerName": "zizi_dostin",
+      "url": "https://wiki.hattrick.org/wiki/Srbija",
+      "fact": "The national cup champions table identifies Dostin as local season 7 winner."
+    },
+    {
+      "cupId": 40,
+      "season": 4,
+      "winnerName": "FC Tenochtitlán",
+      "managerName": "fiendfortress",
+      "url": "https://wiki.hattrick.org/wiki/Singapore",
+      "fact": "The national cup champions table identifies FC Tenochtitlán as local season 4 winner."
+    },
+    {
+      "cupId": 40,
+      "season": 8,
+      "winnerName": "Winning Eleven",
+      "managerName": "SkyLord",
+      "url": "https://wiki.hattrick.org/wiki/Singapore",
+      "fact": "The national cup champions table identifies Winning Eleven as local season 8 winner."
+    },
+    {
+      "cupId": 63,
+      "season": 5,
+      "winnerName": "Praslovan",
+      "managerName": "Brane",
+      "url": "https://wiki.hattrick.org/wiki/Slovenia",
+      "fact": "The national cup champions table identifies Praslovan as local season 5 winner."
+    },
+    {
+      "cupId": 43,
+      "season": 6,
+      "winnerName": "Ancestrales",
+      "managerName": "Ancestral",
+      "url": "https://wiki.hattrick.org/wiki/Spain",
+      "fact": "The national cup champions table identifies Ancestrales as local season 6 winner."
+    },
+    {
+      "cupId": 1,
+      "season": 16,
+      "winnerName": "Arvidsjaur BK",
+      "managerName": "Lappkungen",
+      "url": "https://wiki.hattrick.org/wiki/Sverige",
+      "fact": "The national cup champions table identifies Arvidsjaur BK as local season 16 winner."
+    },
+    {
+      "cupId": 29,
+      "season": 8,
+      "winnerName": "-C-R-I-S-I-S-",
+      "managerName": "Kondee",
+      "url": "https://wiki.hattrick.org/wiki/Prathet_Thai",
+      "fact": "The national cup champions table identifies -C-R-I-S-I-S- as local season 8 winner."
+    },
+    {
+      "cupId": 31,
+      "season": 4,
+      "winnerName": "el terrible",
+      "managerName": "dod007",
+      "url": "https://wiki.hattrick.org/wiki/Uruguay",
+      "fact": "The national cup champions table identifies el terrible as local season 4 winner."
+    }
+  ]
+}

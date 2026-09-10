@@ -1,0 +1,814 @@
+[
+  {
+    "key": "37/5",
+    "matchId": 5041996,
+    "date": "2003-03-05 09:30:00",
+    "homeId": "73255",
+    "awayId": "73361",
+    "score": [
+      "3",
+      "3"
+    ],
+    "maxMinute": null,
+    "events": 0,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "41/6",
+    "matchId": 7226389,
+    "date": "2003-07-09 13:30:00",
+    "homeId": "72973",
+    "awayId": "72935",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": null,
+    "events": 0,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "41/9",
+    "matchId": 18471273,
+    "date": "2004-06-09 13:00:00",
+    "homeId": "72988",
+    "awayId": "73018",
+    "score": [
+      "0",
+      "0"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 0 - 0.",
+    "events": 19,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "15/7",
+    "matchId": 7163051,
+    "date": "2003-06-26 00:00:00",
+    "homeId": "29640",
+    "awayId": "29333",
+    "score": [
+      "3",
+      "3"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 3 - 3.",
+    "events": 24,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "15/11",
+    "matchId": 24116895,
+    "date": "2004-09-30 00:00:00",
+    "homeId": "29640",
+    "awayId": "29253",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 23,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "61/4",
+    "matchId": 9681158,
+    "date": "2003-09-30 22:00:00",
+    "homeId": "117208",
+    "awayId": "117159",
+    "score": [
+      "0",
+      "0"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 0 - 0.",
+    "events": 25,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "17/8",
+    "matchId": 9781567,
+    "date": "2003-10-16 02:45:00",
+    "homeId": "29974",
+    "awayId": "30000",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 130,
+    "last": "The match ends 2 - 2.",
+    "events": 44,
+    "shootout": true,
+    "extra": [
+      "The result was still a draw, so the match had to be settled with penalties.<br /><br />"
+    ]
+  },
+  {
+    "key": "17/10",
+    "matchId": 18478956,
+    "date": "2004-06-10 02:45:00",
+    "homeId": "30000",
+    "awayId": "29992",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 22,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "59/7",
+    "matchId": 23440755,
+    "date": "2004-08-18 03:00:00",
+    "homeId": "111453",
+    "awayId": "111556",
+    "score": [
+      "4",
+      "4"
+    ],
+    "maxMinute": 130,
+    "last": "The match ends 4 - 4.",
+    "events": 35,
+    "shootout": true,
+    "extra": [
+      "After extra time, the game was still tied and a penalty shoot-out ensued.<br /><br />"
+    ]
+  },
+  {
+    "key": "18/8",
+    "matchId": 9687663,
+    "date": "2003-10-02 02:30:00",
+    "homeId": "30319",
+    "awayId": "30468",
+    "score": [
+      "3",
+      "3"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 3 - 3.",
+    "events": 25,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "56/6",
+    "matchId": 13774861,
+    "date": "2004-02-04 08:45:00",
+    "homeId": "94300",
+    "awayId": "94394",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 22,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "56/7",
+    "matchId": 18279050,
+    "date": "2004-05-26 08:45:00",
+    "homeId": "94420",
+    "awayId": "94446",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 105,
+    "last": "The match ends 2 - 2.",
+    "events": 24,
+    "shootout": false,
+    "extra": [
+      "This put an end to extra time, making <span class=\"hometeam\">Legends</span> the winners."
+    ]
+  },
+  {
+    "key": "19/11",
+    "matchId": 23654711,
+    "date": "2004-09-01 08:45:00",
+    "homeId": "78140",
+    "awayId": "30505",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 97,
+    "last": "The match ends 2 - 2.",
+    "events": 26,
+    "shootout": false,
+    "extra": [
+      "This put an end to extra time, making <span class=\"awayteam\">Heliopolis</span> the winners."
+    ]
+  },
+  {
+    "key": "3/20",
+    "matchId": 9871105,
+    "date": "2003-10-28 21:00:00",
+    "homeId": "7397",
+    "awayId": "54226",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 21,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "54/5",
+    "matchId": 9777093,
+    "date": "2003-10-15 12:15:00",
+    "homeId": "94147",
+    "awayId": "94165",
+    "score": [
+      "5",
+      "5"
+    ],
+    "maxMinute": 130,
+    "last": "The match ends 5 - 5.",
+    "events": 31,
+    "shootout": true,
+    "extra": [
+      "After extra time, the game was still tied and a penalty shoot-out ensued.<br /><br />"
+    ]
+  },
+  {
+    "key": "6/19",
+    "matchId": 7160871,
+    "date": "2003-06-25 15:00:00",
+    "homeId": "8914",
+    "awayId": "8922",
+    "score": [
+      "0",
+      "0"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 0 - 0.",
+    "events": 22,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "6/20",
+    "matchId": 9778089,
+    "date": "2003-10-15 15:00:00",
+    "homeId": "8922",
+    "awayId": "8931",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 19,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "4/19",
+    "matchId": 7223754,
+    "date": "2003-07-08 18:00:00",
+    "homeId": "6708",
+    "awayId": "6705",
+    "score": [
+      "3",
+      "3"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 3 - 3.",
+    "events": 24,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "48/4",
+    "matchId": 7095334,
+    "date": "2003-06-11 09:45:00",
+    "homeId": "94089",
+    "awayId": "94035",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 93,
+    "last": "The match ends 2 - 2.",
+    "events": 27,
+    "shootout": false,
+    "extra": [
+      "With that <span class=\"awayteam\">Spatania</span> had won the game in extra time."
+    ]
+  },
+  {
+    "key": "48/7",
+    "matchId": 18279489,
+    "date": "2004-05-26 09:45:00",
+    "homeId": "93957",
+    "awayId": "113408",
+    "score": [
+      "3",
+      "3"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 3 - 3.",
+    "events": 27,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "58/3",
+    "matchId": 7095612,
+    "date": "2003-06-11 11:00:00",
+    "homeId": "30163",
+    "awayId": "30205",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 27,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "36/5",
+    "matchId": 5000327,
+    "date": "2003-02-19 15:30:00",
+    "homeId": "36893",
+    "awayId": "67521",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 25,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "20/6",
+    "matchId": 4999445,
+    "date": "2003-02-19 06:00:00",
+    "homeId": "31362",
+    "awayId": "31426",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 26,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "52/6",
+    "matchId": 13640672,
+    "date": "2004-01-21 07:45:00",
+    "homeId": "112872",
+    "awayId": "94514",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 21,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "714/38",
+    "matchId": 541334258,
+    "date": "2015-09-30 16:15:00",
+    "homeId": "463469",
+    "awayId": "1954275",
+    "score": [
+      "0",
+      "0"
+    ],
+    "maxMinute": 0,
+    "last": "The match ends 0 - 0.",
+    "events": 9,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "7/21",
+    "matchId": 13913642,
+    "date": "2004-02-17 19:00:00",
+    "homeId": "49512",
+    "awayId": "49942",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 25,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "22/7",
+    "matchId": 7028814,
+    "date": "2003-05-28 02:30:00",
+    "homeId": "32048",
+    "awayId": "32043",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 21,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "51/5",
+    "matchId": 9777575,
+    "date": "2003-10-15 13:45:00",
+    "homeId": "94809",
+    "awayId": "94890",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 130,
+    "last": "The match ends 2 - 2.",
+    "events": 29,
+    "shootout": true,
+    "extra": [
+      "There was still no winner after 30 minutes of extra time so the teams had to select a lineup for a penalty shoot-out to settle the result.<br /><br />"
+    ]
+  },
+  {
+    "key": "51/6",
+    "matchId": 13776828,
+    "date": "2004-02-04 13:45:00",
+    "homeId": "94915",
+    "awayId": "94820",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 21,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "38/5",
+    "matchId": 4999365,
+    "date": "2003-02-19 05:00:00",
+    "homeId": "73083",
+    "awayId": "73115",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 20,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "38/9",
+    "matchId": 18277976,
+    "date": "2004-05-26 05:00:00",
+    "homeId": "73083",
+    "awayId": "73145",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 19,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "13/8",
+    "matchId": 7227171,
+    "date": "2003-07-09 17:00:00",
+    "homeId": "21019",
+    "awayId": "21030",
+    "score": [
+      "0",
+      "0"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 0 - 0.",
+    "events": 17,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "9/7",
+    "matchId": 5043018,
+    "date": "2003-03-05 16:00:00",
+    "homeId": "20239",
+    "awayId": "20380",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 21,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "14/8",
+    "matchId": 9775556,
+    "date": "2003-10-15 04:00:00",
+    "homeId": "29113",
+    "awayId": "37195",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 18,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "14/10",
+    "matchId": 18467672,
+    "date": "2004-06-09 04:00:00",
+    "homeId": "28998",
+    "awayId": "29073",
+    "score": [
+      "4",
+      "4"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 4 - 4.",
+    "events": 24,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "33/5",
+    "matchId": 3491085,
+    "date": "2002-10-16 07:00:00",
+    "homeId": "30152",
+    "awayId": "30167",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 21,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "33/9",
+    "matchId": 13640269,
+    "date": "2004-01-21 07:00:00",
+    "homeId": "30137",
+    "awayId": "30159",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 25,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "24/11",
+    "matchId": 23888873,
+    "date": "2004-09-16 03:45:00",
+    "homeId": "111191",
+    "awayId": "32215",
+    "score": [
+      "3",
+      "3"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 3 - 3.",
+    "events": 25,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "25/9",
+    "matchId": 13915911,
+    "date": "2004-02-18 09:00:00",
+    "homeId": "32301",
+    "awayId": "32456",
+    "score": [
+      "0",
+      "0"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 0 - 0.",
+    "events": 19,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "34/4",
+    "matchId": 2491001,
+    "date": "2002-06-26 08:30:00",
+    "homeId": "28869",
+    "awayId": "28850",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 22,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "34/7",
+    "matchId": 7095139,
+    "date": "2003-06-11 08:30:00",
+    "homeId": "28828",
+    "awayId": "28904",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 24,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "27/11",
+    "matchId": 23878537,
+    "date": "2004-09-15 11:30:00",
+    "homeId": "28683",
+    "awayId": "28780",
+    "score": [
+      "4",
+      "4"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 4 - 4.",
+    "events": 27,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "55/7",
+    "matchId": 18092527,
+    "date": "2004-05-12 12:45:00",
+    "homeId": "94974",
+    "awayId": "95093",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 23,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "40/4",
+    "matchId": 3517167,
+    "date": "2002-10-30 04:30:00",
+    "homeId": "37567",
+    "awayId": "37614",
+    "score": [
+      "4",
+      "4"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 4 - 4.",
+    "events": 25,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "40/8",
+    "matchId": 13773955,
+    "date": "2004-02-04 04:30:00",
+    "homeId": "37558",
+    "awayId": "37754",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 26,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "63/5",
+    "matchId": 13638037,
+    "date": "2004-01-20 19:30:00",
+    "homeId": "116908",
+    "awayId": "117031",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 21,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "43/6",
+    "matchId": 5086374,
+    "date": "2003-03-19 12:30:00",
+    "homeId": "30899",
+    "awayId": "48120",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 26,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "1/16",
+    "matchId": 2539640,
+    "date": "2002-08-07 19:00:00",
+    "homeId": "584",
+    "awayId": "566",
+    "score": [
+      "0",
+      "0"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 0 - 0.",
+    "events": 20,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "29/8",
+    "matchId": 9775668,
+    "date": "2003-10-15 05:30:00",
+    "homeId": "28340",
+    "awayId": "33610",
+    "score": [
+      "1",
+      "1"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 1 - 1.",
+    "events": 23,
+    "shootout": false,
+    "extra": []
+  },
+  {
+    "key": "31/4",
+    "matchId": 2492136,
+    "date": "2002-06-27 03:30:00",
+    "homeId": "27533",
+    "awayId": "27449",
+    "score": [
+      "2",
+      "2"
+    ],
+    "maxMinute": 90,
+    "last": "The match ends 2 - 2.",
+    "events": 22,
+    "shootout": false,
+    "extra": []
+  }
+]

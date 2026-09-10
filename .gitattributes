@@ -1,0 +1,5 @@
+# Retained QA evidence is byte-hashed. Preserve identical bytes across Windows and Linux.
+/qa/*.json text eol=lf
+/qa/**/*.json text eol=lf
+/server/src/data/*cup-final*.json text eol=lf
+/server/samples/cup-final-*.xml text eol=lf

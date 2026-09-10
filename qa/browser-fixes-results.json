@@ -1,0 +1,98 @@
+{
+  "checkedAt": "2026-09-11",
+  "baseUrl": "http://127.0.0.1:5183",
+  "method": "Actual UI selections and DOM reads using the supported browser control; post-fix focused regressions. Full original sweep retained in browser-results.json.",
+  "checks": [
+    {
+      "test": "U21 pooled nations",
+      "actual": 105,
+      "expected": 105,
+      "passed": true
+    },
+    {
+      "test": "Germany youth pooled medals and expanded list",
+      "actual": {
+        "gold": 9,
+        "silver": 2,
+        "bronze": 7,
+        "expanded": 18
+      },
+      "passed": true
+    },
+    {
+      "test": "Everything pooled nations",
+      "actual": 129,
+      "expected": 129,
+      "passed": true
+    },
+    {
+      "test": "Open maryusika cabinet All time then Last 5",
+      "actual": {
+        "counted": 8,
+        "championships": 6,
+        "main": 2,
+        "excludedSecondary": 1
+      },
+      "stale43": false,
+      "passed": true
+    },
+    {
+      "test": "Bangladesh Top managers separates duplicate login",
+      "actual": [
+        {
+          "userId": 11087526,
+          "name": "siftekhar",
+          "titles": 5
+        },
+        {
+          "userId": 5015911,
+          "name": "siftekhar",
+          "titles": 3
+        }
+      ],
+      "passed": true
+    },
+    {
+      "test": "JohnSparta Ireland youth40 election",
+      "actual": {
+        "finished": "17.07.2026",
+        "result": "U21 Nations Cup gold",
+        "outsideMandates": false
+      },
+      "passed": true
+    },
+    {
+      "test": "Alando-Brinkman youth World Cup cabinet label",
+      "actual": "WC 9",
+      "incorrectOldLabel": "S9",
+      "passed": true
+    },
+    {
+      "test": "Rebuilt Italy cup roll",
+      "actual": { "S17": "A.S. Roma Calcio", "S21": "Sgainator F.C.", "S21TeamId": 49512, "finals": 80 },
+      "correctedWinnerManagerUnknown": true,
+      "passed": true
+    },
+    {
+      "test": "Rebuilt Poland cup roll",
+      "actual": { "S3": "Twisters", "S7": "Rude Boyz", "S9": "MKS Narew Ostroleka", "S9TeamId": 32301, "S11": "-Tornado-", "finals": 80 },
+      "correctedWinnerManagersUnknown": true,
+      "passed": true
+    },
+    {
+      "test": "Rebuilt Supporter Week Trophy roll",
+      "actual": { "S11": "Beta Broncos", "country": "England", "manager": "unknown", "finals": 37 },
+      "passed": true
+    },
+    {
+      "test": "Club renames preserve consecutive title streaks",
+      "actual": { "CyprusS11": "×3", "CyprusTeamId": 463679, "UkraineS9": "×6", "UkraineTeamId": 268321 },
+      "passed": true
+    },
+    {
+      "test": "Final Argentina cup correction batch after rebake",
+      "actual": { "S23": "LINIERS", "S19": "Bariloche Behemoths FC", "managers": "unknown" },
+      "passed": true
+    }
+  ]
+}

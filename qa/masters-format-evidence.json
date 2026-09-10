@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-09-10T22:30:16.122Z",
+  "seasonProvenance": {
+    "source": "CHPP worlddetails 1.9 Sweden",
+    "checkedAt": "2026-09-10T21:55:11.855Z"
+  },
+  "requestedCupId": 183,
+  "requestedSeason": 95,
+  "round": 8,
+  "matchId": 771464494,
+  "returnedMatchId": "771464494",
+  "matchType": "7",
+  "matchContextId": "183",
+  "matchDate": "2026-09-10 20:00:00",
+  "finishedDate": "2026-09-10 22:21:00",
+  "homeTeam": "e to the i*pi",
+  "awayTeam": "FC Majir",
+  "homeGoals": "3",
+  "awayGoals": "2",
+  "scope": "Match-type/context compatibility sample; this record does not establish that the selected current-round match was the tournament final."
+}

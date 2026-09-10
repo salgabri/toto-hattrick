@@ -1,0 +1,3397 @@
+{
+  "capturedAt": "2026-09-10T22:22:53.436Z",
+  "method": "Previously omitted finals: CHPP last and preceding round plus matchdetails. Two-leg aggregates are primary evidence; no current ownership attribution.",
+  "entries": [
+    {
+      "summary": {
+        "cupId": 37,
+        "season": 5,
+        "round": 13,
+        "matchId": 5041996,
+        "homeTeamName": "Kickers-02",
+        "awayTeamName": "pinky3367",
+        "homeGoals": 3,
+        "awayGoals": 3
+      },
+      "previous": {
+        "cupId": 37,
+        "cupName": "Austria-Cup",
+        "season": 5,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 5041994,
+            "matchDate": "2003-02-26T09:30:00.000Z",
+            "homeTeamName": "pinky3367",
+            "awayTeamName": "Kickers-02",
+            "homeGoals": 2,
+            "awayGoals": 0
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "5041996",
+            "MatchType": "3",
+            "MatchContextId": "37",
+            "MatchDate": "2003-03-05 09:30:00",
+            "FinishedDate": "2003-03-05 11:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "73255",
+              "HomeTeamName": "Kickers-02",
+              "HomeGoals": "3"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "73361",
+              "AwayTeamName": "pinky3367",
+              "AwayGoals": "3"
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=37&season=5&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=37&season=5&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=5041996"
+      ],
+      "captureSha256": "8bca1be145e8f46961d6912004683299c8db3d0ff1130990b1ce2c5679cea9ff"
+    },
+    {
+      "summary": {
+        "cupId": 41,
+        "season": 6,
+        "round": 15,
+        "matchId": 7226389,
+        "homeTeamName": "De inheemse struiktegels",
+        "awayTeamName": "FC Drummer",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 41,
+        "cupName": "Belgium Cup",
+        "season": 6,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 7226388,
+            "matchDate": "2003-07-02T13:30:00.000Z",
+            "homeTeamName": "FC Drummer",
+            "awayTeamName": "De inheemse struiktegels",
+            "homeGoals": 3,
+            "awayGoals": 1
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "7226389",
+            "MatchType": "3",
+            "MatchContextId": "41",
+            "MatchDate": "2003-07-09 13:30:00",
+            "FinishedDate": "2003-07-09 15:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "72973",
+              "HomeTeamName": "De inheemse struiktegels",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "72935",
+              "AwayTeamName": "FC Drummer",
+              "AwayGoals": "1"
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=41&season=6&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=41&season=6&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7226389"
+      ],
+      "captureSha256": "59bccc880c9435d100ebb54e8ef6de0dbda657a8bc37eefd782015abe5b16054"
+    },
+    {
+      "summary": {
+        "cupId": 41,
+        "season": 9,
+        "round": 15,
+        "matchId": 18471273,
+        "homeTeamName": "FC Karekiet",
+        "awayTeamName": "Berzerk Oostende",
+        "homeGoals": 0,
+        "awayGoals": 0
+      },
+      "previous": {
+        "cupId": 41,
+        "cupName": "Belgium Cup",
+        "season": 9,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 18471272,
+            "matchDate": "2004-06-02T13:00:00.000Z",
+            "homeTeamName": "Berzerk Oostende",
+            "awayTeamName": "FC Karekiet",
+            "homeGoals": 3,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "18471273",
+            "MatchType": "3",
+            "MatchContextId": "41",
+            "MatchDate": "2004-06-09 13:00:00",
+            "FinishedDate": "2004-06-09 14:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "72988",
+              "HomeTeamName": "FC Karekiet",
+              "HomeGoals": "0"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "73018",
+              "AwayTeamName": "Berzerk Oostende",
+              "AwayGoals": "0"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 0 - 0."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=41&season=9&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=41&season=9&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18471273"
+      ],
+      "captureSha256": "5fec5a7f7e575b4911d06210db993a357e48a94a08d7aa994ae579db9a6452bb"
+    },
+    {
+      "summary": {
+        "cupId": 15,
+        "season": 7,
+        "round": 13,
+        "matchId": 7163051,
+        "homeTeamName": "Alfabarra",
+        "awayTeamName": "Bruno's Team",
+        "homeGoals": 3,
+        "awayGoals": 3
+      },
+      "previous": {
+        "cupId": 15,
+        "cupName": "Copa do Brasil",
+        "season": 7,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 7163050,
+            "matchDate": "2003-06-19T00:00:00.000Z",
+            "homeTeamName": "Bruno's Team",
+            "awayTeamName": "Alfabarra",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "7163051",
+            "MatchType": "3",
+            "MatchContextId": "15",
+            "MatchDate": "2003-06-26 00:00:00",
+            "FinishedDate": "2003-06-26 01:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "29640",
+              "HomeTeamName": "Alfabarra",
+              "HomeGoals": "3"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "29333",
+              "AwayTeamName": "Bruno's Team",
+              "AwayGoals": "3"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 3 - 3."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=15&season=7&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=15&season=7&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7163051"
+      ],
+      "captureSha256": "e383efb2c76de3d378f322fb4b85002a6960c6d477e34ecc5069473f0507750b"
+    },
+    {
+      "summary": {
+        "cupId": 15,
+        "season": 11,
+        "round": 15,
+        "matchId": 24116895,
+        "homeTeamName": "Alfabarra",
+        "awayTeamName": "MFM",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 15,
+        "cupName": "Copa do Brasil",
+        "season": 11,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 24116894,
+            "matchDate": "2004-09-23T00:00:00.000Z",
+            "homeTeamName": "MFM",
+            "awayTeamName": "Alfabarra",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "24116895",
+            "MatchType": "3",
+            "MatchContextId": "15",
+            "MatchDate": "2004-09-30 00:00:00",
+            "FinishedDate": "2004-09-30 01:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "29640",
+              "HomeTeamName": "Alfabarra",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "29253",
+              "AwayTeamName": "MFM",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=15&season=11&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=15&season=11&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=24116895"
+      ],
+      "captureSha256": "6e2b9f514019b5df503fa49531d3fc1fd62a9ab50784b718f9246df955aaa5da"
+    },
+    {
+      "summary": {
+        "cupId": 61,
+        "season": 4,
+        "round": 11,
+        "matchId": 9681158,
+        "homeTeamName": "FC Presley",
+        "awayTeamName": "Yellow squad",
+        "homeGoals": 0,
+        "awayGoals": 0
+      },
+      "previous": {
+        "cupId": 61,
+        "cupName": "Купа на България",
+        "season": 4,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 9681157,
+            "matchDate": "2003-09-23T22:00:00.000Z",
+            "homeTeamName": "Yellow squad",
+            "awayTeamName": "FC Presley",
+            "homeGoals": 5,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "9681158",
+            "MatchType": "3",
+            "MatchContextId": "61",
+            "MatchDate": "2003-09-30 22:00:00",
+            "FinishedDate": "2003-09-30 23:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "117208",
+              "HomeTeamName": "FC Presley",
+              "HomeGoals": "0"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "117159",
+              "AwayTeamName": "Yellow squad",
+              "AwayGoals": "0"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 0 - 0."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=61&season=4&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=61&season=4&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9681158"
+      ],
+      "captureSha256": "6f539527a79c373ad26d5d9dd835c5eea6aa531252fa496c8a0ac04d6f3e40e1"
+    },
+    {
+      "summary": {
+        "cupId": 17,
+        "season": 8,
+        "round": 13,
+        "matchId": 9781567,
+        "homeTeamName": "Universidad de Chile",
+        "awayTeamName": "ManchesterUnited",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 17,
+        "cupName": "Copa Chile",
+        "season": 8,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9781566,
+            "matchDate": "2003-10-09T02:45:00.000Z",
+            "homeTeamName": "ManchesterUnited",
+            "awayTeamName": "Universidad de Chile",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "9781567",
+            "MatchType": "3",
+            "MatchContextId": "17",
+            "MatchDate": "2003-10-16 02:45:00",
+            "FinishedDate": "2003-10-16 05:10:00",
+            "HomeTeam": {
+              "HomeTeamID": "29974",
+              "HomeTeamName": "Universidad de Chile",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "30000",
+              "AwayTeamName": "ManchesterUnited",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "70",
+                  "EventText": "After the regular 90 minutes, the agony of extra time followed."
+                },
+                {
+                  "Minute": "120",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "4",
+                  "EventTypeID": "71",
+                  "EventText": "The result was still a draw, so the match had to be settled with penalties.<br /><br />"
+                },
+                {
+                  "Minute": "130",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "4",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=17&season=8&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=17&season=8&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9781567"
+      ],
+      "captureSha256": "d59ab94864497dd9da0189258e2d79238a1f78f7627297a29ef343732f3d773d"
+    },
+    {
+      "summary": {
+        "cupId": 17,
+        "season": 10,
+        "round": 15,
+        "matchId": 18478956,
+        "homeTeamName": "ManchesterUnited",
+        "awayTeamName": "los matasanos",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 17,
+        "cupName": "Copa Chile",
+        "season": 10,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 18478955,
+            "matchDate": "2004-06-03T02:45:00.000Z",
+            "homeTeamName": "los matasanos",
+            "awayTeamName": "ManchesterUnited",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "18478956",
+            "MatchType": "3",
+            "MatchContextId": "17",
+            "MatchDate": "2004-06-10 02:45:00",
+            "FinishedDate": "2004-06-10 04:30:00",
+            "HomeTeam": {
+              "HomeTeamID": "30000",
+              "HomeTeamName": "ManchesterUnited",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "29992",
+              "AwayTeamName": "los matasanos",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=17&season=10&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=17&season=10&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18478956"
+      ],
+      "captureSha256": "681f31fed083ad9a5eadd114ec69485eeedbbe94f734af1e2c550986e98c4456"
+    },
+    {
+      "summary": {
+        "cupId": 59,
+        "season": 7,
+        "round": 9,
+        "matchId": 23440755,
+        "homeTeamName": "Passive Aggressive",
+        "awayTeamName": "NightWalkers",
+        "homeGoals": 4,
+        "awayGoals": 4
+      },
+      "previous": {
+        "cupId": 59,
+        "cupName": "Phoenix Cup",
+        "season": 7,
+        "round": 8,
+        "matches": [
+          {
+            "matchId": 23440754,
+            "matchDate": "2004-08-11T03:00:00.000Z",
+            "homeTeamName": "NightWalkers",
+            "awayTeamName": "Passive Aggressive",
+            "homeGoals": 3,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "23440755",
+            "MatchType": "3",
+            "MatchContextId": "59",
+            "MatchDate": "2004-08-18 03:00:00",
+            "FinishedDate": "2004-08-18 05:25:00",
+            "HomeTeam": {
+              "HomeTeamID": "111453",
+              "HomeTeamName": "Passive Aggressive",
+              "HomeGoals": "4"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "111556",
+              "AwayTeamName": "NightWalkers",
+              "AwayGoals": "4"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "70",
+                  "EventText": "As neither team had managed to win, extra time was called."
+                },
+                {
+                  "Minute": "120",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "4",
+                  "EventTypeID": "71",
+                  "EventText": "After extra time, the game was still tied and a penalty shoot-out ensued.<br /><br />"
+                },
+                {
+                  "Minute": "130",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "4",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 4 - 4."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=59&season=7&cupRound=9",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=59&season=7&cupRound=8",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=23440755"
+      ],
+      "captureSha256": "808bfa9f1e4e2f8a2612e5c38bd8168d9247715bbd0c8e936dfd162ab3d6a1c0"
+    },
+    {
+      "summary": {
+        "cupId": 18,
+        "season": 8,
+        "round": 11,
+        "matchId": 9687663,
+        "homeTeamName": "ATL NACIONAL",
+        "awayTeamName": "Nacional de Medellin",
+        "homeGoals": 3,
+        "awayGoals": 3
+      },
+      "previous": {
+        "cupId": 18,
+        "cupName": "Copa Colombia",
+        "season": 8,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 9687662,
+            "matchDate": "2003-09-25T02:30:00.000Z",
+            "homeTeamName": "Nacional de Medellin",
+            "awayTeamName": "ATL NACIONAL",
+            "homeGoals": 0,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "9687663",
+            "MatchType": "3",
+            "MatchContextId": "18",
+            "MatchDate": "2003-10-02 02:30:00",
+            "FinishedDate": "2003-10-02 04:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "30319",
+              "HomeTeamName": "ATL NACIONAL",
+              "HomeGoals": "3"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "30468",
+              "AwayTeamName": "Nacional de Medellin",
+              "AwayGoals": "3"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 3 - 3."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=18&season=8&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=18&season=8&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9687663"
+      ],
+      "captureSha256": "647ddb20146a5ed4955f60b363370ca732aac784cc547752a00c090372a53e2d"
+    },
+    {
+      "summary": {
+        "cupId": 56,
+        "season": 6,
+        "round": 13,
+        "matchId": 13774861,
+        "homeTeamName": "Bloodwich-team",
+        "awayTeamName": "Vrutki Opatija",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 56,
+        "cupName": "Kup Hrvatske",
+        "season": 6,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 13774860,
+            "matchDate": "2004-01-28T08:45:00.000Z",
+            "homeTeamName": "Vrutki Opatija",
+            "awayTeamName": "Bloodwich-team",
+            "homeGoals": 0,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "13774861",
+            "MatchType": "3",
+            "MatchContextId": "56",
+            "MatchDate": "2004-02-04 08:45:00",
+            "FinishedDate": "2004-02-04 10:30:00",
+            "HomeTeam": {
+              "HomeTeamID": "94300",
+              "HomeTeamName": "Bloodwich-team",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "94394",
+              "AwayTeamName": "Vrutki Opatija",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=56&season=6&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=56&season=6&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13774861"
+      ],
+      "captureSha256": "9ac0bffcde40709cfeba7c43c1f3e010e21fe495c87feb2a34eaf14864473100"
+    },
+    {
+      "summary": {
+        "cupId": 56,
+        "season": 7,
+        "round": 13,
+        "matchId": 18279050,
+        "homeTeamName": "Kalelarga Legends",
+        "awayTeamName": "BSK Brdovec",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 56,
+        "cupName": "Kup Hrvatske",
+        "season": 7,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 18279048,
+            "matchDate": "2004-05-19T08:45:00.000Z",
+            "homeTeamName": "BSK Brdovec",
+            "awayTeamName": "Kalelarga Legends",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "18279050",
+            "MatchType": "3",
+            "MatchContextId": "56",
+            "MatchDate": "2004-05-26 08:45:00",
+            "FinishedDate": "2004-05-26 10:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "94420",
+              "HomeTeamName": "Kalelarga Legends",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "94446",
+              "AwayTeamName": "BSK Brdovec",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "70",
+                  "EventText": "With the scores being level after 90 minutes, the match went into extra time."
+                },
+                {
+                  "Minute": "105",
+                  "SubjectTeamID": "94420",
+                  "MatchPart": "3",
+                  "EventTypeID": "72",
+                  "EventText": "This put an end to extra time, making <span class=\"hometeam\">Legends</span> the winners."
+                },
+                {
+                  "Minute": "105",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "3",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=56&season=7&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=56&season=7&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18279050"
+      ],
+      "captureSha256": "c9469761f34b78b0e65f6fe62d66b9c54ff6794580fc16016f4664f704bae871"
+    },
+    {
+      "summary": {
+        "cupId": 19,
+        "season": 11,
+        "round": 11,
+        "matchId": 23654711,
+        "homeTeamName": "MOHANDESSEEN",
+        "awayTeamName": "Heliopolis Cairo",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 19,
+        "cupName": "Kas Misr",
+        "season": 11,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 23654710,
+            "matchDate": "2004-08-25T08:45:00.000Z",
+            "homeTeamName": "Heliopolis Cairo",
+            "awayTeamName": "MOHANDESSEEN",
+            "homeGoals": 1,
+            "awayGoals": 0
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "23654711",
+            "MatchType": "3",
+            "MatchContextId": "19",
+            "MatchDate": "2004-09-01 08:45:00",
+            "FinishedDate": "2004-09-01 10:37:00",
+            "HomeTeam": {
+              "HomeTeamID": "78140",
+              "HomeTeamName": "MOHANDESSEEN",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "30505",
+              "AwayTeamName": "Heliopolis Cairo",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "70",
+                  "EventText": "After the regular 90 minutes, the agony of extra time followed."
+                },
+                {
+                  "Minute": "97",
+                  "SubjectTeamID": "30505",
+                  "MatchPart": "3",
+                  "EventTypeID": "72",
+                  "EventText": "This put an end to extra time, making <span class=\"awayteam\">Heliopolis</span> the winners."
+                },
+                {
+                  "Minute": "97",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "3",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=19&season=11&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=19&season=11&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=23654711"
+      ],
+      "captureSha256": "50ea712a07e0b92ad24e20fc76bceb72b7701dae861984234c793bd6b82e8178"
+    },
+    {
+      "summary": {
+        "cupId": 3,
+        "season": 20,
+        "round": 15,
+        "matchId": 9871105,
+        "homeTeamName": "Kester County",
+        "awayTeamName": "Durham City FC",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 3,
+        "cupName": "English Cup",
+        "season": 20,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 9871104,
+            "matchDate": "2003-10-21T21:00:00.000Z",
+            "homeTeamName": "Durham City FC",
+            "awayTeamName": "Kester County",
+            "homeGoals": 1,
+            "awayGoals": 0
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "9871105",
+            "MatchType": "3",
+            "MatchContextId": "3",
+            "MatchDate": "2003-10-28 21:00:00",
+            "FinishedDate": "2003-10-28 22:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "7397",
+              "HomeTeamName": "Kester County",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "54226",
+              "AwayTeamName": "Durham City FC",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=3&season=20&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=3&season=20&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9871105"
+      ],
+      "captureSha256": "b1e513fcc9ea1393ac24fba1db9fa5a5f4aacfb36514e06d71052a050ec439ca"
+    },
+    {
+      "summary": {
+        "cupId": 54,
+        "season": 5,
+        "round": 13,
+        "matchId": 9777093,
+        "homeTeamName": "Luige United FC",
+        "awayTeamName": "Vahe Tera",
+        "homeGoals": 5,
+        "awayGoals": 5
+      },
+      "previous": {
+        "cupId": 54,
+        "cupName": "Eesti Karikas",
+        "season": 5,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9777092,
+            "matchDate": "2003-10-08T12:15:00.000Z",
+            "homeTeamName": "Vahe Tera",
+            "awayTeamName": "Luige United FC",
+            "homeGoals": 0,
+            "awayGoals": 1
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "9777093",
+            "MatchType": "3",
+            "MatchContextId": "54",
+            "MatchDate": "2003-10-15 12:15:00",
+            "FinishedDate": "2003-10-15 14:40:00",
+            "HomeTeam": {
+              "HomeTeamID": "94147",
+              "HomeTeamName": "Luige United FC",
+              "HomeGoals": "5"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "94165",
+              "AwayTeamName": "Vahe Tera",
+              "AwayGoals": "5"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "70",
+                  "EventText": "As neither team had managed to win, extra time was called."
+                },
+                {
+                  "Minute": "120",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "4",
+                  "EventTypeID": "71",
+                  "EventText": "After extra time, the game was still tied and a penalty shoot-out ensued.<br /><br />"
+                },
+                {
+                  "Minute": "130",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "4",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 5 - 5."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=54&season=5&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=54&season=5&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9777093"
+      ],
+      "captureSha256": "799a7242473dcd9bc9689f8caf7c6126d46f43e503bf369ed900f18e493df9b2"
+    },
+    {
+      "summary": {
+        "cupId": 6,
+        "season": 19,
+        "round": 13,
+        "matchId": 7160871,
+        "homeTeamName": "Sollet FK",
+        "awayTeamName": "Nappes Xcutors",
+        "homeGoals": 0,
+        "awayGoals": 0
+      },
+      "previous": {
+        "cupId": 6,
+        "cupName": "Coupe de France",
+        "season": 19,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 7160870,
+            "matchDate": "2003-06-18T15:00:00.000Z",
+            "homeTeamName": "Nappes Xcutors",
+            "awayTeamName": "Sollet FK",
+            "homeGoals": 3,
+            "awayGoals": 0
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "7160871",
+            "MatchType": "3",
+            "MatchContextId": "6",
+            "MatchDate": "2003-06-25 15:00:00",
+            "FinishedDate": "2003-06-25 16:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "8914",
+              "HomeTeamName": "Sollet FK",
+              "HomeGoals": "0"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "8922",
+              "AwayTeamName": "Nappes Xcutors",
+              "AwayGoals": "0"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 0 - 0."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=6&season=19&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=6&season=19&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7160871"
+      ],
+      "captureSha256": "418e3e4d7acbfa8c35a5622278b79586fc2597be4a22306f460da0d224e073a2"
+    },
+    {
+      "summary": {
+        "cupId": 6,
+        "season": 20,
+        "round": 13,
+        "matchId": 9778089,
+        "homeTeamName": "Nappes Xcutors",
+        "awayTeamName": "AJ Auxerre",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 6,
+        "cupName": "Coupe de France",
+        "season": 20,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9778088,
+            "matchDate": "2003-10-08T15:00:00.000Z",
+            "homeTeamName": "AJ Auxerre",
+            "awayTeamName": "Nappes Xcutors",
+            "homeGoals": 0,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "9778089",
+            "MatchType": "3",
+            "MatchContextId": "6",
+            "MatchDate": "2003-10-15 15:00:00",
+            "FinishedDate": "2003-10-15 16:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "8922",
+              "HomeTeamName": "Nappes Xcutors",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "8931",
+              "AwayTeamName": "AJ Auxerre",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=6&season=20&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=6&season=20&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9778089"
+      ],
+      "captureSha256": "2256ba10958eadffd144e867fec7db64313444fd26dc748367a1c00ed3937e48"
+    },
+    {
+      "summary": {
+        "cupId": 4,
+        "season": 19,
+        "round": 15,
+        "matchId": 7223754,
+        "homeTeamName": "Exil Schwaben",
+        "awayTeamName": "FC Phoenix Mühlburg",
+        "homeGoals": 3,
+        "awayGoals": 3
+      },
+      "previous": {
+        "cupId": 4,
+        "cupName": "Deutschland-Pokal",
+        "season": 19,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 7223753,
+            "matchDate": "2003-07-01T18:00:00.000Z",
+            "homeTeamName": "FC Phoenix Mühlburg",
+            "awayTeamName": "Exil Schwaben",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "7223754",
+            "MatchType": "3",
+            "MatchContextId": "4",
+            "MatchDate": "2003-07-08 18:00:00",
+            "FinishedDate": "2003-07-08 19:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "6708",
+              "HomeTeamName": "Exil Schwaben",
+              "HomeGoals": "3"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "6705",
+              "AwayTeamName": "FC Phoenix Mühlburg",
+              "AwayGoals": "3"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 3 - 3."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=4&season=19&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=4&season=19&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7223754"
+      ],
+      "captureSha256": "c34c0a72f8babdf77a4b2bc24e2306f4884a3ecba3030b346398b2ee45012e5e"
+    },
+    {
+      "summary": {
+        "cupId": 48,
+        "season": 4,
+        "round": 11,
+        "matchId": 7095334,
+        "homeTeamName": "CSKA Patras",
+        "awayTeamName": "Spatania",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 48,
+        "cupName": "Κύπελλο Ελλάδος",
+        "season": 4,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 7095333,
+            "matchDate": "2003-06-04T09:45:00.000Z",
+            "homeTeamName": "Spatania",
+            "awayTeamName": "CSKA Patras",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "7095334",
+            "MatchType": "3",
+            "MatchContextId": "48",
+            "MatchDate": "2003-06-11 09:45:00",
+            "FinishedDate": "2003-06-11 11:33:00",
+            "HomeTeam": {
+              "HomeTeamID": "94089",
+              "HomeTeamName": "CSKA Patras",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "94035",
+              "AwayTeamName": "Spatania",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "70",
+                  "EventText": "With the scores being level after 90 minutes, the match went into extra time."
+                },
+                {
+                  "Minute": "93",
+                  "SubjectTeamID": "94035",
+                  "MatchPart": "3",
+                  "EventTypeID": "72",
+                  "EventText": "With that <span class=\"awayteam\">Spatania</span> had won the game in extra time."
+                },
+                {
+                  "Minute": "93",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "3",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=48&season=4&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=48&season=4&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7095334"
+      ],
+      "captureSha256": "988f39757414401f0c643579ec4ff91a491c0308a4c8a13738ec17b7e29b39b1"
+    },
+    {
+      "summary": {
+        "cupId": 48,
+        "season": 7,
+        "round": 13,
+        "matchId": 18279489,
+        "homeTeamName": "Thalassokratya",
+        "awayTeamName": "maxh marathona",
+        "homeGoals": 3,
+        "awayGoals": 3
+      },
+      "previous": {
+        "cupId": 48,
+        "cupName": "Κύπελλο Ελλάδος",
+        "season": 7,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 18279488,
+            "matchDate": "2004-05-19T09:45:00.000Z",
+            "homeTeamName": "maxh marathona",
+            "awayTeamName": "Thalassokratya",
+            "homeGoals": 0,
+            "awayGoals": 3
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "18279489",
+            "MatchType": "3",
+            "MatchContextId": "48",
+            "MatchDate": "2004-05-26 09:45:00",
+            "FinishedDate": "2004-05-26 11:30:00",
+            "HomeTeam": {
+              "HomeTeamID": "93957",
+              "HomeTeamName": "Thalassokratya",
+              "HomeGoals": "3"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "113408",
+              "AwayTeamName": "maxh marathona",
+              "AwayGoals": "3"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 3 - 3."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=48&season=7&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=48&season=7&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18279489"
+      ],
+      "captureSha256": "ff2b931ee16002ecd5a59207b36669b800d855ec3a13e2554896d7d902401b7c"
+    },
+    {
+      "summary": {
+        "cupId": 58,
+        "season": 3,
+        "round": 11,
+        "matchId": 7095612,
+        "homeTeamName": "eXplore IAW FIFA",
+        "awayTeamName": "shapeshifer",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 58,
+        "cupName": "Hong Kong Cup",
+        "season": 3,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 7095611,
+            "matchDate": "2003-06-04T11:00:00.000Z",
+            "homeTeamName": "shapeshifer",
+            "awayTeamName": "eXplore IAW FIFA",
+            "homeGoals": 2,
+            "awayGoals": 0
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "7095612",
+            "MatchType": "3",
+            "MatchContextId": "58",
+            "MatchDate": "2003-06-11 11:00:00",
+            "FinishedDate": "2003-06-11 12:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "30163",
+              "HomeTeamName": "eXplore IAW FIFA",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "30205",
+              "AwayTeamName": "shapeshifer",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=58&season=3&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=58&season=3&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7095612"
+      ],
+      "captureSha256": "c143b52fcfb1875c787810dec7a47225ed65bad377ab364a9e19d54a24ee0995"
+    },
+    {
+      "summary": {
+        "cupId": 36,
+        "season": 5,
+        "round": 11,
+        "matchId": 5000327,
+        "homeTeamName": "Dakata FC",
+        "awayTeamName": "The Boondock Raiders",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 36,
+        "cupName": "Íslandsbikarinn",
+        "season": 5,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 5000326,
+            "matchDate": "2003-02-12T15:30:00.000Z",
+            "homeTeamName": "The Boondock Raiders",
+            "awayTeamName": "Dakata FC",
+            "homeGoals": 4,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "5000327",
+            "MatchType": "3",
+            "MatchContextId": "36",
+            "MatchDate": "2003-02-19 15:30:00",
+            "FinishedDate": "2003-02-19 17:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "36893",
+              "HomeTeamName": "Dakata FC",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "67521",
+              "AwayTeamName": "The Boondock Raiders",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=36&season=5&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=36&season=5&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=5000327"
+      ],
+      "captureSha256": "a33096da6ef25d2f57bec25f06c977dce5f80370cbbc25eab7b529d6e05aad51"
+    },
+    {
+      "summary": {
+        "cupId": 20,
+        "season": 6,
+        "round": 11,
+        "matchId": 4999445,
+        "homeTeamName": "ravi' super 11",
+        "awayTeamName": "Abhi Lions",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 20,
+        "cupName": "Indian Cup",
+        "season": 6,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 4999444,
+            "matchDate": "2003-02-12T06:00:00.000Z",
+            "homeTeamName": "Abhi Lions",
+            "awayTeamName": "ravi' super 11",
+            "homeGoals": 5,
+            "awayGoals": 3
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "4999445",
+            "MatchType": "3",
+            "MatchContextId": "20",
+            "MatchDate": "2003-02-19 06:00:00",
+            "FinishedDate": "2003-02-19 07:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "31362",
+              "HomeTeamName": "ravi' super 11",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "31426",
+              "AwayTeamName": "Abhi Lions",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=20&season=6&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=20&season=6&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=4999445"
+      ],
+      "captureSha256": "e30e21f14109ecb48b78a54109faabebb5e65e0b0e7bbe7a038b99c63be50594"
+    },
+    {
+      "summary": {
+        "cupId": 52,
+        "season": 6,
+        "round": 11,
+        "matchId": 13640672,
+        "homeTeamName": "Nusukan FC",
+        "awayTeamName": "Janggutan Capek",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 52,
+        "cupName": "Indonesia Cup",
+        "season": 6,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 13640671,
+            "matchDate": "2004-01-14T07:45:00.000Z",
+            "homeTeamName": "Janggutan Capek",
+            "awayTeamName": "Nusukan FC",
+            "homeGoals": 2,
+            "awayGoals": 0
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "13640672",
+            "MatchType": "3",
+            "MatchContextId": "52",
+            "MatchDate": "2004-01-21 07:45:00",
+            "FinishedDate": "2004-01-21 09:30:00",
+            "HomeTeam": {
+              "HomeTeamID": "112872",
+              "HomeTeamName": "Nusukan FC",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "94514",
+              "AwayTeamName": "Janggutan Capek",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=52&season=6&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=52&season=6&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13640672"
+      ],
+      "captureSha256": "447571d7480f3a9e9e4a8c8d0b110f1e3b65d5f76ca1fa7ded47aeceb0fd0ed5"
+    },
+    {
+      "summary": {
+        "cupId": 714,
+        "season": 38,
+        "round": 11,
+        "matchId": 541334258,
+        "homeTeamName": "mahan",
+        "awayTeamName": "Irane Sabz",
+        "homeGoals": 0,
+        "awayGoals": 0
+      },
+      "previous": {
+        "cupId": 714,
+        "cupName": "Alborz Cup",
+        "season": 38,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 541231712,
+            "matchDate": "2015-09-23T16:15:00.000Z",
+            "homeTeamName": "mahan",
+            "awayTeamName": "ooops_team",
+            "homeGoals": 1,
+            "awayGoals": 0
+          },
+          {
+            "matchId": 541231713,
+            "matchDate": "2015-09-23T16:15:00.000Z",
+            "homeTeamName": "PARMIN",
+            "awayTeamName": "Irane Sabz",
+            "homeGoals": 0,
+            "awayGoals": 6
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "541334258",
+            "MatchType": "3",
+            "MatchContextId": "714",
+            "MatchDate": "2015-09-30 16:15:00",
+            "FinishedDate": "2015-09-30 16:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "463469",
+              "HomeTeamName": "mahan",
+              "HomeGoals": "0"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "1954275",
+              "AwayTeamName": "Irane Sabz",
+              "AwayGoals": "0"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "0",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "0",
+                  "EventTypeID": "500",
+                  "EventText": "The game was declared a mutual walkover since neither of the teams could enter a team with a big enough squad, at least 9 players each. The crowd was furious!"
+                },
+                {
+                  "Minute": "0",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "0",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 0 - 0."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=714&season=38&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=714&season=38&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=541334258"
+      ],
+      "captureSha256": "332c02ebcaafcf59c1e18be978a9cfcf7bc35f275e10b66bcf81c5d4a69ff1d4"
+    },
+    {
+      "summary": {
+        "cupId": 7,
+        "season": 21,
+        "round": 15,
+        "matchId": 13913642,
+        "homeTeamName": "Sgainator F.C.",
+        "awayTeamName": "Sporting Firenze",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 7,
+        "cupName": "Coppa Italia",
+        "season": 21,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 13913641,
+            "matchDate": "2004-02-10T19:00:00.000Z",
+            "homeTeamName": "Sporting Firenze",
+            "awayTeamName": "Sgainator F.C.",
+            "homeGoals": 0,
+            "awayGoals": 1
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "13913642",
+            "MatchType": "3",
+            "MatchContextId": "7",
+            "MatchDate": "2004-02-17 19:00:00",
+            "FinishedDate": "2004-02-17 20:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "49512",
+              "HomeTeamName": "Sgainator F.C.",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "49942",
+              "AwayTeamName": "Sporting Firenze",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=7&season=21&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=7&season=21&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13913642"
+      ],
+      "captureSha256": "b106cda1c9d4877fee48cc3fad1723272a680fe68d732a0bc94c0b5b3ebad35c"
+    },
+    {
+      "summary": {
+        "cupId": 22,
+        "season": 7,
+        "round": 9,
+        "matchId": 7028814,
+        "homeTeamName": "Shirayuri Sky",
+        "awayTeamName": "Tire Kickers",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 22,
+        "cupName": "The Emperor's Cup",
+        "season": 7,
+        "round": 8,
+        "matches": [
+          {
+            "matchId": 7028813,
+            "matchDate": "2003-05-21T02:30:00.000Z",
+            "homeTeamName": "Tire Kickers",
+            "awayTeamName": "Shirayuri Sky",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "7028814",
+            "MatchType": "3",
+            "MatchContextId": "22",
+            "MatchDate": "2003-05-28 02:30:00",
+            "FinishedDate": "2003-05-28 04:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "32048",
+              "HomeTeamName": "Shirayuri Sky",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "32043",
+              "AwayTeamName": "Tire Kickers",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=22&season=7&cupRound=9",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=22&season=7&cupRound=8",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7028814"
+      ],
+      "captureSha256": "0810c8bc5395c6337d297106ec7c61605a9b621068db4f8a72895fc0327bfff7"
+    },
+    {
+      "summary": {
+        "cupId": 51,
+        "season": 5,
+        "round": 13,
+        "matchId": 9777575,
+        "homeTeamName": "Devils Army",
+        "awayTeamName": "Dinaburg FC",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 51,
+        "cupName": "Latvijas Nacionālais kauss",
+        "season": 5,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9777574,
+            "matchDate": "2003-10-08T13:45:00.000Z",
+            "homeTeamName": "Dinaburg FC",
+            "awayTeamName": "Devils Army",
+            "homeGoals": 1,
+            "awayGoals": 0
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "9777575",
+            "MatchType": "3",
+            "MatchContextId": "51",
+            "MatchDate": "2003-10-15 13:45:00",
+            "FinishedDate": "2003-10-15 16:10:00",
+            "HomeTeam": {
+              "HomeTeamID": "94809",
+              "HomeTeamName": "Devils Army",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "94890",
+              "AwayTeamName": "Dinaburg FC",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "70",
+                  "EventText": "With the scores being level after 90 minutes, the match went into extra time."
+                },
+                {
+                  "Minute": "120",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "4",
+                  "EventTypeID": "71",
+                  "EventText": "There was still no winner after 30 minutes of extra time so the teams had to select a lineup for a penalty shoot-out to settle the result.<br /><br />"
+                },
+                {
+                  "Minute": "130",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "4",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=51&season=5&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=51&season=5&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9777575"
+      ],
+      "captureSha256": "3f96e3ec262a987a2e1b6c8c08765c91e865f0c937ac04e955b38167276f6bd6"
+    },
+    {
+      "summary": {
+        "cupId": 51,
+        "season": 6,
+        "round": 13,
+        "matchId": 13776828,
+        "homeTeamName": "Sun Set Park",
+        "awayTeamName": "The Magnificent One",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 51,
+        "cupName": "Latvijas Nacionālais kauss",
+        "season": 6,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 13776826,
+            "matchDate": "2004-01-28T13:45:00.000Z",
+            "homeTeamName": "The Magnificent One",
+            "awayTeamName": "Sun Set Park",
+            "homeGoals": 3,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "13776828",
+            "MatchType": "3",
+            "MatchContextId": "51",
+            "MatchDate": "2004-02-04 13:45:00",
+            "FinishedDate": "2004-02-04 15:30:00",
+            "HomeTeam": {
+              "HomeTeamID": "94915",
+              "HomeTeamName": "Sun Set Park",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "94820",
+              "AwayTeamName": "The Magnificent One",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=51&season=6&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=51&season=6&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13776828"
+      ],
+      "captureSha256": "9673dd33b4e73a23801e9184cd4739a57bc9a1a9b18a40fe298347aac1afbabd"
+    },
+    {
+      "summary": {
+        "cupId": 38,
+        "season": 5,
+        "round": 11,
+        "matchId": 4999365,
+        "homeTeamName": "LET'S WIN IT.com",
+        "awayTeamName": "Katamaran Divers",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 38,
+        "cupName": "Piala Malaysia",
+        "season": 5,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 4999364,
+            "matchDate": "2003-02-12T05:00:00.000Z",
+            "homeTeamName": "Katamaran Divers",
+            "awayTeamName": "LET'S WIN IT.com",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "4999365",
+            "MatchType": "3",
+            "MatchContextId": "38",
+            "MatchDate": "2003-02-19 05:00:00",
+            "FinishedDate": "2003-02-19 06:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "73083",
+              "HomeTeamName": "LET'S WIN IT.com",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "73115",
+              "AwayTeamName": "Katamaran Divers",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=38&season=5&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=38&season=5&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=4999365"
+      ],
+      "captureSha256": "1696ea6234fea677ae239f2bc6eb630d474fa29d34f76011681a30269b39021f"
+    },
+    {
+      "summary": {
+        "cupId": 38,
+        "season": 9,
+        "round": 13,
+        "matchId": 18277976,
+        "homeTeamName": "LET'S WIN IT.com",
+        "awayTeamName": "Tiger ES",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 38,
+        "cupName": "Piala Malaysia",
+        "season": 9,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 18277975,
+            "matchDate": "2004-05-19T05:00:00.000Z",
+            "homeTeamName": "Tiger ES",
+            "awayTeamName": "LET'S WIN IT.com",
+            "homeGoals": 3,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "18277976",
+            "MatchType": "3",
+            "MatchContextId": "38",
+            "MatchDate": "2004-05-26 05:00:00",
+            "FinishedDate": "2004-05-26 06:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "73083",
+              "HomeTeamName": "LET'S WIN IT.com",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "73145",
+              "AwayTeamName": "Tiger ES",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=38&season=9&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=38&season=9&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18277976"
+      ],
+      "captureSha256": "a262afb3d58ff190b75f93d20c67d1e3c65fb877fb950ee36b75667799d568d3"
+    },
+    {
+      "summary": {
+        "cupId": 13,
+        "season": 8,
+        "round": 15,
+        "matchId": 7227171,
+        "homeTeamName": "Real Raateland",
+        "awayTeamName": "Racing Selwerd FC",
+        "homeGoals": 0,
+        "awayGoals": 0
+      },
+      "previous": {
+        "cupId": 13,
+        "cupName": "KNVB Beker",
+        "season": 8,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 7227170,
+            "matchDate": "2003-07-02T17:00:00.000Z",
+            "homeTeamName": "Racing Selwerd FC",
+            "awayTeamName": "Real Raateland",
+            "homeGoals": 2,
+            "awayGoals": 3
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "7227171",
+            "MatchType": "3",
+            "MatchContextId": "13",
+            "MatchDate": "2003-07-09 17:00:00",
+            "FinishedDate": "2003-07-09 18:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "21019",
+              "HomeTeamName": "Real Raateland",
+              "HomeGoals": "0"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "21030",
+              "AwayTeamName": "Racing Selwerd FC",
+              "AwayGoals": "0"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 0 - 0."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=13&season=8&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=13&season=8&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7227171"
+      ],
+      "captureSha256": "e92544d4a03627c0c0bc772bd0b7540c09fc522b745e62461ebcd7805b825ab2"
+    },
+    {
+      "summary": {
+        "cupId": 9,
+        "season": 7,
+        "round": 13,
+        "matchId": 5043018,
+        "homeTeamName": "Birkelunden BK",
+        "awayTeamName": "Molde",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 9,
+        "cupName": "Norgesmesterskapet",
+        "season": 7,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 5043017,
+            "matchDate": "2003-02-26T16:00:00.000Z",
+            "homeTeamName": "Molde",
+            "awayTeamName": "Birkelunden BK",
+            "homeGoals": 1,
+            "awayGoals": 6
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "5043018",
+            "MatchType": "3",
+            "MatchContextId": "9",
+            "MatchDate": "2003-03-05 16:00:00",
+            "FinishedDate": "2003-03-05 17:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "20239",
+              "HomeTeamName": "Birkelunden BK",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "20380",
+              "AwayTeamName": "Molde",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=9&season=7&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=9&season=7&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=5043018"
+      ],
+      "captureSha256": "7ec29b7972ab4c742b613ecbba4f489ea2eea965e8270b0abdcb7efe3db173df"
+    },
+    {
+      "summary": {
+        "cupId": 14,
+        "season": 8,
+        "round": 13,
+        "matchId": 9775556,
+        "homeTeamName": "Sparker",
+        "awayTeamName": "tigers",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 14,
+        "cupName": "Oceanian Cup",
+        "season": 8,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9775555,
+            "matchDate": "2003-10-08T04:00:00.000Z",
+            "homeTeamName": "tigers",
+            "awayTeamName": "Sparker",
+            "homeGoals": 1,
+            "awayGoals": 4
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "9775556",
+            "MatchType": "3",
+            "MatchContextId": "14",
+            "MatchDate": "2003-10-15 04:00:00",
+            "FinishedDate": "2003-10-15 05:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "29113",
+              "HomeTeamName": "Sparker",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "37195",
+              "AwayTeamName": "tigers",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=14&season=8&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=14&season=8&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9775556"
+      ],
+      "captureSha256": "0dc6594a91574184e13905f56c097919a76da530ca1b1ad36d89b57846495dcc"
+    },
+    {
+      "summary": {
+        "cupId": 14,
+        "season": 10,
+        "round": 15,
+        "matchId": 18467672,
+        "homeTeamName": "Klinsmen United",
+        "awayTeamName": "Burnt Out Koalas FC",
+        "homeGoals": 4,
+        "awayGoals": 4
+      },
+      "previous": {
+        "cupId": 14,
+        "cupName": "Oceanian Cup",
+        "season": 10,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 18467671,
+            "matchDate": "2004-06-02T04:00:00.000Z",
+            "homeTeamName": "Burnt Out Koalas FC",
+            "awayTeamName": "Klinsmen United",
+            "homeGoals": 5,
+            "awayGoals": 1
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "18467672",
+            "MatchType": "3",
+            "MatchContextId": "14",
+            "MatchDate": "2004-06-09 04:00:00",
+            "FinishedDate": "2004-06-09 05:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "28998",
+              "HomeTeamName": "Klinsmen United",
+              "HomeGoals": "4"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "29073",
+              "AwayTeamName": "Burnt Out Koalas FC",
+              "AwayGoals": "4"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 4 - 4."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=14&season=10&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=14&season=10&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18467672"
+      ],
+      "captureSha256": "7b620336bce563d1489d6bdf698f3bc090cbb39925b1f38a858bbfce805229c3"
+    },
+    {
+      "summary": {
+        "cupId": 33,
+        "season": 5,
+        "round": 9,
+        "matchId": 3491085,
+        "homeTeamName": "Ocean Panda",
+        "awayTeamName": "HotSpurs Asia",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 33,
+        "cupName": "China Cup",
+        "season": 5,
+        "round": 8,
+        "matches": [
+          {
+            "matchId": 3491084,
+            "matchDate": "2002-10-09T07:00:00.000Z",
+            "homeTeamName": "HotSpurs Asia",
+            "awayTeamName": "Ocean Panda",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "3491085",
+            "MatchType": "3",
+            "MatchContextId": "33",
+            "MatchDate": "2002-10-16 07:00:00",
+            "FinishedDate": "2002-10-16 08:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "30152",
+              "HomeTeamName": "Ocean Panda",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "30167",
+              "AwayTeamName": "HotSpurs Asia",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=33&season=5&cupRound=9",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=33&season=5&cupRound=8",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=3491085"
+      ],
+      "captureSha256": "089aad1f0612871e4522225e6c87482ecbedfa4d3491c5b193bc7bfadbe842d5"
+    },
+    {
+      "summary": {
+        "cupId": 33,
+        "season": 9,
+        "round": 11,
+        "matchId": 13640269,
+        "homeTeamName": "Tsing Yi Friends",
+        "awayTeamName": "Peace Dove",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 33,
+        "cupName": "China Cup",
+        "season": 9,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 13640268,
+            "matchDate": "2004-01-14T07:00:00.000Z",
+            "homeTeamName": "Peace Dove",
+            "awayTeamName": "Tsing Yi Friends",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "13640269",
+            "MatchType": "3",
+            "MatchContextId": "33",
+            "MatchDate": "2004-01-21 07:00:00",
+            "FinishedDate": "2004-01-21 08:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "30137",
+              "HomeTeamName": "Tsing Yi Friends",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "30159",
+              "AwayTeamName": "Peace Dove",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=33&season=9&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=33&season=9&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13640269"
+      ],
+      "captureSha256": "b975d2c7cbacb2657a900b747db9029f1f8950b33eb3fb02d0a7bf19930671eb"
+    },
+    {
+      "summary": {
+        "cupId": 24,
+        "season": 11,
+        "round": 13,
+        "matchId": 23888873,
+        "homeTeamName": "C.A. Vizcardo",
+        "awayTeamName": "Real Lima FC",
+        "homeGoals": 3,
+        "awayGoals": 3
+      },
+      "previous": {
+        "cupId": 24,
+        "cupName": "Copa Perú",
+        "season": 11,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 23888872,
+            "matchDate": "2004-09-09T03:45:00.000Z",
+            "homeTeamName": "Real Lima FC",
+            "awayTeamName": "C.A. Vizcardo",
+            "homeGoals": 4,
+            "awayGoals": 3
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "23888873",
+            "MatchType": "3",
+            "MatchContextId": "24",
+            "MatchDate": "2004-09-16 03:45:00",
+            "FinishedDate": "2004-09-16 05:30:00",
+            "HomeTeam": {
+              "HomeTeamID": "111191",
+              "HomeTeamName": "C.A. Vizcardo",
+              "HomeGoals": "3"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "32215",
+              "AwayTeamName": "Real Lima FC",
+              "AwayGoals": "3"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 3 - 3."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=24&season=11&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=24&season=11&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=23888873"
+      ],
+      "captureSha256": "4efcd9d637646412655b93e5f1184fbb19a11283b6dbd9308aaad608052a6383"
+    },
+    {
+      "summary": {
+        "cupId": 25,
+        "season": 9,
+        "round": 15,
+        "matchId": 13915911,
+        "homeTeamName": "MKS Narew Ostroleka",
+        "awayTeamName": "Oceana F.C.",
+        "homeGoals": 0,
+        "awayGoals": 0
+      },
+      "previous": {
+        "cupId": 25,
+        "cupName": "Puchar Polski",
+        "season": 9,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 13915910,
+            "matchDate": "2004-02-11T09:00:00.000Z",
+            "homeTeamName": "Oceana F.C.",
+            "awayTeamName": "MKS Narew Ostroleka",
+            "homeGoals": 1,
+            "awayGoals": 5
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "13915911",
+            "MatchType": "3",
+            "MatchContextId": "25",
+            "MatchDate": "2004-02-18 09:00:00",
+            "FinishedDate": "2004-02-18 10:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "32301",
+              "HomeTeamName": "MKS Narew Ostroleka",
+              "HomeGoals": "0"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "32456",
+              "AwayTeamName": "Oceana F.C.",
+              "AwayGoals": "0"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 0 - 0."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=25&season=9&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=25&season=9&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13915911"
+      ],
+      "captureSha256": "64fc2a99672ba7de318580d835aa8f791c6d9abc39b9788cedd9522a38ef0f92"
+    },
+    {
+      "summary": {
+        "cupId": 34,
+        "season": 4,
+        "round": 9,
+        "matchId": 2491001,
+        "homeTeamName": "FK Balashikha",
+        "awayTeamName": "Tequila Lovers",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 34,
+        "cupName": "Кубок России",
+        "season": 4,
+        "round": 8,
+        "matches": [
+          {
+            "matchId": 2491000,
+            "matchDate": "2002-06-19T08:30:00.000Z",
+            "homeTeamName": "Tequila Lovers",
+            "awayTeamName": "FK Balashikha",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "2491001",
+            "MatchType": "3",
+            "MatchContextId": "34",
+            "MatchDate": "2002-06-26 08:30:00",
+            "FinishedDate": "2002-06-26 10:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "28869",
+              "HomeTeamName": "FK Balashikha",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "28850",
+              "AwayTeamName": "Tequila Lovers",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=34&season=4&cupRound=9",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=34&season=4&cupRound=8",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=2491001"
+      ],
+      "captureSha256": "77e1abd8a092adf940cbdba37d685a06cf82986b4c3c63000ae6d32f030a7f52"
+    },
+    {
+      "summary": {
+        "cupId": 34,
+        "season": 7,
+        "round": 11,
+        "matchId": 7095139,
+        "homeTeamName": "Frozen Karelians",
+        "awayTeamName": "KPEMEHb",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 34,
+        "cupName": "Кубок России",
+        "season": 7,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 7095137,
+            "matchDate": "2003-06-04T08:30:00.000Z",
+            "homeTeamName": "KPEMEHb",
+            "awayTeamName": "Frozen Karelians",
+            "homeGoals": 4,
+            "awayGoals": 0
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "7095139",
+            "MatchType": "3",
+            "MatchContextId": "34",
+            "MatchDate": "2003-06-11 08:30:00",
+            "FinishedDate": "2003-06-11 10:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "28828",
+              "HomeTeamName": "Frozen Karelians",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "28904",
+              "AwayTeamName": "KPEMEHb",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=34&season=7&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=34&season=7&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7095139"
+      ],
+      "captureSha256": "e52bc325a118ea68e0b75e94d222595736e9863bb1da6772e3a171534c877478"
+    },
+    {
+      "summary": {
+        "cupId": 27,
+        "season": 11,
+        "round": 13,
+        "matchId": 23878537,
+        "homeTeamName": "Glasgow Athletic",
+        "awayTeamName": "Bogglers Divided",
+        "homeGoals": 4,
+        "awayGoals": 4
+      },
+      "previous": {
+        "cupId": 27,
+        "cupName": "Scottish Cup",
+        "season": 11,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 23878536,
+            "matchDate": "2004-09-08T11:30:00.000Z",
+            "homeTeamName": "Bogglers Divided",
+            "awayTeamName": "Glasgow Athletic",
+            "homeGoals": 4,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "23878537",
+            "MatchType": "3",
+            "MatchContextId": "27",
+            "MatchDate": "2004-09-15 11:30:00",
+            "FinishedDate": "2004-09-15 13:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "28683",
+              "HomeTeamName": "Glasgow Athletic",
+              "HomeGoals": "4"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "28780",
+              "AwayTeamName": "Bogglers Divided",
+              "AwayGoals": "4"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 4 - 4."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=27&season=11&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=27&season=11&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=23878537"
+      ],
+      "captureSha256": "a68d9e645220c7e1e4909daf25110115251f25933a83c6f3ddb414f39b3bedee"
+    },
+    {
+      "summary": {
+        "cupId": 55,
+        "season": 7,
+        "round": 11,
+        "matchId": 18092527,
+        "homeTeamName": "Dostin",
+        "awayTeamName": "Pigs F.C.",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 55,
+        "cupName": "Куп Србије",
+        "season": 7,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 18092526,
+            "matchDate": "2004-05-05T12:45:00.000Z",
+            "homeTeamName": "Pigs F.C.",
+            "awayTeamName": "Dostin",
+            "homeGoals": 3,
+            "awayGoals": 5
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "18092527",
+            "MatchType": "3",
+            "MatchContextId": "55",
+            "MatchDate": "2004-05-12 12:45:00",
+            "FinishedDate": "2004-05-12 14:30:00",
+            "HomeTeam": {
+              "HomeTeamID": "94974",
+              "HomeTeamName": "Dostin",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "95093",
+              "AwayTeamName": "Pigs F.C.",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=55&season=7&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=55&season=7&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18092527"
+      ],
+      "captureSha256": "3af8b34ab8710f7b7f4145ca67eb8a1d7f0c8938b80d47cc8fb28f0ce7c328d3"
+    },
+    {
+      "summary": {
+        "cupId": 40,
+        "season": 4,
+        "round": 11,
+        "matchId": 3517167,
+        "homeTeamName": "Hattrick all the time",
+        "awayTeamName": "FC Tenochtitlán",
+        "homeGoals": 4,
+        "awayGoals": 4
+      },
+      "previous": {
+        "cupId": 40,
+        "cupName": "Singapore Cup",
+        "season": 4,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 3517166,
+            "matchDate": "2002-10-23T04:30:00.000Z",
+            "homeTeamName": "FC Tenochtitlán",
+            "awayTeamName": "Hattrick all the time",
+            "homeGoals": 4,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "3517167",
+            "MatchType": "3",
+            "MatchContextId": "40",
+            "MatchDate": "2002-10-30 04:30:00",
+            "FinishedDate": "2002-10-30 06:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "37567",
+              "HomeTeamName": "Hattrick all the time",
+              "HomeGoals": "4"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "37614",
+              "AwayTeamName": "FC Tenochtitlán",
+              "AwayGoals": "4"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 4 - 4."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=40&season=4&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=40&season=4&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=3517167"
+      ],
+      "captureSha256": "5574a86c22da7f65e17365401d347b3fda8903bda3bf5eae0ecb7190700399e0"
+    },
+    {
+      "summary": {
+        "cupId": 40,
+        "season": 8,
+        "round": 13,
+        "matchId": 13773955,
+        "homeTeamName": "Herron",
+        "awayTeamName": "Winning Eleven",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 40,
+        "cupName": "Singapore Cup",
+        "season": 8,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 13773954,
+            "matchDate": "2004-01-28T04:30:00.000Z",
+            "homeTeamName": "Winning Eleven",
+            "awayTeamName": "Herron",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "13773955",
+            "MatchType": "3",
+            "MatchContextId": "40",
+            "MatchDate": "2004-02-04 04:30:00",
+            "FinishedDate": "2004-02-04 06:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "37558",
+              "HomeTeamName": "Herron",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "37754",
+              "AwayTeamName": "Winning Eleven",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=40&season=8&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=40&season=8&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13773955"
+      ],
+      "captureSha256": "cadcb39ab42a73dc7bda33d244acb37fcff37b2fbf83d6fce32566773e28f0b5"
+    },
+    {
+      "summary": {
+        "cupId": 63,
+        "season": 5,
+        "round": 11,
+        "matchId": 13638037,
+        "homeTeamName": "Praslovan",
+        "awayTeamName": "VNK Carniola",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 63,
+        "cupName": "Pokal Slovenije",
+        "season": 5,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 13638035,
+            "matchDate": "2004-01-13T19:30:00.000Z",
+            "homeTeamName": "VNK Carniola",
+            "awayTeamName": "Praslovan",
+            "homeGoals": 1,
+            "awayGoals": 5
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "13638037",
+            "MatchType": "3",
+            "MatchContextId": "63",
+            "MatchDate": "2004-01-20 19:30:00",
+            "FinishedDate": "2004-01-20 21:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "116908",
+              "HomeTeamName": "Praslovan",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "117031",
+              "AwayTeamName": "VNK Carniola",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=63&season=5&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=63&season=5&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13638037"
+      ],
+      "captureSha256": "38191394b5f6b01bf14db8140891f1c14ddf88903d889d608cba8ccc522299c8"
+    },
+    {
+      "summary": {
+        "cupId": 43,
+        "season": 6,
+        "round": 15,
+        "matchId": 5086374,
+        "homeTeamName": "U. D. Son Sardina",
+        "awayTeamName": "Ancestrales",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 43,
+        "cupName": "Copa de España",
+        "season": 6,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 5086373,
+            "matchDate": "2003-03-12T12:30:00.000Z",
+            "homeTeamName": "Ancestrales",
+            "awayTeamName": "U. D. Son Sardina",
+            "homeGoals": 3,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "5086374",
+            "MatchType": "3",
+            "MatchContextId": "43",
+            "MatchDate": "2003-03-19 12:30:00",
+            "FinishedDate": "2003-03-19 14:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "30899",
+              "HomeTeamName": "U. D. Son Sardina",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "48120",
+              "AwayTeamName": "Ancestrales",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=43&season=6&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=43&season=6&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=5086374"
+      ],
+      "captureSha256": "1365bb1d3c3a1efb2295b6dafa7fce82c764101e0ca03ae05a3bd74102652e33"
+    },
+    {
+      "summary": {
+        "cupId": 1,
+        "season": 16,
+        "round": 15,
+        "matchId": 2539640,
+        "homeTeamName": "Smackers United",
+        "awayTeamName": "Arvidsjaur BK",
+        "homeGoals": 0,
+        "awayGoals": 0
+      },
+      "previous": {
+        "cupId": 1,
+        "cupName": "Svenska Cupen",
+        "season": 16,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 2539639,
+            "matchDate": "2002-07-31T19:00:00.000Z",
+            "homeTeamName": "Arvidsjaur BK",
+            "awayTeamName": "Smackers United",
+            "homeGoals": 4,
+            "awayGoals": 2
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "2539640",
+            "MatchType": "3",
+            "MatchContextId": "1",
+            "MatchDate": "2002-08-07 19:00:00",
+            "FinishedDate": "2002-08-07 20:45:00",
+            "HomeTeam": {
+              "HomeTeamID": "584",
+              "HomeTeamName": "Smackers United",
+              "HomeGoals": "0"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "566",
+              "AwayTeamName": "Arvidsjaur BK",
+              "AwayGoals": "0"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 0 - 0."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=1&season=16&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=1&season=16&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=2539640"
+      ],
+      "captureSha256": "6fa7a4445c9ddb3e49c0edebf7627f152410373347403294fed9c0fc77d3858b"
+    },
+    {
+      "summary": {
+        "cupId": 29,
+        "season": 8,
+        "round": 13,
+        "matchId": 9775668,
+        "homeTeamName": "-C-R-I-S-I-S-",
+        "awayTeamName": "Liverpool Thailand",
+        "homeGoals": 1,
+        "awayGoals": 1
+      },
+      "previous": {
+        "cupId": 29,
+        "cupName": "Thai Cup",
+        "season": 8,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9775667,
+            "matchDate": "2003-10-08T05:30:00.000Z",
+            "homeTeamName": "Liverpool Thailand",
+            "awayTeamName": "-C-R-I-S-I-S-",
+            "homeGoals": 2,
+            "awayGoals": 4
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "9775668",
+            "MatchType": "3",
+            "MatchContextId": "29",
+            "MatchDate": "2003-10-15 05:30:00",
+            "FinishedDate": "2003-10-15 07:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "28340",
+              "HomeTeamName": "-C-R-I-S-I-S-",
+              "HomeGoals": "1"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "33610",
+              "AwayTeamName": "Liverpool Thailand",
+              "AwayGoals": "1"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 1 - 1."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=29&season=8&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=29&season=8&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9775668"
+      ],
+      "captureSha256": "497a5ccbc4cac2554a6b0f504003f180c80ed8feaf9b53aac23b3a5787fb658c"
+    },
+    {
+      "summary": {
+        "cupId": 31,
+        "season": 4,
+        "round": 9,
+        "matchId": 2492136,
+        "homeTeamName": "el terrible",
+        "awayTeamName": "sacapuntas",
+        "homeGoals": 2,
+        "awayGoals": 2
+      },
+      "previous": {
+        "cupId": 31,
+        "cupName": "Copa Uruguay",
+        "season": 4,
+        "round": 8,
+        "matches": [
+          {
+            "matchId": 2492135,
+            "matchDate": "2002-06-20T03:30:00.000Z",
+            "homeTeamName": "sacapuntas",
+            "awayTeamName": "el terrible",
+            "homeGoals": 1,
+            "awayGoals": 4
+          }
+        ]
+      },
+      "rawMatch": {
+        "HattrickData": {
+          "Match": {
+            "MatchID": "2492136",
+            "MatchType": "3",
+            "MatchContextId": "31",
+            "MatchDate": "2002-06-27 03:30:00",
+            "FinishedDate": "2002-06-27 05:15:00",
+            "HomeTeam": {
+              "HomeTeamID": "27533",
+              "HomeTeamName": "el terrible",
+              "HomeGoals": "2"
+            },
+            "AwayTeam": {
+              "AwayTeamID": "27449",
+              "AwayTeamName": "sacapuntas",
+              "AwayGoals": "2"
+            },
+            "EventList": {
+              "Event": [
+                {
+                  "Minute": "90",
+                  "SubjectTeamID": "0",
+                  "MatchPart": "2",
+                  "EventTypeID": "599",
+                  "EventText": "The match ends 2 - 2."
+                }
+              ]
+            }
+          }
+        }
+      },
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=31&season=4&cupRound=9",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=31&season=4&cupRound=8",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=2492136"
+      ],
+      "captureSha256": "a4e5cdb825b64ca5ccd1c17f9dece783a5c4796a45a40f23e07bc4244527b9e1"
+    }
+  ]
+}

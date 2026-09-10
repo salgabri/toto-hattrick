@@ -1,0 +1,674 @@
+{
+  "checkedAt": "2026-09-10T22:22:52.675Z",
+  "sourceCheckedOn": "2026-09-11",
+  "database": ".backup/qa-fixes-20260911/dev.db",
+  "databaseSha256": "625cecd7fd9689abf52acdedcbe703bca9338d18a91bbf9a8c00c66aa28e9e0f",
+  "scope": "Existing early main-cup winners through global season 24, for five countries. Missing rows are excluded from mismatch and comparison counts.",
+  "scorePerspective": "Each source leg/aggregate pair is [cup champion, runner-up], not asserted home/away order.",
+  "sourceLimitations": [
+    "Wiki tables supply historical cup-winner evidence, not new CHPP winner responses.",
+    "No numeric winning club or historical manager identity is inferred from a team name.",
+    "Poland comparison uses the explicit season Finals table; its separate overall-victories list is not a season-by-season oracle.",
+    "England uses the national-trophies table cup column because the English_Cup page could not be opened."
+  ],
+  "reviewed": [
+    {
+      "country": "England",
+      "cupId": 3,
+      "localSeasonRange": [
+        15,
+        24
+      ],
+      "sourceUrl": "https://wiki.hattrick.org/wiki/England",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=England&oldid=421313",
+      "sourceKind": "HattrickWiki historical season/final table (community maintained)",
+      "compared": 9,
+      "agreed": 9,
+      "comparisons": [
+        {
+          "season": 15,
+          "storedChampion": "Kline United",
+          "verifiedChampion": "Kline United",
+          "matches": true
+        },
+        {
+          "season": 16,
+          "storedChampion": "Kester County",
+          "verifiedChampion": "Kester County",
+          "matches": true
+        },
+        {
+          "season": 17,
+          "storedChampion": "Kester County",
+          "verifiedChampion": "Kester County",
+          "matches": true
+        },
+        {
+          "season": 18,
+          "storedChampion": "The Knights who say Ni!",
+          "verifiedChampion": "The Knights who say Ni!",
+          "matches": true
+        },
+        {
+          "season": 19,
+          "storedChampion": "The Knights who say Ni!",
+          "verifiedChampion": "The Knights who say Ni!",
+          "matches": true
+        },
+        {
+          "season": 21,
+          "storedChampion": "Durham City FC",
+          "verifiedChampion": "Durham City FC",
+          "matches": true
+        },
+        {
+          "season": 22,
+          "storedChampion": "Durham City FC",
+          "verifiedChampion": "Durham City FC",
+          "matches": true
+        },
+        {
+          "season": 23,
+          "storedChampion": "Durham City FC",
+          "verifiedChampion": "Durham City FC",
+          "matches": true
+        },
+        {
+          "season": 24,
+          "storedChampion": "Apollo",
+          "verifiedChampion": "Apollo",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "country": "Italy",
+      "cupId": 7,
+      "localSeasonRange": [
+        15,
+        24
+      ],
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Coppa_Italia",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Coppa_Italia&oldid=442523",
+      "sourceKind": "HattrickWiki historical season/final table (community maintained)",
+      "compared": 9,
+      "agreed": 8,
+      "comparisons": [
+        {
+          "season": 15,
+          "storedChampion": "Branzolino A.C.",
+          "verifiedChampion": "Branzolino A.C.",
+          "matches": true
+        },
+        {
+          "season": 16,
+          "storedChampion": "Branzolino A.C.",
+          "verifiedChampion": "Branzolino A.C.",
+          "matches": true
+        },
+        {
+          "season": 17,
+          "storedChampion": "Kender's F.C.",
+          "verifiedChampion": "A.S. Roma Calcio",
+          "matches": false
+        },
+        {
+          "season": 18,
+          "storedChampion": "Plastic Red",
+          "verifiedChampion": "Plastic Red",
+          "matches": true
+        },
+        {
+          "season": 19,
+          "storedChampion": "Plastic Red",
+          "verifiedChampion": "Plastic Red",
+          "matches": true
+        },
+        {
+          "season": 20,
+          "storedChampion": "Plastic Red",
+          "verifiedChampion": "Plastic Red",
+          "matches": true
+        },
+        {
+          "season": 22,
+          "storedChampion": "Para Para",
+          "verifiedChampion": "Para Para",
+          "matches": true
+        },
+        {
+          "season": 23,
+          "storedChampion": "Arezzo",
+          "verifiedChampion": "Arezzo",
+          "matches": true
+        },
+        {
+          "season": 24,
+          "storedChampion": "Arezzo",
+          "verifiedChampion": "Arezzo",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "country": "Poland",
+      "cupId": 25,
+      "localSeasonRange": [
+        3,
+        12
+      ],
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Puchar_Polski&oldid=352459",
+      "sourceKind": "HattrickWiki historical season/final table (community maintained)",
+      "compared": 9,
+      "agreed": 6,
+      "comparisons": [
+        {
+          "season": 3,
+          "storedChampion": "Legia Gdansk",
+          "verifiedChampion": "Twisters",
+          "matches": false
+        },
+        {
+          "season": 4,
+          "storedChampion": "Legia  Warszawa",
+          "verifiedChampion": "Legia Warszawa",
+          "matches": true
+        },
+        {
+          "season": 5,
+          "storedChampion": "Dziobaki",
+          "verifiedChampion": "Dziobaki",
+          "matches": true
+        },
+        {
+          "season": 6,
+          "storedChampion": "Ullandia",
+          "verifiedChampion": "Ullandia",
+          "matches": true
+        },
+        {
+          "season": 7,
+          "storedChampion": "ZKS Masarnia Miesiw Pcin Dolny",
+          "verifiedChampion": "Rude Boyz",
+          "matches": false
+        },
+        {
+          "season": 8,
+          "storedChampion": "MKS Narew Ostroleka",
+          "verifiedChampion": "MKS Narew Ostroleka",
+          "matches": true
+        },
+        {
+          "season": 10,
+          "storedChampion": "High Speed Chase",
+          "verifiedChampion": "High Speed Chase",
+          "matches": true
+        },
+        {
+          "season": 11,
+          "storedChampion": "Dziobaki",
+          "verifiedChampion": "-Tornado-",
+          "matches": false
+        },
+        {
+          "season": 12,
+          "storedChampion": "Dziobaki",
+          "verifiedChampion": "Dziobaki",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "country": "Belgium",
+      "cupId": 41,
+      "localSeasonRange": [
+        2,
+        11
+      ],
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Belgium_Cup",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Belgium_Cup&oldid=201541",
+      "sourceKind": "HattrickWiki historical season/final table (community maintained)",
+      "compared": 8,
+      "agreed": 7,
+      "comparisons": [
+        {
+          "season": 2,
+          "storedChampion": "FC Lubbeek",
+          "verifiedChampion": "FC Lubbeek",
+          "matches": true
+        },
+        {
+          "season": 3,
+          "storedChampion": "huuubs",
+          "verifiedChampion": "huuubs",
+          "matches": true
+        },
+        {
+          "season": 4,
+          "storedChampion": "FC Drummer",
+          "verifiedChampion": "Lokomotiv Veltem",
+          "matches": false
+        },
+        {
+          "season": 5,
+          "storedChampion": "Malinois",
+          "verifiedChampion": "Malinois",
+          "matches": true
+        },
+        {
+          "season": 7,
+          "storedChampion": "Koninklijke Heusden-Zolder",
+          "verifiedChampion": "Koninklijke Heusden-Zolder",
+          "matches": true
+        },
+        {
+          "season": 8,
+          "storedChampion": "Poets and Madmen",
+          "verifiedChampion": "Poets and Madmen",
+          "matches": true
+        },
+        {
+          "season": 10,
+          "storedChampion": "Deuzeld Sport",
+          "verifiedChampion": "Deuzeld Sport",
+          "matches": true
+        },
+        {
+          "season": 11,
+          "storedChampion": "advoce1",
+          "verifiedChampion": "advoce1",
+          "matches": true
+        }
+      ]
+    },
+    {
+      "country": "Brazil",
+      "cupId": 15,
+      "localSeasonRange": [
+        3,
+        12
+      ],
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Copa_do_Brasil",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Copa_do_Brasil&oldid=508737",
+      "sourceKind": "HattrickWiki historical season/final table (community maintained)",
+      "compared": 8,
+      "agreed": 8,
+      "comparisons": [
+        {
+          "season": 3,
+          "storedChampion": "Distrito Federal",
+          "verifiedChampion": "Distrito Federal",
+          "matches": true
+        },
+        {
+          "season": 4,
+          "storedChampion": "Inter RS",
+          "verifiedChampion": "Inter RS",
+          "matches": true
+        },
+        {
+          "season": 5,
+          "storedChampion": "Inter RS",
+          "verifiedChampion": "Inter RS",
+          "matches": true
+        },
+        {
+          "season": 6,
+          "storedChampion": "Petropolitano",
+          "verifiedChampion": "Petropolitano",
+          "matches": true
+        },
+        {
+          "season": 8,
+          "storedChampion": "Fim de Carreira F.C.",
+          "verifiedChampion": "Fim de Carreira F.C.",
+          "matches": true
+        },
+        {
+          "season": 9,
+          "storedChampion": "Inter RS",
+          "verifiedChampion": "Inter RS",
+          "matches": true
+        },
+        {
+          "season": 10,
+          "storedChampion": "Alfabarra",
+          "verifiedChampion": "Alfabarra",
+          "matches": true
+        },
+        {
+          "season": 12,
+          "storedChampion": "Alfabarra",
+          "verifiedChampion": "Alfabarra",
+          "matches": true
+        }
+      ]
+    }
+  ],
+  "mismatches": [
+    {
+      "cupId": 7,
+      "season": 17,
+      "champion": "A.S. Roma Calcio",
+      "runnerUp": "Kender's F.C.",
+      "firstLeg": [
+        7,
+        3
+      ],
+      "secondLeg": [
+        0,
+        1
+      ],
+      "aggregate": [
+        7,
+        4
+      ],
+      "country": "Italy",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Coppa_Italia",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Coppa_Italia&oldid=442523",
+      "sourceKind": "HattrickWiki historical season/final table (community maintained)",
+      "before": {
+        "cupId": 7,
+        "season": 17,
+        "leagueId": 4,
+        "countryName": "Italy",
+        "cupName": "Coppa Italia",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Kender's F.C.",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 50104,
+        "championUserName": "tasslehoff",
+        "createdAt": 1785681656720,
+        "updatedAt": 1785681656720,
+        "championLeagueId": null
+      },
+      "beforeSha256": "fb1b30e82a3bd06a0e9ff3feb11025cb0f6e00e413cfb22f2cf4adf9979c5438",
+      "verifiedChampionTeamId": null,
+      "verifiedChampionUserId": null,
+      "verifiedChampionUserName": null,
+      "correction": {
+        "championTeamName": "A.S. Roma Calcio",
+        "runnerUpTeamName": "Kender's F.C.",
+        "championTeamId": null,
+        "championUserId": null,
+        "championUserName": null,
+        "penalties": 0
+      },
+      "scoreHandling": "Retain unavailable stored 0/0 score placeholders; Wiki scores are winner-perspective only."
+    },
+    {
+      "cupId": 25,
+      "season": 3,
+      "champion": "Twisters",
+      "runnerUp": "Legia Gdansk",
+      "firstLeg": [
+        4,
+        1
+      ],
+      "secondLeg": [
+        1,
+        3
+      ],
+      "aggregate": [
+        5,
+        4
+      ],
+      "country": "Poland",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Puchar_Polski&oldid=352459",
+      "sourceKind": "HattrickWiki historical season/final table (community maintained)",
+      "before": {
+        "cupId": 25,
+        "season": 3,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Legia Gdansk",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 37058,
+        "championUserName": "heinzo",
+        "createdAt": 1785681657621,
+        "updatedAt": 1785681657621,
+        "championLeagueId": null
+      },
+      "beforeSha256": "380502d7dfb58c1d5c681e2fb25de634455ab46cda2f7b3cd3ff94d9b88e1d2a",
+      "verifiedChampionTeamId": null,
+      "verifiedChampionUserId": null,
+      "verifiedChampionUserName": null,
+      "correction": {
+        "championTeamName": "Twisters",
+        "runnerUpTeamName": "Legia Gdansk",
+        "championTeamId": null,
+        "championUserId": null,
+        "championUserName": null,
+        "penalties": 0
+      },
+      "scoreHandling": "Retain unavailable stored 0/0 score placeholders; Wiki scores are winner-perspective only."
+    },
+    {
+      "cupId": 25,
+      "season": 7,
+      "champion": "Rude Boyz",
+      "runnerUp": "ZKS Masarnia Miesiw Pcin Dolny",
+      "firstLeg": [
+        5,
+        0
+      ],
+      "secondLeg": [
+        1,
+        2
+      ],
+      "aggregate": [
+        6,
+        2
+      ],
+      "country": "Poland",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Puchar_Polski&oldid=352459",
+      "sourceKind": "HattrickWiki historical season/final table (community maintained)",
+      "before": {
+        "cupId": 25,
+        "season": 7,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "ZKS Masarnia Miesiw Pcin Dolny",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657621,
+        "updatedAt": 1785681657621,
+        "championLeagueId": null
+      },
+      "beforeSha256": "b13d534307b276d72436f3ac8ec9030007a35978d95e6c3188d0ecf18ac7853e",
+      "verifiedChampionTeamId": null,
+      "verifiedChampionUserId": null,
+      "verifiedChampionUserName": null,
+      "correction": {
+        "championTeamName": "Rude Boyz",
+        "runnerUpTeamName": "ZKS Masarnia Miesiw Pcin Dolny",
+        "championTeamId": null,
+        "championUserId": null,
+        "championUserName": null,
+        "penalties": 0
+      },
+      "scoreHandling": "Retain unavailable stored 0/0 score placeholders; Wiki scores are winner-perspective only."
+    },
+    {
+      "cupId": 25,
+      "season": 11,
+      "champion": "-Tornado-",
+      "runnerUp": "Dziobaki",
+      "firstLeg": [
+        5,
+        0
+      ],
+      "secondLeg": [
+        0,
+        3
+      ],
+      "aggregate": [
+        5,
+        3
+      ],
+      "country": "Poland",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Puchar_Polski&oldid=352459",
+      "sourceKind": "HattrickWiki historical season/final table (community maintained)",
+      "before": {
+        "cupId": 25,
+        "season": 11,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Dziobaki",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 56088,
+        "championUserName": "aniamucha",
+        "createdAt": 1785681657621,
+        "updatedAt": 1785681657621,
+        "championLeagueId": null
+      },
+      "beforeSha256": "40d27ef5723c3925bfd55dfdbce1a2fce9413dff7f3602d2478808f75d14dfcd",
+      "verifiedChampionTeamId": null,
+      "verifiedChampionUserId": null,
+      "verifiedChampionUserName": null,
+      "correction": {
+        "championTeamName": "-Tornado-",
+        "runnerUpTeamName": "Dziobaki",
+        "championTeamId": null,
+        "championUserId": null,
+        "championUserName": null,
+        "penalties": 0
+      },
+      "scoreHandling": "Retain unavailable stored 0/0 score placeholders; Wiki scores are winner-perspective only."
+    },
+    {
+      "cupId": 41,
+      "season": 4,
+      "champion": "Lokomotiv Veltem",
+      "runnerUp": "FC Drummer",
+      "firstLeg": [
+        4,
+        1
+      ],
+      "secondLeg": [
+        1,
+        2
+      ],
+      "aggregate": [
+        5,
+        3
+      ],
+      "sourceMatchIds": [
+        3545479,
+        3545480
+      ],
+      "country": "Belgium",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Belgium_Cup",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Belgium_Cup&oldid=201541",
+      "sourceKind": "HattrickWiki historical season/final table (community maintained)",
+      "before": {
+        "cupId": 41,
+        "season": 4,
+        "leagueId": 44,
+        "countryName": "Belgium",
+        "cupName": "Belgium Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC Drummer",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 54826,
+        "championUserName": "Drummer",
+        "createdAt": 1785681655583,
+        "updatedAt": 1785681655583,
+        "championLeagueId": null
+      },
+      "beforeSha256": "49d7a340a1df17af066090af8dbf9de1bde75ea83e417b9be2ce0c7c2a9ab323",
+      "verifiedChampionTeamId": null,
+      "verifiedChampionUserId": null,
+      "verifiedChampionUserName": null,
+      "correction": {
+        "championTeamName": "Lokomotiv Veltem",
+        "runnerUpTeamName": "FC Drummer",
+        "championTeamId": null,
+        "championUserId": null,
+        "championUserName": null,
+        "penalties": 0
+      },
+      "scoreHandling": "Retain unavailable stored 0/0 score placeholders; Wiki scores are winner-perspective only."
+    }
+  ],
+  "knownGapsExcluded": [
+    {
+      "cupId": 3,
+      "season": 20,
+      "country": "England"
+    },
+    {
+      "cupId": 7,
+      "season": 21,
+      "country": "Italy"
+    },
+    {
+      "cupId": 25,
+      "season": 9,
+      "country": "Poland"
+    },
+    {
+      "cupId": 41,
+      "season": 6,
+      "country": "Belgium"
+    },
+    {
+      "cupId": 41,
+      "season": 9,
+      "country": "Belgium"
+    },
+    {
+      "cupId": 15,
+      "season": 7,
+      "country": "Brazil"
+    },
+    {
+      "cupId": 15,
+      "season": 11,
+      "country": "Brazil"
+    }
+  ],
+  "totals": {
+    "compared": 43,
+    "agreed": 38,
+    "mismatches": 5,
+    "knownGapsExcluded": 7,
+    "incorrectManagerAttributionsToClear": 4
+  }
+}

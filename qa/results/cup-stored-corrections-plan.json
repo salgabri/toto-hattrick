@@ -1,0 +1,351 @@
+{
+  "format": "reviewed-cup-correction-v1",
+  "createdAt": "2026-09-10T22:24:49.031Z",
+  "evidenceSha256": "e0b712c2126b7f99c5eb5725f9a27cce52c667f2d724b1fc2f61a902df360965",
+  "database": "server/prisma/dev.db",
+  "backup": ".backup/qa-fixes-20260911/dev.db",
+  "corrections": [
+    {
+      "cupId": 7,
+      "season": 17,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Coppa_Italia",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Coppa_Italia&oldid=442523",
+      "beforeSha256": "fb1b30e82a3bd06a0e9ff3feb11025cb0f6e00e413cfb22f2cf4adf9979c5438",
+      "afterSha256": "1ba4b44393dcbd3c511fbd3a2dbfaf1053f90d5dead4013291cb3b7e56ffd15f",
+      "before": {
+        "cupId": 7,
+        "season": 17,
+        "leagueId": 4,
+        "countryName": "Italy",
+        "cupName": "Coppa Italia",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Kender's F.C.",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 50104,
+        "championUserName": "tasslehoff",
+        "createdAt": 1785681656720,
+        "updatedAt": 1785681656720,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 7,
+        "season": 17,
+        "leagueId": 4,
+        "countryName": "Italy",
+        "cupName": "Coppa Italia",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "A.S. Roma Calcio",
+        "runnerUpTeamName": "Kender's F.C.",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656720,
+        "updatedAt": 1789079089031,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Kender's F.C.",
+          "after": "A.S. Roma Calcio"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Kender's F.C."
+        },
+        "championUserId": {
+          "before": 50104,
+          "after": null
+        },
+        "championUserName": {
+          "before": "tasslehoff",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681656720,
+          "after": 1789079089031
+        }
+      }
+    },
+    {
+      "cupId": 25,
+      "season": 3,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Puchar_Polski&oldid=352459",
+      "beforeSha256": "380502d7dfb58c1d5c681e2fb25de634455ab46cda2f7b3cd3ff94d9b88e1d2a",
+      "afterSha256": "8ba8860b9890d4831ddb9c346b8994419a00455895b1d803e23afc2ecdefe55c",
+      "before": {
+        "cupId": 25,
+        "season": 3,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Legia Gdansk",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 37058,
+        "championUserName": "heinzo",
+        "createdAt": 1785681657621,
+        "updatedAt": 1785681657621,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 25,
+        "season": 3,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Twisters",
+        "runnerUpTeamName": "Legia Gdansk",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657621,
+        "updatedAt": 1789079089031,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Legia Gdansk",
+          "after": "Twisters"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Legia Gdansk"
+        },
+        "championUserId": {
+          "before": 37058,
+          "after": null
+        },
+        "championUserName": {
+          "before": "heinzo",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681657621,
+          "after": 1789079089031
+        }
+      }
+    },
+    {
+      "cupId": 25,
+      "season": 7,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Puchar_Polski&oldid=352459",
+      "beforeSha256": "b13d534307b276d72436f3ac8ec9030007a35978d95e6c3188d0ecf18ac7853e",
+      "afterSha256": "0c0565bbae09d64fa3e4a7b995fcd1bd02c2e13047a0e18189f1d7fe3ffb2a94",
+      "before": {
+        "cupId": 25,
+        "season": 7,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "ZKS Masarnia Miesiw Pcin Dolny",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657621,
+        "updatedAt": 1785681657621,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 25,
+        "season": 7,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Rude Boyz",
+        "runnerUpTeamName": "ZKS Masarnia Miesiw Pcin Dolny",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657621,
+        "updatedAt": 1789079089031,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "ZKS Masarnia Miesiw Pcin Dolny",
+          "after": "Rude Boyz"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "ZKS Masarnia Miesiw Pcin Dolny"
+        },
+        "updatedAt": {
+          "before": 1785681657621,
+          "after": 1789079089031
+        }
+      }
+    },
+    {
+      "cupId": 25,
+      "season": 11,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Puchar_Polski&oldid=352459",
+      "beforeSha256": "40d27ef5723c3925bfd55dfdbce1a2fce9413dff7f3602d2478808f75d14dfcd",
+      "afterSha256": "53feacafc366c820fd28b9b1b417bcdb97ac2bac381d48ccd2a146af618a9dce",
+      "before": {
+        "cupId": 25,
+        "season": 11,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Dziobaki",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 56088,
+        "championUserName": "aniamucha",
+        "createdAt": 1785681657621,
+        "updatedAt": 1785681657621,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 25,
+        "season": 11,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "-Tornado-",
+        "runnerUpTeamName": "Dziobaki",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657621,
+        "updatedAt": 1789079089031,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Dziobaki",
+          "after": "-Tornado-"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Dziobaki"
+        },
+        "championUserId": {
+          "before": 56088,
+          "after": null
+        },
+        "championUserName": {
+          "before": "aniamucha",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681657621,
+          "after": 1789079089031
+        }
+      }
+    },
+    {
+      "cupId": 41,
+      "season": 4,
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Belgium_Cup",
+      "revisionUrl": "https://wiki.hattrick.org/index.php?title=Belgium_Cup&oldid=201541",
+      "beforeSha256": "49d7a340a1df17af066090af8dbf9de1bde75ea83e417b9be2ce0c7c2a9ab323",
+      "afterSha256": "6a1867d2404fcfe862a0a53f3da56d1118e0357e97ac146a25208673905923f0",
+      "before": {
+        "cupId": 41,
+        "season": 4,
+        "leagueId": 44,
+        "countryName": "Belgium",
+        "cupName": "Belgium Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC Drummer",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 54826,
+        "championUserName": "Drummer",
+        "createdAt": 1785681655583,
+        "updatedAt": 1785681655583,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 41,
+        "season": 4,
+        "leagueId": 44,
+        "countryName": "Belgium",
+        "cupName": "Belgium Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Lokomotiv Veltem",
+        "runnerUpTeamName": "FC Drummer",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655583,
+        "updatedAt": 1789079089031,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "FC Drummer",
+          "after": "Lokomotiv Veltem"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "FC Drummer"
+        },
+        "championUserId": {
+          "before": 54826,
+          "after": null
+        },
+        "championUserName": {
+          "before": "Drummer",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681655583,
+          "after": 1789079089031
+        }
+      }
+    }
+  ]
+}

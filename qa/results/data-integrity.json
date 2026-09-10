@@ -1,0 +1,921 @@
+{
+  "generatedAt": "2026-09-10T22:44:31.689Z",
+  "dbAccess": "DatabaseSync readOnly=true; SELECT only; no secret table; no network",
+  "totalAssertions": 534450,
+  "failedAssertions": 0,
+  "tableCounts": {
+    "Team": 0,
+    "Match": 0,
+    "MatchDetail": 0,
+    "SeasonStanding": 0,
+    "NationalLeague": 160,
+    "LeagueChampion": 9913,
+    "Cup": 820,
+    "CupChampion": 32211,
+    "WorldCupChampion": 81,
+    "NationalCupChampion": 94,
+    "NationalCoachElection": 7137,
+    "HattrickUser": 10892
+  },
+  "coverage": {
+    "leagues": {
+      "stored": 9913,
+      "attributed": 8989,
+      "unattributed": 924
+    },
+    "nationalMain": {
+      "stored": 9803,
+      "attributed": 7656,
+      "unattributed": 2147
+    },
+    "nationalSecondary": {
+      "stored": 21762,
+      "attributed": 15970,
+      "unattributed": 5792
+    },
+    "masters": {
+      "stored": 67,
+      "attributed": 57,
+      "unattributed": 10
+    },
+    "seasonal": {
+      "stored": 579,
+      "attributed": 464,
+      "unattributed": 115
+    },
+    "worldCup": {
+      "stored": 80,
+      "attributed": 72,
+      "unattributed": 8
+    },
+    "regional": {
+      "stored": 89,
+      "attributed": 88,
+      "unattributed": 1
+    },
+    "elections": {
+      "stored": 7137,
+      "named": 5540,
+      "unattributed": 1597,
+      "withoutNationality": 0
+    },
+    "managers": {
+      "stored": 10307,
+      "unknownNationality": 0,
+      "titles": 33296,
+      "silver": 149,
+      "bronze": 302
+    },
+    "medals": {
+      "WorldCupChampion": {
+        "completedFinals": 80,
+        "runnerUpNations": 72,
+        "silverAttributed": 64,
+        "bronzeNations": 144,
+        "bronzeAttributed": 129
+      },
+      "NationalCupChampion": {
+        "completedFinals": 89,
+        "runnerUpNations": 89,
+        "silverAttributed": 85,
+        "bronzeNations": 178,
+        "bronzeAttributed": 173
+      }
+    }
+  },
+  "checks": {
+    "DB → league roll: complete row equality": {
+      "checked": 9913,
+      "failed": 0,
+      "examples": []
+    },
+    "League roll: unique competition/season": {
+      "checked": 9913,
+      "failed": 0,
+      "examples": []
+    },
+    "DB → all club-cup rolls: complete row equality": {
+      "checked": 32211,
+      "failed": 0,
+      "examples": []
+    },
+    "Club-cup rolls: unique competition/season": {
+      "checked": 32211,
+      "failed": 0,
+      "examples": []
+    },
+    "League country metadata": {
+      "checked": 160,
+      "failed": 0,
+      "examples": []
+    },
+    "League order: newest first": {
+      "checked": 160,
+      "failed": 0,
+      "examples": []
+    },
+    "Cup metadata": {
+      "checked": 795,
+      "failed": 0,
+      "examples": []
+    },
+    "Seasonal competition metadata": {
+      "checked": 24,
+      "failed": 0,
+      "examples": []
+    },
+    "League rows agree with competition country": {
+      "checked": 9913,
+      "failed": 0,
+      "examples": []
+    },
+    "League champion does not exceed registry current season": {
+      "checked": 9913,
+      "failed": 0,
+      "examples": []
+    },
+    "Known league owner exists in user registry": {
+      "checked": 9913,
+      "failed": 0,
+      "examples": []
+    },
+    "Cup rows agree with competition registry": {
+      "checked": 32211,
+      "failed": 0,
+      "examples": []
+    },
+    "Cup champion does not exceed registry current season": {
+      "checked": 32211,
+      "failed": 0,
+      "examples": []
+    },
+    "Known cup owner exists in user registry": {
+      "checked": 32211,
+      "failed": 0,
+      "examples": []
+    },
+    "International winner country exists in registry": {
+      "checked": 598,
+      "failed": 0,
+      "examples": []
+    },
+    "DB → World Cup roll: complete podium equality": {
+      "checked": 81,
+      "failed": 0,
+      "examples": []
+    },
+    "World Cup roll: unique bracket/edition": {
+      "checked": 81,
+      "failed": 0,
+      "examples": []
+    },
+    "DB → regional rolls: complete podium equality": {
+      "checked": 94,
+      "failed": 0,
+      "examples": []
+    },
+    "Regional roll: unique competition/season": {
+      "checked": 94,
+      "failed": 0,
+      "examples": []
+    },
+    "Regional competition metadata": {
+      "checked": 10,
+      "failed": 0,
+      "examples": []
+    },
+    "Podium nation/coach index alignment": {
+      "checked": 175,
+      "failed": 0,
+      "examples": []
+    },
+    "Podium nations are distinct": {
+      "checked": 169,
+      "failed": 0,
+      "examples": []
+    },
+    "Finished podium never predates an unplayed final": {
+      "checked": 169,
+      "failed": 0,
+      "examples": []
+    },
+    "Completed national final is not in the future": {
+      "checked": 169,
+      "failed": 0,
+      "examples": []
+    },
+    "Ongoing competition has no champion coach": {
+      "checked": 6,
+      "failed": 0,
+      "examples": []
+    },
+    "DB → elections: multiset equality": {
+      "checked": 7137,
+      "failed": 0,
+      "examples": []
+    },
+    "Election votes have a valid count and percentage": {
+      "checked": 7137,
+      "failed": 0,
+      "examples": []
+    },
+    "Election winner name/id are paired": {
+      "checked": 7137,
+      "failed": 0,
+      "examples": []
+    },
+    "Managers: unique numeric ID": {
+      "checked": 10307,
+      "failed": 0,
+      "examples": []
+    },
+    "Manager nationality matches user table": {
+      "checked": 10307,
+      "failed": 0,
+      "examples": []
+    },
+    "Manager category count equals cabinet length": {
+      "checked": 61842,
+      "failed": 0,
+      "examples": []
+    },
+    "Manager reigning count equals cabinet flags": {
+      "checked": 61842,
+      "failed": 0,
+      "examples": []
+    },
+    "Cabinet title has nonnegative recency": {
+      "checked": 33296,
+      "failed": 0,
+      "examples": []
+    },
+    "Reigning equals recent-one window": {
+      "checked": 33296,
+      "failed": 0,
+      "examples": []
+    },
+    "Silver tally equals medal entries": {
+      "checked": 10307,
+      "failed": 0,
+      "examples": []
+    },
+    "Bronze tally equals medal entries": {
+      "checked": 10307,
+      "failed": 0,
+      "examples": []
+    },
+    "DB → manager cabinets: every title and recency": {
+      "checked": 33296,
+      "failed": 0,
+      "examples": []
+    },
+    "DB → manager cabinets: every silver/bronze": {
+      "checked": 451,
+      "failed": 0,
+      "examples": []
+    },
+    "Cabinet contains each trophy once": {
+      "checked": 33296,
+      "failed": 0,
+      "examples": []
+    },
+    "Cabinet contains each medal once": {
+      "checked": 451,
+      "failed": 0,
+      "examples": []
+    },
+    "Manager population equals title-or-medal owners": {
+      "checked": 1,
+      "failed": 0,
+      "examples": []
+    },
+    "Verified club evidence: numeric historical manager": {
+      "checked": 183,
+      "failed": 0,
+      "examples": []
+    },
+    "Verified club evidence: numeric historical club": {
+      "checked": 183,
+      "failed": 0,
+      "examples": []
+    },
+    "Verified national trophy evidence: numeric coach": {
+      "checked": 3,
+      "failed": 0,
+      "examples": []
+    },
+    "Verified election source row survives ingestion": {
+      "checked": 262,
+      "failed": 0,
+      "examples": []
+    },
+    "Unassigned mutual walkover has retained source evidence": {
+      "checked": 1,
+      "failed": 0,
+      "examples": []
+    },
+    "Unassigned mutual walkover never creates an inferred champion": {
+      "checked": 1,
+      "failed": 0,
+      "examples": []
+    },
+    "Domestic cup rolls have no unexplained internal gaps": {
+      "checked": 1,
+      "failed": 0,
+      "examples": []
+    },
+    "Other competition rolls have no unexplained sequence gaps": {
+      "checked": 1,
+      "failed": 0,
+      "examples": []
+    }
+  },
+  "sequenceGaps": [
+    {
+      "label": "league",
+      "competition": 7,
+      "first": 11,
+      "last": 94,
+      "missing": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 44,
+      "first": 2,
+      "last": 81,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 69,
+      "first": 2,
+      "last": 76,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 62,
+      "first": 2,
+      "last": 78,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 11,
+      "first": 13,
+      "last": 94,
+      "missing": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 2,
+      "first": 11,
+      "last": 94,
+      "missing": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 12,
+      "first": 13,
+      "last": 94,
+      "missing": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 5,
+      "first": 11,
+      "last": 94,
+      "missing": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 3,
+      "first": 11,
+      "last": 94,
+      "missing": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 63,
+      "first": 2,
+      "last": 78,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 4,
+      "first": 11,
+      "last": 94,
+      "missing": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 66,
+      "first": 2,
+      "last": 76,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 45,
+      "first": 2,
+      "last": 81,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 6,
+      "first": 11,
+      "last": 94,
+      "missing": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 71,
+      "first": 2,
+      "last": 76,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 67,
+      "first": 2,
+      "last": 76,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 64,
+      "first": 2,
+      "last": 78,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 1,
+      "first": 11,
+      "last": 94,
+      "missing": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 46,
+      "first": 2,
+      "last": 81,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 68,
+      "first": 2,
+      "last": 76,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 8,
+      "first": 11,
+      "last": 94,
+      "missing": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 70,
+      "first": 2,
+      "last": 76,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "league",
+      "competition": 61,
+      "first": 2,
+      "last": 78,
+      "missing": [
+        1
+      ]
+    },
+    {
+      "label": "national club cup",
+      "competition": 714,
+      "first": 35,
+      "last": 73,
+      "missing": [
+        38
+      ]
+    }
+  ],
+  "explainedSequenceGaps": [
+    {
+      "cupId": 714,
+      "season": 38,
+      "matchId": 541334258,
+      "status": "mutual-walkover-no-winner-evidence",
+      "reason": "The final was declared a mutual walkover: neither club could field nine players. The retained CHPP source does not identify a winning team, so no champion is assigned.",
+      "eventTypeId": 500,
+      "subjectTeamId": 0,
+      "minute": 0,
+      "matchPart": 0,
+      "sample": "server/samples/cup-final-541334258-3.0.xml",
+      "sourceURL": "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=541334258&matchEvents=true"
+    }
+  ],
+  "unexplainedInternalCupGaps": [],
+  "sourceEvidenceRows": {
+    "verified-historical-winners.json": 106,
+    "verified-club-history-winners.json": 43,
+    "verified-masters-winners.json": 5,
+    "verified-recent-cup-winners.json": 25,
+    "reviewed-winner-corrections.json": 4
+  },
+  "historicalAliases": [
+    {
+      "table": "LeagueChampion",
+      "competition": 18,
+      "season": 37,
+      "userId": 1177705,
+      "historicalName": "Makoto",
+      "currentName": "Frano_Battousai"
+    },
+    {
+      "table": "LeagueChampion",
+      "competition": 18,
+      "season": 36,
+      "userId": 1177705,
+      "historicalName": "Makoto",
+      "currentName": "Frano_Battousai"
+    },
+    {
+      "table": "LeagueChampion",
+      "competition": 3,
+      "season": 37,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "LeagueChampion",
+      "competition": 3,
+      "season": 36,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "LeagueChampion",
+      "competition": 3,
+      "season": 35,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "LeagueChampion",
+      "competition": 119,
+      "season": 41,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "LeagueChampion",
+      "competition": 35,
+      "season": 57,
+      "userId": 1091931,
+      "historicalName": "Khroulev",
+      "currentName": "SpectRe"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 18,
+      "cupId": 17,
+      "season": 32,
+      "userId": 1177705,
+      "historicalName": "Makoto",
+      "currentName": "Frano_Battousai"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 3,
+      "cupId": 4,
+      "season": 60,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 3,
+      "cupId": 4,
+      "season": 54,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 3,
+      "cupId": 4,
+      "season": 33,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 3,
+      "cupId": 4,
+      "season": 32,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 175,
+      "cupId": 1580,
+      "season": 4,
+      "userId": 4383806,
+      "historicalName": "Carlos_Jugon",
+      "currentName": "DHT-Carlos_Jugon"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 119,
+      "cupId": 179,
+      "season": 40,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 119,
+      "cupId": 179,
+      "season": 38,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 119,
+      "cupId": 611,
+      "season": 44,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 119,
+      "cupId": 611,
+      "season": 43,
+      "userId": 2820109,
+      "historicalName": "Carlos-Tevez",
+      "currentName": "Carlos_Tevez"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 165,
+      "cupId": 1513,
+      "season": 18,
+      "userId": 4383806,
+      "historicalName": "Carlos_Jugon",
+      "currentName": "DHT-Carlos_Jugon"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 165,
+      "cupId": 1514,
+      "season": 19,
+      "userId": 4383806,
+      "historicalName": "Carlos_Jugon",
+      "currentName": "DHT-Carlos_Jugon"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 165,
+      "cupId": 1514,
+      "season": 15,
+      "userId": 4383806,
+      "historicalName": "Carlos_Jugon",
+      "currentName": "DHT-Carlos_Jugon"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 165,
+      "cupId": 1515,
+      "season": 12,
+      "userId": 4383806,
+      "historicalName": "Carlos_Jugon",
+      "currentName": "DHT-Carlos_Jugon"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 35,
+      "cupId": 34,
+      "season": 57,
+      "userId": 1091931,
+      "historicalName": "Khroulev",
+      "currentName": "SpectRe"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 35,
+      "cupId": 34,
+      "season": 56,
+      "userId": 1091931,
+      "historicalName": "Khroulev",
+      "currentName": "SpectRe"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 35,
+      "cupId": 34,
+      "season": 55,
+      "userId": 1091931,
+      "historicalName": "Khroulev",
+      "currentName": "SpectRe"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 35,
+      "cupId": 34,
+      "season": 54,
+      "userId": 1091931,
+      "historicalName": "Khroulev",
+      "currentName": "SpectRe"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 35,
+      "cupId": 34,
+      "season": 52,
+      "userId": 1091931,
+      "historicalName": "Khroulev",
+      "currentName": "SpectRe"
+    },
+    {
+      "table": "CupChampion",
+      "competition": 35,
+      "cupId": 34,
+      "season": 36,
+      "userId": 1091931,
+      "historicalName": "Khroulev",
+      "currentName": "SpectRe"
+    }
+  ],
+  "duplicateUserNames": [
+    {
+      "name": "siftekhar",
+      "users": [
+        {
+          "userId": 5015911,
+          "nationality": "Bangladesh"
+        },
+        {
+          "userId": 11087526,
+          "nationality": "Bangladesh"
+        }
+      ]
+    }
+  ]
+}

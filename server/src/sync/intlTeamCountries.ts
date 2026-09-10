@@ -1,5 +1,5 @@
-import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import supporter from './supporter-week-winners.json' with { type: 'json' };
+import generation from './generation-trophy-winners.json' with { type: 'json' };
 import { prisma } from '../db/client.js';
 import { chppGet } from '../chpp/client.js';
 import type { TokenPair } from '../chpp/auth.js';
@@ -55,8 +55,6 @@ interface TeamCountry {
   leagueId: number;
 }
 
-const here = (f: string) => fileURLToPath(new URL(f, import.meta.url));
-
 /**
  * Team ids the ArenaHub scrape already captured, keyed by (cupId, season).
  *
@@ -66,9 +64,7 @@ const here = (f: string) => fileURLToPath(new URL(f, import.meta.url));
  */
 export function seasonalTeamIdsFromIngest(): Map<string, number> {
   const out = new Map<string, number>();
-  const supporter = JSON.parse(readFileSync(here('supporter-week-winners.json'), 'utf8')) as Array<{ season: number; teamId: number | null }>;
   for (const w of supporter) if (w.teamId) out.set(`${SUPPORTER_WEEK_CUP_ID}|${w.season}`, w.teamId);
-  const generation = JSON.parse(readFileSync(here('generation-trophy-winners.json'), 'utf8')) as Array<{ cupId: number; season: number; teamId: number | null }>;
   for (const w of generation) if (w.teamId) out.set(`${w.cupId}|${w.season}`, w.teamId);
   return out;
 }

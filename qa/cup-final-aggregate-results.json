@@ -1,0 +1,502 @@
+[
+  {
+    "key": "37/5",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      3,
+      5
+    ],
+    "winner": "pinky3367"
+  },
+  {
+    "key": "41/6",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      2,
+      4
+    ],
+    "winner": "FC Drummer"
+  },
+  {
+    "key": "41/9",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      2,
+      3
+    ],
+    "winner": "Berzerk Oostende"
+  },
+  {
+    "key": "15/7",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      5,
+      4
+    ],
+    "winner": "Alfabarra"
+  },
+  {
+    "key": "15/11",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      3,
+      2
+    ],
+    "winner": "Alfabarra"
+  },
+  {
+    "key": "61/4",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      2,
+      5
+    ],
+    "winner": "Yellow squad"
+  },
+  {
+    "key": "17/8",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      4,
+      3
+    ],
+    "winner": "Universidad de Chile"
+  },
+  {
+    "key": "17/10",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      2,
+      3
+    ],
+    "winner": "los matasanos"
+  },
+  {
+    "key": "59/7",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      6,
+      7
+    ],
+    "winner": "NightWalkers"
+  },
+  {
+    "key": "18/8",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      5,
+      3
+    ],
+    "winner": "ATL NACIONAL"
+  },
+  {
+    "key": "56/6",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      4,
+      2
+    ],
+    "winner": "Bloodwich-team"
+  },
+  {
+    "key": "56/7",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      4,
+      3
+    ],
+    "winner": "Kalelarga Legends"
+  },
+  {
+    "key": "19/11",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      2,
+      3
+    ],
+    "winner": "Heliopolis Cairo"
+  },
+  {
+    "key": "3/20",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      1,
+      2
+    ],
+    "winner": "Durham City FC"
+  },
+  {
+    "key": "54/5",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      6,
+      5
+    ],
+    "winner": "Luige United FC"
+  },
+  {
+    "key": "6/19",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      0,
+      3
+    ],
+    "winner": "Nappes Xcutors"
+  },
+  {
+    "key": "6/20",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      3,
+      1
+    ],
+    "winner": "Nappes Xcutors"
+  },
+  {
+    "key": "4/19",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      4,
+      5
+    ],
+    "winner": "FC Phoenix Mühlburg"
+  },
+  {
+    "key": "48/4",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      3,
+      4
+    ],
+    "winner": "Spatania"
+  },
+  {
+    "key": "48/7",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      6,
+      3
+    ],
+    "winner": "Thalassokratya"
+  },
+  {
+    "key": "58/3",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      1,
+      3
+    ],
+    "winner": "shapeshifer"
+  },
+  {
+    "key": "36/5",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      4,
+      6
+    ],
+    "winner": "The Boondock Raiders"
+  },
+  {
+    "key": "20/6",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      4,
+      6
+    ],
+    "winner": "Abhi Lions"
+  },
+  {
+    "key": "52/6",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      1,
+      3
+    ],
+    "winner": "Janggutan Capek"
+  },
+  {
+    "key": "714/38",
+    "previousCount": 2,
+    "same": false,
+    "aggregate": [
+      null,
+      null
+    ],
+    "winner": null
+  },
+  {
+    "key": "7/21",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      3,
+      2
+    ],
+    "winner": "Sgainator F.C."
+  },
+  {
+    "key": "22/7",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      4,
+      3
+    ],
+    "winner": "Shirayuri Sky"
+  },
+  {
+    "key": "51/5",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      2,
+      3
+    ],
+    "winner": "Dinaburg FC"
+  },
+  {
+    "key": "51/6",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      4,
+      5
+    ],
+    "winner": "The Magnificent One"
+  },
+  {
+    "key": "38/5",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      3,
+      4
+    ],
+    "winner": "Katamaran Divers"
+  },
+  {
+    "key": "38/9",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      4,
+      5
+    ],
+    "winner": "Tiger ES"
+  },
+  {
+    "key": "13/8",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      3,
+      2
+    ],
+    "winner": "Real Raateland"
+  },
+  {
+    "key": "9/7",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      7,
+      2
+    ],
+    "winner": "Birkelunden BK"
+  },
+  {
+    "key": "14/8",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      5,
+      2
+    ],
+    "winner": "Sparker"
+  },
+  {
+    "key": "14/10",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      5,
+      9
+    ],
+    "winner": "Burnt Out Koalas FC"
+  },
+  {
+    "key": "33/5",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      4,
+      3
+    ],
+    "winner": "Ocean Panda"
+  },
+  {
+    "key": "33/9",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      3,
+      2
+    ],
+    "winner": "Tsing Yi Friends"
+  },
+  {
+    "key": "24/11",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      6,
+      7
+    ],
+    "winner": "Real Lima FC"
+  },
+  {
+    "key": "25/9",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      5,
+      1
+    ],
+    "winner": "MKS Narew Ostroleka"
+  },
+  {
+    "key": "34/4",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      3,
+      4
+    ],
+    "winner": "Tequila Lovers"
+  },
+  {
+    "key": "34/7",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      1,
+      5
+    ],
+    "winner": "KPEMEHb"
+  },
+  {
+    "key": "27/11",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      6,
+      8
+    ],
+    "winner": "Bogglers Divided"
+  },
+  {
+    "key": "55/7",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      6,
+      4
+    ],
+    "winner": "Dostin"
+  },
+  {
+    "key": "40/4",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      6,
+      8
+    ],
+    "winner": "FC Tenochtitlán"
+  },
+  {
+    "key": "40/8",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      3,
+      4
+    ],
+    "winner": "Winning Eleven"
+  },
+  {
+    "key": "63/5",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      7,
+      3
+    ],
+    "winner": "Praslovan"
+  },
+  {
+    "key": "43/6",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      4,
+      5
+    ],
+    "winner": "Ancestrales"
+  },
+  {
+    "key": "1/16",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      2,
+      4
+    ],
+    "winner": "Arvidsjaur BK"
+  },
+  {
+    "key": "29/8",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      5,
+      3
+    ],
+    "winner": "-C-R-I-S-I-S-"
+  },
+  {
+    "key": "31/4",
+    "previousCount": 1,
+    "same": true,
+    "aggregate": [
+      6,
+      3
+    ],
+    "winner": "el terrible"
+  }
+]

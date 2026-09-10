@@ -1,0 +1,74 @@
+{
+  "snapshot": {
+    "managers": 10307,
+    "leagues": 160,
+    "cupCountries": 159,
+    "domesticCups": 795,
+    "seasonalCups": 24,
+    "leagueRows": 9913,
+    "domesticCupRows": 31565,
+    "mastersRows": 67,
+    "seasonalRows": 579,
+    "nationalCompetitions": 12,
+    "nationalRows": 175,
+    "elections": 7137,
+    "trophyTotals": {
+      "lg": 8989,
+      "main": 7656,
+      "sec": 15970,
+      "hm": 57,
+      "sn": 464,
+      "wc": 160,
+      "wcSilver": 149,
+      "wcBronze": 302
+    }
+  },
+  "checks": {
+    "managerNumericFields": 721490,
+    "cabinetCategories": 412280,
+    "cabinetStateTransitions": 5,
+    "nationalityWindows": 685,
+    "trophyConfigurations": 640,
+    "managerConfigurationRows": 6596480,
+    "competitionRolls": 980,
+    "topManagerPanelEntries": 9209,
+    "medalScopes": 15,
+    "medalNationRows.senior": {
+      "displayed": 108,
+      "uniqueCountries": 108
+    },
+    "medalNationRows.u21": {
+      "displayed": 105,
+      "uniqueCountries": 105
+    },
+    "medalNationRows.all": {
+      "displayed": 129,
+      "uniqueCountries": 129
+    },
+    "electionTotals": {
+      "managers": 1790,
+      "nations": 120,
+      "unattributed": 1597,
+      "withoutNationality": 0,
+      "senior": 2718,
+      "youth": 2822
+    },
+    "electionCountryTopEntries": 1422,
+    "translationKeys": 185,
+    "languages": 5,
+    "shareCases": 15
+  },
+  "findings": {
+    "managerCountMismatches": [],
+    "cabinetMismatches": [],
+    "mergedDistinctManagers": [],
+    "lostKnownNationalityAfterRename": [],
+    "incorrectConsecutiveTitleStreaks": [],
+    "splitNationMedalRows": [],
+    "coachMedalsVsPodiumRows": [],
+    "wrongElectionTimelineDate": [],
+    "wrongRegionalMandateAttribution": [],
+    "worldCupEditionsLabeledSeasons": [],
+    "translationPlaceholderMismatches": []
+  }
+}

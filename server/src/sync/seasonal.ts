@@ -1,5 +1,7 @@
 import { prisma } from '../db/client.js';
 import type { TokenPair } from '../chpp/auth.js';
+import type { Prisma } from '@prisma/client';
+import { z } from 'zod';
 import { enrichUserNationalities } from './enrichManagers.js';
 
 /**
@@ -48,22 +50,40 @@ const SEASONAL_LEAGUE_SENTINEL = 0; // no real NationalLeague; keeps it out of p
 export interface SeasonalWinner {
   /** The tournament's own season counter (1..N), NOT the HT national/global season. */
   season: number;
-  /** Null when the page shows "(A former user)" with no links at all — team AND manager accounts
-   *  both gone, so not even the team is identifiable, only its name as plain text. Permanently
-   *  unresolvable (no CHPP or website path recovers an identity Hattrick itself no longer exposes). */
+  /** Null when the retained historical source does not identify the numeric club/manager.
+   * Names and country evidence do not authorize guessing these IDs. */
   teamId: number | null;
   team: string;
   userId: number | null;
   manager: string | null;
+  /** Optional direct historical facts; source URLs/evidence are retained in the ingestion file. */
+  teamLeagueId?: number | null;
+  runnerUp?: string;
+  sourceURLs?: string[];
+  evidence?: string;
 }
+
+const WinnerSchema = z.object({
+  season: z.number().int().positive(), teamId: z.number().int().positive().nullable(), team: z.string().trim().min(1),
+  userId: z.number().int().positive().nullable(), manager: z.string().nullable(),
+  teamLeagueId: z.number().int().positive().nullish(), runnerUp: z.string().min(1).optional(),
+  sourceURLs: z.array(z.string().url().refine(value => {
+    const url = new URL(value); return url.protocol === 'https:' && /(^|\.)hattrick\.org$/i.test(url.hostname);
+  })).optional(), evidence: z.string().min(20).optional(),
+}).refine(w => !(w.teamLeagueId || w.runnerUp) || Boolean(w.sourceURLs?.length && w.evidence), 'Supplemental historical facts require retained source URLs and evidence');
+const clean = (name: string) => name.normalize('NFC').replace(/\s+/g, ' ').trim();
 
 export interface SeasonalIngestResult { seasons: number; latestSeason: number; latestChampion: string | null }
 
 /** Upsert the single Cup row for a seasonal tournament. `currentSeason` = its latest edition. */
 export async function seedSeasonalCup(cupId: number, name: string, currentSeason: number): Promise<void> {
-  await prisma.cup.upsert({
+  await seedSeasonalCupIn(prisma, cupId, name, currentSeason);
+}
+async function seedSeasonalCupIn(db: Pick<Prisma.TransactionClient, 'cup'>, cupId: number, name: string, currentSeason: number): Promise<void> {
+  const existing = await db.cup.findUnique({ where: { cupId }, select: { currentSeason: true } });
+  await db.cup.upsert({
     where: { cupId },
-    update: { currentSeason, cupName: name, countryName: name },
+    update: { currentSeason: Math.max(currentSeason, existing?.currentSeason ?? 0), cupName: name, countryName: name },
     create: {
       cupId,
       leagueId: SEASONAL_LEAGUE_SENTINEL,
@@ -80,7 +100,8 @@ export async function seedSeasonalCup(cupId: number, name: string, currentSeason
 /**
  * Ingest a seasonal tournament's roll of honour. Sets championUserId/Name straight from the scrape,
  * then resolves nationality for any new managers so they don't bake as "Unknown". Idempotent:
- * re-running upserts the same rows. Re-bake afterwards to refresh the static JSON.
+ * re-running preserves stronger stored identities and rejects conflicting winners. Re-bake
+ * afterwards to refresh the static JSON.
  *
  * A winner with userId/teamId null (the "(A former user)" case — see SeasonalWinner) is still
  * stored, by team name only, so the edition isn't silently dropped from the roll of honour; it just
@@ -90,46 +111,57 @@ export async function ingestSeasonalWinners(
   token: TokenPair,
   opts: { cupId: number; name: string; winners: SeasonalWinner[] },
 ): Promise<SeasonalIngestResult> {
-  const valid = opts.winners.filter((w) => w.season && w.team);
+  const valid = z.array(WinnerSchema).parse(opts.winners);
+  if (new Set(valid.map(w => w.season)).size !== valid.length) throw new Error('Duplicate seasonal winner editions');
   const latestSeason = valid.reduce((m, w) => Math.max(m, w.season), 0);
-  await seedSeasonalCup(opts.cupId, opts.name, latestSeason);
-
-  for (const w of valid) {
-    if (w.userId) {
-      await prisma.hattrickUser.upsert({
-        where: { userId: w.userId },
-        update: { loginName: w.manager ?? undefined },
-        create: { userId: w.userId, loginName: w.manager ?? `user ${w.userId}` },
+  await prisma.$transaction(async tx => {
+    await seedSeasonalCupIn(tx, opts.cupId, opts.name, latestSeason);
+    for (const w of valid) {
+      const existing = await tx.cupChampion.findUnique({ where: { cupId_season: { cupId: opts.cupId, season: w.season } } });
+      if (existing) {
+        const sameClub = existing.championTeamId && w.teamId ? existing.championTeamId === w.teamId : clean(existing.championTeamName) === clean(w.team);
+        if (!sameClub || (existing.championUserId && w.userId && existing.championUserId !== w.userId) ||
+            (existing.championLeagueId && w.teamLeagueId && existing.championLeagueId !== w.teamLeagueId) ||
+            (existing.runnerUpTeamName && w.runnerUp && clean(existing.runnerUpTeamName) !== clean(w.runnerUp)))
+          throw new Error(`Conflicting seasonal winner ${opts.cupId}/${w.season}; existing evidence was preserved`);
+      }
+      const winner = {
+        championTeamId: w.teamId ?? existing?.championTeamId ?? null,
+        championTeamName: w.team,
+        championUserId: w.userId ?? existing?.championUserId ?? null,
+        championUserName: w.userId ? w.manager ?? existing?.championUserName ?? null : existing?.championUserName ?? w.manager,
+        championLeagueId: w.teamLeagueId ?? existing?.championLeagueId ?? null,
+        runnerUpTeamName: w.runnerUp ?? existing?.runnerUpTeamName ?? '',
+      };
+      if (existing && Object.entries(winner).every(([field, value]) => existing[field as keyof typeof existing] === value)) continue;
+      if (w.userId) {
+        await tx.hattrickUser.upsert({
+          where: { userId: w.userId },
+          update: { loginName: w.manager ?? undefined },
+          create: { userId: w.userId, loginName: w.manager ?? `user ${w.userId}` },
+        });
+      }
+      await tx.cupChampion.upsert({
+        where: { cupId_season: { cupId: opts.cupId, season: w.season } },
+        update: winner,
+        create: {
+          cupId: opts.cupId,
+          season: w.season,
+          leagueId: SEASONAL_LEAGUE_SENTINEL,
+          countryName: opts.name,
+          cupName: opts.name,
+          isMain: false,
+          finalMatchId: 0, // no per-final match id from the scrape (placeholder, like reconstructed finals)
+          ...winner,
+          homeGoals: 0,
+          awayGoals: 0,
+        },
       });
     }
-    await prisma.cupChampion.upsert({
-      where: { cupId_season: { cupId: opts.cupId, season: w.season } },
-      update: {
-        championTeamId: w.teamId,
-        championTeamName: w.team,
-        championUserId: w.userId,
-        championUserName: w.manager,
-      },
-      create: {
-        cupId: opts.cupId,
-        season: w.season,
-        leagueId: SEASONAL_LEAGUE_SENTINEL,
-        countryName: opts.name,
-        cupName: opts.name,
-        isMain: false,
-        finalMatchId: 0, // no per-final match id from the scrape (placeholder, like reconstructed finals)
-        championTeamId: w.teamId,
-        championTeamName: w.team,
-        runnerUpTeamName: '',
-        homeGoals: 0,
-        awayGoals: 0,
-        championUserId: w.userId,
-        championUserName: w.manager,
-      },
-    });
-  }
+  });
 
-  await enrichUserNationalities(token);
+  // Unknown numeric identities trigger no CHPP calls, including current-owner lookups.
+  if (valid.some(w => w.userId)) await enrichUserNationalities(token);
   const latest = valid.find((w) => w.season === latestSeason) ?? null;
   return { seasons: valid.length, latestSeason, latestChampion: latest ? (latest.manager ?? latest.team) : null };
 }

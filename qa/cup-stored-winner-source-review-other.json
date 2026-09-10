@@ -1,0 +1,534 @@
+{
+  "reviewedAt": "2026-09-10T22:27:58.763Z",
+  "scope": "33 gap countries excluding England, Italy, Poland, Belgium, Brazil. All currently stored main-cup seasons <=14, with <=24 for France, Germany and Sweden; this is a local-season screening scope, not an assertion that all rows fall before global season 24.",
+  "totals": {
+    "countries": 33,
+    "storedRows": 366,
+    "comparedRows": 366,
+    "exactWinnerAgreements": 336,
+    "nameDifferences": 30,
+    "corroboratedWinnerOnly": 7,
+    "sourceAnomalies": 3,
+    "primaryValidationPending": 0,
+    "confirmedWrongFinalists": 27
+  },
+  "corroboratedWinnerOnly": [
+    {
+      "cupId": 61,
+      "season": 2,
+      "winner": "Levski 1914",
+      "evidenceFile": "qa/cup-stored-winner-corroboration-other.json"
+    },
+    {
+      "cupId": 61,
+      "season": 6,
+      "winner": "Yellow squad",
+      "evidenceFile": "qa/cup-stored-winner-corroboration-other.json"
+    },
+    {
+      "cupId": 17,
+      "season": 9,
+      "winner": "Universidad de Chile",
+      "evidenceFile": "qa/cup-stored-winner-corroboration-other.json"
+    },
+    {
+      "cupId": 17,
+      "season": 11,
+      "winner": "Sion",
+      "evidenceFile": "qa/cup-stored-winner-corroboration-other.json"
+    },
+    {
+      "cupId": 56,
+      "season": 4,
+      "winner": "Folka United",
+      "evidenceFile": "qa/cup-stored-winner-corroboration-other.json"
+    },
+    {
+      "cupId": 63,
+      "season": 7,
+      "winner": "NK batman",
+      "evidenceFile": "qa/cup-stored-winner-corroboration-other.json"
+    },
+    {
+      "cupId": 27,
+      "season": 4,
+      "winner": "Barons Boys",
+      "evidenceFile": "qa/cup-stored-winner-corroboration-other.json"
+    }
+  ],
+  "sourceAnomalies": [
+    {
+      "cupId": 19,
+      "season": 6,
+      "country": "Egypt",
+      "classification": "possible-spelling-variant",
+      "note": "Wiki Alexandria Pharaohs versus stored Alexandria Pharaons. No evidence here of a different club. Preserve stored row."
+    },
+    {
+      "cupId": 36,
+      "season": 10,
+      "country": "Iceland",
+      "classification": "apparent-wiki-team-manager-column-swap",
+      "note": "Wiki cup columns list sir_mb as club and Starkers as manager; Starkers is the stored champion. Other wiki seasons use Starkers as club/sir_mb as manager. Do not switch champion based on this row."
+    },
+    {
+      "cupId": 36,
+      "season": 12,
+      "country": "Iceland",
+      "classification": "apparent-wiki-team-manager-column-swap",
+      "note": "Wiki cup columns list Mummi as club and Valkyries as manager; Valkyries is the stored champion. Other wiki seasons use Valkyries as club/Mummi as manager. Do not switch champion based on this row."
+    }
+  ],
+  "primaryValidationPending": [],
+  "limitations": [
+    "Public Wiki is a community-maintained secondary source. Its table agrees with many archive records but it is not automatically authoritative for mismatches.",
+    "No stored final or matchdetails was fetched for this comparison. No database mutation was made.",
+    "Winner-only corroboration establishes the champion name. It does not establish numeric team or manager IDs, the final opponent, final score, or legs. Those fields remain unknown.",
+    "The captured report's mismatches array means exact current-runner-up name matches only. It is empty because these reconstruction placeholders mostly lack runner-up data; see this review and corroboration file for actual findings.",
+    "Country joins/restarts affect local numbering. Source tables expressly use displayed local season numbers, including Austria and Bulgaria restart caveats.",
+    "Subsequent primary cupmatches final+preceding-round evidence resolves all30 differences:27wrongfinalists and3correctstorednames. Numeric team/manager IDs remain unverified because no matchdetails was fetched. Original public-source classifications remain recorded in initialPublicReviewTotals."
+  ],
+  "initialPublicReviewTotals": {
+    "countries": 33,
+    "storedRows": 366,
+    "comparedRows": 366,
+    "exactWinnerAgreements": 336,
+    "nameDifferences": 30,
+    "corroboratedWinnerOnly": 7,
+    "sourceAnomalies": 3,
+    "primaryValidationPending": 20
+  },
+  "initialPrimaryValidationPending": [
+    {
+      "country": "Austria",
+      "cupId": 37,
+      "season": 10,
+      "wikiWinner": "Gut",
+      "storedWinner": "databased.at",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Austria"
+    },
+    {
+      "country": "Chinese Taipei",
+      "cupId": 59,
+      "season": 3,
+      "wikiWinner": "Golden Dragon",
+      "storedWinner": "Passive Agressive",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Chinese_Taipei"
+    },
+    {
+      "country": "Egypt",
+      "cupId": 19,
+      "season": 10,
+      "wikiWinner": "amazighteam",
+      "storedWinner": "Foxy",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Egypt"
+    },
+    {
+      "country": "Estonia",
+      "cupId": 54,
+      "season": 8,
+      "wikiWinner": "K-J Jotad",
+      "storedWinner": "FC Kallic",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Estonia"
+    },
+    {
+      "country": "Germany",
+      "cupId": 4,
+      "season": 23,
+      "wikiWinner": "FC Martini",
+      "storedWinner": "FC Teerlunge",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Germany"
+    },
+    {
+      "country": "Indonesia",
+      "cupId": 52,
+      "season": 3,
+      "wikiWinner": "italy_A",
+      "storedWinner": "rage against d' machine fc",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Indonesia"
+    },
+    {
+      "country": "Latvia",
+      "cupId": 51,
+      "season": 2,
+      "wikiWinner": "Nokia",
+      "storedWinner": "FK sakee",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Latvija"
+    },
+    {
+      "country": "Malaysia",
+      "cupId": 38,
+      "season": 10,
+      "wikiWinner": "Ipoh United",
+      "storedWinner": "badang_fc",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Malaysia"
+    },
+    {
+      "country": "Norway",
+      "cupId": 9,
+      "season": 5,
+      "wikiWinner": "Viking 2",
+      "storedWinner": "Rolf FK",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Norway"
+    },
+    {
+      "country": "People's Republic of China",
+      "cupId": 33,
+      "season": 6,
+      "wikiWinner": "Aztec Warrior",
+      "storedWinner": "Tsing Yi's Club",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/China"
+    },
+    {
+      "country": "Russia",
+      "cupId": 34,
+      "season": 3,
+      "wikiWinner": "FK Balashikha",
+      "storedWinner": "Baltika",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya"
+    },
+    {
+      "country": "Russia",
+      "cupId": 34,
+      "season": 6,
+      "wikiWinner": "FC Karelia",
+      "storedWinner": "Killaz",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya"
+    },
+    {
+      "country": "Russia",
+      "cupId": 34,
+      "season": 8,
+      "wikiWinner": "Frozen Karelians",
+      "storedWinner": "FC Karelia",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya"
+    },
+    {
+      "country": "Serbia",
+      "cupId": 55,
+      "season": 1,
+      "wikiWinner": "FC Kotor",
+      "storedWinner": "S.C Sabac",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Srbija"
+    },
+    {
+      "country": "Singapore",
+      "cupId": 40,
+      "season": 2,
+      "wikiWinner": "Intergalactic Stars",
+      "storedWinner": "Soccer Advocates",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore"
+    },
+    {
+      "country": "Singapore",
+      "cupId": 40,
+      "season": 6,
+      "wikiWinner": "Herron",
+      "storedWinner": "Hattrick all the time",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore"
+    },
+    {
+      "country": "Singapore",
+      "cupId": 40,
+      "season": 10,
+      "wikiWinner": "Team Singapore",
+      "storedWinner": "Herron",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore"
+    },
+    {
+      "country": "Spain",
+      "cupId": 43,
+      "season": 7,
+      "wikiWinner": "Alien United",
+      "storedWinner": "Babylon 5",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Spain"
+    },
+    {
+      "country": "Spain",
+      "cupId": 43,
+      "season": 11,
+      "wikiWinner": "Ancestrales",
+      "storedWinner": "Alien United",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Spain"
+    },
+    {
+      "country": "Thailand",
+      "cupId": 29,
+      "season": 6,
+      "wikiWinner": "Rama XI",
+      "storedWinner": "The Spirits of Football",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Prathet_Thai"
+    }
+  ],
+  "primaryValidation": {
+    "file": "qa/cup-stored-primary-results.json",
+    "checkedAt": "2026-09-10T22:28:52.276Z",
+    "checks": 30,
+    "confirmedWrongFinalists": [
+      {
+        "cupId": 37,
+        "season": 10,
+        "country": "Austria",
+        "winner": "Gut",
+        "runnerUp": "databased.at",
+        "priorWinner": "databased.at"
+      },
+      {
+        "cupId": 61,
+        "season": 2,
+        "country": "Bulgaria",
+        "winner": "Levski 1914",
+        "runnerUp": "Cryout",
+        "priorWinner": "Cryout"
+      },
+      {
+        "cupId": 61,
+        "season": 6,
+        "country": "Bulgaria",
+        "winner": "Yellow squad",
+        "runnerUp": "White Moon FC",
+        "priorWinner": "White Moon FC"
+      },
+      {
+        "cupId": 17,
+        "season": 9,
+        "country": "Chile",
+        "winner": "Universidad de Chile",
+        "runnerUp": "ManchesterUnited",
+        "priorWinner": "ManchesterUnited"
+      },
+      {
+        "cupId": 17,
+        "season": 11,
+        "country": "Chile",
+        "winner": "Sion",
+        "runnerUp": "Escuadron",
+        "priorWinner": "Escuadron"
+      },
+      {
+        "cupId": 59,
+        "season": 3,
+        "country": "Chinese Taipei",
+        "winner": "Golden Dragon",
+        "runnerUp": "Passive Agressive",
+        "priorWinner": "Passive Agressive"
+      },
+      {
+        "cupId": 56,
+        "season": 4,
+        "country": "Croatia",
+        "winner": "Folka United",
+        "runnerUp": "Bjegunci",
+        "priorWinner": "Bjegunci"
+      },
+      {
+        "cupId": 19,
+        "season": 10,
+        "country": "Egypt",
+        "winner": "amazighteam",
+        "runnerUp": "Foxy",
+        "priorWinner": "Foxy"
+      },
+      {
+        "cupId": 54,
+        "season": 8,
+        "country": "Estonia",
+        "winner": "K-J Jotad",
+        "runnerUp": "FC Kallic",
+        "priorWinner": "FC Kallic"
+      },
+      {
+        "cupId": 4,
+        "season": 23,
+        "country": "Germany",
+        "winner": "FC Martini",
+        "runnerUp": "FC Teerlunge",
+        "priorWinner": "FC Teerlunge"
+      },
+      {
+        "cupId": 52,
+        "season": 3,
+        "country": "Indonesia",
+        "winner": "italy_A",
+        "runnerUp": "rage against d' machine fc",
+        "priorWinner": "rage against d' machine fc"
+      },
+      {
+        "cupId": 51,
+        "season": 2,
+        "country": "Latvia",
+        "winner": "Nokia",
+        "runnerUp": "FK sakee",
+        "priorWinner": "FK sakee"
+      },
+      {
+        "cupId": 38,
+        "season": 10,
+        "country": "Malaysia",
+        "winner": "Ipoh United",
+        "runnerUp": "badang_fc",
+        "priorWinner": "badang_fc"
+      },
+      {
+        "cupId": 9,
+        "season": 5,
+        "country": "Norway",
+        "winner": "Viking 2",
+        "runnerUp": "Rolf FK",
+        "priorWinner": "Rolf FK"
+      },
+      {
+        "cupId": 33,
+        "season": 6,
+        "country": "People's Republic of China",
+        "winner": "Aztec Warrior",
+        "runnerUp": "Tsing Yi's Club",
+        "priorWinner": "Tsing Yi's Club"
+      },
+      {
+        "cupId": 34,
+        "season": 3,
+        "country": "Russia",
+        "winner": "FK Balashikha",
+        "runnerUp": "Baltika",
+        "priorWinner": "Baltika"
+      },
+      {
+        "cupId": 34,
+        "season": 6,
+        "country": "Russia",
+        "winner": "FC Karelia",
+        "runnerUp": "Killaz",
+        "priorWinner": "Killaz"
+      },
+      {
+        "cupId": 34,
+        "season": 8,
+        "country": "Russia",
+        "winner": "Frozen Karelians",
+        "runnerUp": "FC Karelia",
+        "priorWinner": "FC Karelia"
+      },
+      {
+        "cupId": 27,
+        "season": 4,
+        "country": "Scotland",
+        "winner": "Barons Boys",
+        "runnerUp": "Glasgow_CELTIC",
+        "priorWinner": "Glasgow_CELTIC"
+      },
+      {
+        "cupId": 55,
+        "season": 1,
+        "country": "Serbia",
+        "winner": "FC Kotor",
+        "runnerUp": "S.C Sabac",
+        "priorWinner": "S.C Sabac"
+      },
+      {
+        "cupId": 40,
+        "season": 2,
+        "country": "Singapore",
+        "winner": "Intergalactic Stars",
+        "runnerUp": "Soccer Advocates",
+        "priorWinner": "Soccer Advocates"
+      },
+      {
+        "cupId": 40,
+        "season": 6,
+        "country": "Singapore",
+        "winner": "Herron",
+        "runnerUp": "Hattrick all the time",
+        "priorWinner": "Hattrick all the time"
+      },
+      {
+        "cupId": 40,
+        "season": 10,
+        "country": "Singapore",
+        "winner": "Team Singapore",
+        "runnerUp": "Herron",
+        "priorWinner": "Herron"
+      },
+      {
+        "cupId": 63,
+        "season": 7,
+        "country": "Slovenia",
+        "winner": "NK batman",
+        "runnerUp": "NK Proletarec",
+        "priorWinner": "NK Proletarec"
+      },
+      {
+        "cupId": 43,
+        "season": 7,
+        "country": "Spain",
+        "winner": "Alien United",
+        "runnerUp": "Babylon 5",
+        "priorWinner": "Babylon 5"
+      },
+      {
+        "cupId": 43,
+        "season": 11,
+        "country": "Spain",
+        "winner": "Ancestrales",
+        "runnerUp": "Alien United",
+        "priorWinner": "Alien United"
+      },
+      {
+        "cupId": 29,
+        "season": 6,
+        "country": "Thailand",
+        "winner": "Rama XI",
+        "runnerUp": "The Spirits of Football",
+        "priorWinner": "The Spirits of Football"
+      }
+    ],
+    "sourceAnomaliesConfirmed": [
+      {
+        "cupId": 19,
+        "season": 6,
+        "verifiedStoredWinner": "Alexandria Pharaons"
+      },
+      {
+        "cupId": 36,
+        "season": 10,
+        "verifiedStoredWinner": "Starkers"
+      },
+      {
+        "cupId": 36,
+        "season": 12,
+        "verifiedStoredWinner": "Valkyries"
+      }
+    ]
+  },
+  "postRepairValidation": {
+    "checkedAt": "2026-09-10T22:32:21.824Z",
+    "countries": 33,
+    "compared": 408,
+    "exactAgreements": 405,
+    "additionalRecoveredRowsInScreeningScope": 42,
+    "onlyRemainingDifferences": [
+      {
+        "cupId": 19,
+        "season": 6,
+        "stored": "Alexandria Pharaons",
+        "wiki": "Alexandria Pharaohs"
+      },
+      {
+        "cupId": 36,
+        "season": 10,
+        "stored": "Starkers",
+        "wiki": "sir_mb"
+      },
+      {
+        "cupId": 36,
+        "season": 12,
+        "stored": "Valkyries",
+        "wiki": "Mummi"
+      }
+    ],
+    "originalSnapshotPreserved": {
+      "rows": 366,
+      "candidates": 30
+    }
+  }
+}

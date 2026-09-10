@@ -1,0 +1,5387 @@
+{
+  "checkedAt": "2026-09-10T22:33:39.373Z",
+  "method": {
+    "globalReference": 94,
+    "seed": "server/src/data/leagues.json",
+    "offset": "globalReference minus country currentSeason from the same committed seed snapshot",
+    "twoLegLastGlobalSeason": 23,
+    "conservativeReviewThroughGlobalSeason": 24,
+    "transitionSources": [
+      {
+        "url": "https://wiki.hattrick.org/wiki/Belgium_Cup",
+        "lastTwoLegLocal": 10,
+        "firstSingleLocal": 11,
+        "offset": 13
+      },
+      {
+        "url": "https://wiki.hattrick.org/wiki/Copa_do_Brasil",
+        "lastTwoLegLocal": 11,
+        "firstSingleLocal": 12,
+        "offset": 12
+      }
+    ]
+  },
+  "catalogInconsistencies": [],
+  "allEarlyCountries": [
+    {
+      "country": "Sweden",
+      "cupId": 1,
+      "leagueId": 1,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": [
+        1,
+        24
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "England",
+      "cupId": 3,
+      "leagueId": 2,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": [
+        15,
+        24
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Germany",
+      "cupId": 4,
+      "leagueId": 3,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": [
+        1,
+        24
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Italy",
+      "cupId": 7,
+      "leagueId": 4,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": [
+        15,
+        24
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "France",
+      "cupId": 6,
+      "leagueId": 5,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": [
+        1,
+        24
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Mexico",
+      "cupId": 5,
+      "leagueId": 6,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "country": "Argentina",
+      "cupId": 2,
+      "leagueId": 7,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "country": "USA",
+      "cupId": 8,
+      "leagueId": 8,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "country": "Norway",
+      "cupId": 9,
+      "leagueId": 9,
+      "seedLocalSeason": 83,
+      "globalOffset": 11,
+      "localCapThroughGlobal24": 13,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        5,
+        13
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Denmark",
+      "cupId": 10,
+      "leagueId": 11,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "country": "Finland",
+      "cupId": 11,
+      "leagueId": 12,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "country": "Netherlands",
+      "cupId": 13,
+      "leagueId": 14,
+      "seedLocalSeason": 83,
+      "globalOffset": 11,
+      "localCapThroughGlobal24": 13,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        4,
+        13
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Oceania",
+      "cupId": 14,
+      "leagueId": 15,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Brazil",
+      "cupId": 15,
+      "leagueId": 16,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        3,
+        12
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Canada",
+      "cupId": 16,
+      "leagueId": 17,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "country": "Chile",
+      "cupId": 17,
+      "leagueId": 18,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Colombia",
+      "cupId": 18,
+      "leagueId": 19,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "India",
+      "cupId": 20,
+      "leagueId": 20,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Ireland",
+      "cupId": 21,
+      "leagueId": 21,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "country": "Japan",
+      "cupId": 22,
+      "leagueId": 22,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Peru",
+      "cupId": 24,
+      "leagueId": 23,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Poland",
+      "cupId": 25,
+      "leagueId": 24,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        3,
+        12
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Portugal",
+      "cupId": 26,
+      "leagueId": 25,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        4,
+        12
+      ],
+      "unreviewedRows": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "country": "Scotland",
+      "cupId": 27,
+      "leagueId": 26,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "South Africa",
+      "cupId": 28,
+      "leagueId": 27,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "country": "Uruguay",
+      "cupId": 31,
+      "leagueId": 28,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Venezuela",
+      "cupId": 32,
+      "leagueId": 29,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "country": "South Korea",
+      "cupId": 23,
+      "leagueId": 30,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "country": "Thailand",
+      "cupId": 29,
+      "leagueId": 31,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 8,
+      "twoLegEraRows": 7,
+      "localStoredRange": [
+        5,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Turkey",
+      "cupId": 30,
+      "leagueId": 32,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "country": "Egypt",
+      "cupId": 19,
+      "leagueId": 33,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "People's Republic of China",
+      "cupId": 33,
+      "leagueId": 34,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Russia",
+      "cupId": 34,
+      "leagueId": 35,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Spain",
+      "cupId": 43,
+      "leagueId": 36,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Romania",
+      "cupId": 35,
+      "leagueId": 37,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "country": "Iceland",
+      "cupId": 36,
+      "leagueId": 38,
+      "seedLocalSeason": 81,
+      "globalOffset": 13,
+      "localCapThroughGlobal24": 11,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        2,
+        11
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Austria",
+      "cupId": 37,
+      "leagueId": 39,
+      "seedLocalSeason": 81,
+      "globalOffset": 13,
+      "localCapThroughGlobal24": 11,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        2,
+        11
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Belgium",
+      "cupId": 41,
+      "leagueId": 44,
+      "seedLocalSeason": 81,
+      "globalOffset": 13,
+      "localCapThroughGlobal24": 11,
+      "reviewedRange": [
+        2,
+        11
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        2,
+        11
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Malaysia",
+      "cupId": 38,
+      "leagueId": 45,
+      "seedLocalSeason": 81,
+      "globalOffset": 13,
+      "localCapThroughGlobal24": 11,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        2,
+        11
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Switzerland",
+      "cupId": 42,
+      "leagueId": 46,
+      "seedLocalSeason": 81,
+      "globalOffset": 13,
+      "localCapThroughGlobal24": 11,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        2,
+        11
+      ],
+      "unreviewedRows": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "country": "Singapore",
+      "cupId": 40,
+      "leagueId": 47,
+      "seedLocalSeason": 81,
+      "globalOffset": 13,
+      "localCapThroughGlobal24": 11,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        2,
+        11
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Greece",
+      "cupId": 48,
+      "leagueId": 50,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        1,
+        9
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Hungary",
+      "cupId": 49,
+      "leagueId": 51,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": null,
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        1,
+        9
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "country": "Czechia",
+      "cupId": 50,
+      "leagueId": 52,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": null,
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        1,
+        9
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "country": "Latvia",
+      "cupId": 51,
+      "leagueId": 53,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        1,
+        9
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Indonesia",
+      "cupId": 52,
+      "leagueId": 54,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        1,
+        9
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Philippines",
+      "cupId": 53,
+      "leagueId": 55,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": null,
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        1,
+        9
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "country": "Estonia",
+      "cupId": 54,
+      "leagueId": 56,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        1,
+        9
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Serbia",
+      "cupId": 55,
+      "leagueId": 57,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        1,
+        9
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Croatia",
+      "cupId": 56,
+      "leagueId": 58,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 8,
+      "twoLegEraRows": 7,
+      "localStoredRange": [
+        2,
+        9
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Hong Kong",
+      "cupId": 58,
+      "leagueId": 59,
+      "seedLocalSeason": 78,
+      "globalOffset": 16,
+      "localCapThroughGlobal24": 8,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 8,
+      "twoLegEraRows": 7,
+      "localStoredRange": [
+        1,
+        8
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Chinese Taipei",
+      "cupId": 59,
+      "leagueId": 60,
+      "seedLocalSeason": 78,
+      "globalOffset": 16,
+      "localCapThroughGlobal24": 8,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 8,
+      "twoLegEraRows": 7,
+      "localStoredRange": [
+        1,
+        8
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Wales",
+      "cupId": 60,
+      "leagueId": 61,
+      "seedLocalSeason": 78,
+      "globalOffset": 16,
+      "localCapThroughGlobal24": 8,
+      "reviewedRange": null,
+      "storedRows": 7,
+      "twoLegEraRows": 6,
+      "localStoredRange": [
+        2,
+        8
+      ],
+      "unreviewedRows": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "country": "Bulgaria",
+      "cupId": 61,
+      "leagueId": 62,
+      "seedLocalSeason": 78,
+      "globalOffset": 16,
+      "localCapThroughGlobal24": 8,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 7,
+      "twoLegEraRows": 6,
+      "localStoredRange": [
+        2,
+        8
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Israel",
+      "cupId": 62,
+      "leagueId": 63,
+      "seedLocalSeason": 78,
+      "globalOffset": 16,
+      "localCapThroughGlobal24": 8,
+      "reviewedRange": null,
+      "storedRows": 7,
+      "twoLegEraRows": 6,
+      "localStoredRange": [
+        2,
+        8
+      ],
+      "unreviewedRows": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "country": "Slovenia",
+      "cupId": 63,
+      "leagueId": 64,
+      "seedLocalSeason": 78,
+      "globalOffset": 16,
+      "localCapThroughGlobal24": 8,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 7,
+      "twoLegEraRows": 6,
+      "localStoredRange": [
+        2,
+        8
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Lithuania",
+      "cupId": 124,
+      "leagueId": 66,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 5,
+      "twoLegEraRows": 4,
+      "localStoredRange": [
+        2,
+        6
+      ],
+      "unreviewedRows": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "country": "Slovakia",
+      "cupId": 125,
+      "leagueId": 67,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 5,
+      "twoLegEraRows": 4,
+      "localStoredRange": [
+        2,
+        6
+      ],
+      "unreviewedRows": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "country": "Ukraine",
+      "cupId": 126,
+      "leagueId": 68,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        3,
+        6
+      ],
+      "unreviewedRows": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "country": "Bosnia and Herzegovina",
+      "cupId": 127,
+      "leagueId": 69,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 5,
+      "twoLegEraRows": 4,
+      "localStoredRange": [
+        2,
+        6
+      ],
+      "unreviewedRows": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "country": "Vietnam",
+      "cupId": 128,
+      "leagueId": 70,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 5,
+      "twoLegEraRows": 4,
+      "localStoredRange": [
+        2,
+        6
+      ],
+      "unreviewedRows": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "country": "Pakistan",
+      "cupId": 129,
+      "leagueId": 71,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 5,
+      "twoLegEraRows": 4,
+      "localStoredRange": [
+        2,
+        6
+      ],
+      "unreviewedRows": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "country": "Paraguay",
+      "cupId": 130,
+      "leagueId": 72,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        3,
+        4
+      ],
+      "unreviewedRows": [
+        3,
+        4
+      ]
+    },
+    {
+      "country": "Ecuador",
+      "cupId": 131,
+      "leagueId": 73,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        1,
+        4
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "country": "Bolivia",
+      "cupId": 132,
+      "leagueId": 74,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        1,
+        4
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "country": "Nigeria",
+      "cupId": 133,
+      "leagueId": 75,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        1,
+        4
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "country": "Faroe Islands",
+      "cupId": 134,
+      "leagueId": 76,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        1,
+        4
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "country": "Morocco",
+      "cupId": 135,
+      "leagueId": 77,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        1,
+        4
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "country": "Saudi Arabia",
+      "cupId": 138,
+      "leagueId": 79,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 3,
+      "twoLegEraRows": 2,
+      "localStoredRange": [
+        1,
+        3
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "country": "Tunisia",
+      "cupId": 139,
+      "leagueId": 80,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 3,
+      "twoLegEraRows": 2,
+      "localStoredRange": [
+        1,
+        3
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "country": "Costa Rica",
+      "cupId": 140,
+      "leagueId": 81,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 3,
+      "twoLegEraRows": 2,
+      "localStoredRange": [
+        1,
+        3
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "country": "United Arab Emirates",
+      "cupId": 142,
+      "leagueId": 83,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 3,
+      "twoLegEraRows": 2,
+      "localStoredRange": [
+        1,
+        3
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "country": "Luxembourg",
+      "cupId": 143,
+      "leagueId": 84,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        2,
+        3
+      ],
+      "unreviewedRows": [
+        2,
+        3
+      ]
+    },
+    {
+      "country": "Iran",
+      "cupId": 144,
+      "leagueId": 85,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": [
+        1,
+        14
+      ],
+      "storedRows": 3,
+      "twoLegEraRows": 2,
+      "localStoredRange": [
+        1,
+        3
+      ],
+      "unreviewedRows": []
+    },
+    {
+      "country": "Dominican Republic",
+      "cupId": 147,
+      "leagueId": 88,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        3,
+        3
+      ],
+      "unreviewedRows": [
+        3
+      ]
+    },
+    {
+      "country": "Cyprus",
+      "cupId": 148,
+      "leagueId": 89,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 3,
+      "twoLegEraRows": 2,
+      "localStoredRange": [
+        1,
+        3
+      ],
+      "unreviewedRows": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "country": "Belarus",
+      "cupId": 151,
+      "leagueId": 91,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        1,
+        2
+      ],
+      "unreviewedRows": [
+        1,
+        2
+      ]
+    },
+    {
+      "country": "Northern Ireland",
+      "cupId": 153,
+      "leagueId": 93,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        1,
+        2
+      ],
+      "unreviewedRows": [
+        1,
+        2
+      ]
+    },
+    {
+      "country": "Jamaica",
+      "cupId": 154,
+      "leagueId": 94,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        1,
+        2
+      ],
+      "unreviewedRows": [
+        1,
+        2
+      ]
+    },
+    {
+      "country": "Kenya",
+      "cupId": 155,
+      "leagueId": 95,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        1,
+        2
+      ],
+      "unreviewedRows": [
+        1,
+        2
+      ]
+    },
+    {
+      "country": "Panama",
+      "cupId": 156,
+      "leagueId": 96,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        1,
+        2
+      ],
+      "unreviewedRows": [
+        1,
+        2
+      ]
+    },
+    {
+      "country": "North Macedonia",
+      "cupId": 157,
+      "leagueId": 97,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        2,
+        2
+      ],
+      "unreviewedRows": [
+        2
+      ]
+    },
+    {
+      "country": "Albania",
+      "cupId": 158,
+      "leagueId": 98,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        1
+      ]
+    },
+    {
+      "country": "Honduras",
+      "cupId": 159,
+      "leagueId": 99,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        1
+      ]
+    },
+    {
+      "country": "El Salvador",
+      "cupId": 160,
+      "leagueId": 100,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        1
+      ]
+    },
+    {
+      "country": "Malta",
+      "cupId": 161,
+      "leagueId": 101,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        1
+      ]
+    },
+    {
+      "country": "Kyrgyz Republic",
+      "cupId": 162,
+      "leagueId": 102,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        1
+      ]
+    },
+    {
+      "country": "Moldova",
+      "cupId": 163,
+      "leagueId": 103,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        1
+      ]
+    }
+  ],
+  "unreviewedCountries": [
+    {
+      "country": "Mexico",
+      "cupId": 5,
+      "leagueId": 6,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 5,
+          "season": 15,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "freyre",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 15
+        },
+        {
+          "cupId": 5,
+          "season": 16,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Atlas",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 16
+        },
+        {
+          "cupId": 5,
+          "season": 17,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Atlas",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 17
+        },
+        {
+          "cupId": 5,
+          "season": 18,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Atlas",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 18
+        },
+        {
+          "cupId": 5,
+          "season": 19,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Atlas",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 19
+        },
+        {
+          "cupId": 5,
+          "season": 20,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Borregos",
+          "championUserId": 8139533,
+          "championUserName": "ivan6306",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 5,
+          "season": 21,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Chivas",
+          "championUserId": 2412635,
+          "championUserName": "luis_angel",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 5,
+          "season": 22,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "los mineros",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 5,
+          "season": 23,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Atlas",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 5,
+          "season": 24,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Borregos",
+          "championUserId": 8139533,
+          "championUserName": "ivan6306",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Argentina",
+      "cupId": 2,
+      "leagueId": 7,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 2,
+          "season": 15,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Boca Juniors",
+          "championUserId": 10039,
+          "championUserName": "omar",
+          "globalSeason": 15
+        },
+        {
+          "cupId": 2,
+          "season": 16,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Xeneises",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 16
+        },
+        {
+          "cupId": 2,
+          "season": 17,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Boca Juniors",
+          "championUserId": 10039,
+          "championUserName": "omar",
+          "globalSeason": 17
+        },
+        {
+          "cupId": 2,
+          "season": 18,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Boca Juniors",
+          "championUserId": 10039,
+          "championUserName": "omar",
+          "globalSeason": 18
+        },
+        {
+          "cupId": 2,
+          "season": 19,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "ThaNaToS F.C.",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 19
+        },
+        {
+          "cupId": 2,
+          "season": 20,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Estudiantes de L.P",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 20
+        },
+        {
+          "cupId": 2,
+          "season": 21,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Vamos Perdiendo F.C.",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 2,
+          "season": 22,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "KoKyTeam",
+          "championUserId": 86740,
+          "championUserName": "-KoKy-",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 2,
+          "season": 23,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "La PLata F.C.",
+          "championUserId": 13614882,
+          "championUserName": "Patron182",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 2,
+          "season": 24,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Los Bepis",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "USA",
+      "cupId": 8,
+      "leagueId": 8,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 8,
+          "season": 15,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Center City Gooners",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 15
+        },
+        {
+          "cupId": 8,
+          "season": 16,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Slashers FC",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 16
+        },
+        {
+          "cupId": 8,
+          "season": 17,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Kansas City Wizards",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 17
+        },
+        {
+          "cupId": 8,
+          "season": 18,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Kansas City Wizards",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 18
+        },
+        {
+          "cupId": 8,
+          "season": 19,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Knights of the Apocalypse",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 19
+        },
+        {
+          "cupId": 8,
+          "season": 20,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Drunk&Disorderly",
+          "championUserId": 38572,
+          "championUserName": "DrunkenWeasel",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 8,
+          "season": 21,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Kansas City Wizards",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 8,
+          "season": 22,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Tombstone Titans",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 8,
+          "season": 23,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Tombstone Titans",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 8,
+          "season": 24,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "G's Goons",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Denmark",
+      "cupId": 10,
+      "leagueId": 11,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 10,
+          "season": 15,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Man.City",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 15
+        },
+        {
+          "cupId": 10,
+          "season": 16,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Loke GF",
+          "championUserId": 40280,
+          "championUserName": "LokeUtgaard",
+          "globalSeason": 16
+        },
+        {
+          "cupId": 10,
+          "season": 17,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "ZGF",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 17
+        },
+        {
+          "cupId": 10,
+          "season": 18,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Dalum IF",
+          "championUserId": 41750,
+          "championUserName": "Knudsen",
+          "globalSeason": 18
+        },
+        {
+          "cupId": 10,
+          "season": 19,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "ZGF",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 19
+        },
+        {
+          "cupId": 10,
+          "season": 20,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "ZGF",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 20
+        },
+        {
+          "cupId": 10,
+          "season": 21,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Kampsax",
+          "championUserId": 50727,
+          "championUserName": "Madskaa",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 10,
+          "season": 22,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Skou United",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 10,
+          "season": 23,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Skou United",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 10,
+          "season": 24,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Man.City",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Finland",
+      "cupId": 11,
+      "leagueId": 12,
+      "seedLocalSeason": 94,
+      "globalOffset": 0,
+      "localCapThroughGlobal24": 24,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        15,
+        24
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 11,
+          "season": 15,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC West",
+          "championUserId": 26768,
+          "championUserName": "jens_west",
+          "globalSeason": 15
+        },
+        {
+          "cupId": 11,
+          "season": 16,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC West",
+          "championUserId": 26768,
+          "championUserName": "jens_west",
+          "globalSeason": 16
+        },
+        {
+          "cupId": 11,
+          "season": 17,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC West",
+          "championUserId": 26768,
+          "championUserName": "jens_west",
+          "globalSeason": 17
+        },
+        {
+          "cupId": 11,
+          "season": 18,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC West",
+          "championUserId": 26768,
+          "championUserName": "jens_west",
+          "globalSeason": 18
+        },
+        {
+          "cupId": 11,
+          "season": 19,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Fc Alko",
+          "championUserId": 35794,
+          "championUserName": "BaariKarpanen",
+          "globalSeason": 19
+        },
+        {
+          "cupId": 11,
+          "season": 20,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "HeiskanJK",
+          "championUserId": 34808,
+          "championUserName": "heiska",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 11,
+          "season": 21,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Butcher Boys",
+          "championUserId": 44235,
+          "championUserName": "king_tim",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 11,
+          "season": 22,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "HeiskanJK",
+          "championUserId": 34808,
+          "championUserName": "heiska",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 11,
+          "season": 23,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "HeiskanJK",
+          "championUserId": 34808,
+          "championUserName": "heiska",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 11,
+          "season": 24,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Arnold Schwarzenegger",
+          "championUserId": 270484,
+          "championUserName": "oso1066",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Canada",
+      "cupId": 16,
+      "leagueId": 17,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 16,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Gumby United",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 15
+        },
+        {
+          "cupId": 16,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Gumby United",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 16
+        },
+        {
+          "cupId": 16,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Barrington Barons",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 17
+        },
+        {
+          "cupId": 16,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Barrington Barons",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 18
+        },
+        {
+          "cupId": 16,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Barrington Barons",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 19
+        },
+        {
+          "cupId": 16,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Calgary Haze",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 20
+        },
+        {
+          "cupId": 16,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Heart of the Annex",
+          "championUserId": 65795,
+          "championUserName": "Rujulus",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 16,
+          "season": 10,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Shoguns",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 16,
+          "season": 11,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "PoCo Magpies",
+          "championUserId": 165227,
+          "championUserName": "unknown",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 16,
+          "season": 12,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Alderwood Chiefs",
+          "championUserId": 40825,
+          "championUserName": "Gumby",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Ireland",
+      "cupId": 21,
+      "leagueId": 21,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 21,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Killagoola",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 15
+        },
+        {
+          "cupId": 21,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Killagoola",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 16
+        },
+        {
+          "cupId": 21,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Killagoola",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 17
+        },
+        {
+          "cupId": 21,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Killagoola",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 18
+        },
+        {
+          "cupId": 21,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Killagoola",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 19
+        },
+        {
+          "cupId": 21,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Inter United",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 20
+        },
+        {
+          "cupId": 21,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Inter United",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 21,
+          "season": 10,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Inter United",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 21,
+          "season": 11,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Inter United",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 21,
+          "season": 12,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Terminators",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Portugal",
+      "cupId": 26,
+      "leagueId": 25,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        4,
+        12
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 26,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Gonorreia é fodido",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 16
+        },
+        {
+          "cupId": 26,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "HTB 123",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 17
+        },
+        {
+          "cupId": 26,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "nicmo warriors",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 18
+        },
+        {
+          "cupId": 26,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Gonorreia é fodido",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 19
+        },
+        {
+          "cupId": 26,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "C.F.\"Os Belenenses\"",
+          "championUserId": 73787,
+          "championUserName": "Mendes",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 26,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Cio Soon",
+          "championUserId": 54315,
+          "championUserName": "Policy10",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 26,
+          "season": 10,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "H-Raki",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 26,
+          "season": 11,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "C.F.\"Os Belenenses\"",
+          "championUserId": 73787,
+          "championUserName": "Mendes",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 26,
+          "season": 12,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Cio Soon",
+          "championUserId": 54315,
+          "championUserName": "Policy10",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "South Africa",
+      "cupId": 28,
+      "leagueId": 27,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 28,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Springboks",
+          "championUserId": 51681,
+          "championUserName": "JohanRichards",
+          "globalSeason": 15
+        },
+        {
+          "cupId": 28,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Amabutho",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 16
+        },
+        {
+          "cupId": 28,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Lions",
+          "championUserId": 66605,
+          "championUserName": "Klien",
+          "globalSeason": 17
+        },
+        {
+          "cupId": 28,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "MASTERMIND",
+          "championUserId": 10896353,
+          "championUserName": "ILDAVIDE",
+          "globalSeason": 18
+        },
+        {
+          "cupId": 28,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Lions",
+          "championUserId": 66605,
+          "championUserName": "Klien",
+          "globalSeason": 19
+        },
+        {
+          "cupId": 28,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Lions",
+          "championUserId": 66605,
+          "championUserName": "Klien",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 28,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Lions",
+          "championUserId": 66605,
+          "championUserName": "Klien",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 28,
+          "season": 10,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Lions",
+          "championUserId": 66605,
+          "championUserName": "Klien",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 28,
+          "season": 11,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Lions",
+          "championUserId": 66605,
+          "championUserName": "Klien",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 28,
+          "season": 12,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Lions",
+          "championUserId": 66605,
+          "championUserName": "Klien",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Venezuela",
+      "cupId": 32,
+      "leagueId": 29,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 32,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Finlands A-lag",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 15
+        },
+        {
+          "cupId": 32,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "beltxis",
+          "championUserId": 66501,
+          "championUserName": "simontxo",
+          "globalSeason": 16
+        },
+        {
+          "cupId": 32,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "beltxis",
+          "championUserId": 66501,
+          "championUserName": "simontxo",
+          "globalSeason": 17
+        },
+        {
+          "cupId": 32,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "beltxis",
+          "championUserId": 66501,
+          "championUserName": "simontxo",
+          "globalSeason": 18
+        },
+        {
+          "cupId": 32,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "beltxis",
+          "championUserId": 66501,
+          "championUserName": "simontxo",
+          "globalSeason": 19
+        },
+        {
+          "cupId": 32,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "beltxis",
+          "championUserId": 66501,
+          "championUserName": "simontxo",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 32,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "beltxis",
+          "championUserId": 66501,
+          "championUserName": "simontxo",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 32,
+          "season": 10,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "beltxis",
+          "championUserId": 66501,
+          "championUserName": "simontxo",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 32,
+          "season": 11,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "beltxis",
+          "championUserId": 66501,
+          "championUserName": "simontxo",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 32,
+          "season": 12,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "beltxis",
+          "championUserId": 66501,
+          "championUserName": "simontxo",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "South Korea",
+      "cupId": 23,
+      "leagueId": 30,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 23,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Suwon Ball-Kickers",
+          "championUserId": 47761,
+          "championUserName": "kernel",
+          "globalSeason": 15
+        },
+        {
+          "cupId": 23,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Suwon Ball-Kickers",
+          "championUserId": 47761,
+          "championUserName": "kernel",
+          "globalSeason": 16
+        },
+        {
+          "cupId": 23,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Suwon Ball-Kickers",
+          "championUserId": 47761,
+          "championUserName": "kernel",
+          "globalSeason": 17
+        },
+        {
+          "cupId": 23,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Busan power",
+          "championUserId": 125126,
+          "championUserName": "hattrick2003",
+          "globalSeason": 18
+        },
+        {
+          "cupId": 23,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Suwon Bluewings",
+          "championUserId": 47761,
+          "championUserName": "kernel",
+          "globalSeason": 19
+        },
+        {
+          "cupId": 23,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Red & White",
+          "championUserId": 131941,
+          "championUserName": "cholla",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 23,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Busan power",
+          "championUserId": 125126,
+          "championUserName": "hattrick2003",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 23,
+          "season": 10,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Red & White",
+          "championUserId": 131941,
+          "championUserName": "cholla",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 23,
+          "season": 11,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Red & White",
+          "championUserId": 131941,
+          "championUserName": "cholla",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 23,
+          "season": 12,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "The Fellowship FC",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Turkey",
+      "cupId": 30,
+      "leagueId": 32,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 30,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "KAFSINKAF",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 15
+        },
+        {
+          "cupId": 30,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "KARAKARTAL",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 16
+        },
+        {
+          "cupId": 30,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "KARAKARTAL",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 17
+        },
+        {
+          "cupId": 30,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "KARAKARTAL",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 18
+        },
+        {
+          "cupId": 30,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "KARAKARTAL",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 19
+        },
+        {
+          "cupId": 30,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "KARAKARTAL",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 20
+        },
+        {
+          "cupId": 30,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "KARAKARTAL",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 30,
+          "season": 10,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "KARAKARTAL",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 30,
+          "season": 11,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FenerbahceSK",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 30,
+          "season": 12,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Karadeniz",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Romania",
+      "cupId": 35,
+      "leagueId": 37,
+      "seedLocalSeason": 82,
+      "globalOffset": 12,
+      "localCapThroughGlobal24": 12,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        3,
+        12
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 35,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Steaua Bucuresti",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 15
+        },
+        {
+          "cupId": 35,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "PASTRAVUL",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 16
+        },
+        {
+          "cupId": 35,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Steaua Bucuresti",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 17
+        },
+        {
+          "cupId": 35,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Metalul Plopeni",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 18
+        },
+        {
+          "cupId": 35,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Uraganul Rosu",
+          "championUserId": 38120,
+          "championUserName": "danzii",
+          "globalSeason": 19
+        },
+        {
+          "cupId": 35,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Metalul Plopeni",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 20
+        },
+        {
+          "cupId": 35,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Uraganul Rosu",
+          "championUserId": 38120,
+          "championUserName": "danzii",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 35,
+          "season": 10,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Uraganul Rosu",
+          "championUserId": 38120,
+          "championUserName": "danzii",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 35,
+          "season": 11,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Uraganul Rosu",
+          "championUserId": 38120,
+          "championUserName": "danzii",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 35,
+          "season": 12,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Zatopek",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Switzerland",
+      "cupId": 42,
+      "leagueId": 46,
+      "seedLocalSeason": 81,
+      "globalOffset": 13,
+      "localCapThroughGlobal24": 11,
+      "reviewedRange": null,
+      "storedRows": 10,
+      "twoLegEraRows": 9,
+      "localStoredRange": [
+        2,
+        11
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 42,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Vaud Sports",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 15
+        },
+        {
+          "cupId": 42,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "hobbits play football",
+          "championUserId": 56308,
+          "championUserName": "Teg_Navanis",
+          "globalSeason": 16
+        },
+        {
+          "cupId": 42,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Torpedo Zürihorn",
+          "championUserId": 53673,
+          "championUserName": "flexov",
+          "globalSeason": 17
+        },
+        {
+          "cupId": 42,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "flash servette",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 18
+        },
+        {
+          "cupId": 42,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "hobbits play football",
+          "championUserId": 56308,
+          "championUserName": "Teg_Navanis",
+          "globalSeason": 19
+        },
+        {
+          "cupId": 42,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "hobbits play football",
+          "championUserId": 56308,
+          "championUserName": "Teg_Navanis",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 42,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "hobbits play football",
+          "championUserId": 56308,
+          "championUserName": "Teg_Navanis",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 42,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Oerlikon United F.C.",
+          "championUserId": 78809,
+          "championUserName": "Rotsch",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 42,
+          "season": 10,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "hobbits play football",
+          "championUserId": 56308,
+          "championUserName": "Teg_Navanis",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 42,
+          "season": 11,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "hobbits play football",
+          "championUserId": 56308,
+          "championUserName": "Teg_Navanis",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Hungary",
+      "cupId": 49,
+      "leagueId": 51,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": null,
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        1,
+        9
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 49,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Száguldó Teveszõr",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 16
+        },
+        {
+          "cupId": 49,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Vasas SC",
+          "championUserId": 83152,
+          "championUserName": "Keynes",
+          "globalSeason": 17
+        },
+        {
+          "cupId": 49,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "UNQL-Power SC",
+          "championUserId": 91011,
+          "championUserName": "yulu42",
+          "globalSeason": 18
+        },
+        {
+          "cupId": 49,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Alte Proletars",
+          "championUserId": 13753517,
+          "championUserName": "MateMilan07",
+          "globalSeason": 19
+        },
+        {
+          "cupId": 49,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Hali",
+          "championUserId": 13627609,
+          "championUserName": "andrisigari",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 49,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Dinamo Budapest",
+          "championUserId": 86524,
+          "championUserName": "bendo",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 49,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Hali",
+          "championUserId": 13627609,
+          "championUserName": "andrisigari",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 49,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Gianag",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 49,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Hódítók",
+          "championUserId": 8376721,
+          "championUserName": "Sylly",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Czechia",
+      "cupId": 50,
+      "leagueId": 52,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": null,
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        1,
+        9
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 50,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "hasek",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 16
+        },
+        {
+          "cupId": 50,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Ni&#269;ivá Síla",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 17
+        },
+        {
+          "cupId": 50,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Ni&#269;ivá Síla",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 18
+        },
+        {
+          "cupId": 50,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Fianna",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 19
+        },
+        {
+          "cupId": 50,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Prerov United",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 20
+        },
+        {
+          "cupId": 50,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC SMAB",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 50,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Fosforos Cassovia",
+          "championUserId": 8363859,
+          "championUserName": "kvathron",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 50,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Zdar nad Sazavou",
+          "championUserId": 10846443,
+          "championUserName": "Akaiy",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 50,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "AC Mortifero ATTACCO",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Philippines",
+      "cupId": 53,
+      "leagueId": 55,
+      "seedLocalSeason": 79,
+      "globalOffset": 15,
+      "localCapThroughGlobal24": 9,
+      "reviewedRange": null,
+      "storedRows": 9,
+      "twoLegEraRows": 8,
+      "localStoredRange": [
+        1,
+        9
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 53,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Leyte",
+          "championUserId": 83824,
+          "championUserName": "yen2x",
+          "globalSeason": 16
+        },
+        {
+          "cupId": 53,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Motorola",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 17
+        },
+        {
+          "cupId": 53,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Burnt Toast Collective Ensemble",
+          "championUserId": 92222,
+          "championUserName": "Chinky",
+          "globalSeason": 18
+        },
+        {
+          "cupId": 53,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Top Guns",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 19
+        },
+        {
+          "cupId": 53,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Olongapo-Metro FC Head Hunters",
+          "championUserId": 98954,
+          "championUserName": "Josef",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 53,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Olongapo-Metro FC Head Hunters",
+          "championUserId": 98954,
+          "championUserName": "Josef",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 53,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Mystic Snakes",
+          "championUserId": 391078,
+          "championUserName": "solista",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 53,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "San Antonio FC",
+          "championUserId": 491073,
+          "championUserName": "rtcampos",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 53,
+          "season": 9,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Quezon Kickers",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Wales",
+      "cupId": 60,
+      "leagueId": 61,
+      "seedLocalSeason": 78,
+      "globalOffset": 16,
+      "localCapThroughGlobal24": 8,
+      "reviewedRange": null,
+      "storedRows": 7,
+      "twoLegEraRows": 6,
+      "localStoredRange": [
+        2,
+        8
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 60,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "J.D.F.C 2002",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 18
+        },
+        {
+          "cupId": 60,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Cadeyrn FC",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 19
+        },
+        {
+          "cupId": 60,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Mae Hen Wlad Fy Nhadau",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 20
+        },
+        {
+          "cupId": 60,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Mae Hen Wlad Fy Nhadau",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 60,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Mae Hen Wlad Fy Nhadau",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 60,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Llareggub FC",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 60,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Brecon Red Kites",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Israel",
+      "cupId": 62,
+      "leagueId": 63,
+      "seedLocalSeason": 78,
+      "globalOffset": 16,
+      "localCapThroughGlobal24": 8,
+      "reviewedRange": null,
+      "storedRows": 7,
+      "twoLegEraRows": 6,
+      "localStoredRange": [
+        2,
+        8
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 62,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Hapoel Beer-Sheva",
+          "championUserId": 188551,
+          "championUserName": "Hbesh",
+          "globalSeason": 18
+        },
+        {
+          "cupId": 62,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Hapoel Beer-Sheva",
+          "championUserId": 188551,
+          "championUserName": "Hbesh",
+          "globalSeason": 19
+        },
+        {
+          "cupId": 62,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Beitar",
+          "championUserId": 13539055,
+          "championUserName": "vadimon",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 62,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "La-resistance",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 62,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Doy's United",
+          "championUserId": 301452,
+          "championUserName": "abadoy",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 62,
+          "season": 7,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Beitar",
+          "championUserId": 13539055,
+          "championUserName": "vadimon",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 62,
+          "season": 8,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "La-resistance",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Lithuania",
+      "cupId": 124,
+      "leagueId": 66,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 5,
+      "twoLegEraRows": 4,
+      "localStoredRange": [
+        2,
+        6
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 124,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "D&#363;mai",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 20
+        },
+        {
+          "cupId": 124,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Anapilis",
+          "championUserId": 481780,
+          "championUserName": "marcius",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 124,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Naujas Greitis",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 124,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "M&#279;lynosios v&#279;liavos",
+          "championUserId": 485064,
+          "championUserName": "RamPet",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 124,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Bajorai",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Slovakia",
+      "cupId": 125,
+      "leagueId": 67,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 5,
+      "twoLegEraRows": 4,
+      "localStoredRange": [
+        2,
+        6
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 125,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Slovan Zalesie",
+          "championUserId": 491146,
+          "championUserName": "troll",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 125,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FK Bizon Bratislava",
+          "championUserId": 509986,
+          "championUserName": "Mravec",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 125,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Jehovisti",
+          "championUserId": 478805,
+          "championUserName": "Thelonius",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 125,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC zlomene vazy",
+          "championUserId": 525447,
+          "championUserName": "trubiroh",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 125,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Jehovisti",
+          "championUserId": 478805,
+          "championUserName": "Thelonius",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Ukraine",
+      "cupId": 126,
+      "leagueId": 68,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        3,
+        6
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 126,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "napoleonskaya gvardiya",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 126,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "4ernomorets",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 126,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "4ernomorets",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 126,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": 268352,
+          "championTeamName": "FC Granit",
+          "championUserId": 652692,
+          "championUserName": "Askon",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Bosnia and Herzegovina",
+      "cupId": 127,
+      "leagueId": 69,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 5,
+      "twoLegEraRows": 4,
+      "localStoredRange": [
+        2,
+        6
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 127,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Maxnet",
+          "championUserId": 488101,
+          "championUserName": "renes276",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 127,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Maxnet",
+          "championUserId": 488101,
+          "championUserName": "renes276",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 127,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Jajce Animals",
+          "championUserId": 484623,
+          "championUserName": "EL-GADAFY",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 127,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Normala FC",
+          "championUserId": 512199,
+          "championUserName": "lewamos",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 127,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Maxnet",
+          "championUserId": 488101,
+          "championUserName": "renes276",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Vietnam",
+      "cupId": 128,
+      "leagueId": 70,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 5,
+      "twoLegEraRows": 4,
+      "localStoredRange": [
+        2,
+        6
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 128,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Saigon Saints",
+          "championUserId": 12285763,
+          "championUserName": "vigonanh",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 128,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Saigon Saints",
+          "championUserId": 497149,
+          "championUserName": "mr_saigon",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 128,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Saigon Saints",
+          "championUserId": 497149,
+          "championUserName": "mr_saigon",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 128,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "CSG_FC",
+          "championUserId": 891556,
+          "championUserName": "_Koto_",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 128,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Saigon Saints",
+          "championUserId": 12285763,
+          "championUserName": "vigonanh",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Pakistan",
+      "cupId": 129,
+      "leagueId": 71,
+      "seedLocalSeason": 76,
+      "globalOffset": 18,
+      "localCapThroughGlobal24": 6,
+      "reviewedRange": null,
+      "storedRows": 5,
+      "twoLegEraRows": 4,
+      "localStoredRange": [
+        2,
+        6
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 129,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "pakis1920",
+          "championUserId": 482382,
+          "championUserName": "pakis",
+          "globalSeason": 20
+        },
+        {
+          "cupId": 129,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "pakis1920",
+          "championUserId": 482382,
+          "championUserName": "pakis",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 129,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Islamaure",
+          "championUserId": 489919,
+          "championUserName": "maure",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 129,
+          "season": 5,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "pakis1920",
+          "championUserId": 482382,
+          "championUserName": "pakis",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 129,
+          "season": 6,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Saads Football Club",
+          "championUserId": 508350,
+          "championUserName": "Saadi",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Paraguay",
+      "cupId": 130,
+      "leagueId": 72,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        3,
+        4
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 130,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "me olvide",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 130,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Tricolor de Corazón",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Ecuador",
+      "cupId": 131,
+      "leagueId": 73,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        1,
+        4
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 131,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Deportivo de Quito",
+          "championUserId": 14014809,
+          "championUserName": "Damiatronico",
+          "globalSeason": 21
+        },
+        {
+          "cupId": 131,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "El Barcelona S. C.",
+          "championUserId": 744535,
+          "championUserName": "pasionQmata",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 131,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "El Barcelona S. C.",
+          "championUserId": 744535,
+          "championUserName": "pasionQmata",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 131,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "korsarios",
+          "championUserId": 881466,
+          "championUserName": "fercorrob",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Bolivia",
+      "cupId": 132,
+      "leagueId": 74,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        1,
+        4
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 132,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Cosmos 1982",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 132,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "-Real Madrid FC-",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 132,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Y2K F.C.",
+          "championUserId": 715167,
+          "championUserName": "marcelo_v",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 132,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Camiri",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Nigeria",
+      "cupId": 133,
+      "leagueId": 75,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        1,
+        4
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 133,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Deportivo Benin",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 133,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Deportivo Benin",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 133,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Victorian Kings",
+          "championUserId": 753019,
+          "championUserName": "sdalambert",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 133,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Victorian Kings",
+          "championUserId": 753019,
+          "championUserName": "sdalambert",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Faroe Islands",
+      "cupId": 134,
+      "leagueId": 76,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        1,
+        4
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 134,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Torshavn",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 134,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Tórshavn",
+          "championUserId": 705780,
+          "championUserName": "torshavn",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 134,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Tórshavn",
+          "championUserId": 705780,
+          "championUserName": "torshavn",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 134,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Fish & Sheep FC",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Morocco",
+      "cupId": 135,
+      "leagueId": 77,
+      "seedLocalSeason": 74,
+      "globalOffset": 20,
+      "localCapThroughGlobal24": 4,
+      "reviewedRange": null,
+      "storedRows": 4,
+      "twoLegEraRows": 3,
+      "localStoredRange": [
+        1,
+        4
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 135,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FAR Meknès united",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 21
+        },
+        {
+          "cupId": 135,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FAR Meknès united",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 135,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FAR Meknès united",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 135,
+          "season": 4,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FAR Meknès united",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Saudi Arabia",
+      "cupId": 138,
+      "leagueId": 79,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 3,
+      "twoLegEraRows": 2,
+      "localStoredRange": [
+        1,
+        3
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 138,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Al Nassr",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 138,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "KFUPM",
+          "championUserId": 1102377,
+          "championUserName": "aldosary",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 138,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "KFUPM",
+          "championUserId": 1102377,
+          "championUserName": "aldosary",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Tunisia",
+      "cupId": 139,
+      "leagueId": 80,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 3,
+      "twoLegEraRows": 2,
+      "localStoredRange": [
+        1,
+        3
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 139,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Zarzis",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 139,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Saharan Gladiators",
+          "championUserId": 1023369,
+          "championUserName": "charly_alpha",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 139,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Espérance sportive de tunis",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Costa Rica",
+      "cupId": 140,
+      "leagueId": 81,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 3,
+      "twoLegEraRows": 2,
+      "localStoredRange": [
+        1,
+        3
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 140,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Revolucion Cubana 1959",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 140,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Freudinos",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 140,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "CR Lions",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "United Arab Emirates",
+      "cupId": 142,
+      "leagueId": 83,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 3,
+      "twoLegEraRows": 2,
+      "localStoredRange": [
+        1,
+        3
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 142,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "The Sheiks",
+          "championUserId": 1004588,
+          "championUserName": "saeed",
+          "globalSeason": 22
+        },
+        {
+          "cupId": 142,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "The Sheiks",
+          "championUserId": 1004588,
+          "championUserName": "saeed",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 142,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "The Sheiks",
+          "championUserId": 1004588,
+          "championUserName": "saeed",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Luxembourg",
+      "cupId": 143,
+      "leagueId": 84,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        2,
+        3
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 143,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Jamaican Penguins Bobsleigh Team",
+          "championUserId": 6114932,
+          "championUserName": "Bagger",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 143,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Spora",
+          "championUserId": 1001941,
+          "championUserName": "gdezuttere",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Dominican Republic",
+      "cupId": 147,
+      "leagueId": 88,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        3,
+        3
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 147,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Mansot",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Cyprus",
+      "cupId": 148,
+      "leagueId": 89,
+      "seedLocalSeason": 73,
+      "globalOffset": 21,
+      "localCapThroughGlobal24": 3,
+      "reviewedRange": null,
+      "storedRows": 3,
+      "twoLegEraRows": 2,
+      "localStoredRange": [
+        1,
+        3
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 148,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "TrAnCeAllStArS",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 22
+        },
+        {
+          "cupId": 148,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "ThunderFull",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 148,
+          "season": 3,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "F.C Kipros",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Belarus",
+      "cupId": 151,
+      "leagueId": 91,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        1,
+        2
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 151,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Pomsta Minsk",
+          "championUserId": 1401432,
+          "championUserName": "-Sasha-",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 151,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Zahop",
+          "championUserId": 1417105,
+          "championUserName": "Gogga",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Northern Ireland",
+      "cupId": 153,
+      "leagueId": 93,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        1,
+        2
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 153,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Ballymena Utd",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 153,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Ballymena Utd",
+          "championUserId": 1402248,
+          "championUserName": "flam1",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Jamaica",
+      "cupId": 154,
+      "leagueId": 94,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        1,
+        2
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 154,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "C.A.F.D.",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 23
+        },
+        {
+          "cupId": 154,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "C.A.F.D.",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Kenya",
+      "cupId": 155,
+      "leagueId": 95,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        1,
+        2
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 155,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Berhanena Selam",
+          "championUserId": 13481763,
+          "championUserName": "-Rudy-",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 155,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "wanafunzi",
+          "championUserId": 1479271,
+          "championUserName": "wanafunzi",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Panama",
+      "cupId": 156,
+      "leagueId": 96,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 2,
+      "twoLegEraRows": 1,
+      "localStoredRange": [
+        1,
+        2
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 156,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Tauro F.C.",
+          "championUserId": 1388627,
+          "championUserName": "Brigadier",
+          "globalSeason": 23
+        },
+        {
+          "cupId": 156,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "ST CORRU",
+          "championUserId": 1376890,
+          "championUserName": "st-corru",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "North Macedonia",
+      "cupId": 157,
+      "leagueId": 97,
+      "seedLocalSeason": 72,
+      "globalOffset": 22,
+      "localCapThroughGlobal24": 2,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        2,
+        2
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 157,
+          "season": 2,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FK PELISTER",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Albania",
+      "cupId": 158,
+      "leagueId": 98,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 158,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "kf.Liria",
+          "championUserId": 5492690,
+          "championUserName": "Moxhi",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Honduras",
+      "cupId": 159,
+      "leagueId": 99,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 159,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "*Margarita Warszawa*",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "El Salvador",
+      "cupId": 160,
+      "leagueId": 100,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 160,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Alianza Intercontinental",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Malta",
+      "cupId": 161,
+      "leagueId": 101,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 161,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Mellieha Knights",
+          "championUserId": null,
+          "championUserName": null,
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Kyrgyz Republic",
+      "cupId": 162,
+      "leagueId": 102,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 162,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "FC Exemption",
+          "championUserId": 12386117,
+          "championUserName": "RinghioGrohl",
+          "globalSeason": 24
+        }
+      ]
+    },
+    {
+      "country": "Moldova",
+      "cupId": 163,
+      "leagueId": 103,
+      "seedLocalSeason": 71,
+      "globalOffset": 23,
+      "localCapThroughGlobal24": 1,
+      "reviewedRange": null,
+      "storedRows": 1,
+      "twoLegEraRows": 0,
+      "localStoredRange": [
+        1,
+        1
+      ],
+      "unreviewedRows": [
+        {
+          "cupId": 163,
+          "season": 1,
+          "finalMatchId": 0,
+          "championTeamId": null,
+          "championTeamName": "Zimbru II",
+          "championUserId": 4355940,
+          "championUserName": "Randee",
+          "globalSeason": 24
+        }
+      ]
+    }
+  ],
+  "unreviewedRowsInReviewedCountries": [],
+  "totals": {
+    "countriesWithRowsThroughGlobal24": 88,
+    "rowsThroughGlobal24": 619,
+    "twoLegEraRows": 531,
+    "whollyUnreviewedCountries": 50,
+    "whollyUnreviewedRowsThroughGlobal24": 266,
+    "whollyUnreviewedTwoLegRows": 216,
+    "additionalUnreviewedRowsInReviewedCountries": 0
+  }
+}

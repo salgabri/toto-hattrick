@@ -32,7 +32,7 @@ const onlyLeagueIds = process.env.LEAGUES
 console.log(`refresh-latest @ ${new Date().toISOString()} (lookback=${lookback}${onlyLeagueIds ? `, leagues=${onlyLeagueIds.join(',')}` : ''})`);
 
 const r = await refreshLatestChampions(access, { lookback, onlyLeagueIds });
-console.log(`champions added: +${r.leagueChampionsAdded} league, +${r.cupChampionsAdded} cup (${r.leaguesAdvanced} countries advanced)`);
+console.log(`champions added: +${r.leagueChampionsAdded} league, +${r.cupChampionsAdded} cup (${r.leaguesAdvanced} countries advanced); unresolved cup finals: ${r.cupIssues.length}`);
 
 if (!process.env.SKIP_MANAGERS) {
   console.warn('Historical manager attribution is deferred: current-owner and club-name approximations are disabled. Use recover:historical-winners with saved history evidence.');
@@ -42,7 +42,7 @@ if (!process.env.SKIP_MANAGERS) {
   if (!onlyLeagueIds) {
     const globalSeason = (await prisma.nationalLeague.aggregate({ _max: { currentSeason: true } }))._max.currentSeason ?? 95;
     const mr = await syncMasters(access, { currentSeason: globalSeason });
-    console.log(`Masters facts: +${mr.seasonsStored} new edition(s); latest club ${mr.latestChampion ?? '—'}`);
+    console.log(`Masters facts: +${mr.seasonsStored} new edition(s); latest club ${mr.latestChampion ?? '—'}; unresolved finals: ${mr.issues.length}`);
   }
   const n = await enrichUserNationalities(access, {});
   console.log(`Known-manager nationalities: ${n.resolved} resolved, ${n.unknown} unknown, ${n.errors} errors (${n.processed} attempted)`);

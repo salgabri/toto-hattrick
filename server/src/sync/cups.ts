@@ -1,7 +1,8 @@
 import { prisma } from '../db/client.js';
 import type { TokenPair } from '../chpp/auth.js';
-import { fetchWorldDetails, fetchCupMatches, fetchMatchDetails } from '../chpp/endpoints.js';
-import { parseWorldDetailsCups, parseCupMatches, parseMatchDetails } from '../schemas/index.js';
+import { fetchWorldDetails, fetchCupMatches } from '../chpp/endpoints.js';
+import { parseWorldDetailsCups, parseCupMatches } from '../schemas/index.js';
+import { loadCupFinalMatch, loadPreviousCupRound, readCachedCupFinalMatch, resolveCupFinal, resolveStoredCupFinal, type VerifiedCupFinalWinner } from './cupFinals.js';
 
 /**
  * Cup honours, reconstructed entirely from CHPP (no website scraping).
@@ -9,10 +10,11 @@ import { parseWorldDetailsCups, parseCupMatches, parseMatchDetails } from '../sc
  *   seedCups()          worlddetails(leagueId) → the five NATIONAL-level cups per country
  *                       (CupLeagueLevel 0): one MAIN (CupLevel 1) + four SECONDARY (CupLevel 2/3).
  *   syncCupChampions()  cupmatches(cupId, season) with no round → the LAST played round; for a
- *                       finished cup that is the single-match final, so the higher score wins.
+ *                       finished cup that is the final's last leg. Earlier cups had two legs,
+ *                       so inspect the preceding round and use the aggregate, not the last score.
  *                       Walk seasons back until the cup predates its own existence (round 0).
- *   enrichCupTeamIds()  matchdetails(finalMatchId) → the winner's teamId (positional: home in the
- *                       cupmatches final is home in matchdetails), a cheaper second pass.
+ *   enrichCupTeamIds()  retained match facts → the archived winner's teamId by exact name.
+ *                       It never derives a cup winner from a second-leg score or re-fetches it.
  *
  * Resume-safe throughout: a stored final never changes, so re-runs skip it with no API call.
  */
@@ -74,13 +76,14 @@ export interface CupSyncResult {
   seasonsStored: number;
   earliestSeason: number | null;
   latestChampion: string | null;
+  issues: Array<{ season: number; matchId?: number; reason: string }>;
 }
 
-/** Harvest every season's winner of one cup. Stores the winner NAME; teamId is a later pass. */
+/** Harvest winners with format/aggregate validation and numeric club identity before insertion. */
 export async function syncCupChampions(
   token: TokenPair,
   cupId: number,
-  opts: { minSeason?: number } = {},
+  opts: { minSeason?: number; pacingMs?: number; verifiedWinners?: readonly VerifiedCupFinalWinner[] } = {},
 ): Promise<CupSyncResult> {
   const cup = await prisma.cup.findUnique({ where: { cupId } });
   if (!cup) throw new Error(`cup ${cupId} not seeded`);
@@ -89,7 +92,13 @@ export async function syncCupChampions(
   // floor so it fetches only new finals instead of re-walking every season to S1.
   const floor = Math.max(1, opts.minSeason ?? 1);
 
-  const result: CupSyncResult = { cupId, cupName: cup.cupName, seasonsStored: 0, earliestSeason: null, latestChampion: null };
+  const pacingMs = opts.pacingMs ?? PACING_MS;
+  const result: CupSyncResult = { cupId, cupName: cup.cupName, seasonsStored: 0, earliestSeason: null, latestChampion: null, issues: [] };
+  // ArenaHub seasonal tournaments use TournamentHistory ingestion (seasonal.ts), not cupmatches.
+  if (cup.leagueId === 0 && cupId !== 183) {
+    result.issues.push({ season: start, reason: 'Seasonal tournaments require seasonal history ingestion; cupmatches is not their source' });
+    return result;
+  }
 
   for (let season = start; season >= floor; season--) {
     const existing = await prisma.cupChampion.findUnique({ where: { cupId_season: { cupId, season } } });
@@ -97,8 +106,8 @@ export async function syncCupChampions(
     // never changes, and a final that already has a manager needs nothing more. What must NOT be
     // skipped is a reconstructed placeholder that is still unattributed (finalMatchId 0 AND
     // championUserId null — see scripts/reconstruct-from-bake.ts): those fall through so we fetch
-    // the real final, which is what unlocks teamId → current-owner attribution downstream
-    // (enrichCupTeamIds → enrichRecentCupManagers). Resume-safe: once upgraded, later runs skip it.
+    // the real final, which unlocks historical club evidence. Current ownership is never proof of
+    // who won an old trophy. Resume-safe: once upgraded, later runs skip it.
     if (existing && (existing.finalMatchId > 0 || existing.championUserId !== null)) {
       result.earliestSeason = season;
       continue;
@@ -108,10 +117,15 @@ export async function syncCupChampions(
     try {
       cm = parseCupMatches(await fetchCupMatches(token, { cupId, season }));
     } catch {
-      await sleep(PACING_MS);
+      result.issues.push({ season, reason: 'Cup round could not be fetched or validated' });
+      await sleep(pacingMs);
       continue;
     }
-    await sleep(PACING_MS);
+    await sleep(pacingMs);
+    if (cm.cupId !== cupId || cm.season !== season) {
+      result.issues.push({ season, reason: 'Cup response differs from the requested competition/season' });
+      continue;
+    }
 
     // An empty / round-0 bracket normally means the cup didn't exist this season → stop walking
     // further back. EXCEPTION: at the current (in-progress) season it just means the cup hasn't
@@ -122,51 +136,46 @@ export async function syncCupChampions(
       break;
     }
 
-    // The final is a single played match. More/fewer, or an unplayed result, means this season's
-    // cup isn't finished (the current in-progress season) — skip it without breaking.
+    // The last round is one played match, possibly the second leg of an older final. More/fewer,
+    // or an unplayed result, means this season's final is not available yet.
     if (cm.matches.length !== 1) continue;
     const f = cm.matches[0];
     if (!f || f.homeGoals === null || f.awayGoals === null) continue;
 
-    // Winner is the higher score. HT cup finals are always decided, so a tie is not expected;
-    // if one ever appears, skip rather than crown the wrong team.
-    if (f.homeGoals === f.awayGoals) {
-      console.log(`  ${cup.cupName} S${season}: level final ${f.homeGoals}-${f.awayGoals} (${f.matchId}) — skipped`);
-      continue;
+    const summary = { ...f, cupId, season, round: cm.round, homeGoals: f.homeGoals, awayGoals: f.awayGoals };
+    const prior = await loadPreviousCupRound(token, summary);
+    if (prior.fetched) await sleep(pacingMs);
+    // Capture details while the final is NEW. Subsequent sync/enrichment reuses that capture and
+    // cannot refetch an archived final. Numeric team IDs and match context are validated together.
+    const detail = await loadCupFinalMatch(token, f.matchId);
+    if (detail.fetched) await sleep(pacingMs);
+    const resolution = detail.match ? resolveCupFinal(summary, detail.match, opts.verifiedWinners, prior.previous)
+      : detail.storedMatch ? resolveStoredCupFinal(summary, detail.storedMatch, prior.previous)
+      : { reason: detail.reason ?? 'No retained final evidence', winner: undefined };
+    if (!resolution.winner) { result.issues.push({ season, matchId: f.matchId, reason: resolution.reason }); continue; }
+    const assigned = await prisma.cupChampion.findFirst({ where: { finalMatchId: f.matchId, NOT: { cupId, season } }, select: { cupId: true, season: true } });
+    if (assigned) { result.issues.push({ season, matchId: f.matchId, reason: `Final match is already assigned to cup ${assigned.cupId} season ${assigned.season}; no duplicate assignment` }); continue; }
+    const winner = resolution.winner;
+    const facts = { finalMatchId: f.matchId, championTeamId: winner.teamId, championTeamName: winner.teamName,
+      runnerUpTeamName: winner.runnerUpTeamName, homeGoals: winner.homeGoals, awayGoals: winner.awayGoals, penalties: winner.penalties };
+    if (existing) {
+      const clean = (name: string) => name.normalize('NFC').replace(/\s+/g, ' ').trim();
+      const sameClub = existing.championTeamId && existing.championTeamId > 0
+        ? existing.championTeamId === winner.teamId
+        : clean(existing.championTeamName) === clean(winner.teamName);
+      const updated = await prisma.cupChampion.updateMany({
+        where: { cupId, season, finalMatchId: 0, championUserId: null, championUserName: existing.championUserName, championLeagueId: existing.championLeagueId, championTeamName: existing.championTeamName, championTeamId: existing.championTeamId },
+        data: { ...facts, ...(!sameClub ? { championUserName: null, championLeagueId: null } : {}) },
+      });
+      if (updated.count !== 1) { result.issues.push({ season, matchId: f.matchId, reason: 'Archived winner changed during recovery; no overwrite' }); continue; }
+    } else {
+      // Create-only is intentional: a concurrent writer must never have its winner overwritten.
+      await prisma.cupChampion.create({ data: { cupId, season, leagueId: cup.leagueId, countryName: cup.countryName, cupName: cup.cupName, isMain: cup.isMain, ...facts } });
     }
-    const homeWon = f.homeGoals > f.awayGoals;
-
-    // upsert, not create: a genuinely new season is inserted; a reconstructed placeholder is
-    // upgraded in place with the real match facts. Deliberately leave championTeamId null so the
-    // enrichCupTeamIds pass resolves it, and never touch championUserId/Name here — an already-set
-    // attribution (e.g. from the ownership scrape) must survive a re-fetch.
-    await prisma.cupChampion.upsert({
-      where: { cupId_season: { cupId, season } },
-      update: {
-        finalMatchId: f.matchId,
-        championTeamName: homeWon ? f.homeTeamName : f.awayTeamName,
-        runnerUpTeamName: homeWon ? f.awayTeamName : f.homeTeamName,
-        homeGoals: f.homeGoals,
-        awayGoals: f.awayGoals,
-      },
-      create: {
-        cupId,
-        season,
-        leagueId: cup.leagueId,
-        countryName: cup.countryName,
-        cupName: cup.cupName,
-        isMain: cup.isMain,
-        finalMatchId: f.matchId,
-        championTeamName: homeWon ? f.homeTeamName : f.awayTeamName,
-        runnerUpTeamName: homeWon ? f.awayTeamName : f.homeTeamName,
-        homeGoals: f.homeGoals,
-        awayGoals: f.awayGoals,
-      },
-    });
 
     result.seasonsStored++;
     result.earliestSeason = season;
-    if (!result.latestChampion) result.latestChampion = homeWon ? f.homeTeamName : f.awayTeamName;
+    if (!result.latestChampion) result.latestChampion = winner.teamName;
   }
 
   return result;
@@ -175,7 +184,7 @@ export async function syncCupChampions(
 /** Backfill winners for every seeded cup (or a subset). Resume-safe; logs per cup. */
 export async function syncAllCupChampions(token: TokenPair, opts: { onlyCupIds?: number[] } = {}): Promise<void> {
   const cups = await prisma.cup.findMany({
-    where: opts.onlyCupIds ? { cupId: { in: opts.onlyCupIds } } : {},
+    where: { ...(opts.onlyCupIds ? { cupId: { in: opts.onlyCupIds } } : {}), OR: [{ leagueId: { not: 0 } }, { cupId: 183 }] },
     orderBy: [{ leagueId: 'asc' }, { cupLevel: 'asc' }, { cupLevelIndex: 'asc' }],
   });
 
@@ -185,6 +194,7 @@ export async function syncAllCupChampions(token: TokenPair, opts: { onlyCupIds?:
     try {
       const r = await syncCupChampions(token, cup.cupId);
       console.log(`[${i}/${cups.length}] ${cup.countryName} ${cup.cupName}: +${r.seasonsStored} (back to S${r.earliestSeason}), latest ${r.latestChampion ?? '—'}`);
+      for (const issue of r.issues) console.warn(`  ${cup.cupName} S${issue.season}${issue.matchId ? ` match ${issue.matchId}` : ''}: ${issue.reason}`);
     } catch (e) {
       console.log(`[${i}/${cups.length}] ${cup.cupName}: ERROR ${(e as Error).message.slice(0, 120)}`);
     }
@@ -193,8 +203,8 @@ export async function syncAllCupChampions(token: TokenPair, opts: { onlyCupIds?:
 }
 
 /**
- * Resolve the winning teamId for stored cup finals (winner is positional: home team in the
- * cupmatches final is the home team in matchdetails). Second pass so the winners land fast first.
+ * Resolve missing numeric IDs from retained facts. The archived winning NAME selects the club;
+ * the last-leg score does not. New finals already capture these facts in syncCupChampions.
  */
 export async function enrichCupTeamIds(token: TokenPair, opts: { limit?: number; cupIds?: number[] } = {}): Promise<void> {
   const pending = await prisma.cupChampion.findMany({
@@ -211,15 +221,21 @@ export async function enrichCupTeamIds(token: TokenPair, opts: { limit?: number;
   for (const c of pending) {
     i++;
     try {
-      const md = parseMatchDetails(await fetchMatchDetails(token, c.finalMatchId));
-      const homeWon = c.homeGoals > c.awayGoals;
+      const cached = readCachedCupFinalMatch(c.finalMatchId);
+      const md = cached.match ?? await prisma.match.findUnique({ where: { matchId: c.finalMatchId } });
+      if (!md || md.matchId !== c.finalMatchId || md.homeGoals !== c.homeGoals || md.awayGoals !== c.awayGoals) continue;
+      // An archived champion may have LOST the second leg. Its verified name selects the team;
+      // comparing the leg score here used to silently reverse historical aggregate winners.
+      const clean = (name: string) => name.normalize('NFC').replace(/\s+/g, ' ').trim();
+      const homeWon = clean(c.championTeamName) === clean(md.homeTeamName);
+      const awayWon = clean(c.championTeamName) === clean(md.awayTeamName);
+      if (homeWon === awayWon) continue;
       const teamId = homeWon ? md.homeTeamId : md.awayTeamId;
-      const teamName = homeWon ? md.homeTeamName : md.awayTeamName;
-      await prisma.cupChampion.update({
-        where: { cupId_season: { cupId: c.cupId, season: c.season } },
-        data: { championTeamId: teamId, championTeamName: teamName },
+      await prisma.cupChampion.updateMany({
+        where: { cupId: c.cupId, season: c.season, finalMatchId: c.finalMatchId, championTeamId: null, championTeamName: c.championTeamName },
+        data: { championTeamId: teamId },
       });
-      if (i % 200 === 0) console.log(`  [${i}/${pending.length}] ${c.cupName} S${c.season} -> ${teamName} (${teamId})`);
+      if (i % 200 === 0) console.log(`  [${i}/${pending.length}] ${c.cupName} S${c.season} -> ${c.championTeamName} (${teamId})`);
     } catch (e) {
       console.log(`  ${c.cupName} S${c.season} (${c.finalMatchId}): ERROR ${(e as Error).message.slice(0, 100)}`);
     }

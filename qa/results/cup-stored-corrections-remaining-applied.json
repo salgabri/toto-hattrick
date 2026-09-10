@@ -1,0 +1,1335 @@
+{
+  "appliedAt": "2026-09-10T22:42:38.219Z",
+  "applied": 20,
+  "alreadyApplied": 0,
+  "corrections": [
+    {
+      "cupId": 2,
+      "season": 19,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=2&season=19",
+      "revisionUrl": null,
+      "beforeSha256": "134cb8dbd8599f0f56241750f376cab3522ccaec6440161b7b6ef9efd152b726",
+      "afterSha256": "52f3816eeb6de025d91fdbc9e84cfa445a55cb919d13cf73a11dab0288ef915d",
+      "before": {
+        "cupId": 2,
+        "season": 19,
+        "leagueId": 7,
+        "countryName": "Argentina",
+        "cupName": "Copa Argentina Diego Armando Maradona",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "ThaNaToS F.C.",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655436,
+        "updatedAt": 1785681655436,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 2,
+        "season": 19,
+        "leagueId": 7,
+        "countryName": "Argentina",
+        "cupName": "Copa Argentina Diego Armando Maradona",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Bariloche Behemoths FC",
+        "runnerUpTeamName": "ThaNaToS F.C.",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655436,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "ThaNaToS F.C.",
+          "after": "Bariloche Behemoths FC"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "ThaNaToS F.C."
+        },
+        "updatedAt": {
+          "before": 1785681655436,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 2,
+      "season": 23,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=2&season=23",
+      "revisionUrl": null,
+      "beforeSha256": "57afed6647400d62e555637af9bcbaed1556ca3493637e155e3da47e5af3efc2",
+      "afterSha256": "36fde41fc087e305003b7ec095be9e8afb1bf61f570ee2ed3bce260bac539e28",
+      "before": {
+        "cupId": 2,
+        "season": 23,
+        "leagueId": 7,
+        "countryName": "Argentina",
+        "cupName": "Copa Argentina Diego Armando Maradona",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "La PLata F.C.",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 13614882,
+        "championUserName": "Patron182",
+        "createdAt": 1785681655436,
+        "updatedAt": 1785681655436,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 2,
+        "season": 23,
+        "leagueId": 7,
+        "countryName": "Argentina",
+        "cupName": "Copa Argentina Diego Armando Maradona",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "LINIERS",
+        "runnerUpTeamName": "La PLata F.C.",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655436,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "La PLata F.C.",
+          "after": "LINIERS"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "La PLata F.C."
+        },
+        "championUserId": {
+          "before": 13614882,
+          "after": null
+        },
+        "championUserName": {
+          "before": "Patron182",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681655436,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 8,
+      "season": 17,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=8&season=17",
+      "revisionUrl": null,
+      "beforeSha256": "6dcc264351519a27a230e8a8a08490e5b7368b28f5ace58a72664b01120b2e9a",
+      "afterSha256": "90b721cdfbd7db35e500e3cdfd62db00073faf049c4fb2723d21db319f8f1a67",
+      "before": {
+        "cupId": 8,
+        "season": 17,
+        "leagueId": 8,
+        "countryName": "USA",
+        "cupName": "US Open Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Kansas City Wizards",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658427,
+        "updatedAt": 1785681658427,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 8,
+        "season": 17,
+        "leagueId": 8,
+        "countryName": "USA",
+        "cupName": "US Open Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Red Star Belgrade",
+        "runnerUpTeamName": "Kansas City Wizards",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658427,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Kansas City Wizards",
+          "after": "Red Star Belgrade"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Kansas City Wizards"
+        },
+        "updatedAt": {
+          "before": 1785681658427,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 10,
+      "season": 16,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=10&season=16",
+      "revisionUrl": null,
+      "beforeSha256": "4ec4cfc8d769c666e28a38b7e0a278fca59a69857f0c2c490701182948fe1c09",
+      "afterSha256": "ae7e8c77c92f0be4f66981c440ce96bab56baf827b5c9c40c01f91e684cd5c3a",
+      "before": {
+        "cupId": 10,
+        "season": 16,
+        "leagueId": 11,
+        "countryName": "Denmark",
+        "cupName": "Landspokalturneringen",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Loke GF",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 40280,
+        "championUserName": "LokeUtgaard",
+        "createdAt": 1785681656096,
+        "updatedAt": 1785681656096,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 10,
+        "season": 16,
+        "leagueId": 11,
+        "countryName": "Denmark",
+        "cupName": "Landspokalturneringen",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "ZGF",
+        "runnerUpTeamName": "Loke GF",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656096,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Loke GF",
+          "after": "ZGF"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Loke GF"
+        },
+        "championUserId": {
+          "before": 40280,
+          "after": null
+        },
+        "championUserName": {
+          "before": "LokeUtgaard",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681656096,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 10,
+      "season": 20,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=10&season=20",
+      "revisionUrl": null,
+      "beforeSha256": "c914a921502b5ed8263c94bd2c77bedbba1d9358a7d37a0a0a72ca04b67155b3",
+      "afterSha256": "1100b5eab972e3c553365d9bf31cd850838b05db317b12d0cea2391aa4b46138",
+      "before": {
+        "cupId": 10,
+        "season": 20,
+        "leagueId": 11,
+        "countryName": "Denmark",
+        "cupName": "Landspokalturneringen",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "ZGF",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656096,
+        "updatedAt": 1785681656096,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 10,
+        "season": 20,
+        "leagueId": 11,
+        "countryName": "Denmark",
+        "cupName": "Landspokalturneringen",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Dalum IF",
+        "runnerUpTeamName": "ZGF",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656096,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "ZGF",
+          "after": "Dalum IF"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "ZGF"
+        },
+        "updatedAt": {
+          "before": 1785681656096,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 16,
+      "season": 4,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=16&season=4",
+      "revisionUrl": null,
+      "beforeSha256": "c916008a03b7310c3fd2dd8b9658392b7252ae01d6da70d3996ef00ea3085053",
+      "afterSha256": "c6abd80d965a4a8084c89fc8434be6f842fdb4bdfdb32889f1e8ff6ee588d409",
+      "before": {
+        "cupId": 16,
+        "season": 4,
+        "leagueId": 17,
+        "countryName": "Canada",
+        "cupName": "Canadian Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Gumby United",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655837,
+        "updatedAt": 1785681655837,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 16,
+        "season": 4,
+        "leagueId": 17,
+        "countryName": "Canada",
+        "cupName": "Canadian Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Calgary Haze",
+        "runnerUpTeamName": "Gumby United",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655837,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Gumby United",
+          "after": "Calgary Haze"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Gumby United"
+        },
+        "updatedAt": {
+          "before": 1785681655837,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 28,
+      "season": 5,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=28&season=5",
+      "revisionUrl": null,
+      "beforeSha256": "6b439bb1e913fd5fa0f1bc8c3d209335423843387265ec2dd296fa996ff1f000",
+      "afterSha256": "04a9dc83b18a9affac981da03ee19b51a4afddb4118c3d0dbb02ad610c207c43",
+      "before": {
+        "cupId": 28,
+        "season": 5,
+        "leagueId": 27,
+        "countryName": "South Africa",
+        "cupName": "South African Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Lions",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 66605,
+        "championUserName": "Klien",
+        "createdAt": 1785681657990,
+        "updatedAt": 1785681657990,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 28,
+        "season": 5,
+        "leagueId": 27,
+        "countryName": "South Africa",
+        "cupName": "South African Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Whirlwind",
+        "runnerUpTeamName": "Lions",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657990,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Lions",
+          "after": "Whirlwind"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Lions"
+        },
+        "championUserId": {
+          "before": 66605,
+          "after": null
+        },
+        "championUserName": {
+          "before": "Klien",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681657990,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 30,
+      "season": 3,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=30&season=3",
+      "revisionUrl": null,
+      "beforeSha256": "0ce6665938f3a3d4950ae318f78b36f4046f8ec860f07f72dd740efe67a5a2cf",
+      "afterSha256": "30c9fc5006a665828e077f20ee1fc47919562b5cc9472106eb691e3a745605b2",
+      "before": {
+        "cupId": 30,
+        "season": 3,
+        "leagueId": 32,
+        "countryName": "Turkey",
+        "cupName": "Türkiye Kupası",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "KAFSINKAF",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658297,
+        "updatedAt": 1785681658297,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 30,
+        "season": 3,
+        "leagueId": 32,
+        "countryName": "Turkey",
+        "cupName": "Türkiye Kupası",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "KARSIYAKALI",
+        "runnerUpTeamName": "KAFSINKAF",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658297,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "KAFSINKAF",
+          "after": "KARSIYAKALI"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "KAFSINKAF"
+        },
+        "updatedAt": {
+          "before": 1785681658297,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 35,
+      "season": 4,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=35&season=4",
+      "revisionUrl": null,
+      "beforeSha256": "5063f0b398fc3886090b5609de6bf2fcadac25e729d55720f0416d1401e41e44",
+      "afterSha256": "dbf561d64b5568926b21ad0304bc064a29e171b098e7a6f488ebf4e57e74851b",
+      "before": {
+        "cupId": 35,
+        "season": 4,
+        "leagueId": 37,
+        "countryName": "Romania",
+        "cupName": "Cupa României",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "PASTRAVUL",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657712,
+        "updatedAt": 1785681657712,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 35,
+        "season": 4,
+        "leagueId": 37,
+        "countryName": "Romania",
+        "cupName": "Cupa României",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Steaua Bucuresti",
+        "runnerUpTeamName": "PASTRAVUL",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657712,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "PASTRAVUL",
+          "after": "Steaua Bucuresti"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "PASTRAVUL"
+        },
+        "updatedAt": {
+          "before": 1785681657712,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 35,
+      "season": 8,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=35&season=8",
+      "revisionUrl": null,
+      "beforeSha256": "98db594de47d0a216e323dcc2c4a42c15d1b169549a7f7cf4c5bdb08318bceb8",
+      "afterSha256": "d4811c5fdaf66fb0d70ef0e2f68d1ff6c46636d24c6ec97fc492fc59bc8f156c",
+      "before": {
+        "cupId": 35,
+        "season": 8,
+        "leagueId": 37,
+        "countryName": "Romania",
+        "cupName": "Cupa României",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Metalul Plopeni",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657712,
+        "updatedAt": 1785681657712,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 35,
+        "season": 8,
+        "leagueId": 37,
+        "countryName": "Romania",
+        "cupName": "Cupa României",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC .Haos",
+        "runnerUpTeamName": "Metalul Plopeni",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657712,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Metalul Plopeni",
+          "after": "FC .Haos"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Metalul Plopeni"
+        },
+        "updatedAt": {
+          "before": 1785681657712,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 50,
+      "season": 8,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=50&season=8",
+      "revisionUrl": null,
+      "beforeSha256": "a33684f4514128344bd729a02ffa770f63877ef270d89e928cdafc4c726ed27b",
+      "afterSha256": "cb6eac81d7deb423f2c7b4ecac5b0a04da3318357dce366064d90552289d1d7f",
+      "before": {
+        "cupId": 50,
+        "season": 8,
+        "leagueId": 52,
+        "countryName": "Czechia",
+        "cupName": "Český pohár",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC Zdar nad Sazavou",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 10846443,
+        "championUserName": "Akaiy",
+        "createdAt": 1785681656063,
+        "updatedAt": 1785681656063,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 50,
+        "season": 8,
+        "leagueId": 52,
+        "countryName": "Czechia",
+        "cupName": "Český pohár",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Sakura",
+        "runnerUpTeamName": "FC Zdar nad Sazavou",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656063,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "FC Zdar nad Sazavou",
+          "after": "Sakura"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "FC Zdar nad Sazavou"
+        },
+        "championUserId": {
+          "before": 10846443,
+          "after": null
+        },
+        "championUserName": {
+          "before": "Akaiy",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681656063,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 53,
+      "season": 8,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=53&season=8",
+      "revisionUrl": null,
+      "beforeSha256": "1a51e2655c36ca12f674a22e1a903cd0922232b6df5a54ea99df6170e82958bb",
+      "afterSha256": "7459980b0041ca6917b432e7eaf4a333a15099def6bdcec0b6c4a82a50edca7a",
+      "before": {
+        "cupId": 53,
+        "season": 8,
+        "leagueId": 55,
+        "countryName": "Philippines",
+        "cupName": "Philippine Football Federation Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "San Antonio FC",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 491073,
+        "championUserName": "rtcampos",
+        "createdAt": 1785681657595,
+        "updatedAt": 1785681657595,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 53,
+        "season": 8,
+        "leagueId": 55,
+        "countryName": "Philippines",
+        "cupName": "Philippine Football Federation Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Titleist .",
+        "runnerUpTeamName": "San Antonio FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657595,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "San Antonio FC",
+          "after": "Titleist ."
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "San Antonio FC"
+        },
+        "championUserId": {
+          "before": 491073,
+          "after": null
+        },
+        "championUserName": {
+          "before": "rtcampos",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681657595,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 60,
+      "season": 6,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=60&season=6",
+      "revisionUrl": null,
+      "beforeSha256": "73b1f21a5ab40a66c16fa96763906813de9113bc6fa7544f8ab2f444bc049572",
+      "afterSha256": "113292617d393e07a0c8018462b96a652f0bbcb93d6d16892d6c3536fc82da16",
+      "before": {
+        "cupId": 60,
+        "season": 6,
+        "leagueId": 61,
+        "countryName": "Wales",
+        "cupName": "Wales Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Mae Hen Wlad Fy Nhadau",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658529,
+        "updatedAt": 1785681658529,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 60,
+        "season": 6,
+        "leagueId": 61,
+        "countryName": "Wales",
+        "cupName": "Wales Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Brecon Red Kites",
+        "runnerUpTeamName": "Mae Hen Wlad Fy Nhadau",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658529,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Mae Hen Wlad Fy Nhadau",
+          "after": "Brecon Red Kites"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Mae Hen Wlad Fy Nhadau"
+        },
+        "updatedAt": {
+          "before": 1785681658529,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 127,
+      "season": 3,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=127&season=3",
+      "revisionUrl": null,
+      "beforeSha256": "1d6f6badd4a7f527acfcb43b185f8cb839aa69b19b1d816c0d0f03846fe03c2a",
+      "afterSha256": "37324b3e15f299d111a1e6f89175519fdb27d3987396ab998381db7b0f724b3a",
+      "before": {
+        "cupId": 127,
+        "season": 3,
+        "leagueId": 69,
+        "countryName": "Bosnia and Herzegovina",
+        "cupName": "Kup Bosne i Hercegovine",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Maxnet",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 488101,
+        "championUserName": "renes276",
+        "createdAt": 1785681655703,
+        "updatedAt": 1785681655703,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 127,
+        "season": 3,
+        "leagueId": 69,
+        "countryName": "Bosnia and Herzegovina",
+        "cupName": "Kup Bosne i Hercegovine",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Normala FC",
+        "runnerUpTeamName": "Maxnet",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655703,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Maxnet",
+          "after": "Normala FC"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Maxnet"
+        },
+        "championUserId": {
+          "before": 488101,
+          "after": null
+        },
+        "championUserName": {
+          "before": "renes276",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681655703,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 127,
+      "season": 4,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=127&season=4",
+      "revisionUrl": null,
+      "beforeSha256": "a50f684fedbc90d3c9346a5e2b112d8685ff1db8acf0845796a43236a2ffb355",
+      "afterSha256": "815bd7adf6c34af215cfd8c0c0d493d953bb4c5fb26cb52068d7bf968839278e",
+      "before": {
+        "cupId": 127,
+        "season": 4,
+        "leagueId": 69,
+        "countryName": "Bosnia and Herzegovina",
+        "cupName": "Kup Bosne i Hercegovine",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Jajce Animals",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 484623,
+        "championUserName": "EL-GADAFY",
+        "createdAt": 1785681655703,
+        "updatedAt": 1785681655703,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 127,
+        "season": 4,
+        "leagueId": 69,
+        "countryName": "Bosnia and Herzegovina",
+        "cupName": "Kup Bosne i Hercegovine",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Normala FC",
+        "runnerUpTeamName": "Jajce Animals",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655703,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Jajce Animals",
+          "after": "Normala FC"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Jajce Animals"
+        },
+        "championUserId": {
+          "before": 484623,
+          "after": null
+        },
+        "championUserName": {
+          "before": "EL-GADAFY",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681655703,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 131,
+      "season": 3,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=131&season=3",
+      "revisionUrl": null,
+      "beforeSha256": "81b2fe164ddba54c1ca5b0c4c8a1c4584524df53fffacf4d0f876aa270791430",
+      "afterSha256": "5ab6766bdd067a3b2969b50d4346fa467c63384c1656c77ed9cb9a869576e228",
+      "before": {
+        "cupId": 131,
+        "season": 3,
+        "leagueId": 73,
+        "countryName": "Ecuador",
+        "cupName": "Copa Ecuador",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "El Barcelona S. C.",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 744535,
+        "championUserName": "pasionQmata",
+        "createdAt": 1785681656143,
+        "updatedAt": 1785681656143,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 131,
+        "season": 3,
+        "leagueId": 73,
+        "countryName": "Ecuador",
+        "cupName": "Copa Ecuador",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "korsarios",
+        "runnerUpTeamName": "El Barcelona S. C.",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656143,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "El Barcelona S. C.",
+          "after": "korsarios"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "El Barcelona S. C."
+        },
+        "championUserId": {
+          "before": 744535,
+          "after": null
+        },
+        "championUserName": {
+          "before": "pasionQmata",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681656143,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 132,
+      "season": 3,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=132&season=3",
+      "revisionUrl": null,
+      "beforeSha256": "b6869cc63e38839ea1ce6958dde901fbd744e2354acd3a60f89de9881735ab6d",
+      "afterSha256": "733cca10e13072770f317c167dd4c946e182558c41dfc0c312fb5e9af17c9674",
+      "before": {
+        "cupId": 132,
+        "season": 3,
+        "leagueId": 74,
+        "countryName": "Bolivia",
+        "cupName": "Copa Bolivia",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Y2K F.C.",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 715167,
+        "championUserName": "marcelo_v",
+        "createdAt": 1785681655630,
+        "updatedAt": 1785681655630,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 132,
+        "season": 3,
+        "leagueId": 74,
+        "countryName": "Bolivia",
+        "cupName": "Copa Bolivia",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "-Real Madrid FC-",
+        "runnerUpTeamName": "Y2K F.C.",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681655630,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Y2K F.C.",
+          "after": "-Real Madrid FC-"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Y2K F.C."
+        },
+        "championUserId": {
+          "before": 715167,
+          "after": null
+        },
+        "championUserName": {
+          "before": "marcelo_v",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681655630,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 134,
+      "season": 2,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=134&season=2",
+      "revisionUrl": null,
+      "beforeSha256": "f9a8ad0560b66e4b46adeeb57b30a73ca74d556c35f9eac93bdbec4e8d46dd02",
+      "afterSha256": "83de7183b3b2ebb1256b15a951a5dbeac1e54e6c1659a99cdaedaba725a20f36",
+      "before": {
+        "cupId": 134,
+        "season": 2,
+        "leagueId": 76,
+        "countryName": "Faroe Islands",
+        "cupName": "Løgmanssteypið",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "FC Tórshavn",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 705780,
+        "championUserName": "torshavn",
+        "createdAt": 1785681656247,
+        "updatedAt": 1785681656247,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 134,
+        "season": 2,
+        "leagueId": 76,
+        "countryName": "Faroe Islands",
+        "cupName": "Løgmanssteypið",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Fish & Sheep FC",
+        "runnerUpTeamName": "FC Tórshavn",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656247,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "FC Tórshavn",
+          "after": "Fish & Sheep FC"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "FC Tórshavn"
+        },
+        "championUserId": {
+          "before": 705780,
+          "after": null
+        },
+        "championUserName": {
+          "before": "torshavn",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681656247,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 139,
+      "season": 1,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=139&season=1",
+      "revisionUrl": null,
+      "beforeSha256": "25fb68084fe366d79b61002dfe88e054dffbde6bed8b2ca9e4b306a080d93ba2",
+      "afterSha256": "0a751ab4682b59fd2492c1451979251fbdec9384751c28d74e14b28bc078c1cb",
+      "before": {
+        "cupId": 139,
+        "season": 1,
+        "leagueId": 80,
+        "countryName": "Tunisia",
+        "cupName": "Tunisiyah Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Zarzis",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658273,
+        "updatedAt": 1785681658273,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 139,
+        "season": 1,
+        "leagueId": 80,
+        "countryName": "Tunisia",
+        "cupName": "Tunisiyah Cup",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Club Afrcain",
+        "runnerUpTeamName": "Zarzis",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681658273,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Zarzis",
+          "after": "Club Afrcain"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Zarzis"
+        },
+        "updatedAt": {
+          "before": 1785681658273,
+          "after": 1789080137315
+        }
+      }
+    },
+    {
+      "cupId": 156,
+      "season": 1,
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=156&season=1",
+      "revisionUrl": null,
+      "beforeSha256": "9b69c778b64fa4bf77fc8c5ac17946c4f79ad1b67313e162d624bdd248e50ada",
+      "afterSha256": "27fa0d1189b1f9c7e5d21ad6736cdbab6509c8991e2d82e6330bfeb7f6408bd5",
+      "before": {
+        "cupId": 156,
+        "season": 1,
+        "leagueId": 96,
+        "countryName": "Panama",
+        "cupName": "Copa del Istmo",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Tauro F.C.",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": 1388627,
+        "championUserName": "Brigadier",
+        "createdAt": 1785681657495,
+        "updatedAt": 1785681657495,
+        "championLeagueId": null
+      },
+      "after": {
+        "cupId": 156,
+        "season": 1,
+        "leagueId": 96,
+        "countryName": "Panama",
+        "cupName": "Copa del Istmo",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Viscaya Calcio",
+        "runnerUpTeamName": "Tauro F.C.",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681657495,
+        "updatedAt": 1789080137315,
+        "championLeagueId": null
+      },
+      "patch": {
+        "championTeamName": {
+          "before": "Tauro F.C.",
+          "after": "Viscaya Calcio"
+        },
+        "runnerUpTeamName": {
+          "before": "",
+          "after": "Tauro F.C."
+        },
+        "championUserId": {
+          "before": 1388627,
+          "after": null
+        },
+        "championUserName": {
+          "before": "Brigadier",
+          "after": null
+        },
+        "updatedAt": {
+          "before": 1785681657495,
+          "after": 1789080137315
+        }
+      }
+    }
+  ]
+}

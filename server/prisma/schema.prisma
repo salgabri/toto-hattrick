@@ -144,9 +144,10 @@ model Cup {
   @@index([leagueId])
 }
 
-/// Winner of one cup for one season, reconstructed from `cupmatches` (the final match — the team
-/// with more goals wins; a level final is decided on penalties, flagged by `penalties`). Team ids
-/// come from `matchdetails` on the final. championUserId is the winning team's owner AT that season
+/// Winner of one cup for one season, reconstructed from `cupmatches` and retained match facts.
+/// Historical finals can have two legs; their aggregate decides the winner. A tied last-leg score
+/// alone never proves penalties or a champion. Numeric team IDs come from the final's retained
+/// matchdetails or archived Match. championUserId is the winning team's owner AT that season
 /// (ownership history), same attribution model as LeagueChampion — null until resolved.
 model CupChampion {
   cupId            Int
@@ -156,7 +157,7 @@ model CupChampion {
   cupName          String
   isMain           Boolean
   finalMatchId     Int
-  championTeamId   Int? // resolved from matchdetails in a second pass (winner is positional)
+  championTeamId   Int? // exact finalist identity; never inferred from the last-leg score alone
   championTeamName String
   /// The winning TEAM's own country (its league id) — not `leagueId` above, which is the COMPETITION's
   /// country and is the sentinel 0 for the international cups (Masters, Seasonal). Only those need it:

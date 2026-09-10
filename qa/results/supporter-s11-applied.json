@@ -1,0 +1,30 @@
+{
+  "appliedAt": "2026-09-10T22:28:18.280Z",
+  "inserted": 1,
+  "alreadyApplied": false,
+  "sources": [
+    "https://wiki.hattrick.org/wiki/Supporter_Week",
+    "https://wiki.hattrick.org/wiki/CPAM_FC_Supporter_Week_Trophy"
+  ],
+  "fact": "Both historical records identify England Beta Broncos as winner of edition11/global season68. Numeric identities and scores are unknown.",
+  "data": {
+    "cupId": 2108472,
+    "season": 11,
+    "leagueId": 0,
+    "countryName": "Supporter Week Trophy",
+    "cupName": "Supporter Week Trophy",
+    "isMain": 0,
+    "finalMatchId": 0,
+    "championTeamId": null,
+    "championTeamName": "Beta Broncos",
+    "championLeagueId": 2,
+    "runnerUpTeamName": "SocceroS (-S-) Żory",
+    "homeGoals": 0,
+    "awayGoals": 0,
+    "penalties": 0,
+    "championUserId": null,
+    "championUserName": null,
+    "createdAt": 1789079157769,
+    "updatedAt": 1789079157769
+  }
+}

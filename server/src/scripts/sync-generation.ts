@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { prisma } from '../db/client.js';
 import { ingestSeasonalWinners, GENERATION_TROPHY_IDS, type SeasonalWinner } from '../sync/seasonal.js';
 import type { TokenPair } from '../chpp/auth.js';
+import savedWinners from '../sync/generation-trophy-winners.json' with { type: 'json' };
 
 /**
  * Ingest the "Heroes of YYYY Trophy" cohorts — 23 perpetual tournaments, one launched per real-world
@@ -21,7 +22,7 @@ const access: TokenPair = JSON.parse(readFileSync(process.env.OAUTH_ACCESS_STASH
 type Winner = { cupId: number; name: string; season: number; teamId: number | null; team: string; userId: number | null; manager: string | null };
 const recs: Winner[] = process.env.IN
   ? readFileSync(process.env.IN, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l))
-  : JSON.parse(readFileSync(new URL('../sync/generation-trophy-winners.json', import.meta.url), 'utf8'));
+  : savedWinners;
 
 const knownIds = new Set(Object.values(GENERATION_TROPHY_IDS));
 const byCupId = new Map<number, { name: string; winners: SeasonalWinner[] }>();

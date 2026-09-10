@@ -1,0 +1,448 @@
+{
+  "checkedAt": "2026-09-10T22:32:21.824Z",
+  "scope": "Stored main-cup rows in 33 other gap countries; local seasons <=14, or <=24 for Sweden/France/Germany. England/Italy/Poland/Belgium/Brazil assigned separately. No stored finals fetched. Exact winner differences are candidates pending rename/club-identity review; exact archived runner-up matches are confirmed mismatches.",
+  "reviewed": [
+    {
+      "country": "Austria",
+      "url": "https://wiki.hattrick.org/wiki/Austria",
+      "seasonCap": 14,
+      "storedRows": 13,
+      "wikiRows": 13,
+      "matched": 13,
+      "agreed": 13,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Bulgaria",
+      "url": "https://wiki.hattrick.org/wiki/Bulgaria",
+      "seasonCap": 14,
+      "storedRows": 13,
+      "wikiRows": 13,
+      "matched": 13,
+      "agreed": 13,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Chile",
+      "url": "https://wiki.hattrick.org/wiki/Chile",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 12,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Chinese Taipei",
+      "url": "https://wiki.hattrick.org/wiki/Chinese_Taipei",
+      "seasonCap": 14,
+      "storedRows": 14,
+      "wikiRows": 14,
+      "matched": 14,
+      "agreed": 14,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Colombia",
+      "url": "https://wiki.hattrick.org/wiki/Colombia",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 12,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Croatia",
+      "url": "https://wiki.hattrick.org/wiki/Croatia",
+      "seasonCap": 14,
+      "storedRows": 13,
+      "wikiRows": 14,
+      "matched": 13,
+      "agreed": 13,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Egypt",
+      "url": "https://wiki.hattrick.org/wiki/Egypt",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 11,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Estonia",
+      "url": "https://wiki.hattrick.org/wiki/Estonia",
+      "seasonCap": 14,
+      "storedRows": 14,
+      "wikiRows": 14,
+      "matched": 14,
+      "agreed": 14,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "France",
+      "url": "https://wiki.hattrick.org/wiki/France",
+      "seasonCap": 24,
+      "storedRows": 10,
+      "wikiRows": 14,
+      "matched": 10,
+      "agreed": 10,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Germany",
+      "url": "https://wiki.hattrick.org/wiki/Germany",
+      "seasonCap": 24,
+      "storedRows": 10,
+      "wikiRows": 14,
+      "matched": 10,
+      "agreed": 10,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Greece",
+      "url": "https://wiki.hattrick.org/wiki/Greece",
+      "seasonCap": 14,
+      "storedRows": 14,
+      "wikiRows": 14,
+      "matched": 14,
+      "agreed": 14,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Hong Kong",
+      "url": "https://wiki.hattrick.org/wiki/Hong_Kong",
+      "seasonCap": 14,
+      "storedRows": 14,
+      "wikiRows": 14,
+      "matched": 14,
+      "agreed": 14,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Iceland",
+      "url": "https://wiki.hattrick.org/wiki/%C3%8Dsland",
+      "seasonCap": 14,
+      "storedRows": 13,
+      "wikiRows": 14,
+      "matched": 13,
+      "agreed": 11,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "India",
+      "url": "https://wiki.hattrick.org/wiki/India",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 12,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Indonesia",
+      "url": "https://wiki.hattrick.org/wiki/Indonesia",
+      "seasonCap": 14,
+      "storedRows": 14,
+      "wikiRows": 14,
+      "matched": 14,
+      "agreed": 14,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Iran",
+      "url": "https://wiki.hattrick.org/wiki/Iran",
+      "seasonCap": 14,
+      "storedRows": 14,
+      "wikiRows": 14,
+      "matched": 14,
+      "agreed": 14,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Japan",
+      "url": "https://wiki.hattrick.org/wiki/Nippon",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 12,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Latvia",
+      "url": "https://wiki.hattrick.org/wiki/Latvija",
+      "seasonCap": 14,
+      "storedRows": 14,
+      "wikiRows": 14,
+      "matched": 14,
+      "agreed": 14,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Malaysia",
+      "url": "https://wiki.hattrick.org/wiki/Malaysia",
+      "seasonCap": 14,
+      "storedRows": 13,
+      "wikiRows": 13,
+      "matched": 13,
+      "agreed": 13,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Netherlands",
+      "url": "https://wiki.hattrick.org/wiki/Netherlands",
+      "seasonCap": 14,
+      "storedRows": 11,
+      "wikiRows": 13,
+      "matched": 11,
+      "agreed": 11,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Norway",
+      "url": "https://wiki.hattrick.org/wiki/Norway",
+      "seasonCap": 14,
+      "storedRows": 10,
+      "wikiRows": 14,
+      "matched": 10,
+      "agreed": 10,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Oceania",
+      "url": "https://wiki.hattrick.org/wiki/Oceania",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 12,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "People's Republic of China",
+      "url": "https://wiki.hattrick.org/wiki/China",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 12,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Peru",
+      "url": "https://wiki.hattrick.org/wiki/Per%C3%BA",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 12,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Russia",
+      "url": "https://wiki.hattrick.org/wiki/Rossiya",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 12,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Scotland",
+      "url": "https://wiki.hattrick.org/wiki/Scotland",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 12,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Serbia",
+      "url": "https://wiki.hattrick.org/wiki/Srbija",
+      "seasonCap": 14,
+      "storedRows": 14,
+      "wikiRows": 14,
+      "matched": 14,
+      "agreed": 14,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Singapore",
+      "url": "https://wiki.hattrick.org/wiki/Singapore",
+      "seasonCap": 14,
+      "storedRows": 13,
+      "wikiRows": 14,
+      "matched": 13,
+      "agreed": 13,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Slovenia",
+      "url": "https://wiki.hattrick.org/wiki/Slovenia",
+      "seasonCap": 14,
+      "storedRows": 13,
+      "wikiRows": 13,
+      "matched": 13,
+      "agreed": 13,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Spain",
+      "url": "https://wiki.hattrick.org/wiki/Spain",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 12,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Sweden",
+      "url": "https://wiki.hattrick.org/wiki/Sverige",
+      "seasonCap": 24,
+      "storedRows": 10,
+      "wikiRows": 22,
+      "matched": 10,
+      "agreed": 10,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Thailand",
+      "url": "https://wiki.hattrick.org/wiki/Prathet_Thai",
+      "seasonCap": 14,
+      "storedRows": 10,
+      "wikiRows": 14,
+      "matched": 10,
+      "agreed": 10,
+      "unverifiedStoredSeasons": []
+    },
+    {
+      "country": "Uruguay",
+      "url": "https://wiki.hattrick.org/wiki/Uruguay",
+      "seasonCap": 14,
+      "storedRows": 12,
+      "wikiRows": 14,
+      "matched": 12,
+      "agreed": 12,
+      "unverifiedStoredSeasons": []
+    }
+  ],
+  "missingTables": [],
+  "candidates": [
+    {
+      "countryName": "Egypt",
+      "cupId": 19,
+      "season": 6,
+      "winnerName": "Alexandria Pharaohs",
+      "managerName": "IronLionZion",
+      "url": "https://wiki.hattrick.org/wiki/Egypt",
+      "actualCurrentRow": {
+        "cupId": 19,
+        "season": 6,
+        "leagueId": 33,
+        "countryName": "Egypt",
+        "cupName": "Kas Misr",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Alexandria Pharaons",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656166,
+        "updatedAt": 1785681656166,
+        "championLeagueId": null
+      },
+      "sourceCells": [
+        "6",
+        "Alexandria Pharaohs",
+        "IronLionZion",
+        "Alexandria Pharaohs",
+        "IronLionZion"
+      ],
+      "winnerExactlyCurrentRunnerUp": false
+    },
+    {
+      "countryName": "Iceland",
+      "cupId": 36,
+      "season": 10,
+      "winnerName": "sir_mb",
+      "managerName": "Starkers",
+      "url": "https://wiki.hattrick.org/wiki/%C3%8Dsland",
+      "actualCurrentRow": {
+        "cupId": 36,
+        "season": 10,
+        "leagueId": 38,
+        "countryName": "Iceland",
+        "cupName": "Íslandsbikarinn",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Starkers",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656554,
+        "updatedAt": 1785681656554,
+        "championLeagueId": null
+      },
+      "sourceCells": [
+        "10",
+        "Busby-Babes",
+        "sir_mb",
+        "sir_mb",
+        "Starkers"
+      ],
+      "winnerExactlyCurrentRunnerUp": false
+    },
+    {
+      "countryName": "Iceland",
+      "cupId": 36,
+      "season": 12,
+      "winnerName": "Mummi",
+      "managerName": "Valkyries",
+      "url": "https://wiki.hattrick.org/wiki/%C3%8Dsland",
+      "actualCurrentRow": {
+        "cupId": 36,
+        "season": 12,
+        "leagueId": 38,
+        "countryName": "Iceland",
+        "cupName": "Íslandsbikarinn",
+        "isMain": 1,
+        "finalMatchId": 0,
+        "championTeamId": null,
+        "championTeamName": "Valkyries",
+        "runnerUpTeamName": "",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": 0,
+        "championUserId": null,
+        "championUserName": null,
+        "createdAt": 1785681656554,
+        "updatedAt": 1785681656554,
+        "championLeagueId": null
+      },
+      "sourceCells": [
+        "12",
+        "Endatharmur",
+        "Mummi",
+        "Mummi",
+        "Valkyries"
+      ],
+      "winnerExactlyCurrentRunnerUp": false
+    }
+  ],
+  "mismatches": []
+}

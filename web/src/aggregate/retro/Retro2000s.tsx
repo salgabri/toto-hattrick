@@ -30,6 +30,7 @@ import {
   type Winner,
 } from '../data.js';
 import { leagueFlagUrl, nationFlagUrl, nationalityFlagUrl } from '../flags.js';
+import { nationalIdentity } from '../nationalIdentity.js';
 import { LANGS, useI18n, useT, type Lang, type TFn, type TranslationKey } from '../../i18n/index.js';
 import { R, MONO, rootStyle2000s, type Skin } from './theme2000s.js';
 import { ShareView } from './ShareView.js';
@@ -299,8 +300,11 @@ const NAV: Array<{ key: RetroView; labelKey: TranslationKey }> = [
 function Tab({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   const base: CSSProperties = {
     padding: '7px 18px',
-    border: '1px solid var(--frame,#617D54)',
-    borderBottom: 'none',
+    borderStyle: 'solid',
+    borderWidth: '3px 1px 0',
+    borderLeftColor: active ? 'var(--frame,#617D54)' : 'transparent',
+    borderRightColor: active ? 'var(--frame,#617D54)' : 'transparent',
+    borderTopColor: active ? 'var(--main,#B07E2A)' : 'transparent',
     cursor: 'pointer',
     fontFamily: 'inherit',
     fontSize: 11,
@@ -308,13 +312,11 @@ function Tab({ label, active, onClick }: { label: string; active: boolean; onCli
     marginBottom: -2,
   };
   const style: CSSProperties = active
-    ? { ...base, background: R.panel, color: R.mod, borderTop: '3px solid var(--main,#B07E2A)', position: 'relative', zIndex: 2 }
+    ? { ...base, background: R.panel, color: R.mod, position: 'relative', zIndex: 2 }
     : {
         ...base,
         background: 'transparent',
         color: 'rgba(255,255,255,.82)',
-        borderColor: 'transparent',
-        borderTop: '3px solid transparent',
         textShadow: '1px 1px 0 rgba(0,0,0,.35)',
       };
   return (
@@ -406,16 +408,19 @@ function Flag({ url, label, size = 20 }: { url: string | null; label?: string; s
 }
 
 /** Mark each winner that's part of a back-to-back run, and tag a run's first row with ×N. */
-function withRuns<T extends { club: string; season: number }>(rows: T[]): Array<T & { partOfStreak: boolean; tag: string }> {
+function withRuns<T extends { club: string; season: number; teamId?: number }>(rows: T[]): Array<T & { partOfStreak: boolean; tag: string }> {
+  const consecutive = (newer: T | undefined, older: T | undefined) =>
+    !!newer && !!older && newer.season === older.season + 1 &&
+    (newer.teamId && older.teamId ? newer.teamId === older.teamId : newer.club === older.club);
   return rows.map((w, i) => {
     const below = rows[i + 1];
     const above = rows[i - 1];
-    const partOfStreak = (!!below && below.club === w.club) || (!!above && above.club === w.club);
+    const partOfStreak = consecutive(w, below) || consecutive(above, w);
     let tag = '';
-    if (!(above && above.club === w.club)) {
+    if (!consecutive(above, w)) {
       let n = 1;
       let j = i;
-      while (rows[j + 1] && rows[j + 1]!.club === w.club) {
+      while (consecutive(rows[j], rows[j + 1])) {
         n++;
         j++;
       }
@@ -904,7 +909,7 @@ function RetroTrophyLeaders({
   const { lang, t } = useI18n();
   const [managers, setManagers] = useState<Manager[]>([]);
   const [loading, setLoading] = useState(true);
-  const [cabinets, setCabinets] = useState<Record<number, TrophyCabinet | null>>({});
+  const [cabinet, setCabinet] = useState<{ userId: number; lang: Lang; window?: SeasonWindow; value: TrophyCabinet } | null>(null);
   const [page, setPage] = useState(1);
 
   // Nationality is the grouping dimension in nation mode, so it can't also be a filter there —
@@ -929,37 +934,25 @@ function RetroTrophyLeaders({
     setExpandedId(null);
   }, [groupBy, setExpandedId]);
 
-  const loadCabinet = (userId: number) =>
-    getCabinet(userId, (country) => t('cabinet.champTitle', { country }), seasonWindow);
-
-  // A cached cabinet holds a translated "<country> champions" heading, so a language switch has to
-  // drop the cache — and re-fetch whichever row is open, which would otherwise sit on "Loading…"
-  // with nothing left to fill it.
+  // A cabinet belongs to one user, language and recency window. Reload the open row whenever any
+  // part changes, and ignore superseded requests. Rendering also checks the full scope so the
+  // previous result cannot flash under the new row total before this effect runs.
   useEffect(() => {
-    setCabinets({});
     if (groupBy !== 'manager' || !expandedId) return;
     const userId = Number(expandedId);
     let cancelled = false;
-    loadCabinet(userId)
-      .then((cab) => !cancelled && setCabinets((c) => ({ ...c, [userId]: cab })))
-      .catch(() => !cancelled && setCabinets((c) => ({ ...c, [userId]: EMPTY_CABINET })));
+    getCabinet(userId, (country) => t('cabinet.champTitle', { country }), seasonWindow)
+      .then((value) => !cancelled && setCabinet({ userId, lang, window: seasonWindow, value }))
+      .catch(() => !cancelled && setCabinet({ userId, lang, window: seasonWindow, value: EMPTY_CABINET }));
     return () => {
       cancelled = true;
     };
-    // Language only — opening a row is handled by toggleExpand.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lang]);
+  }, [expandedId, groupBy, seasonWindow, lang, t]);
 
   const toggleInc = (k: keyof IncState) => setInc((s) => ({ ...s, [k]: !s[k] }));
   const toggleNation = (name: string) => setExpandedId((cur) => (cur === name ? null : name));
   const toggleExpand = (m: Manager) => {
     setExpandedId((cur) => (cur === String(m.userId) ? null : String(m.userId)));
-    if (!(m.userId in cabinets)) {
-      setCabinets((c) => ({ ...c, [m.userId]: null }));
-      loadCabinet(m.userId)
-        .then((cab) => setCabinets((c) => ({ ...c, [m.userId]: cab })))
-        .catch(() => setCabinets((c) => ({ ...c, [m.userId]: EMPTY_CABINET })));
-    }
   };
 
   // Ranks are absolute over the fetched field; category flags change the total. "Reigning only"
@@ -1293,7 +1286,7 @@ function RetroTrophyLeaders({
           const m = e.m;
           const r = e.rank;
           const isExp = expandedId === String(m.userId);
-          const cab = isExp ? cabinets[m.userId] : undefined;
+          const cab = isExp && cabinet?.userId === m.userId && cabinet.lang === lang && cabinet.window === seasonWindow ? cabinet.value : undefined;
 
           const segRaw = mixSegments(e, inc);
           const baseBg = i % 2 ? R.alt : R.panel;
@@ -1656,10 +1649,11 @@ function RetroLeagueWinners({
  */
 function TopManagersPanel({ winners, limit = 10 }: { winners: Winner[]; limit?: number }) {
   const t = useT();
-  const tally: Record<string, { count: number; teams: Array<{ name: string; teamId?: number; leagueId?: number }>; nationality?: string; userId?: number }> = {};
+  const tally: Record<string, { name: string; count: number; teams: Array<{ name: string; teamId?: number; leagueId?: number }>; nationality?: string; userId?: number }> = {};
   winners.forEach((w) => {
     if (!w.manager || w.manager === '—') return;
-    const e = (tally[w.manager] ??= { count: 0, teams: [], nationality: w.nationality, userId: w.userId });
+    const key = w.userId ? `user:${w.userId}` : `name:${w.manager}`;
+    const e = (tally[key] ??= { name: w.manager, count: 0, teams: [], nationality: w.nationality, userId: w.userId });
     e.count++;
     if (!e.teams.some((t) => t.name === w.club)) e.teams.push({ name: w.club, teamId: w.teamId, leagueId: w.leagueId });
   });
@@ -1673,8 +1667,8 @@ function TopManagersPanel({ winners, limit = 10 }: { winners: Winner[]; limit?: 
       <SectionBar>{t('panel.topManagersTop', { n: limit })}</SectionBar>
       <div style={{ padding: 11, background: R.panel, display: 'flex', flexDirection: 'column', gap: 11 }}>
         {arr.length === 0 && <div style={{ fontSize: 11, color: R.faint }}>—</div>}
-        {arr.map(([manager, { count, teams, nationality, userId }], i) => (
-          <div key={manager}>
+        {arr.map(([key, { name: manager, count, teams, nationality, userId }], i) => (
+          <div key={key}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 2, gap: 8 }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
                 <Flag url={nationalityFlagUrl(nationality)} label={nationality} />
@@ -2421,12 +2415,13 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
    * jointly third and plays no third-place match, so there is no 4th to separate out.
    */
   const medals = useMemo(() => {
-    const tally: Record<string, { g: number; s: number; b: number; leagueId?: number }> = {};
+    const tally: Record<string, { name: string; g: number; s: number; b: number; leagueId?: number }> = {};
     // The nation's leagueId rides along so the flag resolves by ID — names alone leave the likes of
     // Curaçao and São Tomé e Príncipe unflagged (see flags.ts nationFlagUrl).
     const add = (nation: string | null | undefined, k: 'g' | 's' | 'b', leagueId?: number) => {
       if (!nation) return;
-      const row = (tally[nation] ??= { g: 0, s: 0, b: 0 });
+      const identity = nationalIdentity(nation, leagueId);
+      const row = (tally[identity.key] ??= { name: identity.name, g: 0, s: 0, b: 0 });
       row[k]++;
       if (leagueId) row.leagueId ??= leagueId;
     };
@@ -2438,7 +2433,7 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
       }
     // Not capped — the table scrolls instead, so nations holding only silver or bronze (which sort
     // below every champion) stay reachable.
-    return Object.entries(tally).sort((a, b) => b[1].g - a[1].g || b[1].s - a[1].s || b[1].b - a[1].b || a[0].localeCompare(b[0]));
+    return Object.entries(tally).sort((a, b) => b[1].g - a[1].g || b[1].s - a[1].s || b[1].b - a[1].b || a[1].name.localeCompare(b[1].name));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scopedCups]);
 
@@ -2470,9 +2465,11 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
           nation: string | null | undefined,
           place: number,
           coach: { userId?: number; name?: string; nationality?: string },
+          leagueId?: number,
         ) => {
           if (!nation) return;
-          const arr = by.get(nation) ?? [];
+          const key = nationalIdentity(nation, leagueId).key;
+          const arr = by.get(key) ?? [];
           arr.push({
             label: compLabel(t, c, true),
             isYouth: c.isYouth,
@@ -2483,12 +2480,12 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
             coachUserId: coach.userId,
             coachNationality: coach.nationality,
           });
-          by.set(nation, arr);
+          by.set(key, arr);
         };
-        push(e.champion, 1, { userId: e.coachUserId, name: e.coach, nationality: e.coachNationality });
-        push(e.runnerUp, 2, { userId: e.runnerUpCoachUserId, name: e.runnerUpCoach, nationality: e.runnerUpCoachNationality });
+        push(e.champion, 1, { userId: e.coachUserId, name: e.coach, nationality: e.coachNationality }, e.championLeagueId);
+        push(e.runnerUp, 2, { userId: e.runnerUpCoachUserId, name: e.runnerUpCoach, nationality: e.runnerUpCoachNationality }, e.runnerUpLeagueId);
         // Index-aligned with `thirdFourth`; an empty slot is a nation whose coach never resolved.
-        e.thirdFourth.forEach((n, i) => push(n, 3, e.thirdFourthCoaches?.[i] ?? {}));
+        e.thirdFourth.forEach((n, i) => push(n, 3, e.thirdFourthCoaches?.[i] ?? {}, e.thirdFourthLeagueIds?.[i]));
       }
     // Youth after senior at equal placing, so a pooled row groups the twins next to each other
     // instead of interleaving them by edition.
@@ -2514,7 +2511,7 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
   const medalCfg = MEDAL_BY.find((m) => m.k === medalBy) ?? MEDAL_BY[0]!;
   const medalRows: MedalRow[] =
     medalBy === 'nation'
-      ? medals.map(([nation, m]) => ({ key: nation, label: nation, flag: nationFlagUrl(nation, m.leagueId), g: m.g, s: m.s, b: m.b }))
+      ? medals.map(([key, m]) => ({ key, label: m.name, flag: nationFlagUrl(m.name, m.leagueId), g: m.g, s: m.s, b: m.b }))
       : medalBy === 'coach'
         ? coachMedals.map((c) => ({
             key: String(c.userId),

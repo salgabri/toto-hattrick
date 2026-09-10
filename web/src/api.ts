@@ -13,11 +13,13 @@ export interface NationalLeagueRow {
 
 export interface NationalChampion {
   season: number;
-  championTeamId: number;
+  championTeamId: number | null;
   champion: string;
-  points: number;
-  played: number;
+  points: number | null;
+  played: number | null;
   complete: boolean; // false → season in progress (current leader)
+  /** Facts unavailable in the retained historical source; never interpret null as zero. */
+  missingData: Array<'championTeamId' | 'points' | 'played'>;
 }
 
 export interface NationalityRow {
@@ -36,8 +38,9 @@ export interface UserTitle {
   country: string;
   season: number;
   club: string;
-  clubId: number;
+  clubId: number | null;
   complete: boolean;
+  missingData: Array<'clubId'>;
 }
 
 export interface UserDetail {

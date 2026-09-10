@@ -14,7 +14,9 @@
     "build": "npm run build --workspace server && npm run build --workspace web",
     "db:migrate": "npm run db:migrate --workspace server",
     "db:generate": "npm run db:generate --workspace server",
-    "typecheck": "npm run typecheck --workspace server && npm run typecheck --workspace web"
+    "typecheck": "npm run typecheck --workspace server && npm run typecheck --workspace web",
+    "test": "npm run test --workspace server && node qa/run-web-tests.mjs && node --test qa/correct-stored-cup-winners.test.mjs",
+    "qa": "npm run build --workspace server && node qa/run-audit.mjs"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"

@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-09-10T21:55:11.855Z",
+  "scope": "Live CHPP worlddetails v1.9 metadata only; five countries; no stored match re-fetch",
+  "checks": [
+    {
+      "leagueId": 4,
+      "country": "Italy",
+      "currentSeason": 95,
+      "latestBakedLeagueSeason": 94,
+      "apiCupCount": 5,
+      "bakedCupCount": 5,
+      "missingCupIds": [],
+      "classificationMismatches": []
+    },
+    {
+      "leagueId": 1,
+      "country": "Sweden",
+      "currentSeason": 95,
+      "latestBakedLeagueSeason": 94,
+      "apiCupCount": 5,
+      "bakedCupCount": 5,
+      "missingCupIds": [],
+      "classificationMismatches": []
+    },
+    {
+      "leagueId": 21,
+      "country": "Ireland",
+      "currentSeason": 83,
+      "latestBakedLeagueSeason": 82,
+      "apiCupCount": 5,
+      "bakedCupCount": 5,
+      "missingCupIds": [],
+      "classificationMismatches": []
+    },
+    {
+      "leagueId": 25,
+      "country": "Portugal",
+      "currentSeason": 83,
+      "latestBakedLeagueSeason": 82,
+      "apiCupCount": 5,
+      "bakedCupCount": 5,
+      "missingCupIds": [],
+      "classificationMismatches": []
+    },
+    {
+      "leagueId": 156,
+      "country": "Federal Democratic Republic of Ethiopia",
+      "currentSeason": 23,
+      "latestBakedLeagueSeason": 22,
+      "apiCupCount": 5,
+      "bakedCupCount": 5,
+      "missingCupIds": [],
+      "classificationMismatches": []
+    }
+  ]
+}

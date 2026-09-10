@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { prisma } from '../db/client.js';
 import { ingestSeasonalWinners, SUPPORTER_WEEK_CUP_ID, type SeasonalWinner } from '../sync/seasonal.js';
 import type { TokenPair } from '../chpp/auth.js';
+import savedWinners from '../sync/supporter-week-winners.json' with { type: 'json' };
 
 /**
  * Populate the "Seasonal Cups" category from the Supporter Week Trophy roll of honour. The winners
@@ -15,9 +16,7 @@ import type { TokenPair } from '../chpp/auth.js';
  * Then re-bake: npm run bake -w server
  */
 const access: TokenPair = JSON.parse(readFileSync(process.env.OAUTH_ACCESS_STASH ?? '.oauth-access.json', 'utf8'));
-const winners: SeasonalWinner[] = JSON.parse(
-  readFileSync(new URL('../sync/supporter-week-winners.json', import.meta.url), 'utf8'),
-);
+const winners: SeasonalWinner[] = savedWinners;
 
 console.log(`sync:seasonal @ ${new Date().toISOString()} — Supporter Week Trophy: ${winners.length} editions`);
 const r = await ingestSeasonalWinners(access, { cupId: SUPPORTER_WEEK_CUP_ID, name: 'Supporter Week Trophy', winners });

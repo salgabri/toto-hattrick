@@ -1,6 +1,6 @@
 import { prisma } from '../db/client.js';
 import type { TokenPair } from '../chpp/auth.js';
-import { syncCupChampions, enrichCupTeamIds } from './cups.js';
+import { syncCupChampions, enrichCupTeamIds, type CupSyncResult } from './cups.js';
 import { enrichRecentCupManagers } from './enrichManagers.js';
 
 /**
@@ -36,7 +36,12 @@ export async function seedMasters(currentSeason: number): Promise<void> {
   });
 }
 
-export interface MastersSyncResult { seasonsStored: number; earliestSeason: number | null; latestChampion: string | null; }
+export interface MastersSyncResult {
+  seasonsStored: number;
+  earliestSeason: number | null;
+  latestChampion: string | null;
+  issues: CupSyncResult['issues'];
+}
 
 /**
  * Reconstruct every Hattrick Masters edition and resolve its winning team. Stored finals are
@@ -49,9 +54,12 @@ export interface MastersSyncResult { seasonsStored: number; earliestSeason: numb
 export async function syncMasters(token: TokenPair, opts: { currentSeason: number; allowUnverifiedCurrentOwner?: boolean }): Promise<MastersSyncResult> {
   await seedMasters(opts.currentSeason);
   const r = await syncCupChampions(token, MASTERS_CUP_ID); // walks currentSeason → 1, stops before S28 (round 0)
+  for (const issue of r.issues) {
+    console.warn(`  ${MASTERS_NAME} (cup ${MASTERS_CUP_ID}) S${issue.season}${issue.matchId ? ` match ${issue.matchId}` : ''}: unresolved — ${issue.reason}`);
+  }
   await enrichCupTeamIds(token, { cupIds: [MASTERS_CUP_ID] }); // resolve teamIds for the new Masters finals (only pending ones)
   if (opts.allowUnverifiedCurrentOwner === true) {
     await enrichRecentCupManagers(token, { lookback: 1000, onlyCupIds: [MASTERS_CUP_ID], allowUnverifiedCurrentOwner: true });
   }
-  return { seasonsStored: r.seasonsStored, earliestSeason: r.earliestSeason, latestChampion: r.latestChampion };
+  return { seasonsStored: r.seasonsStored, earliestSeason: r.earliestSeason, latestChampion: r.latestChampion, issues: r.issues };
 }

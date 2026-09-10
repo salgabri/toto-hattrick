@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <Match>
+    <MatchID>18279050</MatchID>
+    <MatchType>3</MatchType>
+    <MatchContextId>56</MatchContextId>
+    <MatchDate>2004-05-26 08:45:00</MatchDate>
+    <FinishedDate>2004-05-26 10:45:00</FinishedDate>
+    <HomeTeam>
+      <HomeTeamID>94420</HomeTeamID>
+      <HomeTeamName>Kalelarga Legends</HomeTeamName>
+      <HomeGoals>2</HomeGoals>
+    </HomeTeam>
+    <AwayTeam>
+      <AwayTeamID>94446</AwayTeamID>
+      <AwayTeamName>BSK Brdovec</AwayTeamName>
+      <AwayGoals>2</AwayGoals>
+    </AwayTeam>
+    <EventList>
+      <Event>
+        <Minute>90</Minute>
+        <SubjectTeamID>0</SubjectTeamID>
+        <MatchPart>2</MatchPart>
+        <EventTypeID>70</EventTypeID>
+        <EventText>With the scores being level after 90 minutes, the match went into extra time.</EventText>
+      </Event>
+      <Event>
+        <Minute>105</Minute>
+        <SubjectTeamID>94420</SubjectTeamID>
+        <MatchPart>3</MatchPart>
+        <EventTypeID>72</EventTypeID>
+        <EventText>This put an end to extra time, making &lt;span class=&quot;hometeam&quot;&gt;Legends&lt;/span&gt; the winners.</EventText>
+      </Event>
+      <Event>
+        <Minute>105</Minute>
+        <SubjectTeamID>0</SubjectTeamID>
+        <MatchPart>3</MatchPart>
+        <EventTypeID>599</EventTypeID>
+        <EventText>The match ends 2 - 2.</EventText>
+      </Event>
+    </EventList>
+  </Match>
+</HattrickData>

@@ -1,0 +1,758 @@
+{
+  "generatedAt": "2026-09-10T22:44:58.936Z",
+  "readOnly": true,
+  "databaseSha256": "224aaae8d7dcb0a4f5d67f69b3bb9576240f24de4019dafa6bbbea4e73861328",
+  "rows": {
+    "Team": 0,
+    "Match": 0,
+    "MatchDetail": 0,
+    "SeasonStanding": 0,
+    "NationalLeague": 160,
+    "LeagueChampion": 9913,
+    "HattrickUser": 10892
+  },
+  "requests": {
+    "health": 1,
+    "scrape/targets": 1,
+    "scrape/done": 1,
+    "seasons": 1,
+    "champions": 1,
+    "season/matches": 1,
+    "team/summary": 1,
+    "season/standings": 1,
+    "match/detail": 1,
+    "national/leagues": 1,
+    "national/league/champions": 161,
+    "national/season": 95,
+    "users/nationalities": 1,
+    "users/leaderboard": 145,
+    "user/detail": 10893,
+    "invalid/path": 98,
+    "invalid/limit": 18
+  },
+  "requestCount": 11421,
+  "assertions": 76819,
+  "failureCount": 0,
+  "failures": [],
+  "findings": [
+    {
+      "severity": "data-gap",
+      "id": "league-unavailable-facts",
+      "description": "Historical winner-only reconstruction lacks some statistics and club identities. Every affected API row was checked to expose null plus missingData, preserving known winners and counts without inventing source facts.",
+      "counts": {
+        "n": 9913,
+        "unavailableStatistics": 8908,
+        "unknownClubIds": 8908,
+        "unattributedManagers": 924
+      }
+    },
+    {
+      "severity": "coverage-gap",
+      "id": "empty-archive",
+      "description": "Team, Match, MatchDetail and SeasonStanding are empty; real-data match statistics, goals, W/D/L, lineups, ratings and reconstructed league-table arithmetic cannot be verified from this snapshot."
+    }
+  ],
+  "validationProbes": {
+    "path": [
+      {
+        "path": "/api/seasons/abc/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/NaN/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/Infinity/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/1.5/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/-1/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/0/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/9007199254740993/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/1e2/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/0x10/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/%201/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/1%20/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/01/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/%2B1/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/1_000/matches",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/abc",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/NaN",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/Infinity",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/1.5",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/-1",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/0",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/9007199254740993",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/1e2",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/0x10",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/%201",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/1%20",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/01",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/%2B1",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/matches/1_000",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "matchId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/abc/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/NaN/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/Infinity/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/1.5/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/-1/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/0/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/9007199254740993/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/1e2/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/0x10/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/%201/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/1%20/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/01/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/%2B1/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/teams/1_000/summary",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "teamId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/abc/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/NaN/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/Infinity/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/1.5/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/-1/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/0/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/9007199254740993/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/1e2/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/0x10/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/%201/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/1%20/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/01/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/%2B1/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/seasons/1_000/standings",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/abc/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/NaN/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/Infinity/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/1.5/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/-1/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/0/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/9007199254740993/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/1e2/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/0x10/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/%201/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/1%20/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/01/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/%2B1/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/leagues/1_000/champions",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "leagueId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/abc",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/NaN",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/Infinity",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/1.5",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/-1",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/0",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/9007199254740993",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/1e2",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/0x10",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/%201",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/1%20",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/01",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/%2B1",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/national/seasons/1_000",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "season must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/abc",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/NaN",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/Infinity",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/1.5",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/-1",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/0",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/9007199254740993",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/1e2",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/0x10",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/%201",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/1%20",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/01",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/%2B1",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      },
+      {
+        "path": "/api/users/1_000",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "userId must be a positive safe decimal integer"
+      }
+    ],
+    "query": [
+      {
+        "query": "limit=abc",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=NaN",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=Infinity",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=1.5",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=-1",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=0",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=9007199254740993",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=1e2",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=0x10",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=%201",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=1%20",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=01",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=%2B1",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=1_000",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=-50",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "limit=1&limit=2",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      },
+      {
+        "query": "nationality=Italia&nationality=Schweiz",
+        "status": 400,
+        "leaksQuery": false,
+        "message": "limit must be a positive safe decimal integer; nationality must be a single string"
+      }
+    ]
+  },
+  "scope": "All 12 registerReadRoutes GET families plus health and two scrape reads. Every stored country, season, manager profile and nationality leaderboard checked. No CHPP or writes. Invalid-input 400 contracts and null/missingData semantics are required assertions."
+}

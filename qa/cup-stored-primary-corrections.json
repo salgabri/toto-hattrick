@@ -1,0 +1,2729 @@
+[
+  {
+    "cupId": 37,
+    "season": 10,
+    "country": "Austria",
+    "champion": "Gut",
+    "runnerUp": "databased.at",
+    "firstLeg": [
+      3,
+      1
+    ],
+    "secondLeg": [
+      2,
+      3
+    ],
+    "aggregate": [
+      5,
+      4
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Austria",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 37,
+          "season": 10
+        },
+        "fetchedAt": "2026-09-10T22:28:52.502Z",
+        "response": {
+          "cupId": 37,
+          "cupName": "Austria-Cup",
+          "season": 10,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 24105970,
+              "matchDate": "2004-09-29T09:30:00.000Z",
+              "homeTeamName": "Gut",
+              "awayTeamName": "databased.at",
+              "homeGoals": 2,
+              "awayGoals": 3
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 37,
+          "season": 10,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:28:53.118Z",
+        "response": {
+          "cupId": 37,
+          "cupName": "Austria-Cup",
+          "season": 10,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 24105969,
+              "matchDate": "2004-09-22T09:30:00.000Z",
+              "homeTeamName": "databased.at",
+              "awayTeamName": "Gut",
+              "homeGoals": 1,
+              "awayGoals": 3
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 37,
+      "season": 10,
+      "leagueId": 39,
+      "countryName": "Austria",
+      "cupName": "Austria-Cup",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "databased.at",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681655469,
+      "updatedAt": 1785681655469,
+      "championLeagueId": null
+    },
+    "beforeSha256": "bca5c3830906b032ce6ed9552df6ab023f255caaf965568dadb9b6403ec847f0",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 61,
+    "season": 2,
+    "country": "Bulgaria",
+    "champion": "Levski 1914",
+    "runnerUp": "Cryout",
+    "firstLeg": [
+      3,
+      0
+    ],
+    "secondLeg": [
+      0,
+      2
+    ],
+    "aggregate": [
+      3,
+      2
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Bulgaria",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 61,
+          "season": 2
+        },
+        "fetchedAt": "2026-09-10T22:28:53.757Z",
+        "response": {
+          "cupId": 61,
+          "cupName": "Купа на България",
+          "season": 2,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 4957735,
+              "matchDate": "2003-02-04T22:00:00.000Z",
+              "homeTeamName": "Cryout",
+              "awayTeamName": "Levski 1914",
+              "homeGoals": 2,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 61,
+          "season": 2,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:28:54.367Z",
+        "response": {
+          "cupId": 61,
+          "cupName": "Купа на България",
+          "season": 2,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 4957734,
+              "matchDate": "2003-01-28T22:00:00.000Z",
+              "homeTeamName": "Levski 1914",
+              "awayTeamName": "Cryout",
+              "homeGoals": 3,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 61,
+      "season": 2,
+      "leagueId": 62,
+      "countryName": "Bulgaria",
+      "cupName": "Купа на България",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Cryout",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681655775,
+      "updatedAt": 1785681655775,
+      "championLeagueId": null
+    },
+    "beforeSha256": "bd290c8b9f884549f28a27511cc82670f173220894f7afedb55dbbd4e0158fec",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 61,
+    "season": 6,
+    "country": "Bulgaria",
+    "champion": "Yellow squad",
+    "runnerUp": "White Moon FC",
+    "firstLeg": [
+      5,
+      0
+    ],
+    "secondLeg": [
+      3,
+      5
+    ],
+    "aggregate": [
+      8,
+      5
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Bulgaria",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 61,
+          "season": 6
+        },
+        "fetchedAt": "2026-09-10T22:28:54.992Z",
+        "response": {
+          "cupId": 61,
+          "cupName": "Купа на България",
+          "season": 6,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 18088075,
+              "matchDate": "2004-05-11T22:00:00.000Z",
+              "homeTeamName": "White Moon FC",
+              "awayTeamName": "Yellow squad",
+              "homeGoals": 5,
+              "awayGoals": 3
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 61,
+          "season": 6,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:28:55.604Z",
+        "response": {
+          "cupId": 61,
+          "cupName": "Купа на България",
+          "season": 6,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 18088074,
+              "matchDate": "2004-05-04T22:00:00.000Z",
+              "homeTeamName": "Yellow squad",
+              "awayTeamName": "White Moon FC",
+              "homeGoals": 5,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 61,
+      "season": 6,
+      "leagueId": 62,
+      "countryName": "Bulgaria",
+      "cupName": "Купа на България",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "White Moon FC",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681655775,
+      "updatedAt": 1785681655775,
+      "championLeagueId": null
+    },
+    "beforeSha256": "2c82daf596cee590266f4b879007aa75334b0bdee02ba3527cd78b6107b651ff",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 17,
+    "season": 9,
+    "country": "Chile",
+    "champion": "Universidad de Chile",
+    "runnerUp": "ManchesterUnited",
+    "firstLeg": [
+      5,
+      1
+    ],
+    "secondLeg": [
+      1,
+      2
+    ],
+    "aggregate": [
+      6,
+      3
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Chile",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 17,
+          "season": 9
+        },
+        "fetchedAt": "2026-09-10T22:28:56.245Z",
+        "response": {
+          "cupId": 17,
+          "cupName": "Copa Chile",
+          "season": 9,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 13922970,
+              "matchDate": "2004-02-19T02:45:00.000Z",
+              "homeTeamName": "Universidad de Chile",
+              "awayTeamName": "ManchesterUnited",
+              "homeGoals": 1,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 17,
+          "season": 9,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:28:56.862Z",
+        "response": {
+          "cupId": 17,
+          "cupName": "Copa Chile",
+          "season": 9,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 13922969,
+              "matchDate": "2004-02-12T02:45:00.000Z",
+              "homeTeamName": "ManchesterUnited",
+              "awayTeamName": "Universidad de Chile",
+              "homeGoals": 1,
+              "awayGoals": 5
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 17,
+      "season": 9,
+      "leagueId": 18,
+      "countryName": "Chile",
+      "cupName": "Copa Chile",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "ManchesterUnited",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681655877,
+      "updatedAt": 1785681655877,
+      "championLeagueId": null
+    },
+    "beforeSha256": "21879636fc6b376eba8868d72100b81fa66dc204821e7b3bdcb803af4c3c170c",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 17,
+    "season": 11,
+    "country": "Chile",
+    "champion": "Sion",
+    "runnerUp": "Escuadron",
+    "firstLeg": [
+      8,
+      1
+    ],
+    "secondLeg": [
+      1,
+      3
+    ],
+    "aggregate": [
+      9,
+      4
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Chile",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 17,
+          "season": 11
+        },
+        "fetchedAt": "2026-09-10T22:28:57.487Z",
+        "response": {
+          "cupId": 17,
+          "cupName": "Copa Chile",
+          "season": 11,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 24117299,
+              "matchDate": "2004-09-30T02:45:00.000Z",
+              "homeTeamName": "Escuadron",
+              "awayTeamName": "Sion",
+              "homeGoals": 3,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 17,
+          "season": 11,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:28:58.110Z",
+        "response": {
+          "cupId": 17,
+          "cupName": "Copa Chile",
+          "season": 11,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 24117297,
+              "matchDate": "2004-09-23T02:45:00.000Z",
+              "homeTeamName": "Sion",
+              "awayTeamName": "Escuadron",
+              "homeGoals": 8,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 17,
+      "season": 11,
+      "leagueId": 18,
+      "countryName": "Chile",
+      "cupName": "Copa Chile",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Escuadron",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681655877,
+      "updatedAt": 1785681655877,
+      "championLeagueId": null
+    },
+    "beforeSha256": "d43df5a7238ac51a6eea63c7b235aebd174fd36ab1b16fdf0d2f52984873ddb4",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 59,
+    "season": 3,
+    "country": "Chinese Taipei",
+    "champion": "Golden Dragon",
+    "runnerUp": "Passive Agressive",
+    "firstLeg": [
+      4,
+      2
+    ],
+    "secondLeg": [
+      1,
+      2
+    ],
+    "aggregate": [
+      5,
+      4
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Chinese_Taipei",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 59,
+          "season": 3
+        },
+        "fetchedAt": "2026-09-10T22:28:58.740Z",
+        "response": {
+          "cupId": 59,
+          "cupName": "Phoenix Cup",
+          "season": 3,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 7028845,
+              "matchDate": "2003-05-28T03:00:00.000Z",
+              "homeTeamName": "Golden Dragon",
+              "awayTeamName": "Passive Agressive",
+              "homeGoals": 1,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 59,
+          "season": 3,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:28:59.363Z",
+        "response": {
+          "cupId": 59,
+          "cupName": "Phoenix Cup",
+          "season": 3,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 7028844,
+              "matchDate": "2003-05-21T03:00:00.000Z",
+              "homeTeamName": "Passive Agressive",
+              "awayTeamName": "Golden Dragon",
+              "homeGoals": 2,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 59,
+      "season": 3,
+      "leagueId": 60,
+      "countryName": "Chinese Taipei",
+      "cupName": "Phoenix Cup",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Passive Agressive",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681655900,
+      "updatedAt": 1785681655900,
+      "championLeagueId": null
+    },
+    "beforeSha256": "018953bca65c13469548010e045d04548dade284c8488f6dc8b1cc3b0c257541",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 56,
+    "season": 4,
+    "country": "Croatia",
+    "champion": "Folka United",
+    "runnerUp": "Bjegunci",
+    "firstLeg": [
+      5,
+      2
+    ],
+    "secondLeg": [
+      2,
+      4
+    ],
+    "aggregate": [
+      7,
+      6
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Croatia",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 56,
+          "season": 4
+        },
+        "fetchedAt": "2026-09-10T22:29:00.006Z",
+        "response": {
+          "cupId": 56,
+          "cupName": "Kup Hrvatske",
+          "season": 4,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 7159501,
+              "matchDate": "2003-06-25T08:45:00.000Z",
+              "homeTeamName": "Bjegunci",
+              "awayTeamName": "Folka United",
+              "homeGoals": 4,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 56,
+          "season": 4,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:00.630Z",
+        "response": {
+          "cupId": 56,
+          "cupName": "Kup Hrvatske",
+          "season": 4,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 7159500,
+              "matchDate": "2003-06-18T08:45:00.000Z",
+              "homeTeamName": "Folka United",
+              "awayTeamName": "Bjegunci",
+              "homeGoals": 5,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 56,
+      "season": 4,
+      "leagueId": 58,
+      "countryName": "Croatia",
+      "cupName": "Kup Hrvatske",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Bjegunci",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": 119502,
+      "championUserName": "Alcatraz",
+      "createdAt": 1785681655992,
+      "updatedAt": 1785681655992,
+      "championLeagueId": null
+    },
+    "beforeSha256": "1152b2948f0ad256ed4722a5440bb23df0a5caba80e0fe56eb283ad524145227",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 19,
+    "season": 10,
+    "country": "Egypt",
+    "champion": "amazighteam",
+    "runnerUp": "Foxy",
+    "firstLeg": [
+      6,
+      1
+    ],
+    "secondLeg": [
+      0,
+      3
+    ],
+    "aggregate": [
+      6,
+      4
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Egypt",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 19,
+          "season": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:02.534Z",
+        "response": {
+          "cupId": 19,
+          "cupName": "Kas Misr",
+          "season": 10,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 18090433,
+              "matchDate": "2004-05-12T08:45:00.000Z",
+              "homeTeamName": "Foxy",
+              "awayTeamName": "amazighteam",
+              "homeGoals": 3,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 19,
+          "season": 10,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:03.145Z",
+        "response": {
+          "cupId": 19,
+          "cupName": "Kas Misr",
+          "season": 10,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 18090432,
+              "matchDate": "2004-05-05T08:45:00.000Z",
+              "homeTeamName": "amazighteam",
+              "awayTeamName": "Foxy",
+              "homeGoals": 6,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 19,
+      "season": 10,
+      "leagueId": 33,
+      "countryName": "Egypt",
+      "cupName": "Kas Misr",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Foxy",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681656162,
+      "updatedAt": 1785681656162,
+      "championLeagueId": null
+    },
+    "beforeSha256": "1edd58fb714b128a8ff4ce687a0dbff20c2b3871cafd22067fbdc0ac08d3ec38",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 54,
+    "season": 8,
+    "country": "Estonia",
+    "champion": "K-J Jotad",
+    "runnerUp": "FC Kallic",
+    "firstLeg": [
+      5,
+      2
+    ],
+    "secondLeg": [
+      1,
+      2
+    ],
+    "aggregate": [
+      6,
+      4
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Estonia",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 54,
+          "season": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:03.769Z",
+        "response": {
+          "cupId": 54,
+          "cupName": "Eesti Karikas",
+          "season": 8,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 24107957,
+              "matchDate": "2004-09-29T12:15:00.000Z",
+              "homeTeamName": "K-J Jotad",
+              "awayTeamName": "FC Kallic",
+              "homeGoals": 1,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 54,
+          "season": 8,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:29:04.402Z",
+        "response": {
+          "cupId": 54,
+          "cupName": "Eesti Karikas",
+          "season": 8,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 24107956,
+              "matchDate": "2004-09-22T12:15:00.000Z",
+              "homeTeamName": "FC Kallic",
+              "awayTeamName": "K-J Jotad",
+              "homeGoals": 2,
+              "awayGoals": 5
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 54,
+      "season": 8,
+      "leagueId": 56,
+      "countryName": "Estonia",
+      "cupName": "Eesti Karikas",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "FC Kallic",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681656225,
+      "updatedAt": 1785681656225,
+      "championLeagueId": null
+    },
+    "beforeSha256": "188f205735129005ced89738d1f105bef84f99e31dc778d465cad9be7f6beb36",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 4,
+    "season": 23,
+    "country": "Germany",
+    "champion": "FC Martini",
+    "runnerUp": "FC Teerlunge",
+    "firstLeg": [
+      6,
+      0
+    ],
+    "secondLeg": [
+      3,
+      4
+    ],
+    "aggregate": [
+      9,
+      4
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Germany",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 4,
+          "season": 23
+        },
+        "fetchedAt": "2026-09-10T22:29:05.035Z",
+        "response": {
+          "cupId": 4,
+          "cupName": "Deutschland-Pokal",
+          "season": 23,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 24099851,
+              "matchDate": "2004-09-28T18:00:00.000Z",
+              "homeTeamName": "FC Martini",
+              "awayTeamName": "FC Teerlunge",
+              "homeGoals": 3,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 4,
+          "season": 23,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:29:05.650Z",
+        "response": {
+          "cupId": 4,
+          "cupName": "Deutschland-Pokal",
+          "season": 23,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 24099850,
+              "matchDate": "2004-09-21T18:00:00.000Z",
+              "homeTeamName": "FC Teerlunge",
+              "awayTeamName": "FC Martini",
+              "homeGoals": 0,
+              "awayGoals": 6
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 4,
+      "season": 23,
+      "leagueId": 3,
+      "countryName": "Germany",
+      "cupName": "Deutschland-Pokal",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "FC Teerlunge",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681656347,
+      "updatedAt": 1785681656347,
+      "championLeagueId": null
+    },
+    "beforeSha256": "83bd4388c23b8faad91cb3d1784995b0ccb509851309609516031ef26e3ae13a",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 52,
+    "season": 3,
+    "country": "Indonesia",
+    "champion": "italy_A",
+    "runnerUp": "rage against d' machine fc",
+    "firstLeg": [
+      6,
+      1
+    ],
+    "secondLeg": [
+      1,
+      4
+    ],
+    "aggregate": [
+      7,
+      5
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Indonesia",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 52,
+          "season": 3
+        },
+        "fetchedAt": "2026-09-10T22:29:08.793Z",
+        "response": {
+          "cupId": 52,
+          "cupName": "Indonesia Cup",
+          "season": 3,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 4999540,
+              "matchDate": "2003-02-19T07:45:00.000Z",
+              "homeTeamName": "italy_A",
+              "awayTeamName": "rage against d' machine fc",
+              "homeGoals": 1,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 52,
+          "season": 3,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:09.403Z",
+        "response": {
+          "cupId": 52,
+          "cupName": "Indonesia Cup",
+          "season": 3,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 4999539,
+              "matchDate": "2003-02-12T07:45:00.000Z",
+              "homeTeamName": "rage against d' machine fc",
+              "awayTeamName": "italy_A",
+              "homeGoals": 1,
+              "awayGoals": 6
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 52,
+      "season": 3,
+      "leagueId": 54,
+      "countryName": "Indonesia",
+      "cupName": "Indonesia Cup",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "rage against d' machine fc",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681656604,
+      "updatedAt": 1785681656604,
+      "championLeagueId": null
+    },
+    "beforeSha256": "4738966db66348f0ba02775c48306e18b919a20c24c85e9f302932d73fccac08",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 51,
+    "season": 2,
+    "country": "Latvia",
+    "champion": "Nokia",
+    "runnerUp": "FK sakee",
+    "firstLeg": [
+      4,
+      1
+    ],
+    "secondLeg": [
+      1,
+      2
+    ],
+    "aggregate": [
+      5,
+      3
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Latvija",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 51,
+          "season": 2
+        },
+        "fetchedAt": "2026-09-10T22:29:10.037Z",
+        "response": {
+          "cupId": 51,
+          "cupName": "Latvijas Nacionālais kauss",
+          "season": 2,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 3491602,
+              "matchDate": "2002-10-16T13:45:00.000Z",
+              "homeTeamName": "FK sakee",
+              "awayTeamName": "Nokia",
+              "homeGoals": 2,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 51,
+          "season": 2,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:10.673Z",
+        "response": {
+          "cupId": 51,
+          "cupName": "Latvijas Nacionālais kauss",
+          "season": 2,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 3491601,
+              "matchDate": "2002-10-09T13:45:00.000Z",
+              "homeTeamName": "Nokia",
+              "awayTeamName": "FK sakee",
+              "homeGoals": 4,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 51,
+      "season": 2,
+      "leagueId": 53,
+      "countryName": "Latvia",
+      "cupName": "Latvijas Nacionālais kauss",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "FK sakee",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681656905,
+      "updatedAt": 1785681656905,
+      "championLeagueId": null
+    },
+    "beforeSha256": "349ec319fb32eaa3100a858933ac7e7a3794ba5f22f7878248c6955006b44560",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 38,
+    "season": 10,
+    "country": "Malaysia",
+    "champion": "Ipoh United",
+    "runnerUp": "badang_fc",
+    "firstLeg": [
+      3,
+      0
+    ],
+    "secondLeg": [
+      1,
+      3
+    ],
+    "aggregate": [
+      4,
+      3
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Malaysia",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 38,
+          "season": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:11.294Z",
+        "response": {
+          "cupId": 38,
+          "cupName": "Piala Malaysia",
+          "season": 10,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 23875519,
+              "matchDate": "2004-09-15T05:00:00.000Z",
+              "homeTeamName": "badang_fc",
+              "awayTeamName": "Ipoh United",
+              "homeGoals": 3,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 38,
+          "season": 10,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:11.922Z",
+        "response": {
+          "cupId": 38,
+          "cupName": "Piala Malaysia",
+          "season": 10,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 23875518,
+              "matchDate": "2004-09-08T05:00:00.000Z",
+              "homeTeamName": "Ipoh United",
+              "awayTeamName": "badang_fc",
+              "homeGoals": 3,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 38,
+      "season": 10,
+      "leagueId": 45,
+      "countryName": "Malaysia",
+      "cupName": "Piala Malaysia",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "badang_fc",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": 12187246,
+      "championUserName": "Master_lim",
+      "createdAt": 1785681657033,
+      "updatedAt": 1785681657033,
+      "championLeagueId": null
+    },
+    "beforeSha256": "ae88b6387022214d464071ec16fa38bceea744e9e4bc58282ec66993162aaa04",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 9,
+    "season": 5,
+    "country": "Norway",
+    "champion": "Viking 2",
+    "runnerUp": "Rolf FK",
+    "firstLeg": [
+      3,
+      1
+    ],
+    "secondLeg": [
+      2,
+      3
+    ],
+    "aggregate": [
+      5,
+      4
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Norway",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 9,
+          "season": 5
+        },
+        "fetchedAt": "2026-09-10T22:29:12.559Z",
+        "response": {
+          "cupId": 9,
+          "cupName": "Norgesmesterskapet",
+          "season": 5,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 2523521,
+              "matchDate": "2002-07-24T16:00:00.000Z",
+              "homeTeamName": "Rolf FK",
+              "awayTeamName": "Viking 2",
+              "homeGoals": 3,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 9,
+          "season": 5,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:13.187Z",
+        "response": {
+          "cupId": 9,
+          "cupName": "Norgesmesterskapet",
+          "season": 5,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 2523520,
+              "matchDate": "2002-07-17T16:00:00.000Z",
+              "homeTeamName": "Viking 2",
+              "awayTeamName": "Rolf FK",
+              "homeGoals": 3,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 9,
+      "season": 5,
+      "leagueId": 9,
+      "countryName": "Norway",
+      "cupName": "Norgesmesterskapet",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Rolf FK",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681657377,
+      "updatedAt": 1785681657377,
+      "championLeagueId": null
+    },
+    "beforeSha256": "9cdb2e6c15832d555cf9c8a28eaab1e96f11c8d7fb3ad1d36e5f1fd2748c85e9",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 33,
+    "season": 6,
+    "country": "People's Republic of China",
+    "champion": "Aztec Warrior",
+    "runnerUp": "Tsing Yi's Club",
+    "firstLeg": [
+      4,
+      0
+    ],
+    "secondLeg": [
+      1,
+      2
+    ],
+    "aggregate": [
+      5,
+      2
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/China",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 33,
+          "season": 6
+        },
+        "fetchedAt": "2026-09-10T22:29:13.823Z",
+        "response": {
+          "cupId": 33,
+          "cupName": "China Cup",
+          "season": 6,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 4999483,
+              "matchDate": "2003-02-19T07:00:00.000Z",
+              "homeTeamName": "Aztec Warrior",
+              "awayTeamName": "Tsing Yi's Club",
+              "homeGoals": 1,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 33,
+          "season": 6,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:14.450Z",
+        "response": {
+          "cupId": 33,
+          "cupName": "China Cup",
+          "season": 6,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 4999482,
+              "matchDate": "2003-02-12T07:00:00.000Z",
+              "homeTeamName": "Tsing Yi's Club",
+              "awayTeamName": "Aztec Warrior",
+              "homeGoals": 0,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 33,
+      "season": 6,
+      "leagueId": 34,
+      "countryName": "People's Republic of China",
+      "cupName": "China Cup",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Tsing Yi's Club",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681657545,
+      "updatedAt": 1785681657545,
+      "championLeagueId": null
+    },
+    "beforeSha256": "e072acb8a315aefe0a05f8473443ba144c0382c6c6a9fe68acc7bb07c2246b95",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 34,
+    "season": 3,
+    "country": "Russia",
+    "champion": "FK Balashikha",
+    "runnerUp": "Baltika",
+    "firstLeg": [
+      8,
+      0
+    ],
+    "secondLeg": [
+      0,
+      1
+    ],
+    "aggregate": [
+      8,
+      1
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 34,
+          "season": 3
+        },
+        "fetchedAt": "2026-09-10T22:29:15.060Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 3,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 1549803,
+              "matchDate": "2002-03-06T08:30:00.000Z",
+              "homeTeamName": "Baltika",
+              "awayTeamName": "FK Balashikha",
+              "homeGoals": 1,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 34,
+          "season": 3,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:15.682Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 3,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 1549802,
+              "matchDate": "2002-02-27T08:30:00.000Z",
+              "homeTeamName": "FK Balashikha",
+              "awayTeamName": "Baltika",
+              "homeGoals": 8,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 34,
+      "season": 3,
+      "leagueId": 35,
+      "countryName": "Russia",
+      "cupName": "Кубок России",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Baltika",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681657735,
+      "updatedAt": 1785681657735,
+      "championLeagueId": null
+    },
+    "beforeSha256": "1092029e6b764b3dd2d5c073e8895673a32b8132175e93f81bcf78573ff81b40",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 34,
+    "season": 6,
+    "country": "Russia",
+    "champion": "FC Karelia",
+    "runnerUp": "Killaz",
+    "firstLeg": [
+      5,
+      1
+    ],
+    "secondLeg": [
+      2,
+      3
+    ],
+    "aggregate": [
+      7,
+      4
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 34,
+          "season": 6
+        },
+        "fetchedAt": "2026-09-10T22:29:16.314Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 6,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 4958185,
+              "matchDate": "2003-02-05T08:30:00.000Z",
+              "homeTeamName": "Killaz",
+              "awayTeamName": "FC Karelia",
+              "homeGoals": 3,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 34,
+          "season": 6,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:16.914Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 6,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 4958184,
+              "matchDate": "2003-01-29T08:30:00.000Z",
+              "homeTeamName": "FC Karelia",
+              "awayTeamName": "Killaz",
+              "homeGoals": 5,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 34,
+      "season": 6,
+      "leagueId": 35,
+      "countryName": "Russia",
+      "cupName": "Кубок России",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Killaz",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681657735,
+      "updatedAt": 1785681657735,
+      "championLeagueId": null
+    },
+    "beforeSha256": "b97cfd00d823a1985ea3bb40d5183ece86ddf861661a8d4a317093553777e4f4",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 34,
+    "season": 8,
+    "country": "Russia",
+    "champion": "Frozen Karelians",
+    "runnerUp": "FC Karelia",
+    "firstLeg": [
+      4,
+      2
+    ],
+    "secondLeg": [
+      2,
+      3
+    ],
+    "aggregate": [
+      6,
+      5
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 34,
+          "season": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:17.534Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 8,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 9682186,
+              "matchDate": "2003-10-01T08:30:00.000Z",
+              "homeTeamName": "Frozen Karelians",
+              "awayTeamName": "FC Karelia",
+              "homeGoals": 2,
+              "awayGoals": 3
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 34,
+          "season": 8,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:18.157Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 8,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 9682184,
+              "matchDate": "2003-09-24T08:30:00.000Z",
+              "homeTeamName": "FC Karelia",
+              "awayTeamName": "Frozen Karelians",
+              "homeGoals": 2,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 34,
+      "season": 8,
+      "leagueId": 35,
+      "countryName": "Russia",
+      "cupName": "Кубок России",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "FC Karelia",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": 58957,
+      "championUserName": "yuryan",
+      "createdAt": 1785681657735,
+      "updatedAt": 1785681657735,
+      "championLeagueId": null
+    },
+    "beforeSha256": "10d8f1db7d6262e09bffbad0d9db28fbab380488930c23aa120417f1f93d771d",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 27,
+    "season": 4,
+    "country": "Scotland",
+    "champion": "Barons Boys",
+    "runnerUp": "Glasgow_CELTIC",
+    "firstLeg": [
+      4,
+      2
+    ],
+    "secondLeg": [
+      1,
+      2
+    ],
+    "aggregate": [
+      5,
+      4
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Scotland",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 27,
+          "season": 4
+        },
+        "fetchedAt": "2026-09-10T22:29:18.795Z",
+        "response": {
+          "cupId": 27,
+          "cupName": "Scottish Cup",
+          "season": 4,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 2507063,
+              "matchDate": "2002-07-10T11:30:00.000Z",
+              "homeTeamName": "Glasgow_CELTIC",
+              "awayTeamName": "Barons Boys",
+              "homeGoals": 2,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 27,
+          "season": 4,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:19.412Z",
+        "response": {
+          "cupId": 27,
+          "cupName": "Scottish Cup",
+          "season": 4,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 2507062,
+              "matchDate": "2002-07-03T11:30:00.000Z",
+              "homeTeamName": "Barons Boys",
+              "awayTeamName": "Glasgow_CELTIC",
+              "homeGoals": 4,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 27,
+      "season": 4,
+      "leagueId": 26,
+      "countryName": "Scotland",
+      "cupName": "Scottish Cup",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Glasgow_CELTIC",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681657824,
+      "updatedAt": 1785681657824,
+      "championLeagueId": null
+    },
+    "beforeSha256": "6f9b7e40a45194051bf03dc19810b610a9dc26fa3117db9a75d5c0e27ace2621",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 55,
+    "season": 1,
+    "country": "Serbia",
+    "champion": "FC Kotor",
+    "runnerUp": "S.C Sabac",
+    "firstLeg": [
+      4,
+      0
+    ],
+    "secondLeg": [
+      0,
+      3
+    ],
+    "aggregate": [
+      4,
+      3
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Srbija",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 55,
+          "season": 1
+        },
+        "fetchedAt": "2026-09-10T22:29:20.026Z",
+        "response": {
+          "cupId": 55,
+          "cupName": "Куп Србије",
+          "season": 1,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 2499197,
+              "matchDate": "2002-07-03T12:45:00.000Z",
+              "homeTeamName": "S.C Sabac",
+              "awayTeamName": "FC Kotor",
+              "homeGoals": 3,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 55,
+          "season": 1,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:20.650Z",
+        "response": {
+          "cupId": 55,
+          "cupName": "Куп Србије",
+          "season": 1,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 2499196,
+              "matchDate": "2002-06-26T12:45:00.000Z",
+              "homeTeamName": "FC Kotor",
+              "awayTeamName": "S.C Sabac",
+              "homeGoals": 4,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 55,
+      "season": 1,
+      "leagueId": 57,
+      "countryName": "Serbia",
+      "cupName": "Куп Србије",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "S.C Sabac",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681657877,
+      "updatedAt": 1785681657877,
+      "championLeagueId": null
+    },
+    "beforeSha256": "a5c5b48d41bd7201544433446548e8ef42aabe4c5c6b0b3deb27eb9493816849",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 40,
+    "season": 2,
+    "country": "Singapore",
+    "champion": "Intergalactic Stars",
+    "runnerUp": "Soccer Advocates",
+    "firstLeg": [
+      4,
+      1
+    ],
+    "secondLeg": [
+      2,
+      3
+    ],
+    "aggregate": [
+      6,
+      4
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 40,
+          "season": 2
+        },
+        "fetchedAt": "2026-09-10T22:29:21.283Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 2,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 1561480,
+              "matchDate": "2002-03-20T04:30:00.000Z",
+              "homeTeamName": "Soccer Advocates",
+              "awayTeamName": "Intergalactic Stars",
+              "homeGoals": 3,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 40,
+          "season": 2,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:21.887Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 2,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 1561479,
+              "matchDate": "2002-03-13T04:30:00.000Z",
+              "homeTeamName": "Intergalactic Stars",
+              "awayTeamName": "Soccer Advocates",
+              "homeGoals": 4,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 40,
+      "season": 2,
+      "leagueId": 47,
+      "countryName": "Singapore",
+      "cupName": "Singapore Cup",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Soccer Advocates",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681657904,
+      "updatedAt": 1785681657904,
+      "championLeagueId": null
+    },
+    "beforeSha256": "0d1ed1f0c523175707f49142b4bf80a33bd641e2bc6c7434e84c19496f124758",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 40,
+    "season": 6,
+    "country": "Singapore",
+    "champion": "Herron",
+    "runnerUp": "Hattrick all the time",
+    "firstLeg": [
+      4,
+      0
+    ],
+    "secondLeg": [
+      1,
+      4
+    ],
+    "aggregate": [
+      5,
+      4
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 40,
+          "season": 6
+        },
+        "fetchedAt": "2026-09-10T22:29:22.531Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 6,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 7158900,
+              "matchDate": "2003-06-25T04:30:00.000Z",
+              "homeTeamName": "Hattrick all the time",
+              "awayTeamName": "Herron",
+              "homeGoals": 4,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 40,
+          "season": 6,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:23.145Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 6,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 7158899,
+              "matchDate": "2003-06-18T04:30:00.000Z",
+              "homeTeamName": "Herron",
+              "awayTeamName": "Hattrick all the time",
+              "homeGoals": 4,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 40,
+      "season": 6,
+      "leagueId": 47,
+      "countryName": "Singapore",
+      "cupName": "Singapore Cup",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Hattrick all the time",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681657904,
+      "updatedAt": 1785681657904,
+      "championLeagueId": null
+    },
+    "beforeSha256": "9baab4cd2927e552dd0f8db3ea94aac206ed2523f86b3186c7f861e6f6719238",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 40,
+    "season": 10,
+    "country": "Singapore",
+    "champion": "Team Singapore",
+    "runnerUp": "Herron",
+    "firstLeg": [
+      7,
+      1
+    ],
+    "secondLeg": [
+      5,
+      6
+    ],
+    "aggregate": [
+      12,
+      7
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 40,
+          "season": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:23.780Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 10,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 23875454,
+              "matchDate": "2004-09-15T04:30:00.000Z",
+              "homeTeamName": "Herron",
+              "awayTeamName": "Team Singapore",
+              "homeGoals": 6,
+              "awayGoals": 5
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 40,
+          "season": 10,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:24.400Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 10,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 23875453,
+              "matchDate": "2004-09-08T04:30:00.000Z",
+              "homeTeamName": "Team Singapore",
+              "awayTeamName": "Herron",
+              "homeGoals": 7,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 40,
+      "season": 10,
+      "leagueId": 47,
+      "countryName": "Singapore",
+      "cupName": "Singapore Cup",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Herron",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681657904,
+      "updatedAt": 1785681657904,
+      "championLeagueId": null
+    },
+    "beforeSha256": "464b1e4b8393136d6bee4caaf748a1698d1e5330441bea67c9b47aaaae307dc7",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 63,
+    "season": 7,
+    "country": "Slovenia",
+    "champion": "NK batman",
+    "runnerUp": "NK Proletarec",
+    "firstLeg": [
+      4,
+      0
+    ],
+    "secondLeg": [
+      1,
+      3
+    ],
+    "aggregate": [
+      5,
+      3
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Slovenia",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 63,
+          "season": 7
+        },
+        "fetchedAt": "2026-09-10T22:29:25.030Z",
+        "response": {
+          "cupId": 63,
+          "cupName": "Pokal Slovenije",
+          "season": 7,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 23872368,
+              "matchDate": "2004-09-14T19:30:00.000Z",
+              "homeTeamName": "NK Proletarec",
+              "awayTeamName": "NK batman",
+              "homeGoals": 3,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 63,
+          "season": 7,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:25.652Z",
+        "response": {
+          "cupId": 63,
+          "cupName": "Pokal Slovenije",
+          "season": 7,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 23872367,
+              "matchDate": "2004-09-07T19:30:00.000Z",
+              "homeTeamName": "NK batman",
+              "awayTeamName": "NK Proletarec",
+              "homeGoals": 4,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 63,
+      "season": 7,
+      "leagueId": 64,
+      "countryName": "Slovenia",
+      "cupName": "Pokal Slovenije",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "NK Proletarec",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": 187411,
+      "championUserName": "Roberto_K",
+      "createdAt": 1785681657960,
+      "updatedAt": 1785681657960,
+      "championLeagueId": null
+    },
+    "beforeSha256": "67096885458db4df8ce755257e663b09a3acc73c8a97b1a733b5c4b4e00a241b",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 43,
+    "season": 7,
+    "country": "Spain",
+    "champion": "Alien United",
+    "runnerUp": "Babylon 5",
+    "firstLeg": [
+      6,
+      2
+    ],
+    "secondLeg": [
+      2,
+      3
+    ],
+    "aggregate": [
+      8,
+      5
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Spain",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 43,
+          "season": 7
+        },
+        "fetchedAt": "2026-09-10T22:29:26.299Z",
+        "response": {
+          "cupId": 43,
+          "cupName": "Copa de España",
+          "season": 7,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 7226142,
+              "matchDate": "2003-07-09T12:30:00.000Z",
+              "homeTeamName": "Babylon 5",
+              "awayTeamName": "Alien United",
+              "homeGoals": 3,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 43,
+          "season": 7,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:29:26.922Z",
+        "response": {
+          "cupId": 43,
+          "cupName": "Copa de España",
+          "season": 7,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 7226141,
+              "matchDate": "2003-07-02T12:30:00.000Z",
+              "homeTeamName": "Alien United",
+              "awayTeamName": "Babylon 5",
+              "homeGoals": 6,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 43,
+      "season": 7,
+      "leagueId": 36,
+      "countryName": "Spain",
+      "cupName": "Copa de España",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Babylon 5",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": 58905,
+      "championUserName": "Lugonal",
+      "createdAt": 1785681658042,
+      "updatedAt": 1785681658042,
+      "championLeagueId": null
+    },
+    "beforeSha256": "9518cec298907155b9f9837b9e2f6f25897c5cd17f8237896265d2ce332437de",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 43,
+    "season": 11,
+    "country": "Spain",
+    "champion": "Ancestrales",
+    "runnerUp": "Alien United",
+    "firstLeg": [
+      4,
+      1
+    ],
+    "secondLeg": [
+      3,
+      5
+    ],
+    "aggregate": [
+      7,
+      6
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Spain",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 43,
+          "season": 11
+        },
+        "fetchedAt": "2026-09-10T22:29:27.554Z",
+        "response": {
+          "cupId": 43,
+          "cupName": "Copa de España",
+          "season": 11,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 24107682,
+              "matchDate": "2004-09-29T12:00:00.000Z",
+              "homeTeamName": "Alien United",
+              "awayTeamName": "Ancestrales",
+              "homeGoals": 5,
+              "awayGoals": 3
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 43,
+          "season": 11,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:29:28.176Z",
+        "response": {
+          "cupId": 43,
+          "cupName": "Copa de España",
+          "season": 11,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 24107681,
+              "matchDate": "2004-09-22T12:00:00.000Z",
+              "homeTeamName": "Ancestrales",
+              "awayTeamName": "Alien United",
+              "homeGoals": 4,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 43,
+      "season": 11,
+      "leagueId": 36,
+      "countryName": "Spain",
+      "cupName": "Copa de España",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "Alien United",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681658042,
+      "updatedAt": 1785681658042,
+      "championLeagueId": null
+    },
+    "beforeSha256": "4fc5f05537e1cc581b5c0174a3209a30358e6bad3bb221d0b9c6a2f3459ecd12",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  },
+  {
+    "cupId": 29,
+    "season": 6,
+    "country": "Thailand",
+    "champion": "Rama XI",
+    "runnerUp": "The Spirits of Football",
+    "firstLeg": [
+      4,
+      0
+    ],
+    "secondLeg": [
+      1,
+      2
+    ],
+    "aggregate": [
+      5,
+      2
+    ],
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Prathet_Thai",
+    "sourceKind": "CHPP cupmatches 1.2 two-leg aggregate corroborated by the exact HattrickWiki season winner",
+    "primaryEvidence": {
+      "file": "qa/cup-stored-primary-results.json",
+      "sha256": "57e6802bc67c4afc761bb8e0a25e3054d6ce0c246c4c6bfa7aa0f1b5aeb72478",
+      "apiFile": "cupmatches",
+      "apiVersion": "1.2",
+      "final": {
+        "requested": {
+          "cupId": 29,
+          "season": 6
+        },
+        "fetchedAt": "2026-09-10T22:29:28.805Z",
+        "response": {
+          "cupId": 29,
+          "cupName": "Thai Cup",
+          "season": 6,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 5041594,
+              "matchDate": "2003-03-05T05:30:00.000Z",
+              "homeTeamName": "Rama XI",
+              "awayTeamName": "The Spirits of Football",
+              "homeGoals": 1,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "previous": {
+        "requested": {
+          "cupId": 29,
+          "season": 6,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:29.429Z",
+        "response": {
+          "cupId": 29,
+          "cupName": "Thai Cup",
+          "season": 6,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 5041593,
+              "matchDate": "2003-02-26T05:30:00.000Z",
+              "homeTeamName": "The Spirits of Football",
+              "awayTeamName": "Rama XI",
+              "homeGoals": 0,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "noMatchDetailsRequested": true,
+      "finalMatchIdAlreadyStored": false
+    },
+    "evidence": "Both captured brackets contain exactly the same finalists, distinct match IDs and consecutive rounds. Independently summed goals make the Wiki champion the aggregate winner and the stored champion its runner-up.",
+    "before": {
+      "cupId": 29,
+      "season": 6,
+      "leagueId": 31,
+      "countryName": "Thailand",
+      "cupName": "Thai Cup",
+      "isMain": 1,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "championTeamName": "The Spirits of Football",
+      "runnerUpTeamName": "",
+      "homeGoals": 0,
+      "awayGoals": 0,
+      "penalties": 0,
+      "championUserId": null,
+      "championUserName": null,
+      "createdAt": 1785681658223,
+      "updatedAt": 1785681658223,
+      "championLeagueId": null
+    },
+    "beforeSha256": "cba5afd955fe63446e20e4519578633435ea64476538036a032b3bd44cf2739a",
+    "verifiedChampionTeamId": null,
+    "verifiedChampionUserId": null,
+    "verifiedChampionUserName": null
+  }
+]

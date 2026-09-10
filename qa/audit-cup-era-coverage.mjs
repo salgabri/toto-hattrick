@@ -1,0 +1,23 @@
+import{readFileSync,writeFileSync}from'node:fs';
+import{DatabaseSync}from'node:sqlite';
+const db=new DatabaseSync('server/prisma/dev.db',{readOnly:true});
+const seed=JSON.parse(readFileSync('server/src/data/leagues.json','utf8'));
+const globalReference=Math.max(...seed.filter(x=>x.isCountry).map(x=>x.currentSeason??0));
+const reviewOther=JSON.parse(readFileSync('qa/cup-stored-winner-mismatches-other.json','utf8'));
+const reviewFive=JSON.parse(readFileSync('qa/early-two-leg-winner-review.json','utf8'));
+const ranges=new Map([...reviewOther.reviewed.map(r=>[r.country,[1,r.seasonCap]]),...reviewFive.reviewed.map(r=>[r.country,r.localSeasonRange])]);
+const cups=db.prepare('SELECT c.*,n.currentSeason nationalCurrentSeason,n.isCountry FROM Cup c JOIN NationalLeague n ON n.leagueId=c.leagueId WHERE c.isMain=1 AND n.isCountry=1 ORDER BY c.leagueId').all();
+const report={checkedAt:new Date().toISOString(),method:{globalReference,seed:'server/src/data/leagues.json',offset:'globalReference minus country currentSeason from the same committed seed snapshot',twoLegLastGlobalSeason:23,conservativeReviewThroughGlobalSeason:24,transitionSources:[{url:'https://wiki.hattrick.org/wiki/Belgium_Cup',lastTwoLegLocal:10,firstSingleLocal:11,offset:13},{url:'https://wiki.hattrick.org/wiki/Copa_do_Brasil',lastTwoLegLocal:11,firstSingleLocal:12,offset:12}]},catalogInconsistencies:[],allEarlyCountries:[],unreviewedCountries:[],unreviewedRowsInReviewedCountries:[],totals:{}};
+for(const c of cups){const s=seed.find(x=>x.leagueId===c.leagueId);if(!s||s.currentSeason===null){report.catalogInconsistencies.push({cup:c.cupId,reason:'Missing seed season'});continue;}const offset=globalReference-s.currentSeason;
+if(s.currentSeason!==c.currentSeason||s.currentSeason!==c.nationalCurrentSeason)report.catalogInconsistencies.push({country:c.countryName,cup:c.cupId,seed:s.currentSeason,cupSeason:c.currentSeason,nationalSeason:c.nationalCurrentSeason});
+const cap=24-offset;
+const rows=db.prepare('SELECT cupId,season,finalMatchId,championTeamId,championTeamName,championUserId,championUserName FROM CupChampion WHERE cupId=? AND season<=? ORDER BY season').all(c.cupId,cap).map(r=>({...r,globalSeason:r.season+offset}));
+if(!rows.length)continue;
+const range=ranges.get(c.countryName);const unreviewed=range?rows.filter(r=>r.season<range[0]||r.season>range[1]):rows;
+const entry={country:c.countryName,cupId:c.cupId,leagueId:c.leagueId,seedLocalSeason:s.currentSeason,globalOffset:offset,localCapThroughGlobal24:cap,reviewedRange:range??null,storedRows:rows.length,twoLegEraRows:rows.filter(r=>r.globalSeason<=23).length,localStoredRange:[rows[0].season,rows.at(-1).season],unreviewedRows:unreviewed};
+report.allEarlyCountries.push({...entry,unreviewedRows:unreviewed.map(r=>r.season)});
+if(!range)report.unreviewedCountries.push(entry);else if(unreviewed.length)report.unreviewedRowsInReviewedCountries.push(entry);
+}
+db.close();report.totals={countriesWithRowsThroughGlobal24:report.allEarlyCountries.length,rowsThroughGlobal24:report.allEarlyCountries.reduce((n,r)=>n+r.storedRows,0),twoLegEraRows:report.allEarlyCountries.reduce((n,r)=>n+r.twoLegEraRows,0),whollyUnreviewedCountries:report.unreviewedCountries.length,whollyUnreviewedRowsThroughGlobal24:report.unreviewedCountries.reduce((n,r)=>n+r.storedRows,0),whollyUnreviewedTwoLegRows:report.unreviewedCountries.reduce((n,r)=>n+r.twoLegEraRows,0),additionalUnreviewedRowsInReviewedCountries:report.unreviewedRowsInReviewedCountries.reduce((n,r)=>n+r.unreviewedRows.length,0)};
+writeFileSync('qa/cup-two-leg-coverage-gaps.json',JSON.stringify(report,null,2));
+console.log(JSON.stringify({method:report.method,totals:report.totals,catalogInconsistencies:report.catalogInconsistencies,unreviewed:report.unreviewedCountries.map(({unreviewedRows,...r})=>r),reviewedCountryGaps:report.unreviewedRowsInReviewedCountries},null,2));

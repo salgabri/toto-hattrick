@@ -1,0 +1,307 @@
+{
+  "generatedAt": "2026-09-10T21:56:28.175Z",
+  "readOnly": true,
+  "databaseSha256": "625cecd7fd9689abf52acdedcbe703bca9338d18a91bbf9a8c00c66aa28e9e0f",
+  "rows": {
+    "Team": 0,
+    "Match": 0,
+    "MatchDetail": 0,
+    "SeasonStanding": 0,
+    "NationalLeague": 160,
+    "LeagueChampion": 9913,
+    "HattrickUser": 10892
+  },
+  "requests": {
+    "health": 1,
+    "scrape/targets": 1,
+    "scrape/done": 1,
+    "seasons": 1,
+    "champions": 1,
+    "season/matches": 1,
+    "team/summary": 1,
+    "season/standings": 1,
+    "match/detail": 1,
+    "national/leagues": 1,
+    "national/league/champions": 161,
+    "national/season": 95,
+    "users/nationalities": 1,
+    "users/leaderboard": 144,
+    "user/detail": 10893,
+    "invalid/path": 28,
+    "invalid/limit": 7
+  },
+  "requestCount": 11339,
+  "assertions": 75833,
+  "failureCount": 0,
+  "failures": [],
+  "findings": [
+    {
+      "severity": "P2",
+      "id": "invalid-path-500",
+      "description": "Malformed integer path parameters reach Prisma and return internal server errors instead of a 4xx validation response; some include internal source/query details.",
+      "cases": [
+        {
+          "path": "/api/seasons/abc/matches",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": "ntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  orderBy: {\n    matchDate: \"asc\"\n  }\n}\n\nArgument `season` is missing."
+        },
+        {
+          "path": "/api/seasons/1.5/matches",
+          "status": 200,
+          "returnedRows": 0,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/seasons/Infinity/matches",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": "ntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  orderBy: {\n    matchDate: \"asc\"\n  }\n}\n\nArgument `season` is missing."
+        },
+        {
+          "path": "/api/seasons/9007199254740993/matches",
+          "status": 200,
+          "returnedRows": 0,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/matches/abc",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": "\nInvalid `prisma.match.findUnique()` invocation:\n\n{\n  where: {\n+   matchId: Int\n  },\n  include: {\n    detail: true\n  }\n}\n\nArgument `matchId` is missing."
+        },
+        {
+          "path": "/api/matches/1.5",
+          "status": 404,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/matches/Infinity",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": "\nInvalid `prisma.match.findUnique()` invocation:\n\n{\n  where: {\n+   matchId: Int\n  },\n  include: {\n    detail: true\n  }\n}\n\nArgument `matchId` is missing."
+        },
+        {
+          "path": "/api/matches/9007199254740993",
+          "status": 404,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/teams/abc/summary",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": " IntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  orderBy: {\n    season: \"desc\"\n  }\n}\n\nArgument `teamId` is missing."
+        },
+        {
+          "path": "/api/teams/1.5/summary",
+          "status": 200,
+          "returnedRows": 0,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/teams/Infinity/summary",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": " IntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  orderBy: {\n    season: \"desc\"\n  }\n}\n\nArgument `teamId` is missing."
+        },
+        {
+          "path": "/api/teams/9007199254740993/summary",
+          "status": 200,
+          "returnedRows": 0,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/seasons/abc/standings",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": " | IntFieldRefInput,\n+     lte: Int | IntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  }\n}\n\nArgument `season` is missing."
+        },
+        {
+          "path": "/api/seasons/1.5/standings",
+          "status": 404,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/seasons/Infinity/standings",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": " | IntFieldRefInput,\n+     lte: Int | IntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  }\n}\n\nArgument `season` is missing."
+        },
+        {
+          "path": "/api/seasons/9007199254740993/standings",
+          "status": 404,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/national/leagues/abc/champions",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": "ntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  orderBy: {\n    season: \"desc\"\n  }\n}\n\nArgument `leagueId` is missing."
+        },
+        {
+          "path": "/api/national/leagues/1.5/champions",
+          "status": 200,
+          "returnedRows": 84,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/national/leagues/Infinity/champions",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": "ntFieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  orderBy: {\n    season: \"desc\"\n  }\n}\n\nArgument `leagueId` is missing."
+        },
+        {
+          "path": "/api/national/leagues/9007199254740993/champions",
+          "status": 200,
+          "returnedRows": 0,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/national/seasons/abc",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": "FieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  orderBy: {\n    countryName: \"asc\"\n  }\n}\n\nArgument `season` is missing."
+        },
+        {
+          "path": "/api/national/seasons/1.5",
+          "status": 200,
+          "returnedRows": 137,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/national/seasons/Infinity",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": "FieldRefInput,\n+     gt: Int | IntFieldRefInput,\n+     gte: Int | IntFieldRefInput,\n+     not: Int | NestedIntFilter\n+   }\n  },\n  orderBy: {\n    countryName: \"asc\"\n  }\n}\n\nArgument `season` is missing."
+        },
+        {
+          "path": "/api/national/seasons/9007199254740993",
+          "status": 200,
+          "returnedRows": 0,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/users/abc",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": "\nInvalid `prisma.hattrickUser.findUnique()` invocation:\n\n{\n  where: {\n+   userId: Int\n  }\n}\n\nArgument `userId` is missing."
+        },
+        {
+          "path": "/api/users/1.5",
+          "status": 404,
+          "leaksSourceLocation": false
+        },
+        {
+          "path": "/api/users/Infinity",
+          "status": 500,
+          "leaksSourceLocation": true,
+          "message": "\nInvalid `prisma.hattrickUser.findUnique()` invocation:\n\n{\n  where: {\n+   userId: Int\n  }\n}\n\nArgument `userId` is missing."
+        },
+        {
+          "path": "/api/users/9007199254740993",
+          "status": 404,
+          "leaksSourceLocation": false
+        }
+      ]
+    },
+    {
+      "severity": "P2",
+      "id": "invalid-leaderboard-limit",
+      "description": "Leaderboard limit accepts negative/noninteger/nonnumeric values without schema validation. Negative values return managers from the bottom of the ordering; fractional values are truncated; zero/nonnumeric values silently become 50.",
+      "cases": [
+        {
+          "limit": "-1",
+          "status": 200,
+          "count": 1,
+          "firstTitles": 1,
+          "lastTitles": 1
+        },
+        {
+          "limit": "-50",
+          "status": 200,
+          "count": 50,
+          "firstTitles": 1,
+          "lastTitles": 1
+        },
+        {
+          "limit": "1.5",
+          "status": 200,
+          "count": 1,
+          "firstTitles": 33,
+          "lastTitles": 33
+        },
+        {
+          "limit": "0",
+          "status": 200,
+          "count": 50,
+          "firstTitles": 33,
+          "lastTitles": 12
+        },
+        {
+          "limit": "abc",
+          "status": 200,
+          "count": 50,
+          "firstTitles": 33,
+          "lastTitles": 12
+        },
+        {
+          "limit": "Infinity",
+          "status": 200,
+          "count": 200,
+          "firstTitles": 33,
+          "lastTitles": 7
+        },
+        {
+          "limit": "9007199254740993",
+          "status": 200,
+          "count": 200,
+          "firstTitles": 33,
+          "lastTitles": 7
+        }
+      ]
+    },
+    {
+      "severity": "data-gap",
+      "id": "league-sentinel-facts",
+      "description": "Historical reconstruction leaves unknown played/points/club identity as numeric zero. The legacy API serializes these zeroes without a missing-data flag; winner identity/counts can still be valid.",
+      "counts": {
+        "n": 9913,
+        "zeroScoreFacts": 8908,
+        "unknownClubIds": 8908,
+        "unattributedManagers": 924
+      },
+      "examples": [
+        {
+          "leagueId": 98,
+          "season": 71,
+          "championTeamName": "KF Drinus",
+          "played": 0,
+          "points": 0,
+          "championTeamId": 0
+        },
+        {
+          "leagueId": 98,
+          "season": 70,
+          "championTeamName": "TEUTA   MILAN",
+          "played": 0,
+          "points": 0,
+          "championTeamId": 0
+        },
+        {
+          "leagueId": 98,
+          "season": 69,
+          "championTeamName": "F.C Tomori Berat",
+          "played": 0,
+          "points": 0,
+          "championTeamId": 0
+        }
+      ]
+    },
+    {
+      "severity": "coverage-gap",
+      "id": "empty-archive",
+      "description": "Team, Match, MatchDetail and SeasonStanding are empty; real-data match statistics, goals, W/D/L, lineups, ratings and reconstructed league-table arithmetic cannot be verified from this snapshot."
+    }
+  ],
+  "scope": "All 12 registerReadRoutes GET families plus health and two scrape reads. Every stored country, season, manager profile and nationality leaderboard checked. No CHPP or writes. Invalid-input probes reported separately from successful-data equality assertions."
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "cupId": 714,
+    "season": 38,
+    "matchId": 541334258,
+    "status": "mutual-walkover-no-winner-evidence",
+    "reason": "The final was declared a mutual walkover: neither club could field nine players. The retained CHPP source does not identify a winning team, so no champion is assigned.",
+    "eventTypeId": 500,
+    "subjectTeamId": 0,
+    "minute": 0,
+    "matchPart": 0,
+    "sample": "server/samples/cup-final-541334258-3.0.xml",
+    "sourceURL": "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=541334258&matchEvents=true"
+  }
+]

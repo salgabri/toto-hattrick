@@ -1,0 +1,41 @@
+{
+  "auditDatesLocal": ["2026-09-10", "2026-09-11"],
+  "timezone": "Europe/Zurich",
+  "target": "http://127.0.0.1:5183",
+  "method": "Codex supported browser controls; actual UI options; rendered DOM/accessibility snapshots; no browser-side data injection",
+  "clubRolls": {
+    "leagues": { "views": 160, "renderedRows": 9913, "emptyOrLoadingFailures": 0 },
+    "mainCups": { "views": 159, "renderedRows": 9754, "emptyOrLoadingFailures": 0 },
+    "secondaryCups": { "views": 636, "renderedRows": 21762, "footerCountMismatches": 0, "loadingFailures": 0 },
+    "seasonalCups": { "views": 24, "renderedRows": 578, "footerCountMismatches": 0, "loadingFailures": 0 },
+    "masters": { "views": 1, "renderedRows": 67, "footerCount": 67 },
+    "totalViews": 980,
+    "totalRenderedRows": 42074
+  },
+  "nationalCompetitions": {
+    "youth": { "World Cup": 40, "Africa Cup": 10, "America Cup": 10, "Asia and Oceania Cup": 10, "Europe Cup": 10, "Nations Cup": 9 },
+    "senior": { "World Cup": 41, "Africa Cup": 9, "America Cup": 9, "Asia and Oceania Cup": 9, "Europe Cup": 9, "Nations Cup": 9 },
+    "totalViews": 12,
+    "totalRowsIncludingOngoing": 175
+  },
+  "pooledMedalRows": {
+    "senior": { "nation": 108, "coach": 230, "coachNationality": 54 },
+    "youth": { "nation": 137, "coach": 242, "coachNationality": 52 },
+    "all": { "nation": 209, "coach": 430, "coachNationality": 67 }
+  },
+  "individualMedalNationRows": {
+    "senior": { "World Cup": 53, "Africa Cup": 16, "America Cup": 20, "Asia and Oceania Cup": 22, "Europe Cup": 24, "Nations Cup": 26 },
+    "youth": { "World Cup": 40, "Africa Cup": 18, "America Cup": 20, "Asia and Oceania Cup": 22, "Europe Cup": 24, "Nations Cup": 29 }
+  },
+  "elections": { "countryViews": 156, "renderedRows": 7137, "renderedVoteValues": 7137, "emptyOrLoadingFailures": 0, "managerCount": 1790, "managerNationalityCount": 120, "italianManagerCount": 164, "italianElectionWins": 670 },
+  "trophyPaginationAllCategories": { "pages": 204, "renderedManagers": 10186, "uniqueUserIds": 10186, "lastPageRows": 36, "nextDisabledOnLastPage": true, "missingUserIds": 0 },
+  "confirmedReproductions": [
+    { "id": "stale-cabinet", "manager": "maryusika", "steps": ["Open all-time manager search", "Expand cabinet", "Click Last 5"], "rowTotalBefore": 43, "rowTotalAfter": 8, "cabinetIncludedCountsAfter": { "league": 26, "main": 14, "masters": 2, "seasonal": 1 }, "expectedIncludedCountsAfter": { "league": 6, "main": 2, "masters": 0, "seasonal": 0 } },
+    { "id": "split-medal-nation", "scope": "youth", "displayed": [ { "nation": "Ireland", "gold": 0, "silver": 0, "bronze": 2 }, { "nation": "U21 Ireland", "gold": 1, "silver": 1, "bronze": 0 } ], "expectedCombined": { "gold": 1, "silver": 1, "bronze": 2 } },
+    { "id": "duplicate-login-panel", "country": "Bangladesh", "panel": "league", "displayedManager": "siftekhar", "displayedWins": 8, "linkedUserId": 11087526, "expectedWinsForLinkedUser": 5, "otherUserId": 5015911, "otherUserWins": 3 },
+    { "id": "youth-election-calendar", "manager": "JohnSparta", "country": "Ireland", "edition": 40, "displayedCycleEnd": "27.03.2026", "expectedCycleEnd": "17.07.2026", "displayedMandateResult": "none", "incorrectOutsideMandatesResult": "U21 Nations Cup / U21 Ireland / S40 / gold" }
+  ],
+  "sharePreview": { "view": "Bangladesh league", "url": "http://127.0.0.1:5183/?view=leagues&leagues.country=132", "correct": true, "clipboardOrExternalShareInvoked": false },
+  "console": { "observedWarningClass": "React conflicting border shorthand/longhand style properties on tab changes", "numericFailureEstablishedFromWarning": false },
+  "limits": ["Local development site, not a deployed production URL", "Every filter calculation tested in code; not every possible cross-product of UI interactions", "No claim of responsive/mobile visual QA", "Browser verification is DOM-based, not screenshot pixel comparison"]
+}

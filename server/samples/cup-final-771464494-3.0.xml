@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <Match>
+    <MatchID>771464494</MatchID>
+    <MatchType>7</MatchType>
+    <MatchContextId>183</MatchContextId>
+    <MatchDate>2026-09-10 20:00:00</MatchDate>
+    <FinishedDate>2026-09-10 22:21:00</FinishedDate>
+    <HomeTeam>
+      <HomeTeamID>1906561</HomeTeamID>
+      <HomeTeamName>e to the i*pi</HomeTeamName>
+      <HomeGoals>3</HomeGoals>
+    </HomeTeam>
+    <AwayTeam>
+      <AwayTeamID>1123755</AwayTeamID>
+      <AwayTeamName>FC Majir</AwayTeamName>
+      <AwayGoals>2</AwayGoals>
+    </AwayTeam>
+  </Match>
+</HattrickData>

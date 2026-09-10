@@ -1,0 +1,1166 @@
+{
+  "checkedAt": "2026-09-10T22:19:49.727Z",
+  "requests": 49,
+  "reused": 1,
+  "checks": [
+    {
+      "requested": {
+        "cupId": 37,
+        "season": 5,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 37,
+        "cupName": "Austria-Cup",
+        "season": 5,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 5041994,
+            "matchDate": "2003-02-26T09:30:00.000Z",
+            "homeTeamName": "pinky3367",
+            "awayTeamName": "Kickers-02",
+            "homeGoals": 2,
+            "awayGoals": 0
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 41,
+        "season": 6,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 41,
+        "cupName": "Belgium Cup",
+        "season": 6,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 7226388,
+            "matchDate": "2003-07-02T13:30:00.000Z",
+            "homeTeamName": "FC Drummer",
+            "awayTeamName": "De inheemse struiktegels",
+            "homeGoals": 3,
+            "awayGoals": 1
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 41,
+        "season": 9,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 41,
+        "cupName": "Belgium Cup",
+        "season": 9,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 18471272,
+            "matchDate": "2004-06-02T13:00:00.000Z",
+            "homeTeamName": "Berzerk Oostende",
+            "awayTeamName": "FC Karekiet",
+            "homeGoals": 3,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 15,
+        "season": 7,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 15,
+        "cupName": "Copa do Brasil",
+        "season": 7,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 7163050,
+            "matchDate": "2003-06-19T00:00:00.000Z",
+            "homeTeamName": "Bruno's Team",
+            "awayTeamName": "Alfabarra",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 15,
+        "season": 11,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 15,
+        "cupName": "Copa do Brasil",
+        "season": 11,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 24116894,
+            "matchDate": "2004-09-23T00:00:00.000Z",
+            "homeTeamName": "MFM",
+            "awayTeamName": "Alfabarra",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 61,
+        "season": 4,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 61,
+        "cupName": "Купа на България",
+        "season": 4,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 9681157,
+            "matchDate": "2003-09-23T22:00:00.000Z",
+            "homeTeamName": "Yellow squad",
+            "awayTeamName": "FC Presley",
+            "homeGoals": 5,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 17,
+        "season": 8,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 17,
+        "cupName": "Copa Chile",
+        "season": 8,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9781566,
+            "matchDate": "2003-10-09T02:45:00.000Z",
+            "homeTeamName": "ManchesterUnited",
+            "awayTeamName": "Universidad de Chile",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 17,
+        "season": 10,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 17,
+        "cupName": "Copa Chile",
+        "season": 10,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 18478955,
+            "matchDate": "2004-06-03T02:45:00.000Z",
+            "homeTeamName": "los matasanos",
+            "awayTeamName": "ManchesterUnited",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 59,
+        "season": 7,
+        "cupRound": 8
+      },
+      "response": {
+        "cupId": 59,
+        "cupName": "Phoenix Cup",
+        "season": 7,
+        "round": 8,
+        "matches": [
+          {
+            "matchId": 23440754,
+            "matchDate": "2004-08-11T03:00:00.000Z",
+            "homeTeamName": "NightWalkers",
+            "awayTeamName": "Passive Aggressive",
+            "homeGoals": 3,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 18,
+        "season": 8,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 18,
+        "cupName": "Copa Colombia",
+        "season": 8,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 9687662,
+            "matchDate": "2003-09-25T02:30:00.000Z",
+            "homeTeamName": "Nacional de Medellin",
+            "awayTeamName": "ATL NACIONAL",
+            "homeGoals": 0,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 56,
+        "season": 6,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 56,
+        "cupName": "Kup Hrvatske",
+        "season": 6,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 13774860,
+            "matchDate": "2004-01-28T08:45:00.000Z",
+            "homeTeamName": "Vrutki Opatija",
+            "awayTeamName": "Bloodwich-team",
+            "homeGoals": 0,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 56,
+        "season": 7,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 56,
+        "cupName": "Kup Hrvatske",
+        "season": 7,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 18279048,
+            "matchDate": "2004-05-19T08:45:00.000Z",
+            "homeTeamName": "BSK Brdovec",
+            "awayTeamName": "Kalelarga Legends",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 19,
+        "season": 11,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 19,
+        "cupName": "Kas Misr",
+        "season": 11,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 23654710,
+            "matchDate": "2004-08-25T08:45:00.000Z",
+            "homeTeamName": "Heliopolis Cairo",
+            "awayTeamName": "MOHANDESSEEN",
+            "homeGoals": 1,
+            "awayGoals": 0
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 3,
+        "season": 20,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 3,
+        "cupName": "English Cup",
+        "season": 20,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 9871104,
+            "matchDate": "2003-10-21T21:00:00.000Z",
+            "homeTeamName": "Durham City FC",
+            "awayTeamName": "Kester County",
+            "homeGoals": 1,
+            "awayGoals": 0
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 54,
+        "season": 5,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 54,
+        "cupName": "Eesti Karikas",
+        "season": 5,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9777092,
+            "matchDate": "2003-10-08T12:15:00.000Z",
+            "homeTeamName": "Vahe Tera",
+            "awayTeamName": "Luige United FC",
+            "homeGoals": 0,
+            "awayGoals": 1
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 6,
+        "season": 19,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 6,
+        "cupName": "Coupe de France",
+        "season": 19,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 7160870,
+            "matchDate": "2003-06-18T15:00:00.000Z",
+            "homeTeamName": "Nappes Xcutors",
+            "awayTeamName": "Sollet FK",
+            "homeGoals": 3,
+            "awayGoals": 0
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 6,
+        "season": 20,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 6,
+        "cupName": "Coupe de France",
+        "season": 20,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9778088,
+            "matchDate": "2003-10-08T15:00:00.000Z",
+            "homeTeamName": "AJ Auxerre",
+            "awayTeamName": "Nappes Xcutors",
+            "homeGoals": 0,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 4,
+        "season": 19,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 4,
+        "cupName": "Deutschland-Pokal",
+        "season": 19,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 7223753,
+            "matchDate": "2003-07-01T18:00:00.000Z",
+            "homeTeamName": "FC Phoenix Mühlburg",
+            "awayTeamName": "Exil Schwaben",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 48,
+        "season": 4,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 48,
+        "cupName": "Κύπελλο Ελλάδος",
+        "season": 4,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 7095333,
+            "matchDate": "2003-06-04T09:45:00.000Z",
+            "homeTeamName": "Spatania",
+            "awayTeamName": "CSKA Patras",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 48,
+        "season": 7,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 48,
+        "cupName": "Κύπελλο Ελλάδος",
+        "season": 7,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 18279488,
+            "matchDate": "2004-05-19T09:45:00.000Z",
+            "homeTeamName": "maxh marathona",
+            "awayTeamName": "Thalassokratya",
+            "homeGoals": 0,
+            "awayGoals": 3
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 58,
+        "season": 3,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 58,
+        "cupName": "Hong Kong Cup",
+        "season": 3,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 7095611,
+            "matchDate": "2003-06-04T11:00:00.000Z",
+            "homeTeamName": "shapeshifer",
+            "awayTeamName": "eXplore IAW FIFA",
+            "homeGoals": 2,
+            "awayGoals": 0
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 36,
+        "season": 5,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 36,
+        "cupName": "Íslandsbikarinn",
+        "season": 5,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 5000326,
+            "matchDate": "2003-02-12T15:30:00.000Z",
+            "homeTeamName": "The Boondock Raiders",
+            "awayTeamName": "Dakata FC",
+            "homeGoals": 4,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 20,
+        "season": 6,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 20,
+        "cupName": "Indian Cup",
+        "season": 6,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 4999444,
+            "matchDate": "2003-02-12T06:00:00.000Z",
+            "homeTeamName": "Abhi Lions",
+            "awayTeamName": "ravi' super 11",
+            "homeGoals": 5,
+            "awayGoals": 3
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 52,
+        "season": 6,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 52,
+        "cupName": "Indonesia Cup",
+        "season": 6,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 13640671,
+            "matchDate": "2004-01-14T07:45:00.000Z",
+            "homeTeamName": "Janggutan Capek",
+            "awayTeamName": "Nusukan FC",
+            "homeGoals": 2,
+            "awayGoals": 0
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 714,
+        "season": 38,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 714,
+        "cupName": "Alborz Cup",
+        "season": 38,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 541231712,
+            "matchDate": "2015-09-23T16:15:00.000Z",
+            "homeTeamName": "mahan",
+            "awayTeamName": "ooops_team",
+            "homeGoals": 1,
+            "awayGoals": 0
+          },
+          {
+            "matchId": 541231713,
+            "matchDate": "2015-09-23T16:15:00.000Z",
+            "homeTeamName": "PARMIN",
+            "awayTeamName": "Irane Sabz",
+            "homeGoals": 0,
+            "awayGoals": 6
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 7,
+        "season": 21,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 7,
+        "cupName": "Coppa Italia",
+        "season": 21,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 13913641,
+            "matchDate": "2004-02-10T19:00:00.000Z",
+            "homeTeamName": "Sporting Firenze",
+            "awayTeamName": "Sgainator F.C.",
+            "homeGoals": 0,
+            "awayGoals": 1
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 22,
+        "season": 7,
+        "cupRound": 8
+      },
+      "response": {
+        "cupId": 22,
+        "cupName": "The Emperor's Cup",
+        "season": 7,
+        "round": 8,
+        "matches": [
+          {
+            "matchId": 7028813,
+            "matchDate": "2003-05-21T02:30:00.000Z",
+            "homeTeamName": "Tire Kickers",
+            "awayTeamName": "Shirayuri Sky",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 51,
+        "season": 5,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 51,
+        "cupName": "Latvijas Nacionālais kauss",
+        "season": 5,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9777574,
+            "matchDate": "2003-10-08T13:45:00.000Z",
+            "homeTeamName": "Dinaburg FC",
+            "awayTeamName": "Devils Army",
+            "homeGoals": 1,
+            "awayGoals": 0
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 51,
+        "season": 6,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 51,
+        "cupName": "Latvijas Nacionālais kauss",
+        "season": 6,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 13776826,
+            "matchDate": "2004-01-28T13:45:00.000Z",
+            "homeTeamName": "The Magnificent One",
+            "awayTeamName": "Sun Set Park",
+            "homeGoals": 3,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 38,
+        "season": 5,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 38,
+        "cupName": "Piala Malaysia",
+        "season": 5,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 4999364,
+            "matchDate": "2003-02-12T05:00:00.000Z",
+            "homeTeamName": "Katamaran Divers",
+            "awayTeamName": "LET'S WIN IT.com",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 38,
+        "season": 9,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 38,
+        "cupName": "Piala Malaysia",
+        "season": 9,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 18277975,
+            "matchDate": "2004-05-19T05:00:00.000Z",
+            "homeTeamName": "Tiger ES",
+            "awayTeamName": "LET'S WIN IT.com",
+            "homeGoals": 3,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 13,
+        "season": 8,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 13,
+        "cupName": "KNVB Beker",
+        "season": 8,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 7227170,
+            "matchDate": "2003-07-02T17:00:00.000Z",
+            "homeTeamName": "Racing Selwerd FC",
+            "awayTeamName": "Real Raateland",
+            "homeGoals": 2,
+            "awayGoals": 3
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 9,
+        "season": 7,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 9,
+        "cupName": "Norgesmesterskapet",
+        "season": 7,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 5043017,
+            "matchDate": "2003-02-26T16:00:00.000Z",
+            "homeTeamName": "Molde",
+            "awayTeamName": "Birkelunden BK",
+            "homeGoals": 1,
+            "awayGoals": 6
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 14,
+        "season": 8,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 14,
+        "cupName": "Oceanian Cup",
+        "season": 8,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9775555,
+            "matchDate": "2003-10-08T04:00:00.000Z",
+            "homeTeamName": "tigers",
+            "awayTeamName": "Sparker",
+            "homeGoals": 1,
+            "awayGoals": 4
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 14,
+        "season": 10,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 14,
+        "cupName": "Oceanian Cup",
+        "season": 10,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 18467671,
+            "matchDate": "2004-06-02T04:00:00.000Z",
+            "homeTeamName": "Burnt Out Koalas FC",
+            "awayTeamName": "Klinsmen United",
+            "homeGoals": 5,
+            "awayGoals": 1
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 33,
+        "season": 5,
+        "cupRound": 8
+      },
+      "response": {
+        "cupId": 33,
+        "cupName": "China Cup",
+        "season": 5,
+        "round": 8,
+        "matches": [
+          {
+            "matchId": 3491084,
+            "matchDate": "2002-10-09T07:00:00.000Z",
+            "homeTeamName": "HotSpurs Asia",
+            "awayTeamName": "Ocean Panda",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 33,
+        "season": 9,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 33,
+        "cupName": "China Cup",
+        "season": 9,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 13640268,
+            "matchDate": "2004-01-14T07:00:00.000Z",
+            "homeTeamName": "Peace Dove",
+            "awayTeamName": "Tsing Yi Friends",
+            "homeGoals": 1,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 24,
+        "season": 11,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 24,
+        "cupName": "Copa Perú",
+        "season": 11,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 23888872,
+            "matchDate": "2004-09-09T03:45:00.000Z",
+            "homeTeamName": "Real Lima FC",
+            "awayTeamName": "C.A. Vizcardo",
+            "homeGoals": 4,
+            "awayGoals": 3
+          }
+        ]
+      }
+    },
+    {
+      "checkedAt": "2026-09-10T22:18:50.803Z",
+      "requested": {
+        "cupId": 25,
+        "season": 9,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 25,
+        "cupName": "Puchar Polski",
+        "season": 9,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 13915910,
+            "matchDate": "2004-02-11T09:00:00.000Z",
+            "homeTeamName": "Oceana F.C.",
+            "awayTeamName": "MKS Narew Ostroleka",
+            "homeGoals": 1,
+            "awayGoals": 5
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 34,
+        "season": 4,
+        "cupRound": 8
+      },
+      "response": {
+        "cupId": 34,
+        "cupName": "Кубок России",
+        "season": 4,
+        "round": 8,
+        "matches": [
+          {
+            "matchId": 2491000,
+            "matchDate": "2002-06-19T08:30:00.000Z",
+            "homeTeamName": "Tequila Lovers",
+            "awayTeamName": "FK Balashikha",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 34,
+        "season": 7,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 34,
+        "cupName": "Кубок России",
+        "season": 7,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 7095137,
+            "matchDate": "2003-06-04T08:30:00.000Z",
+            "homeTeamName": "KPEMEHb",
+            "awayTeamName": "Frozen Karelians",
+            "homeGoals": 4,
+            "awayGoals": 0
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 27,
+        "season": 11,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 27,
+        "cupName": "Scottish Cup",
+        "season": 11,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 23878536,
+            "matchDate": "2004-09-08T11:30:00.000Z",
+            "homeTeamName": "Bogglers Divided",
+            "awayTeamName": "Glasgow Athletic",
+            "homeGoals": 4,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 55,
+        "season": 7,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 55,
+        "cupName": "Куп Србије",
+        "season": 7,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 18092526,
+            "matchDate": "2004-05-05T12:45:00.000Z",
+            "homeTeamName": "Pigs F.C.",
+            "awayTeamName": "Dostin",
+            "homeGoals": 3,
+            "awayGoals": 5
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 40,
+        "season": 4,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 40,
+        "cupName": "Singapore Cup",
+        "season": 4,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 3517166,
+            "matchDate": "2002-10-23T04:30:00.000Z",
+            "homeTeamName": "FC Tenochtitlán",
+            "awayTeamName": "Hattrick all the time",
+            "homeGoals": 4,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 40,
+        "season": 8,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 40,
+        "cupName": "Singapore Cup",
+        "season": 8,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 13773954,
+            "matchDate": "2004-01-28T04:30:00.000Z",
+            "homeTeamName": "Winning Eleven",
+            "awayTeamName": "Herron",
+            "homeGoals": 2,
+            "awayGoals": 1
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 63,
+        "season": 5,
+        "cupRound": 10
+      },
+      "response": {
+        "cupId": 63,
+        "cupName": "Pokal Slovenije",
+        "season": 5,
+        "round": 10,
+        "matches": [
+          {
+            "matchId": 13638035,
+            "matchDate": "2004-01-13T19:30:00.000Z",
+            "homeTeamName": "VNK Carniola",
+            "awayTeamName": "Praslovan",
+            "homeGoals": 1,
+            "awayGoals": 5
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 43,
+        "season": 6,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 43,
+        "cupName": "Copa de España",
+        "season": 6,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 5086373,
+            "matchDate": "2003-03-12T12:30:00.000Z",
+            "homeTeamName": "Ancestrales",
+            "awayTeamName": "U. D. Son Sardina",
+            "homeGoals": 3,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 1,
+        "season": 16,
+        "cupRound": 14
+      },
+      "response": {
+        "cupId": 1,
+        "cupName": "Svenska Cupen",
+        "season": 16,
+        "round": 14,
+        "matches": [
+          {
+            "matchId": 2539639,
+            "matchDate": "2002-07-31T19:00:00.000Z",
+            "homeTeamName": "Arvidsjaur BK",
+            "awayTeamName": "Smackers United",
+            "homeGoals": 4,
+            "awayGoals": 2
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 29,
+        "season": 8,
+        "cupRound": 12
+      },
+      "response": {
+        "cupId": 29,
+        "cupName": "Thai Cup",
+        "season": 8,
+        "round": 12,
+        "matches": [
+          {
+            "matchId": 9775667,
+            "matchDate": "2003-10-08T05:30:00.000Z",
+            "homeTeamName": "Liverpool Thailand",
+            "awayTeamName": "-C-R-I-S-I-S-",
+            "homeGoals": 2,
+            "awayGoals": 4
+          }
+        ]
+      }
+    },
+    {
+      "requested": {
+        "cupId": 31,
+        "season": 4,
+        "cupRound": 8
+      },
+      "response": {
+        "cupId": 31,
+        "cupName": "Copa Uruguay",
+        "season": 4,
+        "round": 8,
+        "matches": [
+          {
+            "matchId": 2492135,
+            "matchDate": "2002-06-20T03:30:00.000Z",
+            "homeTeamName": "sacapuntas",
+            "awayTeamName": "el terrible",
+            "homeGoals": 1,
+            "awayGoals": 4
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,2030 @@
+{
+  "checkedAt": "2026-09-10T22:28:52.276Z",
+  "source": {
+    "file": "cupmatches",
+    "version": "1.2"
+  },
+  "scope": "The 30 explicit stored winner-only name-difference candidates; last and preceding cup rounds only.",
+  "requests": 60,
+  "reused": 0,
+  "checks": [
+    {
+      "cupId": 37,
+      "season": 10,
+      "countryName": "Austria",
+      "storedChampion": "databased.at",
+      "wikiChampion": "Gut",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Austria",
+      "final": {
+        "requested": {
+          "cupId": 37,
+          "season": 10
+        },
+        "fetchedAt": "2026-09-10T22:28:52.502Z",
+        "response": {
+          "cupId": 37,
+          "cupName": "Austria-Cup",
+          "season": 10,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 24105970,
+              "matchDate": "2004-09-29T09:30:00.000Z",
+              "homeTeamName": "Gut",
+              "awayTeamName": "databased.at",
+              "homeGoals": 2,
+              "awayGoals": 3
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 37,
+          "season": 10,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:28:53.118Z",
+        "response": {
+          "cupId": 37,
+          "cupName": "Austria-Cup",
+          "season": 10,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 24105969,
+              "matchDate": "2004-09-22T09:30:00.000Z",
+              "homeTeamName": "databased.at",
+              "awayTeamName": "Gut",
+              "homeGoals": 1,
+              "awayGoals": 3
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Gut",
+      "primaryRunnerUp": "databased.at",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 61,
+      "season": 2,
+      "countryName": "Bulgaria",
+      "storedChampion": "Cryout",
+      "wikiChampion": "Levski 1914",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Bulgaria",
+      "final": {
+        "requested": {
+          "cupId": 61,
+          "season": 2
+        },
+        "fetchedAt": "2026-09-10T22:28:53.757Z",
+        "response": {
+          "cupId": 61,
+          "cupName": "Купа на България",
+          "season": 2,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 4957735,
+              "matchDate": "2003-02-04T22:00:00.000Z",
+              "homeTeamName": "Cryout",
+              "awayTeamName": "Levski 1914",
+              "homeGoals": 2,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 61,
+          "season": 2,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:28:54.367Z",
+        "response": {
+          "cupId": 61,
+          "cupName": "Купа на България",
+          "season": 2,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 4957734,
+              "matchDate": "2003-01-28T22:00:00.000Z",
+              "homeTeamName": "Levski 1914",
+              "awayTeamName": "Cryout",
+              "homeGoals": 3,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Levski 1914",
+      "primaryRunnerUp": "Cryout",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 61,
+      "season": 6,
+      "countryName": "Bulgaria",
+      "storedChampion": "White Moon FC",
+      "wikiChampion": "Yellow squad",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Bulgaria",
+      "final": {
+        "requested": {
+          "cupId": 61,
+          "season": 6
+        },
+        "fetchedAt": "2026-09-10T22:28:54.992Z",
+        "response": {
+          "cupId": 61,
+          "cupName": "Купа на България",
+          "season": 6,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 18088075,
+              "matchDate": "2004-05-11T22:00:00.000Z",
+              "homeTeamName": "White Moon FC",
+              "awayTeamName": "Yellow squad",
+              "homeGoals": 5,
+              "awayGoals": 3
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 61,
+          "season": 6,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:28:55.604Z",
+        "response": {
+          "cupId": 61,
+          "cupName": "Купа на България",
+          "season": 6,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 18088074,
+              "matchDate": "2004-05-04T22:00:00.000Z",
+              "homeTeamName": "Yellow squad",
+              "awayTeamName": "White Moon FC",
+              "homeGoals": 5,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Yellow squad",
+      "primaryRunnerUp": "White Moon FC",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 17,
+      "season": 9,
+      "countryName": "Chile",
+      "storedChampion": "ManchesterUnited",
+      "wikiChampion": "Universidad de Chile",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Chile",
+      "final": {
+        "requested": {
+          "cupId": 17,
+          "season": 9
+        },
+        "fetchedAt": "2026-09-10T22:28:56.245Z",
+        "response": {
+          "cupId": 17,
+          "cupName": "Copa Chile",
+          "season": 9,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 13922970,
+              "matchDate": "2004-02-19T02:45:00.000Z",
+              "homeTeamName": "Universidad de Chile",
+              "awayTeamName": "ManchesterUnited",
+              "homeGoals": 1,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 17,
+          "season": 9,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:28:56.862Z",
+        "response": {
+          "cupId": 17,
+          "cupName": "Copa Chile",
+          "season": 9,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 13922969,
+              "matchDate": "2004-02-12T02:45:00.000Z",
+              "homeTeamName": "ManchesterUnited",
+              "awayTeamName": "Universidad de Chile",
+              "homeGoals": 1,
+              "awayGoals": 5
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Universidad de Chile",
+      "primaryRunnerUp": "ManchesterUnited",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 17,
+      "season": 11,
+      "countryName": "Chile",
+      "storedChampion": "Escuadron",
+      "wikiChampion": "Sion",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Chile",
+      "final": {
+        "requested": {
+          "cupId": 17,
+          "season": 11
+        },
+        "fetchedAt": "2026-09-10T22:28:57.487Z",
+        "response": {
+          "cupId": 17,
+          "cupName": "Copa Chile",
+          "season": 11,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 24117299,
+              "matchDate": "2004-09-30T02:45:00.000Z",
+              "homeTeamName": "Escuadron",
+              "awayTeamName": "Sion",
+              "homeGoals": 3,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 17,
+          "season": 11,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:28:58.110Z",
+        "response": {
+          "cupId": 17,
+          "cupName": "Copa Chile",
+          "season": 11,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 24117297,
+              "matchDate": "2004-09-23T02:45:00.000Z",
+              "homeTeamName": "Sion",
+              "awayTeamName": "Escuadron",
+              "homeGoals": 8,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Sion",
+      "primaryRunnerUp": "Escuadron",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 59,
+      "season": 3,
+      "countryName": "Chinese Taipei",
+      "storedChampion": "Passive Agressive",
+      "wikiChampion": "Golden Dragon",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Chinese_Taipei",
+      "final": {
+        "requested": {
+          "cupId": 59,
+          "season": 3
+        },
+        "fetchedAt": "2026-09-10T22:28:58.740Z",
+        "response": {
+          "cupId": 59,
+          "cupName": "Phoenix Cup",
+          "season": 3,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 7028845,
+              "matchDate": "2003-05-28T03:00:00.000Z",
+              "homeTeamName": "Golden Dragon",
+              "awayTeamName": "Passive Agressive",
+              "homeGoals": 1,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 59,
+          "season": 3,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:28:59.363Z",
+        "response": {
+          "cupId": 59,
+          "cupName": "Phoenix Cup",
+          "season": 3,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 7028844,
+              "matchDate": "2003-05-21T03:00:00.000Z",
+              "homeTeamName": "Passive Agressive",
+              "awayTeamName": "Golden Dragon",
+              "homeGoals": 2,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Golden Dragon",
+      "primaryRunnerUp": "Passive Agressive",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 56,
+      "season": 4,
+      "countryName": "Croatia",
+      "storedChampion": "Bjegunci",
+      "wikiChampion": "Folka United",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Croatia",
+      "final": {
+        "requested": {
+          "cupId": 56,
+          "season": 4
+        },
+        "fetchedAt": "2026-09-10T22:29:00.006Z",
+        "response": {
+          "cupId": 56,
+          "cupName": "Kup Hrvatske",
+          "season": 4,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 7159501,
+              "matchDate": "2003-06-25T08:45:00.000Z",
+              "homeTeamName": "Bjegunci",
+              "awayTeamName": "Folka United",
+              "homeGoals": 4,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 56,
+          "season": 4,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:00.630Z",
+        "response": {
+          "cupId": 56,
+          "cupName": "Kup Hrvatske",
+          "season": 4,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 7159500,
+              "matchDate": "2003-06-18T08:45:00.000Z",
+              "homeTeamName": "Folka United",
+              "awayTeamName": "Bjegunci",
+              "homeGoals": 5,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Folka United",
+      "primaryRunnerUp": "Bjegunci",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 19,
+      "season": 6,
+      "countryName": "Egypt",
+      "storedChampion": "Alexandria Pharaons",
+      "wikiChampion": "Alexandria Pharaohs",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Egypt",
+      "final": {
+        "requested": {
+          "cupId": 19,
+          "season": 6
+        },
+        "fetchedAt": "2026-09-10T22:29:01.270Z",
+        "response": {
+          "cupId": 19,
+          "cupName": "Kas Misr",
+          "season": 6,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 4958231,
+              "matchDate": "2003-02-05T08:45:00.000Z",
+              "homeTeamName": "Alexandria Pharaons",
+              "awayTeamName": "Alexandria Allstars",
+              "homeGoals": 4,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 19,
+          "season": 6,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:01.886Z",
+        "response": {
+          "cupId": 19,
+          "cupName": "Kas Misr",
+          "season": 6,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 4958230,
+              "matchDate": "2003-01-29T08:45:00.000Z",
+              "homeTeamName": "Alexandria Allstars",
+              "awayTeamName": "Alexandria Pharaons",
+              "homeGoals": 0,
+              "awayGoals": 6
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Alexandria Pharaons",
+      "primaryRunnerUp": "Alexandria Allstars",
+      "wikiMatchesPrimary": false,
+      "currentMatchesPrimary": true,
+      "currentEqualsPrimaryRunnerUp": false,
+      "classification": "stored-winner-agrees-with-primary"
+    },
+    {
+      "cupId": 19,
+      "season": 10,
+      "countryName": "Egypt",
+      "storedChampion": "Foxy",
+      "wikiChampion": "amazighteam",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Egypt",
+      "final": {
+        "requested": {
+          "cupId": 19,
+          "season": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:02.534Z",
+        "response": {
+          "cupId": 19,
+          "cupName": "Kas Misr",
+          "season": 10,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 18090433,
+              "matchDate": "2004-05-12T08:45:00.000Z",
+              "homeTeamName": "Foxy",
+              "awayTeamName": "amazighteam",
+              "homeGoals": 3,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 19,
+          "season": 10,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:03.145Z",
+        "response": {
+          "cupId": 19,
+          "cupName": "Kas Misr",
+          "season": 10,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 18090432,
+              "matchDate": "2004-05-05T08:45:00.000Z",
+              "homeTeamName": "amazighteam",
+              "awayTeamName": "Foxy",
+              "homeGoals": 6,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "amazighteam",
+      "primaryRunnerUp": "Foxy",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 54,
+      "season": 8,
+      "countryName": "Estonia",
+      "storedChampion": "FC Kallic",
+      "wikiChampion": "K-J Jotad",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Estonia",
+      "final": {
+        "requested": {
+          "cupId": 54,
+          "season": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:03.769Z",
+        "response": {
+          "cupId": 54,
+          "cupName": "Eesti Karikas",
+          "season": 8,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 24107957,
+              "matchDate": "2004-09-29T12:15:00.000Z",
+              "homeTeamName": "K-J Jotad",
+              "awayTeamName": "FC Kallic",
+              "homeGoals": 1,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 54,
+          "season": 8,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:29:04.402Z",
+        "response": {
+          "cupId": 54,
+          "cupName": "Eesti Karikas",
+          "season": 8,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 24107956,
+              "matchDate": "2004-09-22T12:15:00.000Z",
+              "homeTeamName": "FC Kallic",
+              "awayTeamName": "K-J Jotad",
+              "homeGoals": 2,
+              "awayGoals": 5
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "K-J Jotad",
+      "primaryRunnerUp": "FC Kallic",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 4,
+      "season": 23,
+      "countryName": "Germany",
+      "storedChampion": "FC Teerlunge",
+      "wikiChampion": "FC Martini",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Germany",
+      "final": {
+        "requested": {
+          "cupId": 4,
+          "season": 23
+        },
+        "fetchedAt": "2026-09-10T22:29:05.035Z",
+        "response": {
+          "cupId": 4,
+          "cupName": "Deutschland-Pokal",
+          "season": 23,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 24099851,
+              "matchDate": "2004-09-28T18:00:00.000Z",
+              "homeTeamName": "FC Martini",
+              "awayTeamName": "FC Teerlunge",
+              "homeGoals": 3,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 4,
+          "season": 23,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:29:05.650Z",
+        "response": {
+          "cupId": 4,
+          "cupName": "Deutschland-Pokal",
+          "season": 23,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 24099850,
+              "matchDate": "2004-09-21T18:00:00.000Z",
+              "homeTeamName": "FC Teerlunge",
+              "awayTeamName": "FC Martini",
+              "homeGoals": 0,
+              "awayGoals": 6
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "FC Martini",
+      "primaryRunnerUp": "FC Teerlunge",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 36,
+      "season": 10,
+      "countryName": "Iceland",
+      "storedChampion": "Starkers",
+      "wikiChampion": "sir_mb",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/%C3%8Dsland",
+      "final": {
+        "requested": {
+          "cupId": 36,
+          "season": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:06.282Z",
+        "response": {
+          "cupId": 36,
+          "cupName": "Íslandsbikarinn",
+          "season": 10,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 23663292,
+              "matchDate": "2004-09-01T20:45:00.000Z",
+              "homeTeamName": "Starkers",
+              "awayTeamName": "Silkimenn",
+              "homeGoals": 6,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 36,
+          "season": 10,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:06.908Z",
+        "response": {
+          "cupId": 36,
+          "cupName": "Íslandsbikarinn",
+          "season": 10,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 23663291,
+              "matchDate": "2004-08-25T20:45:00.000Z",
+              "homeTeamName": "Silkimenn",
+              "awayTeamName": "Starkers",
+              "homeGoals": 0,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Starkers",
+      "primaryRunnerUp": "Silkimenn",
+      "wikiMatchesPrimary": false,
+      "currentMatchesPrimary": true,
+      "currentEqualsPrimaryRunnerUp": false,
+      "classification": "stored-winner-agrees-with-primary"
+    },
+    {
+      "cupId": 36,
+      "season": 12,
+      "countryName": "Iceland",
+      "storedChampion": "Valkyries",
+      "wikiChampion": "Mummi",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/%C3%8Dsland",
+      "final": {
+        "requested": {
+          "cupId": 36,
+          "season": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:07.530Z",
+        "response": {
+          "cupId": 36,
+          "cupName": "Íslandsbikarinn",
+          "season": 12,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 38402914,
+              "matchDate": "2005-03-30T20:45:00.000Z",
+              "homeTeamName": "Valkyries",
+              "awayTeamName": "Mumbai maestro",
+              "homeGoals": 4,
+              "awayGoals": 3
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 36,
+          "season": 12,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:08.172Z",
+        "response": {
+          "cupId": 36,
+          "cupName": "Íslandsbikarinn",
+          "season": 12,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 38240676,
+              "matchDate": "2005-03-23T20:45:00.000Z",
+              "homeTeamName": "Valkyries",
+              "awayTeamName": "Dakata FC",
+              "homeGoals": 3,
+              "awayGoals": 2
+            },
+            {
+              "matchId": 38240677,
+              "matchDate": "2005-03-23T20:45:00.000Z",
+              "homeTeamName": "Fótboltastrákarnir",
+              "awayTeamName": "Mumbai maestro",
+              "homeGoals": 0,
+              "awayGoals": 7
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "score",
+        "format": "single"
+      },
+      "primaryChampion": "Valkyries",
+      "primaryRunnerUp": "Mumbai maestro",
+      "wikiMatchesPrimary": false,
+      "currentMatchesPrimary": true,
+      "currentEqualsPrimaryRunnerUp": false,
+      "classification": "stored-winner-agrees-with-primary"
+    },
+    {
+      "cupId": 52,
+      "season": 3,
+      "countryName": "Indonesia",
+      "storedChampion": "rage against d' machine fc",
+      "wikiChampion": "italy_A",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Indonesia",
+      "final": {
+        "requested": {
+          "cupId": 52,
+          "season": 3
+        },
+        "fetchedAt": "2026-09-10T22:29:08.793Z",
+        "response": {
+          "cupId": 52,
+          "cupName": "Indonesia Cup",
+          "season": 3,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 4999540,
+              "matchDate": "2003-02-19T07:45:00.000Z",
+              "homeTeamName": "italy_A",
+              "awayTeamName": "rage against d' machine fc",
+              "homeGoals": 1,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 52,
+          "season": 3,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:09.403Z",
+        "response": {
+          "cupId": 52,
+          "cupName": "Indonesia Cup",
+          "season": 3,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 4999539,
+              "matchDate": "2003-02-12T07:45:00.000Z",
+              "homeTeamName": "rage against d' machine fc",
+              "awayTeamName": "italy_A",
+              "homeGoals": 1,
+              "awayGoals": 6
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "italy_A",
+      "primaryRunnerUp": "rage against d' machine fc",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 51,
+      "season": 2,
+      "countryName": "Latvia",
+      "storedChampion": "FK sakee",
+      "wikiChampion": "Nokia",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Latvija",
+      "final": {
+        "requested": {
+          "cupId": 51,
+          "season": 2
+        },
+        "fetchedAt": "2026-09-10T22:29:10.037Z",
+        "response": {
+          "cupId": 51,
+          "cupName": "Latvijas Nacionālais kauss",
+          "season": 2,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 3491602,
+              "matchDate": "2002-10-16T13:45:00.000Z",
+              "homeTeamName": "FK sakee",
+              "awayTeamName": "Nokia",
+              "homeGoals": 2,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 51,
+          "season": 2,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:10.673Z",
+        "response": {
+          "cupId": 51,
+          "cupName": "Latvijas Nacionālais kauss",
+          "season": 2,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 3491601,
+              "matchDate": "2002-10-09T13:45:00.000Z",
+              "homeTeamName": "Nokia",
+              "awayTeamName": "FK sakee",
+              "homeGoals": 4,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Nokia",
+      "primaryRunnerUp": "FK sakee",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 38,
+      "season": 10,
+      "countryName": "Malaysia",
+      "storedChampion": "badang_fc",
+      "wikiChampion": "Ipoh United",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Malaysia",
+      "final": {
+        "requested": {
+          "cupId": 38,
+          "season": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:11.294Z",
+        "response": {
+          "cupId": 38,
+          "cupName": "Piala Malaysia",
+          "season": 10,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 23875519,
+              "matchDate": "2004-09-15T05:00:00.000Z",
+              "homeTeamName": "badang_fc",
+              "awayTeamName": "Ipoh United",
+              "homeGoals": 3,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 38,
+          "season": 10,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:11.922Z",
+        "response": {
+          "cupId": 38,
+          "cupName": "Piala Malaysia",
+          "season": 10,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 23875518,
+              "matchDate": "2004-09-08T05:00:00.000Z",
+              "homeTeamName": "Ipoh United",
+              "awayTeamName": "badang_fc",
+              "homeGoals": 3,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Ipoh United",
+      "primaryRunnerUp": "badang_fc",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 9,
+      "season": 5,
+      "countryName": "Norway",
+      "storedChampion": "Rolf FK",
+      "wikiChampion": "Viking 2",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Norway",
+      "final": {
+        "requested": {
+          "cupId": 9,
+          "season": 5
+        },
+        "fetchedAt": "2026-09-10T22:29:12.559Z",
+        "response": {
+          "cupId": 9,
+          "cupName": "Norgesmesterskapet",
+          "season": 5,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 2523521,
+              "matchDate": "2002-07-24T16:00:00.000Z",
+              "homeTeamName": "Rolf FK",
+              "awayTeamName": "Viking 2",
+              "homeGoals": 3,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 9,
+          "season": 5,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:13.187Z",
+        "response": {
+          "cupId": 9,
+          "cupName": "Norgesmesterskapet",
+          "season": 5,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 2523520,
+              "matchDate": "2002-07-17T16:00:00.000Z",
+              "homeTeamName": "Viking 2",
+              "awayTeamName": "Rolf FK",
+              "homeGoals": 3,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Viking 2",
+      "primaryRunnerUp": "Rolf FK",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 33,
+      "season": 6,
+      "countryName": "People's Republic of China",
+      "storedChampion": "Tsing Yi's Club",
+      "wikiChampion": "Aztec Warrior",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/China",
+      "final": {
+        "requested": {
+          "cupId": 33,
+          "season": 6
+        },
+        "fetchedAt": "2026-09-10T22:29:13.823Z",
+        "response": {
+          "cupId": 33,
+          "cupName": "China Cup",
+          "season": 6,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 4999483,
+              "matchDate": "2003-02-19T07:00:00.000Z",
+              "homeTeamName": "Aztec Warrior",
+              "awayTeamName": "Tsing Yi's Club",
+              "homeGoals": 1,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 33,
+          "season": 6,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:14.450Z",
+        "response": {
+          "cupId": 33,
+          "cupName": "China Cup",
+          "season": 6,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 4999482,
+              "matchDate": "2003-02-12T07:00:00.000Z",
+              "homeTeamName": "Tsing Yi's Club",
+              "awayTeamName": "Aztec Warrior",
+              "homeGoals": 0,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Aztec Warrior",
+      "primaryRunnerUp": "Tsing Yi's Club",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 34,
+      "season": 3,
+      "countryName": "Russia",
+      "storedChampion": "Baltika",
+      "wikiChampion": "FK Balashikha",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+      "final": {
+        "requested": {
+          "cupId": 34,
+          "season": 3
+        },
+        "fetchedAt": "2026-09-10T22:29:15.060Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 3,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 1549803,
+              "matchDate": "2002-03-06T08:30:00.000Z",
+              "homeTeamName": "Baltika",
+              "awayTeamName": "FK Balashikha",
+              "homeGoals": 1,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 34,
+          "season": 3,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:15.682Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 3,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 1549802,
+              "matchDate": "2002-02-27T08:30:00.000Z",
+              "homeTeamName": "FK Balashikha",
+              "awayTeamName": "Baltika",
+              "homeGoals": 8,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "FK Balashikha",
+      "primaryRunnerUp": "Baltika",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 34,
+      "season": 6,
+      "countryName": "Russia",
+      "storedChampion": "Killaz",
+      "wikiChampion": "FC Karelia",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+      "final": {
+        "requested": {
+          "cupId": 34,
+          "season": 6
+        },
+        "fetchedAt": "2026-09-10T22:29:16.314Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 6,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 4958185,
+              "matchDate": "2003-02-05T08:30:00.000Z",
+              "homeTeamName": "Killaz",
+              "awayTeamName": "FC Karelia",
+              "homeGoals": 3,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 34,
+          "season": 6,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:16.914Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 6,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 4958184,
+              "matchDate": "2003-01-29T08:30:00.000Z",
+              "homeTeamName": "FC Karelia",
+              "awayTeamName": "Killaz",
+              "homeGoals": 5,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "FC Karelia",
+      "primaryRunnerUp": "Killaz",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 34,
+      "season": 8,
+      "countryName": "Russia",
+      "storedChampion": "FC Karelia",
+      "wikiChampion": "Frozen Karelians",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Rossiya",
+      "final": {
+        "requested": {
+          "cupId": 34,
+          "season": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:17.534Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 8,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 9682186,
+              "matchDate": "2003-10-01T08:30:00.000Z",
+              "homeTeamName": "Frozen Karelians",
+              "awayTeamName": "FC Karelia",
+              "homeGoals": 2,
+              "awayGoals": 3
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 34,
+          "season": 8,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:18.157Z",
+        "response": {
+          "cupId": 34,
+          "cupName": "Кубок России",
+          "season": 8,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 9682184,
+              "matchDate": "2003-09-24T08:30:00.000Z",
+              "homeTeamName": "FC Karelia",
+              "awayTeamName": "Frozen Karelians",
+              "homeGoals": 2,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Frozen Karelians",
+      "primaryRunnerUp": "FC Karelia",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 27,
+      "season": 4,
+      "countryName": "Scotland",
+      "storedChampion": "Glasgow_CELTIC",
+      "wikiChampion": "Barons Boys",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Scotland",
+      "final": {
+        "requested": {
+          "cupId": 27,
+          "season": 4
+        },
+        "fetchedAt": "2026-09-10T22:29:18.795Z",
+        "response": {
+          "cupId": 27,
+          "cupName": "Scottish Cup",
+          "season": 4,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 2507063,
+              "matchDate": "2002-07-10T11:30:00.000Z",
+              "homeTeamName": "Glasgow_CELTIC",
+              "awayTeamName": "Barons Boys",
+              "homeGoals": 2,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 27,
+          "season": 4,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:19.412Z",
+        "response": {
+          "cupId": 27,
+          "cupName": "Scottish Cup",
+          "season": 4,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 2507062,
+              "matchDate": "2002-07-03T11:30:00.000Z",
+              "homeTeamName": "Barons Boys",
+              "awayTeamName": "Glasgow_CELTIC",
+              "homeGoals": 4,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Barons Boys",
+      "primaryRunnerUp": "Glasgow_CELTIC",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 55,
+      "season": 1,
+      "countryName": "Serbia",
+      "storedChampion": "S.C Sabac",
+      "wikiChampion": "FC Kotor",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Srbija",
+      "final": {
+        "requested": {
+          "cupId": 55,
+          "season": 1
+        },
+        "fetchedAt": "2026-09-10T22:29:20.026Z",
+        "response": {
+          "cupId": 55,
+          "cupName": "Куп Србије",
+          "season": 1,
+          "round": 9,
+          "matches": [
+            {
+              "matchId": 2499197,
+              "matchDate": "2002-07-03T12:45:00.000Z",
+              "homeTeamName": "S.C Sabac",
+              "awayTeamName": "FC Kotor",
+              "homeGoals": 3,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 55,
+          "season": 1,
+          "cupRound": 8
+        },
+        "fetchedAt": "2026-09-10T22:29:20.650Z",
+        "response": {
+          "cupId": 55,
+          "cupName": "Куп Србије",
+          "season": 1,
+          "round": 8,
+          "matches": [
+            {
+              "matchId": 2499196,
+              "matchDate": "2002-06-26T12:45:00.000Z",
+              "homeTeamName": "FC Kotor",
+              "awayTeamName": "S.C Sabac",
+              "homeGoals": 4,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "FC Kotor",
+      "primaryRunnerUp": "S.C Sabac",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 40,
+      "season": 2,
+      "countryName": "Singapore",
+      "storedChampion": "Soccer Advocates",
+      "wikiChampion": "Intergalactic Stars",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Singapore",
+      "final": {
+        "requested": {
+          "cupId": 40,
+          "season": 2
+        },
+        "fetchedAt": "2026-09-10T22:29:21.283Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 2,
+          "round": 11,
+          "matches": [
+            {
+              "matchId": 1561480,
+              "matchDate": "2002-03-20T04:30:00.000Z",
+              "homeTeamName": "Soccer Advocates",
+              "awayTeamName": "Intergalactic Stars",
+              "homeGoals": 3,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 40,
+          "season": 2,
+          "cupRound": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:21.887Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 2,
+          "round": 10,
+          "matches": [
+            {
+              "matchId": 1561479,
+              "matchDate": "2002-03-13T04:30:00.000Z",
+              "homeTeamName": "Intergalactic Stars",
+              "awayTeamName": "Soccer Advocates",
+              "homeGoals": 4,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Intergalactic Stars",
+      "primaryRunnerUp": "Soccer Advocates",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 40,
+      "season": 6,
+      "countryName": "Singapore",
+      "storedChampion": "Hattrick all the time",
+      "wikiChampion": "Herron",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Singapore",
+      "final": {
+        "requested": {
+          "cupId": 40,
+          "season": 6
+        },
+        "fetchedAt": "2026-09-10T22:29:22.531Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 6,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 7158900,
+              "matchDate": "2003-06-25T04:30:00.000Z",
+              "homeTeamName": "Hattrick all the time",
+              "awayTeamName": "Herron",
+              "homeGoals": 4,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 40,
+          "season": 6,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:23.145Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 6,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 7158899,
+              "matchDate": "2003-06-18T04:30:00.000Z",
+              "homeTeamName": "Herron",
+              "awayTeamName": "Hattrick all the time",
+              "homeGoals": 4,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Herron",
+      "primaryRunnerUp": "Hattrick all the time",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 40,
+      "season": 10,
+      "countryName": "Singapore",
+      "storedChampion": "Herron",
+      "wikiChampion": "Team Singapore",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Singapore",
+      "final": {
+        "requested": {
+          "cupId": 40,
+          "season": 10
+        },
+        "fetchedAt": "2026-09-10T22:29:23.780Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 10,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 23875454,
+              "matchDate": "2004-09-15T04:30:00.000Z",
+              "homeTeamName": "Herron",
+              "awayTeamName": "Team Singapore",
+              "homeGoals": 6,
+              "awayGoals": 5
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 40,
+          "season": 10,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:24.400Z",
+        "response": {
+          "cupId": 40,
+          "cupName": "Singapore Cup",
+          "season": 10,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 23875453,
+              "matchDate": "2004-09-08T04:30:00.000Z",
+              "homeTeamName": "Team Singapore",
+              "awayTeamName": "Herron",
+              "homeGoals": 7,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Team Singapore",
+      "primaryRunnerUp": "Herron",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 63,
+      "season": 7,
+      "countryName": "Slovenia",
+      "storedChampion": "NK Proletarec",
+      "wikiChampion": "NK batman",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Slovenia",
+      "final": {
+        "requested": {
+          "cupId": 63,
+          "season": 7
+        },
+        "fetchedAt": "2026-09-10T22:29:25.030Z",
+        "response": {
+          "cupId": 63,
+          "cupName": "Pokal Slovenije",
+          "season": 7,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 23872368,
+              "matchDate": "2004-09-14T19:30:00.000Z",
+              "homeTeamName": "NK Proletarec",
+              "awayTeamName": "NK batman",
+              "homeGoals": 3,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 63,
+          "season": 7,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:25.652Z",
+        "response": {
+          "cupId": 63,
+          "cupName": "Pokal Slovenije",
+          "season": 7,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 23872367,
+              "matchDate": "2004-09-07T19:30:00.000Z",
+              "homeTeamName": "NK batman",
+              "awayTeamName": "NK Proletarec",
+              "homeGoals": 4,
+              "awayGoals": 0
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "NK batman",
+      "primaryRunnerUp": "NK Proletarec",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 43,
+      "season": 7,
+      "countryName": "Spain",
+      "storedChampion": "Babylon 5",
+      "wikiChampion": "Alien United",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Spain",
+      "final": {
+        "requested": {
+          "cupId": 43,
+          "season": 7
+        },
+        "fetchedAt": "2026-09-10T22:29:26.299Z",
+        "response": {
+          "cupId": 43,
+          "cupName": "Copa de España",
+          "season": 7,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 7226142,
+              "matchDate": "2003-07-09T12:30:00.000Z",
+              "homeTeamName": "Babylon 5",
+              "awayTeamName": "Alien United",
+              "homeGoals": 3,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 43,
+          "season": 7,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:29:26.922Z",
+        "response": {
+          "cupId": 43,
+          "cupName": "Copa de España",
+          "season": 7,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 7226141,
+              "matchDate": "2003-07-02T12:30:00.000Z",
+              "homeTeamName": "Alien United",
+              "awayTeamName": "Babylon 5",
+              "homeGoals": 6,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Alien United",
+      "primaryRunnerUp": "Babylon 5",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 43,
+      "season": 11,
+      "countryName": "Spain",
+      "storedChampion": "Alien United",
+      "wikiChampion": "Ancestrales",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Spain",
+      "final": {
+        "requested": {
+          "cupId": 43,
+          "season": 11
+        },
+        "fetchedAt": "2026-09-10T22:29:27.554Z",
+        "response": {
+          "cupId": 43,
+          "cupName": "Copa de España",
+          "season": 11,
+          "round": 15,
+          "matches": [
+            {
+              "matchId": 24107682,
+              "matchDate": "2004-09-29T12:00:00.000Z",
+              "homeTeamName": "Alien United",
+              "awayTeamName": "Ancestrales",
+              "homeGoals": 5,
+              "awayGoals": 3
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 43,
+          "season": 11,
+          "cupRound": 14
+        },
+        "fetchedAt": "2026-09-10T22:29:28.176Z",
+        "response": {
+          "cupId": 43,
+          "cupName": "Copa de España",
+          "season": 11,
+          "round": 14,
+          "matches": [
+            {
+              "matchId": 24107681,
+              "matchDate": "2004-09-22T12:00:00.000Z",
+              "homeTeamName": "Ancestrales",
+              "awayTeamName": "Alien United",
+              "homeGoals": 4,
+              "awayGoals": 1
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": false,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Ancestrales",
+      "primaryRunnerUp": "Alien United",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    },
+    {
+      "cupId": 29,
+      "season": 6,
+      "countryName": "Thailand",
+      "storedChampion": "The Spirits of Football",
+      "wikiChampion": "Rama XI",
+      "wikiUrl": "https://wiki.hattrick.org/wiki/Prathet_Thai",
+      "final": {
+        "requested": {
+          "cupId": 29,
+          "season": 6
+        },
+        "fetchedAt": "2026-09-10T22:29:28.805Z",
+        "response": {
+          "cupId": 29,
+          "cupName": "Thai Cup",
+          "season": 6,
+          "round": 13,
+          "matches": [
+            {
+              "matchId": 5041594,
+              "matchDate": "2003-03-05T05:30:00.000Z",
+              "homeTeamName": "Rama XI",
+              "awayTeamName": "The Spirits of Football",
+              "homeGoals": 1,
+              "awayGoals": 2
+            }
+          ]
+        }
+      },
+      "finalMatchIdAlreadyStored": false,
+      "previous": {
+        "requested": {
+          "cupId": 29,
+          "season": 6,
+          "cupRound": 12
+        },
+        "fetchedAt": "2026-09-10T22:29:29.429Z",
+        "response": {
+          "cupId": 29,
+          "cupName": "Thai Cup",
+          "season": 6,
+          "round": 12,
+          "matches": [
+            {
+              "matchId": 5041593,
+              "matchDate": "2003-02-26T05:30:00.000Z",
+              "homeTeamName": "The Spirits of Football",
+              "awayTeamName": "Rama XI",
+              "homeGoals": 0,
+              "awayGoals": 4
+            }
+          ]
+        }
+      },
+      "resolution": {
+        "homeWon": true,
+        "basis": "aggregate",
+        "format": "two-leg"
+      },
+      "primaryChampion": "Rama XI",
+      "primaryRunnerUp": "The Spirits of Football",
+      "wikiMatchesPrimary": true,
+      "currentMatchesPrimary": false,
+      "currentEqualsPrimaryRunnerUp": true,
+      "classification": "confirmed-wrong-finalist"
+    }
+  ]
+}

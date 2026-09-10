@@ -1,0 +1,1836 @@
+{
+  "generatedAt": "2026-09-10T22:28:13.290Z",
+  "apply": true,
+  "outcome": {
+    "inserted": 49,
+    "alreadyStored": 0
+  },
+  "plans": [
+    {
+      "cupId": 37,
+      "season": 5,
+      "matchId": 5041996,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=37&season=5&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=37&season=5&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=5041996"
+      ],
+      "captureSha256": "8bca1be145e8f46961d6912004683299c8db3d0ff1130990b1ce2c5679cea9ff",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 37,
+        "leagueId": 39,
+        "countryName": "Austria",
+        "cupName": "Austria-Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 37,
+        "leagueId": 39,
+        "countryName": "Austria",
+        "cupName": "Austria-Cup",
+        "isMain": true,
+        "season": 5,
+        "finalMatchId": 5041996,
+        "championTeamId": 73361,
+        "championTeamName": "pinky3367",
+        "runnerUpTeamName": "Kickers-02",
+        "homeGoals": 3,
+        "awayGoals": 3,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 41,
+      "season": 6,
+      "matchId": 7226389,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=41&season=6&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=41&season=6&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7226389"
+      ],
+      "captureSha256": "59bccc880c9435d100ebb54e8ef6de0dbda657a8bc37eefd782015abe5b16054",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 41,
+        "leagueId": 44,
+        "countryName": "Belgium",
+        "cupName": "Belgium Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 41,
+        "leagueId": 44,
+        "countryName": "Belgium",
+        "cupName": "Belgium Cup",
+        "isMain": true,
+        "season": 6,
+        "finalMatchId": 7226389,
+        "championTeamId": 72935,
+        "championTeamName": "FC Drummer",
+        "runnerUpTeamName": "De inheemse struiktegels",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 41,
+      "season": 9,
+      "matchId": 18471273,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=41&season=9&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=41&season=9&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18471273"
+      ],
+      "captureSha256": "5fec5a7f7e575b4911d06210db993a357e48a94a08d7aa994ae579db9a6452bb",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 41,
+        "leagueId": 44,
+        "countryName": "Belgium",
+        "cupName": "Belgium Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 41,
+        "leagueId": 44,
+        "countryName": "Belgium",
+        "cupName": "Belgium Cup",
+        "isMain": true,
+        "season": 9,
+        "finalMatchId": 18471273,
+        "championTeamId": 73018,
+        "championTeamName": "Berzerk Oostende",
+        "runnerUpTeamName": "FC Karekiet",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 15,
+      "season": 7,
+      "matchId": 7163051,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=15&season=7&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=15&season=7&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7163051"
+      ],
+      "captureSha256": "e383efb2c76de3d378f322fb4b85002a6960c6d477e34ecc5069473f0507750b",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 15,
+        "leagueId": 16,
+        "countryName": "Brazil",
+        "cupName": "Copa do Brasil",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 15,
+        "leagueId": 16,
+        "countryName": "Brazil",
+        "cupName": "Copa do Brasil",
+        "isMain": true,
+        "season": 7,
+        "finalMatchId": 7163051,
+        "championTeamId": 29640,
+        "championTeamName": "Alfabarra",
+        "runnerUpTeamName": "Bruno's Team",
+        "homeGoals": 3,
+        "awayGoals": 3,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 15,
+      "season": 11,
+      "matchId": 24116895,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=15&season=11&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=15&season=11&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=24116895"
+      ],
+      "captureSha256": "6e2b9f514019b5df503fa49531d3fc1fd62a9ab50784b718f9246df955aaa5da",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 15,
+        "leagueId": 16,
+        "countryName": "Brazil",
+        "cupName": "Copa do Brasil",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 15,
+        "leagueId": 16,
+        "countryName": "Brazil",
+        "cupName": "Copa do Brasil",
+        "isMain": true,
+        "season": 11,
+        "finalMatchId": 24116895,
+        "championTeamId": 29640,
+        "championTeamName": "Alfabarra",
+        "runnerUpTeamName": "MFM",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 61,
+      "season": 4,
+      "matchId": 9681158,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=61&season=4&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=61&season=4&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9681158"
+      ],
+      "captureSha256": "6f539527a79c373ad26d5d9dd835c5eea6aa531252fa496c8a0ac04d6f3e40e1",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 61,
+        "leagueId": 62,
+        "countryName": "Bulgaria",
+        "cupName": "Купа на България",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 61,
+        "leagueId": 62,
+        "countryName": "Bulgaria",
+        "cupName": "Купа на България",
+        "isMain": true,
+        "season": 4,
+        "finalMatchId": 9681158,
+        "championTeamId": 117159,
+        "championTeamName": "Yellow squad",
+        "runnerUpTeamName": "FC Presley",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 17,
+      "season": 8,
+      "matchId": 9781567,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=17&season=8&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=17&season=8&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9781567"
+      ],
+      "captureSha256": "d59ab94864497dd9da0189258e2d79238a1f78f7627297a29ef343732f3d773d",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 17,
+        "leagueId": 18,
+        "countryName": "Chile",
+        "cupName": "Copa Chile",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 17,
+        "leagueId": 18,
+        "countryName": "Chile",
+        "cupName": "Copa Chile",
+        "isMain": true,
+        "season": 8,
+        "finalMatchId": 9781567,
+        "championTeamId": 29974,
+        "championTeamName": "Universidad de Chile",
+        "runnerUpTeamName": "ManchesterUnited",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 17,
+      "season": 10,
+      "matchId": 18478956,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=17&season=10&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=17&season=10&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18478956"
+      ],
+      "captureSha256": "681f31fed083ad9a5eadd114ec69485eeedbbe94f734af1e2c550986e98c4456",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 17,
+        "leagueId": 18,
+        "countryName": "Chile",
+        "cupName": "Copa Chile",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 17,
+        "leagueId": 18,
+        "countryName": "Chile",
+        "cupName": "Copa Chile",
+        "isMain": true,
+        "season": 10,
+        "finalMatchId": 18478956,
+        "championTeamId": 29992,
+        "championTeamName": "los matasanos",
+        "runnerUpTeamName": "ManchesterUnited",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 59,
+      "season": 7,
+      "matchId": 23440755,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=59&season=7&cupRound=9",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=59&season=7&cupRound=8",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=23440755"
+      ],
+      "captureSha256": "808bfa9f1e4e2f8a2612e5c38bd8168d9247715bbd0c8e936dfd162ab3d6a1c0",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 59,
+        "leagueId": 60,
+        "countryName": "Chinese Taipei",
+        "cupName": "Phoenix Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 59,
+        "leagueId": 60,
+        "countryName": "Chinese Taipei",
+        "cupName": "Phoenix Cup",
+        "isMain": true,
+        "season": 7,
+        "finalMatchId": 23440755,
+        "championTeamId": 111556,
+        "championTeamName": "NightWalkers",
+        "runnerUpTeamName": "Passive Aggressive",
+        "homeGoals": 4,
+        "awayGoals": 4,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 18,
+      "season": 8,
+      "matchId": 9687663,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=18&season=8&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=18&season=8&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9687663"
+      ],
+      "captureSha256": "647ddb20146a5ed4955f60b363370ca732aac784cc547752a00c090372a53e2d",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 18,
+        "leagueId": 19,
+        "countryName": "Colombia",
+        "cupName": "Copa Colombia",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 18,
+        "leagueId": 19,
+        "countryName": "Colombia",
+        "cupName": "Copa Colombia",
+        "isMain": true,
+        "season": 8,
+        "finalMatchId": 9687663,
+        "championTeamId": 30319,
+        "championTeamName": "ATL NACIONAL",
+        "runnerUpTeamName": "Nacional de Medellin",
+        "homeGoals": 3,
+        "awayGoals": 3,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 56,
+      "season": 6,
+      "matchId": 13774861,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=56&season=6&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=56&season=6&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13774861"
+      ],
+      "captureSha256": "9ac0bffcde40709cfeba7c43c1f3e010e21fe495c87feb2a34eaf14864473100",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 56,
+        "leagueId": 58,
+        "countryName": "Croatia",
+        "cupName": "Kup Hrvatske",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 56,
+        "leagueId": 58,
+        "countryName": "Croatia",
+        "cupName": "Kup Hrvatske",
+        "isMain": true,
+        "season": 6,
+        "finalMatchId": 13774861,
+        "championTeamId": 94300,
+        "championTeamName": "Bloodwich-team",
+        "runnerUpTeamName": "Vrutki Opatija",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 56,
+      "season": 7,
+      "matchId": 18279050,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=56&season=7&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=56&season=7&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18279050"
+      ],
+      "captureSha256": "c9469761f34b78b0e65f6fe62d66b9c54ff6794580fc16016f4664f704bae871",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 56,
+        "leagueId": 58,
+        "countryName": "Croatia",
+        "cupName": "Kup Hrvatske",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 56,
+        "leagueId": 58,
+        "countryName": "Croatia",
+        "cupName": "Kup Hrvatske",
+        "isMain": true,
+        "season": 7,
+        "finalMatchId": 18279050,
+        "championTeamId": 94420,
+        "championTeamName": "Kalelarga Legends",
+        "runnerUpTeamName": "BSK Brdovec",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 19,
+      "season": 11,
+      "matchId": 23654711,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=19&season=11&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=19&season=11&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=23654711"
+      ],
+      "captureSha256": "50ea712a07e0b92ad24e20fc76bceb72b7701dae861984234c793bd6b82e8178",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 19,
+        "leagueId": 33,
+        "countryName": "Egypt",
+        "cupName": "Kas Misr",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 19,
+        "leagueId": 33,
+        "countryName": "Egypt",
+        "cupName": "Kas Misr",
+        "isMain": true,
+        "season": 11,
+        "finalMatchId": 23654711,
+        "championTeamId": 30505,
+        "championTeamName": "Heliopolis Cairo",
+        "runnerUpTeamName": "MOHANDESSEEN",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 3,
+      "season": 20,
+      "matchId": 9871105,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=3&season=20&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=3&season=20&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9871105"
+      ],
+      "captureSha256": "b1e513fcc9ea1393ac24fba1db9fa5a5f4aacfb36514e06d71052a050ec439ca",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 3,
+        "leagueId": 2,
+        "countryName": "England",
+        "cupName": "English Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 3,
+        "leagueId": 2,
+        "countryName": "England",
+        "cupName": "English Cup",
+        "isMain": true,
+        "season": 20,
+        "finalMatchId": 9871105,
+        "championTeamId": 54226,
+        "championTeamName": "Durham City FC",
+        "runnerUpTeamName": "Kester County",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 54,
+      "season": 5,
+      "matchId": 9777093,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=54&season=5&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=54&season=5&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9777093"
+      ],
+      "captureSha256": "799a7242473dcd9bc9689f8caf7c6126d46f43e503bf369ed900f18e493df9b2",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 54,
+        "leagueId": 56,
+        "countryName": "Estonia",
+        "cupName": "Eesti Karikas",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 54,
+        "leagueId": 56,
+        "countryName": "Estonia",
+        "cupName": "Eesti Karikas",
+        "isMain": true,
+        "season": 5,
+        "finalMatchId": 9777093,
+        "championTeamId": 94147,
+        "championTeamName": "Luige United FC",
+        "runnerUpTeamName": "Vahe Tera",
+        "homeGoals": 5,
+        "awayGoals": 5,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 6,
+      "season": 19,
+      "matchId": 7160871,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=6&season=19&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=6&season=19&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7160871"
+      ],
+      "captureSha256": "418e3e4d7acbfa8c35a5622278b79586fc2597be4a22306f460da0d224e073a2",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 6,
+        "leagueId": 5,
+        "countryName": "France",
+        "cupName": "Coupe de France",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 6,
+        "leagueId": 5,
+        "countryName": "France",
+        "cupName": "Coupe de France",
+        "isMain": true,
+        "season": 19,
+        "finalMatchId": 7160871,
+        "championTeamId": 8922,
+        "championTeamName": "Nappes Xcutors",
+        "runnerUpTeamName": "Sollet FK",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 6,
+      "season": 20,
+      "matchId": 9778089,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=6&season=20&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=6&season=20&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9778089"
+      ],
+      "captureSha256": "2256ba10958eadffd144e867fec7db64313444fd26dc748367a1c00ed3937e48",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 6,
+        "leagueId": 5,
+        "countryName": "France",
+        "cupName": "Coupe de France",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 6,
+        "leagueId": 5,
+        "countryName": "France",
+        "cupName": "Coupe de France",
+        "isMain": true,
+        "season": 20,
+        "finalMatchId": 9778089,
+        "championTeamId": 8922,
+        "championTeamName": "Nappes Xcutors",
+        "runnerUpTeamName": "AJ Auxerre",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 4,
+      "season": 19,
+      "matchId": 7223754,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=4&season=19&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=4&season=19&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7223754"
+      ],
+      "captureSha256": "c34c0a72f8babdf77a4b2bc24e2306f4884a3ecba3030b346398b2ee45012e5e",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 4,
+        "leagueId": 3,
+        "countryName": "Germany",
+        "cupName": "Deutschland-Pokal",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 4,
+        "leagueId": 3,
+        "countryName": "Germany",
+        "cupName": "Deutschland-Pokal",
+        "isMain": true,
+        "season": 19,
+        "finalMatchId": 7223754,
+        "championTeamId": 6705,
+        "championTeamName": "FC Phoenix Mühlburg",
+        "runnerUpTeamName": "Exil Schwaben",
+        "homeGoals": 3,
+        "awayGoals": 3,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 48,
+      "season": 4,
+      "matchId": 7095334,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=48&season=4&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=48&season=4&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7095334"
+      ],
+      "captureSha256": "988f39757414401f0c643579ec4ff91a491c0308a4c8a13738ec17b7e29b39b1",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 48,
+        "leagueId": 50,
+        "countryName": "Greece",
+        "cupName": "Κύπελλο Ελλάδος",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 48,
+        "leagueId": 50,
+        "countryName": "Greece",
+        "cupName": "Κύπελλο Ελλάδος",
+        "isMain": true,
+        "season": 4,
+        "finalMatchId": 7095334,
+        "championTeamId": 94035,
+        "championTeamName": "Spatania",
+        "runnerUpTeamName": "CSKA Patras",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 48,
+      "season": 7,
+      "matchId": 18279489,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=48&season=7&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=48&season=7&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18279489"
+      ],
+      "captureSha256": "ff2b931ee16002ecd5a59207b36669b800d855ec3a13e2554896d7d902401b7c",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 48,
+        "leagueId": 50,
+        "countryName": "Greece",
+        "cupName": "Κύπελλο Ελλάδος",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 48,
+        "leagueId": 50,
+        "countryName": "Greece",
+        "cupName": "Κύπελλο Ελλάδος",
+        "isMain": true,
+        "season": 7,
+        "finalMatchId": 18279489,
+        "championTeamId": 93957,
+        "championTeamName": "Thalassokratya",
+        "runnerUpTeamName": "maxh marathona",
+        "homeGoals": 3,
+        "awayGoals": 3,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 58,
+      "season": 3,
+      "matchId": 7095612,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=58&season=3&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=58&season=3&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7095612"
+      ],
+      "captureSha256": "c143b52fcfb1875c787810dec7a47225ed65bad377ab364a9e19d54a24ee0995",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 58,
+        "leagueId": 59,
+        "countryName": "Hong Kong",
+        "cupName": "Hong Kong Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 58,
+        "leagueId": 59,
+        "countryName": "Hong Kong",
+        "cupName": "Hong Kong Cup",
+        "isMain": true,
+        "season": 3,
+        "finalMatchId": 7095612,
+        "championTeamId": 30205,
+        "championTeamName": "shapeshifer",
+        "runnerUpTeamName": "eXplore IAW FIFA",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 36,
+      "season": 5,
+      "matchId": 5000327,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=36&season=5&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=36&season=5&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=5000327"
+      ],
+      "captureSha256": "a33096da6ef25d2f57bec25f06c977dce5f80370cbbc25eab7b529d6e05aad51",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 36,
+        "leagueId": 38,
+        "countryName": "Iceland",
+        "cupName": "Íslandsbikarinn",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 36,
+        "leagueId": 38,
+        "countryName": "Iceland",
+        "cupName": "Íslandsbikarinn",
+        "isMain": true,
+        "season": 5,
+        "finalMatchId": 5000327,
+        "championTeamId": 67521,
+        "championTeamName": "The Boondock Raiders",
+        "runnerUpTeamName": "Dakata FC",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 20,
+      "season": 6,
+      "matchId": 4999445,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=20&season=6&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=20&season=6&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=4999445"
+      ],
+      "captureSha256": "e30e21f14109ecb48b78a54109faabebb5e65e0b0e7bbe7a038b99c63be50594",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 20,
+        "leagueId": 20,
+        "countryName": "India",
+        "cupName": "Indian Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 20,
+        "leagueId": 20,
+        "countryName": "India",
+        "cupName": "Indian Cup",
+        "isMain": true,
+        "season": 6,
+        "finalMatchId": 4999445,
+        "championTeamId": 31426,
+        "championTeamName": "Abhi Lions",
+        "runnerUpTeamName": "ravi' super 11",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 52,
+      "season": 6,
+      "matchId": 13640672,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=52&season=6&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=52&season=6&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13640672"
+      ],
+      "captureSha256": "447571d7480f3a9e9e4a8c8d0b110f1e3b65d5f76ca1fa7ded47aeceb0fd0ed5",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 52,
+        "leagueId": 54,
+        "countryName": "Indonesia",
+        "cupName": "Indonesia Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 52,
+        "leagueId": 54,
+        "countryName": "Indonesia",
+        "cupName": "Indonesia Cup",
+        "isMain": true,
+        "season": 6,
+        "finalMatchId": 13640672,
+        "championTeamId": 94514,
+        "championTeamName": "Janggutan Capek",
+        "runnerUpTeamName": "Nusukan FC",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 714,
+      "season": 38,
+      "matchId": 541334258,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=714&season=38&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=714&season=38&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=541334258"
+      ],
+      "captureSha256": "332c02ebcaafcf59c1e18be978a9cfcf7bc35f275e10b66bcf81c5d4a69ff1d4",
+      "status": "no-winner",
+      "reason": "Mutual walkover: the final has no playable winner"
+    },
+    {
+      "cupId": 7,
+      "season": 21,
+      "matchId": 13913642,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=7&season=21&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=7&season=21&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13913642"
+      ],
+      "captureSha256": "b106cda1c9d4877fee48cc3fad1723272a680fe68d732a0bc94c0b5b3ebad35c",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 7,
+        "leagueId": 4,
+        "countryName": "Italy",
+        "cupName": "Coppa Italia",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 7,
+        "leagueId": 4,
+        "countryName": "Italy",
+        "cupName": "Coppa Italia",
+        "isMain": true,
+        "season": 21,
+        "finalMatchId": 13913642,
+        "championTeamId": 49512,
+        "championTeamName": "Sgainator F.C.",
+        "runnerUpTeamName": "Sporting Firenze",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 22,
+      "season": 7,
+      "matchId": 7028814,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=22&season=7&cupRound=9",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=22&season=7&cupRound=8",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7028814"
+      ],
+      "captureSha256": "0810c8bc5395c6337d297106ec7c61605a9b621068db4f8a72895fc0327bfff7",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 22,
+        "leagueId": 22,
+        "countryName": "Japan",
+        "cupName": "The Emperor's Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 22,
+        "leagueId": 22,
+        "countryName": "Japan",
+        "cupName": "The Emperor's Cup",
+        "isMain": true,
+        "season": 7,
+        "finalMatchId": 7028814,
+        "championTeamId": 32048,
+        "championTeamName": "Shirayuri Sky",
+        "runnerUpTeamName": "Tire Kickers",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 51,
+      "season": 5,
+      "matchId": 9777575,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=51&season=5&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=51&season=5&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9777575"
+      ],
+      "captureSha256": "3f96e3ec262a987a2e1b6c8c08765c91e865f0c937ac04e955b38167276f6bd6",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 51,
+        "leagueId": 53,
+        "countryName": "Latvia",
+        "cupName": "Latvijas Nacionālais kauss",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 51,
+        "leagueId": 53,
+        "countryName": "Latvia",
+        "cupName": "Latvijas Nacionālais kauss",
+        "isMain": true,
+        "season": 5,
+        "finalMatchId": 9777575,
+        "championTeamId": 94890,
+        "championTeamName": "Dinaburg FC",
+        "runnerUpTeamName": "Devils Army",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 51,
+      "season": 6,
+      "matchId": 13776828,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=51&season=6&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=51&season=6&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13776828"
+      ],
+      "captureSha256": "9673dd33b4e73a23801e9184cd4739a57bc9a1a9b18a40fe298347aac1afbabd",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 51,
+        "leagueId": 53,
+        "countryName": "Latvia",
+        "cupName": "Latvijas Nacionālais kauss",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 51,
+        "leagueId": 53,
+        "countryName": "Latvia",
+        "cupName": "Latvijas Nacionālais kauss",
+        "isMain": true,
+        "season": 6,
+        "finalMatchId": 13776828,
+        "championTeamId": 94820,
+        "championTeamName": "The Magnificent One",
+        "runnerUpTeamName": "Sun Set Park",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 38,
+      "season": 5,
+      "matchId": 4999365,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=38&season=5&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=38&season=5&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=4999365"
+      ],
+      "captureSha256": "1696ea6234fea677ae239f2bc6eb630d474fa29d34f76011681a30269b39021f",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 38,
+        "leagueId": 45,
+        "countryName": "Malaysia",
+        "cupName": "Piala Malaysia",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 38,
+        "leagueId": 45,
+        "countryName": "Malaysia",
+        "cupName": "Piala Malaysia",
+        "isMain": true,
+        "season": 5,
+        "finalMatchId": 4999365,
+        "championTeamId": 73115,
+        "championTeamName": "Katamaran Divers",
+        "runnerUpTeamName": "LET'S WIN IT.com",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 38,
+      "season": 9,
+      "matchId": 18277976,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=38&season=9&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=38&season=9&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18277976"
+      ],
+      "captureSha256": "a262afb3d58ff190b75f93d20c67d1e3c65fb877fb950ee36b75667799d568d3",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 38,
+        "leagueId": 45,
+        "countryName": "Malaysia",
+        "cupName": "Piala Malaysia",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 38,
+        "leagueId": 45,
+        "countryName": "Malaysia",
+        "cupName": "Piala Malaysia",
+        "isMain": true,
+        "season": 9,
+        "finalMatchId": 18277976,
+        "championTeamId": 73145,
+        "championTeamName": "Tiger ES",
+        "runnerUpTeamName": "LET'S WIN IT.com",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 13,
+      "season": 8,
+      "matchId": 7227171,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=13&season=8&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=13&season=8&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7227171"
+      ],
+      "captureSha256": "e92544d4a03627c0c0bc772bd0b7540c09fc522b745e62461ebcd7805b825ab2",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 13,
+        "leagueId": 14,
+        "countryName": "Netherlands",
+        "cupName": "KNVB Beker",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 13,
+        "leagueId": 14,
+        "countryName": "Netherlands",
+        "cupName": "KNVB Beker",
+        "isMain": true,
+        "season": 8,
+        "finalMatchId": 7227171,
+        "championTeamId": 21019,
+        "championTeamName": "Real Raateland",
+        "runnerUpTeamName": "Racing Selwerd FC",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 9,
+      "season": 7,
+      "matchId": 5043018,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=9&season=7&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=9&season=7&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=5043018"
+      ],
+      "captureSha256": "7ec29b7972ab4c742b613ecbba4f489ea2eea965e8270b0abdcb7efe3db173df",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 9,
+        "leagueId": 9,
+        "countryName": "Norway",
+        "cupName": "Norgesmesterskapet",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 9,
+        "leagueId": 9,
+        "countryName": "Norway",
+        "cupName": "Norgesmesterskapet",
+        "isMain": true,
+        "season": 7,
+        "finalMatchId": 5043018,
+        "championTeamId": 20239,
+        "championTeamName": "Birkelunden BK",
+        "runnerUpTeamName": "Molde",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 14,
+      "season": 8,
+      "matchId": 9775556,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=14&season=8&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=14&season=8&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9775556"
+      ],
+      "captureSha256": "0dc6594a91574184e13905f56c097919a76da530ca1b1ad36d89b57846495dcc",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 14,
+        "leagueId": 15,
+        "countryName": "Oceania",
+        "cupName": "Oceanian Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 14,
+        "leagueId": 15,
+        "countryName": "Oceania",
+        "cupName": "Oceanian Cup",
+        "isMain": true,
+        "season": 8,
+        "finalMatchId": 9775556,
+        "championTeamId": 29113,
+        "championTeamName": "Sparker",
+        "runnerUpTeamName": "tigers",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 14,
+      "season": 10,
+      "matchId": 18467672,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=14&season=10&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=14&season=10&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18467672"
+      ],
+      "captureSha256": "7b620336bce563d1489d6bdf698f3bc090cbb39925b1f38a858bbfce805229c3",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 14,
+        "leagueId": 15,
+        "countryName": "Oceania",
+        "cupName": "Oceanian Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 14,
+        "leagueId": 15,
+        "countryName": "Oceania",
+        "cupName": "Oceanian Cup",
+        "isMain": true,
+        "season": 10,
+        "finalMatchId": 18467672,
+        "championTeamId": 29073,
+        "championTeamName": "Burnt Out Koalas FC",
+        "runnerUpTeamName": "Klinsmen United",
+        "homeGoals": 4,
+        "awayGoals": 4,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 33,
+      "season": 5,
+      "matchId": 3491085,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=33&season=5&cupRound=9",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=33&season=5&cupRound=8",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=3491085"
+      ],
+      "captureSha256": "089aad1f0612871e4522225e6c87482ecbedfa4d3491c5b193bc7bfadbe842d5",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 33,
+        "leagueId": 34,
+        "countryName": "People's Republic of China",
+        "cupName": "China Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 33,
+        "leagueId": 34,
+        "countryName": "People's Republic of China",
+        "cupName": "China Cup",
+        "isMain": true,
+        "season": 5,
+        "finalMatchId": 3491085,
+        "championTeamId": 30152,
+        "championTeamName": "Ocean Panda",
+        "runnerUpTeamName": "HotSpurs Asia",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 33,
+      "season": 9,
+      "matchId": 13640269,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=33&season=9&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=33&season=9&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13640269"
+      ],
+      "captureSha256": "b975d2c7cbacb2657a900b747db9029f1f8950b33eb3fb02d0a7bf19930671eb",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 33,
+        "leagueId": 34,
+        "countryName": "People's Republic of China",
+        "cupName": "China Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 33,
+        "leagueId": 34,
+        "countryName": "People's Republic of China",
+        "cupName": "China Cup",
+        "isMain": true,
+        "season": 9,
+        "finalMatchId": 13640269,
+        "championTeamId": 30137,
+        "championTeamName": "Tsing Yi Friends",
+        "runnerUpTeamName": "Peace Dove",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 24,
+      "season": 11,
+      "matchId": 23888873,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=24&season=11&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=24&season=11&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=23888873"
+      ],
+      "captureSha256": "4efcd9d637646412655b93e5f1184fbb19a11283b6dbd9308aaad608052a6383",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 24,
+        "leagueId": 23,
+        "countryName": "Peru",
+        "cupName": "Copa Perú",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 24,
+        "leagueId": 23,
+        "countryName": "Peru",
+        "cupName": "Copa Perú",
+        "isMain": true,
+        "season": 11,
+        "finalMatchId": 23888873,
+        "championTeamId": 32215,
+        "championTeamName": "Real Lima FC",
+        "runnerUpTeamName": "C.A. Vizcardo",
+        "homeGoals": 3,
+        "awayGoals": 3,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 25,
+      "season": 9,
+      "matchId": 13915911,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=25&season=9&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=25&season=9&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13915911"
+      ],
+      "captureSha256": "64fc2a99672ba7de318580d835aa8f791c6d9abc39b9788cedd9522a38ef0f92",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 25,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 25,
+        "leagueId": 24,
+        "countryName": "Poland",
+        "cupName": "Puchar Polski",
+        "isMain": true,
+        "season": 9,
+        "finalMatchId": 13915911,
+        "championTeamId": 32301,
+        "championTeamName": "MKS Narew Ostroleka",
+        "runnerUpTeamName": "Oceana F.C.",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 34,
+      "season": 4,
+      "matchId": 2491001,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=34&season=4&cupRound=9",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=34&season=4&cupRound=8",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=2491001"
+      ],
+      "captureSha256": "77e1abd8a092adf940cbdba37d685a06cf82986b4c3c63000ae6d32f030a7f52",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 34,
+        "leagueId": 35,
+        "countryName": "Russia",
+        "cupName": "Кубок России",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 34,
+        "leagueId": 35,
+        "countryName": "Russia",
+        "cupName": "Кубок России",
+        "isMain": true,
+        "season": 4,
+        "finalMatchId": 2491001,
+        "championTeamId": 28850,
+        "championTeamName": "Tequila Lovers",
+        "runnerUpTeamName": "FK Balashikha",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 34,
+      "season": 7,
+      "matchId": 7095139,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=34&season=7&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=34&season=7&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=7095139"
+      ],
+      "captureSha256": "e52bc325a118ea68e0b75e94d222595736e9863bb1da6772e3a171534c877478",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 34,
+        "leagueId": 35,
+        "countryName": "Russia",
+        "cupName": "Кубок России",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 34,
+        "leagueId": 35,
+        "countryName": "Russia",
+        "cupName": "Кубок России",
+        "isMain": true,
+        "season": 7,
+        "finalMatchId": 7095139,
+        "championTeamId": 28904,
+        "championTeamName": "KPEMEHb",
+        "runnerUpTeamName": "Frozen Karelians",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 27,
+      "season": 11,
+      "matchId": 23878537,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=27&season=11&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=27&season=11&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=23878537"
+      ],
+      "captureSha256": "a68d9e645220c7e1e4909daf25110115251f25933a83c6f3ddb414f39b3bedee",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 27,
+        "leagueId": 26,
+        "countryName": "Scotland",
+        "cupName": "Scottish Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 27,
+        "leagueId": 26,
+        "countryName": "Scotland",
+        "cupName": "Scottish Cup",
+        "isMain": true,
+        "season": 11,
+        "finalMatchId": 23878537,
+        "championTeamId": 28780,
+        "championTeamName": "Bogglers Divided",
+        "runnerUpTeamName": "Glasgow Athletic",
+        "homeGoals": 4,
+        "awayGoals": 4,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 55,
+      "season": 7,
+      "matchId": 18092527,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=55&season=7&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=55&season=7&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=18092527"
+      ],
+      "captureSha256": "3af8b34ab8710f7b7f4145ca67eb8a1d7f0c8938b80d47cc8fb28f0ce7c328d3",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 55,
+        "leagueId": 57,
+        "countryName": "Serbia",
+        "cupName": "Куп Србије",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 55,
+        "leagueId": 57,
+        "countryName": "Serbia",
+        "cupName": "Куп Србије",
+        "isMain": true,
+        "season": 7,
+        "finalMatchId": 18092527,
+        "championTeamId": 94974,
+        "championTeamName": "Dostin",
+        "runnerUpTeamName": "Pigs F.C.",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 40,
+      "season": 4,
+      "matchId": 3517167,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=40&season=4&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=40&season=4&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=3517167"
+      ],
+      "captureSha256": "5574a86c22da7f65e17365401d347b3fda8903bda3bf5eae0ecb7190700399e0",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 40,
+        "leagueId": 47,
+        "countryName": "Singapore",
+        "cupName": "Singapore Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 40,
+        "leagueId": 47,
+        "countryName": "Singapore",
+        "cupName": "Singapore Cup",
+        "isMain": true,
+        "season": 4,
+        "finalMatchId": 3517167,
+        "championTeamId": 37614,
+        "championTeamName": "FC Tenochtitlán",
+        "runnerUpTeamName": "Hattrick all the time",
+        "homeGoals": 4,
+        "awayGoals": 4,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 40,
+      "season": 8,
+      "matchId": 13773955,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=40&season=8&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=40&season=8&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13773955"
+      ],
+      "captureSha256": "cadcb39ab42a73dc7bda33d244acb37fcff37b2fbf83d6fce32566773e28f0b5",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 40,
+        "leagueId": 47,
+        "countryName": "Singapore",
+        "cupName": "Singapore Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 40,
+        "leagueId": 47,
+        "countryName": "Singapore",
+        "cupName": "Singapore Cup",
+        "isMain": true,
+        "season": 8,
+        "finalMatchId": 13773955,
+        "championTeamId": 37754,
+        "championTeamName": "Winning Eleven",
+        "runnerUpTeamName": "Herron",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 63,
+      "season": 5,
+      "matchId": 13638037,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=63&season=5&cupRound=11",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=63&season=5&cupRound=10",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=13638037"
+      ],
+      "captureSha256": "38191394b5f6b01bf14db8140891f1c14ddf88903d889d608cba8ccc522299c8",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 63,
+        "leagueId": 64,
+        "countryName": "Slovenia",
+        "cupName": "Pokal Slovenije",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 63,
+        "leagueId": 64,
+        "countryName": "Slovenia",
+        "cupName": "Pokal Slovenije",
+        "isMain": true,
+        "season": 5,
+        "finalMatchId": 13638037,
+        "championTeamId": 116908,
+        "championTeamName": "Praslovan",
+        "runnerUpTeamName": "VNK Carniola",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 43,
+      "season": 6,
+      "matchId": 5086374,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=43&season=6&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=43&season=6&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=5086374"
+      ],
+      "captureSha256": "1365bb1d3c3a1efb2295b6dafa7fce82c764101e0ca03ae05a3bd74102652e33",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 43,
+        "leagueId": 36,
+        "countryName": "Spain",
+        "cupName": "Copa de España",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 43,
+        "leagueId": 36,
+        "countryName": "Spain",
+        "cupName": "Copa de España",
+        "isMain": true,
+        "season": 6,
+        "finalMatchId": 5086374,
+        "championTeamId": 48120,
+        "championTeamName": "Ancestrales",
+        "runnerUpTeamName": "U. D. Son Sardina",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 1,
+      "season": 16,
+      "matchId": 2539640,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=1&season=16&cupRound=15",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=1&season=16&cupRound=14",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=2539640"
+      ],
+      "captureSha256": "6fa7a4445c9ddb3e49c0edebf7627f152410373347403294fed9c0fc77d3858b",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 1,
+        "leagueId": 1,
+        "countryName": "Sweden",
+        "cupName": "Svenska Cupen",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 1,
+        "leagueId": 1,
+        "countryName": "Sweden",
+        "cupName": "Svenska Cupen",
+        "isMain": true,
+        "season": 16,
+        "finalMatchId": 2539640,
+        "championTeamId": 566,
+        "championTeamName": "Arvidsjaur BK",
+        "runnerUpTeamName": "Smackers United",
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 29,
+      "season": 8,
+      "matchId": 9775668,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=29&season=8&cupRound=13",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=29&season=8&cupRound=12",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=9775668"
+      ],
+      "captureSha256": "497a5ccbc4cac2554a6b0f504003f180c80ed8feaf9b53aac23b3a5787fb658c",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 29,
+        "leagueId": 31,
+        "countryName": "Thailand",
+        "cupName": "Thai Cup",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 29,
+        "leagueId": 31,
+        "countryName": "Thailand",
+        "cupName": "Thai Cup",
+        "isMain": true,
+        "season": 8,
+        "finalMatchId": 9775668,
+        "championTeamId": 28340,
+        "championTeamName": "-C-R-I-S-I-S-",
+        "runnerUpTeamName": "Liverpool Thailand",
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    },
+    {
+      "cupId": 31,
+      "season": 4,
+      "matchId": 2492136,
+      "sourceURLs": [
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=31&season=4&cupRound=9",
+        "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=31&season=4&cupRound=8",
+        "https://chpp.hattrick.org/chppxml.ashx?file=matchdetails&version=3.0&matchID=2492136"
+      ],
+      "captureSha256": "a4e5cdb825b64ca5ccd1c17f9dece783a5c4796a45a40f23e07bc4244527b9e1",
+      "status": "ready",
+      "basis": "aggregate",
+      "expectedCup": {
+        "cupId": 31,
+        "leagueId": 28,
+        "countryName": "Uruguay",
+        "cupName": "Copa Uruguay",
+        "isMain": true
+      },
+      "create": {
+        "cupId": 31,
+        "leagueId": 28,
+        "countryName": "Uruguay",
+        "cupName": "Copa Uruguay",
+        "isMain": true,
+        "season": 4,
+        "finalMatchId": 2492136,
+        "championTeamId": 27533,
+        "championTeamName": "el terrible",
+        "runnerUpTeamName": "sacapuntas",
+        "homeGoals": 2,
+        "awayGoals": 2,
+        "penalties": false,
+        "championUserId": null,
+        "championUserName": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,1914 @@
+[
+  {
+    "country": "Argentina",
+    "cupId": 2,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Argentina",
+    "rows": [
+      {
+        "season": 24,
+        "winner": "Los Bepis",
+        "manager": "Tesone",
+        "sourceLine": 183
+      },
+      {
+        "season": 23,
+        "winner": "LINIERS",
+        "manager": "Fermincho",
+        "sourceLine": 184
+      },
+      {
+        "season": 22,
+        "winner": "KoKyTeam",
+        "manager": "-KoKy-",
+        "sourceLine": 185
+      },
+      {
+        "season": 21,
+        "winner": "Vamos Perdiendo F.C.",
+        "manager": "Toll77",
+        "sourceLine": 186
+      },
+      {
+        "season": 20,
+        "winner": "Estudiantes de L.P",
+        "manager": "mariano",
+        "sourceLine": 187
+      },
+      {
+        "season": 19,
+        "winner": "Bariloche Behemoths FC",
+        "manager": "Grimgroth",
+        "sourceLine": 188
+      },
+      {
+        "season": 18,
+        "winner": "Boca Juniors",
+        "manager": "omarfer",
+        "sourceLine": 189
+      },
+      {
+        "season": 17,
+        "winner": "Boca Juniors",
+        "manager": "omarfer",
+        "sourceLine": 190
+      },
+      {
+        "season": 16,
+        "winner": "Xeneises",
+        "manager": "tiagosan",
+        "sourceLine": 191
+      },
+      {
+        "season": 15,
+        "winner": "Boca Juniors",
+        "manager": "omarfer",
+        "sourceLine": 192
+      }
+    ]
+  },
+  {
+    "country": "USA",
+    "cupId": 8,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/USA",
+    "rows": [
+      {
+        "season": 24,
+        "winner": "G's Goons",
+        "manager": "Idigum",
+        "sourceLine": 143
+      },
+      {
+        "season": 23,
+        "winner": "Tombstone Titans",
+        "manager": "Tornado",
+        "sourceLine": 144
+      },
+      {
+        "season": 22,
+        "winner": "Tombstone Titans",
+        "manager": "Tornado",
+        "sourceLine": 145
+      },
+      {
+        "season": 21,
+        "winner": "Kansas City Wizards",
+        "manager": "wizards",
+        "sourceLine": 146
+      },
+      {
+        "season": 20,
+        "winner": "Drunk&Disorderly",
+        "manager": "DrunkenWeasel",
+        "sourceLine": 147
+      },
+      {
+        "season": 19,
+        "winner": "Knights of the Apocalypse",
+        "manager": "-apoc-",
+        "sourceLine": 148
+      },
+      {
+        "season": 18,
+        "winner": "Kansas City Wizards",
+        "manager": "wizards",
+        "sourceLine": 149
+      },
+      {
+        "season": 17,
+        "winner": "Red Star Belgrade",
+        "manager": "Darko9",
+        "sourceLine": 150
+      },
+      {
+        "season": 16,
+        "winner": "Slashers FC",
+        "manager": "slashers",
+        "sourceLine": 151
+      },
+      {
+        "season": 15,
+        "winner": "Center City Gooners",
+        "manager": "rifkin",
+        "sourceLine": 152
+      }
+    ]
+  },
+  {
+    "country": "Finland",
+    "cupId": 11,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Suomi",
+    "rows": [
+      {
+        "season": 24,
+        "winner": "FC Arnold Schwarzenegger",
+        "manager": "DrBLooD",
+        "sourceLine": 131
+      },
+      {
+        "season": 23,
+        "winner": "HeiskanJK",
+        "manager": "heiska",
+        "sourceLine": 132
+      },
+      {
+        "season": 22,
+        "winner": "HeiskanJK",
+        "manager": "heiska",
+        "sourceLine": 133
+      },
+      {
+        "season": 21,
+        "winner": "Butcher Boys",
+        "manager": "Manko",
+        "sourceLine": 134
+      },
+      {
+        "season": 20,
+        "winner": "HeiskanJK",
+        "manager": "heiska",
+        "sourceLine": 135
+      },
+      {
+        "season": 19,
+        "winner": "Fc Alko",
+        "manager": "MLundin",
+        "sourceLine": 136
+      },
+      {
+        "season": 18,
+        "winner": "FC West",
+        "manager": "JWest",
+        "sourceLine": 137
+      },
+      {
+        "season": 17,
+        "winner": "FC West",
+        "manager": "JWest",
+        "sourceLine": 138
+      },
+      {
+        "season": 16,
+        "winner": "FC West",
+        "manager": "JWest",
+        "sourceLine": 139
+      },
+      {
+        "season": 15,
+        "winner": "FC West",
+        "manager": "JWest",
+        "sourceLine": 140
+      }
+    ]
+  },
+  {
+    "country": "Canada",
+    "cupId": 16,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Canada",
+    "rows": [
+      {
+        "season": 12,
+        "winner": "Alderwood Chiefs",
+        "manager": "Gumby",
+        "sourceLine": 119
+      },
+      {
+        "season": 11,
+        "winner": "PoCo Magpies",
+        "manager": "unknown",
+        "sourceLine": 120
+      },
+      {
+        "season": 10,
+        "winner": "Shoguns",
+        "manager": "hidetora",
+        "sourceLine": 121
+      },
+      {
+        "season": 9,
+        "winner": "Heart of the Annex",
+        "manager": "Rujulus",
+        "sourceLine": 122
+      },
+      {
+        "season": 8,
+        "winner": "Calgary Haze",
+        "manager": "Haze420",
+        "sourceLine": 123
+      },
+      {
+        "season": 7,
+        "winner": "Barrington Barons",
+        "manager": "ChrisSwimm",
+        "sourceLine": 124
+      },
+      {
+        "season": 6,
+        "winner": "Barrington Barons",
+        "manager": "ChrisSwimm",
+        "sourceLine": 125
+      },
+      {
+        "season": 5,
+        "winner": "Barrington Barons",
+        "manager": "ChrisSwimm",
+        "sourceLine": 126
+      },
+      {
+        "season": 4,
+        "winner": "Calgary Haze",
+        "manager": "Haze420",
+        "sourceLine": 127
+      },
+      {
+        "season": 3,
+        "winner": "Gumby United",
+        "manager": "Gumby",
+        "sourceLine": 128
+      }
+    ]
+  },
+  {
+    "country": "Ireland",
+    "cupId": 21,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Ireland",
+    "rows": [
+      {
+        "season": 12,
+        "winner": "Terminators",
+        "manager": "aylyan",
+        "sourceLine": 126
+      },
+      {
+        "season": 11,
+        "winner": "Inter United",
+        "manager": "bernieb",
+        "sourceLine": 127
+      },
+      {
+        "season": 10,
+        "winner": "Inter United",
+        "manager": "bernieb",
+        "sourceLine": 128
+      },
+      {
+        "season": 9,
+        "winner": "Inter United",
+        "manager": "bernieb",
+        "sourceLine": 129
+      },
+      {
+        "season": 8,
+        "winner": "Inter United",
+        "manager": "bernieb",
+        "sourceLine": 130
+      },
+      {
+        "season": 7,
+        "winner": "Killagoola",
+        "manager": "DaBudgie",
+        "sourceLine": 131
+      },
+      {
+        "season": 6,
+        "winner": "Killagoola",
+        "manager": "DaBudgie",
+        "sourceLine": 132
+      },
+      {
+        "season": 5,
+        "winner": "Killagoola",
+        "manager": "DaBudgie",
+        "sourceLine": 133
+      },
+      {
+        "season": 4,
+        "winner": "Killagoola",
+        "manager": "DaBudgie",
+        "sourceLine": 134
+      },
+      {
+        "season": 3,
+        "winner": "Killagoola",
+        "manager": "DaBudgie",
+        "sourceLine": 135
+      }
+    ]
+  },
+  {
+    "country": "Denmark",
+    "cupId": 10,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Danmark",
+    "rows": [
+      {
+        "season": 15,
+        "winner": "Man.City",
+        "sourceLine": 136
+      },
+      {
+        "season": 16,
+        "winner": "ZGF",
+        "sourceLine": 135
+      },
+      {
+        "season": 17,
+        "winner": "ZGF",
+        "sourceLine": 134
+      },
+      {
+        "season": 18,
+        "winner": "Dalum IF",
+        "sourceLine": 133
+      },
+      {
+        "season": 19,
+        "winner": "ZGF",
+        "sourceLine": 132
+      },
+      {
+        "season": 20,
+        "winner": "Dalum IF",
+        "sourceLine": 131
+      },
+      {
+        "season": 21,
+        "winner": "FC Kampsax",
+        "sourceLine": 130
+      },
+      {
+        "season": 22,
+        "winner": "Skou United",
+        "sourceLine": 129
+      },
+      {
+        "season": 23,
+        "winner": "Skou United",
+        "sourceLine": 128
+      },
+      {
+        "season": 24,
+        "winner": "Man.City",
+        "sourceLine": 127
+      }
+    ]
+  },
+  {
+    "country": "Mexico",
+    "cupId": 5,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/M%C3%A9xico",
+    "rows": [
+      {
+        "season": 15,
+        "winner": "freyre",
+        "sourceLine": 130
+      },
+      {
+        "season": 16,
+        "winner": "Atlas",
+        "sourceLine": 129
+      },
+      {
+        "season": 17,
+        "winner": "Atlas",
+        "sourceLine": 128
+      },
+      {
+        "season": 18,
+        "winner": "Atlas",
+        "sourceLine": 127
+      },
+      {
+        "season": 19,
+        "winner": "Atlas",
+        "sourceLine": 126
+      },
+      {
+        "season": 20,
+        "winner": "Borregos",
+        "sourceLine": 125
+      },
+      {
+        "season": 21,
+        "winner": "Chivas",
+        "sourceLine": 124
+      },
+      {
+        "season": 22,
+        "winner": "los mineros",
+        "sourceLine": 123
+      },
+      {
+        "season": 23,
+        "winner": "Atlas",
+        "sourceLine": 122
+      },
+      {
+        "season": 24,
+        "winner": "Borregos",
+        "sourceLine": 121
+      }
+    ]
+  },
+  {
+    "country": "South Africa",
+    "cupId": 28,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/South_Africa",
+    "rows": [
+      {
+        "season": 12,
+        "winner": "Lions",
+        "manager": "Klien",
+        "sourceLine": 123
+      },
+      {
+        "season": 11,
+        "winner": "Lions",
+        "manager": "Klien",
+        "sourceLine": 124
+      },
+      {
+        "season": 10,
+        "winner": "Lions",
+        "manager": "Klien",
+        "sourceLine": 125
+      },
+      {
+        "season": 9,
+        "winner": "Lions",
+        "manager": "Klien",
+        "sourceLine": 126
+      },
+      {
+        "season": 8,
+        "winner": "Lions",
+        "manager": "Klien",
+        "sourceLine": 127
+      },
+      {
+        "season": 7,
+        "winner": "Lions",
+        "manager": "Klien",
+        "sourceLine": 128
+      },
+      {
+        "season": 6,
+        "winner": "MASTERMIND",
+        "manager": "owenn",
+        "sourceLine": 129
+      },
+      {
+        "season": 5,
+        "winner": "Whirlwind",
+        "manager": "Elemil",
+        "sourceLine": 130
+      },
+      {
+        "season": 4,
+        "winner": "Amabutho",
+        "manager": "Headman",
+        "sourceLine": 131
+      },
+      {
+        "season": 3,
+        "winner": "Springboks",
+        "manager": "JohanRichards",
+        "sourceLine": 132
+      }
+    ]
+  },
+  {
+    "country": "Venezuela",
+    "cupId": 32,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Venezuela",
+    "rows": [
+      {
+        "season": 12,
+        "winner": "beltxis",
+        "manager": "simontxo",
+        "sourceLine": 119
+      },
+      {
+        "season": 11,
+        "winner": "beltxis",
+        "manager": "simontxo",
+        "sourceLine": 120
+      },
+      {
+        "season": 10,
+        "winner": "beltxis",
+        "manager": "simontxo",
+        "sourceLine": 121
+      },
+      {
+        "season": 9,
+        "winner": "beltxis",
+        "manager": "simontxo",
+        "sourceLine": 122
+      },
+      {
+        "season": 8,
+        "winner": "beltxis",
+        "manager": "simontxo",
+        "sourceLine": 123
+      },
+      {
+        "season": 7,
+        "winner": "beltxis",
+        "manager": "simontxo",
+        "sourceLine": 124
+      },
+      {
+        "season": 6,
+        "winner": "beltxis",
+        "manager": "simontxo",
+        "sourceLine": 125
+      },
+      {
+        "season": 5,
+        "winner": "beltxis",
+        "manager": "simontxo",
+        "sourceLine": 126
+      },
+      {
+        "season": 4,
+        "winner": "beltxis",
+        "manager": "simontxo",
+        "sourceLine": 127
+      },
+      {
+        "season": 3,
+        "winner": "Finlands A-lag",
+        "manager": "Tommy_Svensson",
+        "sourceLine": 128
+      }
+    ]
+  },
+  {
+    "country": "Turkey",
+    "cupId": 30,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/T%C3%BCrkiye",
+    "rows": [
+      {
+        "season": 12,
+        "winner": "FC Karadeniz",
+        "manager": "Silencer",
+        "sourceLine": 119
+      },
+      {
+        "season": 11,
+        "winner": "FenerbahceSK",
+        "manager": "leventozal",
+        "sourceLine": 120
+      },
+      {
+        "season": 10,
+        "winner": "KARAKARTAL",
+        "manager": "kkcc10",
+        "sourceLine": 121
+      },
+      {
+        "season": 9,
+        "winner": "KARAKARTAL",
+        "manager": "kkcc10",
+        "sourceLine": 122
+      },
+      {
+        "season": 8,
+        "winner": "KARAKARTAL",
+        "manager": "kkcc10",
+        "sourceLine": 123
+      },
+      {
+        "season": 7,
+        "winner": "KARAKARTAL",
+        "manager": "kkcc10",
+        "sourceLine": 124
+      },
+      {
+        "season": 6,
+        "winner": "KARAKARTAL",
+        "manager": "kkcc10",
+        "sourceLine": 125
+      },
+      {
+        "season": 5,
+        "winner": "KARAKARTAL",
+        "manager": "kkcc10",
+        "sourceLine": 126
+      },
+      {
+        "season": 4,
+        "winner": "KARAKARTAL",
+        "manager": "kkcc10",
+        "sourceLine": 127
+      },
+      {
+        "season": 3,
+        "winner": "KARSIYAKALI",
+        "manager": "K-Yaka",
+        "sourceLine": 128
+      }
+    ]
+  },
+  {
+    "country": "Romania",
+    "cupId": 35,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Rom%C3%A2nia",
+    "rows": [
+      {
+        "season": 12,
+        "winner": "Zatopek",
+        "manager": "zatopek",
+        "sourceLine": 154
+      },
+      {
+        "season": 11,
+        "winner": "Uraganul Rosu",
+        "manager": "danzii",
+        "sourceLine": 155
+      },
+      {
+        "season": 10,
+        "winner": "Uraganul Rosu",
+        "manager": "danzii",
+        "sourceLine": 156
+      },
+      {
+        "season": 9,
+        "winner": "Uraganul Rosu",
+        "manager": "danzii",
+        "sourceLine": 157
+      },
+      {
+        "season": 8,
+        "winner": "FC .Haos",
+        "manager": "sandu",
+        "sourceLine": 158
+      },
+      {
+        "season": 7,
+        "winner": "Uraganul Rosu",
+        "manager": "danzii",
+        "sourceLine": 159
+      },
+      {
+        "season": 6,
+        "winner": "Metalul Plopeni",
+        "manager": "yubuusa",
+        "sourceLine": 160
+      },
+      {
+        "season": 5,
+        "winner": "Steaua Bucuresti",
+        "manager": "burebista",
+        "sourceLine": 161
+      },
+      {
+        "season": 4,
+        "winner": "Steaua Bucuresti",
+        "manager": "burebista",
+        "sourceLine": 162
+      },
+      {
+        "season": 3,
+        "winner": "Steaua Bucuresti",
+        "manager": "burebista",
+        "sourceLine": 163
+      }
+    ]
+  },
+  {
+    "country": "Portugal",
+    "cupId": 26,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Portugal",
+    "rows": [
+      {
+        "season": 12,
+        "winner": "Cio Soon",
+        "manager": "Policy10",
+        "sourceLine": 145
+      },
+      {
+        "season": 11,
+        "winner": "C.F.\"Os Belenenses\"",
+        "manager": "Mendes",
+        "sourceLine": 146
+      },
+      {
+        "season": 10,
+        "winner": "H-Raki",
+        "manager": "Zwanatic",
+        "sourceLine": 147
+      },
+      {
+        "season": 9,
+        "winner": "Cio Soon",
+        "manager": "Policy10",
+        "sourceLine": 148
+      },
+      {
+        "season": 8,
+        "winner": "C.F.\"Os Belenenses\"",
+        "manager": "Mendes",
+        "sourceLine": 149
+      },
+      {
+        "season": 7,
+        "winner": "Gonorreia é fodido",
+        "manager": "Thranduil",
+        "sourceLine": 150
+      },
+      {
+        "season": 6,
+        "winner": "nicmo warriors",
+        "manager": "nicmo",
+        "sourceLine": 151
+      },
+      {
+        "season": 5,
+        "winner": "HTB 123",
+        "manager": "Handred",
+        "sourceLine": 152
+      },
+      {
+        "season": 4,
+        "winner": "Gonorreia é fodido",
+        "manager": "Thranduil",
+        "sourceLine": 153
+      }
+    ]
+  },
+  {
+    "country": "Switzerland",
+    "cupId": 42,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Schweiz",
+    "rows": [
+      {
+        "season": 11,
+        "winner": "hobbits play football",
+        "manager": "Teg_Navanis",
+        "sourceLine": 129
+      },
+      {
+        "season": 10,
+        "winner": "hobbits play football",
+        "manager": "Teg_Navanis",
+        "sourceLine": 130
+      },
+      {
+        "season": 9,
+        "winner": "Oerlikon United F.C.",
+        "manager": "Rotsch",
+        "sourceLine": 131
+      },
+      {
+        "season": 8,
+        "winner": "hobbits play football",
+        "manager": "Teg_Navanis",
+        "sourceLine": 132
+      },
+      {
+        "season": 7,
+        "winner": "hobbits play football",
+        "manager": "Teg_Navanis",
+        "sourceLine": 133
+      },
+      {
+        "season": 6,
+        "winner": "hobbits play football",
+        "manager": "Teg_Navanis",
+        "sourceLine": 134
+      },
+      {
+        "season": 5,
+        "winner": "flash servette",
+        "manager": "crossair",
+        "sourceLine": 135
+      },
+      {
+        "season": 4,
+        "winner": "Torpedo Zürihorn",
+        "manager": "flexov",
+        "sourceLine": 136
+      },
+      {
+        "season": 3,
+        "winner": "hobbits play football",
+        "manager": "Teg_Navanis",
+        "sourceLine": 137
+      },
+      {
+        "season": 2,
+        "winner": "Vaud Sports",
+        "manager": "(bot)",
+        "sourceLine": 138
+      }
+    ]
+  },
+  {
+    "country": "Hungary",
+    "cupId": 49,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Magyarorsz%C3%A1g",
+    "rows": [
+      {
+        "season": 9,
+        "winner": "Hódítók",
+        "manager": "lambda",
+        "sourceLine": 118
+      },
+      {
+        "season": 8,
+        "winner": "Gianag",
+        "manager": "verren",
+        "sourceLine": 119
+      },
+      {
+        "season": 7,
+        "winner": "Hali",
+        "manager": "Covy",
+        "sourceLine": 120
+      },
+      {
+        "season": 6,
+        "winner": "Dinamo Budapest",
+        "manager": "dinamo",
+        "sourceLine": 121
+      },
+      {
+        "season": 5,
+        "winner": "Hali",
+        "manager": "Covy",
+        "sourceLine": 122
+      },
+      {
+        "season": 4,
+        "winner": "Alte Proletars",
+        "manager": "Salata69",
+        "sourceLine": 123
+      },
+      {
+        "season": 3,
+        "winner": "UNQL-Power SC",
+        "manager": "yulu42",
+        "sourceLine": 124
+      },
+      {
+        "season": 2,
+        "winner": "Vasas SC",
+        "manager": "Keynes",
+        "sourceLine": 125
+      },
+      {
+        "season": 1,
+        "winner": "Száguldó Teveszõr",
+        "manager": "Mikikike",
+        "sourceLine": 126
+      }
+    ]
+  },
+  {
+    "country": "Wales",
+    "cupId": 60,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Cymru",
+    "rows": [
+      {
+        "season": 8,
+        "winner": "Brecon Red Kites",
+        "manager": "RedJohn",
+        "sourceLine": 118
+      },
+      {
+        "season": 7,
+        "winner": "Llareggub FC",
+        "manager": "nogoodboyo",
+        "sourceLine": 119
+      },
+      {
+        "season": 6,
+        "winner": "Brecon Red Kites",
+        "manager": "RedJohn",
+        "sourceLine": 120
+      },
+      {
+        "season": 5,
+        "winner": "Mae Hen Wlad Fy Nhadau",
+        "manager": "legaleagle",
+        "sourceLine": 121
+      },
+      {
+        "season": 4,
+        "winner": "Mae Hen Wlad Fy Nhadau",
+        "manager": "legaleagle",
+        "sourceLine": 122
+      },
+      {
+        "season": 3,
+        "winner": "Cadeyrn FC",
+        "manager": "dlewis",
+        "sourceLine": 123
+      },
+      {
+        "season": 2,
+        "winner": "J.D.F.C 2002",
+        "manager": "dawgz",
+        "sourceLine": 124
+      }
+    ]
+  },
+  {
+    "country": "Israel",
+    "cupId": 62,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Israel",
+    "rows": [
+      {
+        "season": 8,
+        "winner": "La-resistance",
+        "manager": "asaflazarovich",
+        "sourceLine": 128
+      },
+      {
+        "season": 7,
+        "winner": "Beitar",
+        "manager": "Korenfine",
+        "sourceLine": 129
+      },
+      {
+        "season": 6,
+        "winner": "Doy's United",
+        "manager": "abadoy",
+        "sourceLine": 130
+      },
+      {
+        "season": 5,
+        "winner": "La-resistance",
+        "manager": "asaflazarovich",
+        "sourceLine": 131
+      },
+      {
+        "season": 4,
+        "winner": "Beitar",
+        "manager": "Korenfine",
+        "sourceLine": 132
+      },
+      {
+        "season": 3,
+        "winner": "Hapoel Beer-Sheva",
+        "manager": "Hbesh",
+        "sourceLine": 133
+      },
+      {
+        "season": 2,
+        "winner": "Hapoel Beer-Sheva",
+        "manager": "Hbesh",
+        "sourceLine": 134
+      }
+    ]
+  },
+  {
+    "country": "Lithuania",
+    "cupId": 124,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Lietuva",
+    "rows": [
+      {
+        "season": 6,
+        "winner": "FC Bajorai",
+        "manager": "Bajoras",
+        "sourceLine": 115
+      },
+      {
+        "season": 5,
+        "winner": "Mėlynosios vėliavos",
+        "manager": "RamPet",
+        "sourceLine": 116
+      },
+      {
+        "season": 4,
+        "winner": "Naujas Greitis",
+        "manager": "breezegrn",
+        "sourceLine": 117
+      },
+      {
+        "season": 3,
+        "winner": "Anapilis",
+        "manager": "marcius",
+        "sourceLine": 118
+      },
+      {
+        "season": 2,
+        "winner": "Dūmai",
+        "manager": "y-dum",
+        "sourceLine": 119
+      }
+    ]
+  },
+  {
+    "country": "Slovakia",
+    "cupId": 125,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Slovensko",
+    "rows": [
+      {
+        "season": 6,
+        "winner": "FC Jehovisti",
+        "manager": "Thelonius",
+        "sourceLine": 168
+      },
+      {
+        "season": 5,
+        "winner": "FC zlomene vazy",
+        "manager": "trubiroh",
+        "sourceLine": 169
+      },
+      {
+        "season": 4,
+        "winner": "FC Jehovisti",
+        "manager": "Thelonius",
+        "sourceLine": 170
+      },
+      {
+        "season": 3,
+        "winner": "FK Bizon Bratislava",
+        "manager": "Mravec",
+        "sourceLine": 171
+      },
+      {
+        "season": 2,
+        "winner": "FC Slovan Zalesie",
+        "manager": "troll",
+        "sourceLine": 172
+      }
+    ]
+  },
+  {
+    "country": "Bosnia and Herzegovina",
+    "cupId": 127,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Bosna_i_Hercegovina",
+    "rows": [
+      {
+        "season": 6,
+        "winner": "Maxnet",
+        "manager": "reness",
+        "sourceLine": 115
+      },
+      {
+        "season": 5,
+        "winner": "Normala FC",
+        "manager": "newguy",
+        "sourceLine": 116
+      },
+      {
+        "season": 4,
+        "winner": "Normala FC",
+        "manager": "newguy",
+        "sourceLine": 117
+      },
+      {
+        "season": 3,
+        "winner": "Normala FC",
+        "manager": "newguy",
+        "sourceLine": 118
+      },
+      {
+        "season": 2,
+        "winner": "Maxnet",
+        "manager": "reness",
+        "sourceLine": 119
+      }
+    ]
+  },
+  {
+    "country": "Czechia",
+    "cupId": 50,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Czechia",
+    "rows": [
+      {
+        "season": 9,
+        "winner": "AC Mortifero ATTACCO",
+        "manager": "Wollongong",
+        "sourceLine": 144
+      },
+      {
+        "season": 8,
+        "winner": "Sakura",
+        "manager": "Gaijin",
+        "sourceLine": 145
+      },
+      {
+        "season": 7,
+        "winner": "Fosforos Cassovia",
+        "manager": "Vrana",
+        "sourceLine": 146
+      },
+      {
+        "season": 6,
+        "winner": "FC SMAB",
+        "manager": "cbm001",
+        "sourceLine": 147
+      },
+      {
+        "season": 5,
+        "winner": "Prerov United",
+        "manager": "mysaci",
+        "sourceLine": 148
+      },
+      {
+        "season": 4,
+        "winner": "Fianna",
+        "manager": "Bobulix",
+        "sourceLine": 149
+      },
+      {
+        "season": 3,
+        "winner": "Ničivá Síla",
+        "manager": "Dicemaster",
+        "sourceLine": 150
+      },
+      {
+        "season": 2,
+        "winner": "Ničivá Síla",
+        "manager": "Dicemaster",
+        "sourceLine": 151
+      },
+      {
+        "season": 1,
+        "winner": "Ničivá Síla",
+        "manager": "Dicemaster",
+        "sourceLine": 152
+      }
+    ]
+  },
+  {
+    "country": "South Korea",
+    "cupId": 23,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Hanguk",
+    "rows": [
+      {
+        "season": 12,
+        "winner": "The Fellowship FC",
+        "manager": "Elphyon",
+        "sourceLine": 134
+      },
+      {
+        "season": 11,
+        "winner": "Red & White",
+        "manager": "seung",
+        "sourceLine": 135
+      },
+      {
+        "season": 10,
+        "winner": "Red & White",
+        "manager": "seung",
+        "sourceLine": 136
+      },
+      {
+        "season": 9,
+        "winner": "Busan power",
+        "manager": "hattrick2003",
+        "sourceLine": 137
+      },
+      {
+        "season": 8,
+        "winner": "Red & White",
+        "manager": "seung",
+        "sourceLine": 138
+      },
+      {
+        "season": 7,
+        "winner": "Suwon Bluewings",
+        "manager": "kernel",
+        "sourceLine": 139
+      },
+      {
+        "season": 6,
+        "winner": "Busan power",
+        "manager": "hattrick2003",
+        "sourceLine": 140
+      },
+      {
+        "season": 5,
+        "winner": "Suwon Ball-Kickers",
+        "manager": "kernel",
+        "sourceLine": 141
+      },
+      {
+        "season": 4,
+        "winner": "Suwon Ball-Kickers",
+        "manager": "kernel",
+        "sourceLine": 142
+      },
+      {
+        "season": 3,
+        "winner": "Suwon Ball-Kickers",
+        "manager": "kernel",
+        "sourceLine": 143
+      }
+    ]
+  },
+  {
+    "country": "Vietnam",
+    "cupId": 128,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Vi%E1%BB%87t_Nam",
+    "rows": [
+      {
+        "season": 6,
+        "winner": "Saigon Saints",
+        "manager": "mr_saigon",
+        "sourceLine": 127
+      },
+      {
+        "season": 5,
+        "winner": "CSG_FC",
+        "manager": "_Koto_",
+        "sourceLine": 128
+      },
+      {
+        "season": 4,
+        "winner": "Saigon Saints",
+        "manager": "mr_saigon",
+        "sourceLine": 129
+      },
+      {
+        "season": 3,
+        "winner": "Saigon Saints",
+        "manager": "mr_saigon",
+        "sourceLine": 130
+      },
+      {
+        "season": 2,
+        "winner": "Saigon Saints",
+        "manager": "mr_saigon",
+        "sourceLine": 131
+      }
+    ]
+  },
+  {
+    "country": "Ukraine",
+    "cupId": 126,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Ukraina",
+    "rows": [
+      {
+        "season": 6,
+        "winner": "FC Granit",
+        "manager": "Askon",
+        "sourceLine": 117
+      },
+      {
+        "season": 5,
+        "winner": "4ernomorets",
+        "manager": "_Che_",
+        "sourceLine": 118
+      },
+      {
+        "season": 4,
+        "winner": "4ernomorets",
+        "manager": "_Che_",
+        "sourceLine": 119
+      },
+      {
+        "season": 3,
+        "winner": "napoleonskaya gvardiya",
+        "manager": "mirdomu",
+        "sourceLine": 120
+      }
+    ]
+  },
+  {
+    "country": "Paraguay",
+    "cupId": 130,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Paraguay",
+    "rows": [
+      {
+        "season": 4,
+        "winner": "Tricolor de Corazón",
+        "manager": "Don_Romerito",
+        "sourceLine": 114
+      },
+      {
+        "season": 3,
+        "winner": "me olvide",
+        "manager": "P_I_R_U_",
+        "sourceLine": 115
+      }
+    ]
+  },
+  {
+    "country": "Ecuador",
+    "cupId": 131,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Ecuador",
+    "rows": [
+      {
+        "season": 4,
+        "winner": "korsarios",
+        "manager": "fercorrob",
+        "sourceLine": 116
+      },
+      {
+        "season": 3,
+        "winner": "korsarios",
+        "manager": "fercorrob",
+        "sourceLine": 117
+      },
+      {
+        "season": 2,
+        "winner": "El Barcelona S. C.",
+        "manager": "pasionQmata",
+        "sourceLine": 118
+      },
+      {
+        "season": 1,
+        "winner": "Deportivo de Quito",
+        "manager": "josegarcia",
+        "sourceLine": 119
+      }
+    ]
+  },
+  {
+    "country": "Bolivia",
+    "cupId": 132,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Bolivia",
+    "rows": [
+      {
+        "season": 4,
+        "winner": "Camiri",
+        "manager": "Gunnarsp",
+        "sourceLine": 119
+      },
+      {
+        "season": 3,
+        "winner": "-Real Madrid FC-",
+        "manager": "Mandrake",
+        "sourceLine": 120
+      },
+      {
+        "season": 2,
+        "winner": "-Real Madrid FC-",
+        "manager": "Mandrake",
+        "sourceLine": 121
+      },
+      {
+        "season": 1,
+        "winner": "Cosmos 1982",
+        "manager": "soccer_boy",
+        "sourceLine": 122
+      }
+    ]
+  },
+  {
+    "country": "Nigeria",
+    "cupId": 133,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Nigeria",
+    "rows": [
+      {
+        "season": 4,
+        "winner": "Victorian Kings",
+        "manager": "sdalambert",
+        "sourceLine": 114
+      },
+      {
+        "season": 3,
+        "winner": "Victorian Kings",
+        "manager": "sdalambert",
+        "sourceLine": 115
+      },
+      {
+        "season": 2,
+        "winner": "Deportivo Benin",
+        "manager": "ODapo",
+        "sourceLine": 116
+      },
+      {
+        "season": 1,
+        "winner": "Deportivo Benin",
+        "manager": "ODapo",
+        "sourceLine": 117
+      }
+    ]
+  },
+  {
+    "country": "Faroe Islands",
+    "cupId": 134,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/F%C3%B8royar",
+    "rows": [
+      {
+        "season": 4,
+        "winner": "Fish & Sheep FC",
+        "manager": "Vagner",
+        "sourceLine": 117
+      },
+      {
+        "season": 3,
+        "winner": "FC Tórshavn",
+        "manager": "torshavn",
+        "sourceLine": 118
+      },
+      {
+        "season": 2,
+        "winner": "Fish & Sheep FC",
+        "manager": "Vagner",
+        "sourceLine": 119
+      },
+      {
+        "season": 1,
+        "winner": "FC Torshavn",
+        "manager": "torshavn",
+        "sourceLine": 120
+      }
+    ]
+  },
+  {
+    "country": "Morocco",
+    "cupId": 135,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Al_Maghrib",
+    "rows": [
+      {
+        "season": 4,
+        "winner": "FAR Meknès united",
+        "manager": "kasamim",
+        "sourceLine": 119
+      },
+      {
+        "season": 3,
+        "winner": "FAR Meknès united",
+        "manager": "kasamim",
+        "sourceLine": 120
+      },
+      {
+        "season": 2,
+        "winner": "FAR Meknès united",
+        "manager": "kasamim",
+        "sourceLine": 121
+      },
+      {
+        "season": 1,
+        "winner": "FAR Meknès united",
+        "manager": "kasamim",
+        "sourceLine": 122
+      }
+    ]
+  },
+  {
+    "country": "Philippines",
+    "cupId": 53,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Pilipinas",
+    "rows": [
+      {
+        "season": 1,
+        "winner": "Leyte",
+        "sourceLine": 141
+      },
+      {
+        "season": 2,
+        "winner": "Motorola",
+        "sourceLine": 140
+      },
+      {
+        "season": 3,
+        "winner": "Burnt Toast Collective Ensemble",
+        "sourceLine": 139
+      },
+      {
+        "season": 4,
+        "winner": "Top Guns",
+        "sourceLine": 138
+      },
+      {
+        "season": 5,
+        "winner": "Olongapo-Metro FC Head Hunters",
+        "sourceLine": 137
+      },
+      {
+        "season": 6,
+        "winner": "Olongapo-Metro FC Head Hunters",
+        "sourceLine": 136
+      },
+      {
+        "season": 7,
+        "winner": "Mystic Snakes",
+        "sourceLine": 135
+      },
+      {
+        "season": 8,
+        "winner": "Titleist .",
+        "sourceLine": 134
+      },
+      {
+        "season": 9,
+        "winner": "Quezon Kickers",
+        "sourceLine": 133
+      }
+    ]
+  },
+  {
+    "country": "Pakistan",
+    "cupId": 129,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Pakistan",
+    "rows": [
+      {
+        "season": 2,
+        "winner": "pakis1920",
+        "sourceLine": 137
+      },
+      {
+        "season": 3,
+        "winner": "pakis1920",
+        "sourceLine": 136
+      },
+      {
+        "season": 4,
+        "winner": "Islamaure",
+        "sourceLine": 135
+      },
+      {
+        "season": 5,
+        "winner": "pakis1920",
+        "sourceLine": 134
+      },
+      {
+        "season": 6,
+        "winner": "Saads Football Club",
+        "sourceLine": 133
+      }
+    ]
+  },
+  {
+    "country": "Saudi Arabia",
+    "cupId": 138,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Saudi_Arabia",
+    "rows": [
+      {
+        "season": 3,
+        "winner": "KFUPM",
+        "manager": "aldosary",
+        "sourceLine": 115
+      },
+      {
+        "season": 2,
+        "winner": "KFUPM",
+        "manager": "aldosary",
+        "sourceLine": 116
+      },
+      {
+        "season": 1,
+        "winner": "Al Nassr",
+        "manager": "fuad_bahja",
+        "sourceLine": 117
+      }
+    ]
+  },
+  {
+    "country": "Tunisia",
+    "cupId": 139,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Tunisia",
+    "rows": [
+      {
+        "season": 3,
+        "winner": "Espérance sportive de tunis",
+        "manager": "Aniss",
+        "sourceLine": 117
+      },
+      {
+        "season": 2,
+        "winner": "Saharan Gladiators",
+        "manager": "charly_alpha",
+        "sourceLine": 118
+      },
+      {
+        "season": 1,
+        "winner": "Club Afrcain",
+        "manager": "charly_alpha",
+        "sourceLine": 119
+      }
+    ]
+  },
+  {
+    "country": "United Arab Emirates",
+    "cupId": 142,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/United_Arab_Emirates",
+    "rows": [
+      {
+        "season": 3,
+        "winner": "The Sheiks",
+        "manager": "saeed",
+        "sourceLine": 117
+      },
+      {
+        "season": 2,
+        "winner": "The Sheiks",
+        "manager": "saeed",
+        "sourceLine": 118
+      },
+      {
+        "season": 1,
+        "winner": "The Sheiks",
+        "manager": "saeed",
+        "sourceLine": 119
+      }
+    ]
+  },
+  {
+    "country": "Luxembourg",
+    "cupId": 143,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/L%C3%ABtzebuerg",
+    "rows": [
+      {
+        "season": 3,
+        "winner": "Spora",
+        "manager": "zuzut",
+        "sourceLine": 127
+      },
+      {
+        "season": 2,
+        "winner": "Jamaican Penguins Bobsleigh Team",
+        "manager": "Jillefsky",
+        "sourceLine": 128
+      }
+    ]
+  },
+  {
+    "country": "Cyprus",
+    "cupId": 148,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Cyprus",
+    "rows": [
+      {
+        "season": 3,
+        "winner": "F.C Kipros",
+        "manager": "Kipros",
+        "sourceLine": 117
+      },
+      {
+        "season": 2,
+        "winner": "ThunderFull",
+        "manager": "4fx3nti5",
+        "sourceLine": 118
+      },
+      {
+        "season": 1,
+        "winner": "TrAnCeAllStArS",
+        "manager": "tranceru",
+        "sourceLine": 119
+      }
+    ]
+  },
+  {
+    "country": "Panama",
+    "cupId": 156,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Panama",
+    "rows": [
+      {
+        "season": 2,
+        "winner": "ST CORRU",
+        "manager": "corru",
+        "sourceLine": 115
+      },
+      {
+        "season": 1,
+        "winner": "Viscaya Calcio",
+        "manager": "Alexandrox",
+        "sourceLine": 116
+      }
+    ]
+  },
+  {
+    "country": "Costa Rica",
+    "cupId": 140,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Costa_Rica",
+    "rows": [
+      {
+        "season": 3,
+        "winner": "CR Lions",
+        "manager": "JM2004",
+        "sourceLine": 116
+      },
+      {
+        "season": 2,
+        "winner": "Freudinos",
+        "manager": "Jenita",
+        "sourceLine": 117
+      },
+      {
+        "season": 1,
+        "winner": "Revolucion Cubana 1959",
+        "manager": "Henry2",
+        "sourceLine": 118
+      }
+    ]
+  },
+  {
+    "country": "Belarus",
+    "cupId": 151,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Belarus",
+    "rows": [
+      {
+        "season": 2,
+        "winner": "FC Zahop",
+        "manager": "Gogga",
+        "sourceLine": 115
+      },
+      {
+        "season": 1,
+        "winner": "FC Pomsta Minsk",
+        "manager": "Sasha963",
+        "sourceLine": 116
+      }
+    ]
+  },
+  {
+    "country": "Northern Ireland",
+    "cupId": 153,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Northern_Ireland",
+    "rows": [
+      {
+        "season": 2,
+        "winner": "Ballymena Utd",
+        "manager": "flam1",
+        "sourceLine": 116
+      },
+      {
+        "season": 1,
+        "winner": "Ballymena Utd",
+        "manager": "flam1",
+        "sourceLine": 117
+      }
+    ]
+  },
+  {
+    "country": "Jamaica",
+    "cupId": 154,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Jamaica",
+    "rows": [
+      {
+        "season": 2,
+        "winner": "C.A.F.D.",
+        "manager": "Rufri",
+        "sourceLine": 116
+      },
+      {
+        "season": 1,
+        "winner": "C.A.F.D.",
+        "manager": "Rufri",
+        "sourceLine": 117
+      }
+    ]
+  },
+  {
+    "country": "Kenya",
+    "cupId": 155,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Kenya",
+    "rows": [
+      {
+        "season": 2,
+        "winner": "wanafunzi",
+        "manager": "wanafunzi",
+        "sourceLine": 118
+      },
+      {
+        "season": 1,
+        "winner": "Berhanena Selam",
+        "manager": "elmardiomar",
+        "sourceLine": 119
+      }
+    ]
+  },
+  {
+    "country": "Dominican Republic",
+    "cupId": 147,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Rep%C3%BAblica_Dominicana",
+    "rows": [
+      {
+        "season": 3,
+        "winner": "Mansot",
+        "manager": "manuelgomez84",
+        "sourceLine": 115
+      }
+    ]
+  },
+  {
+    "country": "North Macedonia",
+    "cupId": 157,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Severna_Makedonija",
+    "rows": [
+      {
+        "season": 2,
+        "winner": "FK PELISTER",
+        "manager": "PELESTER234",
+        "sourceLine": 134
+      }
+    ]
+  },
+  {
+    "country": "Honduras",
+    "cupId": 159,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Honduras",
+    "rows": [
+      {
+        "season": 1,
+        "winner": "*Margarita Warszawa*",
+        "manager": "pawpol",
+        "sourceLine": 118
+      }
+    ]
+  },
+  {
+    "country": "El Salvador",
+    "cupId": 160,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/El_Salvador",
+    "rows": [
+      {
+        "season": 1,
+        "winner": "Alianza Intercontinental",
+        "manager": "machtl",
+        "sourceLine": 114
+      }
+    ]
+  },
+  {
+    "country": "Malta",
+    "cupId": 161,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Malta",
+    "rows": [
+      {
+        "season": 1,
+        "winner": "Mellieha Knights",
+        "manager": "CarloB",
+        "sourceLine": 117
+      }
+    ]
+  },
+  {
+    "country": "Kyrgyz Republic",
+    "cupId": 162,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Kyrgyz_Republic",
+    "rows": [
+      {
+        "season": 1,
+        "winner": "FC Exemption",
+        "manager": "mongrel",
+        "sourceLine": 126
+      }
+    ]
+  },
+  {
+    "country": "Moldova",
+    "cupId": 163,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Moldova",
+    "rows": [
+      {
+        "season": 1,
+        "winner": "Zimbru II",
+        "manager": "GoTTiK",
+        "sourceLine": 115
+      }
+    ]
+  },
+  {
+    "country": "Albania",
+    "cupId": 158,
+    "sourceUrl": "https://wiki.hattrick.org/wiki/Albania",
+    "rows": [
+      {
+        "season": 1,
+        "winner": "kf.Liria",
+        "manager": "pimche",
+        "sourceLine": 117
+      }
+    ]
+  }
+]

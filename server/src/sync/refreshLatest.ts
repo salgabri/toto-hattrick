@@ -3,7 +3,7 @@ import type { TokenPair } from '../chpp/auth.js';
 import { fetchWorldDetails } from '../chpp/endpoints.js';
 import { parseWorldDetailsCups } from '../schemas/index.js';
 import { syncNationalChampions } from './nationalChampions.js';
-import { syncCupChampions, enrichCupTeamIds } from './cups.js';
+import { syncCupChampions, enrichCupTeamIds, type CupSyncResult } from './cups.js';
 import { seedMasters } from './masters.js';
 
 /**
@@ -97,6 +97,7 @@ export interface RefreshLatestResult {
   leaguesAdvanced: number;
   leagueChampionsAdded: number;
   cupChampionsAdded: number;
+  cupIssues: Array<CupSyncResult['issues'][number] & { cupId: number; cupName: string; countryName: string }>;
 }
 
 /**
@@ -150,9 +151,11 @@ export async function refreshLatestChampions(
   }
 
   // 3) Cup finals — same bounded walk. Cups must already be seeded (sync-cups MODE=seed); this
-  //    only harvests new finals, it does not create the catalog.
-  const cups = await prisma.cup.findMany({ where: leagueFilter, orderBy: [{ leagueId: 'asc' }, { cupLevel: 'asc' }, { cupLevelIndex: 'asc' }] });
+  //    only harvests new finals, it does not create the catalog. ArenaHub seasonal tournaments
+  //    retain their separate history ingestion; cupmatches cannot refresh their edition history.
+  const cups = await prisma.cup.findMany({ where: { ...leagueFilter, OR: [{ leagueId: { not: 0 } }, { cupId: 183 }] }, orderBy: [{ leagueId: 'asc' }, { cupLevel: 'asc' }, { cupLevelIndex: 'asc' }] });
   let cupChampionsAdded = 0;
+  const cupIssues: RefreshLatestResult['cupIssues'] = [];
   let j = 0;
   for (const cup of cups) {
     j++;
@@ -161,6 +164,10 @@ export async function refreshLatestChampions(
     try {
       const r = await syncCupChampions(token, cup.cupId, { minSeason: floor });
       cupChampionsAdded += r.seasonsStored;
+      for (const issue of r.issues) {
+        cupIssues.push({ ...issue, cupId: cup.cupId, cupName: cup.cupName, countryName: cup.countryName });
+        console.warn(`  ${cup.countryName} ${cup.cupName} (cup ${cup.cupId}) S${issue.season}${issue.matchId ? ` match ${issue.matchId}` : ''}: unresolved — ${issue.reason}`);
+      }
       if (r.seasonsStored) {
         console.log(`  [${j}/${cups.length}] ${cup.countryName} ${cup.cupName}: +${r.seasonsStored}, latest ${r.latestChampion ?? '—'}`);
       }
@@ -172,5 +179,5 @@ export async function refreshLatestChampions(
   // 4) Resolve the winning teamId for the new finals (newest-first, so the fresh ones go first).
   if (cupChampionsAdded > 0) await enrichCupTeamIds(token, {});
 
-  return { leaguesAdvanced: advanced.length, leagueChampionsAdded, cupChampionsAdded };
+  return { leaguesAdvanced: advanced.length, leagueChampionsAdded, cupChampionsAdded, cupIssues };
 }

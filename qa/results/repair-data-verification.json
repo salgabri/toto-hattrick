@@ -1,0 +1,910 @@
+{
+  "generatedAt": "2026-09-10T22:42:38.978Z",
+  "checks": {
+    "Team": {
+      "before": 0,
+      "after": 0,
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "Match": {
+      "before": 0,
+      "after": 0,
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "MatchDetail": {
+      "before": 0,
+      "after": 0,
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "SeasonStanding": {
+      "before": 0,
+      "after": 0,
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "NationalLeague": {
+      "before": 160,
+      "after": 160,
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "LeagueChampion": {
+      "before": 9913,
+      "after": 9913,
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "Cup": {
+      "before": 820,
+      "after": 820,
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "CupChampion": {
+      "before": 32161,
+      "after": 32211,
+      "added": 50,
+      "changed": 52,
+      "removed": 0
+    },
+    "WorldCupChampion": {
+      "before": 81,
+      "after": 81,
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "NationalCupChampion": {
+      "before": 94,
+      "after": 94,
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "NationalCoachElection": {
+      "before": 7137,
+      "after": 7137,
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "HattrickUser": {
+      "before": 10892,
+      "after": 10892,
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    }
+  },
+  "addedFinals": [
+    {
+      "cupId": 37,
+      "season": 5,
+      "finalMatchId": 5041996,
+      "championTeamId": 73361,
+      "champion": "pinky3367",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 41,
+      "season": 6,
+      "finalMatchId": 7226389,
+      "championTeamId": 72935,
+      "champion": "FC Drummer",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 41,
+      "season": 9,
+      "finalMatchId": 18471273,
+      "championTeamId": 73018,
+      "champion": "Berzerk Oostende",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 15,
+      "season": 7,
+      "finalMatchId": 7163051,
+      "championTeamId": 29640,
+      "champion": "Alfabarra",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 15,
+      "season": 11,
+      "finalMatchId": 24116895,
+      "championTeamId": 29640,
+      "champion": "Alfabarra",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 61,
+      "season": 4,
+      "finalMatchId": 9681158,
+      "championTeamId": 117159,
+      "champion": "Yellow squad",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 17,
+      "season": 8,
+      "finalMatchId": 9781567,
+      "championTeamId": 29974,
+      "champion": "Universidad de Chile",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 17,
+      "season": 10,
+      "finalMatchId": 18478956,
+      "championTeamId": 29992,
+      "champion": "los matasanos",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 59,
+      "season": 7,
+      "finalMatchId": 23440755,
+      "championTeamId": 111556,
+      "champion": "NightWalkers",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 18,
+      "season": 8,
+      "finalMatchId": 9687663,
+      "championTeamId": 30319,
+      "champion": "ATL NACIONAL",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 56,
+      "season": 6,
+      "finalMatchId": 13774861,
+      "championTeamId": 94300,
+      "champion": "Bloodwich-team",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 56,
+      "season": 7,
+      "finalMatchId": 18279050,
+      "championTeamId": 94420,
+      "champion": "Kalelarga Legends",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 19,
+      "season": 11,
+      "finalMatchId": 23654711,
+      "championTeamId": 30505,
+      "champion": "Heliopolis Cairo",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 3,
+      "season": 20,
+      "finalMatchId": 9871105,
+      "championTeamId": 54226,
+      "champion": "Durham City FC",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 54,
+      "season": 5,
+      "finalMatchId": 9777093,
+      "championTeamId": 94147,
+      "champion": "Luige United FC",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 6,
+      "season": 19,
+      "finalMatchId": 7160871,
+      "championTeamId": 8922,
+      "champion": "Nappes Xcutors",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 6,
+      "season": 20,
+      "finalMatchId": 9778089,
+      "championTeamId": 8922,
+      "champion": "Nappes Xcutors",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 4,
+      "season": 19,
+      "finalMatchId": 7223754,
+      "championTeamId": 6705,
+      "champion": "FC Phoenix Mühlburg",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 48,
+      "season": 4,
+      "finalMatchId": 7095334,
+      "championTeamId": 94035,
+      "champion": "Spatania",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 48,
+      "season": 7,
+      "finalMatchId": 18279489,
+      "championTeamId": 93957,
+      "champion": "Thalassokratya",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 58,
+      "season": 3,
+      "finalMatchId": 7095612,
+      "championTeamId": 30205,
+      "champion": "shapeshifer",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 36,
+      "season": 5,
+      "finalMatchId": 5000327,
+      "championTeamId": 67521,
+      "champion": "The Boondock Raiders",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 20,
+      "season": 6,
+      "finalMatchId": 4999445,
+      "championTeamId": 31426,
+      "champion": "Abhi Lions",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 52,
+      "season": 6,
+      "finalMatchId": 13640672,
+      "championTeamId": 94514,
+      "champion": "Janggutan Capek",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 7,
+      "season": 21,
+      "finalMatchId": 13913642,
+      "championTeamId": 49512,
+      "champion": "Sgainator F.C.",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 22,
+      "season": 7,
+      "finalMatchId": 7028814,
+      "championTeamId": 32048,
+      "champion": "Shirayuri Sky",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 51,
+      "season": 5,
+      "finalMatchId": 9777575,
+      "championTeamId": 94890,
+      "champion": "Dinaburg FC",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 51,
+      "season": 6,
+      "finalMatchId": 13776828,
+      "championTeamId": 94820,
+      "champion": "The Magnificent One",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 38,
+      "season": 5,
+      "finalMatchId": 4999365,
+      "championTeamId": 73115,
+      "champion": "Katamaran Divers",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 38,
+      "season": 9,
+      "finalMatchId": 18277976,
+      "championTeamId": 73145,
+      "champion": "Tiger ES",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 13,
+      "season": 8,
+      "finalMatchId": 7227171,
+      "championTeamId": 21019,
+      "champion": "Real Raateland",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 9,
+      "season": 7,
+      "finalMatchId": 5043018,
+      "championTeamId": 20239,
+      "champion": "Birkelunden BK",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 14,
+      "season": 8,
+      "finalMatchId": 9775556,
+      "championTeamId": 29113,
+      "champion": "Sparker",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 14,
+      "season": 10,
+      "finalMatchId": 18467672,
+      "championTeamId": 29073,
+      "champion": "Burnt Out Koalas FC",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 33,
+      "season": 5,
+      "finalMatchId": 3491085,
+      "championTeamId": 30152,
+      "champion": "Ocean Panda",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 33,
+      "season": 9,
+      "finalMatchId": 13640269,
+      "championTeamId": 30137,
+      "champion": "Tsing Yi Friends",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 24,
+      "season": 11,
+      "finalMatchId": 23888873,
+      "championTeamId": 32215,
+      "champion": "Real Lima FC",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 25,
+      "season": 9,
+      "finalMatchId": 13915911,
+      "championTeamId": 32301,
+      "champion": "MKS Narew Ostroleka",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 34,
+      "season": 4,
+      "finalMatchId": 2491001,
+      "championTeamId": 28850,
+      "champion": "Tequila Lovers",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 34,
+      "season": 7,
+      "finalMatchId": 7095139,
+      "championTeamId": 28904,
+      "champion": "KPEMEHb",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 27,
+      "season": 11,
+      "finalMatchId": 23878537,
+      "championTeamId": 28780,
+      "champion": "Bogglers Divided",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 55,
+      "season": 7,
+      "finalMatchId": 18092527,
+      "championTeamId": 94974,
+      "champion": "Dostin",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 40,
+      "season": 4,
+      "finalMatchId": 3517167,
+      "championTeamId": 37614,
+      "champion": "FC Tenochtitlán",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 40,
+      "season": 8,
+      "finalMatchId": 13773955,
+      "championTeamId": 37754,
+      "champion": "Winning Eleven",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 63,
+      "season": 5,
+      "finalMatchId": 13638037,
+      "championTeamId": 116908,
+      "champion": "Praslovan",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 43,
+      "season": 6,
+      "finalMatchId": 5086374,
+      "championTeamId": 48120,
+      "champion": "Ancestrales",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 1,
+      "season": 16,
+      "finalMatchId": 2539640,
+      "championTeamId": 566,
+      "champion": "Arvidsjaur BK",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 29,
+      "season": 8,
+      "finalMatchId": 9775668,
+      "championTeamId": 28340,
+      "champion": "-C-R-I-S-I-S-",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 31,
+      "season": 4,
+      "finalMatchId": 2492136,
+      "championTeamId": 27533,
+      "champion": "el terrible",
+      "championUserId": null,
+      "penalties": false
+    },
+    {
+      "cupId": 2108472,
+      "season": 11,
+      "finalMatchId": 0,
+      "championTeamId": null,
+      "champion": "Beta Broncos",
+      "championUserId": null,
+      "penalties": false
+    }
+  ],
+  "correctedFinals": [
+    {
+      "cupId": 2,
+      "season": 23,
+      "before": "La PLata F.C.",
+      "after": "LINIERS",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=2&season=23"
+    },
+    {
+      "cupId": 2,
+      "season": 19,
+      "before": "ThaNaToS F.C.",
+      "after": "Bariloche Behemoths FC",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=2&season=19"
+    },
+    {
+      "cupId": 37,
+      "season": 10,
+      "before": "databased.at",
+      "after": "Gut",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Austria"
+    },
+    {
+      "cupId": 41,
+      "season": 4,
+      "before": "FC Drummer",
+      "after": "Lokomotiv Veltem",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Belgium_Cup"
+    },
+    {
+      "cupId": 132,
+      "season": 3,
+      "before": "Y2K F.C.",
+      "after": "-Real Madrid FC-",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=132&season=3"
+    },
+    {
+      "cupId": 127,
+      "season": 4,
+      "before": "Jajce Animals",
+      "after": "Normala FC",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=127&season=4"
+    },
+    {
+      "cupId": 127,
+      "season": 3,
+      "before": "Maxnet",
+      "after": "Normala FC",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=127&season=3"
+    },
+    {
+      "cupId": 61,
+      "season": 6,
+      "before": "White Moon FC",
+      "after": "Yellow squad",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Bulgaria"
+    },
+    {
+      "cupId": 61,
+      "season": 2,
+      "before": "Cryout",
+      "after": "Levski 1914",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Bulgaria"
+    },
+    {
+      "cupId": 16,
+      "season": 4,
+      "before": "Gumby United",
+      "after": "Calgary Haze",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=16&season=4"
+    },
+    {
+      "cupId": 17,
+      "season": 11,
+      "before": "Escuadron",
+      "after": "Sion",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Chile"
+    },
+    {
+      "cupId": 17,
+      "season": 9,
+      "before": "ManchesterUnited",
+      "after": "Universidad de Chile",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Chile"
+    },
+    {
+      "cupId": 59,
+      "season": 3,
+      "before": "Passive Agressive",
+      "after": "Golden Dragon",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Chinese_Taipei"
+    },
+    {
+      "cupId": 56,
+      "season": 4,
+      "before": "Bjegunci",
+      "after": "Folka United",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Croatia"
+    },
+    {
+      "cupId": 50,
+      "season": 8,
+      "before": "FC Zdar nad Sazavou",
+      "after": "Sakura",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=50&season=8"
+    },
+    {
+      "cupId": 10,
+      "season": 20,
+      "before": "ZGF",
+      "after": "Dalum IF",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=10&season=20"
+    },
+    {
+      "cupId": 10,
+      "season": 16,
+      "before": "Loke GF",
+      "after": "ZGF",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=10&season=16"
+    },
+    {
+      "cupId": 131,
+      "season": 3,
+      "before": "El Barcelona S. C.",
+      "after": "korsarios",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=131&season=3"
+    },
+    {
+      "cupId": 19,
+      "season": 10,
+      "before": "Foxy",
+      "after": "amazighteam",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Egypt"
+    },
+    {
+      "cupId": 54,
+      "season": 8,
+      "before": "FC Kallic",
+      "after": "K-J Jotad",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Estonia"
+    },
+    {
+      "cupId": 134,
+      "season": 2,
+      "before": "FC Tórshavn",
+      "after": "Fish & Sheep FC",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=134&season=2"
+    },
+    {
+      "cupId": 4,
+      "season": 23,
+      "before": "FC Teerlunge",
+      "after": "FC Martini",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Germany"
+    },
+    {
+      "cupId": 52,
+      "season": 3,
+      "before": "rage against d' machine fc",
+      "after": "italy_A",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Indonesia"
+    },
+    {
+      "cupId": 7,
+      "season": 17,
+      "before": "Kender's F.C.",
+      "after": "A.S. Roma Calcio",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Coppa_Italia"
+    },
+    {
+      "cupId": 51,
+      "season": 2,
+      "before": "FK sakee",
+      "after": "Nokia",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Latvija"
+    },
+    {
+      "cupId": 38,
+      "season": 10,
+      "before": "badang_fc",
+      "after": "Ipoh United",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Malaysia"
+    },
+    {
+      "cupId": 9,
+      "season": 5,
+      "before": "Rolf FK",
+      "after": "Viking 2",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Norway"
+    },
+    {
+      "cupId": 156,
+      "season": 1,
+      "before": "Tauro F.C.",
+      "after": "Viscaya Calcio",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=156&season=1"
+    },
+    {
+      "cupId": 33,
+      "season": 6,
+      "before": "Tsing Yi's Club",
+      "after": "Aztec Warrior",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/China"
+    },
+    {
+      "cupId": 53,
+      "season": 8,
+      "before": "San Antonio FC",
+      "after": "Titleist .",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=53&season=8"
+    },
+    {
+      "cupId": 25,
+      "season": 11,
+      "before": "Dziobaki",
+      "after": "-Tornado-",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski"
+    },
+    {
+      "cupId": 25,
+      "season": 7,
+      "before": "ZKS Masarnia Miesiw Pcin Dolny",
+      "after": "Rude Boyz",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski"
+    },
+    {
+      "cupId": 25,
+      "season": 3,
+      "before": "Legia Gdansk",
+      "after": "Twisters",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Puchar_Polski"
+    },
+    {
+      "cupId": 35,
+      "season": 8,
+      "before": "Metalul Plopeni",
+      "after": "FC .Haos",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=35&season=8"
+    },
+    {
+      "cupId": 35,
+      "season": 4,
+      "before": "PASTRAVUL",
+      "after": "Steaua Bucuresti",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=35&season=4"
+    },
+    {
+      "cupId": 34,
+      "season": 8,
+      "before": "FC Karelia",
+      "after": "Frozen Karelians",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya"
+    },
+    {
+      "cupId": 34,
+      "season": 6,
+      "before": "Killaz",
+      "after": "FC Karelia",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya"
+    },
+    {
+      "cupId": 34,
+      "season": 3,
+      "before": "Baltika",
+      "after": "FK Balashikha",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Rossiya"
+    },
+    {
+      "cupId": 27,
+      "season": 4,
+      "before": "Glasgow_CELTIC",
+      "after": "Barons Boys",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Scotland"
+    },
+    {
+      "cupId": 55,
+      "season": 1,
+      "before": "S.C Sabac",
+      "after": "FC Kotor",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Srbija"
+    },
+    {
+      "cupId": 40,
+      "season": 10,
+      "before": "Herron",
+      "after": "Team Singapore",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore"
+    },
+    {
+      "cupId": 40,
+      "season": 6,
+      "before": "Hattrick all the time",
+      "after": "Herron",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore"
+    },
+    {
+      "cupId": 40,
+      "season": 2,
+      "before": "Soccer Advocates",
+      "after": "Intergalactic Stars",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Singapore"
+    },
+    {
+      "cupId": 63,
+      "season": 7,
+      "before": "NK Proletarec",
+      "after": "NK batman",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Slovenia"
+    },
+    {
+      "cupId": 28,
+      "season": 5,
+      "before": "Lions",
+      "after": "Whirlwind",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=28&season=5"
+    },
+    {
+      "cupId": 43,
+      "season": 11,
+      "before": "Alien United",
+      "after": "Ancestrales",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Spain"
+    },
+    {
+      "cupId": 43,
+      "season": 7,
+      "before": "Babylon 5",
+      "after": "Alien United",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Spain"
+    },
+    {
+      "cupId": 29,
+      "season": 6,
+      "before": "The Spirits of Football",
+      "after": "Rama XI",
+      "sourceUrl": "https://wiki.hattrick.org/wiki/Prathet_Thai"
+    },
+    {
+      "cupId": 139,
+      "season": 1,
+      "before": "Zarzis",
+      "after": "Club Afrcain",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=139&season=1"
+    },
+    {
+      "cupId": 30,
+      "season": 3,
+      "before": "KAFSINKAF",
+      "after": "KARSIYAKALI",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=30&season=3"
+    },
+    {
+      "cupId": 8,
+      "season": 17,
+      "before": "Kansas City Wizards",
+      "after": "Red Star Belgrade",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=8&season=17"
+    },
+    {
+      "cupId": 60,
+      "season": 6,
+      "before": "Mae Hen Wlad Fy Nhadau",
+      "after": "Brecon Red Kites",
+      "sourceUrl": "https://chpp.hattrick.org/chppxml.ashx?file=cupmatches&version=1.2&cupId=60&season=6"
+    }
+  ],
+  "unexpectedChanges": [],
+  "missingRepairs": [],
+  "passed": true
+}

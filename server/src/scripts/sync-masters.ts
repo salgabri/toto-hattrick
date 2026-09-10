@@ -17,7 +17,7 @@ const currentSeason = agg._max.currentSeason ?? 95;
 console.log(`sync:masters @ ${new Date().toISOString()} — currentSeason ${currentSeason}`);
 
 const r = await syncMasters(access, { currentSeason });
-console.log(`stored ${r.seasonsStored} new editions (back to S${r.earliestSeason}); latest champion ${r.latestChampion ?? '—'}`);
+console.log(`stored ${r.seasonsStored} new editions (back to S${r.earliestSeason}); latest champion ${r.latestChampion ?? '—'}; unresolved finals: ${r.issues.length}`);
 
 const wins = await prisma.cupChampion.findMany({
   where: { cupId: MASTERS_CUP_ID },

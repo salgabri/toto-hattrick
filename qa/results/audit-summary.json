@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-09-10T22:44:59.036Z",
+  "passed": true,
+  "results": [
+    {
+      "suite": "Database and static-data integrity",
+      "exitCode": 0,
+      "elapsedMs": 1420
+    },
+    {
+      "suite": "Frontend statistics",
+      "exitCode": 0,
+      "elapsedMs": 17168
+    },
+    {
+      "suite": "JSON read API",
+      "exitCode": 0,
+      "elapsedMs": 10069
+    },
+    {
+      "suite": "Historical cup winners versus retained sources",
+      "exitCode": 0,
+      "elapsedMs": 69
+    }
+  ]
+}
