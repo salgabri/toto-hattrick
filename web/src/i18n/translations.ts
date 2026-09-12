@@ -69,6 +69,7 @@ const en = {
 
   /* ---- trophy-leader filters ---- */
   'filters.title': 'Filters',
+  'filters.reset': 'Reset filters',
   'filters.competitions': 'Competitions',
   'filters.recency': 'Recency',
   'recency.allTime': 'All time',
@@ -285,6 +286,7 @@ const de: Dict = {
   'chip.sec': 'Nebenpokale',
 
   'filters.title': 'Filter',
+  'filters.reset': 'Filter zurücksetzen',
   'filters.competitions': 'Wettbewerbe',
   'filters.recency': 'Zeitraum',
   'recency.allTime': 'Gesamt',
@@ -489,6 +491,7 @@ const fr: Dict = {
   'chip.sec': 'Secondaires',
 
   'filters.title': 'Filtres',
+  'filters.reset': 'Réinitialiser les filtres',
   'filters.competitions': 'Compétitions',
   'filters.recency': 'Période',
   'recency.allTime': "Toute l'histoire",
@@ -693,6 +696,7 @@ const es: Dict = {
   'chip.sec': 'Secundarias',
 
   'filters.title': 'Filtros',
+  'filters.reset': 'Restablecer filtros',
   'filters.competitions': 'Competiciones',
   'filters.recency': 'Periodo',
   'recency.allTime': 'Todos los tiempos',
@@ -897,6 +901,7 @@ const it: Dict = {
   'chip.sec': 'Secondarie',
 
   'filters.title': 'Filtri',
+  'filters.reset': 'Reimposta filtri',
   'filters.competitions': 'Competizioni',
   'filters.recency': 'Periodo',
   'recency.allTime': 'Tutti i tempi',

@@ -34,12 +34,14 @@ import { nationalIdentity } from '../nationalIdentity.js';
 import { LANGS, useI18n, useT, type Lang, type TFn, type TranslationKey } from '../../i18n/index.js';
 import { R, MONO, rootStyle2000s, type Skin } from './theme2000s.js';
 import { ShareView } from './ShareView.js';
+import { TableFrame } from './TableFrame.js';
 import { replaceUrlParam, updateUrlParams, useUrlState } from '../urlState.js';
 import {
   bracketParam, competitionsParam, countParam, cupCategoryParam, cupIdParam, electionTabParam,
   medalByParam, medalScopeParam, nationParam, recencyParam, textParam, trophyGroupParam, viewParam,
 } from '../filterParams.js';
 import './retro2000s.css';
+import './retroInteractions.css';
 
 /**
  * Toto Hattrick — the "2000s" retro look (from `Toto Hattrick 2000s.dc.html`).
@@ -210,6 +212,7 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
 
         {/* ===================== TABS ===================== */}
         <div
+          className="retro-tabs"
           style={{
             background: R.bar2,
             padding: '5px 8px 0',
@@ -224,7 +227,7 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
         </div>
 
         {/* ===================== CONTENT ===================== */}
-        <div style={{ padding: 14, background: R.panel }}>
+        <div className="retro-content" style={{ padding: 14, background: R.panel }}>
           {view === 'trophies' ? (
             <RetroTrophyLeaders
               nationalities={nationalities}
@@ -320,7 +323,7 @@ function Tab({ label, active, onClick }: { label: string; active: boolean; onCli
         textShadow: '1px 1px 0 rgba(0,0,0,.35)',
       };
   return (
-    <button className="retro-tab" onClick={onClick} style={style}>
+    <button className={`retro-tab${active ? ' is-active' : ''}`} aria-current={active ? 'page' : undefined} onClick={onClick} style={style}>
       {label}
     </button>
   );
@@ -337,7 +340,7 @@ const fieldset: CSSProperties = {
 const legend: CSSProperties = { fontWeight: 'bold', fontSize: 11, color: R.mod, padding: '0 6px' };
 
 const filterLabel: CSSProperties = {
-  fontSize: 10,
+  fontSize: 11,
   fontWeight: 'bold',
   color: R.soft,
   marginBottom: 5,
@@ -387,7 +390,14 @@ const hattrickManagerUrl = (userId: number) => `https://www.hattrick.org/en/Club
 function HtLink({ href, children }: { href: string | null; children: ReactNode }) {
   if (!href) return <>{children}</>;
   return (
-    <a href={href} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} style={{ color: 'inherit', textDecoration: 'none' }}>
+    <a
+      className="retro-ht-link"
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      onKeyDown={(e) => e.stopPropagation()}
+    >
       {children}
     </a>
   );
@@ -432,7 +442,7 @@ function withRuns<T extends { club: string; season: number; teamId?: number }>(r
 
 const runTag: CSSProperties = {
   display: 'inline-block',
-  fontSize: 9,
+  fontSize: 11,
   fontWeight: 'bold',
   letterSpacing: '.02em',
   color: R.main,
@@ -530,6 +540,15 @@ const RECENCY_OPTS: Array<{ labelKey: TranslationKey; reigning: boolean; window?
   { labelKey: 'recency.last20', reigning: false, window: 20, titleKey: 'recency.last20.title' },
 ];
 
+/** Reserve the checkmark's space in both states so switching filters never shifts nearby buttons. */
+function Check({ on }: { on: boolean }) {
+  return (
+    <span aria-hidden style={{ display: 'inline-block', width: '1em', marginRight: 4, flex: 'none', visibility: on ? 'visible' : 'hidden' }}>
+      ✓
+    </span>
+  );
+}
+
 /** The 2000s pressed/unpressed toggle button — inset when on, outset when off. */
 function toggleBtn(on: boolean): CSSProperties {
   return {
@@ -542,7 +561,7 @@ function toggleBtn(on: boolean): CSSProperties {
     border: on ? '2px inset var(--btn,#EBEFE2)' : '2px outset var(--btn,#EBEFE2)',
     background: on ? R.btn2 : 'linear-gradient(180deg,#fff,var(--btn,#EBEFE2))',
     color: on ? R.ink : R.soft,
-    fontWeight: on ? 'bold' : 'normal',
+    fontWeight: 'normal',
   };
 }
 
@@ -640,7 +659,7 @@ function MixBar({ segs, total, max }: { segs: MixSegment[]; total: number; max: 
           ))}
         </div>
       </div>
-      <div style={{ fontFamily: MONO, fontSize: 10, fontWeight: 'bold', marginTop: 4, display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+      <div style={{ fontFamily: MONO, fontSize: 11, fontWeight: 'bold', marginTop: 4, display: 'flex', flexWrap: 'wrap', gap: 3 }}>
         {segs.length === 0 && <span style={{ color: R.faint }}>0</span>}
         {segs.map((sg, ix) => (
           <span key={ix} title={t(sg.labelKey)} style={{ color: sg.ink }}>
@@ -693,12 +712,13 @@ function MedalTable({
   const [open, setOpen] = useState<string | null>(null);
   const goldsOnly = rows.length > 0 && rows.every((r) => r.s + r.b === 0);
   return (
-    <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+    <TableFrame label={title} minWidth={560}>
       <SectionBar>
         {title}
-        <span style={{ marginLeft: 'auto', fontFamily: MONO, fontSize: 10, opacity: 0.85 }}>{rows.length}</span>
+        <span style={{ marginLeft: 'auto', fontFamily: MONO, fontSize: 11, opacity: 0.85 }}>{rows.length}</span>
       </SectionBar>
       <div
+        className="retro-table-header"
         style={{
           display: 'grid',
           gridTemplateColumns: MEDAL_GRID,
@@ -706,7 +726,7 @@ function MedalTable({
           padding: '6px 10px',
           background: R.panel2,
           borderBottom: '2px solid var(--frame,#617D54)',
-          fontSize: 10,
+          fontSize: 11,
           fontWeight: 'bold',
           textTransform: 'uppercase',
           letterSpacing: '.03em',
@@ -723,7 +743,7 @@ function MedalTable({
       </div>
 
       {goldsOnly && (
-        <div style={{ fontSize: 9, color: R.faint, padding: '6px 10px', lineHeight: 1.4, background: R.panel, borderBottom: '1px solid var(--line,#CDD7C3)' }}>
+        <div style={{ fontSize: 11, color: R.faint, padding: '6px 10px', lineHeight: 1.4, background: R.panel, borderBottom: '1px solid var(--line,#CDD7C3)' }}>
           {t('medal.goldsOnly')}
         </div>
       )}
@@ -796,7 +816,7 @@ function MedalTable({
       })}
 
       {rows.length === 0 && <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>{empty}</div>}
-    </div>
+    </TableFrame>
   );
 }
 
@@ -809,11 +829,11 @@ function ExpandGlyph({ open }: { open: boolean }) {
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 15,
-        height: 15,
-        border: '1px solid var(--line,#CDD7C3)',
-        background: R.panel2,
-        color: R.soft,
+        width: 20,
+        height: 20,
+        border: open ? '2px inset var(--btn,#EBEFE2)' : '2px outset var(--btn,#EBEFE2)',
+        background: open ? R.btn2 : R.btn,
+        color: R.ink,
         fontWeight: 'bold',
         fontSize: 12,
         lineHeight: 1,
@@ -827,7 +847,7 @@ function ExpandGlyph({ open }: { open: boolean }) {
 
 /** Shared header style for the panels inside an expanded row. */
 const cabinetHead: CSSProperties = {
-  fontSize: 10,
+  fontSize: 11,
   letterSpacing: '.05em',
   textTransform: 'uppercase',
   fontWeight: 'bold',
@@ -950,6 +970,20 @@ function RetroTrophyLeaders({
   }, [expandedId, groupBy, seasonWindow, lang, t]);
 
   const toggleInc = (k: keyof IncState) => setInc((s) => ({ ...s, [k]: !s[k] }));
+  const filtersChanged = nation !== 'ALL' || query !== '' || lastOnly || seasonWindow !== undefined || medals ||
+    groupBy !== 'manager' || competitionsParam.format(inc) !== null;
+  const resetFilters = () => {
+    updateUrlParams({
+      'trophies.nation': null,
+      'trophies.q': null,
+      'trophies.competitions': null,
+      'trophies.recency': null,
+      'trophies.count': null,
+      'trophies.group': null,
+    });
+    setPage(1);
+    setExpandedId(null);
+  };
   const toggleNation = (name: string) => setExpandedId((cur) => (cur === name ? null : name));
   const toggleExpand = (m: Manager) => {
     setExpandedId((cur) => (cur === String(m.userId) ? null : String(m.userId)));
@@ -1059,8 +1093,8 @@ function RetroTrophyLeaders({
               {chips.map((c) => {
                 const on = inc[c.k];
                 return (
-                  <button key={c.k} onClick={() => toggleInc(c.k)} style={toggleBtn(on)}>
-                    {on && <span>✓&nbsp;</span>}
+                  <button key={c.k} aria-pressed={on} onClick={() => toggleInc(c.k)} style={toggleBtn(on)}>
+                    <Check on={on} />
                     {c.label}
                   </button>
                 );
@@ -1075,11 +1109,12 @@ function RetroTrophyLeaders({
                 return (
                   <button
                     key={o.labelKey}
+                    aria-pressed={on}
                     onClick={() => setRecency(o.reigning, o.window)}
                     style={toggleBtn(on)}
                     title={t(o.titleKey)}
                   >
-                    {on && <span>✓&nbsp;</span>}
+                    <Check on={on} />
                     {t(o.labelKey)}
                   </button>
                 );
@@ -1089,16 +1124,17 @@ function RetroTrophyLeaders({
           <div>
             <div style={filterLabel}>{t('filters.nationalCount')}</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              <button onClick={() => setMedals(false)} style={toggleBtn(!medals)} title={t('count.winners.title')}>
-                {!medals && <span>✓&nbsp;</span>}
+              <button aria-pressed={!medals} onClick={() => setMedals(false)} style={toggleBtn(!medals)} title={t('count.winners.title')}>
+                <Check on={!medals} />
                 {t('count.winners')}
               </button>
               <button
+                aria-pressed={medals}
                 onClick={() => setMedals(true)}
                 style={toggleBtn(medals)}
                 title={t('count.medals.title')}
               >
-                {medals && <span>✓&nbsp;</span>}
+                <Check on={medals} />
                 {t('count.medals')}
               </button>
             </div>
@@ -1109,12 +1145,12 @@ function RetroTrophyLeaders({
           <div>
             <div style={filterLabel}>{t('filters.groupBy')}</div>
             <div style={{ display: 'flex', gap: 6 }}>
-              <button onClick={() => setGroupBy('manager')} style={toggleBtn(!byNation)} title={t('group.managers.title')}>
-                {!byNation && <span>✓&nbsp;</span>}
+              <button aria-pressed={!byNation} onClick={() => setGroupBy('manager')} style={toggleBtn(!byNation)} title={t('group.managers.title')}>
+                <Check on={!byNation} />
                 {t('group.managers')}
               </button>
-              <button onClick={() => setGroupBy('nation')} style={toggleBtn(byNation)} title={t('group.nation.title')}>
-                {byNation && <span>✓&nbsp;</span>}
+              <button aria-pressed={byNation} onClick={() => setGroupBy('nation')} style={toggleBtn(byNation)} title={t('group.nation.title')}>
+                <Check on={byNation} />
                 {t('group.nation')}
               </button>
             </div>
@@ -1122,7 +1158,7 @@ function RetroTrophyLeaders({
           {!byNation && (
             <div>
               <div style={filterLabel}>{t('filters.nationality')}</div>
-              <select value={nation} onChange={(e) => setNation(e.target.value)} style={selectStyle}>
+              <select aria-label={t('filters.nationality')} value={nation} onChange={(e) => setNation(e.target.value)} style={selectStyle}>
                 <option value="ALL">{t('filters.allNationalities')}</option>
                 {nationalities.map((o) => (
                   <option key={o.code} value={o.code}>
@@ -1136,14 +1172,16 @@ function RetroTrophyLeaders({
             <div style={filterLabel}>{t('filters.search')}</div>
             <input
               className="retro-input"
+              aria-label={t('filters.search')}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={byNation ? t('search.nation') : t('search.manager')}
-              style={{ width: 190, border: '2px inset var(--btn,#EBEFE2)', background: '#fff', color: R.ink, fontSize: 11, padding: '3px 6px', outline: 'none', fontFamily: 'inherit' }}
+              style={{ width: 190, border: '2px inset var(--btn,#EBEFE2)', background: '#fff', color: R.ink, fontSize: 11, padding: '5px 7px', fontFamily: 'inherit' }}
             />
           </div>
+          <button className="retro-reset" disabled={!filtersChanged} onClick={resetFilters}>{t('filters.reset')}</button>
           <div style={{ flex: 1 }} />
-          <div style={{ fontSize: 10, color: R.soft, paddingBottom: 4 }}>
+          <div aria-live="polite" style={{ fontSize: 11, color: R.soft, paddingBottom: 4 }}>
             {rowCount > PAGE_SIZE
               ? t('paging.range', {
                   from: pageStart + 1,
@@ -1156,9 +1194,22 @@ function RetroTrophyLeaders({
       </fieldset>
 
       {/* Leaderboard */}
-      <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+      <div className="retro-board-tools">
+        <div className="retro-legend">
+          <b>{t('legend.title')}</b>
+          <LegendSwatch color={R.champ} label={t('cat.champ')} />
+          <LegendSwatch color={R.main} label={t('cat.main')} />
+          <LegendSwatch color={R.masters} label={t('chip.masters')} />
+          <LegendSwatch color={R.worldCup} label={t('cat.national')} />
+          <LegendSwatch color={R.seasonal} label={t('chip.seasonal')} />
+          <LegendSwatch color={R.sec} label={t('chip.sec')} />
+        </div>
+        {!loading && pageCount > 1 && <RetroPager page={curPage} pageCount={pageCount} setPage={setPage} />}
+      </div>
+      <TableFrame label={t(byNation ? 'board.trophyLeadersByNation' : 'board.trophyLeaders')} minWidth={760}>
         <SectionBar>{t(byNation ? 'board.trophyLeadersByNation' : 'board.trophyLeaders')}</SectionBar>
         <div
+          className="retro-table-header"
           style={{
             display: 'grid',
             gridTemplateColumns: RETRO_TROPHY_GRID,
@@ -1166,7 +1217,7 @@ function RetroTrophyLeaders({
             padding: '6px 10px',
             background: R.panel2,
             borderBottom: '2px solid var(--frame,#617D54)',
-            fontSize: 10,
+            fontSize: 11,
             fontWeight: 'bold',
             textTransform: 'uppercase',
             letterSpacing: '.03em',
@@ -1222,7 +1273,7 @@ function RetroTrophyLeaders({
                   </div>
                   <div style={{ fontFamily: MONO, fontSize: 12, color: R.soft }}>
                     {n.winners.toLocaleString(lang)}
-                    <span style={{ fontSize: 10, color: R.faint }}> {t(n.winners === 1 ? 'unit.manager' : 'unit.managers')}</span>
+                    <span style={{ fontSize: 11, color: R.faint }}> {t(n.winners === 1 ? 'unit.manager' : 'unit.managers')}</span>
                   </div>
                   <MixBar segs={segs} total={n.ft} max={pageMax} />
                   <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 17, fontWeight: 'bold', color: R.ink }}>{n.ft}</div>
@@ -1242,7 +1293,7 @@ function RetroTrophyLeaders({
                               <span style={{ width: 9, height: 9, flex: 'none', border: '1px solid rgba(0,0,0,.3)', background: c.dot }} />
                               <span style={{ fontSize: 11, color: R.ink, flex: 1 }}>{t(c.labelKey)}</span>
                               {!inc[c.k] && (
-                                <span style={{ fontSize: 9, fontWeight: 'bold', letterSpacing: '.03em', textTransform: 'uppercase', color: R.faint }}>
+                                <span style={{ fontSize: 10, fontWeight: 'bold', letterSpacing: '.03em', textTransform: 'uppercase', color: R.faint }}>
                                   {t('label.excluded')}
                                 </span>
                               )}
@@ -1259,16 +1310,10 @@ function RetroTrophyLeaders({
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                           {n.top.map((t, ix) => (
                             <div key={t.userId} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                              <span style={{ fontFamily: MONO, fontSize: 10, color: R.faint, width: 18, flex: 'none', textAlign: 'right' }}>{ix + 1}.</span>
-                              <a
-                                href={hattrickManagerUrl(t.userId)}
-                                target="_blank"
-                                rel="noreferrer"
-                                onClick={(ev) => ev.stopPropagation()}
-                                style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, textDecoration: 'none', flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-                              >
-                                {t.login}
-                              </a>
+                              <span style={{ fontFamily: MONO, fontSize: 11, color: R.faint, width: 18, flex: 'none', textAlign: 'right' }}>{ix + 1}.</span>
+                              <span style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                <HtLink href={hattrickManagerUrl(t.userId)}>{t.login}</HtLink>
+                              </span>
                               <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 'bold', color: R.soft, flex: 'none' }}>{t.ft}</span>
                             </div>
                           ))}
@@ -1321,17 +1366,9 @@ function RetroTrophyLeaders({
                 </div>
                 <div style={{ minWidth: 0 }}>
                   <div style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    <a
-                      href={hattrickManagerUrl(m.userId)}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={(ev) => ev.stopPropagation()}
-                      style={{ color: 'inherit', textDecoration: 'none' }}
-                    >
-                      {m.login}
-                    </a>
+                    <HtLink href={hattrickManagerUrl(m.userId)}>{m.login}</HtLink>
                   </div>
-                  <div style={{ fontSize: 10, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <div style={{ fontSize: 11, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {m.team || `#${m.userId}`}
                   </div>
                 </div>
@@ -1343,7 +1380,7 @@ function RetroTrophyLeaders({
                       display: 'inline-block',
                       minWidth: 0,
                       fontWeight: 'bold',
-                      fontSize: 10,
+                      fontSize: 11,
                       padding: '1px 5px',
                       border: '1px solid var(--line,#CDD7C3)',
                       background: R.panel2,
@@ -1375,10 +1412,10 @@ function RetroTrophyLeaders({
                         <div key={g.label} style={{ flex: 1, minWidth: 190, border: '1px solid var(--line,#CDD7C3)', background: R.panel, padding: '8px 10px', opacity: g.excluded ? 0.5 : 1 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 9, borderBottom: '1px solid var(--line,#CDD7C3)', paddingBottom: 5 }}>
                             <span style={{ width: 9, height: 9, flex: 'none', border: '1px solid rgba(0,0,0,.3)', background: g.dot }} />
-                            <span style={{ fontSize: 10, letterSpacing: '.05em', textTransform: 'uppercase', fontWeight: 'bold', color: R.soft }}>{g.label}</span>
+                            <span style={{ fontSize: 11, letterSpacing: '.05em', textTransform: 'uppercase', fontWeight: 'bold', color: R.soft }}>{g.label}</span>
                             <span style={{ fontFamily: MONO, fontSize: 11, color: R.faint }}>×{g.items.length}</span>
                             {g.excluded && (
-                              <span style={{ fontSize: 9, fontWeight: 'bold', letterSpacing: '.03em', textTransform: 'uppercase', color: R.faint }}>
+                              <span style={{ fontSize: 10, fontWeight: 'bold', letterSpacing: '.03em', textTransform: 'uppercase', color: R.faint }}>
                                 {t('label.excluded')}
                               </span>
                             )}
@@ -1390,7 +1427,7 @@ function RetroTrophyLeaders({
                                   {it.flag && <img src={it.flag} alt="" width={17} style={{ height: 'auto', flex: 'none', border: '1px solid ' + R.line }} />}
                                   <div style={{ minWidth: 0 }}>
                                     <div style={{ fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{it.main}</div>
-                                    <div style={{ fontSize: 10, color: R.faint, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                    <div style={{ fontSize: 11, color: R.faint, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                       <HtLink href={it.teamId ? hattrickTeamUrl(it.teamId) : null}>{it.sub}</HtLink>
                                     </div>
                                   </div>
@@ -1403,7 +1440,7 @@ function RetroTrophyLeaders({
                                       title={t(it.medal === 1 ? 'place.champion' : it.medal === 2 ? 'place.runnerUp' : 'place.thirdShort')}
                                       style={{
                                         fontFamily: MONO,
-                                        fontSize: 9,
+                                        fontSize: 10,
                                         fontWeight: 'bold',
                                         color: '#241c08',
                                         background: it.medal === 1 ? MEDAL_GOLD : it.medal === 2 ? MEDAL_SILVER : MEDAL_BRONZE,
@@ -1435,27 +1472,15 @@ function RetroTrophyLeaders({
             {t(byNation ? 'list.noNations' : 'list.noManagers')}
           </div>
         )}
-      </div>
+      </TableFrame>
 
       {!loading && pageCount > 1 && <RetroPager page={curPage} pageCount={pageCount} setPage={setPage} />}
-
-      {/* Legend */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 9, fontSize: 10, color: R.ink, flexWrap: 'wrap' }}>
-        <b style={{ color: R.soft, textTransform: 'uppercase', letterSpacing: '.04em' }}>{t('legend.title')}</b>
-        <LegendSwatch color={R.champ} label={t('cat.champ')} />
-        <LegendSwatch color={R.main} label={t('cat.main')} />
-        <LegendSwatch color={R.masters} label={t('chip.masters')} />
-        <LegendSwatch color={R.worldCup} label={t('cat.national')} />
-        <LegendSwatch color={R.seasonal} label={t('chip.seasonal')} />
-        <LegendSwatch color={R.sec} label={t('chip.sec')} />
-        <span style={{ flex: 1 }} />
-        <span style={{ fontFamily: MONO, color: R.faint }}>{t('src.league')}</span>
-      </div>
+      <div style={{ marginTop: 9, fontSize: 11, fontFamily: MONO, color: R.faint }}>{t('src.league')}</div>
 
       {/* A window counts each competition's own instalments, which for the World Cup and the regional
           cups is not the same span of time as five league seasons. Worth saying once, in place. */}
       {seasonWindow !== undefined && (
-        <div style={{ fontSize: 9, color: R.faint, marginTop: 7, lineHeight: 1.5 }}>{t('recency.windowNote')}</div>
+        <div style={{ fontSize: 10, color: R.faint, marginTop: 7, lineHeight: 1.5 }}>{t('recency.windowNote')}</div>
       )}
     </div>
   );
@@ -1487,7 +1512,7 @@ function RetroPager({ page, pageCount, setPage }: { page: number; pageCount: num
   const first = page <= 1;
   const last = page >= pageCount;
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 10 }}>
+    <div className="retro-pager">
       <button style={btn(first)} disabled={first} onClick={() => setPage(1)} title={t('pager.first')}>
         |«
       </button>
@@ -1563,18 +1588,19 @@ function RetroLeagueWinners({
             </select>
           </div>
           <div style={{ flex: 1 }} />
-          <div style={{ fontSize: 10, color: R.soft }}>{span}</div>
+          <div style={{ fontSize: 11, color: R.soft }}>{span}</div>
         </div>
       </fieldset>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
+      <div className="retro-columns">
         {/* Roll of honour */}
-        <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+        <TableFrame label={t('leagues.rollOfHonour', { country: leagueName })} minWidth={440}>
           <SectionBar>
             <Flag url={leagueFlagUrl(league)} label={leagueName} size={24} />
             {t('leagues.rollOfHonour', { country: leagueName })}
           </SectionBar>
           <div
+            className="retro-table-header"
             style={{
               display: 'grid',
               gridTemplateColumns: RETRO_WINNER_GRID,
@@ -1582,7 +1608,7 @@ function RetroLeagueWinners({
               padding: '6px 10px',
               background: R.panel2,
               borderBottom: '2px solid var(--frame,#617D54)',
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: 'bold',
               textTransform: 'uppercase',
               letterSpacing: '.03em',
@@ -1613,7 +1639,7 @@ function RetroLeagueWinners({
                 <div style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   <HtLink href={w.teamId ? hattrickTeamUrl(w.teamId) : null}>{w.club}</HtLink>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 10, color: R.soft, overflow: 'hidden' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, color: R.soft, overflow: 'hidden' }}>
                   <Flag url={nationalityFlagUrl(w.nationality)} label={w.nationality} />
                   <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     <HtLink href={w.userId ? hattrickManagerUrl(w.userId) : null}>{w.manager}</HtLink>
@@ -1629,8 +1655,8 @@ function RetroLeagueWinners({
             <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>{t('leagues.empty')}</div>
           )}
 
-          <div style={{ padding: '6px 10px', fontSize: 10, color: R.faint, fontFamily: MONO, background: R.panel2 }}>{t('src.league')}</div>
-        </div>
+          <div style={{ padding: '6px 10px', fontSize: 11, color: R.faint, fontFamily: MONO, background: R.panel2 }}>{t('src.league')}</div>
+        </TableFrame>
 
         <TopManagersPanel winners={winnersRaw} />
       </div>
@@ -1680,7 +1706,7 @@ function TopManagersPanel({ winners, limit = 10 }: { winners: Winner[]; limit?: 
             </div>
             {/* Club flags appear only for the international competitions, the only ones whose winners
                 come from different countries (see Winner.leagueId). */}
-            <div style={{ fontSize: 10, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 4 }}>
+            <div style={{ fontSize: 11, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 4 }}>
               {teams.map((t, ti) => (
                 <span key={t.name} style={{ display: 'inline-flex', alignItems: 'center', gap: 3, verticalAlign: 'middle' }}>
                   {ti > 0 && <span style={{ marginRight: 3 }}>,</span>}
@@ -1723,9 +1749,9 @@ function CategoryChip({ label, active, onClick, title }: { label: string; active
         color: R.soft, fontWeight: 'normal',
       };
   return (
-    <span onClick={onClick} style={style} title={title}>
+    <button type="button" aria-pressed={active} onClick={onClick} style={style} title={title}>
       {label}
-    </span>
+    </button>
   );
 }
 
@@ -1899,7 +1925,7 @@ function RetroCupWinners({
 
           <div style={{ flex: 1 }} />
           {showCountryPicker && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: R.soft }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: R.soft }}>
               <Flag url={leagueFlagUrl(country)} label={countryName} size={20} />
               {countryName}
             </div>
@@ -1913,7 +1939,7 @@ function RetroCupWinners({
         <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('cups.emptyMain')}</div>
       )}
       {!loading && category === 'main' && main && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
+        <div className="retro-columns">
           <RetroCupCard name={main.cupName} winners={main.winners} accent={R.main} tall />
           <TopManagersPanel winners={main.winners} />
         </div>
@@ -1923,7 +1949,7 @@ function RetroCupWinners({
         <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('cups.emptySecondary')}</div>
       )}
       {!loading && category === 'secondary' && selectedSecondary && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
+        <div className="retro-columns">
           <RetroCupCard name={selectedSecondary.cupName} winners={selectedSecondary.winners} accent={R.sec} tall />
           <TopManagersPanel winners={selectedSecondary.winners} />
         </div>
@@ -1933,7 +1959,7 @@ function RetroCupWinners({
         <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('cups.emptyMasters')}</div>
       )}
       {!loading && category === 'masters' && masters && masters.length > 0 && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
+        <div className="retro-columns">
           <RetroCupCard name="Hattrick Masters" winners={masters} accent={R.main} tall sourceLabel="cupmatches (global)" countryNames={countryNames} />
           <TopManagersPanel winners={masters} />
         </div>
@@ -1943,7 +1969,7 @@ function RetroCupWinners({
         <div style={{ padding: '20px 2px', color: R.faint, fontSize: 11 }}>{t('cups.emptySeasonal')}</div>
       )}
       {!loading && category === 'seasonal' && selectedSeasonal && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
+        <div className="retro-columns">
           <RetroCupCard
             name={selectedSeasonal.cupName}
             winners={selectedSeasonal.winners}
@@ -1988,13 +2014,18 @@ function RetroCupCard({
   const showClubFlags = winnersIn.some((w) => w.leagueId);
 
   return (
-    <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+    <TableFrame label={name} minWidth={440}>
       <SectionBar>
         <span style={{ minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{name}</span>
         <span style={{ flex: 1 }} />
-        <span style={{ fontFamily: MONO, fontWeight: 'normal', fontSize: 10, opacity: 0.9 }}>{range}</span>
+        <span style={{ fontFamily: MONO, fontWeight: 'normal', fontSize: 11, opacity: 0.9 }}>{range}</span>
       </SectionBar>
       <div style={{ maxHeight: tall ? 'none' : 320, overflowY: tall ? 'visible' : 'auto' }}>
+        <div className="retro-table-header" style={{ display: 'grid', gridTemplateColumns: RETRO_WINNER_GRID, gap: 10, padding: '6px 10px', background: R.panel2, borderBottom: '2px solid var(--frame,#617D54)', color: R.soft, fontSize: 11, fontWeight: 'bold', textTransform: 'uppercase' }}>
+          <div>{t('col.season')}</div>
+          <div>{t('col.champion')}</div>
+          <div style={{ textAlign: 'right' }}>{t('col.run')}</div>
+        </div>
         {winners.map((w, i) => (
           <div
             key={w.season}
@@ -2023,7 +2054,7 @@ function RetroCupCard({
                 </span>
               </div>
               {showManager && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 10, color: R.soft, overflow: 'hidden' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, color: R.soft, overflow: 'hidden' }}>
                   <Flag url={nationalityFlagUrl(w.nationality)} label={w.nationality} />
                   <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     <HtLink href={w.userId ? hattrickManagerUrl(w.userId) : null}>{w.manager}</HtLink>
@@ -2035,10 +2066,10 @@ function RetroCupCard({
           </div>
         ))}
       </div>
-      <div style={{ padding: '6px 10px', fontSize: 10, color: R.faint, fontFamily: MONO, background: R.panel2 }}>
+      <div style={{ padding: '6px 10px', fontSize: 11, color: R.faint, fontFamily: MONO, background: R.panel2 }}>
         {t('cups.finals', { n: winnersIn.length, src: sourceLabel })}
       </div>
-    </div>
+    </TableFrame>
   );
 }
 
@@ -2103,10 +2134,10 @@ function BracketSwitch({ value, onChange }: { value: Bracket; onChange: (b: Brac
     <div>
       <div style={filterLabel}>{t('wc.nationalTeam')}</div>
       <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-        <button onClick={() => onChange('senior')} style={toggleBtn(value === 'senior')} title={t('wc.senior.title')}>
+        <button aria-pressed={value === 'senior'} onClick={() => onChange('senior')} style={toggleBtn(value === 'senior')} title={t('wc.senior.title')}>
           {t('wc.senior')}
         </button>
-        <button onClick={() => onChange('youth')} style={toggleBtn(value === 'youth')} title={t('wc.u21.title')}>
+        <button aria-pressed={value === 'youth'} onClick={() => onChange('youth')} style={toggleBtn(value === 'youth')} title={t('wc.u21.title')}>
           {t('wc.u21')}
         </button>
       </div>
@@ -2256,11 +2287,12 @@ function RetroNationalTrophies({ onStatus }: { onStatus: (s: string) => void }) 
 
       {!loading && (
         <div>
-          <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+          <TableFrame label={t('wc.champions', { name: compLabel(t, comp) })} minWidth={800}>
             {/* Named in full here even though the chips are short — the heading is the one place that
                 has to state which bracket you are looking at. */}
             <SectionBar>{t('wc.champions', { name: compLabel(t, comp) })}</SectionBar>
             <div
+              className="retro-table-header"
               style={{
                 display: 'grid',
                 gridTemplateColumns: WORLD_CUP_GRID,
@@ -2298,7 +2330,7 @@ function RetroNationalTrophies({ onStatus }: { onStatus: (s: string) => void }) 
               >
                 <div style={{ fontFamily: MONO, fontWeight: 'bold', fontSize: 14, color: R.ink }}>
                   {e.edition}
-                  {e.ageGroup ? <span style={{ fontSize: 10, color: R.faint }}> {e.ageGroup}</span> : null}
+                  {e.ageGroup ? <span style={{ fontSize: 11, color: R.faint }}> {e.ageGroup}</span> : null}
                 </div>
                 <div style={{ minWidth: 0 }}>
                   {e.champion ? (
@@ -2339,7 +2371,7 @@ function RetroNationalTrophies({ onStatus }: { onStatus: (s: string) => void }) 
                 <div style={{ textAlign: 'right', fontSize: 11, color: R.faint, fontFamily: MONO }}>{e.finished ?? '—'}</div>
               </div>
             ))}
-          </div>
+          </TableFrame>
         </div>
       )}
     </div>
@@ -2533,7 +2565,7 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
     <span
       style={{
         fontFamily: MONO,
-        fontSize: 9,
+        fontSize: 10,
         fontWeight: 'bold',
         color: '#241c08',
         background: place === 1 ? MEDAL_GOLD : place === 2 ? MEDAL_SILVER : MEDAL_BRONZE,
@@ -2548,7 +2580,7 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
 
   /** Bracket marker for pooled lists — deliberately the same faint monospace treatment as the
    *  ageGroup marker in the champions table, so it reads as a qualifier and not as part of the name. */
-  const bracketBadge = <span style={{ fontFamily: MONO, fontSize: 9, color: R.faint, fontWeight: 'normal' }}> {t('wc.u21')}</span>;
+  const bracketBadge = <span style={{ fontFamily: MONO, fontSize: 10, color: R.faint, fontWeight: 'normal' }}> {t('wc.u21')}</span>;
 
   /** One line per podium, shared by the by-nation and by-coach expansions. */
   const podiumList = (items: Array<{ place: number; left: ReactNode; right?: ReactNode }>) => (
@@ -2587,7 +2619,7 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
           // The manager who led this nation to this placing, with their own nationality — an em dash
           // where attribution failed, so a blank never reads as "no manager was involved".
           right: (
-            <span style={{ display: 'flex', alignItems: 'center', gap: 4, flex: 'none', fontSize: 10, color: R.soft }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 4, flex: 'none', fontSize: 11, color: R.soft }}>
               {p.coach ? (
                 <>
                   <Flag url={nationalityFlagUrl(p.coachNationality)} label={p.coachNationality} size={12} />
@@ -2618,7 +2650,7 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
           right: (
             <span style={{ display: 'flex', alignItems: 'center', gap: 4, flex: 'none' }}>
               <Flag url={nationFlagUrl(r.nation)} label={r.nation} size={14} />
-              <span style={{ fontSize: 10, color: R.soft }}>{r.nation}</span>
+              <span style={{ fontSize: 11, color: R.soft }}>{r.nation}</span>
             </span>
           ),
         })),
@@ -2636,7 +2668,7 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           {mates.map((c, ix) => (
             <div key={c.userId} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontFamily: MONO, fontSize: 10, color: R.faint, width: 18, flex: 'none', textAlign: 'right' }}>{ix + 1}.</span>
+              <span style={{ fontFamily: MONO, fontSize: 11, color: R.faint, width: 18, flex: 'none', textAlign: 'right' }}>{ix + 1}.</span>
               <span style={{ flex: 1, minWidth: 0, fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 <HtLink href={hattrickManagerUrl(c.userId)}>{c.name}</HtLink>
               </span>
@@ -2693,7 +2725,7 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
             detail={medalDetail}
           />
 
-          <div style={{ fontSize: 9, color: R.faint, marginTop: 9, lineHeight: 1.5 }}>{t('wc.footnote')}</div>
+          <div style={{ fontSize: 10, color: R.faint, marginTop: 9, lineHeight: 1.5 }}>{t('wc.footnote')}</div>
         </div>
       )}
     </div>
@@ -2773,7 +2805,7 @@ function BracketBadge({ youth, label }: { youth: boolean; label: string }) {
       style={{
         display: 'inline-block',
         fontFamily: MONO,
-        fontSize: 9,
+        fontSize: 10,
         fontWeight: 'bold',
         letterSpacing: '.02em',
         padding: '0 4px',
@@ -2845,11 +2877,11 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={byNation ? t('search.nation') : t('elections.searchManager')}
-              style={{ width: 190, border: '2px inset var(--btn,#EBEFE2)', background: '#fff', color: R.ink, fontSize: 11, padding: '3px 6px', outline: 'none', fontFamily: 'inherit' }}
+              style={{ width: 190, border: '2px inset var(--btn,#EBEFE2)', background: '#fff', color: R.ink, fontSize: 11, padding: '5px 7px', fontFamily: 'inherit' }}
             />
           </div>
           <div style={{ flex: 1 }} />
-          <div style={{ fontSize: 10, color: R.soft, paddingBottom: 4 }}>
+          <div style={{ fontSize: 11, color: R.soft, paddingBottom: 4 }}>
             {rowCount > PAGE_SIZE
               ? t('paging.range', {
                   from: pageStart + 1,
@@ -2861,9 +2893,11 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
         </div>
       </fieldset>
 
-      <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+      {agg && pageCount > 1 && <div className="retro-board-tools"><RetroPager page={curPage} pageCount={pageCount} setPage={setPage} /></div>}
+      <TableFrame label={t(byNation ? 'elections.nationsTitle' : 'elections.leadersTitle')} minWidth={760}>
         <SectionBar>{t(byNation ? 'elections.nationsTitle' : 'elections.leadersTitle')}</SectionBar>
         <div
+          className="retro-table-header"
           style={{
             display: 'grid',
             gridTemplateColumns: byNation ? ELECTION_NATION_GRID : ELECTION_LEADER_GRID,
@@ -2871,7 +2905,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
             padding: '6px 10px',
             background: R.panel2,
             borderBottom: '2px solid var(--frame,#617D54)',
-            fontSize: 10,
+            fontSize: 11,
             fontWeight: 'bold',
             textTransform: 'uppercase',
             letterSpacing: '.03em',
@@ -2946,7 +2980,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                         {n.top.map((m, ix) => (
                           <div key={m.name} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <span style={{ fontFamily: MONO, fontSize: 10, color: R.faint, width: 18, flex: 'none', textAlign: 'right' }}>{ix + 1}.</span>
+                            <span style={{ fontFamily: MONO, fontSize: 11, color: R.faint, width: 18, flex: 'none', textAlign: 'right' }}>{ix + 1}.</span>
                             <span style={{ flex: 1, minWidth: 0, fontSize: 11, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                               <HtLink href={m.userId ? hattrickManagerUrl(m.userId) : null}>{m.name}</HtLink>
                             </span>
@@ -2954,7 +2988,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                             {m.youth > 0 && (
                               <span
                                 title={`${m.count - m.youth} ${t('wc.senior')} · ${m.youth} ${t('wc.u21')}`}
-                                style={{ fontFamily: MONO, fontSize: 9, fontWeight: 'bold', color: R.main, flex: 'none' }}
+                                style={{ fontFamily: MONO, fontSize: 10, fontWeight: 'bold', color: R.main, flex: 'none' }}
                               >
                                 {m.youth} {t('wc.u21')}
                               </span>
@@ -3019,7 +3053,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                     display: 'inline-block',
                     minWidth: 0,
                     fontWeight: 'bold',
-                    fontSize: 10,
+                    fontSize: 11,
                     padding: '1px 5px',
                     border: '1px solid var(--line,#CDD7C3)',
                     background: R.panel2,
@@ -3036,7 +3070,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                   national teams over a career, and it's rarely their own. */}
               <div
                 title={l.countries.map(countryTally).join(', ')}
-                style={{ fontSize: 10, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                style={{ fontSize: 11, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
               >
                 {l.countries.map((c, ci) => (
                   <span key={c.country}>
@@ -3058,7 +3092,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                 {l.youth > 0 && (
                   <div
                     title={`${l.senior} ${t('wc.senior')} · ${l.youth} ${t('wc.u21')}`}
-                    style={{ fontFamily: MONO, fontSize: 9, fontWeight: 'bold', color: R.main, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
+                    style={{ fontFamily: MONO, fontSize: 10, fontWeight: 'bold', color: R.main, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
                   >
                     {l.youth} {t('wc.u21')}
                   </div>
@@ -3078,7 +3112,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                       display: 'grid',
                       gridTemplateColumns: ELECTION_TIMELINE_GRID,
                       gap: 8,
-                      fontSize: 9,
+                      fontSize: 10,
                       fontWeight: 'bold',
                       textTransform: 'uppercase',
                       letterSpacing: '.03em',
@@ -3119,7 +3153,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                       </div>
                       {/* What the mandate produced. Empty for most — being elected is not winning. */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0, overflow: 'hidden' }}>
-                        {e.trophies.length === 0 && <span style={{ fontSize: 10, color: R.faint }}>—</span>}
+                        {e.trophies.length === 0 && <span style={{ fontSize: 11, color: R.faint }}>—</span>}
                         {e.trophies.map((tr, ti) => (
                           <span
                             key={ti}
@@ -3129,7 +3163,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                             <span
                               style={{
                                 fontFamily: MONO,
-                                fontSize: 9,
+                                fontSize: 10,
                                 fontWeight: 'bold',
                                 color: '#241c08',
                                 background: tr.place === 1 ? MEDAL_GOLD : tr.place === 2 ? MEDAL_SILVER : MEDAL_BRONZE,
@@ -3143,7 +3177,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                             {/* Italic marks the weaker join: won inside the cycle, not the cup voted for. */}
                             <span
                               style={{
-                                fontSize: 10,
+                                fontSize: 11,
                                 color: R.ink,
                                 fontWeight: tr.exact ? 'bold' : 'normal',
                                 fontStyle: tr.exact ? 'normal' : 'italic',
@@ -3157,8 +3191,8 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                           </span>
                         ))}
                       </div>
-                      <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 10, color: R.soft }}>{e.votes ?? '—'}</div>
-                      <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 10, color: R.faint }}>
+                      <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 11, color: R.soft }}>{e.votes ?? '—'}</div>
+                      <div style={{ textAlign: 'right', fontFamily: MONO, fontSize: 11, color: R.faint }}>
                         {e.finished ?? t('wc.ongoing')}
                       </div>
                     </div>
@@ -3169,14 +3203,14 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                       this the timeline silently denies real trophies. */}
                   {l.otherResults.length > 0 && (
                     <div style={{ marginTop: 9, paddingTop: 7, borderTop: '1px solid var(--line,#CDD7C3)' }}>
-                      <div style={{ fontSize: 9, color: R.faint, lineHeight: 1.45, marginBottom: 6 }}>{t('elections.otherResults')}</div>
+                      <div style={{ fontSize: 10, color: R.faint, lineHeight: 1.45, marginBottom: 6 }}>{t('elections.otherResults')}</div>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px 12px' }}>
                         {l.otherResults.map((o, oi) => (
                           <span key={oi} style={{ display: 'flex', alignItems: 'center', gap: 4, minWidth: 0 }}>
                             <span
                               style={{
                                 fontFamily: MONO,
-                                fontSize: 9,
+                                fontSize: 10,
                                 fontWeight: 'bold',
                                 color: '#241c08',
                                 background: o.place === 1 ? MEDAL_GOLD : o.place === 2 ? MEDAL_SILVER : MEDAL_BRONZE,
@@ -3187,9 +3221,9 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                             >
                               {t(o.place === 1 ? 'place.1' : o.place === 2 ? 'place.2' : 'place.3')}
                             </span>
-                            <span style={{ fontSize: 10, color: R.ink, fontWeight: o.place === 1 ? 'bold' : 'normal' }}>{o.cup}</span>
-                            <span style={{ fontSize: 10, color: R.soft }}>{o.nation}</span>
-                            <span style={{ fontFamily: MONO, fontSize: 9, color: R.faint }}>
+                            <span style={{ fontSize: 11, color: R.ink, fontWeight: o.place === 1 ? 'bold' : 'normal' }}>{o.cup}</span>
+                            <span style={{ fontSize: 11, color: R.soft }}>{o.nation}</span>
+                            <span style={{ fontFamily: MONO, fontSize: 10, color: R.faint }}>
                               {o.isWorldCupResult ? `${t('col.wc')} ${o.season}` : `S${o.season}`}
                             </span>
                           </span>
@@ -3210,14 +3244,14 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
             {t(byNation ? 'list.noNations' : 'list.noManagers')}
           </div>
         )}
-      </div>
+      </TableFrame>
 
       {agg && pageCount > 1 && <RetroPager page={curPage} pageCount={pageCount} setPage={setPage} />}
 
       {/* What these totals can't cover, said out loud rather than quietly rolled into an
           "Unknown" row that would top the nationality ranking. */}
       {agg && (
-        <div style={{ fontSize: 9, color: R.faint, marginTop: 9, lineHeight: 1.5 }}>
+        <div style={{ fontSize: 10, color: R.faint, marginTop: 9, lineHeight: 1.5 }}>
           {/* Drops itself the moment a bake actually carries U21 elections. */}
           {!hasYouth && t('elections.seniorOnly') + ' '}
           {t('elections.unattributedNote', { n: agg.unattributed })}
@@ -3287,17 +3321,18 @@ function RetroElectionsByCountry({
             </select>
           </div>
           <div style={{ flex: 1 }} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: R.soft }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: R.soft }}>
             <Flag url={leagueFlagUrl(country)} label={countryName} size={20} />
             {countryName}
           </div>
         </div>
       </fieldset>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 14, alignItems: 'start' }}>
-        <div style={{ border: '1px solid var(--frame,#617D54)' }}>
+      <div className="retro-columns">
+        <TableFrame label={t('elections.title', { country: countryName })} minWidth={560}>
           <SectionBar>{t('elections.title', { country: countryName })}</SectionBar>
           <div
+            className="retro-table-header"
             style={{
               display: 'grid',
               gridTemplateColumns: ELECTION_GRID,
@@ -3305,7 +3340,7 @@ function RetroElectionsByCountry({
               padding: '6px 10px',
               background: R.panel2,
               borderBottom: '2px solid var(--frame,#617D54)',
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: 'bold',
               textTransform: 'uppercase',
               letterSpacing: '.03em',
@@ -3345,7 +3380,7 @@ function RetroElectionsByCountry({
                   <span style={{ fontSize: 12, color: R.faint }}>—</span>
                 )}
               </div>
-              <div style={{ textAlign: 'right', fontSize: 10, color: R.faint, fontFamily: MONO }}>{r.votes ?? '—'}</div>
+              <div style={{ textAlign: 'right', fontSize: 11, color: R.faint, fontFamily: MONO }}>{r.votes ?? '—'}</div>
             </div>
           ))}
 
@@ -3354,10 +3389,10 @@ function RetroElectionsByCountry({
             <div style={{ padding: '20px 10px', color: R.faint, fontSize: 11 }}>{t('elections.empty')}</div>
           )}
 
-          <div style={{ padding: '6px 10px', fontSize: 10, color: R.faint, fontFamily: MONO, background: R.panel2 }}>
+          <div style={{ padding: '6px 10px', fontSize: 11, color: R.faint, fontFamily: MONO, background: R.panel2 }}>
             {t('elections.src')}
           </div>
-        </div>
+        </TableFrame>
 
         <div style={{ border: '1px solid var(--frame,#617D54)' }}>
           <SectionBar>{t('elections.mostElected')}</SectionBar>

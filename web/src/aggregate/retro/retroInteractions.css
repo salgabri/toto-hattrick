@@ -1,0 +1,26 @@
+/* Keep keyboard and pointer feedback consistent with the classic desktop controls. */
+.th2000s :is(button, input, select, a):focus-visible {
+  outline: 2px dotted var(--ink, #27321f) !important;
+  outline-offset: 2px;
+}
+
+.th2000s .retro-row:focus-visible {
+  outline: 2px dotted var(--ink, #27321f);
+  outline-offset: -3px;
+}
+
+.th2000s .retro-ht-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.th2000s .retro-ht-link:hover,
+.th2000s .retro-ht-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.th2000s .retro-tab.is-active:hover,
+.th2000s .retro-tab.is-active:focus-visible {
+  color: var(--mod, #567e47);
+}

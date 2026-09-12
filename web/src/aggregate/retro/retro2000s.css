@@ -1,6 +1,4 @@
-/* Interactive states for the "2000s" retro look. Everything static is inline (to mirror the
-   prototype); only :hover / :focus / :placeholder live here. Scoped to `.th2000s` so nothing
-   leaks — and so it never collides with the modern look's `.ts-aggregate` rules. */
+/* Layout refinements retain the original palette, bevels, compact tables and system fonts. */
 
 .th2000s,
 .th2000s * {
@@ -30,5 +28,166 @@
 
 /* Search field placeholder. */
 .th2000s .retro-input::placeholder {
-  color: var(--faint, #8b9c7e);
+  color: var(--faint, #63715a);
+}
+
+.th2000s .retro-tabs {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.th2000s .retro-tab {
+  flex: none;
+  white-space: nowrap;
+}
+
+.th2000s fieldset {
+  min-inline-size: 0;
+}
+
+.th2000s fieldset select {
+  max-width: 100%;
+  min-height: 29px;
+}
+
+.th2000s .retro-reset {
+  border: 2px outset var(--btn, #ebefe2);
+  background: linear-gradient(180deg, #fff, var(--btn, #ebefe2));
+  color: var(--ink, #27321f);
+  padding: 5px 10px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.th2000s .retro-reset:active:not(:disabled) {
+  border-style: inset;
+}
+
+.th2000s .retro-reset:disabled {
+  color: var(--faint, #63715a);
+  background: var(--panel2, #f2f5ed);
+  cursor: default;
+}
+
+.th2000s .retro-board-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px 16px;
+  margin: 0 0 10px;
+}
+
+.th2000s .retro-legend {
+  display: flex;
+  flex: 1 1 620px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px 14px;
+  color: var(--ink, #27321f);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.th2000s .retro-legend b {
+  color: var(--soft, #5e7150);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.th2000s .retro-pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.th2000s .retro-board-tools .retro-pager {
+  margin-top: 0;
+}
+
+.th2000s .retro-table-frame {
+  min-width: 0;
+  border: 1px solid var(--frame, #617d54);
+}
+
+.th2000s .retro-table-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 1px 0 var(--line, #cdd7c3);
+}
+
+.th2000s .retro-table-scroll:focus-visible {
+  outline: 2px dotted var(--ink, #27321f);
+  outline-offset: -3px;
+}
+
+.th2000s .retro-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 14px;
+  align-items: start;
+}
+
+.th2000s .retro-columns > * {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .th2000s .retro-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Both axes belong to this scroll region, keeping sticky headings with their records. */
+  .th2000s .retro-table-scroll {
+    overflow: auto;
+    max-height: 72dvh;
+    scrollbar-width: thin;
+  }
+
+  .th2000s .retro-table-content {
+    min-width: var(--table-min-width);
+  }
+
+  .th2000s fieldset > div,
+  .th2000s fieldset > div > div {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .th2000s {
+    padding: 8px 4px !important;
+  }
+
+  .th2000s .retro-content {
+    padding: 10px 8px !important;
+  }
+
+  .th2000s fieldset {
+    padding: 9px 8px 12px !important;
+  }
+
+  .th2000s .retro-banner {
+    padding: 10px !important;
+    gap: 10px !important;
+  }
+
+  .th2000s .retro-banner-actions {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: center !important;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .th2000s .retro-reset,
+  .th2000s .retro-pager button {
+    min-height: 30px;
+  }
 }
