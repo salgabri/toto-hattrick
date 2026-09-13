@@ -219,7 +219,7 @@ export async function exportGitRelease(options: ExportGitReleaseOptions) {
 
 function productionOrigin(raw: string) {
   const url = new URL(raw);
-  if (url.protocol !== 'https:' || url.username || url.password || url.pathname !== '/' || url.search || url.hash)
+  if (url.protocol !== 'https:' || url.username || url.password || url.port || url.pathname !== '/' || url.search || url.hash)
     throw new Error('Git release confirmation requires a public HTTPS site origin');
   return url.origin;
 }
@@ -267,7 +267,8 @@ export interface ConfirmGitReleaseOptions {
 }
 
 async function verifyVercelGitCommit(options: {
-  projectId: string; teamId?: string; token: string; commit: string; fetchImpl: typeof fetch; deadline: number; now: () => number;
+  projectId: string; teamId?: string; token: string; commit: string; productionHost: string;
+  fetchImpl: typeof fetch; deadline: number; now: () => number;
 }) {
   if (!/^[a-zA-Z0-9_-]+$/.test(options.projectId)) throw new Error('Git confirmation has an invalid Vercel project ID');
   if (options.teamId && !/^[a-zA-Z0-9_-]+$/.test(options.teamId)) throw new Error('Git confirmation has an invalid Vercel team ID');
@@ -285,19 +286,46 @@ async function verifyVercelGitCommit(options: {
     catch { throw new Error('Vercel returned an unreadable deployment response'); }
   };
   const project = z.object({
-    id: z.string(), targets: z.object({ production: z.object({ id: z.string() }).optional() }).optional(),
+    id: z.string(), accountId: z.string(), rollingRelease: z.unknown().nullable().optional(),
+    link: z.object({ type: z.literal('github'), repo: z.string(), org: z.string(), repoId: z.number().int(),
+      productionBranch: z.literal('main') }),
+    targets: z.object({ production: z.object({ id: z.string(), alias: z.array(z.string()) }).optional() }).optional(),
   }).safeParse(await request(`/v9/projects/${encodeURIComponent(options.projectId)}`));
-  const deploymentId = project.success && project.data.id === options.projectId ? project.data.targets?.production?.id : undefined;
+  if (!project.success || project.data.id !== options.projectId) throw new Error('Vercel returned an invalid production project');
+  const projectData = project.data;
+  const deploymentId = projectData.targets?.production?.id;
   if (!deploymentId) throw new Error('Vercel has no current production deployment for this project');
+  if (options.teamId && projectData.accountId !== options.teamId) throw new Error('Vercel project does not belong to the configured team');
+  if (projectData.rollingRelease !== null && projectData.rollingRelease !== undefined)
+    throw new Error('Vercel rolling releases are not supported by exact Git confirmation');
+  if (!projectData.targets?.production?.alias.map(value => value.toLowerCase()).includes(options.productionHost))
+    throw new Error('The configured public URL is not assigned to the Vercel production target');
+  const activeRollout = z.object({ rollingRelease: z.null() }).safeParse(
+    await request(`/v1/projects/${encodeURIComponent(options.projectId)}/rolling-release?state=ACTIVE`));
+  if (!activeRollout.success) throw new Error('Vercel has an active rolling release for this project');
   const deployment = z.object({
-    id: z.string(), projectId: z.string(), readyState: z.string(), target: z.string().nullable().optional(),
+    id: z.string(), projectId: z.string(), ownerId: z.string(), team: z.object({ id: z.string() }).optional(),
+    readyState: z.string(), target: z.string().nullable().optional(), source: z.literal('git'), alias: z.array(z.string()),
+    gitSource: z.object({ type: z.literal('github'), ref: z.literal('main'), repoId: z.number().int(), sha: z.string() }),
     meta: z.record(z.string()).optional(),
-  }).safeParse(await request(`/v13/deployments/${encodeURIComponent(deploymentId)}`));
+  }).safeParse(await request(`/v13/deployments/${encodeURIComponent(deploymentId)}?withGitRepoInfo=true`));
   if (!deployment.success || deployment.data.id !== deploymentId || deployment.data.projectId !== options.projectId)
     throw new Error('Vercel returned an invalid production deployment');
+  if (deployment.data.ownerId !== projectData.accountId ||
+      (options.teamId && deployment.data.team?.id !== options.teamId))
+    throw new Error('Vercel deployment does not belong to the configured production project');
   if (deployment.data.readyState !== 'READY' || deployment.data.target !== 'production')
     throw new Error('The merged Vercel production deployment is not ready');
-  if (deployment.data.meta?.githubCommitSha?.toLowerCase() !== options.commit || deployment.data.meta?.githubCommitRef !== 'main')
+  if (deployment.data.gitSource.sha.toLowerCase() !== options.commit ||
+      deployment.data.gitSource.repoId !== projectData.link.repoId ||
+      !deployment.data.alias.map(value => value.toLowerCase()).includes(options.productionHost))
+    throw new Error('Vercel production does not have the required Git repository and public alias provenance');
+  if (deployment.data.meta?.githubCommitSha?.toLowerCase() !== options.commit ||
+      deployment.data.meta?.githubCommitRef !== 'main' ||
+      deployment.data.meta?.githubCommitRepo !== projectData.link.repo ||
+      deployment.data.meta?.githubCommitOrg !== projectData.link.org ||
+      deployment.data.meta?.githubCommitRepoId !== String(projectData.link.repoId) ||
+      ['1', 'true'].includes(deployment.data.meta?.gitDirty?.toLowerCase() ?? ''))
     throw new Error('Vercel production does not yet run the merged Git commit');
   return deploymentId;
 }
@@ -335,6 +363,7 @@ export async function confirmGitRelease(options: ConfirmGitReleaseOptions) {
     const inspected = await validateGitRelease(join(site, 'data'), previousData);
     if (record.dataVersion !== inspected.manifest.dataVersion) throw new Error('Pending artifact data version does not match its manifest');
     const deadline = now() + timeoutMs;
+    const productionHost = new URL(origin).hostname.toLowerCase();
     let lastError: unknown;
     let verified = false;
     let deploymentId: string | undefined;
@@ -343,11 +372,13 @@ export async function confirmGitRelease(options: ConfirmGitReleaseOptions) {
         if (options.vercelProjectId || options.vercelToken) {
           if (!options.vercelProjectId || !options.vercelToken) throw new Error('Both Vercel project ID and token are required for exact Git confirmation');
           deploymentId = await verifyVercelGitCommit({ projectId: options.vercelProjectId, teamId: options.vercelTeamId, token: options.vercelToken,
+            productionHost,
             commit: options.commit, fetchImpl, deadline, now });
         }
         await verifyProduction({ origin, inspected, fetchImpl, deadline, now });
         if (options.vercelProjectId && options.vercelToken) {
           const after = await verifyVercelGitCommit({ projectId: options.vercelProjectId, teamId: options.vercelTeamId, token: options.vercelToken,
+            productionHost,
             commit: options.commit, fetchImpl, deadline, now });
           if (after !== deploymentId) throw new Error('Vercel production changed during public verification');
         }

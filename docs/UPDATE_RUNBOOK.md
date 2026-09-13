@@ -185,7 +185,10 @@ The release sequence is fail-closed:
 4. The release ref and merge commit are pushed atomically to GitHub; either both refs advance or
    neither does. GitHub's offline CI reruns the repository checks on `main`.
 5. Vercel builds `main` and switches production only after that build succeeds.
-6. The local coordinator polls the public manifest and all seven immutable files. It advances
+6. The local coordinator requires Vercel's structured Git source to match the project-linked GitHub
+   repository, `main`, and the exact merge SHA; rejects dirty/CLI provenance and rolling releases;
+   and proves `UPDATE_PUBLIC_URL` is an alias of that same production deployment.
+7. It then polls the public manifest and all seven immutable files. It advances
    `releases/current.json` only when their bytes match the pending artifact, recording the merge SHA.
 
 If a step fails before the Git push, the exact pending release remains retryable with
