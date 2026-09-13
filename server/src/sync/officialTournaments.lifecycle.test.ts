@@ -1,8 +1,14 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { mkdtemp, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { test, type TestContext } from 'node:test';
 import { configureChppRuntime } from '../chpp/client.js';
+import evidence from '../data/recovered-cup-final-evidence.json' with { type: 'json' };
 import { prisma } from '../db/client.js';
+import { captureEvidence, configureEvidenceStore, matchEvidenceKey } from '../update/evidence.js';
+import { LocalObjectStore } from '../update/storage.js';
 import { NT_CUPS } from './ntCups.js';
 import {
   MODERN_WORLD_CUP_TOURNAMENTS,
@@ -419,6 +425,13 @@ test('a reported World Cup ingest conflict leaves the result task incomplete', a
 
 test('a tied knockout retains existing matchdetails evidence without inferring or re-fetching a winner', async t => {
   runtime(t);
+  const root = await mkdtemp(join(tmpdir(), 'official-tournament-evidence-'));
+  const store = new LocalObjectStore(join(root, 'store'));
+  const retained = evidence.entries.find(entry => entry.summary.matchId === 23_440_755)!;
+  const reference = await captureEvidence({ store, key: matchEvidenceKey(retained.summary.matchId), source: 'matchdetails', apiVersion: '3.0',
+    parserVersion: 'test-retained-v1', payload: retained.rawMatch, capturedAt: '2026-09-11T00:15:10.000Z' });
+  const resetEvidence = configureEvidenceStore({ store, workspacePath: join(root, 'workspace'), references: [reference] });
+  t.after(async () => { resetEvidence(); await rm(root, { recursive: true, force: true }); });
   const db = tournamentArchive(t);
   const sourceKey = 'seasonal:59';
   seedSources(db, 'none', {});
