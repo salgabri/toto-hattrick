@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { XMLParser } from 'fast-xml-parser';
+import evidence from '../data/recovered-cup-final-evidence.json' with { type: 'json' };
 import { parseTournamentFixtures } from '../schemas/index.js';
 import { parseCupFinalMatch } from '../schemas/cupFinal.js';
 import { matchEvidenceKey } from '../update/evidence.js';
@@ -22,11 +23,6 @@ const xmlParser = new XMLParser({
 function fixtures(name: string) {
   const xml = readFileSync(new URL(`../../samples/${name}`, import.meta.url), 'utf8');
   return parseTournamentFixtures(xmlParser.parse(xml)).matches;
-}
-
-function matchDetails(name: string) {
-  const xml = readFileSync(new URL(`../../samples/${name}`, import.meta.url), 'utf8');
-  return parseCupFinalMatch(xmlParser.parse(xml));
 }
 
 test('derives the Supporter Week champion, runner-up, and semifinal losers from official fixtures', () => {
@@ -219,7 +215,8 @@ test('the same explicit evidence seam resolves a tied semifinal and preserves it
 });
 
 test('real legacy penalty matchdetails can pass the identity gate but never implies a Tournament winner', () => {
-  const match = matchDetails('matchdetails-3.0-23440755.local.xml');
+  const retained = evidence.entries.find(entry => entry.summary.matchId === 23_440_755)!;
+  const match = parseCupFinalMatch(retained.rawMatch);
   assert.notEqual(match.homeGoals, null);
   assert.notEqual(match.awayGoals, null);
   const fixture = {
