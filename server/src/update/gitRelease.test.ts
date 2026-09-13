@@ -186,9 +186,17 @@ test('Vercel confirmation requires production to identify the exact merged main 
     if (url.hostname === 'api.vercel.com') {
       assert.equal(new Headers(init?.headers).get('authorization'), 'Bearer private-test-token');
       assert.equal(url.searchParams.get('teamId'), 'team_test');
+      if (url.pathname.startsWith('/v13/deployments/')) assert.equal(url.searchParams.get('withGitRepoInfo'), 'true');
+      if (url.pathname.endsWith('/rolling-release')) assert.equal(url.searchParams.get('state'), 'ACTIVE');
       apiReads += 1;
-      if (url.pathname === '/v9/projects/prj_test') return new Response(JSON.stringify({ id: 'prj_test', targets: { production: { id: 'dpl_git' } } }));
-      if (url.pathname === '/v13/deployments/dpl_git') return new Response(JSON.stringify({ id: 'dpl_git', projectId: 'prj_test', readyState: 'READY', target: 'production', meta: { githubCommitSha: commit, githubCommitRef: 'main' } }));
+      if (url.pathname === '/v9/projects/prj_test') return new Response(JSON.stringify({ id: 'prj_test', accountId: 'team_test', rollingRelease: null,
+        link: { type: 'github', repo: 'archive', org: 'owner', repoId: 123, productionBranch: 'main' },
+        targets: { production: { id: 'dpl_git', alias: ['toto-hattrick.vercel.app'] } } }));
+      if (url.pathname === '/v1/projects/prj_test/rolling-release') return new Response(JSON.stringify({ rollingRelease: null }));
+      if (url.pathname === '/v13/deployments/dpl_git') return new Response(JSON.stringify({ id: 'dpl_git', projectId: 'prj_test',
+        ownerId: 'team_test', team: { id: 'team_test' }, readyState: 'READY', target: 'production', source: 'git',
+        gitSource: { type: 'github', ref: 'main', repoId: 123, sha: commit }, alias: ['toto-hattrick.vercel.app'],
+        meta: { githubCommitSha: commit, githubCommitRef: 'main', githubCommitRepo: 'archive', githubCommitOrg: 'owner', githubCommitRepoId: '123' } }));
     }
     const body = publicFiles.get(url.pathname);
     return body ? new Response(body) : new Response('missing', { status: 404 });
@@ -196,10 +204,43 @@ test('Vercel confirmation requires production to identify the exact merged main 
   const result = await confirmGitRelease({ store, publicUrl: 'https://toto-hattrick.vercel.app', commit,
     vercelProjectId: 'prj_test', vercelTeamId: 'team_test', vercelToken: 'private-test-token', fetchImpl });
   assert.equal(result.deploymentId, 'dpl_git');
-  assert.equal(apiReads, 4, 'the production target is checked before and after public bytes');
+  assert.equal(apiReads, 6, 'the production target and active rollout are checked before and after public bytes');
   assert.equal((await readArtifactPointer(store, 'releases/current.json'))?.pointer.deploymentId, 'dpl_git');
   assert.equal((await readArtifactPointer(store, 'releases/current.json'))?.pointer.gitCommit, commit);
   assert.equal((await readArtifactPointer(store, 'releases/current.json'))?.pointer.delivery, 'vercel-git');
+});
+
+test('Vercel confirmation rejects spoofable metadata, wrong public aliases, and rolling releases', async t => {
+  for (const failure of ['source', 'alias', 'rolling-config', 'rolling-active'] as const) {
+    const root = await mkdtemp(join(tmpdir(), `git-release-vercel-${failure}-`));
+    t.after(() => rm(root, { recursive: true, force: true }));
+    const { store, oldPointer } = await setupRelease(root);
+    const commit = 'e'.repeat(40);
+    let clock = 0;
+    const fetchImpl: typeof fetch = async input => {
+      const url = new URL(String(input));
+      if (url.pathname === '/v9/projects/prj_test') return new Response(JSON.stringify({
+        id: 'prj_test', accountId: 'team_test', rollingRelease: failure === 'rolling-config' ? { stages: [] } : null,
+        link: { type: 'github', repo: 'archive', org: 'owner', repoId: 123, productionBranch: 'main' },
+        targets: { production: { id: 'dpl_git', alias: failure === 'alias' ? ['another.vercel.app'] : ['toto-hattrick.vercel.app'] } },
+      }));
+      if (url.pathname === '/v1/projects/prj_test/rolling-release') return new Response(JSON.stringify({
+        rollingRelease: failure === 'rolling-active' ? { state: 'ACTIVE' } : null,
+      }));
+      if (url.pathname === '/v13/deployments/dpl_git') return new Response(JSON.stringify({
+        id: 'dpl_git', projectId: 'prj_test', ownerId: 'team_test', team: { id: 'team_test' },
+        readyState: 'READY', target: 'production', source: failure === 'source' ? 'cli' : 'git',
+        gitSource: { type: 'github', ref: 'main', repoId: 123, sha: commit }, alias: ['toto-hattrick.vercel.app'],
+        meta: { githubCommitSha: commit, githubCommitRef: 'main', githubCommitRepo: 'archive', githubCommitOrg: 'owner', githubCommitRepoId: '123' },
+      }));
+      return new Response('unexpected', { status: 404 });
+    };
+    await assert.rejects(confirmGitRelease({ store, publicUrl: 'https://toto-hattrick.vercel.app', commit,
+      vercelProjectId: 'prj_test', vercelTeamId: 'team_test', vercelToken: 'private-test-token',
+      timeoutMs: 2, fetchImpl, now: () => clock, sleep: async milliseconds => { clock += milliseconds; } }),
+    /not verified before the timeout/);
+    assert.equal((await readArtifactPointer(store, 'releases/current.json'))?.pointer.releaseId, oldPointer.releaseId);
+  }
 });
 
 test('confirmation timeout or checksum mismatch never advances the current pointer', async t => {
@@ -212,4 +253,16 @@ test('confirmation timeout or checksum mismatch never advances the current point
     fetchImpl: async () => new Response('wrong bytes'), now: () => clock, sleep: async milliseconds => { clock += milliseconds; },
   }), /not verified before the timeout/);
   assert.equal((await readArtifactPointer(store, 'releases/current.json'))?.pointer.releaseId, oldPointer.releaseId);
+});
+
+test('confirmation rejects a non-default public HTTPS port before making requests', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'git-release-port-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const { store } = await setupRelease(root);
+  let fetches = 0;
+  await assert.rejects(confirmGitRelease({
+    store, publicUrl: 'https://toto-hattrick.vercel.app:8443', commit: 'f'.repeat(40),
+    fetchImpl: async () => { fetches += 1; return new Response('unexpected'); },
+  }), /public HTTPS site origin/);
+  assert.equal(fetches, 0);
 });
