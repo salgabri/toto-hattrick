@@ -1,0 +1,1143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>tournamentFixtures.xml</FileName>
+  <Version>1.1</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-09-13 08:16:20</FetchedDate>
+  <Matches>
+    <Match>
+      <MatchId>41816568</MatchId>
+      <HomeTeamId>456194</HomeTeamId>
+      <HomeTeamName>Vita Sannars FK</HomeTeamName>
+      <HomeShortTeamName>Sannars</HomeShortTeamName>
+      <AwayTeamId>367622</AwayTeamId>
+      <AwayTeamName>THE NINJA MUTANT TURTLES</AwayTeamName>
+      <AwayShortTeamName>TURTLES</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816560</MatchId>
+      <HomeTeamId>935394</HomeTeamId>
+      <HomeTeamName>Taiwan Typhoons</HomeTeamName>
+      <HomeShortTeamName>Typhoons</HomeShortTeamName>
+      <AwayTeamId>140976</AwayTeamId>
+      <AwayTeamName>Hobbyclub</AwayTeamName>
+      <AwayShortTeamName>Hobbyclub</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816557</MatchId>
+      <HomeTeamId>712086</HomeTeamId>
+      <HomeTeamName>MALACKY SK</HomeTeamName>
+      <HomeShortTeamName>Malacky</HomeShortTeamName>
+      <AwayTeamId>100139</AwayTeamId>
+      <AwayTeamName>CAJ Maccers</AwayTeamName>
+      <AwayShortTeamName>CAJ</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816556</MatchId>
+      <HomeTeamId>907244</HomeTeamId>
+      <HomeTeamName>Saint Lucifer</HomeTeamName>
+      <HomeShortTeamName>AZAZEL</HomeShortTeamName>
+      <AwayTeamId>281897</AwayTeamId>
+      <AwayTeamName>Legia Galway</AwayTeamName>
+      <AwayShortTeamName>(L)</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816565</MatchId>
+      <HomeTeamId>168579</HomeTeamId>
+      <HomeTeamName>Bieler Holzhacker</HomeTeamName>
+      <HomeShortTeamName>Holzhacker</HomeShortTeamName>
+      <AwayTeamId>98716</AwayTeamId>
+      <AwayTeamName>Berghult Ravers</AwayTeamName>
+      <AwayShortTeamName>Berghult</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816569</MatchId>
+      <HomeTeamId>52507</HomeTeamId>
+      <HomeTeamName>Kickers Überraschung</HomeTeamName>
+      <HomeShortTeamName>OFC</HomeShortTeamName>
+      <AwayTeamId>416371</AwayTeamId>
+      <AwayTeamName>Litsmetsa</AwayTeamName>
+      <AwayShortTeamName>Litsmetsa</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816564</MatchId>
+      <HomeTeamId>74054</HomeTeamId>
+      <HomeTeamName>Iso KyrPa</HomeTeamName>
+      <HomeShortTeamName>KyrPa</HomeShortTeamName>
+      <AwayTeamId>2067034</AwayTeamId>
+      <AwayTeamName>Carlos Jugon PR</AwayTeamName>
+      <AwayShortTeamName>Jugon</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816567</MatchId>
+      <HomeTeamId>593391</HomeTeamId>
+      <HomeTeamName>Angelis FC</HomeTeamName>
+      <HomeShortTeamName>Angelis</HomeShortTeamName>
+      <AwayTeamId>709953</AwayTeamId>
+      <AwayTeamName>Tokson Erkek</AwayTeamName>
+      <AwayShortTeamName>Tokson</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816558</MatchId>
+      <HomeTeamId>66186</HomeTeamId>
+      <HomeTeamName>Bom på åpent mål</HomeTeamName>
+      <HomeShortTeamName>Skivebom</HomeShortTeamName>
+      <AwayTeamId>241617</AwayTeamId>
+      <AwayTeamName>AFC IH-RA</AwayTeamName>
+      <AwayShortTeamName>Ihra</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816576</MatchId>
+      <HomeTeamId>62183</HomeTeamId>
+      <HomeTeamName>Teambummer</HomeTeamName>
+      <HomeShortTeamName>Teambummer</HomeShortTeamName>
+      <AwayTeamId>896315</AwayTeamId>
+      <AwayTeamName>Zubr Přerov AC</AwayTeamName>
+      <AwayShortTeamName>Zubr</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816562</MatchId>
+      <HomeTeamId>282555</HomeTeamId>
+      <HomeTeamName>Nigerian Black Panthers</HomeTeamName>
+      <HomeShortTeamName>Nigerian</HomeShortTeamName>
+      <AwayTeamId>2067211</AwayTeamId>
+      <AwayTeamName>Livernull</AwayTeamName>
+      <AwayShortTeamName>Livernull</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816563</MatchId>
+      <HomeTeamId>1677272</HomeTeamId>
+      <HomeTeamName>Fc beddi</HomeTeamName>
+      <HomeShortTeamName>beddi</HomeShortTeamName>
+      <AwayTeamId>65321</AwayTeamId>
+      <AwayTeamName>Tranemyra FK</AwayTeamName>
+      <AwayShortTeamName>TRFK</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816566</MatchId>
+      <HomeTeamId>534209</HomeTeamId>
+      <HomeTeamName>Spartan 300</HomeTeamName>
+      <HomeShortTeamName>Spartan</HomeShortTeamName>
+      <AwayTeamId>1685044</AwayTeamId>
+      <AwayTeamName>Stopaři po Galaxii</AwayTeamName>
+      <AwayShortTeamName>Stopaři</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>6</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816561</MatchId>
+      <HomeTeamId>2067705</HomeTeamId>
+      <HomeTeamName>Bromosapiens</HomeTeamName>
+      <HomeShortTeamName>Bromosapiens</HomeShortTeamName>
+      <AwayTeamId>240367</AwayTeamId>
+      <AwayTeamName>Segesta Tigullorum</AwayTeamName>
+      <AwayShortTeamName>Tigullorum</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>6</HomeGoals>
+      <AwayGoals>5</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816559</MatchId>
+      <HomeTeamId>694577</HomeTeamId>
+      <HomeTeamName>Craiova Champions</HomeTeamName>
+      <HomeShortTeamName>Champions</HomeShortTeamName>
+      <AwayTeamId>894008</AwayTeamId>
+      <AwayTeamName>roll deep</AwayTeamName>
+      <AwayShortTeamName>roll</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816570</MatchId>
+      <HomeTeamId>1388430</HomeTeamId>
+      <HomeTeamName>Dörfli Snipers</HomeTeamName>
+      <HomeShortTeamName>Snipers</HomeShortTeamName>
+      <AwayTeamId>1220326</AwayTeamId>
+      <AwayTeamName>Football Club Vikinga</AwayTeamName>
+      <AwayShortTeamName>Vikinga</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816571</MatchId>
+      <HomeTeamId>2017043</HomeTeamId>
+      <HomeTeamName>F C Crumb Hunters</HomeTeamName>
+      <HomeShortTeamName>Hunters</HomeShortTeamName>
+      <AwayTeamId>2065842</AwayTeamId>
+      <AwayTeamName>Estudiantes Lusaka</AwayTeamName>
+      <AwayShortTeamName>Estudiantes</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816573</MatchId>
+      <HomeTeamId>333027</HomeTeamId>
+      <HomeTeamName>Fortuna Fippes Freiburg</HomeTeamName>
+      <HomeShortTeamName>FFF</HomeShortTeamName>
+      <AwayTeamId>463517</AwayTeamId>
+      <AwayTeamName>Deportivo Canido</AwayTeamName>
+      <AwayShortTeamName>Deportivo</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816572</MatchId>
+      <HomeTeamId>2065323</HomeTeamId>
+      <HomeTeamName>Lucky Dime</HomeTeamName>
+      <HomeShortTeamName>Lucky</HomeShortTeamName>
+      <AwayTeamId>2054098</AwayTeamId>
+      <AwayTeamName>CAJ Mäjkers</AwayTeamName>
+      <AwayShortTeamName>CAJ</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816574</MatchId>
+      <HomeTeamId>1088016</HomeTeamId>
+      <HomeTeamName>!FC Beitar Jerusalem</HomeTeamName>
+      <HomeShortTeamName>Jerusalem</HomeShortTeamName>
+      <AwayTeamId>1578599</AwayTeamId>
+      <AwayTeamName>RCD Cordoba</AwayTeamName>
+      <AwayShortTeamName>Cordoba</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816577</MatchId>
+      <HomeTeamId>128858</HomeTeamId>
+      <HomeTeamName>FC Renaissance Ried</HomeTeamName>
+      <HomeShortTeamName>Renaissance</HomeShortTeamName>
+      <AwayTeamId>505559</AwayTeamId>
+      <AwayTeamName>Heerlijkheid</AwayTeamName>
+      <AwayShortTeamName>Heerlijkheid</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816579</MatchId>
+      <HomeTeamId>933871</HomeTeamId>
+      <HomeTeamName>GF Sisters</HomeTeamName>
+      <HomeShortTeamName>Sisters</HomeShortTeamName>
+      <AwayTeamId>1327444</AwayTeamId>
+      <AwayTeamName>Young Kuny</AwayTeamName>
+      <AwayShortTeamName>Kuny</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816581</MatchId>
+      <HomeTeamId>397197</HomeTeamId>
+      <HomeTeamName>Mecatrónica F.C.</HomeTeamName>
+      <HomeShortTeamName>11 M6's</HomeShortTeamName>
+      <AwayTeamId>682031</AwayTeamId>
+      <AwayTeamName>Chupakabra</AwayTeamName>
+      <AwayShortTeamName>Chupakabra</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816575</MatchId>
+      <HomeTeamId>342694</HomeTeamId>
+      <HomeTeamName>F.C Tukies</HomeTeamName>
+      <HomeShortTeamName>Tukies</HomeShortTeamName>
+      <AwayTeamId>2066628</AwayTeamId>
+      <AwayTeamName>Calluna County F.C.</AwayTeamName>
+      <AwayShortTeamName>Calluna</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816583</MatchId>
+      <HomeTeamId>1903547</HomeTeamId>
+      <HomeTeamName>Los sureños (mendruguillos II)</HomeTeamName>
+      <HomeShortTeamName>(mendruguillos</HomeShortTeamName>
+      <AwayTeamId>1519072</AwayTeamId>
+      <AwayTeamName>FC Houreentuoja</AwayTeamName>
+      <AwayShortTeamName>FCH</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816582</MatchId>
+      <HomeTeamId>684343</HomeTeamId>
+      <HomeTeamName>Melnais Kodols</HomeTeamName>
+      <HomeShortTeamName>MK</HomeShortTeamName>
+      <AwayTeamId>289135</AwayTeamId>
+      <AwayTeamName>Hijos del Rigor FC</AwayTeamName>
+      <AwayShortTeamName>Romántico</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816578</MatchId>
+      <HomeTeamId>114675</HomeTeamId>
+      <HomeTeamName>JP Traksid</HomeTeamName>
+      <HomeShortTeamName>Traksid</HomeShortTeamName>
+      <AwayTeamId>338469</AwayTeamId>
+      <AwayTeamName>FC Kögel Augsburg 1907</AwayTeamName>
+      <AwayShortTeamName>Augsburg</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816585</MatchId>
+      <HomeTeamId>885883</HomeTeamId>
+      <HomeTeamName>feralovi maratonci</HomeTeamName>
+      <HomeShortTeamName>maratonci</HomeShortTeamName>
+      <AwayTeamId>919421</AwayTeamId>
+      <AwayTeamName>ACmilanoo</AwayTeamName>
+      <AwayShortTeamName>ACmilanoo</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>5</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816584</MatchId>
+      <HomeTeamId>123314</HomeTeamId>
+      <HomeTeamName>Judge Suckers</HomeTeamName>
+      <HomeShortTeamName>Suckers</HomeShortTeamName>
+      <AwayTeamId>1715447</AwayTeamId>
+      <AwayTeamName>19-GÖZTEPE-25</AwayTeamName>
+      <AwayShortTeamName>19-GÖZTEPE-25</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816580</MatchId>
+      <HomeTeamId>1973378</HomeTeamId>
+      <HomeTeamName>Karşıyaka ŠK</HomeTeamName>
+      <HomeShortTeamName>KSK</HomeShortTeamName>
+      <AwayTeamId>1643184</AwayTeamId>
+      <AwayTeamName>Selyemréti Sonka HC</AwayTeamName>
+      <AwayShortTeamName>Selyemréti</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816587</MatchId>
+      <HomeTeamId>2062555</HomeTeamId>
+      <HomeTeamName>Sabana Westpunt Iguanas</HomeTeamName>
+      <HomeShortTeamName>Sabis</HomeShortTeamName>
+      <AwayTeamId>92594</AwayTeamId>
+      <AwayTeamName>The Mended Drum</AwayTeamName>
+      <AwayShortTeamName>Drum</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41816586</MatchId>
+      <HomeTeamId>2065006</HomeTeamId>
+      <HomeTeamName>Beach Lounging Saints F.C.</HomeTeamName>
+      <HomeShortTeamName>Lounging</HomeShortTeamName>
+      <AwayTeamId>2065060</AwayTeamId>
+      <AwayTeamName>Sygnathidae FC</AwayTeamName>
+      <AwayShortTeamName>Sygnathidae</AwayShortTeamName>
+      <MatchDate>2026-07-17 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>7</HomeGoals>
+      <AwayGoals>6</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820177</MatchId>
+      <HomeTeamId>367622</HomeTeamId>
+      <HomeTeamName>THE NINJA MUTANT TURTLES</HomeTeamName>
+      <HomeShortTeamName>TURTLES</HomeShortTeamName>
+      <AwayTeamId>935394</AwayTeamId>
+      <AwayTeamName>Taiwan Typhoons</AwayTeamName>
+      <AwayShortTeamName>Typhoons</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>5</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820176</MatchId>
+      <HomeTeamId>100139</HomeTeamId>
+      <HomeTeamName>CAJ Maccers</HomeTeamName>
+      <HomeShortTeamName>CAJ</HomeShortTeamName>
+      <AwayTeamId>907244</AwayTeamId>
+      <AwayTeamName>Saint Lucifer</AwayTeamName>
+      <AwayShortTeamName>AZAZEL</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>15</HomeGoals>
+      <AwayGoals>14</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820178</MatchId>
+      <HomeTeamId>168579</HomeTeamId>
+      <HomeTeamName>Bieler Holzhacker</HomeTeamName>
+      <HomeShortTeamName>Holzhacker</HomeShortTeamName>
+      <AwayTeamId>416371</AwayTeamId>
+      <AwayTeamName>Litsmetsa</AwayTeamName>
+      <AwayShortTeamName>Litsmetsa</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820185</MatchId>
+      <HomeTeamId>74054</HomeTeamId>
+      <HomeTeamName>Iso KyrPa</HomeTeamName>
+      <HomeShortTeamName>KyrPa</HomeShortTeamName>
+      <AwayTeamId>709953</AwayTeamId>
+      <AwayTeamName>Tokson Erkek</AwayTeamName>
+      <AwayShortTeamName>Tokson</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>10</HomeGoals>
+      <AwayGoals>8</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820184</MatchId>
+      <HomeTeamId>241617</HomeTeamId>
+      <HomeTeamName>AFC IH-RA</HomeTeamName>
+      <HomeShortTeamName>Ihra</HomeShortTeamName>
+      <AwayTeamId>62183</AwayTeamId>
+      <AwayTeamName>Teambummer</AwayTeamName>
+      <AwayShortTeamName>Teambummer</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>6</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820181</MatchId>
+      <HomeTeamId>282555</HomeTeamId>
+      <HomeTeamName>Nigerian Black Panthers</HomeTeamName>
+      <HomeShortTeamName>Nigerian</HomeShortTeamName>
+      <AwayTeamId>1677272</AwayTeamId>
+      <AwayTeamName>Fc beddi</AwayTeamName>
+      <AwayShortTeamName>beddi</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>5</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820180</MatchId>
+      <HomeTeamId>1685044</HomeTeamId>
+      <HomeTeamName>Stopaři po Galaxii</HomeTeamName>
+      <HomeShortTeamName>Stopaři</HomeShortTeamName>
+      <AwayTeamId>2067705</AwayTeamId>
+      <AwayTeamName>Bromosapiens</AwayTeamName>
+      <AwayShortTeamName>Bromosapiens</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>6</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820183</MatchId>
+      <HomeTeamId>694577</HomeTeamId>
+      <HomeTeamName>Craiova Champions</HomeTeamName>
+      <HomeShortTeamName>Champions</HomeShortTeamName>
+      <AwayTeamId>1388430</AwayTeamId>
+      <AwayTeamName>Dörfli Snipers</AwayTeamName>
+      <AwayShortTeamName>Snipers</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820182</MatchId>
+      <HomeTeamId>2065842</HomeTeamId>
+      <HomeTeamName>Estudiantes Lusaka</HomeTeamName>
+      <HomeShortTeamName>Estudiantes</HomeShortTeamName>
+      <AwayTeamId>333027</AwayTeamId>
+      <AwayTeamName>Fortuna Fippes Freiburg</AwayTeamName>
+      <AwayShortTeamName>FFF</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820179</MatchId>
+      <HomeTeamId>2054098</HomeTeamId>
+      <HomeTeamName>CAJ Mäjkers</HomeTeamName>
+      <HomeShortTeamName>CAJ</HomeShortTeamName>
+      <AwayTeamId>1088016</AwayTeamId>
+      <AwayTeamName>!FC Beitar Jerusalem</AwayTeamName>
+      <AwayShortTeamName>Jerusalem</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820188</MatchId>
+      <HomeTeamId>505559</HomeTeamId>
+      <HomeTeamName>Heerlijkheid</HomeTeamName>
+      <HomeShortTeamName>Heerlijkheid</HomeShortTeamName>
+      <AwayTeamId>1327444</AwayTeamId>
+      <AwayTeamName>Young Kuny</AwayTeamName>
+      <AwayShortTeamName>Kuny</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820186</MatchId>
+      <HomeTeamId>397197</HomeTeamId>
+      <HomeTeamName>Mecatrónica F.C.</HomeTeamName>
+      <HomeShortTeamName>11 M6's</HomeShortTeamName>
+      <AwayTeamId>342694</AwayTeamId>
+      <AwayTeamName>F.C Tukies</AwayTeamName>
+      <AwayShortTeamName>Tukies</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820189</MatchId>
+      <HomeTeamId>1519072</HomeTeamId>
+      <HomeTeamName>FC Houreentuoja</HomeTeamName>
+      <HomeShortTeamName>FCH</HomeShortTeamName>
+      <AwayTeamId>684343</AwayTeamId>
+      <AwayTeamName>Melnais Kodols</AwayTeamName>
+      <AwayShortTeamName>MK</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820190</MatchId>
+      <HomeTeamId>114675</HomeTeamId>
+      <HomeTeamName>JP Traksid</HomeTeamName>
+      <HomeShortTeamName>Traksid</HomeShortTeamName>
+      <AwayTeamId>919421</AwayTeamId>
+      <AwayTeamName>ACmilanoo</AwayTeamName>
+      <AwayShortTeamName>ACmilanoo</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820187</MatchId>
+      <HomeTeamId>123314</HomeTeamId>
+      <HomeTeamName>Judge Suckers</HomeTeamName>
+      <HomeShortTeamName>Suckers</HomeShortTeamName>
+      <AwayTeamId>1973378</AwayTeamId>
+      <AwayTeamName>Karşıyaka ŠK</AwayTeamName>
+      <AwayShortTeamName>KSK</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>6</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41820191</MatchId>
+      <HomeTeamId>2062555</HomeTeamId>
+      <HomeTeamName>Sabana Westpunt Iguanas</HomeTeamName>
+      <HomeShortTeamName>Sabis</HomeShortTeamName>
+      <AwayTeamId>2065006</AwayTeamId>
+      <AwayTeamName>Beach Lounging Saints F.C.</AwayTeamName>
+      <AwayShortTeamName>Lounging</AwayShortTeamName>
+      <MatchDate>2026-07-18 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41821684</MatchId>
+      <HomeTeamId>935394</HomeTeamId>
+      <HomeTeamName>Taiwan Typhoons</HomeTeamName>
+      <HomeShortTeamName>Typhoons</HomeShortTeamName>
+      <AwayTeamId>100139</AwayTeamId>
+      <AwayTeamName>CAJ Maccers</AwayTeamName>
+      <AwayShortTeamName>CAJ</AwayShortTeamName>
+      <MatchDate>2026-07-18 10:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>13</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41821686</MatchId>
+      <HomeTeamId>416371</HomeTeamId>
+      <HomeTeamName>Litsmetsa</HomeTeamName>
+      <HomeShortTeamName>Litsmetsa</HomeShortTeamName>
+      <AwayTeamId>74054</AwayTeamId>
+      <AwayTeamName>Iso KyrPa</AwayTeamName>
+      <AwayShortTeamName>KyrPa</AwayShortTeamName>
+      <MatchDate>2026-07-18 10:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>13</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>8</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41821689</MatchId>
+      <HomeTeamId>241617</HomeTeamId>
+      <HomeTeamName>AFC IH-RA</HomeTeamName>
+      <HomeShortTeamName>Ihra</HomeShortTeamName>
+      <AwayTeamId>1677272</AwayTeamId>
+      <AwayTeamName>Fc beddi</AwayTeamName>
+      <AwayShortTeamName>beddi</AwayShortTeamName>
+      <MatchDate>2026-07-18 10:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>13</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41821688</MatchId>
+      <HomeTeamId>2067705</HomeTeamId>
+      <HomeTeamName>Bromosapiens</HomeTeamName>
+      <HomeShortTeamName>Bromosapiens</HomeShortTeamName>
+      <AwayTeamId>694577</AwayTeamId>
+      <AwayTeamName>Craiova Champions</AwayTeamName>
+      <AwayShortTeamName>Champions</AwayShortTeamName>
+      <MatchDate>2026-07-18 10:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>13</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41821685</MatchId>
+      <HomeTeamId>2065842</HomeTeamId>
+      <HomeTeamName>Estudiantes Lusaka</HomeTeamName>
+      <HomeShortTeamName>Estudiantes</HomeShortTeamName>
+      <AwayTeamId>2054098</AwayTeamId>
+      <AwayTeamName>CAJ Mäjkers</AwayTeamName>
+      <AwayShortTeamName>CAJ</AwayShortTeamName>
+      <MatchDate>2026-07-18 10:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>13</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41821683</MatchId>
+      <HomeTeamId>1327444</HomeTeamId>
+      <HomeTeamName>Young Kuny</HomeTeamName>
+      <HomeShortTeamName>Kuny</HomeShortTeamName>
+      <AwayTeamId>397197</AwayTeamId>
+      <AwayTeamName>Mecatrónica F.C.</AwayTeamName>
+      <AwayShortTeamName>11 M6's</AwayShortTeamName>
+      <MatchDate>2026-07-18 10:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>13</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41821687</MatchId>
+      <HomeTeamId>1519072</HomeTeamId>
+      <HomeTeamName>FC Houreentuoja</HomeTeamName>
+      <HomeShortTeamName>FCH</HomeShortTeamName>
+      <AwayTeamId>114675</AwayTeamId>
+      <AwayTeamName>JP Traksid</AwayTeamName>
+      <AwayShortTeamName>Traksid</AwayShortTeamName>
+      <MatchDate>2026-07-18 10:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>13</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41821682</MatchId>
+      <HomeTeamId>123314</HomeTeamId>
+      <HomeTeamName>Judge Suckers</HomeTeamName>
+      <HomeShortTeamName>Suckers</HomeShortTeamName>
+      <AwayTeamId>2062555</AwayTeamId>
+      <AwayTeamName>Sabana Westpunt Iguanas</AwayTeamName>
+      <AwayShortTeamName>Sabis</AwayShortTeamName>
+      <MatchDate>2026-07-18 10:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>13</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41822866</MatchId>
+      <HomeTeamId>935394</HomeTeamId>
+      <HomeTeamName>Taiwan Typhoons</HomeTeamName>
+      <HomeShortTeamName>Typhoons</HomeShortTeamName>
+      <AwayTeamId>74054</AwayTeamId>
+      <AwayTeamName>Iso KyrPa</AwayTeamName>
+      <AwayShortTeamName>KyrPa</AwayShortTeamName>
+      <MatchDate>2026-07-18 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>14</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41822865</MatchId>
+      <HomeTeamId>1677272</HomeTeamId>
+      <HomeTeamName>Fc beddi</HomeTeamName>
+      <HomeShortTeamName>beddi</HomeShortTeamName>
+      <AwayTeamId>694577</AwayTeamId>
+      <AwayTeamName>Craiova Champions</AwayTeamName>
+      <AwayShortTeamName>Champions</AwayShortTeamName>
+      <MatchDate>2026-07-18 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>14</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41822864</MatchId>
+      <HomeTeamId>2065842</HomeTeamId>
+      <HomeTeamName>Estudiantes Lusaka</HomeTeamName>
+      <HomeShortTeamName>Estudiantes</HomeShortTeamName>
+      <AwayTeamId>1327444</AwayTeamId>
+      <AwayTeamName>Young Kuny</AwayTeamName>
+      <AwayShortTeamName>Kuny</AwayShortTeamName>
+      <MatchDate>2026-07-18 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>14</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41822867</MatchId>
+      <HomeTeamId>1519072</HomeTeamId>
+      <HomeTeamName>FC Houreentuoja</HomeTeamName>
+      <HomeShortTeamName>FCH</HomeShortTeamName>
+      <AwayTeamId>2062555</AwayTeamId>
+      <AwayTeamName>Sabana Westpunt Iguanas</AwayTeamName>
+      <AwayShortTeamName>Sabis</AwayShortTeamName>
+      <MatchDate>2026-07-18 18:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>14</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41823988</MatchId>
+      <HomeTeamId>74054</HomeTeamId>
+      <HomeTeamName>Iso KyrPa</HomeTeamName>
+      <HomeShortTeamName>KyrPa</HomeShortTeamName>
+      <AwayTeamId>694577</AwayTeamId>
+      <AwayTeamName>Craiova Champions</AwayTeamName>
+      <AwayShortTeamName>Champions</AwayShortTeamName>
+      <MatchDate>2026-07-19 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>15</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41823989</MatchId>
+      <HomeTeamId>2065842</HomeTeamId>
+      <HomeTeamName>Estudiantes Lusaka</HomeTeamName>
+      <HomeShortTeamName>Estudiantes</HomeShortTeamName>
+      <AwayTeamId>2062555</AwayTeamId>
+      <AwayTeamName>Sabana Westpunt Iguanas</AwayTeamName>
+      <AwayShortTeamName>Sabis</AwayShortTeamName>
+      <MatchDate>2026-07-19 02:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>15</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>5</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41825525</MatchId>
+      <HomeTeamId>694577</HomeTeamId>
+      <HomeTeamName>Craiova Champions</HomeTeamName>
+      <HomeShortTeamName>Champions</HomeShortTeamName>
+      <AwayTeamId>2062555</AwayTeamId>
+      <AwayTeamName>Sabana Westpunt Iguanas</AwayTeamName>
+      <AwayShortTeamName>Sabis</AwayShortTeamName>
+      <MatchDate>2026-07-19 10:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>16</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+  </Matches>
+</HattrickData>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>tournamentdetails.xml</FileName>
+  <Version>1.0</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-09-13 08:15:47</FetchedDate>
+  <Tournament>
+    <TournamentId>5001278</TournamentId>
+    <Name>Africa Cup</Name>
+    <TournamentType>3</TournamentType>
+    <Season>41</Season>
+    <LogoUrl>https://www.hattrick.org/Img/Cups/ht-big-cup-africa.png</LogoUrl>
+    <TrophyType>301</TrophyType>
+    <NumberOfTeams>24</NumberOfTeams>
+    <NumberOfGroups>4</NumberOfGroups>
+    <LastMatchRound>13</LastMatchRound>
+    <FirstMatchRoundDate>2026-04-17 21:00:00</FirstMatchRoundDate>
+    <NextMatchRoundDate>2026-06-19 21:00:00</NextMatchRoundDate>
+    <IsMatchesOngoing>0</IsMatchesOngoing>
+    <Creator>
+      <UserId>0</UserId>
+      <Loginname></Loginname>
+    </Creator>
+  </Tournament>
+</HattrickData>

@@ -29,7 +29,7 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
 
   // Managers: league titles + attributed cup wins (main/secondary), grouped by championUserId (>0).
   const users = await prisma.hattrickUser.findMany({ select: { userId: true, nationality: true, loginName: true } });
-  const natById = new Map(users.map((u) => [u.userId, u.nationality]));
+  const natById = new Map(users.map((u) => [u.userId, u.nationality?.trim() || undefined]));
   // Podium coaches short of the champion are stored as IDS ONLY (see WorldCupChampion's
   // runnerUpUserId / thirdFourthUserIds) so a rename can't leave a stale copy in that table —
   // which means the bake is where their names get attached.
@@ -306,7 +306,9 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
       select: { winnerUserId: true },
       distinct: ['winnerUserId'],
     })
-  ).map((r) => r.winnerUserId!);
+  )
+    .map((r) => r.winnerUserId!)
+    .filter((userId) => userId > 0);
   const bakedUserIds = new Set<number>([...mgr.keys(), ...electionWinnerIds]);
   const unresolvedNat = [...bakedUserIds].filter((uid) => natById.get(uid) == null).length;
   if (unresolvedNat > 0) {
@@ -398,7 +400,7 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
   const seasonalTotal = seasonalRolls.reduce((n, c) => n + c.winners.length, 0);
 
   // World Cup (senior + youth): champion is a NATION, not a manager/club — see sync/worldCup.ts.
-  // Scraped once (no CHPP path), stored in its own table, baked as its own file.
+  // Retained legacy history and scheduled official modern Tournament XML share one table/file.
   const wcRows = await prisma.worldCupChampion.findMany({ orderBy: [{ isYouth: 'asc' }, { edition: 'asc' }] });
   const wcOut = (r: (typeof wcRows)[number]) => {
     // Built from the NATIONS array so the coach slots can't drift out of alignment: the two columns
@@ -478,9 +480,9 @@ export async function bakeStatic(out: string): Promise<BakeResult> {
     // Only carried when true — the senior election is the default and would otherwise add a false
     // to every one of ~3,500 rows in the shipped JSON.
     isYouth: r.isYouth || undefined,
-    winnerUserId: r.winnerUserId ?? undefined,
+    winnerUserId: (r.winnerUserId ?? 0) > 0 ? r.winnerUserId! : undefined,
     winner: r.winnerUserName ?? undefined,
-    winnerNationality: r.winnerUserId ? natById.get(r.winnerUserId) : undefined,
+    winnerNationality: (r.winnerUserId ?? 0) > 0 ? natById.get(r.winnerUserId!) : undefined,
     votes: r.votes ?? undefined,
   }));
   writeFileSync(`${out}/elections.json`, JSON.stringify(elections));

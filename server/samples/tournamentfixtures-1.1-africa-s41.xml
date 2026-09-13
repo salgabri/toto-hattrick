@@ -1,0 +1,2295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>tournamentFixtures.xml</FileName>
+  <Version>1.1</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-09-13 08:16:34</FetchedDate>
+  <Matches>
+    <Match>
+      <MatchId>40822096</MatchId>
+      <HomeTeamId>3222</HomeTeamId>
+      <HomeTeamName>Angola</HomeTeamName>
+      <HomeShortTeamName>Angola</HomeShortTeamName>
+      <AwayTeamId>3303</AwayTeamId>
+      <AwayTeamName>RD Congo</AwayTeamName>
+      <AwayShortTeamName>RD Congo</AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822099</MatchId>
+      <HomeTeamId>3306</HomeTeamId>
+      <HomeTeamName>Madagasikara</HomeTeamName>
+      <HomeShortTeamName>Madagasikara</HomeShortTeamName>
+      <AwayTeamId>3309</AwayTeamId>
+      <AwayTeamName>Zambia</AwayTeamName>
+      <AwayShortTeamName>Zambia</AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822102</MatchId>
+      <HomeTeamId>3249</HomeTeamId>
+      <HomeTeamName>Uganda</HomeTeamName>
+      <HomeShortTeamName>Uganda</HomeShortTeamName>
+      <AwayTeamId>3134</AwayTeamId>
+      <AwayTeamName>Al Maghrib </AwayTeamName>
+      <AwayShortTeamName>Al Maghrib </AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822103</MatchId>
+      <HomeTeamId>3126</HomeTeamId>
+      <HomeTeamName>Nigeria</HomeTeamName>
+      <HomeShortTeamName>Nigeria</HomeShortTeamName>
+      <AwayTeamId>3297</AwayTeamId>
+      <AwayTeamName>São Tomé e Príncipe</AwayTeamName>
+      <AwayShortTeamName>São Tomé e Príncipe</AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822097</MatchId>
+      <HomeTeamId>3208</HomeTeamId>
+      <HomeTeamName>Côte d'Ivoire</HomeTeamName>
+      <HomeShortTeamName>Côte d'Ivoire</HomeShortTeamName>
+      <AwayTeamId>3240</AwayTeamId>
+      <AwayTeamName>Bénin</AwayTeamName>
+      <AwayShortTeamName>Bénin</AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822105</MatchId>
+      <HomeTeamId>3162</HomeTeamId>
+      <HomeTeamName>Kenya</HomeTeamName>
+      <HomeShortTeamName>Kenya</HomeShortTeamName>
+      <AwayTeamId>3198</AwayTeamId>
+      <AwayTeamName>Senegal</AwayTeamName>
+      <AwayShortTeamName>Senegal</AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822106</MatchId>
+      <HomeTeamId>3299</HomeTeamId>
+      <HomeTeamName>Comoros</HomeTeamName>
+      <HomeShortTeamName>Comoros</HomeShortTeamName>
+      <AwayTeamId>3232</AwayTeamId>
+      <AwayTeamName>Moçambique</AwayTeamName>
+      <AwayShortTeamName>Moçambique</AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822098</MatchId>
+      <HomeTeamId>3210</HomeTeamId>
+      <HomeTeamName>Cabo Verde</HomeTeamName>
+      <HomeShortTeamName>Cabo Verde</HomeShortTeamName>
+      <AwayTeamId>3247</AwayTeamId>
+      <AwayTeamName>Tanzania</AwayTeamName>
+      <AwayShortTeamName>Tanzania</AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822100</MatchId>
+      <HomeTeamId>3015</HomeTeamId>
+      <HomeTeamName>South Africa</HomeTeamName>
+      <HomeShortTeamName>South Africa</HomeShortTeamName>
+      <AwayTeamId>3196</AwayTeamId>
+      <AwayTeamName>Algérie</AwayTeamName>
+      <AwayShortTeamName>Algérie</AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822101</MatchId>
+      <HomeTeamId>3315</HomeTeamId>
+      <HomeTeamName>Burkina Faso</HomeTeamName>
+      <HomeShortTeamName>Burkina Faso</HomeShortTeamName>
+      <AwayTeamId>3307</AwayTeamId>
+      <AwayTeamName>Botswana</AwayTeamName>
+      <AwayShortTeamName>Botswana</AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>6</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822104</MatchId>
+      <HomeTeamId>3018</HomeTeamId>
+      <HomeTeamName>Misr</HomeTeamName>
+      <HomeShortTeamName>Misr</HomeShortTeamName>
+      <AwayTeamId>3254</AwayTeamId>
+      <AwayTeamName>Cameroon</AwayTeamName>
+      <AwayShortTeamName>Cameroon</AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822107</MatchId>
+      <HomeTeamId>3298</HomeTeamId>
+      <HomeTeamName>Ītyōṗṗyā</HomeTeamName>
+      <HomeShortTeamName>Ītyōṗṗyā</HomeShortTeamName>
+      <AwayTeamId>3236</AwayTeamId>
+      <AwayTeamName>Ghana</AwayTeamName>
+      <AwayShortTeamName>Ghana</AwayShortTeamName>
+      <MatchDate>2026-04-17 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822114</MatchId>
+      <HomeTeamId>3254</HomeTeamId>
+      <HomeTeamName>Cameroon</HomeTeamName>
+      <HomeShortTeamName>Cameroon</HomeShortTeamName>
+      <AwayTeamId>3249</AwayTeamId>
+      <AwayTeamName>Uganda</AwayTeamName>
+      <AwayShortTeamName>Uganda</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822112</MatchId>
+      <HomeTeamId>3309</HomeTeamId>
+      <HomeTeamName>Zambia</HomeTeamName>
+      <HomeShortTeamName>Zambia</HomeShortTeamName>
+      <AwayTeamId>3015</AwayTeamId>
+      <AwayTeamName>South Africa</AwayTeamName>
+      <AwayShortTeamName>South Africa</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822118</MatchId>
+      <HomeTeamId>3198</HomeTeamId>
+      <HomeTeamName>Senegal</HomeTeamName>
+      <HomeShortTeamName>Senegal</HomeShortTeamName>
+      <AwayTeamId>3299</AwayTeamId>
+      <AwayTeamName>Comoros</AwayTeamName>
+      <AwayShortTeamName>Comoros</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>6</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822116</MatchId>
+      <HomeTeamId>3297</HomeTeamId>
+      <HomeTeamName>São Tomé e Príncipe</HomeTeamName>
+      <HomeShortTeamName>São Tomé e Príncipe</HomeShortTeamName>
+      <AwayTeamId>3018</AwayTeamId>
+      <AwayTeamName>Misr</AwayTeamName>
+      <AwayShortTeamName>Misr</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822111</MatchId>
+      <HomeTeamId>3307</HomeTeamId>
+      <HomeTeamName>Botswana</HomeTeamName>
+      <HomeShortTeamName>Botswana</HomeShortTeamName>
+      <AwayTeamId>3306</AwayTeamId>
+      <AwayTeamName>Madagasikara</AwayTeamName>
+      <AwayShortTeamName>Madagasikara</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822117</MatchId>
+      <HomeTeamId>3236</HomeTeamId>
+      <HomeTeamName>Ghana</HomeTeamName>
+      <HomeShortTeamName>Ghana</HomeShortTeamName>
+      <AwayTeamId>3162</AwayTeamId>
+      <AwayTeamName>Kenya</AwayTeamName>
+      <AwayShortTeamName>Kenya</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822108</MatchId>
+      <HomeTeamId>3247</HomeTeamId>
+      <HomeTeamName>Tanzania</HomeTeamName>
+      <HomeShortTeamName>Tanzania</HomeShortTeamName>
+      <AwayTeamId>3222</AwayTeamId>
+      <AwayTeamName>Angola</AwayTeamName>
+      <AwayShortTeamName>Angola</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822110</MatchId>
+      <HomeTeamId>3240</HomeTeamId>
+      <HomeTeamName>Bénin</HomeTeamName>
+      <HomeShortTeamName>Bénin</HomeShortTeamName>
+      <AwayTeamId>3210</AwayTeamId>
+      <AwayTeamName>Cabo Verde</AwayTeamName>
+      <AwayShortTeamName>Cabo Verde</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822119</MatchId>
+      <HomeTeamId>3232</HomeTeamId>
+      <HomeTeamName>Moçambique</HomeTeamName>
+      <HomeShortTeamName>Moçambique</HomeShortTeamName>
+      <AwayTeamId>3298</AwayTeamId>
+      <AwayTeamName>Ītyōṗṗyā</AwayTeamName>
+      <AwayShortTeamName>Ītyōṗṗyā</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822113</MatchId>
+      <HomeTeamId>3196</HomeTeamId>
+      <HomeTeamName>Algérie</HomeTeamName>
+      <HomeShortTeamName>Algérie</HomeShortTeamName>
+      <AwayTeamId>3315</AwayTeamId>
+      <AwayTeamName>Burkina Faso</AwayTeamName>
+      <AwayShortTeamName>Burkina Faso</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822109</MatchId>
+      <HomeTeamId>3303</HomeTeamId>
+      <HomeTeamName>RD Congo</HomeTeamName>
+      <HomeShortTeamName>RD Congo</HomeShortTeamName>
+      <AwayTeamId>3208</AwayTeamId>
+      <AwayTeamName>Côte d'Ivoire</AwayTeamName>
+      <AwayShortTeamName>Côte d'Ivoire</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822115</MatchId>
+      <HomeTeamId>3134</HomeTeamId>
+      <HomeTeamName>Al Maghrib </HomeTeamName>
+      <HomeShortTeamName>Al Maghrib </HomeShortTeamName>
+      <AwayTeamId>3126</AwayTeamId>
+      <AwayTeamName>Nigeria</AwayTeamName>
+      <AwayShortTeamName>Nigeria</AwayShortTeamName>
+      <MatchDate>2026-04-20 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822120</MatchId>
+      <HomeTeamId>3222</HomeTeamId>
+      <HomeTeamName>Angola</HomeTeamName>
+      <HomeShortTeamName>Angola</HomeShortTeamName>
+      <AwayTeamId>3240</AwayTeamId>
+      <AwayTeamName>Bénin</AwayTeamName>
+      <AwayShortTeamName>Bénin</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822124</MatchId>
+      <HomeTeamId>3309</HomeTeamId>
+      <HomeTeamName>Zambia</HomeTeamName>
+      <HomeShortTeamName>Zambia</HomeShortTeamName>
+      <AwayTeamId>3307</AwayTeamId>
+      <AwayTeamName>Botswana</AwayTeamName>
+      <AwayShortTeamName>Botswana</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822123</MatchId>
+      <HomeTeamId>3306</HomeTeamId>
+      <HomeTeamName>Madagasikara</HomeTeamName>
+      <HomeShortTeamName>Madagasikara</HomeShortTeamName>
+      <AwayTeamId>3196</AwayTeamId>
+      <AwayTeamName>Algérie</AwayTeamName>
+      <AwayShortTeamName>Algérie</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822126</MatchId>
+      <HomeTeamId>3249</HomeTeamId>
+      <HomeTeamName>Uganda</HomeTeamName>
+      <HomeShortTeamName>Uganda</HomeShortTeamName>
+      <AwayTeamId>3297</AwayTeamId>
+      <AwayTeamName>São Tomé e Príncipe</AwayTeamName>
+      <AwayShortTeamName>São Tomé e Príncipe</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822130</MatchId>
+      <HomeTeamId>3198</HomeTeamId>
+      <HomeTeamName>Senegal</HomeTeamName>
+      <HomeShortTeamName>Senegal</HomeShortTeamName>
+      <AwayTeamId>3236</AwayTeamId>
+      <AwayTeamName>Ghana</AwayTeamName>
+      <AwayShortTeamName>Ghana</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822122</MatchId>
+      <HomeTeamId>3208</HomeTeamId>
+      <HomeTeamName>Côte d'Ivoire</HomeTeamName>
+      <HomeShortTeamName>Côte d'Ivoire</HomeShortTeamName>
+      <AwayTeamId>3210</AwayTeamId>
+      <AwayTeamName>Cabo Verde</AwayTeamName>
+      <AwayShortTeamName>Cabo Verde</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822128</MatchId>
+      <HomeTeamId>3126</HomeTeamId>
+      <HomeTeamName>Nigeria</HomeTeamName>
+      <HomeShortTeamName>Nigeria</HomeShortTeamName>
+      <AwayTeamId>3018</AwayTeamId>
+      <AwayTeamName>Misr</AwayTeamName>
+      <AwayShortTeamName>Misr</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822129</MatchId>
+      <HomeTeamId>3162</HomeTeamId>
+      <HomeTeamName>Kenya</HomeTeamName>
+      <HomeShortTeamName>Kenya</HomeShortTeamName>
+      <AwayTeamId>3232</AwayTeamId>
+      <AwayTeamName>Moçambique</AwayTeamName>
+      <AwayShortTeamName>Moçambique</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822131</MatchId>
+      <HomeTeamId>3299</HomeTeamId>
+      <HomeTeamName>Comoros</HomeTeamName>
+      <HomeShortTeamName>Comoros</HomeShortTeamName>
+      <AwayTeamId>3298</AwayTeamId>
+      <AwayTeamName>Ītyōṗṗyā</AwayTeamName>
+      <AwayShortTeamName>Ītyōṗṗyā</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822125</MatchId>
+      <HomeTeamId>3015</HomeTeamId>
+      <HomeTeamName>South Africa</HomeTeamName>
+      <HomeShortTeamName>South Africa</HomeShortTeamName>
+      <AwayTeamId>3315</AwayTeamId>
+      <AwayTeamName>Burkina Faso</AwayTeamName>
+      <AwayShortTeamName>Burkina Faso</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822121</MatchId>
+      <HomeTeamId>3303</HomeTeamId>
+      <HomeTeamName>RD Congo</HomeTeamName>
+      <HomeShortTeamName>RD Congo</HomeShortTeamName>
+      <AwayTeamId>3247</AwayTeamId>
+      <AwayTeamName>Tanzania</AwayTeamName>
+      <AwayShortTeamName>Tanzania</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822127</MatchId>
+      <HomeTeamId>3134</HomeTeamId>
+      <HomeTeamName>Al Maghrib </HomeTeamName>
+      <HomeShortTeamName>Al Maghrib </HomeShortTeamName>
+      <AwayTeamId>3254</AwayTeamId>
+      <AwayTeamName>Cameroon</AwayTeamName>
+      <AwayShortTeamName>Cameroon</AwayShortTeamName>
+      <MatchDate>2026-04-24 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822139</MatchId>
+      <HomeTeamId>3297</HomeTeamId>
+      <HomeTeamName>São Tomé e Príncipe</HomeTeamName>
+      <HomeShortTeamName>São Tomé e Príncipe</HomeShortTeamName>
+      <AwayTeamId>3254</AwayTeamId>
+      <AwayTeamName>Cameroon</AwayTeamName>
+      <AwayShortTeamName>Cameroon</AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822132</MatchId>
+      <HomeTeamId>3208</HomeTeamId>
+      <HomeTeamName>Côte d'Ivoire</HomeTeamName>
+      <HomeShortTeamName>Côte d'Ivoire</HomeShortTeamName>
+      <AwayTeamId>3222</AwayTeamId>
+      <AwayTeamName>Angola</AwayTeamName>
+      <AwayShortTeamName>Angola</AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822138</MatchId>
+      <HomeTeamId>3126</HomeTeamId>
+      <HomeTeamName>Nigeria</HomeTeamName>
+      <HomeShortTeamName>Nigeria</HomeShortTeamName>
+      <AwayTeamId>3249</AwayTeamId>
+      <AwayTeamName>Uganda</AwayTeamName>
+      <AwayShortTeamName>Uganda</AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822141</MatchId>
+      <HomeTeamId>3299</HomeTeamId>
+      <HomeTeamName>Comoros</HomeTeamName>
+      <HomeShortTeamName>Comoros</HomeShortTeamName>
+      <AwayTeamId>3162</AwayTeamId>
+      <AwayTeamName>Kenya</AwayTeamName>
+      <AwayShortTeamName>Kenya</AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822135</MatchId>
+      <HomeTeamId>3015</HomeTeamId>
+      <HomeTeamName>South Africa</HomeTeamName>
+      <HomeShortTeamName>South Africa</HomeShortTeamName>
+      <AwayTeamId>3306</AwayTeamId>
+      <AwayTeamName>Madagasikara</AwayTeamName>
+      <AwayShortTeamName>Madagasikara</AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822134</MatchId>
+      <HomeTeamId>3210</HomeTeamId>
+      <HomeTeamName>Cabo Verde</HomeTeamName>
+      <HomeShortTeamName>Cabo Verde</HomeShortTeamName>
+      <AwayTeamId>3303</AwayTeamId>
+      <AwayTeamName>RD Congo</AwayTeamName>
+      <AwayShortTeamName>RD Congo</AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822133</MatchId>
+      <HomeTeamId>3240</HomeTeamId>
+      <HomeTeamName>Bénin</HomeTeamName>
+      <HomeShortTeamName>Bénin</HomeShortTeamName>
+      <AwayTeamId>3247</AwayTeamId>
+      <AwayTeamName>Tanzania</AwayTeamName>
+      <AwayShortTeamName>Tanzania</AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822142</MatchId>
+      <HomeTeamId>3232</HomeTeamId>
+      <HomeTeamName>Moçambique</HomeTeamName>
+      <HomeShortTeamName>Moçambique</HomeShortTeamName>
+      <AwayTeamId>3236</AwayTeamId>
+      <AwayTeamName>Ghana</AwayTeamName>
+      <AwayShortTeamName>Ghana</AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822136</MatchId>
+      <HomeTeamId>3196</HomeTeamId>
+      <HomeTeamName>Algérie</HomeTeamName>
+      <HomeShortTeamName>Algérie</HomeShortTeamName>
+      <AwayTeamId>3307</AwayTeamId>
+      <AwayTeamName>Botswana</AwayTeamName>
+      <AwayShortTeamName>Botswana</AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822137</MatchId>
+      <HomeTeamId>3315</HomeTeamId>
+      <HomeTeamName>Burkina Faso</HomeTeamName>
+      <HomeShortTeamName>Burkina Faso</HomeShortTeamName>
+      <AwayTeamId>3309</AwayTeamId>
+      <AwayTeamName>Zambia</AwayTeamName>
+      <AwayShortTeamName>Zambia</AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822140</MatchId>
+      <HomeTeamId>3018</HomeTeamId>
+      <HomeTeamName>Misr</HomeTeamName>
+      <HomeShortTeamName>Misr</HomeShortTeamName>
+      <AwayTeamId>3134</AwayTeamId>
+      <AwayTeamName>Al Maghrib </AwayTeamName>
+      <AwayShortTeamName>Al Maghrib </AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822143</MatchId>
+      <HomeTeamId>3298</HomeTeamId>
+      <HomeTeamName>Ītyōṗṗyā</HomeTeamName>
+      <HomeShortTeamName>Ītyōṗṗyā</HomeShortTeamName>
+      <AwayTeamId>3198</AwayTeamId>
+      <AwayTeamName>Senegal</AwayTeamName>
+      <AwayShortTeamName>Senegal</AwayShortTeamName>
+      <MatchDate>2026-04-27 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822152</MatchId>
+      <HomeTeamId>3254</HomeTeamId>
+      <HomeTeamName>Cameroon</HomeTeamName>
+      <HomeShortTeamName>Cameroon</HomeShortTeamName>
+      <AwayTeamId>3126</AwayTeamId>
+      <AwayTeamName>Nigeria</AwayTeamName>
+      <AwayShortTeamName>Nigeria</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822145</MatchId>
+      <HomeTeamId>3222</HomeTeamId>
+      <HomeTeamName>Angola</HomeTeamName>
+      <HomeShortTeamName>Angola</HomeShortTeamName>
+      <AwayTeamId>3210</AwayTeamId>
+      <AwayTeamName>Cabo Verde</AwayTeamName>
+      <AwayShortTeamName>Cabo Verde</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822147</MatchId>
+      <HomeTeamId>3309</HomeTeamId>
+      <HomeTeamName>Zambia</HomeTeamName>
+      <HomeShortTeamName>Zambia</HomeShortTeamName>
+      <AwayTeamId>3196</AwayTeamId>
+      <AwayTeamName>Algérie</AwayTeamName>
+      <AwayShortTeamName>Algérie</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822148</MatchId>
+      <HomeTeamId>3306</HomeTeamId>
+      <HomeTeamName>Madagasikara</HomeTeamName>
+      <HomeShortTeamName>Madagasikara</HomeShortTeamName>
+      <AwayTeamId>3315</AwayTeamId>
+      <AwayTeamName>Burkina Faso</AwayTeamName>
+      <AwayShortTeamName>Burkina Faso</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822153</MatchId>
+      <HomeTeamId>3198</HomeTeamId>
+      <HomeTeamName>Senegal</HomeTeamName>
+      <HomeShortTeamName>Senegal</HomeShortTeamName>
+      <AwayTeamId>3232</AwayTeamId>
+      <AwayTeamName>Moçambique</AwayTeamName>
+      <AwayShortTeamName>Moçambique</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822151</MatchId>
+      <HomeTeamId>3249</HomeTeamId>
+      <HomeTeamName>Uganda</HomeTeamName>
+      <HomeShortTeamName>Uganda</HomeShortTeamName>
+      <AwayTeamId>3018</AwayTeamId>
+      <AwayTeamName>Misr</AwayTeamName>
+      <AwayShortTeamName>Misr</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822154</MatchId>
+      <HomeTeamId>3162</HomeTeamId>
+      <HomeTeamName>Kenya</HomeTeamName>
+      <HomeShortTeamName>Kenya</HomeShortTeamName>
+      <AwayTeamId>3298</AwayTeamId>
+      <AwayTeamName>Ītyōṗṗyā</AwayTeamName>
+      <AwayShortTeamName>Ītyōṗṗyā</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822149</MatchId>
+      <HomeTeamId>3307</HomeTeamId>
+      <HomeTeamName>Botswana</HomeTeamName>
+      <HomeShortTeamName>Botswana</HomeShortTeamName>
+      <AwayTeamId>3015</AwayTeamId>
+      <AwayTeamName>South Africa</AwayTeamName>
+      <AwayShortTeamName>South Africa</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822155</MatchId>
+      <HomeTeamId>3236</HomeTeamId>
+      <HomeTeamName>Ghana</HomeTeamName>
+      <HomeShortTeamName>Ghana</HomeShortTeamName>
+      <AwayTeamId>3299</AwayTeamId>
+      <AwayTeamName>Comoros</AwayTeamName>
+      <AwayShortTeamName>Comoros</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822146</MatchId>
+      <HomeTeamId>3247</HomeTeamId>
+      <HomeTeamName>Tanzania</HomeTeamName>
+      <HomeShortTeamName>Tanzania</HomeShortTeamName>
+      <AwayTeamId>3208</AwayTeamId>
+      <AwayTeamName>Côte d'Ivoire</AwayTeamName>
+      <AwayShortTeamName>Côte d'Ivoire</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822144</MatchId>
+      <HomeTeamId>3303</HomeTeamId>
+      <HomeTeamName>RD Congo</HomeTeamName>
+      <HomeShortTeamName>RD Congo</HomeShortTeamName>
+      <AwayTeamId>3240</AwayTeamId>
+      <AwayTeamName>Bénin</AwayTeamName>
+      <AwayShortTeamName>Bénin</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822150</MatchId>
+      <HomeTeamId>3134</HomeTeamId>
+      <HomeTeamName>Al Maghrib </HomeTeamName>
+      <HomeShortTeamName>Al Maghrib </HomeShortTeamName>
+      <AwayTeamId>3297</AwayTeamId>
+      <AwayTeamName>São Tomé e Príncipe</AwayTeamName>
+      <AwayShortTeamName>São Tomé e Príncipe</AwayShortTeamName>
+      <MatchDate>2026-05-01 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822164</MatchId>
+      <HomeTeamId>3254</HomeTeamId>
+      <HomeTeamName>Cameroon</HomeTeamName>
+      <HomeShortTeamName>Cameroon</HomeShortTeamName>
+      <AwayTeamId>3018</AwayTeamId>
+      <AwayTeamName>Misr</AwayTeamName>
+      <AwayShortTeamName>Misr</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822159</MatchId>
+      <HomeTeamId>3309</HomeTeamId>
+      <HomeTeamName>Zambia</HomeTeamName>
+      <HomeShortTeamName>Zambia</HomeShortTeamName>
+      <AwayTeamId>3306</AwayTeamId>
+      <AwayTeamName>Madagasikara</AwayTeamName>
+      <AwayShortTeamName>Madagasikara</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822165</MatchId>
+      <HomeTeamId>3198</HomeTeamId>
+      <HomeTeamName>Senegal</HomeTeamName>
+      <HomeShortTeamName>Senegal</HomeShortTeamName>
+      <AwayTeamId>3162</AwayTeamId>
+      <AwayTeamName>Kenya</AwayTeamName>
+      <AwayShortTeamName>Kenya</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822163</MatchId>
+      <HomeTeamId>3297</HomeTeamId>
+      <HomeTeamName>São Tomé e Príncipe</HomeTeamName>
+      <HomeShortTeamName>São Tomé e Príncipe</HomeShortTeamName>
+      <AwayTeamId>3126</AwayTeamId>
+      <AwayTeamName>Nigeria</AwayTeamName>
+      <AwayShortTeamName>Nigeria</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822161</MatchId>
+      <HomeTeamId>3307</HomeTeamId>
+      <HomeTeamName>Botswana</HomeTeamName>
+      <HomeShortTeamName>Botswana</HomeShortTeamName>
+      <AwayTeamId>3315</AwayTeamId>
+      <AwayTeamName>Burkina Faso</AwayTeamName>
+      <AwayShortTeamName>Burkina Faso</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822167</MatchId>
+      <HomeTeamId>3236</HomeTeamId>
+      <HomeTeamName>Ghana</HomeTeamName>
+      <HomeShortTeamName>Ghana</HomeShortTeamName>
+      <AwayTeamId>3298</AwayTeamId>
+      <AwayTeamName>Ītyōṗṗyā</AwayTeamName>
+      <AwayShortTeamName>Ītyōṗṗyā</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822158</MatchId>
+      <HomeTeamId>3247</HomeTeamId>
+      <HomeTeamName>Tanzania</HomeTeamName>
+      <HomeShortTeamName>Tanzania</HomeShortTeamName>
+      <AwayTeamId>3210</AwayTeamId>
+      <AwayTeamName>Cabo Verde</AwayTeamName>
+      <AwayShortTeamName>Cabo Verde</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822157</MatchId>
+      <HomeTeamId>3240</HomeTeamId>
+      <HomeTeamName>Bénin</HomeTeamName>
+      <HomeShortTeamName>Bénin</HomeShortTeamName>
+      <AwayTeamId>3208</AwayTeamId>
+      <AwayTeamName>Côte d'Ivoire</AwayTeamName>
+      <AwayShortTeamName>Côte d'Ivoire</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822166</MatchId>
+      <HomeTeamId>3232</HomeTeamId>
+      <HomeTeamName>Moçambique</HomeTeamName>
+      <HomeShortTeamName>Moçambique</HomeShortTeamName>
+      <AwayTeamId>3299</AwayTeamId>
+      <AwayTeamName>Comoros</AwayTeamName>
+      <AwayShortTeamName>Comoros</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822160</MatchId>
+      <HomeTeamId>3196</HomeTeamId>
+      <HomeTeamName>Algérie</HomeTeamName>
+      <HomeShortTeamName>Algérie</HomeShortTeamName>
+      <AwayTeamId>3015</AwayTeamId>
+      <AwayTeamName>South Africa</AwayTeamName>
+      <AwayShortTeamName>South Africa</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822156</MatchId>
+      <HomeTeamId>3303</HomeTeamId>
+      <HomeTeamName>RD Congo</HomeTeamName>
+      <HomeShortTeamName>RD Congo</HomeShortTeamName>
+      <AwayTeamId>3222</AwayTeamId>
+      <AwayTeamName>Angola</AwayTeamName>
+      <AwayShortTeamName>Angola</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822162</MatchId>
+      <HomeTeamId>3134</HomeTeamId>
+      <HomeTeamName>Al Maghrib </HomeTeamName>
+      <HomeShortTeamName>Al Maghrib </HomeShortTeamName>
+      <AwayTeamId>3249</AwayTeamId>
+      <AwayTeamName>Uganda</AwayTeamName>
+      <AwayShortTeamName>Uganda</AwayShortTeamName>
+      <MatchDate>2026-05-08 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822168</MatchId>
+      <HomeTeamId>3222</HomeTeamId>
+      <HomeTeamName>Angola</HomeTeamName>
+      <HomeShortTeamName>Angola</HomeShortTeamName>
+      <AwayTeamId>3247</AwayTeamId>
+      <AwayTeamName>Tanzania</AwayTeamName>
+      <AwayShortTeamName>Tanzania</AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822171</MatchId>
+      <HomeTeamId>3306</HomeTeamId>
+      <HomeTeamName>Madagasikara</HomeTeamName>
+      <HomeShortTeamName>Madagasikara</HomeShortTeamName>
+      <AwayTeamId>3307</AwayTeamId>
+      <AwayTeamName>Botswana</AwayTeamName>
+      <AwayShortTeamName>Botswana</AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822174</MatchId>
+      <HomeTeamId>3249</HomeTeamId>
+      <HomeTeamName>Uganda</HomeTeamName>
+      <HomeShortTeamName>Uganda</HomeShortTeamName>
+      <AwayTeamId>3254</AwayTeamId>
+      <AwayTeamName>Cameroon</AwayTeamName>
+      <AwayShortTeamName>Cameroon</AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822169</MatchId>
+      <HomeTeamId>3208</HomeTeamId>
+      <HomeTeamName>Côte d'Ivoire</HomeTeamName>
+      <HomeShortTeamName>Côte d'Ivoire</HomeShortTeamName>
+      <AwayTeamId>3303</AwayTeamId>
+      <AwayTeamName>RD Congo</AwayTeamName>
+      <AwayShortTeamName>RD Congo</AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822175</MatchId>
+      <HomeTeamId>3126</HomeTeamId>
+      <HomeTeamName>Nigeria</HomeTeamName>
+      <HomeShortTeamName>Nigeria</HomeShortTeamName>
+      <AwayTeamId>3134</AwayTeamId>
+      <AwayTeamName>Al Maghrib </AwayTeamName>
+      <AwayShortTeamName>Al Maghrib </AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822178</MatchId>
+      <HomeTeamId>3299</HomeTeamId>
+      <HomeTeamName>Comoros</HomeTeamName>
+      <HomeShortTeamName>Comoros</HomeShortTeamName>
+      <AwayTeamId>3198</AwayTeamId>
+      <AwayTeamName>Senegal</AwayTeamName>
+      <AwayShortTeamName>Senegal</AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822177</MatchId>
+      <HomeTeamId>3162</HomeTeamId>
+      <HomeTeamName>Kenya</HomeTeamName>
+      <HomeShortTeamName>Kenya</HomeShortTeamName>
+      <AwayTeamId>3236</AwayTeamId>
+      <AwayTeamName>Ghana</AwayTeamName>
+      <AwayShortTeamName>Ghana</AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>6</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822172</MatchId>
+      <HomeTeamId>3015</HomeTeamId>
+      <HomeTeamName>South Africa</HomeTeamName>
+      <HomeShortTeamName>South Africa</HomeShortTeamName>
+      <AwayTeamId>3309</AwayTeamId>
+      <AwayTeamName>Zambia</AwayTeamName>
+      <AwayShortTeamName>Zambia</AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822170</MatchId>
+      <HomeTeamId>3210</HomeTeamId>
+      <HomeTeamName>Cabo Verde</HomeTeamName>
+      <HomeShortTeamName>Cabo Verde</HomeShortTeamName>
+      <AwayTeamId>3240</AwayTeamId>
+      <AwayTeamName>Bénin</AwayTeamName>
+      <AwayShortTeamName>Bénin</AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822173</MatchId>
+      <HomeTeamId>3315</HomeTeamId>
+      <HomeTeamName>Burkina Faso</HomeTeamName>
+      <HomeShortTeamName>Burkina Faso</HomeShortTeamName>
+      <AwayTeamId>3196</AwayTeamId>
+      <AwayTeamName>Algérie</AwayTeamName>
+      <AwayShortTeamName>Algérie</AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822176</MatchId>
+      <HomeTeamId>3018</HomeTeamId>
+      <HomeTeamName>Misr</HomeTeamName>
+      <HomeShortTeamName>Misr</HomeShortTeamName>
+      <AwayTeamId>3297</AwayTeamId>
+      <AwayTeamName>São Tomé e Príncipe</AwayTeamName>
+      <AwayShortTeamName>São Tomé e Príncipe</AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822179</MatchId>
+      <HomeTeamId>3298</HomeTeamId>
+      <HomeTeamName>Ītyōṗṗyā</HomeTeamName>
+      <HomeShortTeamName>Ītyōṗṗyā</HomeShortTeamName>
+      <AwayTeamId>3232</AwayTeamId>
+      <AwayTeamName>Moçambique</AwayTeamName>
+      <AwayShortTeamName>Moçambique</AwayShortTeamName>
+      <MatchDate>2026-05-15 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822187</MatchId>
+      <HomeTeamId>3254</HomeTeamId>
+      <HomeTeamName>Cameroon</HomeTeamName>
+      <HomeShortTeamName>Cameroon</HomeShortTeamName>
+      <AwayTeamId>3134</AwayTeamId>
+      <AwayTeamName>Al Maghrib </AwayTeamName>
+      <AwayShortTeamName>Al Maghrib </AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822186</MatchId>
+      <HomeTeamId>3297</HomeTeamId>
+      <HomeTeamName>São Tomé e Príncipe</HomeTeamName>
+      <HomeShortTeamName>São Tomé e Príncipe</HomeShortTeamName>
+      <AwayTeamId>3249</AwayTeamId>
+      <AwayTeamName>Uganda</AwayTeamName>
+      <AwayShortTeamName>Uganda</AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822184</MatchId>
+      <HomeTeamId>3307</HomeTeamId>
+      <HomeTeamName>Botswana</HomeTeamName>
+      <HomeShortTeamName>Botswana</HomeShortTeamName>
+      <AwayTeamId>3309</AwayTeamId>
+      <AwayTeamName>Zambia</AwayTeamName>
+      <AwayShortTeamName>Zambia</AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822182</MatchId>
+      <HomeTeamId>3210</HomeTeamId>
+      <HomeTeamName>Cabo Verde</HomeTeamName>
+      <HomeShortTeamName>Cabo Verde</HomeShortTeamName>
+      <AwayTeamId>3208</AwayTeamId>
+      <AwayTeamName>Côte d'Ivoire</AwayTeamName>
+      <AwayShortTeamName>Côte d'Ivoire</AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822190</MatchId>
+      <HomeTeamId>3236</HomeTeamId>
+      <HomeTeamName>Ghana</HomeTeamName>
+      <HomeShortTeamName>Ghana</HomeShortTeamName>
+      <AwayTeamId>3198</AwayTeamId>
+      <AwayTeamName>Senegal</AwayTeamName>
+      <AwayShortTeamName>Senegal</AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822181</MatchId>
+      <HomeTeamId>3247</HomeTeamId>
+      <HomeTeamName>Tanzania</HomeTeamName>
+      <HomeShortTeamName>Tanzania</HomeShortTeamName>
+      <AwayTeamId>3303</AwayTeamId>
+      <AwayTeamName>RD Congo</AwayTeamName>
+      <AwayShortTeamName>RD Congo</AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822180</MatchId>
+      <HomeTeamId>3240</HomeTeamId>
+      <HomeTeamName>Bénin</HomeTeamName>
+      <HomeShortTeamName>Bénin</HomeShortTeamName>
+      <AwayTeamId>3222</AwayTeamId>
+      <AwayTeamName>Angola</AwayTeamName>
+      <AwayShortTeamName>Angola</AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822189</MatchId>
+      <HomeTeamId>3232</HomeTeamId>
+      <HomeTeamName>Moçambique</HomeTeamName>
+      <HomeShortTeamName>Moçambique</HomeShortTeamName>
+      <AwayTeamId>3162</AwayTeamId>
+      <AwayTeamName>Kenya</AwayTeamName>
+      <AwayShortTeamName>Kenya</AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822183</MatchId>
+      <HomeTeamId>3196</HomeTeamId>
+      <HomeTeamName>Algérie</HomeTeamName>
+      <HomeShortTeamName>Algérie</HomeShortTeamName>
+      <AwayTeamId>3306</AwayTeamId>
+      <AwayTeamName>Madagasikara</AwayTeamName>
+      <AwayShortTeamName>Madagasikara</AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822185</MatchId>
+      <HomeTeamId>3315</HomeTeamId>
+      <HomeTeamName>Burkina Faso</HomeTeamName>
+      <HomeShortTeamName>Burkina Faso</HomeShortTeamName>
+      <AwayTeamId>3015</AwayTeamId>
+      <AwayTeamName>South Africa</AwayTeamName>
+      <AwayShortTeamName>South Africa</AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822188</MatchId>
+      <HomeTeamId>3018</HomeTeamId>
+      <HomeTeamName>Misr</HomeTeamName>
+      <HomeShortTeamName>Misr</HomeShortTeamName>
+      <AwayTeamId>3126</AwayTeamId>
+      <AwayTeamName>Nigeria</AwayTeamName>
+      <AwayShortTeamName>Nigeria</AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822191</MatchId>
+      <HomeTeamId>3298</HomeTeamId>
+      <HomeTeamName>Ītyōṗṗyā</HomeTeamName>
+      <HomeShortTeamName>Ītyōṗṗyā</HomeShortTeamName>
+      <AwayTeamId>3299</AwayTeamId>
+      <AwayTeamName>Comoros</AwayTeamName>
+      <AwayShortTeamName>Comoros</AwayShortTeamName>
+      <MatchDate>2026-05-22 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822199</MatchId>
+      <HomeTeamId>3254</HomeTeamId>
+      <HomeTeamName>Cameroon</HomeTeamName>
+      <HomeShortTeamName>Cameroon</HomeShortTeamName>
+      <AwayTeamId>3297</AwayTeamId>
+      <AwayTeamName>São Tomé e Príncipe</AwayTeamName>
+      <AwayShortTeamName>São Tomé e Príncipe</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822192</MatchId>
+      <HomeTeamId>3222</HomeTeamId>
+      <HomeTeamName>Angola</HomeTeamName>
+      <HomeShortTeamName>Angola</HomeShortTeamName>
+      <AwayTeamId>3208</AwayTeamId>
+      <AwayTeamName>Côte d'Ivoire</AwayTeamName>
+      <AwayShortTeamName>Côte d'Ivoire</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822195</MatchId>
+      <HomeTeamId>3306</HomeTeamId>
+      <HomeTeamName>Madagasikara</HomeTeamName>
+      <HomeShortTeamName>Madagasikara</HomeShortTeamName>
+      <AwayTeamId>3015</AwayTeamId>
+      <AwayTeamName>South Africa</AwayTeamName>
+      <AwayShortTeamName>South Africa</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822196</MatchId>
+      <HomeTeamId>3309</HomeTeamId>
+      <HomeTeamName>Zambia</HomeTeamName>
+      <HomeShortTeamName>Zambia</HomeShortTeamName>
+      <AwayTeamId>3315</AwayTeamId>
+      <AwayTeamName>Burkina Faso</AwayTeamName>
+      <AwayShortTeamName>Burkina Faso</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822198</MatchId>
+      <HomeTeamId>3249</HomeTeamId>
+      <HomeTeamName>Uganda</HomeTeamName>
+      <HomeShortTeamName>Uganda</HomeShortTeamName>
+      <AwayTeamId>3126</AwayTeamId>
+      <AwayTeamName>Nigeria</AwayTeamName>
+      <AwayShortTeamName>Nigeria</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822203</MatchId>
+      <HomeTeamId>3198</HomeTeamId>
+      <HomeTeamName>Senegal</HomeTeamName>
+      <HomeShortTeamName>Senegal</HomeShortTeamName>
+      <AwayTeamId>3298</AwayTeamId>
+      <AwayTeamName>Ītyōṗṗyā</AwayTeamName>
+      <AwayShortTeamName>Ītyōṗṗyā</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822201</MatchId>
+      <HomeTeamId>3162</HomeTeamId>
+      <HomeTeamName>Kenya</HomeTeamName>
+      <HomeShortTeamName>Kenya</HomeShortTeamName>
+      <AwayTeamId>3299</AwayTeamId>
+      <AwayTeamName>Comoros</AwayTeamName>
+      <AwayShortTeamName>Comoros</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822197</MatchId>
+      <HomeTeamId>3307</HomeTeamId>
+      <HomeTeamName>Botswana</HomeTeamName>
+      <HomeShortTeamName>Botswana</HomeShortTeamName>
+      <AwayTeamId>3196</AwayTeamId>
+      <AwayTeamName>Algérie</AwayTeamName>
+      <AwayShortTeamName>Algérie</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822202</MatchId>
+      <HomeTeamId>3236</HomeTeamId>
+      <HomeTeamName>Ghana</HomeTeamName>
+      <HomeShortTeamName>Ghana</HomeShortTeamName>
+      <AwayTeamId>3232</AwayTeamId>
+      <AwayTeamName>Moçambique</AwayTeamName>
+      <AwayShortTeamName>Moçambique</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822193</MatchId>
+      <HomeTeamId>3247</HomeTeamId>
+      <HomeTeamName>Tanzania</HomeTeamName>
+      <HomeShortTeamName>Tanzania</HomeShortTeamName>
+      <AwayTeamId>3240</AwayTeamId>
+      <AwayTeamName>Bénin</AwayTeamName>
+      <AwayShortTeamName>Bénin</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822194</MatchId>
+      <HomeTeamId>3303</HomeTeamId>
+      <HomeTeamName>RD Congo</HomeTeamName>
+      <HomeShortTeamName>RD Congo</HomeShortTeamName>
+      <AwayTeamId>3210</AwayTeamId>
+      <AwayTeamName>Cabo Verde</AwayTeamName>
+      <AwayShortTeamName>Cabo Verde</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822200</MatchId>
+      <HomeTeamId>3134</HomeTeamId>
+      <HomeTeamName>Al Maghrib </HomeTeamName>
+      <HomeShortTeamName>Al Maghrib </HomeShortTeamName>
+      <AwayTeamId>3018</AwayTeamId>
+      <AwayTeamName>Misr</AwayTeamName>
+      <AwayShortTeamName>Misr</AwayShortTeamName>
+      <MatchDate>2026-05-29 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822210</MatchId>
+      <HomeTeamId>3297</HomeTeamId>
+      <HomeTeamName>São Tomé e Príncipe</HomeTeamName>
+      <HomeShortTeamName>São Tomé e Príncipe</HomeShortTeamName>
+      <AwayTeamId>3134</AwayTeamId>
+      <AwayTeamName>Al Maghrib </AwayTeamName>
+      <AwayShortTeamName>Al Maghrib </AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822212</MatchId>
+      <HomeTeamId>3126</HomeTeamId>
+      <HomeTeamName>Nigeria</HomeTeamName>
+      <HomeShortTeamName>Nigeria</HomeShortTeamName>
+      <AwayTeamId>3254</AwayTeamId>
+      <AwayTeamName>Cameroon</AwayTeamName>
+      <AwayShortTeamName>Cameroon</AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822206</MatchId>
+      <HomeTeamId>3208</HomeTeamId>
+      <HomeTeamName>Côte d'Ivoire</HomeTeamName>
+      <HomeShortTeamName>Côte d'Ivoire</HomeShortTeamName>
+      <AwayTeamId>3247</AwayTeamId>
+      <AwayTeamName>Tanzania</AwayTeamName>
+      <AwayShortTeamName>Tanzania</AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822215</MatchId>
+      <HomeTeamId>3299</HomeTeamId>
+      <HomeTeamName>Comoros</HomeTeamName>
+      <HomeShortTeamName>Comoros</HomeShortTeamName>
+      <AwayTeamId>3236</AwayTeamId>
+      <AwayTeamName>Ghana</AwayTeamName>
+      <AwayShortTeamName>Ghana</AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822205</MatchId>
+      <HomeTeamId>3210</HomeTeamId>
+      <HomeTeamName>Cabo Verde</HomeTeamName>
+      <HomeShortTeamName>Cabo Verde</HomeShortTeamName>
+      <AwayTeamId>3222</AwayTeamId>
+      <AwayTeamName>Angola</AwayTeamName>
+      <AwayShortTeamName>Angola</AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822209</MatchId>
+      <HomeTeamId>3015</HomeTeamId>
+      <HomeTeamName>South Africa</HomeTeamName>
+      <HomeShortTeamName>South Africa</HomeShortTeamName>
+      <AwayTeamId>3307</AwayTeamId>
+      <AwayTeamName>Botswana</AwayTeamName>
+      <AwayShortTeamName>Botswana</AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822204</MatchId>
+      <HomeTeamId>3240</HomeTeamId>
+      <HomeTeamName>Bénin</HomeTeamName>
+      <HomeShortTeamName>Bénin</HomeShortTeamName>
+      <AwayTeamId>3303</AwayTeamId>
+      <AwayTeamName>RD Congo</AwayTeamName>
+      <AwayShortTeamName>RD Congo</AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822213</MatchId>
+      <HomeTeamId>3232</HomeTeamId>
+      <HomeTeamName>Moçambique</HomeTeamName>
+      <HomeShortTeamName>Moçambique</HomeShortTeamName>
+      <AwayTeamId>3198</AwayTeamId>
+      <AwayTeamName>Senegal</AwayTeamName>
+      <AwayShortTeamName>Senegal</AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822207</MatchId>
+      <HomeTeamId>3196</HomeTeamId>
+      <HomeTeamName>Algérie</HomeTeamName>
+      <HomeShortTeamName>Algérie</HomeShortTeamName>
+      <AwayTeamId>3309</AwayTeamId>
+      <AwayTeamName>Zambia</AwayTeamName>
+      <AwayShortTeamName>Zambia</AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822208</MatchId>
+      <HomeTeamId>3315</HomeTeamId>
+      <HomeTeamName>Burkina Faso</HomeTeamName>
+      <HomeShortTeamName>Burkina Faso</HomeShortTeamName>
+      <AwayTeamId>3306</AwayTeamId>
+      <AwayTeamName>Madagasikara</AwayTeamName>
+      <AwayShortTeamName>Madagasikara</AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822211</MatchId>
+      <HomeTeamId>3018</HomeTeamId>
+      <HomeTeamName>Misr</HomeTeamName>
+      <HomeShortTeamName>Misr</HomeShortTeamName>
+      <AwayTeamId>3249</AwayTeamId>
+      <AwayTeamName>Uganda</AwayTeamName>
+      <AwayShortTeamName>Uganda</AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>40822214</MatchId>
+      <HomeTeamId>3298</HomeTeamId>
+      <HomeTeamName>Ītyōṗṗyā</HomeTeamName>
+      <HomeShortTeamName>Ītyōṗṗyā</HomeShortTeamName>
+      <AwayTeamId>3162</AwayTeamId>
+      <AwayTeamName>Kenya</AwayTeamName>
+      <AwayShortTeamName>Kenya</AwayShortTeamName>
+      <MatchDate>2026-06-05 21:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41180178</MatchId>
+      <HomeTeamId>3254</HomeTeamId>
+      <HomeTeamName>Cameroon</HomeTeamName>
+      <HomeShortTeamName>Cameroon</HomeShortTeamName>
+      <AwayTeamId>3309</AwayTeamId>
+      <AwayTeamName>Zambia</AwayTeamName>
+      <AwayShortTeamName>Zambia</AwayShortTeamName>
+      <MatchDate>2026-06-12 21:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41180176</MatchId>
+      <HomeTeamId>3198</HomeTeamId>
+      <HomeTeamName>Senegal</HomeTeamName>
+      <HomeShortTeamName>Senegal</HomeShortTeamName>
+      <AwayTeamId>3297</AwayTeamId>
+      <AwayTeamName>São Tomé e Príncipe</AwayTeamName>
+      <AwayShortTeamName>São Tomé e Príncipe</AwayShortTeamName>
+      <MatchDate>2026-06-12 21:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41180177</MatchId>
+      <HomeTeamId>3208</HomeTeamId>
+      <HomeTeamName>Côte d'Ivoire</HomeTeamName>
+      <HomeShortTeamName>Côte d'Ivoire</HomeShortTeamName>
+      <AwayTeamId>3162</AwayTeamId>
+      <AwayTeamName>Kenya</AwayTeamName>
+      <AwayShortTeamName>Kenya</AwayShortTeamName>
+      <MatchDate>2026-06-12 21:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41180179</MatchId>
+      <HomeTeamId>3307</HomeTeamId>
+      <HomeTeamName>Botswana</HomeTeamName>
+      <HomeShortTeamName>Botswana</HomeShortTeamName>
+      <AwayTeamId>3210</AwayTeamId>
+      <AwayTeamName>Cabo Verde</AwayTeamName>
+      <AwayShortTeamName>Cabo Verde</AwayShortTeamName>
+      <MatchDate>2026-06-12 21:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>11</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41218059</MatchId>
+      <HomeTeamId>3309</HomeTeamId>
+      <HomeTeamName>Zambia</HomeTeamName>
+      <HomeShortTeamName>Zambia</HomeShortTeamName>
+      <AwayTeamId>3198</AwayTeamId>
+      <AwayTeamName>Senegal</AwayTeamName>
+      <AwayShortTeamName>Senegal</AwayShortTeamName>
+      <MatchDate>2026-06-15 21:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>5</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41218058</MatchId>
+      <HomeTeamId>3208</HomeTeamId>
+      <HomeTeamName>Côte d'Ivoire</HomeTeamName>
+      <HomeShortTeamName>Côte d'Ivoire</HomeShortTeamName>
+      <AwayTeamId>3210</AwayTeamId>
+      <AwayTeamName>Cabo Verde</AwayTeamName>
+      <AwayShortTeamName>Cabo Verde</AwayShortTeamName>
+      <MatchDate>2026-06-15 21:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>12</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41231363</MatchId>
+      <HomeTeamId>3198</HomeTeamId>
+      <HomeTeamName>Senegal</HomeTeamName>
+      <HomeShortTeamName>Senegal</HomeShortTeamName>
+      <AwayTeamId>3208</AwayTeamId>
+      <AwayTeamName>Côte d'Ivoire</AwayTeamName>
+      <AwayShortTeamName>Côte d'Ivoire</AwayShortTeamName>
+      <MatchDate>2026-06-19 21:00:00</MatchDate>
+      <MatchType>51</MatchType>
+      <MatchRound>13</MatchRound>
+      <Group>0</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+  </Matches>
+</HattrickData>

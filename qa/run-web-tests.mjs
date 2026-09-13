@@ -9,7 +9,7 @@ import ts from 'typescript';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const qaRoot = resolve(root, 'qa');
 const work = mkdtempSync(join(qaRoot, '.web-tests-'));
-const files = ['tests/urlState.test.ts', 'tests/shareLink.test.ts', 'src/aggregate/urlState.ts', 'src/aggregate/shareLink.ts', 'src/aggregate/filterParams.ts'];
+const files = ['tests/urlState.test.ts', 'tests/shareLink.test.ts', 'tests/snapshot.test.ts', 'tests/flags.test.ts', 'tests/nationalityJoin.test.ts', 'src/aggregate/urlState.ts', 'src/aggregate/shareLink.ts', 'src/aggregate/filterParams.ts', 'src/aggregate/snapshot.ts', 'src/aggregate/flags.ts', 'src/aggregate/data.ts'];
 try {
   writeFileSync(join(work, 'package.json'), '{"type":"module"}\n');
   for (const relative of files) {

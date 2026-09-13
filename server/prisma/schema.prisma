@@ -184,9 +184,9 @@ model CupChampion {
 }
 
 /// A Hattrick World Cup edition (senior or youth) — international, one champion NATION per
-/// edition, not a manager/club. No CHPP path exists (cupmatches(137,*) returns nothing for
-/// national-team competitions, unlike club cups) — scraped once from the single roll-of-honour
-/// table at World/WorldCup/History.aspx (see sync/worldCup.ts). The youth bracket was called
+/// edition, not a manager/club. Current and CHPP-retained modern editions are acquired through
+/// tournamentdetails/tournamentfixtures; the older roll of honour remains retained historical
+/// evidence (see sync/worldCup.ts and sync/officialTournaments.ts). The youth bracket was called
 /// "U20" through edition 31 and "U21" from edition 32 on; ageGroup keeps the exact label shown.
 model WorldCupChampion {
   isYouth      Boolean
@@ -219,8 +219,8 @@ model WorldCupChampion {
 
 /// One season of a REGIONAL national-team cup — Africa / America / Asia and Oceania / Europe /
 /// Nations Cup (see sync/ntCups.ts for the registry). Same nature as WorldCupChampion (a champion
-/// NATION, no CHPP path) but a different page shape: each cup is perpetual with one champion per
-/// SEASON, read from World/WorldCup/Cup.aspx?cupId=X&season=N — which is why this is keyed
+/// NATION. Current and accessible seasons are acquired through the official tournament XML; older
+/// retained evidence used a different page shape with one champion per SEASON, which is why this is keyed
 /// (cupId, season) rather than by edition number.
 ///
 /// The World Cup itself is deliberately NOT stored here: it keeps its History.aspx roll of honour
@@ -331,4 +331,45 @@ model ChppToken {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+/// Durable polling cursor. A baseline describes tracked coverage, never a claim that older
+/// missing editions did not exist. Timestamps describe actual source checks, not a JSON bake.
+model UpdateSource {
+  sourceKey       String   @id
+  kind            String
+  externalId      Int?
+  numberingSystem String
+  baseline        Int?
+  observedThrough Int?
+  lastAttemptAt   DateTime?
+  lastSuccessAt   DateTime?
+  nextCheckAt     DateTime?
+  metadataJson    String   @default("{}")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  items           UpdateItem[]
+}
+
+/// An independently retryable source edition/task. Results and identity evidence are separate.
+model UpdateItem {
+  id            Int      @id @default(autoincrement())
+  sourceKey     String
+  itemKey       String
+  task          String
+  edition       Int?
+  state         String   @default("pending")
+  attempts      Int      @default(0)
+  nextAttemptAt DateTime?
+  lastError     String?
+  errorCategory String?
+  evidenceRef   String?
+  completedAt   DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  source        UpdateSource @relation(fields: [sourceKey], references: [sourceKey], onDelete: Restrict)
+
+  @@unique([sourceKey, itemKey, task])
+  @@index([state, nextAttemptAt])
+  @@index([sourceKey, edition])
 }

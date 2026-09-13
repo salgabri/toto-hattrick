@@ -21,10 +21,11 @@ const read = (name: string) => JSON.parse(readFileSync(path.join(root, 'web/publ
 const raw = Object.fromEntries(['managers', 'leagues', 'cups', 'masters', 'seasonal', 'worldcup', 'elections'].map(name => [name, read(name)]));
 const fetches: string[] = [];
 globalThis.fetch = (async (input: any) => {
+  if (String(input) === '/data/manifest.json') return new Response('', { status: 404 });
   const file = String(input).match(/^\/data\/(managers|leagues|cups|masters|seasonal|worldcup|elections)\.json$/)?.[1];
   assert.ok(file, `Unexpected network access: ${String(input)}`);
   fetches.push(file);
-  return { ok: true, json: async () => raw[file!] } as Response;
+  return Response.json(raw[file!]);
 }) as typeof fetch;
 const data = await import('../web/src/aggregate/data.js');
 const source = readFileSync(path.join(root, 'web/src/aggregate/retro/Retro2000s.tsx'), 'utf8');

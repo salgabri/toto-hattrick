@@ -34,7 +34,7 @@ export const NATIONALITY_ISO: Record<string, string> = {
   India: 'in', Indonesia: 'id', Iran: 'ir', Ireland: 'ie', Israel: 'il',
   Italia: 'it', Jamaica: 'jm', Kampuchea: 'kh', Kazakhstan: 'kz', Kenya: 'ke',
   'Kyrgyz Republic': 'kg', Latvija: 'lv', Lebanon: 'lb', Liechtenstein: 'li', Lietuva: 'lt',
-  'Lëtzebuerg': 'lu', 'Magyarország': 'hu', Malaysia: 'my', Malta: 'mt', Misr: 'eg',
+  'Lëtzebuerg': 'lu', Madagascar: 'mg', 'Magyarország': 'hu', Malaysia: 'my', Malta: 'mt', Misr: 'eg',
   Moldova: 'md', 'Mongol Uls': 'mn', 'Moçambique': 'mz', Myanmar: 'mm', 'México': 'mx',
   Nederland: 'nl', Nepal: 'np', Nicaragua: 'ni', Nigeria: 'ng', Nippon: 'jp',
   Norge: 'no', 'Northern Ireland': 'gb-nir', Oceania: 'oceania.png', Oman: 'om', Pakistan: 'pk', Palestine: 'ps',

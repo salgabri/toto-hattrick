@@ -5,6 +5,7 @@ import { parseWorldDetailsCups } from '../schemas/index.js';
 import { syncNationalChampions } from './nationalChampions.js';
 import { syncCupChampions, enrichCupTeamIds, type CupSyncResult } from './cups.js';
 import { seedMasters } from './masters.js';
+import { reconcileCupCatalog } from '../update/refresh.js';
 
 /**
  * "Latest champions only" — the forward counterpart to the backfill.
@@ -56,6 +57,7 @@ export async function refreshCurrentSeasons(
     i++;
     try {
       const wd = parseWorldDetailsCups(await fetchWorldDetails(token, league.leagueId));
+      await reconcileCupCatalog(league, wd);
       if (wd.currentSeason !== league.currentSeason) {
         advanced.push({ leagueId: league.leagueId, country: league.countryName, from: league.currentSeason, to: wd.currentSeason });
       }
@@ -150,8 +152,8 @@ export async function refreshLatestChampions(
     }
   }
 
-  // 3) Cup finals — same bounded walk. Cups must already be seeded (sync-cups MODE=seed); this
-  //    only harvests new finals, it does not create the catalog. ArenaHub seasonal tournaments
+  // 3) Cup finals — same bounded walk. Metadata discovery above also adds newly observed cups.
+  //    ArenaHub seasonal tournaments
   //    retain their separate history ingestion; cupmatches cannot refresh their edition history.
   const cups = await prisma.cup.findMany({ where: { ...leagueFilter, OR: [{ leagueId: { not: 0 } }, { cupId: 183 }] }, orderBy: [{ leagueId: 'asc' }, { cupLevel: 'asc' }, { cupLevelIndex: 'asc' }] });
   let cupChampionsAdded = 0;

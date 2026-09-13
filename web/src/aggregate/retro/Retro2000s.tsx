@@ -51,9 +51,8 @@ import './retroInteractions.css';
  * Wired to the real baked data (`../data.js`), and carries the newer features the original mock
  * never had — country flags and the full Cup winners view.
  *
- * Backend honesty: only top-division LEAGUE titles exist, so a
- * manager's `cup`/`oth` are 0 and their cabinet holds championships only. The Main/Secondary
- * toggles therefore stay inert for the total — kept for fidelity to the design.
+ * The aggregate now includes league, domestic-cup, Masters, seasonal and national-team honours;
+ * each selector is backed by the corresponding validated release bundle.
  */
 
 export type RetroView = 'trophies' | 'leagues' | 'cups' | 'worldcup' | 'medals' | 'elections';

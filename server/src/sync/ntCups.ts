@@ -8,10 +8,11 @@ import { validSuppliedNationalDates } from './nationalDates.js';
  * Regional national-team cups — Africa / America / Asia and Oceania / Europe / Nations Cup.
  *
  * Same nature as the World Cup (a champion NATION, credited to whoever was coaching it) but a
- * different source: each is a perpetual tournament with one champion per SEASON, read from
- * World/WorldCup/Cup.aspx?cupId=X&season=N. No CHPP path exists for national-team competitions —
- * cupmatches returns nothing — so the pages are scraped from the user's logged-in browser
- * (scrape/ntcups-scraper.js, SCRAPE_PHASE=ntcups) and ingested here as JSON.
+ * different source: each is a perpetual tournament with one champion per SEASON. The retained
+ * history originated on World/WorldCup/Cup.aspx; new seasons are now monitored through the
+ * official `tournamentdetails` and `tournamentfixtures` XML files by officialTournaments.ts.
+ * Reviewed browser captures remain useful for fields the XML does not expose, such as host and
+ * historical coach identity.
  *
  * The World Cup's own cupId (5001315) and the Contender League (6244933) appear in the same
  * dropdown but are NOT in the registry: the World Cup keeps its History.aspx roll of honour in

@@ -12,7 +12,8 @@ import { buildSignedUrl, type TokenPair } from '../chpp/auth.js';
  * If VERSION is wrong, CHPP's response lists the valid versions — read the printed body and retry.
  * Prints the first part of the response so it can be pasted straight back into chat.
  *
- * Env: OAUTH_ACCESS_STASH (default .oauth-access.json), FILE, VERSION, PARAMS (JSON object, optional).
+ * Env: OAUTH_ACCESS_STASH (default .oauth-access.json), FILE, VERSION, PARAMS (JSON object, optional),
+ * SAMPLE_NAME (optional basename, so multiple request shapes for one file/version can be retained).
  */
 const BASE_URL = 'https://chpp.hattrick.org/chppxml.ashx';
 
@@ -30,7 +31,9 @@ for (const [k, v] of Object.entries(params)) url.searchParams.set(k, String(v));
 const res = await fetch(buildSignedUrl(url.toString(), 'GET', access));
 const xml = await res.text();
 
-const out = `samples/${file}-${version}.xml`;
+const sampleName = process.env.SAMPLE_NAME ?? `${file}-${version}`;
+if (!/^[a-z0-9][a-z0-9._-]*$/i.test(sampleName)) throw new Error('SAMPLE_NAME must be a safe basename');
+const out = `samples/${sampleName}.xml`;
 writeFileSync(out, xml);
 console.log(`HTTP ${res.status} -> wrote ${out} (${xml.length} bytes)\n`);
 console.log(xml.slice(0, 4000));
