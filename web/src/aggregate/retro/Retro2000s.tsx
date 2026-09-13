@@ -11,6 +11,7 @@ import {
   getLeagues,
   getManagers,
   getCoachMedals,
+  hasNationalChampion,
   getMastersWinners,
   getNationalCompetitions,
   getNationalities,
@@ -2266,7 +2267,7 @@ function RetroNationalTrophies({ onStatus }: { onStatus: (s: string) => void }) 
   const { comps, loading } = useNationalCompetitions();
   const { bracket, setBracket, setCompKey, inBracket, comp } = useBracketedComp(comps, 'worldcup');
 
-  const editions = (comp?.rows ?? []).slice().sort((a, b) => b.edition - a.edition);
+  const editions = (comp?.rows ?? []).filter(hasNationalChampion).sort((a, b) => b.edition - a.edition);
 
   useEffect(() => {
     if (!loading) onStatus(`Done. ${editions.length} ${comp?.unitLabel === 'Season' ? 'season' : 'edition'}(s) loaded.`);

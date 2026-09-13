@@ -450,6 +450,14 @@ export interface WorldCupEdition {
    *  attributable-nation-with-unattributable-coach, kept in place so the indices still line up. */
   thirdFourthCoaches?: Array<{ userId?: number; name?: string; nationality?: string }>;
 }
+
+/** A national competition belongs in the historical champions table only after its winner is
+ *  known. Ongoing editions stay in the release data so the updater can keep monitoring them, but
+ *  their scheduled finish date alone must not create an otherwise empty results row. */
+export function hasNationalChampion(row: Pick<WorldCupEdition, 'champion'>): boolean {
+  return Boolean(row.champion?.trim());
+}
+
 /**
  * A regional national-team cup — Africa / America / Asia and Oceania / Europe / Nations Cup (see
  * server/sync/ntCups.ts). Same nature as the World Cup, but perpetual: a champion per SEASON rather
