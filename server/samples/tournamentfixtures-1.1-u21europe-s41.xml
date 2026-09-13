@@ -1,0 +1,4329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>tournamentFixtures.xml</FileName>
+  <Version>1.1</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-09-13 08:16:43</FetchedDate>
+  <Matches>
+    <Match>
+      <MatchId>41845515</MatchId>
+      <HomeTeamId>3044</HomeTeamId>
+      <HomeTeamName>U21 Italia</HomeTeamName>
+      <HomeShortTeamName>Italia</HomeShortTeamName>
+      <AwayTeamId>3042</AwayTeamId>
+      <AwayTeamName>U21 England</AwayTeamName>
+      <AwayShortTeamName>England</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845510</MatchId>
+      <HomeTeamId>3064</HomeTeamId>
+      <HomeTeamName>U21 Suomi</HomeTeamName>
+      <HomeShortTeamName>Suomi</HomeShortTeamName>
+      <AwayTeamId>3115</AwayTeamId>
+      <AwayTeamName>U21 Bosna i Hercegovina</AwayTeamName>
+      <AwayShortTeamName>Bosna i Hercegovina</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845518</MatchId>
+      <HomeTeamId>3066</HomeTeamId>
+      <HomeTeamName>U21 Nederland</HomeTeamName>
+      <HomeShortTeamName>Nederland</HomeShortTeamName>
+      <AwayTeamId>3165</AwayTeamId>
+      <AwayTeamName>U21 Northern Ireland</AwayTeamName>
+      <AwayShortTeamName>Northern Ireland</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845514</MatchId>
+      <HomeTeamId>3076</HomeTeamId>
+      <HomeTeamName>U21 España</HomeTeamName>
+      <HomeShortTeamName>España</HomeShortTeamName>
+      <AwayTeamId>3157</AwayTeamId>
+      <AwayTeamName>U21 Belarus</AwayTeamName>
+      <AwayShortTeamName>Belarus</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845512</MatchId>
+      <HomeTeamId>3079</HomeTeamId>
+      <HomeTeamName>U21 Schweiz</HomeTeamName>
+      <HomeShortTeamName>Schweiz</HomeShortTeamName>
+      <AwayTeamId>3096</AwayTeamId>
+      <AwayTeamName>U21 Srbija</AwayTeamName>
+      <AwayShortTeamName>Srbija</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845524</MatchId>
+      <HomeTeamId>3055</HomeTeamId>
+      <HomeTeamName>U21 Portugal</HomeTeamName>
+      <HomeShortTeamName>Portugal</HomeShortTeamName>
+      <AwayTeamId>3175</AwayTeamId>
+      <AwayTeamName>U21 Malta</AwayTeamName>
+      <AwayShortTeamName>Malta</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845525</MatchId>
+      <HomeTeamId>3061</HomeTeamId>
+      <HomeTeamName>U21 România</HomeTeamName>
+      <HomeShortTeamName>România</HomeShortTeamName>
+      <AwayTeamId>3133</AwayTeamId>
+      <AwayTeamName>U21 Føroyar</AwayTeamName>
+      <AwayShortTeamName>Føroyar</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845528</MatchId>
+      <HomeTeamId>3091</HomeTeamId>
+      <HomeTeamName>U21 Magyarország</HomeTeamName>
+      <HomeShortTeamName>Magyarország</HomeShortTeamName>
+      <AwayTeamId>3053</AwayTeamId>
+      <AwayTeamName>U21 Ireland</AwayTeamName>
+      <AwayShortTeamName>Ireland</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845523</MatchId>
+      <HomeTeamId>3117</HomeTeamId>
+      <HomeTeamName>U21 Slovensko</HomeTeamName>
+      <HomeShortTeamName>Slovensko</HomeShortTeamName>
+      <AwayTeamId>3119</AwayTeamId>
+      <AwayTeamName>U21 Ukraina</AwayTeamName>
+      <AwayShortTeamName>Ukraina</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845519</MatchId>
+      <HomeTeamId>3063</HomeTeamId>
+      <HomeTeamName>U21 Danmark</HomeTeamName>
+      <HomeShortTeamName>Danmark</HomeShortTeamName>
+      <AwayTeamId>3092</AwayTeamId>
+      <AwayTeamName>U21 Latvija</AwayTeamName>
+      <AwayShortTeamName>Latvija</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845516</MatchId>
+      <HomeTeamId>3043</HomeTeamId>
+      <HomeTeamName>U21 Deutschland</HomeTeamName>
+      <HomeShortTeamName>Deutschland</HomeShortTeamName>
+      <AwayTeamId>3159</AwayTeamId>
+      <AwayTeamName>U21 Severna Makedonija</AwayTeamName>
+      <AwayShortTeamName>S Makedonija</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845507</MatchId>
+      <HomeTeamId>3107</HomeTeamId>
+      <HomeTeamName>U21 Bulgaria</HomeTeamName>
+      <HomeShortTeamName>Bulgaria</HomeShortTeamName>
+      <AwayTeamId>3227</AwayTeamId>
+      <AwayTeamName>U21 Crna Gora</AwayTeamName>
+      <AwayShortTeamName>Crna Gora</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845530</MatchId>
+      <HomeTeamId>3114</HomeTeamId>
+      <HomeTeamName>U21 Lietuva</HomeTeamName>
+      <HomeShortTeamName>Lietuva</HomeShortTeamName>
+      <AwayTeamId>3095</AwayTeamId>
+      <AwayTeamName>U21 Eesti</AwayTeamName>
+      <AwayShortTeamName>Eesti</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845517</MatchId>
+      <HomeTeamId>3078</HomeTeamId>
+      <HomeTeamName>U21 Belgium</HomeTeamName>
+      <HomeShortTeamName>Belgium</HomeShortTeamName>
+      <AwayTeamId>3097</AwayTeamId>
+      <AwayTeamName>U21 Hrvatska</AwayTeamName>
+      <AwayShortTeamName>Hrvatska</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845526</MatchId>
+      <HomeTeamId>3045</HomeTeamId>
+      <HomeTeamName>U21 France</HomeTeamName>
+      <HomeShortTeamName>France</HomeShortTeamName>
+      <AwayTeamId>3098</AwayTeamId>
+      <AwayTeamName>U21 Hellas</AwayTeamName>
+      <AwayShortTeamName>Hellas</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845508</MatchId>
+      <HomeTeamId>3105</HomeTeamId>
+      <HomeTeamName>U21 Cymru</HomeTeamName>
+      <HomeShortTeamName>Cymru</HomeShortTeamName>
+      <AwayTeamId>3147</AwayTeamId>
+      <AwayTeamName>U21 Lëtzebuerg</AwayTeamName>
+      <AwayShortTeamName>Lëtzebuerg</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845520</MatchId>
+      <HomeTeamId>3099</HomeTeamId>
+      <HomeTeamName>U21 Česko</HomeTeamName>
+      <HomeShortTeamName>Česko</HomeShortTeamName>
+      <AwayTeamId>3294</AwayTeamId>
+      <AwayTeamName>U21 San Marino</AwayTeamName>
+      <AwayShortTeamName>San Marino</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845529</MatchId>
+      <HomeTeamId>3177</HomeTeamId>
+      <HomeTeamName>U21 Moldova</HomeTeamName>
+      <HomeShortTeamName>Moldova</HomeShortTeamName>
+      <AwayTeamId>3187</AwayTeamId>
+      <AwayTeamName>U21 Andorra</AwayTeamName>
+      <AwayShortTeamName>Andorra</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845521</MatchId>
+      <HomeTeamId>3205</HomeTeamId>
+      <HomeTeamName>U21 Liechtenstein</HomeTeamName>
+      <HomeShortTeamName>Liechtenstein</HomeShortTeamName>
+      <AwayTeamId>3071</AwayTeamId>
+      <AwayTeamName>U21 Scotland</AwayTeamName>
+      <AwayShortTeamName>Scotland</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845513</MatchId>
+      <HomeTeamId>3080</HomeTeamId>
+      <HomeTeamName>U21 Österreich</HomeTeamName>
+      <HomeShortTeamName>Österreich</HomeShortTeamName>
+      <AwayTeamId>3041</AwayTeamId>
+      <AwayTeamName>U21 Sverige</AwayTeamName>
+      <AwayShortTeamName>Sverige</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845527</MatchId>
+      <HomeTeamId>3179</HomeTeamId>
+      <HomeTeamName>U21 Shqiperia</HomeTeamName>
+      <HomeShortTeamName>Shqiperia</HomeShortTeamName>
+      <AwayTeamId>3070</AwayTeamId>
+      <AwayTeamName>U21 Polska</AwayTeamName>
+      <AwayShortTeamName>Polska</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845511</MatchId>
+      <HomeTeamId>3141</HomeTeamId>
+      <HomeTeamName>U21 Cyprus</HomeTeamName>
+      <HomeShortTeamName>Cyprus</HomeShortTeamName>
+      <AwayTeamId>3060</AwayTeamId>
+      <AwayTeamName>U21 Rossiya</AwayTeamName>
+      <AwayShortTeamName>Rossiya</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>6</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845509</MatchId>
+      <HomeTeamId>3062</HomeTeamId>
+      <HomeTeamName>U21 Ísland</HomeTeamName>
+      <HomeShortTeamName>Ísland</HomeShortTeamName>
+      <AwayTeamId>3049</AwayTeamId>
+      <AwayTeamName>U21 Norge</AwayTeamName>
+      <AwayShortTeamName>Norge</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845522</MatchId>
+      <HomeTeamId>3111</HomeTeamId>
+      <HomeTeamName>U21 Slovenija</HomeTeamName>
+      <HomeShortTeamName>Slovenija</HomeShortTeamName>
+      <AwayTeamId>3074</AwayTeamId>
+      <AwayTeamName>U21 Türkiye</AwayTeamName>
+      <AwayShortTeamName>Türkiye</AwayShortTeamName>
+      <MatchDate>2026-08-07 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>1</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845546</MatchId>
+      <HomeTeamId>3074</HomeTeamId>
+      <HomeTeamName>U21 Türkiye</HomeTeamName>
+      <HomeShortTeamName>Türkiye</HomeShortTeamName>
+      <AwayTeamId>3055</AwayTeamId>
+      <AwayTeamName>U21 Portugal</AwayTeamName>
+      <AwayShortTeamName>Portugal</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845543</MatchId>
+      <HomeTeamId>3071</HomeTeamId>
+      <HomeTeamName>U21 Scotland</HomeTeamName>
+      <HomeShortTeamName>Scotland</HomeShortTeamName>
+      <AwayTeamId>3079</AwayTeamId>
+      <AwayTeamName>U21 Schweiz</AwayTeamName>
+      <AwayShortTeamName>Schweiz</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845531</MatchId>
+      <HomeTeamId>3049</HomeTeamId>
+      <HomeTeamName>U21 Norge</HomeTeamName>
+      <HomeShortTeamName>Norge</HomeShortTeamName>
+      <AwayTeamId>3044</AwayTeamId>
+      <AwayTeamName>U21 Italia</AwayTeamName>
+      <AwayShortTeamName>Italia</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845549</MatchId>
+      <HomeTeamId>3070</HomeTeamId>
+      <HomeTeamName>U21 Polska</HomeTeamName>
+      <HomeShortTeamName>Polska</HomeShortTeamName>
+      <AwayTeamId>3061</AwayTeamId>
+      <AwayTeamName>U21 România</AwayTeamName>
+      <AwayShortTeamName>România</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845540</MatchId>
+      <HomeTeamId>3041</HomeTeamId>
+      <HomeTeamName>U21 Sverige</HomeTeamName>
+      <HomeShortTeamName>Sverige</HomeShortTeamName>
+      <AwayTeamId>3076</AwayTeamId>
+      <AwayTeamName>U21 España</AwayTeamName>
+      <AwayShortTeamName>España</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845534</MatchId>
+      <HomeTeamId>3060</HomeTeamId>
+      <HomeTeamName>U21 Rossiya</HomeTeamName>
+      <HomeShortTeamName>Rossiya</HomeShortTeamName>
+      <AwayTeamId>3064</AwayTeamId>
+      <AwayTeamName>U21 Suomi</AwayTeamName>
+      <AwayShortTeamName>Suomi</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845552</MatchId>
+      <HomeTeamId>3187</HomeTeamId>
+      <HomeTeamName>U21 Andorra</HomeTeamName>
+      <HomeShortTeamName>Andorra</HomeShortTeamName>
+      <AwayTeamId>3091</AwayTeamId>
+      <AwayTeamName>U21 Magyarország</AwayTeamName>
+      <AwayShortTeamName>Magyarország</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845538</MatchId>
+      <HomeTeamId>3294</HomeTeamId>
+      <HomeTeamName>U21 San Marino</HomeTeamName>
+      <HomeShortTeamName>San Marino</HomeShortTeamName>
+      <AwayTeamId>3066</AwayTeamId>
+      <AwayTeamName>U21 Nederland</AwayTeamName>
+      <AwayShortTeamName>Nederland</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845542</MatchId>
+      <HomeTeamId>3147</HomeTeamId>
+      <HomeTeamName>U21 Lëtzebuerg</HomeTeamName>
+      <HomeShortTeamName>Lëtzebuerg</HomeShortTeamName>
+      <AwayTeamId>3080</AwayTeamId>
+      <AwayTeamName>U21 Österreich</AwayTeamName>
+      <AwayShortTeamName>Österreich</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845539</MatchId>
+      <HomeTeamId>3159</HomeTeamId>
+      <HomeTeamName>U21 Severna Makedonija</HomeTeamName>
+      <HomeShortTeamName>S Makedonija</HomeShortTeamName>
+      <AwayTeamId>3099</AwayTeamId>
+      <AwayTeamName>U21 Česko</AwayTeamName>
+      <AwayShortTeamName>Česko</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845551</MatchId>
+      <HomeTeamId>3098</HomeTeamId>
+      <HomeTeamName>U21 Hellas</HomeTeamName>
+      <HomeShortTeamName>Hellas</HomeShortTeamName>
+      <AwayTeamId>3179</AwayTeamId>
+      <AwayTeamName>U21 Shqiperia</AwayTeamName>
+      <AwayShortTeamName>Shqiperia</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845548</MatchId>
+      <HomeTeamId>3119</HomeTeamId>
+      <HomeTeamName>U21 Ukraina</HomeTeamName>
+      <HomeShortTeamName>Ukraina</HomeShortTeamName>
+      <AwayTeamId>3111</AwayTeamId>
+      <AwayTeamName>U21 Slovenija</AwayTeamName>
+      <AwayShortTeamName>Slovenija</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845545</MatchId>
+      <HomeTeamId>3092</HomeTeamId>
+      <HomeTeamName>U21 Latvija</HomeTeamName>
+      <HomeShortTeamName>Latvija</HomeShortTeamName>
+      <AwayTeamId>3205</AwayTeamId>
+      <AwayTeamName>U21 Liechtenstein</AwayTeamName>
+      <AwayShortTeamName>Liechtenstein</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845536</MatchId>
+      <HomeTeamId>3227</HomeTeamId>
+      <HomeTeamName>U21 Crna Gora</HomeTeamName>
+      <HomeShortTeamName>Crna Gora</HomeShortTeamName>
+      <AwayTeamId>3141</AwayTeamId>
+      <AwayTeamName>U21 Cyprus</AwayTeamName>
+      <AwayShortTeamName>Cyprus</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845554</MatchId>
+      <HomeTeamId>3095</HomeTeamId>
+      <HomeTeamName>U21 Eesti</HomeTeamName>
+      <HomeShortTeamName>Eesti</HomeShortTeamName>
+      <AwayTeamId>3177</AwayTeamId>
+      <AwayTeamName>U21 Moldova</AwayTeamName>
+      <AwayShortTeamName>Moldova</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>6</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845533</MatchId>
+      <HomeTeamId>3097</HomeTeamId>
+      <HomeTeamName>U21 Hrvatska</HomeTeamName>
+      <HomeShortTeamName>Hrvatska</HomeShortTeamName>
+      <AwayTeamId>3062</AwayTeamId>
+      <AwayTeamName>U21 Ísland</AwayTeamName>
+      <AwayShortTeamName>Ísland</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845544</MatchId>
+      <HomeTeamId>3096</HomeTeamId>
+      <HomeTeamName>U21 Srbija</HomeTeamName>
+      <HomeShortTeamName>Srbija</HomeShortTeamName>
+      <AwayTeamId>3063</AwayTeamId>
+      <AwayTeamName>U21 Danmark</AwayTeamName>
+      <AwayShortTeamName>Danmark</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845541</MatchId>
+      <HomeTeamId>3157</HomeTeamId>
+      <HomeTeamName>U21 Belarus</HomeTeamName>
+      <HomeShortTeamName>Belarus</HomeShortTeamName>
+      <AwayTeamId>3105</AwayTeamId>
+      <AwayTeamName>U21 Cymru</AwayTeamName>
+      <AwayShortTeamName>Cymru</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845550</MatchId>
+      <HomeTeamId>3133</HomeTeamId>
+      <HomeTeamName>U21 Føroyar</HomeTeamName>
+      <HomeShortTeamName>Føroyar</HomeShortTeamName>
+      <AwayTeamId>3045</AwayTeamId>
+      <AwayTeamName>U21 France</AwayTeamName>
+      <AwayShortTeamName>France</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>5</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845535</MatchId>
+      <HomeTeamId>3115</HomeTeamId>
+      <HomeTeamName>U21 Bosna i Hercegovina</HomeTeamName>
+      <HomeShortTeamName>Bosna i Hercegovina</HomeShortTeamName>
+      <AwayTeamId>3107</AwayTeamId>
+      <AwayTeamName>U21 Bulgaria</AwayTeamName>
+      <AwayShortTeamName>Bulgaria</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845553</MatchId>
+      <HomeTeamId>3053</HomeTeamId>
+      <HomeTeamName>U21 Ireland</HomeTeamName>
+      <HomeShortTeamName>Ireland</HomeShortTeamName>
+      <AwayTeamId>3114</AwayTeamId>
+      <AwayTeamName>U21 Lietuva</AwayTeamName>
+      <AwayShortTeamName>Lietuva</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845532</MatchId>
+      <HomeTeamId>3042</HomeTeamId>
+      <HomeTeamName>U21 England</HomeTeamName>
+      <HomeShortTeamName>England</HomeShortTeamName>
+      <AwayTeamId>3078</AwayTeamId>
+      <AwayTeamName>U21 Belgium</AwayTeamName>
+      <AwayShortTeamName>Belgium</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845537</MatchId>
+      <HomeTeamId>3165</HomeTeamId>
+      <HomeTeamName>U21 Northern Ireland</HomeTeamName>
+      <HomeShortTeamName>Northern Ireland</HomeShortTeamName>
+      <AwayTeamId>3043</AwayTeamId>
+      <AwayTeamName>U21 Deutschland</AwayTeamName>
+      <AwayShortTeamName>Deutschland</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845547</MatchId>
+      <HomeTeamId>3175</HomeTeamId>
+      <HomeTeamName>U21 Malta</HomeTeamName>
+      <HomeShortTeamName>Malta</HomeShortTeamName>
+      <AwayTeamId>3117</AwayTeamId>
+      <AwayTeamName>U21 Slovensko</AwayTeamName>
+      <AwayShortTeamName>Slovensko</AwayShortTeamName>
+      <MatchDate>2026-08-10 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>2</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845555</MatchId>
+      <HomeTeamId>3044</HomeTeamId>
+      <HomeTeamName>U21 Italia</HomeTeamName>
+      <HomeShortTeamName>Italia</HomeShortTeamName>
+      <AwayTeamId>3097</AwayTeamId>
+      <AwayTeamName>U21 Hrvatska</AwayTeamName>
+      <AwayShortTeamName>Hrvatska</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845558</MatchId>
+      <HomeTeamId>3064</HomeTeamId>
+      <HomeTeamName>U21 Suomi</HomeTeamName>
+      <HomeShortTeamName>Suomi</HomeShortTeamName>
+      <AwayTeamId>3227</AwayTeamId>
+      <AwayTeamName>U21 Crna Gora</AwayTeamName>
+      <AwayShortTeamName>Crna Gora</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845561</MatchId>
+      <HomeTeamId>3066</HomeTeamId>
+      <HomeTeamName>U21 Nederland</HomeTeamName>
+      <HomeShortTeamName>Nederland</HomeShortTeamName>
+      <AwayTeamId>3159</AwayTeamId>
+      <AwayTeamName>U21 Severna Makedonija</AwayTeamName>
+      <AwayShortTeamName>S Makedonija</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845564</MatchId>
+      <HomeTeamId>3076</HomeTeamId>
+      <HomeTeamName>U21 España</HomeTeamName>
+      <HomeShortTeamName>España</HomeShortTeamName>
+      <AwayTeamId>3147</AwayTeamId>
+      <AwayTeamName>U21 Lëtzebuerg</AwayTeamName>
+      <AwayShortTeamName>Lëtzebuerg</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845567</MatchId>
+      <HomeTeamId>3079</HomeTeamId>
+      <HomeTeamName>U21 Schweiz</HomeTeamName>
+      <HomeShortTeamName>Schweiz</HomeShortTeamName>
+      <AwayTeamId>3092</AwayTeamId>
+      <AwayTeamName>U21 Latvija</AwayTeamName>
+      <AwayShortTeamName>Latvija</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845570</MatchId>
+      <HomeTeamId>3055</HomeTeamId>
+      <HomeTeamName>U21 Portugal</HomeTeamName>
+      <HomeShortTeamName>Portugal</HomeShortTeamName>
+      <AwayTeamId>3119</AwayTeamId>
+      <AwayTeamName>U21 Ukraina</AwayTeamName>
+      <AwayShortTeamName>Ukraina</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845573</MatchId>
+      <HomeTeamId>3061</HomeTeamId>
+      <HomeTeamName>U21 România</HomeTeamName>
+      <HomeShortTeamName>România</HomeShortTeamName>
+      <AwayTeamId>3098</AwayTeamId>
+      <AwayTeamName>U21 Hellas</AwayTeamName>
+      <AwayShortTeamName>Hellas</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845576</MatchId>
+      <HomeTeamId>3091</HomeTeamId>
+      <HomeTeamName>U21 Magyarország</HomeTeamName>
+      <HomeShortTeamName>Magyarország</HomeShortTeamName>
+      <AwayTeamId>3095</AwayTeamId>
+      <AwayTeamName>U21 Eesti</AwayTeamName>
+      <AwayShortTeamName>Eesti</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845572</MatchId>
+      <HomeTeamId>3117</HomeTeamId>
+      <HomeTeamName>U21 Slovensko</HomeTeamName>
+      <HomeShortTeamName>Slovensko</HomeShortTeamName>
+      <AwayTeamId>3111</AwayTeamId>
+      <AwayTeamName>U21 Slovenija</AwayTeamName>
+      <AwayShortTeamName>Slovenija</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845568</MatchId>
+      <HomeTeamId>3063</HomeTeamId>
+      <HomeTeamName>U21 Danmark</HomeTeamName>
+      <HomeShortTeamName>Danmark</HomeShortTeamName>
+      <AwayTeamId>3205</AwayTeamId>
+      <AwayTeamName>U21 Liechtenstein</AwayTeamName>
+      <AwayShortTeamName>Liechtenstein</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845563</MatchId>
+      <HomeTeamId>3043</HomeTeamId>
+      <HomeTeamName>U21 Deutschland</HomeTeamName>
+      <HomeShortTeamName>Deutschland</HomeShortTeamName>
+      <AwayTeamId>3099</AwayTeamId>
+      <AwayTeamName>U21 Česko</AwayTeamName>
+      <AwayShortTeamName>Česko</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845560</MatchId>
+      <HomeTeamId>3107</HomeTeamId>
+      <HomeTeamName>U21 Bulgaria</HomeTeamName>
+      <HomeShortTeamName>Bulgaria</HomeShortTeamName>
+      <AwayTeamId>3141</AwayTeamId>
+      <AwayTeamName>U21 Cyprus</AwayTeamName>
+      <AwayShortTeamName>Cyprus</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845578</MatchId>
+      <HomeTeamId>3114</HomeTeamId>
+      <HomeTeamName>U21 Lietuva</HomeTeamName>
+      <HomeShortTeamName>Lietuva</HomeShortTeamName>
+      <AwayTeamId>3177</AwayTeamId>
+      <AwayTeamName>U21 Moldova</AwayTeamName>
+      <AwayShortTeamName>Moldova</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845557</MatchId>
+      <HomeTeamId>3078</HomeTeamId>
+      <HomeTeamName>U21 Belgium</HomeTeamName>
+      <HomeShortTeamName>Belgium</HomeShortTeamName>
+      <AwayTeamId>3062</AwayTeamId>
+      <AwayTeamName>U21 Ísland</AwayTeamName>
+      <AwayShortTeamName>Ísland</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845575</MatchId>
+      <HomeTeamId>3045</HomeTeamId>
+      <HomeTeamName>U21 France</HomeTeamName>
+      <HomeShortTeamName>France</HomeShortTeamName>
+      <AwayTeamId>3179</AwayTeamId>
+      <AwayTeamName>U21 Shqiperia</AwayTeamName>
+      <AwayShortTeamName>Shqiperia</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845566</MatchId>
+      <HomeTeamId>3105</HomeTeamId>
+      <HomeTeamName>U21 Cymru</HomeTeamName>
+      <HomeShortTeamName>Cymru</HomeShortTeamName>
+      <AwayTeamId>3080</AwayTeamId>
+      <AwayTeamName>U21 Österreich</AwayTeamName>
+      <AwayShortTeamName>Österreich</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845569</MatchId>
+      <HomeTeamId>3096</HomeTeamId>
+      <HomeTeamName>U21 Srbija</HomeTeamName>
+      <HomeShortTeamName>Srbija</HomeShortTeamName>
+      <AwayTeamId>3071</AwayTeamId>
+      <AwayTeamName>U21 Scotland</AwayTeamName>
+      <AwayShortTeamName>Scotland</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845565</MatchId>
+      <HomeTeamId>3157</HomeTeamId>
+      <HomeTeamName>U21 Belarus</HomeTeamName>
+      <HomeShortTeamName>Belarus</HomeShortTeamName>
+      <AwayTeamId>3041</AwayTeamId>
+      <AwayTeamName>U21 Sverige</AwayTeamName>
+      <AwayShortTeamName>Sverige</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845574</MatchId>
+      <HomeTeamId>3133</HomeTeamId>
+      <HomeTeamName>U21 Føroyar</HomeTeamName>
+      <HomeShortTeamName>Føroyar</HomeShortTeamName>
+      <AwayTeamId>3070</AwayTeamId>
+      <AwayTeamName>U21 Polska</AwayTeamName>
+      <AwayShortTeamName>Polska</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845559</MatchId>
+      <HomeTeamId>3115</HomeTeamId>
+      <HomeTeamName>U21 Bosna i Hercegovina</HomeTeamName>
+      <HomeShortTeamName>Bosna i Hercegovina</HomeShortTeamName>
+      <AwayTeamId>3060</AwayTeamId>
+      <AwayTeamName>U21 Rossiya</AwayTeamName>
+      <AwayShortTeamName>Rossiya</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845577</MatchId>
+      <HomeTeamId>3053</HomeTeamId>
+      <HomeTeamName>U21 Ireland</HomeTeamName>
+      <HomeShortTeamName>Ireland</HomeShortTeamName>
+      <AwayTeamId>3187</AwayTeamId>
+      <AwayTeamName>U21 Andorra</AwayTeamName>
+      <AwayShortTeamName>Andorra</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845556</MatchId>
+      <HomeTeamId>3042</HomeTeamId>
+      <HomeTeamName>U21 England</HomeTeamName>
+      <HomeShortTeamName>England</HomeShortTeamName>
+      <AwayTeamId>3049</AwayTeamId>
+      <AwayTeamName>U21 Norge</AwayTeamName>
+      <AwayShortTeamName>Norge</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845562</MatchId>
+      <HomeTeamId>3165</HomeTeamId>
+      <HomeTeamName>U21 Northern Ireland</HomeTeamName>
+      <HomeShortTeamName>Northern Ireland</HomeShortTeamName>
+      <AwayTeamId>3294</AwayTeamId>
+      <AwayTeamName>U21 San Marino</AwayTeamName>
+      <AwayShortTeamName>San Marino</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845571</MatchId>
+      <HomeTeamId>3175</HomeTeamId>
+      <HomeTeamName>U21 Malta</HomeTeamName>
+      <HomeShortTeamName>Malta</HomeShortTeamName>
+      <AwayTeamId>3074</AwayTeamId>
+      <AwayTeamName>U21 Türkiye</AwayTeamName>
+      <AwayShortTeamName>Türkiye</AwayShortTeamName>
+      <MatchDate>2026-08-14 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>3</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845596</MatchId>
+      <HomeTeamId>3117</HomeTeamId>
+      <HomeTeamName>U21 Slovensko</HomeTeamName>
+      <HomeShortTeamName>Slovensko</HomeShortTeamName>
+      <AwayTeamId>3055</AwayTeamId>
+      <AwayTeamName>U21 Portugal</AwayTeamName>
+      <AwayShortTeamName>Portugal</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845591</MatchId>
+      <HomeTeamId>3063</HomeTeamId>
+      <HomeTeamName>U21 Danmark</HomeTeamName>
+      <HomeShortTeamName>Danmark</HomeShortTeamName>
+      <AwayTeamId>3079</AwayTeamId>
+      <AwayTeamName>U21 Schweiz</AwayTeamName>
+      <AwayShortTeamName>Schweiz</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845585</MatchId>
+      <HomeTeamId>3043</HomeTeamId>
+      <HomeTeamName>U21 Deutschland</HomeTeamName>
+      <HomeShortTeamName>Deutschland</HomeShortTeamName>
+      <AwayTeamId>3066</AwayTeamId>
+      <AwayTeamName>U21 Nederland</AwayTeamName>
+      <AwayShortTeamName>Nederland</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845582</MatchId>
+      <HomeTeamId>3107</HomeTeamId>
+      <HomeTeamName>U21 Bulgaria</HomeTeamName>
+      <HomeShortTeamName>Bulgaria</HomeShortTeamName>
+      <AwayTeamId>3064</AwayTeamId>
+      <AwayTeamName>U21 Suomi</AwayTeamName>
+      <AwayShortTeamName>Suomi</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845600</MatchId>
+      <HomeTeamId>3114</HomeTeamId>
+      <HomeTeamName>U21 Lietuva</HomeTeamName>
+      <HomeShortTeamName>Lietuva</HomeShortTeamName>
+      <AwayTeamId>3091</AwayTeamId>
+      <AwayTeamName>U21 Magyarország</AwayTeamName>
+      <AwayShortTeamName>Magyarország</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845581</MatchId>
+      <HomeTeamId>3078</HomeTeamId>
+      <HomeTeamName>U21 Belgium</HomeTeamName>
+      <HomeShortTeamName>Belgium</HomeShortTeamName>
+      <AwayTeamId>3044</AwayTeamId>
+      <AwayTeamName>U21 Italia</AwayTeamName>
+      <AwayShortTeamName>Italia</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845597</MatchId>
+      <HomeTeamId>3045</HomeTeamId>
+      <HomeTeamName>U21 France</HomeTeamName>
+      <HomeShortTeamName>France</HomeShortTeamName>
+      <AwayTeamId>3061</AwayTeamId>
+      <AwayTeamName>U21 România</AwayTeamName>
+      <AwayShortTeamName>România</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845588</MatchId>
+      <HomeTeamId>3105</HomeTeamId>
+      <HomeTeamName>U21 Cymru</HomeTeamName>
+      <HomeShortTeamName>Cymru</HomeShortTeamName>
+      <AwayTeamId>3076</AwayTeamId>
+      <AwayTeamName>U21 España</AwayTeamName>
+      <AwayShortTeamName>España</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845589</MatchId>
+      <HomeTeamId>3147</HomeTeamId>
+      <HomeTeamName>U21 Lëtzebuerg</HomeTeamName>
+      <HomeShortTeamName>Lëtzebuerg</HomeShortTeamName>
+      <AwayTeamId>3041</AwayTeamId>
+      <AwayTeamName>U21 Sverige</AwayTeamName>
+      <AwayShortTeamName>Sverige</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845586</MatchId>
+      <HomeTeamId>3159</HomeTeamId>
+      <HomeTeamName>U21 Severna Makedonija</HomeTeamName>
+      <HomeShortTeamName>S Makedonija</HomeShortTeamName>
+      <AwayTeamId>3294</AwayTeamId>
+      <AwayTeamName>U21 San Marino</AwayTeamName>
+      <AwayShortTeamName>San Marino</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845598</MatchId>
+      <HomeTeamId>3098</HomeTeamId>
+      <HomeTeamName>U21 Hellas</HomeTeamName>
+      <HomeShortTeamName>Hellas</HomeShortTeamName>
+      <AwayTeamId>3070</AwayTeamId>
+      <AwayTeamName>U21 Polska</AwayTeamName>
+      <AwayShortTeamName>Polska</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845594</MatchId>
+      <HomeTeamId>3119</HomeTeamId>
+      <HomeTeamName>U21 Ukraina</HomeTeamName>
+      <HomeShortTeamName>Ukraina</HomeShortTeamName>
+      <AwayTeamId>3074</AwayTeamId>
+      <AwayTeamName>U21 Türkiye</AwayTeamName>
+      <AwayShortTeamName>Türkiye</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845593</MatchId>
+      <HomeTeamId>3092</HomeTeamId>
+      <HomeTeamName>U21 Latvija</HomeTeamName>
+      <HomeShortTeamName>Latvija</HomeShortTeamName>
+      <AwayTeamId>3071</AwayTeamId>
+      <AwayTeamName>U21 Scotland</AwayTeamName>
+      <AwayShortTeamName>Scotland</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845583</MatchId>
+      <HomeTeamId>3227</HomeTeamId>
+      <HomeTeamName>U21 Crna Gora</HomeTeamName>
+      <HomeShortTeamName>Crna Gora</HomeShortTeamName>
+      <AwayTeamId>3060</AwayTeamId>
+      <AwayTeamName>U21 Rossiya</AwayTeamName>
+      <AwayShortTeamName>Rossiya</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845601</MatchId>
+      <HomeTeamId>3095</HomeTeamId>
+      <HomeTeamName>U21 Eesti</HomeTeamName>
+      <HomeShortTeamName>Eesti</HomeShortTeamName>
+      <AwayTeamId>3187</AwayTeamId>
+      <AwayTeamName>U21 Andorra</AwayTeamName>
+      <AwayShortTeamName>Andorra</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845579</MatchId>
+      <HomeTeamId>3097</HomeTeamId>
+      <HomeTeamName>U21 Hrvatska</HomeTeamName>
+      <HomeShortTeamName>Hrvatska</HomeShortTeamName>
+      <AwayTeamId>3049</AwayTeamId>
+      <AwayTeamName>U21 Norge</AwayTeamName>
+      <AwayShortTeamName>Norge</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845587</MatchId>
+      <HomeTeamId>3099</HomeTeamId>
+      <HomeTeamName>U21 Česko</HomeTeamName>
+      <HomeShortTeamName>Česko</HomeShortTeamName>
+      <AwayTeamId>3165</AwayTeamId>
+      <AwayTeamName>U21 Northern Ireland</AwayTeamName>
+      <AwayShortTeamName>Northern Ireland</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845602</MatchId>
+      <HomeTeamId>3177</HomeTeamId>
+      <HomeTeamName>U21 Moldova</HomeTeamName>
+      <HomeShortTeamName>Moldova</HomeShortTeamName>
+      <AwayTeamId>3053</AwayTeamId>
+      <AwayTeamName>U21 Ireland</AwayTeamName>
+      <AwayShortTeamName>Ireland</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845592</MatchId>
+      <HomeTeamId>3205</HomeTeamId>
+      <HomeTeamName>U21 Liechtenstein</HomeTeamName>
+      <HomeShortTeamName>Liechtenstein</HomeShortTeamName>
+      <AwayTeamId>3096</AwayTeamId>
+      <AwayTeamName>U21 Srbija</AwayTeamName>
+      <AwayShortTeamName>Srbija</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845590</MatchId>
+      <HomeTeamId>3080</HomeTeamId>
+      <HomeTeamName>U21 Österreich</HomeTeamName>
+      <HomeShortTeamName>Österreich</HomeShortTeamName>
+      <AwayTeamId>3157</AwayTeamId>
+      <AwayTeamName>U21 Belarus</AwayTeamName>
+      <AwayShortTeamName>Belarus</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845599</MatchId>
+      <HomeTeamId>3179</HomeTeamId>
+      <HomeTeamName>U21 Shqiperia</HomeTeamName>
+      <HomeShortTeamName>Shqiperia</HomeShortTeamName>
+      <AwayTeamId>3133</AwayTeamId>
+      <AwayTeamName>U21 Føroyar</AwayTeamName>
+      <AwayShortTeamName>Føroyar</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845584</MatchId>
+      <HomeTeamId>3141</HomeTeamId>
+      <HomeTeamName>U21 Cyprus</HomeTeamName>
+      <HomeShortTeamName>Cyprus</HomeShortTeamName>
+      <AwayTeamId>3115</AwayTeamId>
+      <AwayTeamName>U21 Bosna i Hercegovina</AwayTeamName>
+      <AwayShortTeamName>Bosna i Hercegovina</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845580</MatchId>
+      <HomeTeamId>3062</HomeTeamId>
+      <HomeTeamName>U21 Ísland</HomeTeamName>
+      <HomeShortTeamName>Ísland</HomeShortTeamName>
+      <AwayTeamId>3042</AwayTeamId>
+      <AwayTeamName>U21 England</AwayTeamName>
+      <AwayShortTeamName>England</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>5</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845595</MatchId>
+      <HomeTeamId>3111</HomeTeamId>
+      <HomeTeamName>U21 Slovenija</HomeTeamName>
+      <HomeShortTeamName>Slovenija</HomeShortTeamName>
+      <AwayTeamId>3175</AwayTeamId>
+      <AwayTeamName>U21 Malta</AwayTeamName>
+      <AwayShortTeamName>Malta</AwayShortTeamName>
+      <MatchDate>2026-08-17 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>4</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845604</MatchId>
+      <HomeTeamId>3044</HomeTeamId>
+      <HomeTeamName>U21 Italia</HomeTeamName>
+      <HomeShortTeamName>Italia</HomeShortTeamName>
+      <AwayTeamId>3062</AwayTeamId>
+      <AwayTeamName>U21 Ísland</AwayTeamName>
+      <AwayShortTeamName>Ísland</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845605</MatchId>
+      <HomeTeamId>3064</HomeTeamId>
+      <HomeTeamName>U21 Suomi</HomeTeamName>
+      <HomeShortTeamName>Suomi</HomeShortTeamName>
+      <AwayTeamId>3141</AwayTeamId>
+      <AwayTeamName>U21 Cyprus</AwayTeamName>
+      <AwayShortTeamName>Cyprus</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845609</MatchId>
+      <HomeTeamId>3066</HomeTeamId>
+      <HomeTeamName>U21 Nederland</HomeTeamName>
+      <HomeShortTeamName>Nederland</HomeShortTeamName>
+      <AwayTeamId>3099</AwayTeamId>
+      <AwayTeamName>U21 Česko</AwayTeamName>
+      <AwayShortTeamName>Česko</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845613</MatchId>
+      <HomeTeamId>3076</HomeTeamId>
+      <HomeTeamName>U21 España</HomeTeamName>
+      <HomeShortTeamName>España</HomeShortTeamName>
+      <AwayTeamId>3080</AwayTeamId>
+      <AwayTeamName>U21 Österreich</AwayTeamName>
+      <AwayShortTeamName>Österreich</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845616</MatchId>
+      <HomeTeamId>3079</HomeTeamId>
+      <HomeTeamName>U21 Schweiz</HomeTeamName>
+      <HomeShortTeamName>Schweiz</HomeShortTeamName>
+      <AwayTeamId>3205</AwayTeamId>
+      <AwayTeamName>U21 Liechtenstein</AwayTeamName>
+      <AwayShortTeamName>Liechtenstein</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845618</MatchId>
+      <HomeTeamId>3055</HomeTeamId>
+      <HomeTeamName>U21 Portugal</HomeTeamName>
+      <HomeShortTeamName>Portugal</HomeShortTeamName>
+      <AwayTeamId>3111</AwayTeamId>
+      <AwayTeamName>U21 Slovenija</AwayTeamName>
+      <AwayShortTeamName>Slovenija</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845628</MatchId>
+      <HomeTeamId>3061</HomeTeamId>
+      <HomeTeamName>U21 România</HomeTeamName>
+      <HomeShortTeamName>România</HomeShortTeamName>
+      <AwayTeamId>3179</AwayTeamId>
+      <AwayTeamName>U21 Shqiperia</AwayTeamName>
+      <AwayShortTeamName>Shqiperia</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845623</MatchId>
+      <HomeTeamId>3091</HomeTeamId>
+      <HomeTeamName>U21 Magyarország</HomeTeamName>
+      <HomeShortTeamName>Magyarország</HomeShortTeamName>
+      <AwayTeamId>3177</AwayTeamId>
+      <AwayTeamName>U21 Moldova</AwayTeamName>
+      <AwayShortTeamName>Moldova</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845620</MatchId>
+      <HomeTeamId>3074</HomeTeamId>
+      <HomeTeamName>U21 Türkiye</HomeTeamName>
+      <HomeShortTeamName>Türkiye</HomeShortTeamName>
+      <AwayTeamId>3117</AwayTeamId>
+      <AwayTeamName>U21 Slovensko</AwayTeamName>
+      <AwayShortTeamName>Slovensko</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845617</MatchId>
+      <HomeTeamId>3071</HomeTeamId>
+      <HomeTeamName>U21 Scotland</HomeTeamName>
+      <HomeShortTeamName>Scotland</HomeShortTeamName>
+      <AwayTeamId>3063</AwayTeamId>
+      <AwayTeamName>U21 Danmark</AwayTeamName>
+      <AwayShortTeamName>Danmark</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845606</MatchId>
+      <HomeTeamId>3049</HomeTeamId>
+      <HomeTeamName>U21 Norge</HomeTeamName>
+      <HomeShortTeamName>Norge</HomeShortTeamName>
+      <AwayTeamId>3078</AwayTeamId>
+      <AwayTeamName>U21 Belgium</AwayTeamName>
+      <AwayShortTeamName>Belgium</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845622</MatchId>
+      <HomeTeamId>3070</HomeTeamId>
+      <HomeTeamName>U21 Polska</HomeTeamName>
+      <HomeShortTeamName>Polska</HomeShortTeamName>
+      <AwayTeamId>3045</AwayTeamId>
+      <AwayTeamName>U21 France</AwayTeamName>
+      <AwayShortTeamName>France</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845614</MatchId>
+      <HomeTeamId>3041</HomeTeamId>
+      <HomeTeamName>U21 Sverige</HomeTeamName>
+      <HomeShortTeamName>Sverige</HomeShortTeamName>
+      <AwayTeamId>3105</AwayTeamId>
+      <AwayTeamName>U21 Cymru</AwayTeamName>
+      <AwayShortTeamName>Cymru</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845608</MatchId>
+      <HomeTeamId>3060</HomeTeamId>
+      <HomeTeamName>U21 Rossiya</HomeTeamName>
+      <HomeShortTeamName>Rossiya</HomeShortTeamName>
+      <AwayTeamId>3107</AwayTeamId>
+      <AwayTeamName>U21 Bulgaria</AwayTeamName>
+      <AwayShortTeamName>Bulgaria</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845625</MatchId>
+      <HomeTeamId>3187</HomeTeamId>
+      <HomeTeamName>U21 Andorra</HomeTeamName>
+      <HomeShortTeamName>Andorra</HomeShortTeamName>
+      <AwayTeamId>3114</AwayTeamId>
+      <AwayTeamName>U21 Lietuva</AwayTeamName>
+      <AwayShortTeamName>Lietuva</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845612</MatchId>
+      <HomeTeamId>3294</HomeTeamId>
+      <HomeTeamName>U21 San Marino</HomeTeamName>
+      <HomeShortTeamName>San Marino</HomeShortTeamName>
+      <AwayTeamId>3043</AwayTeamId>
+      <AwayTeamName>U21 Deutschland</AwayTeamName>
+      <AwayShortTeamName>Deutschland</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845615</MatchId>
+      <HomeTeamId>3096</HomeTeamId>
+      <HomeTeamName>U21 Srbija</HomeTeamName>
+      <HomeShortTeamName>Srbija</HomeShortTeamName>
+      <AwayTeamId>3092</AwayTeamId>
+      <AwayTeamName>U21 Latvija</AwayTeamName>
+      <AwayShortTeamName>Latvija</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845611</MatchId>
+      <HomeTeamId>3157</HomeTeamId>
+      <HomeTeamName>U21 Belarus</HomeTeamName>
+      <HomeShortTeamName>Belarus</HomeShortTeamName>
+      <AwayTeamId>3147</AwayTeamId>
+      <AwayTeamName>U21 Lëtzebuerg</AwayTeamName>
+      <AwayShortTeamName>Lëtzebuerg</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845621</MatchId>
+      <HomeTeamId>3133</HomeTeamId>
+      <HomeTeamName>U21 Føroyar</HomeTeamName>
+      <HomeShortTeamName>Føroyar</HomeShortTeamName>
+      <AwayTeamId>3098</AwayTeamId>
+      <AwayTeamName>U21 Hellas</AwayTeamName>
+      <AwayShortTeamName>Hellas</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845607</MatchId>
+      <HomeTeamId>3115</HomeTeamId>
+      <HomeTeamName>U21 Bosna i Hercegovina</HomeTeamName>
+      <HomeShortTeamName>Bosna i Hercegovina</HomeShortTeamName>
+      <AwayTeamId>3227</AwayTeamId>
+      <AwayTeamName>U21 Crna Gora</AwayTeamName>
+      <AwayShortTeamName>Crna Gora</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845636</MatchId>
+      <HomeTeamId>3053</HomeTeamId>
+      <HomeTeamName>U21 Ireland</HomeTeamName>
+      <HomeShortTeamName>Ireland</HomeShortTeamName>
+      <AwayTeamId>3095</AwayTeamId>
+      <AwayTeamName>U21 Eesti</AwayTeamName>
+      <AwayShortTeamName>Eesti</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845603</MatchId>
+      <HomeTeamId>3042</HomeTeamId>
+      <HomeTeamName>U21 England</HomeTeamName>
+      <HomeShortTeamName>England</HomeShortTeamName>
+      <AwayTeamId>3097</AwayTeamId>
+      <AwayTeamName>U21 Hrvatska</AwayTeamName>
+      <AwayShortTeamName>Hrvatska</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845610</MatchId>
+      <HomeTeamId>3165</HomeTeamId>
+      <HomeTeamName>U21 Northern Ireland</HomeTeamName>
+      <HomeShortTeamName>Northern Ireland</HomeShortTeamName>
+      <AwayTeamId>3159</AwayTeamId>
+      <AwayTeamName>U21 Severna Makedonija</AwayTeamName>
+      <AwayShortTeamName>S Makedonija</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845619</MatchId>
+      <HomeTeamId>3175</HomeTeamId>
+      <HomeTeamName>U21 Malta</HomeTeamName>
+      <HomeShortTeamName>Malta</HomeShortTeamName>
+      <AwayTeamId>3119</AwayTeamId>
+      <AwayTeamName>U21 Ukraina</AwayTeamName>
+      <AwayShortTeamName>Ukraina</AwayShortTeamName>
+      <MatchDate>2026-08-21 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>5</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845642</MatchId>
+      <HomeTeamId>3074</HomeTeamId>
+      <HomeTeamName>U21 Türkiye</HomeTeamName>
+      <HomeShortTeamName>Türkiye</HomeShortTeamName>
+      <AwayTeamId>3111</AwayTeamId>
+      <AwayTeamName>U21 Slovenija</AwayTeamName>
+      <AwayShortTeamName>Slovenija</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845639</MatchId>
+      <HomeTeamId>3071</HomeTeamId>
+      <HomeTeamName>U21 Scotland</HomeTeamName>
+      <HomeShortTeamName>Scotland</HomeShortTeamName>
+      <AwayTeamId>3205</AwayTeamId>
+      <AwayTeamName>U21 Liechtenstein</AwayTeamName>
+      <AwayShortTeamName>Liechtenstein</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845627</MatchId>
+      <HomeTeamId>3049</HomeTeamId>
+      <HomeTeamName>U21 Norge</HomeTeamName>
+      <HomeShortTeamName>Norge</HomeShortTeamName>
+      <AwayTeamId>3062</AwayTeamId>
+      <AwayTeamName>U21 Ísland</AwayTeamName>
+      <AwayShortTeamName>Ísland</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845652</MatchId>
+      <HomeTeamId>3070</HomeTeamId>
+      <HomeTeamName>U21 Polska</HomeTeamName>
+      <HomeShortTeamName>Polska</HomeShortTeamName>
+      <AwayTeamId>3179</AwayTeamId>
+      <AwayTeamName>U21 Shqiperia</AwayTeamName>
+      <AwayShortTeamName>Shqiperia</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845651</MatchId>
+      <HomeTeamId>3041</HomeTeamId>
+      <HomeTeamName>U21 Sverige</HomeTeamName>
+      <HomeShortTeamName>Sverige</HomeShortTeamName>
+      <AwayTeamId>3080</AwayTeamId>
+      <AwayTeamName>U21 Österreich</AwayTeamName>
+      <AwayShortTeamName>Österreich</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845650</MatchId>
+      <HomeTeamId>3060</HomeTeamId>
+      <HomeTeamName>U21 Rossiya</HomeTeamName>
+      <HomeShortTeamName>Rossiya</HomeShortTeamName>
+      <AwayTeamId>3141</AwayTeamId>
+      <AwayTeamName>U21 Cyprus</AwayTeamName>
+      <AwayShortTeamName>Cyprus</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845647</MatchId>
+      <HomeTeamId>3187</HomeTeamId>
+      <HomeTeamName>U21 Andorra</HomeTeamName>
+      <HomeShortTeamName>Andorra</HomeShortTeamName>
+      <AwayTeamId>3177</AwayTeamId>
+      <AwayTeamName>U21 Moldova</AwayTeamName>
+      <AwayShortTeamName>Moldova</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845633</MatchId>
+      <HomeTeamId>3294</HomeTeamId>
+      <HomeTeamName>U21 San Marino</HomeTeamName>
+      <HomeShortTeamName>San Marino</HomeShortTeamName>
+      <AwayTeamId>3099</AwayTeamId>
+      <AwayTeamName>U21 Česko</AwayTeamName>
+      <AwayShortTeamName>Česko</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845635</MatchId>
+      <HomeTeamId>3147</HomeTeamId>
+      <HomeTeamName>U21 Lëtzebuerg</HomeTeamName>
+      <HomeShortTeamName>Lëtzebuerg</HomeShortTeamName>
+      <AwayTeamId>3105</AwayTeamId>
+      <AwayTeamName>U21 Cymru</AwayTeamName>
+      <AwayShortTeamName>Cymru</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845632</MatchId>
+      <HomeTeamId>3159</HomeTeamId>
+      <HomeTeamName>U21 Severna Makedonija</HomeTeamName>
+      <HomeShortTeamName>S Makedonija</HomeShortTeamName>
+      <AwayTeamId>3043</AwayTeamId>
+      <AwayTeamName>U21 Deutschland</AwayTeamName>
+      <AwayShortTeamName>Deutschland</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845644</MatchId>
+      <HomeTeamId>3098</HomeTeamId>
+      <HomeTeamName>U21 Hellas</HomeTeamName>
+      <HomeShortTeamName>Hellas</HomeShortTeamName>
+      <AwayTeamId>3045</AwayTeamId>
+      <AwayTeamName>U21 France</AwayTeamName>
+      <AwayShortTeamName>France</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845641</MatchId>
+      <HomeTeamId>3119</HomeTeamId>
+      <HomeTeamName>U21 Ukraina</HomeTeamName>
+      <HomeShortTeamName>Ukraina</HomeShortTeamName>
+      <AwayTeamId>3117</AwayTeamId>
+      <AwayTeamName>U21 Slovensko</AwayTeamName>
+      <AwayShortTeamName>Slovensko</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845638</MatchId>
+      <HomeTeamId>3092</HomeTeamId>
+      <HomeTeamName>U21 Latvija</HomeTeamName>
+      <HomeShortTeamName>Latvija</HomeShortTeamName>
+      <AwayTeamId>3063</AwayTeamId>
+      <AwayTeamName>U21 Danmark</AwayTeamName>
+      <AwayShortTeamName>Danmark</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845630</MatchId>
+      <HomeTeamId>3227</HomeTeamId>
+      <HomeTeamName>U21 Crna Gora</HomeTeamName>
+      <HomeShortTeamName>Crna Gora</HomeShortTeamName>
+      <AwayTeamId>3107</AwayTeamId>
+      <AwayTeamName>U21 Bulgaria</AwayTeamName>
+      <AwayShortTeamName>Bulgaria</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845646</MatchId>
+      <HomeTeamId>3095</HomeTeamId>
+      <HomeTeamName>U21 Eesti</HomeTeamName>
+      <HomeShortTeamName>Eesti</HomeShortTeamName>
+      <AwayTeamId>3114</AwayTeamId>
+      <AwayTeamName>U21 Lietuva</AwayTeamName>
+      <AwayShortTeamName>Lietuva</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845626</MatchId>
+      <HomeTeamId>3097</HomeTeamId>
+      <HomeTeamName>U21 Hrvatska</HomeTeamName>
+      <HomeShortTeamName>Hrvatska</HomeShortTeamName>
+      <AwayTeamId>3078</AwayTeamId>
+      <AwayTeamName>U21 Belgium</AwayTeamName>
+      <AwayShortTeamName>Belgium</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845637</MatchId>
+      <HomeTeamId>3096</HomeTeamId>
+      <HomeTeamName>U21 Srbija</HomeTeamName>
+      <HomeShortTeamName>Srbija</HomeShortTeamName>
+      <AwayTeamId>3079</AwayTeamId>
+      <AwayTeamName>U21 Schweiz</AwayTeamName>
+      <AwayShortTeamName>Schweiz</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845634</MatchId>
+      <HomeTeamId>3157</HomeTeamId>
+      <HomeTeamName>U21 Belarus</HomeTeamName>
+      <HomeShortTeamName>Belarus</HomeShortTeamName>
+      <AwayTeamId>3076</AwayTeamId>
+      <AwayTeamName>U21 España</AwayTeamName>
+      <AwayShortTeamName>España</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845643</MatchId>
+      <HomeTeamId>3133</HomeTeamId>
+      <HomeTeamName>U21 Føroyar</HomeTeamName>
+      <HomeShortTeamName>Føroyar</HomeShortTeamName>
+      <AwayTeamId>3061</AwayTeamId>
+      <AwayTeamName>U21 România</AwayTeamName>
+      <AwayShortTeamName>România</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845629</MatchId>
+      <HomeTeamId>3115</HomeTeamId>
+      <HomeTeamName>U21 Bosna i Hercegovina</HomeTeamName>
+      <HomeShortTeamName>Bosna i Hercegovina</HomeShortTeamName>
+      <AwayTeamId>3064</AwayTeamId>
+      <AwayTeamName>U21 Suomi</AwayTeamName>
+      <AwayShortTeamName>Suomi</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845645</MatchId>
+      <HomeTeamId>3053</HomeTeamId>
+      <HomeTeamName>U21 Ireland</HomeTeamName>
+      <HomeShortTeamName>Ireland</HomeShortTeamName>
+      <AwayTeamId>3091</AwayTeamId>
+      <AwayTeamName>U21 Magyarország</AwayTeamName>
+      <AwayShortTeamName>Magyarország</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845624</MatchId>
+      <HomeTeamId>3042</HomeTeamId>
+      <HomeTeamName>U21 England</HomeTeamName>
+      <HomeShortTeamName>England</HomeShortTeamName>
+      <AwayTeamId>3044</AwayTeamId>
+      <AwayTeamName>U21 Italia</AwayTeamName>
+      <AwayShortTeamName>Italia</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845631</MatchId>
+      <HomeTeamId>3165</HomeTeamId>
+      <HomeTeamName>U21 Northern Ireland</HomeTeamName>
+      <HomeShortTeamName>Northern Ireland</HomeShortTeamName>
+      <AwayTeamId>3066</AwayTeamId>
+      <AwayTeamName>U21 Nederland</AwayTeamName>
+      <AwayShortTeamName>Nederland</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845640</MatchId>
+      <HomeTeamId>3175</HomeTeamId>
+      <HomeTeamName>U21 Malta</HomeTeamName>
+      <HomeShortTeamName>Malta</HomeShortTeamName>
+      <AwayTeamId>3055</AwayTeamId>
+      <AwayTeamName>U21 Portugal</AwayTeamName>
+      <AwayShortTeamName>Portugal</AwayShortTeamName>
+      <MatchDate>2026-08-28 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>6</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845648</MatchId>
+      <HomeTeamId>3044</HomeTeamId>
+      <HomeTeamName>U21 Italia</HomeTeamName>
+      <HomeShortTeamName>Italia</HomeShortTeamName>
+      <AwayTeamId>3049</AwayTeamId>
+      <AwayTeamName>U21 Norge</AwayTeamName>
+      <AwayShortTeamName>Norge</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845656</MatchId>
+      <HomeTeamId>3064</HomeTeamId>
+      <HomeTeamName>U21 Suomi</HomeTeamName>
+      <HomeShortTeamName>Suomi</HomeShortTeamName>
+      <AwayTeamId>3060</AwayTeamId>
+      <AwayTeamName>U21 Rossiya</AwayTeamName>
+      <AwayShortTeamName>Rossiya</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845657</MatchId>
+      <HomeTeamId>3066</HomeTeamId>
+      <HomeTeamName>U21 Nederland</HomeTeamName>
+      <HomeShortTeamName>Nederland</HomeShortTeamName>
+      <AwayTeamId>3294</AwayTeamId>
+      <AwayTeamName>U21 San Marino</AwayTeamName>
+      <AwayShortTeamName>San Marino</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845660</MatchId>
+      <HomeTeamId>3076</HomeTeamId>
+      <HomeTeamName>U21 España</HomeTeamName>
+      <HomeShortTeamName>España</HomeShortTeamName>
+      <AwayTeamId>3041</AwayTeamId>
+      <AwayTeamName>U21 Sverige</AwayTeamName>
+      <AwayShortTeamName>Sverige</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845665</MatchId>
+      <HomeTeamId>3079</HomeTeamId>
+      <HomeTeamName>U21 Schweiz</HomeTeamName>
+      <HomeShortTeamName>Schweiz</HomeShortTeamName>
+      <AwayTeamId>3071</AwayTeamId>
+      <AwayTeamName>U21 Scotland</AwayTeamName>
+      <AwayShortTeamName>Scotland</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845666</MatchId>
+      <HomeTeamId>3055</HomeTeamId>
+      <HomeTeamName>U21 Portugal</HomeTeamName>
+      <HomeShortTeamName>Portugal</HomeShortTeamName>
+      <AwayTeamId>3074</AwayTeamId>
+      <AwayTeamName>U21 Türkiye</AwayTeamName>
+      <AwayShortTeamName>Türkiye</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845668</MatchId>
+      <HomeTeamId>3061</HomeTeamId>
+      <HomeTeamName>U21 România</HomeTeamName>
+      <HomeShortTeamName>România</HomeShortTeamName>
+      <AwayTeamId>3070</AwayTeamId>
+      <AwayTeamName>U21 Polska</AwayTeamName>
+      <AwayShortTeamName>Polska</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845670</MatchId>
+      <HomeTeamId>3091</HomeTeamId>
+      <HomeTeamName>U21 Magyarország</HomeTeamName>
+      <HomeShortTeamName>Magyarország</HomeShortTeamName>
+      <AwayTeamId>3187</AwayTeamId>
+      <AwayTeamName>U21 Andorra</AwayTeamName>
+      <AwayShortTeamName>Andorra</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845667</MatchId>
+      <HomeTeamId>3117</HomeTeamId>
+      <HomeTeamName>U21 Slovensko</HomeTeamName>
+      <HomeShortTeamName>Slovensko</HomeShortTeamName>
+      <AwayTeamId>3175</AwayTeamId>
+      <AwayTeamName>U21 Malta</AwayTeamName>
+      <AwayShortTeamName>Malta</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845662</MatchId>
+      <HomeTeamId>3063</HomeTeamId>
+      <HomeTeamName>U21 Danmark</HomeTeamName>
+      <HomeShortTeamName>Danmark</HomeShortTeamName>
+      <AwayTeamId>3096</AwayTeamId>
+      <AwayTeamName>U21 Srbija</AwayTeamName>
+      <AwayShortTeamName>Srbija</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845658</MatchId>
+      <HomeTeamId>3043</HomeTeamId>
+      <HomeTeamName>U21 Deutschland</HomeTeamName>
+      <HomeShortTeamName>Deutschland</HomeShortTeamName>
+      <AwayTeamId>3165</AwayTeamId>
+      <AwayTeamName>U21 Northern Ireland</AwayTeamName>
+      <AwayShortTeamName>Northern Ireland</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845653</MatchId>
+      <HomeTeamId>3107</HomeTeamId>
+      <HomeTeamName>U21 Bulgaria</HomeTeamName>
+      <HomeShortTeamName>Bulgaria</HomeShortTeamName>
+      <AwayTeamId>3115</AwayTeamId>
+      <AwayTeamName>U21 Bosna i Hercegovina</AwayTeamName>
+      <AwayShortTeamName>Bosna i Hercegovina</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845671</MatchId>
+      <HomeTeamId>3114</HomeTeamId>
+      <HomeTeamName>U21 Lietuva</HomeTeamName>
+      <HomeShortTeamName>Lietuva</HomeShortTeamName>
+      <AwayTeamId>3053</AwayTeamId>
+      <AwayTeamName>U21 Ireland</AwayTeamName>
+      <AwayShortTeamName>Ireland</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845649</MatchId>
+      <HomeTeamId>3078</HomeTeamId>
+      <HomeTeamName>U21 Belgium</HomeTeamName>
+      <HomeShortTeamName>Belgium</HomeShortTeamName>
+      <AwayTeamId>3042</AwayTeamId>
+      <AwayTeamName>U21 England</AwayTeamName>
+      <AwayShortTeamName>England</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845674</MatchId>
+      <HomeTeamId>3045</HomeTeamId>
+      <HomeTeamName>U21 France</HomeTeamName>
+      <HomeShortTeamName>France</HomeShortTeamName>
+      <AwayTeamId>3133</AwayTeamId>
+      <AwayTeamName>U21 Føroyar</AwayTeamName>
+      <AwayShortTeamName>Føroyar</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845661</MatchId>
+      <HomeTeamId>3105</HomeTeamId>
+      <HomeTeamName>U21 Cymru</HomeTeamName>
+      <HomeShortTeamName>Cymru</HomeShortTeamName>
+      <AwayTeamId>3157</AwayTeamId>
+      <AwayTeamName>U21 Belarus</AwayTeamName>
+      <AwayShortTeamName>Belarus</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845659</MatchId>
+      <HomeTeamId>3099</HomeTeamId>
+      <HomeTeamName>U21 Česko</HomeTeamName>
+      <HomeShortTeamName>Česko</HomeShortTeamName>
+      <AwayTeamId>3159</AwayTeamId>
+      <AwayTeamName>U21 Severna Makedonija</AwayTeamName>
+      <AwayShortTeamName>S Makedonija</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845669</MatchId>
+      <HomeTeamId>3177</HomeTeamId>
+      <HomeTeamName>U21 Moldova</HomeTeamName>
+      <HomeShortTeamName>Moldova</HomeShortTeamName>
+      <AwayTeamId>3095</AwayTeamId>
+      <AwayTeamName>U21 Eesti</AwayTeamName>
+      <AwayShortTeamName>Eesti</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845664</MatchId>
+      <HomeTeamId>3205</HomeTeamId>
+      <HomeTeamName>U21 Liechtenstein</HomeTeamName>
+      <HomeShortTeamName>Liechtenstein</HomeShortTeamName>
+      <AwayTeamId>3092</AwayTeamId>
+      <AwayTeamName>U21 Latvija</AwayTeamName>
+      <AwayShortTeamName>Latvija</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845663</MatchId>
+      <HomeTeamId>3080</HomeTeamId>
+      <HomeTeamName>U21 Österreich</HomeTeamName>
+      <HomeShortTeamName>Österreich</HomeShortTeamName>
+      <AwayTeamId>3147</AwayTeamId>
+      <AwayTeamName>U21 Lëtzebuerg</AwayTeamName>
+      <AwayShortTeamName>Lëtzebuerg</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845676</MatchId>
+      <HomeTeamId>3179</HomeTeamId>
+      <HomeTeamName>U21 Shqiperia</HomeTeamName>
+      <HomeShortTeamName>Shqiperia</HomeShortTeamName>
+      <AwayTeamId>3098</AwayTeamId>
+      <AwayTeamName>U21 Hellas</AwayTeamName>
+      <AwayShortTeamName>Hellas</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845654</MatchId>
+      <HomeTeamId>3141</HomeTeamId>
+      <HomeTeamName>U21 Cyprus</HomeTeamName>
+      <HomeShortTeamName>Cyprus</HomeShortTeamName>
+      <AwayTeamId>3227</AwayTeamId>
+      <AwayTeamName>U21 Crna Gora</AwayTeamName>
+      <AwayShortTeamName>Crna Gora</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845655</MatchId>
+      <HomeTeamId>3062</HomeTeamId>
+      <HomeTeamName>U21 Ísland</HomeTeamName>
+      <HomeShortTeamName>Ísland</HomeShortTeamName>
+      <AwayTeamId>3097</AwayTeamId>
+      <AwayTeamName>U21 Hrvatska</AwayTeamName>
+      <AwayShortTeamName>Hrvatska</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>5</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845673</MatchId>
+      <HomeTeamId>3111</HomeTeamId>
+      <HomeTeamName>U21 Slovenija</HomeTeamName>
+      <HomeShortTeamName>Slovenija</HomeShortTeamName>
+      <AwayTeamId>3119</AwayTeamId>
+      <AwayTeamName>U21 Ukraina</AwayTeamName>
+      <AwayShortTeamName>Ukraina</AwayShortTeamName>
+      <MatchDate>2026-09-04 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>7</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845690</MatchId>
+      <HomeTeamId>3074</HomeTeamId>
+      <HomeTeamName>U21 Türkiye</HomeTeamName>
+      <HomeShortTeamName>Türkiye</HomeShortTeamName>
+      <AwayTeamId>3175</AwayTeamId>
+      <AwayTeamName>U21 Malta</AwayTeamName>
+      <AwayShortTeamName>Malta</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845688</MatchId>
+      <HomeTeamId>3071</HomeTeamId>
+      <HomeTeamName>U21 Scotland</HomeTeamName>
+      <HomeShortTeamName>Scotland</HomeShortTeamName>
+      <AwayTeamId>3096</AwayTeamId>
+      <AwayTeamName>U21 Srbija</AwayTeamName>
+      <AwayShortTeamName>Srbija</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845675</MatchId>
+      <HomeTeamId>3049</HomeTeamId>
+      <HomeTeamName>U21 Norge</HomeTeamName>
+      <HomeShortTeamName>Norge</HomeShortTeamName>
+      <AwayTeamId>3042</AwayTeamId>
+      <AwayTeamName>U21 England</AwayTeamName>
+      <AwayShortTeamName>England</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>6</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845694</MatchId>
+      <HomeTeamId>3070</HomeTeamId>
+      <HomeTeamName>U21 Polska</HomeTeamName>
+      <HomeShortTeamName>Polska</HomeShortTeamName>
+      <AwayTeamId>3133</AwayTeamId>
+      <AwayTeamName>U21 Føroyar</AwayTeamName>
+      <AwayShortTeamName>Føroyar</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845683</MatchId>
+      <HomeTeamId>3041</HomeTeamId>
+      <HomeTeamName>U21 Sverige</HomeTeamName>
+      <HomeShortTeamName>Sverige</HomeShortTeamName>
+      <AwayTeamId>3157</AwayTeamId>
+      <AwayTeamName>U21 Belarus</AwayTeamName>
+      <AwayShortTeamName>Belarus</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845681</MatchId>
+      <HomeTeamId>3060</HomeTeamId>
+      <HomeTeamName>U21 Rossiya</HomeTeamName>
+      <HomeShortTeamName>Rossiya</HomeShortTeamName>
+      <AwayTeamId>3115</AwayTeamId>
+      <AwayTeamName>U21 Bosna i Hercegovina</AwayTeamName>
+      <AwayShortTeamName>Bosna i Hercegovina</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845697</MatchId>
+      <HomeTeamId>3187</HomeTeamId>
+      <HomeTeamName>U21 Andorra</HomeTeamName>
+      <HomeShortTeamName>Andorra</HomeShortTeamName>
+      <AwayTeamId>3053</AwayTeamId>
+      <AwayTeamName>U21 Ireland</AwayTeamName>
+      <AwayShortTeamName>Ireland</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845678</MatchId>
+      <HomeTeamId>3294</HomeTeamId>
+      <HomeTeamName>U21 San Marino</HomeTeamName>
+      <HomeShortTeamName>San Marino</HomeShortTeamName>
+      <AwayTeamId>3165</AwayTeamId>
+      <AwayTeamName>U21 Northern Ireland</AwayTeamName>
+      <AwayShortTeamName>Northern Ireland</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>4</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845685</MatchId>
+      <HomeTeamId>3147</HomeTeamId>
+      <HomeTeamName>U21 Lëtzebuerg</HomeTeamName>
+      <HomeShortTeamName>Lëtzebuerg</HomeShortTeamName>
+      <AwayTeamId>3076</AwayTeamId>
+      <AwayTeamName>U21 España</AwayTeamName>
+      <AwayShortTeamName>España</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845682</MatchId>
+      <HomeTeamId>3159</HomeTeamId>
+      <HomeTeamName>U21 Severna Makedonija</HomeTeamName>
+      <HomeShortTeamName>S Makedonija</HomeShortTeamName>
+      <AwayTeamId>3066</AwayTeamId>
+      <AwayTeamName>U21 Nederland</AwayTeamName>
+      <AwayShortTeamName>Nederland</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845692</MatchId>
+      <HomeTeamId>3098</HomeTeamId>
+      <HomeTeamName>U21 Hellas</HomeTeamName>
+      <HomeShortTeamName>Hellas</HomeShortTeamName>
+      <AwayTeamId>3061</AwayTeamId>
+      <AwayTeamName>U21 România</AwayTeamName>
+      <AwayShortTeamName>România</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845689</MatchId>
+      <HomeTeamId>3119</HomeTeamId>
+      <HomeTeamName>U21 Ukraina</HomeTeamName>
+      <HomeShortTeamName>Ukraina</HomeShortTeamName>
+      <AwayTeamId>3055</AwayTeamId>
+      <AwayTeamName>U21 Portugal</AwayTeamName>
+      <AwayShortTeamName>Portugal</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845686</MatchId>
+      <HomeTeamId>3092</HomeTeamId>
+      <HomeTeamName>U21 Latvija</HomeTeamName>
+      <HomeShortTeamName>Latvija</HomeShortTeamName>
+      <AwayTeamId>3079</AwayTeamId>
+      <AwayTeamName>U21 Schweiz</AwayTeamName>
+      <AwayShortTeamName>Schweiz</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845679</MatchId>
+      <HomeTeamId>3227</HomeTeamId>
+      <HomeTeamName>U21 Crna Gora</HomeTeamName>
+      <HomeShortTeamName>Crna Gora</HomeShortTeamName>
+      <AwayTeamId>3064</AwayTeamId>
+      <AwayTeamName>U21 Suomi</AwayTeamName>
+      <AwayShortTeamName>Suomi</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845696</MatchId>
+      <HomeTeamId>3095</HomeTeamId>
+      <HomeTeamName>U21 Eesti</HomeTeamName>
+      <HomeShortTeamName>Eesti</HomeShortTeamName>
+      <AwayTeamId>3091</AwayTeamId>
+      <AwayTeamName>U21 Magyarország</AwayTeamName>
+      <AwayShortTeamName>Magyarország</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845672</MatchId>
+      <HomeTeamId>3097</HomeTeamId>
+      <HomeTeamName>U21 Hrvatska</HomeTeamName>
+      <HomeShortTeamName>Hrvatska</HomeShortTeamName>
+      <AwayTeamId>3044</AwayTeamId>
+      <AwayTeamName>U21 Italia</AwayTeamName>
+      <AwayShortTeamName>Italia</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>2</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845693</MatchId>
+      <HomeTeamId>3099</HomeTeamId>
+      <HomeTeamName>U21 Česko</HomeTeamName>
+      <HomeShortTeamName>Česko</HomeShortTeamName>
+      <AwayTeamId>3043</AwayTeamId>
+      <AwayTeamName>U21 Deutschland</AwayTeamName>
+      <AwayShortTeamName>Deutschland</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>3</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>4</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845699</MatchId>
+      <HomeTeamId>3177</HomeTeamId>
+      <HomeTeamName>U21 Moldova</HomeTeamName>
+      <HomeShortTeamName>Moldova</HomeShortTeamName>
+      <AwayTeamId>3114</AwayTeamId>
+      <AwayTeamName>U21 Lietuva</AwayTeamName>
+      <AwayShortTeamName>Lietuva</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>8</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845687</MatchId>
+      <HomeTeamId>3205</HomeTeamId>
+      <HomeTeamName>U21 Liechtenstein</HomeTeamName>
+      <HomeShortTeamName>Liechtenstein</HomeShortTeamName>
+      <AwayTeamId>3063</AwayTeamId>
+      <AwayTeamName>U21 Danmark</AwayTeamName>
+      <AwayShortTeamName>Danmark</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>5</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845684</MatchId>
+      <HomeTeamId>3080</HomeTeamId>
+      <HomeTeamName>U21 Österreich</HomeTeamName>
+      <HomeShortTeamName>Österreich</HomeShortTeamName>
+      <AwayTeamId>3105</AwayTeamId>
+      <AwayTeamName>U21 Cymru</AwayTeamName>
+      <AwayShortTeamName>Cymru</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>4</Group>
+      <Status>2</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845695</MatchId>
+      <HomeTeamId>3179</HomeTeamId>
+      <HomeTeamName>U21 Shqiperia</HomeTeamName>
+      <HomeShortTeamName>Shqiperia</HomeShortTeamName>
+      <AwayTeamId>3045</AwayTeamId>
+      <AwayTeamName>U21 France</AwayTeamName>
+      <AwayShortTeamName>France</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>7</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>3</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845680</MatchId>
+      <HomeTeamId>3141</HomeTeamId>
+      <HomeTeamName>U21 Cyprus</HomeTeamName>
+      <HomeShortTeamName>Cyprus</HomeShortTeamName>
+      <AwayTeamId>3107</AwayTeamId>
+      <AwayTeamName>U21 Bulgaria</AwayTeamName>
+      <AwayShortTeamName>Bulgaria</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>2</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>1</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845677</MatchId>
+      <HomeTeamId>3062</HomeTeamId>
+      <HomeTeamName>U21 Ísland</HomeTeamName>
+      <HomeShortTeamName>Ísland</HomeShortTeamName>
+      <AwayTeamId>3078</AwayTeamId>
+      <AwayTeamName>U21 Belgium</AwayTeamName>
+      <AwayShortTeamName>Belgium</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>1</Group>
+      <Status>2</Status>
+      <HomeGoals>1</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845691</MatchId>
+      <HomeTeamId>3111</HomeTeamId>
+      <HomeTeamName>U21 Slovenija</HomeTeamName>
+      <HomeShortTeamName>Slovenija</HomeShortTeamName>
+      <AwayTeamId>3117</AwayTeamId>
+      <AwayTeamName>U21 Slovensko</AwayTeamName>
+      <AwayShortTeamName>Slovensko</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>8</MatchRound>
+      <Group>6</Group>
+      <Status>2</Status>
+      <HomeGoals>3</HomeGoals>
+      <AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845698</MatchId>
+      <HomeTeamId>3044</HomeTeamId>
+      <HomeTeamName>U21 Italia</HomeTeamName>
+      <HomeShortTeamName>Italia</HomeShortTeamName>
+      <AwayTeamId>3078</AwayTeamId>
+      <AwayTeamName>U21 Belgium</AwayTeamName>
+      <AwayShortTeamName>Belgium</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>1</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845702</MatchId>
+      <HomeTeamId>3064</HomeTeamId>
+      <HomeTeamName>U21 Suomi</HomeTeamName>
+      <HomeShortTeamName>Suomi</HomeShortTeamName>
+      <AwayTeamId>3107</AwayTeamId>
+      <AwayTeamName>U21 Bulgaria</AwayTeamName>
+      <AwayShortTeamName>Bulgaria</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>2</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845703</MatchId>
+      <HomeTeamId>3066</HomeTeamId>
+      <HomeTeamName>U21 Nederland</HomeTeamName>
+      <HomeShortTeamName>Nederland</HomeShortTeamName>
+      <AwayTeamId>3043</AwayTeamId>
+      <AwayTeamName>U21 Deutschland</AwayTeamName>
+      <AwayShortTeamName>Deutschland</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>3</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845706</MatchId>
+      <HomeTeamId>3076</HomeTeamId>
+      <HomeTeamName>U21 España</HomeTeamName>
+      <HomeShortTeamName>España</HomeShortTeamName>
+      <AwayTeamId>3105</AwayTeamId>
+      <AwayTeamName>U21 Cymru</AwayTeamName>
+      <AwayShortTeamName>Cymru</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>4</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845709</MatchId>
+      <HomeTeamId>3079</HomeTeamId>
+      <HomeTeamName>U21 Schweiz</HomeTeamName>
+      <HomeShortTeamName>Schweiz</HomeShortTeamName>
+      <AwayTeamId>3063</AwayTeamId>
+      <AwayTeamName>U21 Danmark</AwayTeamName>
+      <AwayShortTeamName>Danmark</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>5</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845714</MatchId>
+      <HomeTeamId>3055</HomeTeamId>
+      <HomeTeamName>U21 Portugal</HomeTeamName>
+      <HomeShortTeamName>Portugal</HomeShortTeamName>
+      <AwayTeamId>3117</AwayTeamId>
+      <AwayTeamName>U21 Slovensko</AwayTeamName>
+      <AwayShortTeamName>Slovensko</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>6</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845717</MatchId>
+      <HomeTeamId>3061</HomeTeamId>
+      <HomeTeamName>U21 România</HomeTeamName>
+      <HomeShortTeamName>România</HomeShortTeamName>
+      <AwayTeamId>3045</AwayTeamId>
+      <AwayTeamName>U21 France</AwayTeamName>
+      <AwayShortTeamName>France</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>7</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845720</MatchId>
+      <HomeTeamId>3091</HomeTeamId>
+      <HomeTeamName>U21 Magyarország</HomeTeamName>
+      <HomeShortTeamName>Magyarország</HomeShortTeamName>
+      <AwayTeamId>3114</AwayTeamId>
+      <AwayTeamName>U21 Lietuva</AwayTeamName>
+      <AwayShortTeamName>Lietuva</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>8</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845715</MatchId>
+      <HomeTeamId>3074</HomeTeamId>
+      <HomeTeamName>U21 Türkiye</HomeTeamName>
+      <HomeShortTeamName>Türkiye</HomeShortTeamName>
+      <AwayTeamId>3119</AwayTeamId>
+      <AwayTeamName>U21 Ukraina</AwayTeamName>
+      <AwayShortTeamName>Ukraina</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>6</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845712</MatchId>
+      <HomeTeamId>3071</HomeTeamId>
+      <HomeTeamName>U21 Scotland</HomeTeamName>
+      <HomeShortTeamName>Scotland</HomeShortTeamName>
+      <AwayTeamId>3092</AwayTeamId>
+      <AwayTeamName>U21 Latvija</AwayTeamName>
+      <AwayShortTeamName>Latvija</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>5</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845700</MatchId>
+      <HomeTeamId>3049</HomeTeamId>
+      <HomeTeamName>U21 Norge</HomeTeamName>
+      <HomeShortTeamName>Norge</HomeShortTeamName>
+      <AwayTeamId>3097</AwayTeamId>
+      <AwayTeamName>U21 Hrvatska</AwayTeamName>
+      <AwayShortTeamName>Hrvatska</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>1</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845718</MatchId>
+      <HomeTeamId>3070</HomeTeamId>
+      <HomeTeamName>U21 Polska</HomeTeamName>
+      <HomeShortTeamName>Polska</HomeShortTeamName>
+      <AwayTeamId>3098</AwayTeamId>
+      <AwayTeamName>U21 Hellas</AwayTeamName>
+      <AwayShortTeamName>Hellas</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>7</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845708</MatchId>
+      <HomeTeamId>3041</HomeTeamId>
+      <HomeTeamName>U21 Sverige</HomeTeamName>
+      <HomeShortTeamName>Sverige</HomeShortTeamName>
+      <AwayTeamId>3147</AwayTeamId>
+      <AwayTeamName>U21 Lëtzebuerg</AwayTeamName>
+      <AwayShortTeamName>Lëtzebuerg</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>4</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845711</MatchId>
+      <HomeTeamId>3060</HomeTeamId>
+      <HomeTeamName>U21 Rossiya</HomeTeamName>
+      <HomeShortTeamName>Rossiya</HomeShortTeamName>
+      <AwayTeamId>3227</AwayTeamId>
+      <AwayTeamName>U21 Crna Gora</AwayTeamName>
+      <AwayShortTeamName>Crna Gora</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>2</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845721</MatchId>
+      <HomeTeamId>3187</HomeTeamId>
+      <HomeTeamName>U21 Andorra</HomeTeamName>
+      <HomeShortTeamName>Andorra</HomeShortTeamName>
+      <AwayTeamId>3095</AwayTeamId>
+      <AwayTeamName>U21 Eesti</AwayTeamName>
+      <AwayShortTeamName>Eesti</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>8</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845704</MatchId>
+      <HomeTeamId>3294</HomeTeamId>
+      <HomeTeamName>U21 San Marino</HomeTeamName>
+      <HomeShortTeamName>San Marino</HomeShortTeamName>
+      <AwayTeamId>3159</AwayTeamId>
+      <AwayTeamName>U21 Severna Makedonija</AwayTeamName>
+      <AwayShortTeamName>S Makedonija</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>3</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845713</MatchId>
+      <HomeTeamId>3096</HomeTeamId>
+      <HomeTeamName>U21 Srbija</HomeTeamName>
+      <HomeShortTeamName>Srbija</HomeShortTeamName>
+      <AwayTeamId>3205</AwayTeamId>
+      <AwayTeamName>U21 Liechtenstein</AwayTeamName>
+      <AwayShortTeamName>Liechtenstein</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>5</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845707</MatchId>
+      <HomeTeamId>3157</HomeTeamId>
+      <HomeTeamName>U21 Belarus</HomeTeamName>
+      <HomeShortTeamName>Belarus</HomeShortTeamName>
+      <AwayTeamId>3080</AwayTeamId>
+      <AwayTeamName>U21 Österreich</AwayTeamName>
+      <AwayShortTeamName>Österreich</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>4</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845719</MatchId>
+      <HomeTeamId>3133</HomeTeamId>
+      <HomeTeamName>U21 Føroyar</HomeTeamName>
+      <HomeShortTeamName>Føroyar</HomeShortTeamName>
+      <AwayTeamId>3179</AwayTeamId>
+      <AwayTeamName>U21 Shqiperia</AwayTeamName>
+      <AwayShortTeamName>Shqiperia</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>7</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845710</MatchId>
+      <HomeTeamId>3115</HomeTeamId>
+      <HomeTeamName>U21 Bosna i Hercegovina</HomeTeamName>
+      <HomeShortTeamName>Bosna i Hercegovina</HomeShortTeamName>
+      <AwayTeamId>3141</AwayTeamId>
+      <AwayTeamName>U21 Cyprus</AwayTeamName>
+      <AwayShortTeamName>Cyprus</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>2</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845722</MatchId>
+      <HomeTeamId>3053</HomeTeamId>
+      <HomeTeamName>U21 Ireland</HomeTeamName>
+      <HomeShortTeamName>Ireland</HomeShortTeamName>
+      <AwayTeamId>3177</AwayTeamId>
+      <AwayTeamName>U21 Moldova</AwayTeamName>
+      <AwayShortTeamName>Moldova</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>8</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845701</MatchId>
+      <HomeTeamId>3042</HomeTeamId>
+      <HomeTeamName>U21 England</HomeTeamName>
+      <HomeShortTeamName>England</HomeShortTeamName>
+      <AwayTeamId>3062</AwayTeamId>
+      <AwayTeamName>U21 Ísland</AwayTeamName>
+      <AwayShortTeamName>Ísland</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>1</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845705</MatchId>
+      <HomeTeamId>3165</HomeTeamId>
+      <HomeTeamName>U21 Northern Ireland</HomeTeamName>
+      <HomeShortTeamName>Northern Ireland</HomeShortTeamName>
+      <AwayTeamId>3099</AwayTeamId>
+      <AwayTeamName>U21 Česko</AwayTeamName>
+      <AwayShortTeamName>Česko</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>3</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845716</MatchId>
+      <HomeTeamId>3175</HomeTeamId>
+      <HomeTeamName>U21 Malta</HomeTeamName>
+      <HomeShortTeamName>Malta</HomeShortTeamName>
+      <AwayTeamId>3111</AwayTeamId>
+      <AwayTeamName>U21 Slovenija</AwayTeamName>
+      <AwayShortTeamName>Slovenija</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>9</MatchRound>
+      <Group>6</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845740</MatchId>
+      <HomeTeamId>3117</HomeTeamId>
+      <HomeTeamName>U21 Slovensko</HomeTeamName>
+      <HomeShortTeamName>Slovensko</HomeShortTeamName>
+      <AwayTeamId>3074</AwayTeamId>
+      <AwayTeamName>U21 Türkiye</AwayTeamName>
+      <AwayShortTeamName>Türkiye</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>6</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845737</MatchId>
+      <HomeTeamId>3063</HomeTeamId>
+      <HomeTeamName>U21 Danmark</HomeTeamName>
+      <HomeShortTeamName>Danmark</HomeShortTeamName>
+      <AwayTeamId>3071</AwayTeamId>
+      <AwayTeamName>U21 Scotland</AwayTeamName>
+      <AwayShortTeamName>Scotland</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>5</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845731</MatchId>
+      <HomeTeamId>3043</HomeTeamId>
+      <HomeTeamName>U21 Deutschland</HomeTeamName>
+      <HomeShortTeamName>Deutschland</HomeShortTeamName>
+      <AwayTeamId>3294</AwayTeamId>
+      <AwayTeamName>U21 San Marino</AwayTeamName>
+      <AwayShortTeamName>San Marino</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>3</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845728</MatchId>
+      <HomeTeamId>3107</HomeTeamId>
+      <HomeTeamName>U21 Bulgaria</HomeTeamName>
+      <HomeShortTeamName>Bulgaria</HomeShortTeamName>
+      <AwayTeamId>3060</AwayTeamId>
+      <AwayTeamName>U21 Rossiya</AwayTeamName>
+      <AwayShortTeamName>Rossiya</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>2</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845746</MatchId>
+      <HomeTeamId>3114</HomeTeamId>
+      <HomeTeamName>U21 Lietuva</HomeTeamName>
+      <HomeShortTeamName>Lietuva</HomeShortTeamName>
+      <AwayTeamId>3187</AwayTeamId>
+      <AwayTeamName>U21 Andorra</AwayTeamName>
+      <AwayShortTeamName>Andorra</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>8</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845725</MatchId>
+      <HomeTeamId>3078</HomeTeamId>
+      <HomeTeamName>U21 Belgium</HomeTeamName>
+      <HomeShortTeamName>Belgium</HomeShortTeamName>
+      <AwayTeamId>3049</AwayTeamId>
+      <AwayTeamName>U21 Norge</AwayTeamName>
+      <AwayShortTeamName>Norge</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>1</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845744</MatchId>
+      <HomeTeamId>3045</HomeTeamId>
+      <HomeTeamName>U21 France</HomeTeamName>
+      <HomeShortTeamName>France</HomeShortTeamName>
+      <AwayTeamId>3070</AwayTeamId>
+      <AwayTeamName>U21 Polska</AwayTeamName>
+      <AwayShortTeamName>Polska</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>7</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845734</MatchId>
+      <HomeTeamId>3105</HomeTeamId>
+      <HomeTeamName>U21 Cymru</HomeTeamName>
+      <HomeShortTeamName>Cymru</HomeShortTeamName>
+      <AwayTeamId>3041</AwayTeamId>
+      <AwayTeamName>U21 Sverige</AwayTeamName>
+      <AwayShortTeamName>Sverige</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>4</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845732</MatchId>
+      <HomeTeamId>3147</HomeTeamId>
+      <HomeTeamName>U21 Lëtzebuerg</HomeTeamName>
+      <HomeShortTeamName>Lëtzebuerg</HomeShortTeamName>
+      <AwayTeamId>3157</AwayTeamId>
+      <AwayTeamName>U21 Belarus</AwayTeamName>
+      <AwayShortTeamName>Belarus</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>4</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845729</MatchId>
+      <HomeTeamId>3159</HomeTeamId>
+      <HomeTeamName>U21 Severna Makedonija</HomeTeamName>
+      <HomeShortTeamName>S Makedonija</HomeShortTeamName>
+      <AwayTeamId>3165</AwayTeamId>
+      <AwayTeamName>U21 Northern Ireland</AwayTeamName>
+      <AwayShortTeamName>Northern Ireland</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>3</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845741</MatchId>
+      <HomeTeamId>3098</HomeTeamId>
+      <HomeTeamName>U21 Hellas</HomeTeamName>
+      <HomeShortTeamName>Hellas</HomeShortTeamName>
+      <AwayTeamId>3133</AwayTeamId>
+      <AwayTeamName>U21 Føroyar</AwayTeamName>
+      <AwayShortTeamName>Føroyar</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>7</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845738</MatchId>
+      <HomeTeamId>3119</HomeTeamId>
+      <HomeTeamName>U21 Ukraina</HomeTeamName>
+      <HomeShortTeamName>Ukraina</HomeShortTeamName>
+      <AwayTeamId>3175</AwayTeamId>
+      <AwayTeamName>U21 Malta</AwayTeamName>
+      <AwayShortTeamName>Malta</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>6</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845735</MatchId>
+      <HomeTeamId>3092</HomeTeamId>
+      <HomeTeamName>U21 Latvija</HomeTeamName>
+      <HomeShortTeamName>Latvija</HomeShortTeamName>
+      <AwayTeamId>3096</AwayTeamId>
+      <AwayTeamName>U21 Srbija</AwayTeamName>
+      <AwayShortTeamName>Srbija</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>5</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845727</MatchId>
+      <HomeTeamId>3227</HomeTeamId>
+      <HomeTeamName>U21 Crna Gora</HomeTeamName>
+      <HomeShortTeamName>Crna Gora</HomeShortTeamName>
+      <AwayTeamId>3115</AwayTeamId>
+      <AwayTeamName>U21 Bosna i Hercegovina</AwayTeamName>
+      <AwayShortTeamName>Bosna i Hercegovina</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>2</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845743</MatchId>
+      <HomeTeamId>3095</HomeTeamId>
+      <HomeTeamName>U21 Eesti</HomeTeamName>
+      <HomeShortTeamName>Eesti</HomeShortTeamName>
+      <AwayTeamId>3053</AwayTeamId>
+      <AwayTeamName>U21 Ireland</AwayTeamName>
+      <AwayShortTeamName>Ireland</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>8</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845723</MatchId>
+      <HomeTeamId>3097</HomeTeamId>
+      <HomeTeamName>U21 Hrvatska</HomeTeamName>
+      <HomeShortTeamName>Hrvatska</HomeShortTeamName>
+      <AwayTeamId>3042</AwayTeamId>
+      <AwayTeamName>U21 England</AwayTeamName>
+      <AwayShortTeamName>England</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>1</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845730</MatchId>
+      <HomeTeamId>3099</HomeTeamId>
+      <HomeTeamName>U21 Česko</HomeTeamName>
+      <HomeShortTeamName>Česko</HomeShortTeamName>
+      <AwayTeamId>3066</AwayTeamId>
+      <AwayTeamName>U21 Nederland</AwayTeamName>
+      <AwayShortTeamName>Nederland</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>3</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845745</MatchId>
+      <HomeTeamId>3177</HomeTeamId>
+      <HomeTeamName>U21 Moldova</HomeTeamName>
+      <HomeShortTeamName>Moldova</HomeShortTeamName>
+      <AwayTeamId>3091</AwayTeamId>
+      <AwayTeamName>U21 Magyarország</AwayTeamName>
+      <AwayShortTeamName>Magyarország</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>8</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845736</MatchId>
+      <HomeTeamId>3205</HomeTeamId>
+      <HomeTeamName>U21 Liechtenstein</HomeTeamName>
+      <HomeShortTeamName>Liechtenstein</HomeShortTeamName>
+      <AwayTeamId>3079</AwayTeamId>
+      <AwayTeamName>U21 Schweiz</AwayTeamName>
+      <AwayShortTeamName>Schweiz</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>5</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845733</MatchId>
+      <HomeTeamId>3080</HomeTeamId>
+      <HomeTeamName>U21 Österreich</HomeTeamName>
+      <HomeShortTeamName>Österreich</HomeShortTeamName>
+      <AwayTeamId>3076</AwayTeamId>
+      <AwayTeamName>U21 España</AwayTeamName>
+      <AwayShortTeamName>España</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>4</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845742</MatchId>
+      <HomeTeamId>3179</HomeTeamId>
+      <HomeTeamName>U21 Shqiperia</HomeTeamName>
+      <HomeShortTeamName>Shqiperia</HomeShortTeamName>
+      <AwayTeamId>3061</AwayTeamId>
+      <AwayTeamName>U21 România</AwayTeamName>
+      <AwayShortTeamName>România</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>7</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845726</MatchId>
+      <HomeTeamId>3141</HomeTeamId>
+      <HomeTeamName>U21 Cyprus</HomeTeamName>
+      <HomeShortTeamName>Cyprus</HomeShortTeamName>
+      <AwayTeamId>3064</AwayTeamId>
+      <AwayTeamName>U21 Suomi</AwayTeamName>
+      <AwayShortTeamName>Suomi</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>2</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845724</MatchId>
+      <HomeTeamId>3062</HomeTeamId>
+      <HomeTeamName>U21 Ísland</HomeTeamName>
+      <HomeShortTeamName>Ísland</HomeShortTeamName>
+      <AwayTeamId>3044</AwayTeamId>
+      <AwayTeamName>U21 Italia</AwayTeamName>
+      <AwayShortTeamName>Italia</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>1</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>41845739</MatchId>
+      <HomeTeamId>3111</HomeTeamId>
+      <HomeTeamName>U21 Slovenija</HomeTeamName>
+      <HomeShortTeamName>Slovenija</HomeShortTeamName>
+      <AwayTeamId>3055</AwayTeamId>
+      <AwayTeamName>U21 Portugal</AwayTeamName>
+      <AwayShortTeamName>Portugal</AwayShortTeamName>
+      <MatchDate>2026-09-25 20:00:00</MatchDate>
+      <MatchType>50</MatchType>
+      <MatchRound>10</MatchRound>
+      <Group>6</Group>
+      <Status>0</Status>
+      <HomeGoals>0</HomeGoals>
+      <AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement>
+      <AwayStatement></AwayStatement>
+    </Match>
+  </Matches>
+</HattrickData>

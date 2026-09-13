@@ -13,7 +13,10 @@ function stub(t: TestContext, target: object, method: string, fn: (...args: any[
   const original = object[method]; object[method] = fn;
   t.after(() => { object[method] = original; });
 }
-function database(t: TestContext, initial?: Record<string, any>) {
+function database(t: TestContext, initial?: Record<string, any>, behavior: {
+  duplicateFinalMatchId?: number;
+  corruptReturnedFinal?: boolean;
+} = {}) {
   let rows = new Map<number, Record<string, any>>(initial ? [[11, initial]] : []);
   let cup: Record<string, any> = { currentSeason: 37 };
   let writes = 0;
@@ -25,10 +28,16 @@ function database(t: TestContext, initial?: Record<string, any>) {
     },
     cupChampion: {
       findUnique: async (args: any) => rows.get(args.where.cupId_season.season) ?? null,
+      findFirst: async (args: any) => args.where.finalMatchId === behavior.duplicateFinalMatchId
+        ? { cupId: 9_999_999, season: 7, finalMatchId: behavior.duplicateFinalMatchId }
+        : null,
       upsert: async (args: any) => {
         const season = args.where.cupId_season.season;
         const value = rows.has(season) ? { ...rows.get(season), ...args.update } : args.create;
-        rows.set(season, value); writes++; return value;
+        rows.set(season, value); writes++;
+        return behavior.corruptReturnedFinal && value.finalMatchId > 0
+          ? { ...value, finalMatchId: value.finalMatchId + 1 }
+          : value;
       },
     },
     hattrickUser: { upsert: async () => { userWrites++; return {}; } },
@@ -110,4 +119,28 @@ test('duplicate editions and unsourced country facts fail validation before data
   await assert.rejects(ingestSeasonalWinners(token, { ...options, winners: [recovered, recovered] }), /Duplicate seasonal/);
   await assert.rejects(ingestSeasonalWinners(token, { ...options, winners: [{ ...recovered, sourceURLs: [] }] }), /require retained source/);
   assert.equal(transactions, 0);
+});
+
+test('official final collision is rejected before a seasonal winner can be partially retained', async t => {
+  const finalMatchId = 41_825_525;
+  const db = database(t, undefined, { duplicateFinalMatchId: finalMatchId });
+  await assert.rejects(ingestSeasonalWinners(token, { ...options, winners: [{
+    ...recovered,
+    finalMatchId,
+    homeGoals: 3,
+    awayGoals: 1,
+  }] }), /different retained tournament/);
+  assert.equal(db.size(), 0);
+  assert.equal(db.writes(), 0);
+});
+
+test('an in-transaction exact-final validation failure rolls the seasonal winner back', async t => {
+  const db = database(t, undefined, { corruptReturnedFinal: true });
+  await assert.rejects(ingestSeasonalWinners(token, { ...options, winners: [{
+    ...recovered,
+    finalMatchId: 41_825_525,
+    homeGoals: 3,
+    awayGoals: 1,
+  }] }), /was not retained exactly/);
+  assert.equal(db.size(), 0);
 });

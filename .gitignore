@@ -48,3 +48,7 @@ web/public/targets.json
 
 # generated unresolved-teams snapshot (re-run scripts/list-unresolved.ts)
 unresolved-teams.csv
+
+# Private automated archive snapshots, source evidence, and isolated update workspaces
+.update-store/
+.update-work/

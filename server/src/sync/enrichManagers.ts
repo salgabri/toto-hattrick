@@ -1,6 +1,6 @@
 import { prisma } from '../db/client.js';
 import type { TokenPair } from '../chpp/auth.js';
-import { chppGet } from '../chpp/client.js';
+import { chppGet, ChppRequestError } from '../chpp/client.js';
 import { z } from 'zod';
 
 /**
@@ -46,6 +46,11 @@ export interface TeamOwner {
   userId: number;
   loginName: string;
   isBot: boolean;
+}
+
+export interface UserNationality {
+  countryId: number | null;
+  nationality: string;
 }
 
 /**
@@ -103,6 +108,37 @@ export async function enrichChampionManagers(token: TokenPair, opts: { limit?: n
 }
 
 /**
+ * Resolve one exact Hattrick user through the same pinned managercompendium lookup used by the
+ * repair pass below. The request is keyed only by a positive numeric user id; no login-name or
+ * trophy inference is involved. A valid response without a country is the established terminal
+ * `Unknown` sentinel, while request failures propagate so a durable scheduler can retry them.
+ */
+export async function resolveUserNationality(token: TokenPair, userId: number): Promise<UserNationality> {
+  if (!Number.isSafeInteger(userId) || userId <= 0) throw new Error('Invalid Hattrick user id');
+  const response = await chppGet(token, {
+    file: 'managercompendium',
+    version: '1.5',
+    userId,
+  });
+  const record = (value: unknown): value is Record<string, unknown> =>
+    typeof value === 'object' && value !== null && !Array.isArray(value);
+  const data = record(response) && record(response.HattrickData) ? response.HattrickData : null;
+  // Do not turn a valid-but-unrelated/error XML envelope into a permanent Unknown sentinel. The
+  // established no-country case still has a Manager object; request/schema failures stay retryable.
+  if (!data || !record(data.Manager)) throw new ChppRequestError('invalid_response');
+  const country = data.Manager.Country;
+  if (country === undefined || country === null || country === '') return { countryId: null, nationality: 'Unknown' };
+  if (!record(country)) throw new ChppRequestError('invalid_response');
+  const countryName = country.CountryName;
+  if (typeof countryName !== 'string' || !countryName.trim()) return { countryId: null, nationality: 'Unknown' };
+  const candidateCountryId = Number(country.CountryId);
+  return {
+    countryId: Number.isSafeInteger(candidateCountryId) && candidateCountryId > 0 ? candidateCountryId : null,
+    nationality: countryName.trim(),
+  };
+}
+
+/**
  * Resolve nationality for every manager whose row still has `nationality = null` (never attempted)
  * via managercompendium(userId) → Country. Resume-safe and self-healing:
  *   - success WITH a country  → store the country (+ countryId).
@@ -127,10 +163,9 @@ export async function enrichUserNationalities(
     if (opts.limit && processed >= opts.limit) break;
     processed++;
     try {
-      const m = ((await chppGet(token, { file: 'managercompendium', version: '1.5', userId })) as any).HattrickData?.Manager;
-      const countryName = m?.Country?.CountryName;
-      if (countryName) {
-        await prisma.hattrickUser.update({ where: { userId }, data: { countryId: Number(m?.Country?.CountryId) || null, nationality: countryName } });
+      const result = await resolveUserNationality(token, userId);
+      if (result.nationality !== 'Unknown') {
+        await prisma.hattrickUser.update({ where: { userId }, data: result });
         resolved++;
       } else {
         // Valid response, no country → genuinely unresolvable (deleted/hidden). Sentinel it.

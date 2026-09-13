@@ -23,12 +23,13 @@ export interface LeagueSyncResult {
   seasonsStored: number;
   earliestSeason: number | null;
   latestChampion: string | null;
+  issues: Array<{ season: number; reason: string }>;
 }
 
 export async function syncNationalChampions(
   token: TokenPair,
   leagueId: number,
-  opts: { minSeason?: number } = {},
+  opts: { minSeason?: number; seasons?: readonly number[]; pacingMs?: number; throwOnFetchError?: boolean } = {},
 ): Promise<LeagueSyncResult> {
   const league = await prisma.nationalLeague.findUnique({ where: { leagueId } });
   if (!league) throw new Error(`league ${leagueId} not seeded`);
@@ -37,9 +38,13 @@ export async function syncNationalChampions(
   // passes a recent floor so it fetches only new/unsettled seasons instead of re-walking to S1.
   const floor = Math.max(1, opts.minSeason ?? 1);
 
-  const result: LeagueSyncResult = { leagueId, countryName: league.countryName, seasonsStored: 0, earliestSeason: null, latestChampion: null };
+  const pacingMs = opts.pacingMs ?? PACING_MS;
+  const result: LeagueSyncResult = { leagueId, countryName: league.countryName, seasonsStored: 0, earliestSeason: null, latestChampion: null, issues: [] };
+  const seasons = opts.seasons ? [...new Set(opts.seasons)].sort((a, b) => b - a)
+    : Array.from({ length: Math.max(0, start - floor + 1) }, (_, i) => start - i);
+  if (seasons.some(season => !Number.isSafeInteger(season) || season < 1)) throw new Error('Invalid league season selection');
 
-  for (let season = start; season >= floor; season--) {
+  for (const season of seasons) {
     const existing = await prisma.leagueChampion.findUnique({ where: { leagueId_season: { leagueId, season } } });
     if (existing?.complete) {
       result.earliestSeason = season;
@@ -49,14 +54,25 @@ export async function syncNationalChampions(
     let table;
     try {
       const fx = parseLeagueFixtures(await fetchLeagueFixtures(token, { leagueLevelUnitId: league.topSeriesId, season }));
+      if (fx.season !== season || fx.leagueLevelUnitId !== league.topSeriesId) {
+        result.issues.push({ season, reason: 'League response differs from the requested division/season' });
+        continue;
+      }
       table = computeStandings(fx.matches);
-    } catch {
-      await sleep(PACING_MS);
+    } catch (error) {
+      if (opts.throwOnFetchError) throw error;
+      result.issues.push({ season, reason: 'League fixtures could not be fetched or validated' });
+      await sleep(pacingMs);
       continue;
     }
-    await sleep(PACING_MS);
+    await sleep(pacingMs);
 
-    if (table.rows.length === 0) break; // season predates the country → stop walking back
+    // Empty current seasons are normal. Explicit work lists retain every older unresolved item;
+    // an empty response cannot prove that another edition never existed.
+    if (table.rows.length === 0) {
+      if (opts.seasons || season === start) continue;
+      break;
+    }
     const champ = table.champion;
     if (!champ) continue;
 

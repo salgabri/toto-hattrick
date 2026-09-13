@@ -10,6 +10,16 @@
     "token": "tsx src/scripts/get-token.ts",
     "dump:chpp": "tsx src/scripts/dump-chpp.ts",
     "refresh:latest": "tsx src/scripts/refresh-latest.ts",
+    "update:plan": "npm run build && node dist/scripts/update.js plan",
+    "update:bootstrap": "npm run build && node dist/scripts/update.js bootstrap",
+    "update:run": "npm run build && node dist/scripts/update.js run",
+    "update:publish": "npm run build && node dist/scripts/update.js publish",
+    "update:export-git": "npm run build && node dist/scripts/update.js export-git",
+    "update:validate-git": "npm run build && node dist/scripts/update.js validate-git",
+    "update:confirm-git": "npm run build && node dist/scripts/update.js confirm-git",
+    "update:checkout": "npm run build && node dist/scripts/update.js checkout",
+    "update:acknowledge": "npm run build && node dist/scripts/update.js acknowledge",
+    "update:import": "npm run build && node dist/scripts/update.js import",
     "attribute:cups": "tsx src/scripts/attribute-cups-by-club.ts",
     "backfill:cups": "tsx src/scripts/backfill-cups.ts",
     "backfill:nationalities": "tsx src/scripts/backfill-nationalities.ts",
@@ -43,9 +53,10 @@
     "materialize:recent-winners": "tsx src/scripts/materialize-recent-winners.ts",
     "recover:national-coaches": "tsx src/scripts/recover-national-coaches.ts",
     "test:winners": "npm run build && node --test dist/sync/*.test.js dist/scripts/*.test.js",
-    "test": "npm run build && node --test dist/sync/*.test.js dist/scripts/*.test.js dist/routes/*.test.js"
+    "test": "npm run build && node --test dist/sync/*.test.js dist/scripts/*.test.js dist/routes/*.test.js dist/chpp/*.test.js dist/update/*.test.js"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1131.0",
     "@fastify/cors": "^10.0.1",
     "@prisma/client": "^6.2.1",
     "dotenv": "^16.4.7",
@@ -55,9 +66,9 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/node": "^22.10.2",
     "prisma": "^6.2.1",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "@types/node": "^22.10.2"
+    "typescript": "^5.7.2"
   }
 }

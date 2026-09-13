@@ -10,13 +10,10 @@ import { enrichUserNationalities } from './enrichManagers.js';
  * Week Trophy (id 2108472): a ~24k-team Swiss-with-playoffs knockout run every Supporter Week, one
  * winner per season.
  *
- * Why the data is ingested, not synced live: CHPP exposes a tournament's metadata (tournamentdetails)
- * and its current bracket, but NOT the winners of past editions (tournamentleaguetables comes back
- * empty for a knockout, and there is no tournament-winner-history file). The roll of honour is read
- * once from the logged-in Club/ArenaHub/Tournaments/TournamentHistory pages — each season page names
- * the winning team AND its manager inline (…/Club/?TeamID=… + …/Club/Manager/?userId=…) — and applied
- * here. Because the manager is named on the page we set championUserId directly; no teamdetails
- * current-owner resolution is needed (nor would it be right, these clubs live on).
+ * CHPP exposes a tournament's metadata and current bracket, but not past editions after the
+ * tournament restarts. officialTournaments.ts therefore captures each new current final daily;
+ * the retained roll of honour still supplies older editions and the manager identity printed on
+ * TournamentHistory. Current ownership is never substituted for the manager at a past final.
  *
  * Modelled exactly like the Hattrick Masters (see sync/masters.ts): one Cup row per tournament with a
  * sentinel leagueId, its winners stored as CupChampion rows keyed by (cupId, tournament season). The
@@ -61,6 +58,11 @@ export interface SeasonalWinner {
   runnerUp?: string;
   sourceURLs?: string[];
   evidence?: string;
+  /** Exact official final facts. These are optional for retained legacy history, but when supplied
+   * all three fields are validated and persisted in the same transaction as the winner. */
+  finalMatchId?: number;
+  homeGoals?: number;
+  awayGoals?: number;
 }
 
 const WinnerSchema = z.object({
@@ -70,7 +72,15 @@ const WinnerSchema = z.object({
   sourceURLs: z.array(z.string().url().refine(value => {
     const url = new URL(value); return url.protocol === 'https:' && /(^|\.)hattrick\.org$/i.test(url.hostname);
   })).optional(), evidence: z.string().min(20).optional(),
-}).refine(w => !(w.teamLeagueId || w.runnerUp) || Boolean(w.sourceURLs?.length && w.evidence), 'Supplemental historical facts require retained source URLs and evidence');
+  finalMatchId: z.number().int().positive().optional(),
+  homeGoals: z.number().int().nonnegative().optional(),
+  awayGoals: z.number().int().nonnegative().optional(),
+}).refine(w => {
+  const finalFields = [w.finalMatchId, w.homeGoals, w.awayGoals];
+  return finalFields.every(value => value === undefined) || finalFields.every(value => value !== undefined);
+}, 'Official seasonal final evidence requires match id and both scores')
+  .refine(w => !(w.teamLeagueId || w.runnerUp || w.finalMatchId) || Boolean(w.sourceURLs?.length && w.evidence),
+    'Supplemental historical facts require retained source URLs and evidence');
 const clean = (name: string) => name.normalize('NFC').replace(/\s+/g, ' ').trim();
 
 export interface SeasonalIngestResult { seasons: number; latestSeason: number; latestChampion: string | null }
@@ -109,7 +119,7 @@ async function seedSeasonalCupIn(db: Pick<Prisma.TransactionClient, 'cup'>, cupI
  */
 export async function ingestSeasonalWinners(
   token: TokenPair,
-  opts: { cupId: number; name: string; winners: SeasonalWinner[] },
+  opts: { cupId: number; name: string; winners: SeasonalWinner[]; enrichNationalities?: boolean },
 ): Promise<SeasonalIngestResult> {
   const valid = z.array(WinnerSchema).parse(opts.winners);
   if (new Set(valid.map(w => w.season)).size !== valid.length) throw new Error('Duplicate seasonal winner editions');
@@ -118,11 +128,19 @@ export async function ingestSeasonalWinners(
     await seedSeasonalCupIn(tx, opts.cupId, opts.name, latestSeason);
     for (const w of valid) {
       const existing = await tx.cupChampion.findUnique({ where: { cupId_season: { cupId: opts.cupId, season: w.season } } });
+      if (w.finalMatchId) {
+        const duplicate = await tx.cupChampion.findFirst({ where: { finalMatchId: w.finalMatchId,
+          OR: [{ cupId: { not: opts.cupId } }, { season: { not: w.season } }] }, select: { cupId: true, season: true } });
+        if (duplicate) throw new Error(`Official final conflicts with a different retained tournament result (${duplicate.cupId}/${duplicate.season})`);
+      }
       if (existing) {
         const sameClub = existing.championTeamId && w.teamId ? existing.championTeamId === w.teamId : clean(existing.championTeamName) === clean(w.team);
         if (!sameClub || (existing.championUserId && w.userId && existing.championUserId !== w.userId) ||
             (existing.championLeagueId && w.teamLeagueId && existing.championLeagueId !== w.teamLeagueId) ||
-            (existing.runnerUpTeamName && w.runnerUp && clean(existing.runnerUpTeamName) !== clean(w.runnerUp)))
+            (existing.runnerUpTeamName && w.runnerUp && clean(existing.runnerUpTeamName) !== clean(w.runnerUp)) ||
+            (existing.finalMatchId > 0 && w.finalMatchId && existing.finalMatchId !== w.finalMatchId) ||
+            (existing.finalMatchId > 0 && existing.finalMatchId === w.finalMatchId &&
+              (existing.homeGoals !== w.homeGoals || existing.awayGoals !== w.awayGoals)))
           throw new Error(`Conflicting seasonal winner ${opts.cupId}/${w.season}; existing evidence was preserved`);
       }
       const winner = {
@@ -132,6 +150,7 @@ export async function ingestSeasonalWinners(
         championUserName: w.userId ? w.manager ?? existing?.championUserName ?? null : existing?.championUserName ?? w.manager,
         championLeagueId: w.teamLeagueId ?? existing?.championLeagueId ?? null,
         runnerUpTeamName: w.runnerUp ?? existing?.runnerUpTeamName ?? '',
+        ...(w.finalMatchId ? { finalMatchId: w.finalMatchId, homeGoals: w.homeGoals!, awayGoals: w.awayGoals! } : {}),
       };
       if (existing && Object.entries(winner).every(([field, value]) => existing[field as keyof typeof existing] === value)) continue;
       if (w.userId) {
@@ -141,7 +160,7 @@ export async function ingestSeasonalWinners(
           create: { userId: w.userId, loginName: w.manager ?? `user ${w.userId}` },
         });
       }
-      await tx.cupChampion.upsert({
+      const retained = await tx.cupChampion.upsert({
         where: { cupId_season: { cupId: opts.cupId, season: w.season } },
         update: winner,
         create: {
@@ -157,11 +176,13 @@ export async function ingestSeasonalWinners(
           awayGoals: 0,
         },
       });
+      if (w.finalMatchId && (retained.finalMatchId !== w.finalMatchId || retained.homeGoals !== w.homeGoals || retained.awayGoals !== w.awayGoals))
+        throw new Error(`Official seasonal final ${opts.cupId}/${w.season} was not retained exactly`);
     }
   });
 
   // Unknown numeric identities trigger no CHPP calls, including current-owner lookups.
-  if (valid.some(w => w.userId)) await enrichUserNationalities(token);
+  if (opts.enrichNationalities !== false && valid.some(w => w.userId)) await enrichUserNationalities(token);
   const latest = valid.find((w) => w.season === latestSeason) ?? null;
   return { seasons: valid.length, latestSeason, latestChampion: latest ? (latest.manager ?? latest.team) : null };
 }

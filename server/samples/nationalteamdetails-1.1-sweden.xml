@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>nationalTeamDetails.xml</FileName>
+  <Version>1.3</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-09-13 08:17:19</FetchedDate>
+  <UserIsSupporter>True</UserIsSupporter>
+  <UserHasClubHouse>False</UserHasClubHouse>
+  <IsPlayingMatch>False</IsPlayingMatch>
+  <Team>
+    <TeamID>3000</TeamID>
+    <TeamName>Sverige</TeamName>
+    <ShortTeamName>Sverige</ShortTeamName>
+    <NationalCoach>
+      <NationalCoachUserID>8877414</NationalCoachUserID>
+      <NationalCoachLoginname>ZorroMP</NationalCoachLoginname>
+    </NationalCoach>
+    <League>
+      <LeagueID>1</LeagueID>
+      <LeagueName>Sverige</LeagueName>
+    </League>
+    <Trainer>
+      <PlayerID>0</PlayerID>
+      <PlayerName></PlayerName>
+    </Trainer>
+    <HomePage>hattrickportal.online/Tracker</HomePage>
+    <Dress>N211616</Dress>
+    <DressAlternate>N112111</DressAlternate>
+    <Experience433>3</Experience433>
+    <Experience451>9</Experience451>
+    <Experience352>10</Experience352>
+    <Experience532>9</Experience532>
+    <Experience343>8</Experience343>
+    <Experience541>3</Experience541>
+    <Morale>9</Morale>
+    <SelfConfidence>6</SelfConfidence>
+    <SupportersPopularity>6</SupportersPopularity>
+    <RatingScore>33701</RatingScore>
+    <FanClubSize>2314</FanClubSize>
+    <Rank>3</Rank>
+  </Team>
+</HattrickData>

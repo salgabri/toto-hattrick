@@ -313,6 +313,7 @@ const WorldCup = z
     CupLevel: num,
     CupLevelIndex: num,
     MatchRound: num.optional(),
+    MatchRoundsLeft: num.optional(),
   })
   .passthrough();
 
@@ -326,6 +327,10 @@ const WorldDetailsSchema = z.object({
             LeagueName: z.string(),
             EnglishName: z.string().optional(),
             Season: num,
+            SeasonOffset: num.optional(),
+            MatchRound: num.optional(),
+            CupMatchDate: HtDate.optional(),
+            SeriesMatchDate: HtDate.optional(),
             Cups: z
               .union([z.literal(''), z.object({ Cup: arrayOf(WorldCup) })])
               .transform((v) => (v === '' ? { Cup: [] } : v)),
@@ -342,6 +347,8 @@ export interface WorldCupInfo {
   cupLeagueLevel: number;
   cupLevel: number;
   cupLevelIndex: number;
+  matchRound: number | null;
+  matchRoundsLeft: number | null;
 }
 
 export function parseWorldDetailsCups(raw: unknown): {
@@ -349,6 +356,10 @@ export function parseWorldDetailsCups(raw: unknown): {
   leagueName: string;
   englishName: string | null;
   currentSeason: number;
+  seasonOffset: number | null;
+  matchRound: number | null;
+  cupMatchDate: Date | null;
+  seriesMatchDate: Date | null;
   cups: WorldCupInfo[];
 } {
   const l = WorldDetailsSchema.parse(raw).HattrickData.LeagueList.League;
@@ -357,12 +368,18 @@ export function parseWorldDetailsCups(raw: unknown): {
     leagueName: l.LeagueName,
     englishName: l.EnglishName ?? null,
     currentSeason: l.Season,
+    seasonOffset: l.SeasonOffset ?? null,
+    matchRound: l.MatchRound ?? null,
+    cupMatchDate: l.CupMatchDate ?? null,
+    seriesMatchDate: l.SeriesMatchDate ?? null,
     cups: l.Cups.Cup.map((c) => ({
       cupId: c.CupID,
       cupName: c.CupName,
       cupLeagueLevel: c.CupLeagueLevel,
       cupLevel: c.CupLevel,
       cupLevelIndex: c.CupLevelIndex,
+      matchRound: c.MatchRound ?? null,
+      matchRoundsLeft: c.MatchRoundsLeft ?? null,
     })),
   };
 }
@@ -501,5 +518,172 @@ export function parseLeagueFixtures(raw: unknown): {
       homeGoals: m.HomeGoals,
       awayGoals: m.AwayGoals,
     })),
+  };
+}
+
+// --- tournamentdetails (1.0) -----------------------------------------------
+// Current tournament metadata. The field casing below is taken from the authenticated
+// tournamentdetails-1.0 captures in /server/samples.
+
+const TournamentDetailsSchema = z.object({
+  HattrickData: z
+    .object({
+      FileName: z.literal('tournamentdetails.xml'),
+      Version: z.literal('1.0'),
+      Tournament: z
+        .object({
+          TournamentId: num,
+          Name: z.string(),
+          Season: num,
+          LastMatchRound: num,
+          FirstMatchRoundDate: HtDate,
+          NextMatchRoundDate: HtDate,
+          IsMatchesOngoing: z.enum(['0', '1']).transform((value) => value === '1'),
+        })
+        .passthrough(),
+    })
+    .passthrough(),
+});
+
+export interface TournamentDetailsSummary {
+  tournamentId: number;
+  name: string;
+  season: number;
+  lastMatchRound: number;
+  firstMatchRoundDate: Date;
+  nextMatchRoundDate: Date;
+  isMatchesOngoing: boolean;
+}
+
+export function parseTournamentDetails(raw: unknown): TournamentDetailsSummary {
+  const tournament = TournamentDetailsSchema.parse(raw).HattrickData.Tournament;
+  return {
+    tournamentId: tournament.TournamentId,
+    name: tournament.Name,
+    season: tournament.Season,
+    lastMatchRound: tournament.LastMatchRound,
+    firstMatchRoundDate: tournament.FirstMatchRoundDate,
+    nextMatchRoundDate: tournament.NextMatchRoundDate,
+    isMatchesOngoing: tournament.IsMatchesOngoing,
+  };
+}
+
+// --- tournamentfixtures (1.1) ----------------------------------------------
+// The endpoint returns one flat Match list. A self-closing <Matches /> is an empty string after
+// fast-xml-parser, so normalize that real response shape to an empty array.
+
+const TournamentFixture = z
+  .object({
+    MatchId: num,
+    HomeTeamId: num,
+    HomeTeamName: z.string(),
+    AwayTeamId: num,
+    AwayTeamName: z.string(),
+    MatchDate: HtDate,
+    MatchType: num,
+    MatchRound: num,
+    Group: num,
+    Status: num,
+    HomeGoals: num,
+    AwayGoals: num,
+  })
+  .passthrough();
+
+const TournamentFixturesSchema = z.object({
+  HattrickData: z
+    .object({
+      FileName: z.literal('tournamentFixtures.xml'),
+      Version: z.literal('1.1'),
+      Matches: z
+        .union([z.literal(''), z.object({ Match: arrayOf(TournamentFixture) }).passthrough()])
+        .transform((value) => (value === '' ? { Match: [] } : value)),
+    })
+    .passthrough(),
+});
+
+export interface TournamentFixtureResult {
+  matchId: number;
+  homeTeamId: number;
+  homeTeamName: string;
+  awayTeamId: number;
+  awayTeamName: string;
+  matchDate: Date;
+  matchType: number;
+  round: number;
+  group: number;
+  status: number;
+  homeGoals: number;
+  awayGoals: number;
+}
+
+export function parseTournamentFixtures(raw: unknown): { matches: TournamentFixtureResult[] } {
+  const matches = TournamentFixturesSchema.parse(raw).HattrickData.Matches.Match;
+  return {
+    matches: matches.map((match) => ({
+      matchId: match.MatchId,
+      homeTeamId: match.HomeTeamId,
+      homeTeamName: match.HomeTeamName,
+      awayTeamId: match.AwayTeamId,
+      awayTeamName: match.AwayTeamName,
+      matchDate: match.MatchDate,
+      matchType: match.MatchType,
+      round: match.MatchRound,
+      group: match.Group,
+      status: match.Status,
+      homeGoals: match.HomeGoals,
+      awayGoals: match.AwayGoals,
+    })),
+  };
+}
+
+// --- nationalteamdetails (1.3) ---------------------------------------------
+// The retained capture filename predates discovery that the response advertises Version 1.3;
+// the schema follows the response body and the endpoint wrapper pins 1.3.
+
+const NationalTeamDetailsSchema = z.object({
+  HattrickData: z
+    .object({
+      FileName: z.literal('nationalTeamDetails.xml'),
+      Version: z.literal('1.3'),
+      Team: z
+        .object({
+          TeamID: num,
+          TeamName: z.string(),
+          NationalCoach: z
+            .object({
+              NationalCoachUserID: num,
+              NationalCoachLoginname: z.string(),
+            })
+            .passthrough(),
+          League: z
+            .object({
+              LeagueID: num,
+              LeagueName: z.string(),
+            })
+            .passthrough(),
+        })
+        .passthrough(),
+    })
+    .passthrough(),
+});
+
+export interface NationalTeamDetailsSummary {
+  teamId: number;
+  teamName: string;
+  leagueId: number;
+  leagueName: string;
+  coachUserId: number;
+  coachLoginName: string;
+}
+
+export function parseNationalTeamDetails(raw: unknown): NationalTeamDetailsSummary {
+  const team = NationalTeamDetailsSchema.parse(raw).HattrickData.Team;
+  return {
+    teamId: team.TeamID,
+    teamName: team.TeamName,
+    leagueId: team.League.LeagueID,
+    leagueName: team.League.LeagueName,
+    coachUserId: team.NationalCoach.NationalCoachUserID,
+    coachLoginName: team.NationalCoach.NationalCoachLoginname,
   };
 }

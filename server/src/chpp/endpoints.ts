@@ -4,8 +4,8 @@ import type { TokenPair } from './auth.js';
 /**
  * Typed wrappers, one per `file=`. Versions are PINNED here — never omit them.
  *
- * TODO: confirm each version string against the current CHPP docs before going live;
- * these are sensible defaults, not verified against your registered app.
+ * Every version is explicit. The tournament and national-team versions are additionally covered
+ * by retained real-response fixtures so a CHPP response-shape change fails closed in validation.
  */
 const VERSION = {
   teamdetails: '3.6',
@@ -15,6 +15,9 @@ const VERSION = {
   leaguefixtures: '1.2',
   worlddetails: '1.9',
   cupmatches: '1.2',
+  tournamentdetails: '1.0',
+  tournamentfixtures: '1.1',
+  nationalteamdetails: '1.3',
 } as const;
 
 /** Team metadata + founded date. The step-2 smoke test: prove ONE signed call parses. */
@@ -106,5 +109,36 @@ export function fetchLeagueFixtures(
     version: VERSION.leaguefixtures,
     leagueLevelUnitID: params.leagueLevelUnitId,
     season: params.season,
+  });
+}
+
+/** Metadata for one Hattrick tournament, including its current season and final round. */
+export function fetchTournamentDetails(token: TokenPair, tournamentId: number): Promise<unknown> {
+  return chppGet(token, {
+    file: 'tournamentdetails',
+    version: VERSION.tournamentdetails,
+    tournamentId,
+  });
+}
+
+/** All tournament fixtures for the current season, or for an explicitly selected season. */
+export function fetchTournamentFixtures(
+  token: TokenPair,
+  params: { tournamentId: number; season?: number },
+): Promise<unknown> {
+  return chppGet(token, {
+    file: 'tournamentfixtures',
+    version: VERSION.tournamentfixtures,
+    tournamentId: params.tournamentId,
+    season: params.season,
+  });
+}
+
+/** Current metadata and elected coach for a senior or U20 national team. */
+export function fetchNationalTeamDetails(token: TokenPair, teamId: number): Promise<unknown> {
+  return chppGet(token, {
+    file: 'nationalteamdetails',
+    version: VERSION.nationalteamdetails,
+    teamID: teamId,
   });
 }

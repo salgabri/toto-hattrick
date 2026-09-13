@@ -1,0 +1,65 @@
+name: Code checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: archive-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CHPP_CONSUMER_KEY: offline-test-key
+      CHPP_CONSUMER_SECRET: offline-test-secret
+      DATABASE_URL: file:./ci-unused.db
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          # The release check reads the immutable predecessor selected by the event.
+          # Full history also keeps multi-commit pushes independent of stored credentials.
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run db:generate
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build -w web
+      - name: Validate committed release continuity
+        shell: bash
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+
+          case "$GITHUB_EVENT_NAME" in
+            pull_request) previous_sha="$PR_BASE_SHA" ;;
+            push) previous_sha="$PUSH_BEFORE_SHA" ;;
+            *) echo "Unsupported event: $GITHUB_EVENT_NAME" >&2; exit 1 ;;
+          esac
+
+          if [[ ! "$previous_sha" =~ ^[0-9a-f]{40}$ ]] || [[ "$previous_sha" == 0000000000000000000000000000000000000000 ]]; then
+            echo "The event did not identify a valid predecessor commit" >&2
+            exit 1
+          fi
+          git cat-file -e "${previous_sha}^{commit}"
+
+          previous_dir="$(mktemp -d "$RUNNER_TEMP/hattrick-previous-data.XXXXXX")"
+          trap 'rm -rf -- "$previous_dir"' EXIT
+          git archive --format=tar "${previous_sha}:web/public/data" | tar -x -C "$previous_dir"
+
+          npm run update:validate-git -w server -- \
+            --candidate "$GITHUB_WORKSPACE/web/public/data" \
+            --previous "$previous_dir"

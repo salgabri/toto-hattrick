@@ -50,12 +50,12 @@ test('network failures and HTTP quota/outage responses propagate for retries', a
   for (const status of [401, 429, 503]) {
     await t.test(`HTTP ${status}`, async (child) => {
       mockResponse(child, 'Temporarily unavailable', status);
-      await assert.rejects(resolveTeamOwner(token, targetTeamId), new RegExp(`failed \\(${status}\\)`));
+      await assert.rejects(resolveTeamOwner(token, targetTeamId), { name: 'ChppRequestError', status });
     });
   }
   await t.test('network rejection', async (child) => {
     child.mock.method(globalThis, 'fetch', async () => { throw new Error('network unavailable'); });
-    await assert.rejects(resolveTeamOwner(token, targetTeamId), /network unavailable/);
+    await assert.rejects(resolveTeamOwner(token, targetTeamId), { name: 'ChppRequestError', category: 'network' });
   });
 });
 

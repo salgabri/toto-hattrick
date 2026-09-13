@@ -5,12 +5,11 @@ import { validSuppliedNationalDates } from './nationalDates.js';
 
 /**
  * World Cup (senior + youth) — a champion NATION per edition, not a manager/club, so it lives
- * outside the CupChampion model entirely. No CHPP path exists: cupmatches(137, season) returns
- * CupRound 0 for every season tried, same dead end as a club cup that was never played — Hattrick
- * simply doesn't index national-team competitions in that table. The full roll of honour is a
- * single page (World/WorldCup/History.aspx), scraped once into the committed seed
- * worldcup-history.json and ingested here — no OAuth/CHPP call needed for this one, it's a pure
- * static seed. The youth bracket was "U20" through edition 31 and "U21" from edition 32 on.
+ * outside the CupChampion model entirely. `cupmatches` does not index national-team competitions,
+ * so the original history came from the retained World Cup roll-of-honour seed. New-format senior
+ * and U21 editions are now monitored through the official `tournamentdetails` and
+ * `tournamentfixtures` XML files by officialTournaments.ts. The youth bracket was "U20" through
+ * edition 31 and "U21" from edition 32 on.
  */
 export interface WorldCupEdition {
   edition: number;

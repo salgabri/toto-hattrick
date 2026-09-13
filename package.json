@@ -15,13 +15,15 @@
     "db:migrate": "npm run db:migrate --workspace server",
     "db:generate": "npm run db:generate --workspace server",
     "typecheck": "npm run typecheck --workspace server && npm run typecheck --workspace web",
-    "test": "npm run test --workspace server && node qa/run-web-tests.mjs && node --test qa/correct-stored-cup-winners.test.mjs",
-    "qa": "npm run build --workspace server && node qa/run-audit.mjs"
+    "test": "npm run test --workspace server && node qa/run-web-tests.mjs && node --test qa/correct-stored-cup-winners.test.mjs scripts/*.test.mjs",
+    "qa": "npm run build --workspace server && node qa/run-audit.mjs",
+    "update:all": "node scripts/run-local-update.mjs",
+    "update:publish": "node scripts/run-local-update.mjs --publish"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   }
 }

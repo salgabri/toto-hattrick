@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { dirname } from 'node:path';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { XMLParser } from 'fast-xml-parser';
 import { z } from 'zod';
@@ -9,6 +9,8 @@ import { fetchCupMatches, fetchMatchDetails } from '../chpp/endpoints.js';
 import { parseCupMatches } from '../schemas/index.js';
 import type { TokenPair } from '../chpp/auth.js';
 import { parseCupFinalMatch, type CupFinalMatch } from '../schemas/cupFinal.js';
+import { captureEvidence, evidenceConfiguration, InvalidEvidenceError, matchEvidenceKey, observationEvidenceKey, readEvidence, roundEvidenceKey } from '../update/evidence.js';
+import { StorageConflictError, StorageUnavailableError } from '../update/storage.js';
 
 export interface CupFinalSummary {
   cupId: number; season: number; matchId: number; round?: number;
@@ -142,26 +144,69 @@ export const CupFinalRoundSchema = z.object({
   cupId: z.number().int().positive(), season: z.number().int().positive(), round: z.number().int().nonnegative(),
   matches: z.array(z.object({ matchId: z.number().int().positive(), homeTeamName: z.string().min(1), awayTeamName: z.string().min(1), homeGoals: z.number().int().nonnegative().nullable(), awayGoals: z.number().int().nonnegative().nullable() })),
 });
-export async function loadPreviousCupRound(token: TokenPair, summary: CupFinalSummary): Promise<{ previous?: CupFinalRound; reason?: string; fetched: boolean }> {
+export async function loadPreviousCupRound(token: TokenPair, summary: CupFinalSummary): Promise<{ previous?: CupFinalRound; reason?: string; fetched: boolean; pending?: boolean }> {
   if (!summary.round || summary.round <= 1) return { fetched: false };
-  const file = fileURLToPath(new URL(`../../../.scrape/cup-final-rounds/${summary.cupId}-${summary.season}-${summary.round - 1}.json`, import.meta.url));
+  const configuration = evidenceConfiguration();
+  const key = roundEvidenceKey(summary.cupId, summary.season, summary.round - 1);
+  const identity = (previous: CupFinalRound) => previous.cupId === summary.cupId && previous.season === summary.season && previous.round === summary.round! - 1;
+  if (configuration) {
+    try {
+      const retained = await readEvidence(configuration.store, key);
+      if (retained) {
+        const shaped = CupFinalRoundSchema.safeParse(retained.capture.payload);
+        const previous = shaped.success ? shaped.data : parseCupMatches(retained.capture.payload);
+        if (!identity(previous)) throw new InvalidEvidenceError();
+        return { previous, fetched: false };
+      }
+    } catch (error) {
+      if (error instanceof StorageUnavailableError || error instanceof StorageConflictError) throw error;
+      return { reason: 'Retained preceding round cannot be validated; no re-fetch', fetched: false };
+    }
+  }
+  const file = configuration ? join(configuration.workspacePath, 'cup-final-rounds', `${summary.cupId}-${summary.season}-${summary.round - 1}.json`)
+    : fileURLToPath(new URL(`../../../.scrape/cup-final-rounds/${summary.cupId}-${summary.season}-${summary.round - 1}.json`, import.meta.url));
   if (existsSync(file)) {
-    try { return { previous: CupFinalRoundSchema.parse(JSON.parse(readFileSync(file, 'utf8'))), fetched: false }; }
-    catch { return { reason: 'Cached preceding round cannot be validated; no re-fetch', fetched: false }; }
+    try {
+      const text = readFileSync(file, 'utf8');
+      let raw: unknown;
+      try { raw = JSON.parse(text); } catch { raw = text; }
+      if (configuration) await captureEvidence({ store: configuration.store, key, source: 'cupmatches', apiVersion: '1.2', parserVersion: 'cup-final-round-v1', payload: raw });
+      const previous = CupFinalRoundSchema.parse(raw);
+      if (!identity(previous)) throw new InvalidEvidenceError();
+      return { previous, fetched: false };
+    } catch (error) {
+      if (error instanceof StorageUnavailableError || error instanceof StorageConflictError) throw error;
+      return { reason: 'Cached preceding round cannot be validated; no re-fetch', fetched: false };
+    }
   }
   try {
-    const previous = parseCupMatches(await fetchCupMatches(token, { cupId: summary.cupId, season: summary.season, cupRound: summary.round - 1 }));
-    if (previous.cupId !== summary.cupId || previous.season !== summary.season || previous.round !== summary.round - 1)
+    const raw = await fetchCupMatches(token, { cupId: summary.cupId, season: summary.season, cupRound: summary.round - 1 });
+    let previous: CupFinalRound;
+    try { previous = parseCupMatches(raw); }
+    catch (error) {
+      if (configuration) await captureEvidence({ store: configuration.store, key, source: 'cupmatches', apiVersion: '1.2', parserVersion: 'cup-final-round-v1', payload: raw });
+      throw error;
+    }
+    const pending = previous.cupId === summary.cupId && previous.season === summary.season &&
+      ((previous.round === 0 && !previous.matches.length) || (identity(previous) && (!previous.matches.length || previous.matches.some(match => match.homeGoals === null || match.awayGoals === null))));
+    if (configuration) await captureEvidence({ store: configuration.store, key: pending ? observationEvidenceKey(key) : key, source: 'cupmatches', apiVersion: '1.2', parserVersion: 'cup-final-round-v1', payload: raw });
+    if (pending) return { pending: true, fetched: true };
+    if (!identity(previous))
       return { reason: 'Fetched preceding round does not match requested cup/season/round', fetched: true };
     mkdirSync(dirname(file), { recursive: true });
     writeFileSync(file, JSON.stringify(previous));
     return { previous, fetched: true };
-  } catch { return { reason: 'Preceding round could not be fetched or validated', fetched: true }; }
+  } catch (error) {
+    if (error instanceof StorageUnavailableError || error instanceof StorageConflictError || (configuration && error instanceof Error && error.name.startsWith('Chpp'))) throw error;
+    return { reason: 'Preceding round could not be fetched or validated', fetched: true };
+  }
 }
 
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_', parseTagValue: false, trimValues: true });
 function paths(matchId: number) {
   if (!Number.isSafeInteger(matchId) || matchId <= 0) throw new Error('Invalid match ID');
+  const configuration = evidenceConfiguration();
+  if (configuration) return { xml: join(configuration.workspacePath, 'samples', `matchdetails-3.0-${matchId}.local.xml`), json: join(configuration.workspacePath, 'cup-final-details', `${matchId}.json`) };
   return {
     xml: fileURLToPath(new URL(`../../samples/matchdetails-3.0-${matchId}.local.xml`, import.meta.url)),
     json: fileURLToPath(new URL(`../../../.scrape/cup-final-details/${matchId}.json`, import.meta.url)),
@@ -180,7 +225,30 @@ export function readCachedCupFinalMatch(matchId: number): { match?: CupFinalMatc
 }
 
 /** Reuse captures and refuse to re-fetch any match already represented in the DB. */
-export async function loadCupFinalMatch(token: TokenPair, matchId: number): Promise<{ match?: CupFinalMatch; storedMatch?: StoredCupFinalMatch; reason?: string; fetched: boolean }> {
+export async function loadCupFinalMatch(token: TokenPair, matchId: number): Promise<{ match?: CupFinalMatch; storedMatch?: StoredCupFinalMatch; reason?: string; fetched: boolean; pending?: boolean }> {
+  const configuration = evidenceConfiguration();
+  const key = matchEvidenceKey(matchId);
+  if (configuration) {
+    try {
+      const retained = await readEvidence(configuration.store, key);
+      if (retained) {
+        const match = parseCupFinalMatch(retained.capture.payload);
+        if (match.matchId !== matchId) throw new InvalidEvidenceError();
+        return { match, fetched: false };
+      }
+      const files = paths(matchId);
+      const file = existsSync(files.json) ? files.json : existsSync(files.xml) ? files.xml : undefined;
+      if (file) {
+        const text = readFileSync(file, 'utf8');
+        let raw: unknown;
+        try { raw = file.endsWith('.xml') ? parser.parse(text) : JSON.parse(text); } catch { raw = text; }
+        await captureEvidence({ store: configuration.store, key, source: 'matchdetails', apiVersion: '3.0', parserVersion: 'cup-final-match-v1', payload: raw });
+      }
+    } catch (error) {
+      if (error instanceof StorageUnavailableError || error instanceof StorageConflictError) throw error;
+      return { reason: 'Retained match cannot be validated; no re-fetch', fetched: false };
+    }
+  }
   const cached = readCachedCupFinalMatch(matchId);
   if (cached.cached) return { ...cached, fetched: false };
   const [storedMatch, storedDetail, storedCup] = await Promise.all([
@@ -191,11 +259,25 @@ export async function loadCupFinalMatch(token: TokenPair, matchId: number): Prom
   if (storedMatch || storedDetail || storedCup) return { ...(storedMatch ? { storedMatch } : {}), fetched: false, reason: 'Match already stored; reuse archived summary if decisive, no re-fetch' };
   try {
     const raw = await fetchMatchDetails(token, matchId, { matchEvents: true });
-    const match = parseCupFinalMatch(raw);
+    // Capture before the caller can store winner facts. A parser failure
+    // remains discoverable on a fresh runner, and never silently fetches the same match again.
+    let match: CupFinalMatch;
+    try { match = parseCupFinalMatch(raw); }
+    catch (error) {
+      if (configuration) await captureEvidence({ store: configuration.store, key, source: 'matchdetails', apiVersion: '3.0', parserVersion: 'cup-final-match-v1', payload: raw });
+      throw error;
+    }
+    const pending = match.matchId === matchId && !match.finishedDate;
+    if (configuration) await captureEvidence({ store: configuration.store, key: pending ? observationEvidenceKey(key) : key, source: 'matchdetails', apiVersion: '3.0', parserVersion: 'cup-final-match-v1', payload: raw });
+    if (pending) return { pending: true, fetched: true };
     if (match.matchId !== matchId) return { fetched: true, reason: 'Fetched match identity differs from the final' };
     const file = paths(matchId).json;
     mkdirSync(dirname(file), { recursive: true });
     writeFileSync(file, JSON.stringify(raw));
     return { fetched: true, match };
-  } catch { return { fetched: true, reason: 'Final details could not be fetched or validated' }; }
+  } catch (error) {
+    if (error instanceof StorageUnavailableError || error instanceof StorageConflictError ||
+        (error instanceof Error && error.name.startsWith('Chpp'))) throw error;
+    return { fetched: true, reason: 'Final details could not be fetched or validated' };
+  }
 }

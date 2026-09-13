@@ -83,7 +83,7 @@ export interface CupSyncResult {
 export async function syncCupChampions(
   token: TokenPair,
   cupId: number,
-  opts: { minSeason?: number; pacingMs?: number; verifiedWinners?: readonly VerifiedCupFinalWinner[] } = {},
+  opts: { minSeason?: number; seasons?: readonly number[]; pacingMs?: number; throwOnFetchError?: boolean; verifiedWinners?: readonly VerifiedCupFinalWinner[] } = {},
 ): Promise<CupSyncResult> {
   const cup = await prisma.cup.findUnique({ where: { cupId } });
   if (!cup) throw new Error(`cup ${cupId} not seeded`);
@@ -100,7 +100,10 @@ export async function syncCupChampions(
     return result;
   }
 
-  for (let season = start; season >= floor; season--) {
+  const seasons = opts.seasons ? [...new Set(opts.seasons)].sort((a, b) => b - a)
+    : Array.from({ length: Math.max(0, start - floor + 1) }, (_, i) => start - i);
+  if (seasons.some(season => !Number.isSafeInteger(season) || season < 1)) throw new Error('Invalid cup season selection');
+  for (const season of seasons) {
     const existing = await prisma.cupChampion.findUnique({ where: { cupId_season: { cupId, season } } });
     // Skip only finals we already have USABLE data for. A real fetched final (finalMatchId > 0)
     // never changes, and a final that already has a manager needs nothing more. What must NOT be
@@ -116,7 +119,8 @@ export async function syncCupChampions(
     let cm;
     try {
       cm = parseCupMatches(await fetchCupMatches(token, { cupId, season }));
-    } catch {
+    } catch (error) {
+      if (opts.throwOnFetchError) throw error;
       result.issues.push({ season, reason: 'Cup round could not be fetched or validated' });
       await sleep(pacingMs);
       continue;
@@ -132,7 +136,7 @@ export async function syncCupChampions(
     // started yet — skip it and keep walking down, so older in-window placeholders still get
     // materialized rather than the whole walk aborting before it reaches them.
     if (cm.round === 0 || cm.matches.length === 0) {
-      if (season === start) continue;
+      if (opts.seasons || season === start) continue;
       break;
     }
 
@@ -145,10 +149,12 @@ export async function syncCupChampions(
     const summary = { ...f, cupId, season, round: cm.round, homeGoals: f.homeGoals, awayGoals: f.awayGoals };
     const prior = await loadPreviousCupRound(token, summary);
     if (prior.fetched) await sleep(pacingMs);
+    if (prior.pending) continue;
     // Capture details while the final is NEW. Subsequent sync/enrichment reuses that capture and
     // cannot refetch an archived final. Numeric team IDs and match context are validated together.
     const detail = await loadCupFinalMatch(token, f.matchId);
     if (detail.fetched) await sleep(pacingMs);
+    if (detail.pending) continue;
     const resolution = detail.match ? resolveCupFinal(summary, detail.match, opts.verifiedWinners, prior.previous)
       : detail.storedMatch ? resolveStoredCupFinal(summary, detail.storedMatch, prior.previous)
       : { reason: detail.reason ?? 'No retained final evidence', winner: undefined };

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>tournamentdetails.xml</FileName>
+  <Version>1.0</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-09-13 08:17:44</FetchedDate>
+  <Tournament>
+    <TournamentId>5001315</TournamentId>
+    <Name>World Cup</Name>
+    <TournamentType>12</TournamentType>
+    <Season>41</Season>
+    <LogoUrl>https://www.hattrick.org/Img/Cups/ht-big-cup-wc.png</LogoUrl>
+    <TrophyType>303</TrophyType>
+    <NumberOfTeams>96</NumberOfTeams>
+    <NumberOfGroups>16</NumberOfGroups>
+    <LastMatchRound>15</LastMatchRound>
+    <FirstMatchRoundDate>2026-06-26 20:00:00</FirstMatchRoundDate>
+    <NextMatchRoundDate>2026-09-18 20:00:00</NextMatchRoundDate>
+    <IsMatchesOngoing>0</IsMatchesOngoing>
+    <Creator>
+      <UserId>0</UserId>
+      <Loginname></Loginname>
+    </Creator>
+  </Tournament>
+</HattrickData>
