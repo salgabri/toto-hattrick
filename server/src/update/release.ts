@@ -63,6 +63,22 @@ const schemas = {
   }).strict()),
 };
 type Bundles = { [K in ReleaseFile]: z.infer<typeof schemas[K]> };
+type ManagerCoverageFamily = 'masters' | 'worldCup' | 'regional' | 'seasonal' | 'league' | 'cup';
+interface ManagerCoverageGap {
+  family: ManagerCoverageFamily;
+  competitionKey: string;
+  edition: number;
+  winner: string;
+}
+export interface RecentManagerCoverage {
+  /** Latest completed champion in each published competition, never an ongoing edition. */
+  complete: boolean;
+  checked: number;
+  missing: number;
+  byFamily: Record<ManagerCoverageFamily, { checked: number; missing: number }>;
+  /** Bounded, public-fact examples for release logs; the private ledger retains full tasks. */
+  examples: ManagerCoverageGap[];
+}
 export interface ReleaseSource {
   key: string;
   label: string;
@@ -168,6 +184,49 @@ function indexBundles(data: Bundles) {
   return { facts, trophies, medals };
 }
 
+/** A missing manager is a coverage warning, not permission to guess the current club owner. */
+function auditRecentManagerCoverage(data: Bundles): RecentManagerCoverage {
+  const byFamily: RecentManagerCoverage['byFamily'] = {
+    masters: { checked: 0, missing: 0 }, worldCup: { checked: 0, missing: 0 },
+    regional: { checked: 0, missing: 0 }, seasonal: { checked: 0, missing: 0 },
+    league: { checked: 0, missing: 0 }, cup: { checked: 0, missing: 0 },
+  };
+  const examples: ManagerCoverageGap[] = [];
+  let checked = 0;
+  let missing = 0;
+  const record = (family: ManagerCoverageFamily, competitionKey: string, edition: number,
+    winnerName: string, userId: number | undefined, managerName: string | null | undefined) => {
+    checked++;
+    byFamily[family].checked++;
+    if (userId && managerName?.trim() && managerName.trim() !== '—') return;
+    missing++;
+    byFamily[family].missing++;
+    if (examples.length < 20) examples.push({ family, competitionKey, edition, winner: winnerName });
+  };
+  const latestClubWinner = (family: ManagerCoverageFamily, key: string, rows: z.infer<typeof winner>[]) => {
+    const row = rows.reduce<(typeof rows)[number] | undefined>((latest, candidate) =>
+      !latest || candidate.season > latest.season ? candidate : latest, undefined);
+    if (row) record(family, key, row.season, row.club, row.userId, row.manager);
+  };
+  const latestNationalWinner = (family: ManagerCoverageFamily, key: string,
+    rows: Array<z.infer<typeof podium> & { edition: number }>) => {
+    const row = rows.filter(candidate => candidate.champion?.trim()).reduce<(typeof rows)[number] | undefined>((latest, candidate) =>
+      !latest || candidate.edition > latest.edition ? candidate : latest, undefined);
+    if (row?.champion) record(family, key, row.edition, row.champion, row.coachUserId, row.coach);
+  };
+  // Masters first, so an unresolved reigning international title cannot disappear behind the
+  // much larger historical national-cup backlog in the bounded release-log examples.
+  latestClubWinner('masters', 'cup:183', data['masters.json']);
+  latestNationalWinner('worldCup', 'worldcup:senior', data['worldcup.json'].senior);
+  latestNationalWinner('worldCup', 'worldcup:youth', data['worldcup.json'].youth);
+  for (const cup of data['worldcup.json'].regional) latestNationalWinner('regional', `national:${cup.cupId}`,
+    cup.seasons.map(row => ({ ...row, edition: row.season })));
+  for (const cup of data['seasonal.json']) latestClubWinner('seasonal', `cup:${cup.cupId}`, cup.winners);
+  for (const league of data['leagues.json']) latestClubWinner('league', `league:${league.leagueId}`, league.champions);
+  for (const league of data['cups.json']) for (const cup of league.cups) latestClubWinner('cup', `cup:${cup.cupId}`, cup.winners);
+  return { complete: missing === 0 && checked > 0, checked, missing, byFamily, examples };
+}
+
 // Property ordering and omitted undefined properties do not affect semantic comparison.
 function stable(value: unknown): string {
   if (Array.isArray(value)) return `[${value.map(stable).join(',')}]`;
@@ -232,7 +291,8 @@ function validate(data: Bundles, previous?: Bundles) {
       remaining.splice(ix, 1);
     }
   }
-  return { managers: managers.size, historicalRecords: indexed.facts.size, trophies: indexed.trophies.length, medals: indexed.medals.length, elections: data['elections.json'].length };
+  return { managers: managers.size, historicalRecords: indexed.facts.size, trophies: indexed.trophies.length, medals: indexed.medals.length,
+    elections: data['elections.json'].length, recentManagerCoverage: auditRecentManagerCoverage(data) };
 }
 
 export async function validateRelease(candidateDir: string, previousDataDir?: string) {

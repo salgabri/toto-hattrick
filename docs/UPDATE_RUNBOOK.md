@@ -55,6 +55,24 @@ scheduler was offline can be inferred. Future or replaced tournament IDs also re
 change. Those boundaries remain explicit instead of being filled with guesses; independently proven
 results continue to publish while attribution or other evidence is pending.
 
+### Release-quality attribution audit
+
+Every release candidate is checked against its exact baked public bundles. For each competition,
+the audit selects its latest **completed** winner, separately across six families: leagues, domestic
+cups, Hattrick Masters, seasonal club trophies, senior/U21 World Cups, and senior/U21 regional
+national-team cups. It flags a winner whose verified manager/coach user ID is missing or whose
+manager/coach name is a placeholder. Ongoing editions have no winner to audit. Season numbers are
+compared within each competition, not across countries or tournament numbering systems.
+
+The private run `report.json` and `result.json`, and the command-line summary, include structured
+counts grouped by family and at most 20 concrete examples. A missing latest-winner identity makes
+overall coverage **degraded**, not complete; it does **not** block publication of independently
+validated winner facts. Complete coverage also requires no pending result tasks, evidence reviews,
+or source issues. The existing archive has a substantial historical attribution backlog, including
+the most recent Masters champion and many domestic cups, so a degraded report is expected until
+win-time evidence closes those gaps. Current club ownership is never inferred to be the manager
+who won an earlier trophy.
+
 The unattended publisher stages only `web/public/data/**`, creates a release commit and a
 no-fast-forward merge commit, then atomically pushes both the audit branch and `main`. A concurrent
 main change rejects the whole push. GitHub `Code checks` revalidates pushes and pull requests
