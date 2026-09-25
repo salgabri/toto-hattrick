@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587",
-  "codeRevision": "3d0463b663df7c5ef7e802c668c462d1bfbf811d",
-  "generatedAt": "2026-09-25T20:33:36.593Z",
-  "lastChangedAt": "2026-09-25T20:33:36.593Z",
+  "dataVersion": "bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763",
+  "codeRevision": "edd514c37e61fbcf2c6a7134e3efdb0c27fee344",
+  "generatedAt": "2026-09-25T20:53:13.561Z",
+  "lastChangedAt": "2026-09-25T20:53:13.561Z",
   "sources": [
     {
       "key": "cup:1",
@@ -1709,7 +1709,7 @@
     {
       "key": "cup:183",
       "label": "Hattrick Masters results",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:46:56.900Z",
       "pending": 12,
       "status": "failed"
     },
@@ -1933,7 +1933,7 @@
     {
       "key": "cup:23",
       "label": "Korea Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T20:46:56.900Z",
       "pending": 22,
       "status": "pending"
     },
@@ -1949,7 +1949,7 @@
       "label": "Puchar Polski cup results",
       "lastSuccessfulCheck": null,
       "pending": 23,
-      "status": "pending"
+      "status": "failed"
     },
     {
       "key": "cup:26",
@@ -1963,7 +1963,7 @@
       "label": "Scottish Cup cup results",
       "lastSuccessfulCheck": null,
       "pending": 24,
-      "status": "pending"
+      "status": "failed"
     },
     {
       "key": "cup:28",
@@ -7847,7 +7847,7 @@
     },
     {
       "key": "national-cup:4878493",
-      "label": "U21 Asia-Oceania Cup official tournament",
+      "label": "U21 Asia and Oceania Cup official tournament",
       "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 1,
       "status": "pending"
@@ -7882,7 +7882,7 @@
     },
     {
       "key": "national-cup:5001279",
-      "label": "Asia-Oceania Cup official tournament",
+      "label": "Asia and Oceania Cup official tournament",
       "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 1,
       "status": "pending"
@@ -9206,37 +9206,37 @@
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/managers.json",
-      "sha256": "0d1dce327c24bb0aa3f18f49e63249e43699bea0f431f8c81528774668641a21",
-      "bytes": 7051712
+      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/managers.json",
+      "sha256": "6c7283a13d94f4ff74a6364bed11907e960541f94456622135165cc55b50b291",
+      "bytes": 7051861
     },
     "leagues.json": {
-      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/leagues.json",
+      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/leagues.json",
       "sha256": "f8bf1be708c134772a23ff107b3bd84db6a33df4404854ab7930548553fd4f60",
       "bytes": 753871
     },
     "cups.json": {
-      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/cups.json",
-      "sha256": "e98551d8a1a748c6ac30a3c33d4698d4b9c1d2cd8aca9649f862c6e0eee1404a",
-      "bytes": 2355803
+      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/cups.json",
+      "sha256": "d5496ceff77cbc1acaed851e84b24b5b8901cf3cfd5edec61e7fabe36303b785",
+      "bytes": 2363276
     },
     "masters.json": {
-      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/masters.json",
-      "sha256": "3ea7ad93215d46edf2c63333fb38b61401eae13f4ef688bb586cdc3b1588ab5c",
-      "bytes": 6861
+      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/masters.json",
+      "sha256": "4de888190c5f0e0fb02b173c132a164c2a83f9987e009f36b2a32c79d879651f",
+      "bytes": 6945
     },
     "seasonal.json": {
-      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/seasonal.json",
+      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/seasonal.json",
       "sha256": "fe05c6c09bf0f3a45271c01469d4a8dcf5bb32953da990f751334e581ca8cab3",
       "bytes": 58171
     },
     "worldcup.json": {
-      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/worldcup.json",
+      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/worldcup.json",
       "sha256": "f5cc77f818a3789e0c1187fa6696b528fa028062a62be9e0e6cbc2df97e340fa",
       "bytes": 83744
     },
     "elections.json": {
-      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/elections.json",
+      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/elections.json",
       "sha256": "6336c0e46a4e21ce7b1ef5c4c8fdeae16d9e874748afc6d092352b501216695e",
       "bytes": 1122909
     }
