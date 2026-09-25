@@ -69,9 +69,11 @@ counts grouped by family and at most 20 concrete examples. A missing latest-winn
 overall coverage **degraded**, not complete; it does **not** block publication of independently
 validated winner facts. Complete coverage also requires no pending result tasks, evidence reviews,
 or source issues. The existing archive has a substantial historical attribution backlog, including
-the most recent Masters champion and many domestic cups, so a degraded report is expected until
-win-time evidence closes those gaps. Current club ownership is never inferred to be the manager
-who won an earlier trophy.
+many domestic cups, so a degraded report is expected until win-time evidence closes those gaps.
+Each run replays immutable, retained Club History captures after result ingestion; this can fill a
+newly arrived winner row if its exact linked manager evidence was captured earlier. Wieselhausen's
+season-95 Masters manager is supported by a checked-in direct title entry. This replay makes no
+HTML request and does not infer a historical winner from current club ownership.
 
 The unattended publisher stages only `web/public/data/**`, creates a release commit and a
 no-fast-forward merge commit, then atomically pushes both the audit branch and `main`. A concurrent

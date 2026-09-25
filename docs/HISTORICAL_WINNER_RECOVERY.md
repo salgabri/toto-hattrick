@@ -57,6 +57,11 @@ club's country/league, never the manager's nationality; omit it if unknown.
 - Direct cup-victory events name the winner through a manager link; these work on partial histories.
   Their visible local season is authoritative: an attached match-archive link can use a different
   global season and is not used for cup-season matching.
+- The observed Hattrick Masters message names the club's owner at the win but contains no cup link.
+  Its exact "became Hattrick Masters champions season" wording maps only to cup 183, and is
+  accepted only with the matching linked team, matching linked manager name, and valid dated
+  season. The checked-in [Wieselhausen capture](../server/src/data/verified-club-history-wieselhausen-2026-09-17.json)
+  records the public 17 September 2026 season-95 entry; current ownership alone is not evidence.
 - First-place league and registered tournament events use the most recent earlier ownership event
   only with a complete history. Missing/deleted owner links, relinquishments, missing dates, and
   ownership changes on the same day as the win block inference.
@@ -77,6 +82,11 @@ club's country/league, never the manager's nationality; omit it if unknown.
 For independent use, `extractHistoricalWinnerEvidence` and `planHistoricalWinners` in
 `server/src/sync/historicalWinners.ts` are pure functions. `applyHistoricalWinners` is dry-run by
 default. After reviewing and applying a repair, run the normal bake/build workflow separately.
+
+The normal updater also replays the immutable Club History captures already in its accepted
+evidence snapshot after new result rows are ingested. This closes a timing gap where proof was
+captured before a champion row existed: only exact, guarded matches fill missing IDs, and
+contradictory evidence remains unresolved. It does not fetch or scan Club History pages.
 
 ## Unverified legacy approximations
 

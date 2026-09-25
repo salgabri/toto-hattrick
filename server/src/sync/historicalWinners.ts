@@ -79,9 +79,9 @@ function manager(row: HistoricalRow): { userId: number; userName: string } | nul
   return { userId, userName };
 }
 function eventDate(text: string): string | null {
-  const match = clean(text).match(/^(\d{2})-(\d{2})-(\d{4})\b/);
+  const match = clean(text).match(/^(\d{2})([-.])(\d{2})\2(\d{4})\b/);
   if (!match) return null;
-  const iso = `${match[3]}-${match[2]}-${match[1]}`;
+  const iso = `${match[4]}-${match[3]}-${match[1]}`;
   const value = new Date(`${iso}T00:00:00Z`);
   return !Number.isNaN(value.valueOf()) && value.toISOString().slice(0, 10) === iso ? iso : null;
 }
@@ -119,10 +119,14 @@ export function extractHistoricalWinnerEvidence(histories: readonly HistoricalCl
       const cupVictory = event.text.match(/^\d{2}-\d{2}-\d{4} In season (\d+), (.+?) emerged victorious from (.+?)\. They were managed by (.+)\.$/i);
       const cupMemorable = event.text.match(/^\d{2}-\d{2}-\d{4} Season (\d+) was memorable for (.+?), who led (.+?) to the title in (.+)\.$/i);
       const cupLeadership = event.text.match(/^\d{2}-\d{2}-\d{4} (.+?), under the leadership of (.+?), won (.+?) season (\d+)\.$/i);
-      const cupWin = cupVictory !== null || cupMemorable !== null || cupLeadership !== null;
-      const cupSeason = cupVictory?.[1] ?? cupMemorable?.[1] ?? cupLeadership?.[4];
-      const cupClub = cupVictory?.[2] ?? cupMemorable?.[3] ?? cupLeadership?.[1];
-      const cupManagerName = cupVictory?.[4] ?? cupMemorable?.[2] ?? cupLeadership?.[2];
+      // The observed Masters history entry names and links the owner at the win, but unlike
+      // domestic cup entries it has no CupID link. Its exact title names cup 183; require a
+      // matching linked team and manager before using that fixed competition identity.
+      const mastersChampion = event.text.match(/^\d{2}[.-]\d{2}[.-]\d{4} (.+?) under the ownership of (.+?) became Hattrick Masters champions season (\d+)\.$/i);
+      const cupWin = cupVictory !== null || cupMemorable !== null || cupLeadership !== null || mastersChampion !== null;
+      const cupSeason = cupVictory?.[1] ?? cupMemorable?.[1] ?? cupLeadership?.[4] ?? mastersChampion?.[3];
+      const cupClub = cupVictory?.[2] ?? cupMemorable?.[3] ?? cupLeadership?.[1] ?? mastersChampion?.[1];
+      const cupManagerName = cupVictory?.[4] ?? cupMemorable?.[2] ?? cupLeadership?.[2] ?? mastersChampion?.[2];
       const tournamentWin = event.text.match(/\bParticipated in season (\d+) of (.+?) and finished as number 1\./i);
       const leagueWin = event.text.match(/\bfinished as number 1 in (.+?) season (\d+)\./i);
       // Real HI/HTAL captures use this boilerplate after a club is abandoned even when its
@@ -132,9 +136,11 @@ export function extractHistoricalWinnerEvidence(histories: readonly HistoricalCl
       const reject = (reason: string) => rejected.push({ teamId: history.teamId, reason, event });
       if (!event.date) { reject('Winner event has no valid DD-MM-YYYY date'); continue; }
       const kind = cupWin ? 'cup' : tournamentWin ? 'tournament' : 'league';
-      const ids = linkedIds(event, kind === 'cup' ? 'CupID' : kind === 'tournament' ? 'tournamentId' : 'LeagueLevelUnitID');
+      const linkedCompetitionIds = linkedIds(event, kind === 'cup' ? 'CupID' : kind === 'tournament' ? 'tournamentId' : 'LeagueLevelUnitID');
+      const ids = mastersChampion && linkedCompetitionIds.length === 0 ? [183] : linkedCompetitionIds;
       const season = Number(cupSeason ?? tournamentWin?.[1] ?? leagueWin?.[2] ?? leagueChampion?.[3]);
       if (ids.length !== 1 || !positive(season)) { reject('Winner event has no unique linked competition and season'); continue; }
+      if (mastersChampion && ids[0] !== 183) { reject('Masters winner event links to a different competition'); continue; }
       // A cup event's Archive.aspx link uses the GLOBAL season, while its visible text uses
       // the cup's LOCAL season (e.g. HI season 1 -> archive season 64). Compare only the
       // selected competition's own season parameter, never unrelated archive links.
@@ -147,6 +153,9 @@ export function extractHistoricalWinnerEvidence(histories: readonly HistoricalCl
       if (linkedSeasons.some((linked) => linked !== season)) { reject('Linked season disagrees with winner event'); continue; }
       const teamIds = linkedIds(event, 'TeamID');
       if (teamIds.some((id) => id !== history.teamId)) { reject('Linked winner team disagrees with history team'); continue; }
+      if (mastersChampion && (teamIds.length !== 1 || clean(cupClub ?? '') !== clean(history.club))) {
+        reject('Masters winner event lacks the exact linked history team'); continue;
+      }
       let owner: { userId: number; userName: string } | null = null;
       let ownershipEvent: HistoricalEvent | undefined;
       const directLeagueManager = leagueChampion ? manager(event) : null;

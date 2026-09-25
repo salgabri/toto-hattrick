@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { test, type TestContext } from 'node:test';
 import { applyHistoricalWinners, extractHistoricalWinnerEvidence, planHistoricalWinners, type HistoricalClubHistory, type HistoricalRow, type HistoricalWinnerSnapshot } from './historicalWinners.js';
 
@@ -136,6 +137,34 @@ test('actual memorable-season and leadership cup events resolve linked historica
     assert.equal(result.evidence[0]!.userId, fixture.userId);
     assert.equal(result.evidence[0]!.club, fixture.club);
     assert.equal(result.evidence[0]!.basis, 'direct-manager');
+  }
+});
+
+test('captured Wieselhausen Masters entry proves the manager at the win without a CupID link', () => {
+  const input = JSON.parse(readFileSync(new URL('../../src/data/verified-club-history-wieselhausen-2026-09-17.json', import.meta.url), 'utf8')) as HistoricalClubHistory[];
+  const extracted = extractHistoricalWinnerEvidence(input);
+  assert.equal(extracted.rejected.length, 0);
+  assert.deepEqual(extracted.evidence.map(({ kind, competitionId, season, teamId, userId, userName, basis, event }) =>
+    [kind, competitionId, season, teamId, userId, userName, basis, event.date]),
+  [['cup', 183, 95, 820764, 13557250, 'WitzigesWiesel', 'direct-manager', '2026-09-17']]);
+  const stored: HistoricalWinnerSnapshot = {
+    cups: [{ cupId: 183, leagueId: 0 }], tournamentIds: [], leagueChampions: [],
+    cupChampions: [{ cupId: 183, leagueId: 0, season: 95, championTeamId: 820764,
+      championTeamName: 'FC Wieselhausen', championUserId: null, championUserName: null }],
+  };
+  const plan = planHistoricalWinners(input, stored);
+  assert.equal(plan.plans[0]!.status, 'ready');
+  assert.equal(plan.plans[0]!.changes?.championUserId, 13557250);
+
+  const row = input[0]!.pages[0]!.rows[0]!;
+  for (const unsafe of [
+    { ...row, links: row.links.filter((link) => !link.href.includes('Manager')) },
+    { ...row, links: row.links.filter((link) => !link.href.includes('TeamID')) },
+    { ...row, links: [...row.links, { text: 'Other cup', href: '/World/Cup/?CupID=999' }] },
+    { ...row, text: row.text.replace('WitzigesWiesel', 'Another manager') },
+  ]) {
+    const bad = [{ ...input[0]!, pages: [{ ...input[0]!.pages[0]!, rows: [unsafe] }] }];
+    assert.equal(extractHistoricalWinnerEvidence(bad).evidence.length, 0, unsafe.text);
   }
 });
 
