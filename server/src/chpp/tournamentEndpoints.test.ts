@@ -89,6 +89,18 @@ test('parseTournamentDetails maps the authenticated 1.0 sample', () => {
   });
 });
 
+test('parseTournamentDetails accepts the retained ongoing -1 flag', () => {
+  assert.deepEqual(parseTournamentDetails(sample('tournamentdetails-1.0-u21africa-ongoing.xml')), {
+    tournamentId: 4_878_492,
+    name: 'U21 Africa Cup',
+    season: 41,
+    lastMatchRound: 9,
+    firstMatchRoundDate: new Date('2026-08-07T21:00:00.000Z'),
+    nextMatchRoundDate: new Date('2026-09-25T21:00:00.000Z'),
+    isMatchesOngoing: true,
+  });
+});
+
 test('parseTournamentFixtures handles seasonal and national-team tournament samples', () => {
   const supporter = parseTournamentFixtures(
     sample('tournamentfixtures-1.1-supporter-current.xml'),
