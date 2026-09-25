@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f",
-  "codeRevision": "a0d9c159c254552590791355423f59542230325c",
-  "generatedAt": "2026-09-25T22:11:49.184Z",
-  "lastChangedAt": "2026-09-25T21:28:28.898Z",
+  "dataVersion": "73e425205bb48109a7f8db776801a9a0fae09445ac76cc026d32b93fdcce7585",
+  "codeRevision": "5e5792651d8dde266aaa28c7270c92e52b21fb38",
+  "generatedAt": "2026-09-25T22:31:05.383Z",
+  "lastChangedAt": "2026-09-25T22:31:05.383Z",
   "sources": [
     {
       "key": "cup:1",
@@ -1535,7 +1535,7 @@
       "key": "cup:160",
       "label": "Copa Presidente cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -1633,7 +1633,7 @@
       "key": "cup:170",
       "label": "The Pro Bowl cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
@@ -1710,7 +1710,7 @@
       "key": "cup:183",
       "label": "Hattrick Masters results",
       "lastSuccessfulCheck": "2026-09-25T20:46:56.900Z",
-      "pending": 12,
+      "pending": 11,
       "status": "failed"
     },
     {
@@ -1857,7 +1857,7 @@
       "key": "cup:201",
       "label": "Suriyah Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
@@ -9206,37 +9206,37 @@
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/managers.json",
-      "sha256": "e8751a8383efaf3b0173833cac7dfb249003d02dc12d3696326df834b01fe4fc",
-      "bytes": 7052507
+      "path": "/data/versions/73e425205bb48109a7f8db776801a9a0fae09445ac76cc026d32b93fdcce7585/managers.json",
+      "sha256": "f8554f19a16f233b9e604a53d72055af39853fc1f708de307c6bc2ee4ab6045b",
+      "bytes": 7053063
     },
     "leagues.json": {
-      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/leagues.json",
+      "path": "/data/versions/73e425205bb48109a7f8db776801a9a0fae09445ac76cc026d32b93fdcce7585/leagues.json",
       "sha256": "f8bf1be708c134772a23ff107b3bd84db6a33df4404854ab7930548553fd4f60",
       "bytes": 753871
     },
     "cups.json": {
-      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/cups.json",
-      "sha256": "d448e63ef46884bc9d834d9aab31e6ef6b6bed4af2d8c4001a547eb98d13c906",
-      "bytes": 2393518
+      "path": "/data/versions/73e425205bb48109a7f8db776801a9a0fae09445ac76cc026d32b93fdcce7585/cups.json",
+      "sha256": "f0765edc79b567693c22e805c4a39f9de3c3610f94537abb00bfdbdbe9265e9f",
+      "bytes": 2393578
     },
     "masters.json": {
-      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/masters.json",
-      "sha256": "4de888190c5f0e0fb02b173c132a164c2a83f9987e009f36b2a32c79d879651f",
-      "bytes": 6945
+      "path": "/data/versions/73e425205bb48109a7f8db776801a9a0fae09445ac76cc026d32b93fdcce7585/masters.json",
+      "sha256": "19c30f390f33f0262dc46812aff2f5d6ce593ffffda1fef24469b0d04c51bcc0",
+      "bytes": 6974
     },
     "seasonal.json": {
-      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/seasonal.json",
+      "path": "/data/versions/73e425205bb48109a7f8db776801a9a0fae09445ac76cc026d32b93fdcce7585/seasonal.json",
       "sha256": "fe05c6c09bf0f3a45271c01469d4a8dcf5bb32953da990f751334e581ca8cab3",
       "bytes": 58171
     },
     "worldcup.json": {
-      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/worldcup.json",
+      "path": "/data/versions/73e425205bb48109a7f8db776801a9a0fae09445ac76cc026d32b93fdcce7585/worldcup.json",
       "sha256": "f5cc77f818a3789e0c1187fa6696b528fa028062a62be9e0e6cbc2df97e340fa",
       "bytes": 83744
     },
     "elections.json": {
-      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/elections.json",
+      "path": "/data/versions/73e425205bb48109a7f8db776801a9a0fae09445ac76cc026d32b93fdcce7585/elections.json",
       "sha256": "6336c0e46a4e21ce7b1ef5c4c8fdeae16d9e874748afc6d092352b501216695e",
       "bytes": 1122909
     }
