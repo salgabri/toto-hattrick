@@ -351,6 +351,62 @@ export async function refreshScheduled(token: TokenPair, options: ScheduledRefre
     else if (globalSeasons.length > 1) issues.push({ sourceKey: 'cup:183', category: 'metadata', message: 'Masters season needs a consistent offset-zero worlddetails observation; retained season is preserved' });
   }
   await seedCompetitionItems(options.onlyLeagueIds, observations, now);
+  const due = await prisma.updateItem.findMany({ where: {
+    task: 'result', state: { in: ['pending', 'retry'] }, OR: [{ nextAttemptAt: null }, { nextAttemptAt: { lte: now } }],
+    source: { kind: { in: AUTOMATED_KINDS }, ...(options.onlyLeagueIds ? { OR: [{ kind: 'league', externalId: { in: options.onlyLeagueIds } }, { kind: 'cup', numberingSystem: { in: options.onlyLeagueIds.map(id => `league:${id}:season`) } }] } : {}) },
+  }, include: { source: true } });
+  const succeeded = new Set<string>(), failed = new Set<string>();
+  const remaining = new Map<string, number>();
+  for (const item of due) remaining.set(item.sourceKey, (remaining.get(item.sourceKey) ?? 0) + 1);
+  const attemptResult = async (item: (typeof due)[number]): Promise<void> => {
+    if (item.edition === null || item.source.externalId === null) return;
+    counts.itemsAttempted++;
+    remaining.set(item.sourceKey, (remaining.get(item.sourceKey) ?? 1) - 1);
+    await prisma.updateItem.update({ where: { id: item.id }, data: { attempts: { increment: 1 } } });
+    await prisma.updateSource.update({ where: { sourceKey: item.sourceKey }, data: { lastAttemptAt: now } });
+    try {
+      const syncOptions = { seasons: [item.edition], pacingMs: options.pacingMs ?? 0, throwOnFetchError: true };
+      const result = item.source.kind === 'league'
+        ? await syncNationalChampions(token, item.source.externalId, syncOptions)
+        : await syncCupChampions(token, item.source.externalId, syncOptions);
+      if (result.issues.length) {
+        const message = result.issues.map(issue => issue.reason).join('; ');
+        issues.push({ sourceKey: item.sourceKey, edition: item.edition, category: 'evidence', message });
+        failed.add(item.sourceKey);
+        await prisma.updateItem.update({ where: { id: item.id }, data: { state: 'needs_review', errorCategory: 'evidence', lastError: message, nextAttemptAt: null } });
+        return;
+      }
+      if (item.source.kind === 'league') counts.leagueChampionsAdded += result.seasonsStored;
+      else counts.cupChampionsAdded += result.seasonsStored;
+      const row = item.source.kind === 'league'
+        ? await prisma.leagueChampion.findUnique({ where: { leagueId_season: { leagueId: item.source.externalId, season: item.edition } } })
+        : await prisma.cupChampion.findUnique({ where: { cupId_season: { cupId: item.source.externalId, season: item.edition } } });
+      const complete = row && ('complete' in row ? row.complete : row.finalMatchId > 0 || row.championUserId !== null);
+      await prisma.updateItem.update({ where: { id: item.id }, data: { state: complete ? 'complete' : 'pending', completedAt: complete ? now : null,
+        errorCategory: null, lastError: null, nextAttemptAt: complete ? null : nextResultCheck(item, now) } });
+      succeeded.add(item.sourceKey);
+      if (row && complete && (row.championUserId ?? 0) <= 0) await prisma.updateItem.upsert({ where: keyOf(item.sourceKey, item.itemKey, 'attribution'), update: {}, create: {
+        sourceKey: item.sourceKey, itemKey: item.itemKey, edition: item.edition, task: 'attribution', state: 'needs_review',
+        lastError: 'Historical winner identity needs retained ownership or trophy evidence',
+      } });
+    } catch (error) {
+      const failure = sourceError(error);
+      issues.push({ sourceKey: item.sourceKey, edition: item.edition, category: failure.category, message: failure.message });
+      failed.add(item.sourceKey);
+      await prisma.updateItem.update({ where: { id: item.id }, data: { state: ['schema', 'evidence', 'invalid_response'].includes(failure.category) ? 'needs_review' : 'retry',
+        lastError: failure.message, errorCategory: failure.category, nextAttemptAt: later(now, Math.min(7, 2 ** Math.min(item.attempts, 3))) } });
+      if (failure.category === 'storage') throw error;
+      if (failure.stop) stopped = true;
+    }
+  };
+  // Probe one due current/prior Masters edition before the large domestic backlog and the other
+  // enrichment lanes can exhaust this run's item or CHPP request allowance.
+  const priorityMasters = !options.onlyLeagueIds && !stopped && maxItems > 0
+    ? due.filter(item => item.sourceKey === `cup:${MASTERS_CUP_ID}` && item.edition !== null &&
+      item.edition >= (item.source.observedThrough ?? 0) - 1)
+      .sort((a, b) => (b.edition ?? 0) - (a.edition ?? 0))[0]
+    : undefined;
+  if (priorityMasters) await attemptResult(priorityMasters);
   // Country attribution is a separate, independently retryable fact. Run its bounded lane before
   // the large domestic result backlog so a newly retained Masters winner cannot be starved by old
   // league/cup gaps. It uses only exact team IDs and never substitutes current manager identity.
@@ -433,53 +489,9 @@ export async function refreshScheduled(token: TokenPair, options: ScheduledRefre
     issues.push(...tournaments.issues);
     if (tournaments.issues.some(issue => ['budget', 'authentication', 'forbidden'].includes(issue.category))) stopped = true;
   }
-  const due = await prisma.updateItem.findMany({ where: {
-    task: 'result', state: { in: ['pending', 'retry'] }, OR: [{ nextAttemptAt: null }, { nextAttemptAt: { lte: now } }],
-    source: { kind: { in: AUTOMATED_KINDS }, ...(options.onlyLeagueIds ? { OR: [{ kind: 'league', externalId: { in: options.onlyLeagueIds } }, { kind: 'cup', numberingSystem: { in: options.onlyLeagueIds.map(id => `league:${id}:season`) } }] } : {}) },
-  }, include: { source: true } });
-  const succeeded = new Set<string>(), failed = new Set<string>();
-  const remaining = new Map<string, number>();
-  for (const item of due) remaining.set(item.sourceKey, (remaining.get(item.sourceKey) ?? 0) + 1);
-  for (const item of stopped ? [] : orderDueItems(due).slice(0, Math.max(0, maxItems - counts.itemsAttempted))) {
-    if (item.edition === null || item.source.externalId === null) continue;
-    counts.itemsAttempted++;
-    remaining.set(item.sourceKey, (remaining.get(item.sourceKey) ?? 1) - 1);
-    await prisma.updateItem.update({ where: { id: item.id }, data: { attempts: { increment: 1 } } });
-    await prisma.updateSource.update({ where: { sourceKey: item.sourceKey }, data: { lastAttemptAt: now } });
-    try {
-      const syncOptions = { seasons: [item.edition], pacingMs: options.pacingMs ?? 0, throwOnFetchError: true };
-      const result = item.source.kind === 'league'
-        ? await syncNationalChampions(token, item.source.externalId, syncOptions)
-        : await syncCupChampions(token, item.source.externalId, syncOptions);
-      if (result.issues.length) {
-        const message = result.issues.map(issue => issue.reason).join('; ');
-        issues.push({ sourceKey: item.sourceKey, edition: item.edition, category: 'evidence', message });
-        failed.add(item.sourceKey);
-        await prisma.updateItem.update({ where: { id: item.id }, data: { state: 'needs_review', errorCategory: 'evidence', lastError: message, nextAttemptAt: null } });
-        continue;
-      }
-      if (item.source.kind === 'league') counts.leagueChampionsAdded += result.seasonsStored;
-      else counts.cupChampionsAdded += result.seasonsStored;
-      const row = item.source.kind === 'league'
-        ? await prisma.leagueChampion.findUnique({ where: { leagueId_season: { leagueId: item.source.externalId, season: item.edition } } })
-        : await prisma.cupChampion.findUnique({ where: { cupId_season: { cupId: item.source.externalId, season: item.edition } } });
-      const complete = row && ('complete' in row ? row.complete : row.finalMatchId > 0 || row.championUserId !== null);
-      await prisma.updateItem.update({ where: { id: item.id }, data: { state: complete ? 'complete' : 'pending', completedAt: complete ? now : null,
-        errorCategory: null, lastError: null, nextAttemptAt: complete ? null : nextResultCheck(item, now) } });
-      succeeded.add(item.sourceKey);
-      if (row && complete && (row.championUserId ?? 0) <= 0) await prisma.updateItem.upsert({ where: keyOf(item.sourceKey, item.itemKey, 'attribution'), update: {}, create: {
-        sourceKey: item.sourceKey, itemKey: item.itemKey, edition: item.edition, task: 'attribution', state: 'needs_review',
-        lastError: 'Historical winner identity needs retained ownership or trophy evidence',
-      } });
-    } catch (error) {
-      const failure = sourceError(error);
-      issues.push({ sourceKey: item.sourceKey, edition: item.edition, category: failure.category, message: failure.message });
-      failed.add(item.sourceKey);
-      await prisma.updateItem.update({ where: { id: item.id }, data: { state: ['schema', 'evidence', 'invalid_response'].includes(failure.category) ? 'needs_review' : 'retry',
-        lastError: failure.message, errorCategory: failure.category, nextAttemptAt: later(now, Math.min(7, 2 ** Math.min(item.attempts, 3))) } });
-      if (failure.category === 'storage') throw error;
-      if (failure.stop) break;
-    }
+  for (const item of stopped ? [] : orderDueItems(due.filter(item => item.id !== priorityMasters?.id)).slice(0, Math.max(0, maxItems - counts.itemsAttempted))) {
+    await attemptResult(item);
+    if (stopped) break;
   }
   // A Masters result first discovered above did not exist during the initial reconciliation. Queue
   // it now, and use any still-free country-lane allowance when the run retained spare capacity.
