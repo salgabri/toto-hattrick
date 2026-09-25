@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763",
-  "codeRevision": "edd514c37e61fbcf2c6a7134e3efdb0c27fee344",
-  "generatedAt": "2026-09-25T20:53:13.561Z",
-  "lastChangedAt": "2026-09-25T20:53:13.561Z",
+  "dataVersion": "046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16",
+  "codeRevision": "fe688c7eff7b57a2f1fa0b8e6856368221b44113",
+  "generatedAt": "2026-09-25T21:09:19.894Z",
+  "lastChangedAt": "2026-09-25T21:09:19.894Z",
   "sources": [
     {
       "key": "cup:1",
@@ -1975,7 +1975,7 @@
     {
       "key": "cup:29",
       "label": "Thai Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:02:59.103Z",
       "pending": 29,
       "status": "pending"
     },
@@ -4735,7 +4735,7 @@
       "label": "Barbados Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
       "pending": 12,
-      "status": "pending"
+      "status": "failed"
     },
     {
       "key": "cup:875",
@@ -9206,37 +9206,37 @@
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/managers.json",
-      "sha256": "6c7283a13d94f4ff74a6364bed11907e960541f94456622135165cc55b50b291",
-      "bytes": 7051861
+      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/managers.json",
+      "sha256": "92be54fbcdefcff3b926ede2bf4dbf76183178da9513d354e35d3d074020440f",
+      "bytes": 7052003
     },
     "leagues.json": {
-      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/leagues.json",
+      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/leagues.json",
       "sha256": "f8bf1be708c134772a23ff107b3bd84db6a33df4404854ab7930548553fd4f60",
       "bytes": 753871
     },
     "cups.json": {
-      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/cups.json",
-      "sha256": "d5496ceff77cbc1acaed851e84b24b5b8901cf3cfd5edec61e7fabe36303b785",
-      "bytes": 2363276
+      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/cups.json",
+      "sha256": "aa0ddbcf592c3fa5a0b9e0ba672b053fecd267f6cda6a14501162f58ca5bcd4a",
+      "bytes": 2370535
     },
     "masters.json": {
-      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/masters.json",
+      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/masters.json",
       "sha256": "4de888190c5f0e0fb02b173c132a164c2a83f9987e009f36b2a32c79d879651f",
       "bytes": 6945
     },
     "seasonal.json": {
-      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/seasonal.json",
+      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/seasonal.json",
       "sha256": "fe05c6c09bf0f3a45271c01469d4a8dcf5bb32953da990f751334e581ca8cab3",
       "bytes": 58171
     },
     "worldcup.json": {
-      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/worldcup.json",
+      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/worldcup.json",
       "sha256": "f5cc77f818a3789e0c1187fa6696b528fa028062a62be9e0e6cbc2df97e340fa",
       "bytes": 83744
     },
     "elections.json": {
-      "path": "/data/versions/bc6eafa182d634181e9058c52a1a41718fc22a16cccf4e0aafffdcafe7acb763/elections.json",
+      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/elections.json",
       "sha256": "6336c0e46a4e21ce7b1ef5c4c8fdeae16d9e874748afc6d092352b501216695e",
       "bytes": 1122909
     }
