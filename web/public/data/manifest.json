@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16",
-  "codeRevision": "fe688c7eff7b57a2f1fa0b8e6856368221b44113",
-  "generatedAt": "2026-09-25T21:09:19.894Z",
-  "lastChangedAt": "2026-09-25T21:09:19.894Z",
+  "dataVersion": "699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888",
+  "codeRevision": "ef98ef35d5535b4aa9afddd190ec0548cc9ebcdf",
+  "generatedAt": "2026-09-25T21:20:20.799Z",
+  "lastChangedAt": "2026-09-25T21:20:20.799Z",
   "sources": [
     {
       "key": "cup:1",
@@ -358,7 +358,7 @@
     {
       "key": "cup:1433",
       "label": "Hattrick International Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:13:44.060Z",
       "pending": 8,
       "status": "pending"
     },
@@ -687,7 +687,7 @@
     {
       "key": "cup:1478",
       "label": "Belize Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:13:44.060Z",
       "pending": 1,
       "status": "pending"
     },
@@ -911,7 +911,7 @@
     {
       "key": "cup:1508",
       "label": "Haiti Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:13:44.060Z",
       "pending": 1,
       "status": "pending"
     },
@@ -5022,7 +5022,7 @@
       "label": "Copa de Cartón cup results",
       "lastSuccessfulCheck": null,
       "pending": 14,
-      "status": "pending"
+      "status": "failed"
     },
     {
       "key": "cup:915",
@@ -9206,37 +9206,37 @@
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/managers.json",
-      "sha256": "92be54fbcdefcff3b926ede2bf4dbf76183178da9513d354e35d3d074020440f",
-      "bytes": 7052003
+      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/managers.json",
+      "sha256": "c6c735e6fe06ff0963fe42d195f638e6153f579c2370bb4afec4dcbbd897705e",
+      "bytes": 7052318
     },
     "leagues.json": {
-      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/leagues.json",
+      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/leagues.json",
       "sha256": "f8bf1be708c134772a23ff107b3bd84db6a33df4404854ab7930548553fd4f60",
       "bytes": 753871
     },
     "cups.json": {
-      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/cups.json",
-      "sha256": "aa0ddbcf592c3fa5a0b9e0ba672b053fecd267f6cda6a14501162f58ca5bcd4a",
-      "bytes": 2370535
+      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/cups.json",
+      "sha256": "9b6bac680c2e625808eb2013154fab602b62383b5627d7357fe63ffa2e7ac98b",
+      "bytes": 2383729
     },
     "masters.json": {
-      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/masters.json",
+      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/masters.json",
       "sha256": "4de888190c5f0e0fb02b173c132a164c2a83f9987e009f36b2a32c79d879651f",
       "bytes": 6945
     },
     "seasonal.json": {
-      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/seasonal.json",
+      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/seasonal.json",
       "sha256": "fe05c6c09bf0f3a45271c01469d4a8dcf5bb32953da990f751334e581ca8cab3",
       "bytes": 58171
     },
     "worldcup.json": {
-      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/worldcup.json",
+      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/worldcup.json",
       "sha256": "f5cc77f818a3789e0c1187fa6696b528fa028062a62be9e0e6cbc2df97e340fa",
       "bytes": 83744
     },
     "elections.json": {
-      "path": "/data/versions/046be8e95fe2e115f2591685e90189303233e399d9d98c492d68300756919e16/elections.json",
+      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/elections.json",
       "sha256": "6336c0e46a4e21ce7b1ef5c4c8fdeae16d9e874748afc6d092352b501216695e",
       "bytes": 1122909
     }
