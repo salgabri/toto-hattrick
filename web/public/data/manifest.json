@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "073783dafd560243dd4190df30a9aaaa4db08ee3a9ce45308ad18c73b3b9dddd",
-  "codeRevision": "8335f0d1f6b7a4d45ff4a22e7b112caf1b0b0143",
-  "generatedAt": "2026-09-13T12:39:37.327Z",
-  "lastChangedAt": "2026-09-13T11:47:42.127Z",
+  "dataVersion": "b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587",
+  "codeRevision": "3d0463b663df7c5ef7e802c668c462d1bfbf811d",
+  "generatedAt": "2026-09-25T20:33:36.593Z",
+  "lastChangedAt": "2026-09-25T20:33:36.593Z",
   "sources": [
     {
       "key": "cup:1",
@@ -1711,7 +1711,7 @@
       "label": "Hattrick Masters results",
       "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
       "pending": 12,
-      "status": "pending"
+      "status": "failed"
     },
     {
       "key": "cup:184",
@@ -1758,7 +1758,7 @@
     {
       "key": "cup:19",
       "label": "Kas Misr cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 29,
       "status": "pending"
     },
@@ -1844,7 +1844,7 @@
       "label": "Indian Cup cup results",
       "lastSuccessfulCheck": null,
       "pending": 34,
-      "status": "pending"
+      "status": "failed"
     },
     {
       "key": "cup:200",
@@ -1928,7 +1928,7 @@
       "label": "The Emperor's Cup cup results",
       "lastSuccessfulCheck": null,
       "pending": 18,
-      "status": "pending"
+      "status": "failed"
     },
     {
       "key": "cup:23",
@@ -7827,14 +7827,14 @@
     {
       "key": "national-cup:4878483",
       "label": "U21 Europe Cup official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "national-cup:4878490",
       "label": "U21 America Cup official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 1,
       "status": "pending"
     },
@@ -7843,1400 +7843,1400 @@
       "label": "U21 Africa Cup official tournament",
       "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
       "pending": 1,
-      "status": "pending"
+      "status": "failed"
     },
     {
       "key": "national-cup:4878493",
       "label": "U21 Asia-Oceania Cup official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "national-cup:4892615",
       "label": "U21 Nations Cup official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "national-cup:5001273",
       "label": "Europe Cup official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "national-cup:5001277",
       "label": "America Cup official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "national-cup:5001278",
       "label": "Africa Cup official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "national-cup:5001279",
       "label": "Asia-Oceania Cup official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "national-cup:5001319",
       "label": "Nations Cup official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 3,
       "status": "failed"
     },
     {
       "key": "seasonal:2108472",
       "label": "Supporter Week Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "seasonal:3116034",
       "label": "Trophy of Legends official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "seasonal:3116057",
       "label": "Titans of 2005 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "seasonal:3116058",
       "label": "Titans of 2006 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "seasonal:3116059",
       "label": "Titans of 2007 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "seasonal:3116060",
       "label": "Titans of 2008 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "seasonal:3116061",
       "label": "Titans of 2009 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "seasonal:3116062",
       "label": "Heroes of 2010 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 5,
       "status": "pending"
     },
     {
       "key": "seasonal:3116063",
       "label": "Heroes of 2011 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "seasonal:3116064",
       "label": "Heroes of 2012 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 6,
       "status": "pending"
     },
     {
       "key": "seasonal:3116065",
       "label": "Heroes of 2013 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "seasonal:3116067",
       "label": "Heroes of 2014 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 7,
       "status": "pending"
     },
     {
       "key": "seasonal:3116068",
       "label": "Heroes of 2015 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 7,
       "status": "pending"
     },
     {
       "key": "seasonal:3116070",
       "label": "Heroes of 2016 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 10,
       "status": "pending"
     },
     {
       "key": "seasonal:3116071",
       "label": "Heroes of 2017 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 11,
       "status": "pending"
     },
     {
       "key": "seasonal:3195190",
       "label": "Heroes of 2018 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 12,
       "status": "pending"
     },
     {
       "key": "seasonal:3427550",
       "label": "Heroes of 2019 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 5,
       "status": "pending"
     },
     {
       "key": "seasonal:3704867",
       "label": "Heroes of 2020 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 8,
       "status": "pending"
     },
     {
       "key": "seasonal:4945473",
       "label": "Heroes of 2021 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 5,
       "status": "pending"
     },
     {
       "key": "seasonal:5255320",
       "label": "Heroes of 2022 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 7,
       "status": "pending"
     },
     {
       "key": "seasonal:5555820",
       "label": "Heroes of 2023 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 7,
       "status": "pending"
     },
     {
       "key": "seasonal:5873608",
       "label": "Heroes of 2024 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "seasonal:6320224",
       "label": "Heroes of 2025 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "seasonal:6758706",
       "label": "Heroes of 2026 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "users:nationality",
       "label": "Manager and coach nationality archive source",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
-      "pending": 7,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "worldcup:senior",
       "label": "World Cup official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 16,
       "status": "pending"
     },
     {
       "key": "worldcup:youth",
       "label": "U21 World Cup official tournament",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 11,
       "status": "pending"
     },
     {
       "key": "worlddetails:1",
       "label": "Sweden competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:100",
       "label": "El Salvador competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:1000",
       "label": "Hattrick International competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:1002",
       "label": "Hattrick Anniversary League competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:1003",
       "label": "Homegrown League competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:101",
       "label": "Malta competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:102",
       "label": "Kyrgyz Republic competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:103",
       "label": "Moldova competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:104",
       "label": "Georgia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:105",
       "label": "Andorra competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:106",
       "label": "Jordan competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:107",
       "label": "Guatemala competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:11",
       "label": "Denmark competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:110",
       "label": "Trinidad & Tobago competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:111",
       "label": "Nicaragua competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:112",
       "label": "Kazakhstan competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:113",
       "label": "Suriname competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:117",
       "label": "Liechtenstein competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:118",
       "label": "Algeria competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:119",
       "label": "Mongolia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:12",
       "label": "Finland competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:120",
       "label": "Lebanon competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:121",
       "label": "Senegal competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:122",
       "label": "Armenia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:123",
       "label": "Bahrain competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:124",
       "label": "Barbados competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:125",
       "label": "Cape Verde competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:126",
       "label": "Côte d’Ivoire competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:127",
       "label": "Kuwait competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:128",
       "label": "Iraq competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:129",
       "label": "Azerbaijan competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:130",
       "label": "Angola competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:131",
       "label": "Montenegro competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:132",
       "label": "Bangladesh competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:133",
       "label": "Yemen competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:134",
       "label": "Oman competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:135",
       "label": "Mozambique competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:136",
       "label": "Brunei competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:137",
       "label": "Ghana competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:138",
       "label": "Cambodia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:139",
       "label": "Benin competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:14",
       "label": "Netherlands competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:140",
       "label": "Syria competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:141",
       "label": "Qatar competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:142",
       "label": "Tanzania competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:143",
       "label": "Uganda competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:144",
       "label": "Maldives competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:145",
       "label": "Uzbekistan competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:146",
       "label": "Cameroon competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:147",
       "label": "Cuba competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:148",
       "label": "Palestine competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:149",
       "label": "São Tomé e Príncipe competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:15",
       "label": "Oceania competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:151",
       "label": "Comoros competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:152",
       "label": "Sri Lanka competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:153",
       "label": "Curaçao competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:154",
       "label": "Guam competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:155",
       "label": "Democratic Republic of the Congo competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:156",
       "label": "Federal Democratic Republic of Ethiopia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:157",
       "label": "Saint Vincent and the Grenadines competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:158",
       "label": "Belize competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:159",
       "label": "Madagascar competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:16",
       "label": "Brazil competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:160",
       "label": "Botswana competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:161",
       "label": "Myanmar competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:162",
       "label": "Zambia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:163",
       "label": "San Marino competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:164",
       "label": "Haiti competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:165",
       "label": "Puerto Rico competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:166",
       "label": "Grenada competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:167",
       "label": "Burkina Faso competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:168",
       "label": "Nepal competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:169",
       "label": "Guyana competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:17",
       "label": "Canada competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:170",
       "label": "Tahiti competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:171",
       "label": "Guinea competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:172",
       "label": "Bahamas competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:173",
       "label": "Rwanda competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:174",
       "label": "Saint Kitts and Nevis competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:175",
       "label": "Guinea Ecuatorial competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:176",
       "label": "Gibraltar competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:177",
       "label": "Bhutan competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:18",
       "label": "Chile competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:19",
       "label": "Colombia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:2",
       "label": "England competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:20",
       "label": "India competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:21",
       "label": "Ireland competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:22",
       "label": "Japan competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:23",
       "label": "Peru competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:24",
       "label": "Poland competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:25",
       "label": "Portugal competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:26",
       "label": "Scotland competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:27",
       "label": "South Africa competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:28",
       "label": "Uruguay competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:29",
       "label": "Venezuela competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:3",
       "label": "Germany competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:30",
       "label": "South Korea competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:3000",
       "label": "Hattrick Femme International competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:31",
       "label": "Thailand competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:32",
       "label": "Turkey competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:33",
       "label": "Egypt competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:34",
       "label": "People's Republic of China competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:35",
       "label": "Russia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:36",
       "label": "Spain competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:37",
       "label": "Romania competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:38",
       "label": "Iceland competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:39",
       "label": "Austria competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:4",
       "label": "Italy competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:44",
       "label": "Belgium competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:45",
       "label": "Malaysia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:46",
       "label": "Switzerland competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:47",
       "label": "Singapore competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:5",
       "label": "France competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:50",
       "label": "Greece competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:51",
       "label": "Hungary competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:52",
       "label": "Czechia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:53",
       "label": "Latvia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:54",
       "label": "Indonesia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:55",
       "label": "Philippines competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:56",
       "label": "Estonia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:57",
       "label": "Serbia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:58",
       "label": "Croatia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:59",
       "label": "Hong Kong competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:6",
       "label": "Mexico competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:60",
       "label": "Chinese Taipei competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:61",
       "label": "Wales competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:62",
       "label": "Bulgaria competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:63",
       "label": "Israel competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:64",
       "label": "Slovenia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:66",
       "label": "Lithuania competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:67",
       "label": "Slovakia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:68",
       "label": "Ukraine competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:69",
       "label": "Bosnia and Herzegovina competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:7",
       "label": "Argentina competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:70",
       "label": "Vietnam competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:71",
       "label": "Pakistan competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:72",
       "label": "Paraguay competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:73",
       "label": "Ecuador competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:74",
       "label": "Bolivia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:75",
       "label": "Nigeria competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:76",
       "label": "Faroe Islands competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:77",
       "label": "Morocco competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:79",
       "label": "Saudi Arabia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:8",
       "label": "USA competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:80",
       "label": "Tunisia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:81",
       "label": "Costa Rica competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:83",
       "label": "United Arab Emirates competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:84",
       "label": "Luxembourg competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:85",
       "label": "Iran competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:88",
       "label": "Dominican Republic competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:89",
       "label": "Cyprus competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:9",
       "label": "Norway competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:91",
       "label": "Belarus competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:93",
       "label": "Northern Ireland competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:94",
       "label": "Jamaica competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:95",
       "label": "Kenya competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:96",
       "label": "Panama competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:97",
       "label": "North Macedonia competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:98",
       "label": "Albania competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:99",
       "label": "Honduras competition calendar",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
       "pending": 0,
       "status": "ok"
     }
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/073783dafd560243dd4190df30a9aaaa4db08ee3a9ce45308ad18c73b3b9dddd/managers.json",
-      "sha256": "a7937bde437f9c883144aee3de982a8ef1a8c979c738874af4760bbb6a6acc10",
-      "bytes": 7051598
+      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/managers.json",
+      "sha256": "0d1dce327c24bb0aa3f18f49e63249e43699bea0f431f8c81528774668641a21",
+      "bytes": 7051712
     },
     "leagues.json": {
-      "path": "/data/versions/073783dafd560243dd4190df30a9aaaa4db08ee3a9ce45308ad18c73b3b9dddd/leagues.json",
+      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/leagues.json",
       "sha256": "f8bf1be708c134772a23ff107b3bd84db6a33df4404854ab7930548553fd4f60",
       "bytes": 753871
     },
     "cups.json": {
-      "path": "/data/versions/073783dafd560243dd4190df30a9aaaa4db08ee3a9ce45308ad18c73b3b9dddd/cups.json",
-      "sha256": "3f5b10baef87347f0c6b25d3ead57a03bbafab84df0d4647a1aeb2f51eb41d21",
-      "bytes": 2350327
+      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/cups.json",
+      "sha256": "e98551d8a1a748c6ac30a3c33d4698d4b9c1d2cd8aca9649f862c6e0eee1404a",
+      "bytes": 2355803
     },
     "masters.json": {
-      "path": "/data/versions/073783dafd560243dd4190df30a9aaaa4db08ee3a9ce45308ad18c73b3b9dddd/masters.json",
+      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/masters.json",
       "sha256": "3ea7ad93215d46edf2c63333fb38b61401eae13f4ef688bb586cdc3b1588ab5c",
       "bytes": 6861
     },
     "seasonal.json": {
-      "path": "/data/versions/073783dafd560243dd4190df30a9aaaa4db08ee3a9ce45308ad18c73b3b9dddd/seasonal.json",
+      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/seasonal.json",
       "sha256": "fe05c6c09bf0f3a45271c01469d4a8dcf5bb32953da990f751334e581ca8cab3",
       "bytes": 58171
     },
     "worldcup.json": {
-      "path": "/data/versions/073783dafd560243dd4190df30a9aaaa4db08ee3a9ce45308ad18c73b3b9dddd/worldcup.json",
+      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/worldcup.json",
       "sha256": "f5cc77f818a3789e0c1187fa6696b528fa028062a62be9e0e6cbc2df97e340fa",
       "bytes": 83744
     },
     "elections.json": {
-      "path": "/data/versions/073783dafd560243dd4190df30a9aaaa4db08ee3a9ce45308ad18c73b3b9dddd/elections.json",
+      "path": "/data/versions/b4ab88e69c0f4365abe5cd95a5dbe6b3bdc15e2b2b0536241bc39d8be4788587/elections.json",
       "sha256": "6336c0e46a4e21ce7b1ef5c4c8fdeae16d9e874748afc6d092352b501216695e",
       "bytes": 1122909
     }
