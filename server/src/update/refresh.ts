@@ -489,7 +489,18 @@ export async function refreshScheduled(token: TokenPair, options: ScheduledRefre
     issues.push(...tournaments.issues);
     if (tournaments.issues.some(issue => ['budget', 'authentication', 'forbidden'].includes(issue.category))) stopped = true;
   }
-  for (const item of stopped ? [] : orderDueItems(due.filter(item => item.id !== priorityMasters?.id)).slice(0, Math.max(0, maxItems - counts.itemsAttempted))) {
+  // A cup's previous edition should already have a final once its country has advanced to the
+  // next season. Give these due results a bounded pass before the much larger historical gap
+  // queue, without displacing the Masters or official tournament lanes above.
+  const priorityPreviousCups = stopped ? [] : orderDueItems(due.filter(item =>
+    item.source.kind === 'cup' && item.edition !== null && item.source.observedThrough !== null &&
+    item.edition === item.source.observedThrough - 1)).slice(0, Math.min(40, Math.ceil(maxItems / 4)));
+  for (const item of priorityPreviousCups) {
+    if (stopped || counts.itemsAttempted >= maxItems) break;
+    await attemptResult(item);
+  }
+  const priorityIds = new Set(priorityPreviousCups.map(item => item.id));
+  for (const item of stopped ? [] : orderDueItems(due.filter(item => item.id !== priorityMasters?.id && !priorityIds.has(item.id))).slice(0, Math.max(0, maxItems - counts.itemsAttempted))) {
     await attemptResult(item);
     if (stopped) break;
   }

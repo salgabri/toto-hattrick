@@ -320,7 +320,9 @@ async function migrateSource(spec: TournamentSourceSpec, now: Date): Promise<Upd
   });
 }
 
-async function reconcileItems(spec: TournamentSourceSpec, source: UpdateSource, current: number, rows: StoredEdition[], now: Date) {
+async function reconcileItems(spec: TournamentSourceSpec, source: UpdateSource,
+  details: ReturnType<typeof parseTournamentDetails>, rows: StoredEdition[], now: Date) {
+  const current = details.season;
   const byEdition = new Map(rows.map(row => [row.edition, row]));
   const baseline = source.baseline ?? (rows.length ? Math.min(...rows.map(row => row.edition)) : current);
   await prisma.updateSource.update({ where: { sourceKey: spec.sourceKey }, data: {
@@ -348,6 +350,13 @@ async function reconcileItems(spec: TournamentSourceSpec, source: UpdateSource, 
   // unresolved result receives UNPROVEN_PODIUM/RETAINED_TIE_REVIEW and is not reopened each day.
   await prisma.updateItem.updateMany({
     where: { sourceKey: spec.sourceKey, task: 'result', state: 'needs_review', lastError: LEGACY_UNPROVEN_PODIUM },
+    data: { state: 'pending', nextAttemptAt: now, completedAt: null, lastError: null, errorCategory: null },
+  });
+  // A finished match in an in-progress multi-match round is not a final. Earlier runs could
+  // park such a current edition for review; a future official match round proves it is retryable.
+  if (details.nextMatchRoundDate > now) await prisma.updateItem.updateMany({
+    where: { sourceKey: spec.sourceKey, itemKey: String(current), task: 'result',
+      state: 'needs_review', lastError: UNPROVEN_PODIUM },
     data: { state: 'pending', nextAttemptAt: now, completedAt: null, lastError: null, errorCategory: null },
   });
 }
@@ -541,7 +550,7 @@ export async function refreshOfficialTournaments(token: TokenPair, options: {
       if (spec.kind === 'seasonal') await prisma.cup.update({ where: { cupId: spec.tournamentId }, data: { currentSeason: details.season } });
       else await ensureCurrentPlaceholder(spec, details);
       const rows = await storedEditions(spec);
-      await reconcileItems(spec, source, details.season, rows, now);
+      await reconcileItems(spec, source, details, rows, now);
       await retainHostReview(spec, details.season, now);
       await prisma.updateItem.updateMany({ where: { sourceKey: spec.sourceKey, task: 'capture', state: { not: 'complete' } },
         data: { state: 'complete', completedAt: now, nextAttemptAt: null, lastError: 'Superseded by the official CHPP tournament source', errorCategory: null } });
@@ -576,7 +585,8 @@ export async function refreshOfficialTournaments(token: TokenPair, options: {
             evidenceRef: podium.tiebreakerEvidenceRefs?.length ? JSON.stringify(podium.tiebreakerEvidenceRefs) : null,
           } });
         } else {
-          const terminalEvidenceProblem = selected.edition < details.season || finalRoundMatches.some(match => match.status === 2) ||
+          const terminalEvidenceProblem = selected.edition < details.season ||
+            (finalRoundMatches.length === 1 && finalRoundMatches[0]?.status === 2) ||
             (podium !== null && !currentRoundValid);
           await prisma.updateItem.update({ where: { id: selected.id }, data: {
             state: terminalEvidenceProblem ? 'needs_review' : 'pending', completedAt: null,

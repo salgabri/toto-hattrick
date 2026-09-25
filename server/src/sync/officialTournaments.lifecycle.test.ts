@@ -215,6 +215,38 @@ test('a completed national final is retained without assigning the current coach
   assert.equal(db.updateItem!.find(item => item.sourceKey === sourceKey && item.edition === 41 && item.task === 'result')?.state, 'complete');
 });
 
+test('an in-progress multi-match Nations Cup round is retryable, not a failed final', async t => {
+  runtime(t);
+  const db = tournamentArchive(t);
+  const sourceKey = 'national-cup:5001319';
+  seedSources(db, sourceKey, { baseline: 41, observedThrough: 41 });
+  db.updateItem!.push({
+    id: 1, sourceKey, itemKey: '41', task: 'result', edition: 41,
+    state: 'needs_review', attempts: 1, nextAttemptAt: null, completedAt: null,
+    lastError: 'The official fixture set did not prove one complete decisive final and both semifinals, including any explicit retained tiebreaker evidence',
+    errorCategory: 'evidence', evidenceRef: null, createdAt: new Date('2026-09-13T00:00:00.000Z'),
+    updatedAt: new Date('2026-09-13T00:00:00.000Z'),
+  });
+  const files: string[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: Parameters<typeof fetch>[0]) => {
+    const file = new URL(String(input)).searchParams.get('file')!;
+    files.push(file);
+    return new Response(sample(file === 'tournamentdetails'
+      ? 'tournamentdetails-1.0-nations-s41-in-progress.xml'
+      : 'tournamentfixtures-1.1-nations-s41-progress-subset.xml'));
+  });
+
+  const now = new Date('2026-09-14T17:20:00.000Z');
+  const result = await refreshOfficialTournaments(token, { now, maxMetadataChecks: 1, maxItems: 1 });
+
+  assert.deepEqual(files, ['tournamentdetails', 'tournamentfixtures']);
+  assert.equal(result.nationalTrophiesAdded, 0);
+  const item = db.updateItem!.find(entry => entry.sourceKey === sourceKey && entry.itemKey === '41' && entry.task === 'result');
+  assert.equal(item?.state, 'pending');
+  assert.ok(item?.nextAttemptAt > now);
+  assert.equal(item?.lastError, null);
+});
+
 test('a completed current edition is never re-fetched while an older due edition remains selectable', async t => {
   runtime(t);
   const db = tournamentArchive(t);

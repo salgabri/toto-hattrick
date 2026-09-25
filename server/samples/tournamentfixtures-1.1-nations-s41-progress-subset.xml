@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Exact match elements sampled from retained CHPP season-41 Nations Cup fixtures on 2026-09-13.
+     The full capture has 29 matches in each of rounds 12 and 13. -->
+<HattrickData>
+  <FileName>tournamentFixtures.xml</FileName>
+  <Version>1.1</Version>
+  <Matches>
+    <Match>
+      <MatchId>42050849</MatchId>
+      <HomeTeamId>3303</HomeTeamId><HomeTeamName>RD Congo</HomeTeamName><HomeShortTeamName>RD Congo</HomeShortTeamName>
+      <AwayTeamId>3232</AwayTeamId><AwayTeamName>Moçambique</AwayTeamName><AwayShortTeamName>Moçambique</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate><MatchType>50</MatchType>
+      <MatchRound>12</MatchRound><Group>0</Group><Status>2</Status>
+      <HomeGoals>3</HomeGoals><AwayGoals>2</AwayGoals>
+      <HomeStatement></HomeStatement><AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>42050836</MatchId>
+      <HomeTeamId>3036</HomeTeamId><HomeTeamName>Singapore</HomeTeamName><HomeShortTeamName>Singapore</HomeShortTeamName>
+      <AwayTeamId>3122</AwayTeamId><AwayTeamName>Pakistan</AwayTeamName><AwayShortTeamName>Pakistan</AwayShortTeamName>
+      <MatchDate>2026-09-11 20:00:00</MatchDate><MatchType>50</MatchType>
+      <MatchRound>12</MatchRound><Group>0</Group><Status>2</Status>
+      <HomeGoals>1</HomeGoals><AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement><AwayStatement></AwayStatement>
+    </Match>
+    <Match>
+      <MatchId>42114686</MatchId>
+      <HomeTeamId>3302</HomeTeamId><HomeTeamName>Guam</HomeTeamName><HomeShortTeamName>Guam</HomeShortTeamName>
+      <AwayTeamId>3194</AwayTeamId><AwayTeamName>Trinidad &amp; Tobago</AwayTeamName><AwayShortTeamName>Trinidad &amp; Tobago</AwayShortTeamName>
+      <MatchDate>2026-09-18 20:00:00</MatchDate><MatchType>50</MatchType>
+      <MatchRound>13</MatchRound><Group>0</Group><Status>0</Status>
+      <HomeGoals>0</HomeGoals><AwayGoals>0</AwayGoals>
+      <HomeStatement></HomeStatement><AwayStatement></AwayStatement>
+    </Match>
+  </Matches>
+</HattrickData>

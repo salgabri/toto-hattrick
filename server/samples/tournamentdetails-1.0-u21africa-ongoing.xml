@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>tournamentdetails.xml</FileName>
+  <Version>1.0</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-09-25 22:28:57</FetchedDate>
+  <Tournament>
+    <TournamentId>4878492</TournamentId>
+    <Name>U21 Africa Cup</Name>
+    <TournamentType>3</TournamentType>
+    <Season>41</Season>
+    <LogoUrl>https://www.hattrick.org/Img/Cups/ht-big-cup-africa-u21.png</LogoUrl>
+    <TrophyType>311</TrophyType>
+    <NumberOfTeams>24</NumberOfTeams>
+    <NumberOfGroups>4</NumberOfGroups>
+    <LastMatchRound>9</LastMatchRound>
+    <FirstMatchRoundDate>2026-08-07 21:00:00</FirstMatchRoundDate>
+    <NextMatchRoundDate>2026-09-25 21:00:00</NextMatchRoundDate>
+    <IsMatchesOngoing>-1</IsMatchesOngoing>
+    <Creator>
+      <UserId>0</UserId>
+      <Loginname></Loginname>
+    </Creator>
+  </Tournament>
+</HattrickData>

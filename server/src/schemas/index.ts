@@ -538,7 +538,8 @@ const TournamentDetailsSchema = z.object({
           LastMatchRound: num,
           FirstMatchRoundDate: HtDate,
           NextMatchRoundDate: HtDate,
-          IsMatchesOngoing: z.enum(['0', '1']).transform((value) => value === '1'),
+          // Retained CHPP tournamentdetails (U21 Africa Cup, 2026-09-25) uses -1 for true.
+          IsMatchesOngoing: z.enum(['0', '1', '-1']).transform((value) => value !== '0'),
         })
         .passthrough(),
     })

@@ -116,6 +116,35 @@ test('a full update probes the due current Masters result before a larger domest
   assert.equal(db.updateItem!.find(item => item.sourceKey === 'league:4' && item.edition === 95 && item.task === 'result')?.attempts, 0);
 });
 
+test('a due previous-season cup final gets a bounded priority over current and historical results', async t => {
+  const db = archive(t, [], 95);
+  db.cup!.push({ cupId: 7, leagueId: 4, countryName: 'Italy', cupName: 'Coppa Italia', currentSeason: 95 });
+  db.cupChampion!.push({ cupId: 7, season: 93, finalMatchId: 1234, championUserId: 200 });
+  db.updateItem!.push({ id: 900, sourceKey: 'cup:7', itemKey: '95', task: 'result', edition: 95,
+    state: 'pending', attempts: 0, nextAttemptAt: new Date('2026-09-24T00:00:00Z'),
+    createdAt: new Date('2026-09-01T00:00:00Z'), updatedAt: new Date('2026-09-01T00:00:00Z') },
+    { id: 901, sourceKey: 'cup:7', itemKey: '92', task: 'result', edition: 92,
+      state: 'pending', attempts: 0, nextAttemptAt: new Date('2026-09-23T00:00:00Z'),
+      createdAt: new Date('2026-09-01T00:00:00Z'), updatedAt: new Date('2026-09-01T00:00:00Z') });
+  const requested: number[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: Parameters<typeof fetch>[0]) => {
+    const url = new URL(String(input));
+    assert.equal(url.searchParams.get('file'), 'cupmatches');
+    requested.push(Number(url.searchParams.get('season')));
+    return new Response(builder.build({ HattrickData: { Cup: {
+      CupID: 7, CupName: 'Coppa Italia', CupSeason: Number(url.searchParams.get('season')), CupRound: 0, Match: '',
+    } } }));
+  });
+
+  const result = await refreshScheduled(token, { onlyLeagueIds: [4], now: new Date('2026-09-25T05:17:00Z'),
+    maxMetadataChecks: 0, maxItems: 1, pacingMs: 0 });
+  assert.deepEqual(requested, [94]);
+  assert.equal(result.counts.itemsAttempted, 1);
+  assert.equal(db.updateItem!.find(item => item.sourceKey === 'cup:7' && item.edition === 94)?.attempts, 1);
+  assert.equal(db.updateItem!.find(item => item.sourceKey === 'cup:7' && item.edition === 95)?.attempts, 0);
+  assert.equal(db.updateItem!.find(item => item.sourceKey === 'cup:7' && item.edition === 92)?.attempts, 0);
+});
+
 test('newly discovered cups enter the catalog and missing catalog entries remain', async t => {
   const db = archive(t, [], 94);
   db.cup!.push({ cupId: 99999, leagueId: 4, cupName: 'Temporarily missing' });

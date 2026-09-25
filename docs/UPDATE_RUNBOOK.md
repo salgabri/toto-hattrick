@@ -14,6 +14,9 @@ periodic fallback. Registered international and recurring tournaments receive a 
 every full weekly run so domestic backfill cannot starve a newly played final. Plan for roughly
 7–14 days from result availability to normal publication when scheduling delays or a retry are
 included; use a manual refresh for time-sensitive results.
+The latest due Hattrick Masters result is checked first, and cups still missing the previous
+season's result receive a bounded priority before older domestic gaps. This is a queue priority,
+not an assertion that a final was played: unresolved or inactive cups remain pending for evidence.
 
 The private updater lease prevents overlapping acquisitions. The publisher refuses to start unless
 the checkout is clean `main` at the exact `origin/main` revision:
