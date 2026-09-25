@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888",
-  "codeRevision": "ef98ef35d5535b4aa9afddd190ec0548cc9ebcdf",
-  "generatedAt": "2026-09-25T21:20:20.799Z",
-  "lastChangedAt": "2026-09-25T21:20:20.799Z",
+  "dataVersion": "f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f",
+  "codeRevision": "06a668df0c3aad9eec8225a07d82bb1e66d3bdff",
+  "generatedAt": "2026-09-25T21:28:28.898Z",
+  "lastChangedAt": "2026-09-25T21:28:28.898Z",
   "sources": [
     {
       "key": "cup:1",
@@ -365,28 +365,28 @@
     {
       "key": "cup:1434",
       "label": "Hattrick International Emerald Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:1435",
       "label": "Hattrick International Ruby Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:1436",
       "label": "Hattrick International Sapphire Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:1437",
       "label": "Hattrick International Consolation Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 7,
       "status": "pending"
     },
@@ -1065,7 +1065,7 @@
     {
       "key": "cup:1533",
       "label": "Burkina Faso Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
@@ -1079,7 +1079,7 @@
     {
       "key": "cup:1535",
       "label": "Burkina Faso Ruby Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
@@ -1142,7 +1142,7 @@
     {
       "key": "cup:1543",
       "label": "Guyana Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
@@ -1219,42 +1219,42 @@
     {
       "key": "cup:1553",
       "label": "Homegrown Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1554",
       "label": "Homegrown Emerald Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1555",
       "label": "Homegrown Ruby Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1556",
       "label": "Homegrown Sapphire Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1557",
       "label": "Homegrown Consolation Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1558",
       "label": "Guinea Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 3,
       "status": "pending"
     },
@@ -1289,35 +1289,35 @@
     {
       "key": "cup:1562",
       "label": "Guinea Consolation Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1563",
       "label": "Bahamas Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1564",
       "label": "Bahamas Emerald Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1565",
       "label": "Bahamas Ruby Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1566",
       "label": "Bahamas Sapphire Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
@@ -1331,7 +1331,7 @@
     {
       "key": "cup:1568",
       "label": "Rwanda Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
@@ -1373,14 +1373,14 @@
     {
       "key": "cup:1573",
       "label": "Saint Kitts and Nevis Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1574",
       "label": "Saint Kitts and Nevis Emerald Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
@@ -1394,7 +1394,7 @@
     {
       "key": "cup:1576",
       "label": "Saint Kitts and Nevis Sapphire Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
@@ -1408,14 +1408,14 @@
     {
       "key": "cup:1578",
       "label": "Copa Moussambani cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1579",
       "label": "Copa Ndowé cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
@@ -1443,35 +1443,35 @@
     {
       "key": "cup:1582",
       "label": "Copa Muni cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1583",
       "label": "Gibraltar Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1584",
       "label": "Gibraltar Emerald Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1585",
       "label": "Gibraltar Ruby Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1586",
       "label": "Gibraltar Sapphire Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
@@ -1485,14 +1485,14 @@
     {
       "key": "cup:1588",
       "label": "Bhutan Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1589",
       "label": "Bhutan Emerald Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
@@ -1506,28 +1506,28 @@
     {
       "key": "cup:1590",
       "label": "Bhutan Ruby Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1591",
       "label": "Bhutan Sapphire Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1592",
       "label": "Bhutan Consolation Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:16",
       "label": "Canadian Cup cup results",
-      "lastSuccessfulCheck": "2026-09-13T11:43:35.674Z",
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 18,
       "status": "pending"
     },
@@ -1548,35 +1548,35 @@
     {
       "key": "cup:1610",
       "label": "Hattrick Femme International Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1611",
       "label": "Femme International Emerald Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1612",
       "label": "Femme International Ruby Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1613",
       "label": "Femme International Sapphire Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1614",
       "label": "Femme International Consolation Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
       "status": "pending"
     },
@@ -1599,7 +1599,7 @@
       "label": "საქართველოს ეროვნული თასი cup results",
       "lastSuccessfulCheck": null,
       "pending": 30,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "cup:165",
@@ -1842,7 +1842,7 @@
     {
       "key": "cup:20",
       "label": "Indian Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 34,
       "status": "failed"
     },
@@ -1919,14 +1919,14 @@
     {
       "key": "cup:21",
       "label": "Irish Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 42,
       "status": "pending"
     },
     {
       "key": "cup:22",
       "label": "The Emperor's Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 18,
       "status": "failed"
     },
@@ -1961,14 +1961,14 @@
     {
       "key": "cup:27",
       "label": "Scottish Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 24,
       "status": "failed"
     },
     {
       "key": "cup:28",
       "label": "South African Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 13,
       "status": "pending"
     },
@@ -2003,7 +2003,7 @@
     {
       "key": "cup:32",
       "label": "Copa Venezuela cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 13,
       "status": "pending"
     },
@@ -2017,7 +2017,7 @@
     {
       "key": "cup:34",
       "label": "Кубок России cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 20,
       "status": "pending"
     },
@@ -6707,7 +6707,7 @@
     {
       "key": "league:1",
       "label": "Sweden league results",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 4,
       "status": "pending"
     },
@@ -6728,7 +6728,7 @@
     {
       "key": "league:1002",
       "label": "Hattrick Anniversary League league results",
-      "lastSuccessfulCheck": "2026-09-12T22:57:29.566Z",
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 7,
       "status": "pending"
     },
@@ -6931,9 +6931,9 @@
     {
       "key": "league:131",
       "label": "Montenegro league results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 1,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "league:132",
@@ -7295,7 +7295,7 @@
     {
       "key": "league:2",
       "label": "England league results",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 26,
       "status": "pending"
     },
@@ -7372,7 +7372,7 @@
     {
       "key": "league:3",
       "label": "Germany league results",
-      "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
+      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
       "pending": 12,
       "status": "pending"
     },
@@ -7458,7 +7458,7 @@
       "label": "Italy league results",
       "lastSuccessfulCheck": "2026-09-12T22:21:48.761Z",
       "pending": 3,
-      "status": "pending"
+      "status": "failed"
     },
     {
       "key": "league:44",
@@ -9206,37 +9206,37 @@
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/managers.json",
-      "sha256": "c6c735e6fe06ff0963fe42d195f638e6153f579c2370bb4afec4dcbbd897705e",
-      "bytes": 7052318
+      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/managers.json",
+      "sha256": "e8751a8383efaf3b0173833cac7dfb249003d02dc12d3696326df834b01fe4fc",
+      "bytes": 7052507
     },
     "leagues.json": {
-      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/leagues.json",
+      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/leagues.json",
       "sha256": "f8bf1be708c134772a23ff107b3bd84db6a33df4404854ab7930548553fd4f60",
       "bytes": 753871
     },
     "cups.json": {
-      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/cups.json",
-      "sha256": "9b6bac680c2e625808eb2013154fab602b62383b5627d7357fe63ffa2e7ac98b",
-      "bytes": 2383729
+      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/cups.json",
+      "sha256": "d448e63ef46884bc9d834d9aab31e6ef6b6bed4af2d8c4001a547eb98d13c906",
+      "bytes": 2393518
     },
     "masters.json": {
-      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/masters.json",
+      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/masters.json",
       "sha256": "4de888190c5f0e0fb02b173c132a164c2a83f9987e009f36b2a32c79d879651f",
       "bytes": 6945
     },
     "seasonal.json": {
-      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/seasonal.json",
+      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/seasonal.json",
       "sha256": "fe05c6c09bf0f3a45271c01469d4a8dcf5bb32953da990f751334e581ca8cab3",
       "bytes": 58171
     },
     "worldcup.json": {
-      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/worldcup.json",
+      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/worldcup.json",
       "sha256": "f5cc77f818a3789e0c1187fa6696b528fa028062a62be9e0e6cbc2df97e340fa",
       "bytes": 83744
     },
     "elections.json": {
-      "path": "/data/versions/699604f7ada5e157c026fbc88b8e2400666b8b2ebab9e4065f4499608e7fc888/elections.json",
+      "path": "/data/versions/f2c0ee359e05921d99c7bc455dd905dbae32dbf5210fc3a8cd3fd1e462bcce9f/elections.json",
       "sha256": "6336c0e46a4e21ce7b1ef5c4c8fdeae16d9e874748afc6d092352b501216695e",
       "bytes": 1122909
     }
