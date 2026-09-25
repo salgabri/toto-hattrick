@@ -1,0 +1,23 @@
+[
+  {
+    "teamId": 820764,
+    "club": "FC Wieselhausen",
+    "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=820764",
+    "pages": [
+      {
+        "page": 1,
+        "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=820764",
+        "rows": [
+          {
+            "text": "17.09.2026 FC Wieselhausen under the ownership of WitzigesWiesel became Hattrick Masters champions season 95.",
+            "links": [
+              { "text": "FC Wieselhausen", "href": "/en/Club/?TeamID=820764" },
+              { "text": "WitzigesWiesel", "href": "/en/Club/Manager/?userId=13557250" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { env, childEnvironment, useUpdateDatabase } from '../config/env.js';
 import { configureChppRuntime } from '../chpp/client.js';
 import { bootstrapEvidence, captureEvidence, configureEvidenceStore, evidenceReferences, hasDedicatedEvidenceCapture } from './evidence.js';
+import { replayRetainedClubHistories, retainCheckedInClubHistory } from './historicalReplay.js';
 import { LocalObjectStore, S3ObjectStore, jsonBytes, type ObjectStore } from './storage.js';
 import { readStatePointer, restoreSnapshot, saveSnapshot, snapshotDatabase, assertArchivePreserved } from './snapshots.js';
 import { acquireLease } from './lease.js';
@@ -195,6 +196,7 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     await bakeStatic(acceptedData);
     const previous = await previousRelease(store, join(dir, 'previous-release'));
     disposeEvidence = configureEvidenceStore({ store, workspacePath: dir, references: snapshot.evidence });
+    await retainCheckedInClubHistory(store, repositoryPath);
     runtime = configureChppRuntime({ maxCalls: env.UPDATE_MAX_CALLS, maxRetries: 2, pacingMs: 600,
       deadline: Date.now() + env.UPDATE_MAX_MINUTES * 60_000,
       onResponse: async (params, xml, call) => {
@@ -203,9 +205,19 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
         await captureEvidence({ store, key: `evidence/runs/${runId}/${call}.json`, source: params.file, apiVersion: params.version, parserVersion: 'raw-xml-v1', payload: { params, xml } });
       },
     });
-    const report = token ? await refreshScheduled(token, { maxItems: env.UPDATE_MAX_ITEMS,
+    const acquisition = token ? await refreshScheduled(token, { maxItems: env.UPDATE_MAX_ITEMS,
       maxMetadataChecks: env.UPDATE_MAX_CALLS === 0 ? 0 : Math.max(1, Math.floor(env.UPDATE_MAX_CALLS / 3)),
     }) : await reportScheduled();
+    const historicalEvidenceReplay = await replayRetainedClubHistories(store, evidenceReferences());
+    // A linked history can predate the winner row first discovered above. Re-read the ledger
+    // after replay so completed attribution tasks do not appear as unresolved in this release.
+    const afterReplay = await reportScheduled();
+    const issues = [...new Map([...acquisition.issues, ...afterReplay.issues].map(issue =>
+      [`${issue.sourceKey}/${issue.edition ?? ''}/${issue.category}`, issue])).values()];
+    const report: ScheduledRefreshResult = { ...afterReplay, issues,
+      status: issues.length ? 'degraded' : 'success',
+      counts: { ...acquisition.counts, pendingItems: afterReplay.counts.pendingItems,
+        pendingEvidence: afterReplay.counts.pendingEvidence } };
     assertArchivePreserved(beforePath, workingPath);
     await lease.assertHeld();
     assertRevision(codeRevision, 'update; accepted progress was not saved');
@@ -227,7 +239,7 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     const coverage = { complete: reasons.length === 0, reasons, recentManagerAttribution };
     const status = coverage.complete ? 'success' : 'degraded';
     await store.putImmutable(`runs/${runId}/report.json`, jsonBytes({ ...report, acquisitionStatus: report.status,
-      status, coverage, calls: runtime.stats(), snapshotId: accepted.pointer.snapshotId }));
+      status, coverage, historicalEvidenceReplay, calls: runtime.stats(), snapshotId: accepted.pointer.snapshotId }));
     await writeFile(join(dir, 'pending-evidence.json'), JSON.stringify(report.pendingEvidence, null, 2));
     // Build in a new directory with Vite public copying DISABLED. Only the validated data goes in.
     const artifactDir = join(dir, 'site');
@@ -254,7 +266,8 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     const deployment = (options.publish || options.draft) && !authenticationFailed
       ? await publishArtifact(store, pointer, artifactDir, !!options.publish, lease.assertHeld) : undefined;
     const result = { status, acquisitionStatus: report.status, coverage, releaseId: runId, dataVersion: release.dataVersion,
-      published: deployment?.published ?? false, artifactDir, counts: report.counts, requests: runtime.stats(),
+      published: deployment?.published ?? false, artifactDir, counts: report.counts,
+      historicalEvidenceReplay, requests: runtime.stats(),
       pendingEvidenceFile: join(dir, 'pending-evidence.json'), ...(deployment ? { deploymentUrl: deployment.url } : {}) };
     await store.putImmutable(`runs/${runId}/result.json`, jsonBytes(result));
     await summary(result);
