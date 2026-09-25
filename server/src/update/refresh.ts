@@ -500,6 +500,20 @@ export async function refreshScheduled(token: TokenPair, options: ScheduledRefre
     await attemptResult(item);
   }
   const priorityIds = new Set(priorityPreviousCups.map(item => item.id));
+  // A zero-rounds-left worlddetails hint is worth an early probe, but cannot award a cup:
+  // syncCupChampions still requires a played, validated final. After three unsuccessful probes,
+  // the task stays in the ordinary due queue so it cannot monopolize future weekly runs.
+  const priorityCurrentCups = stopped ? [] : orderDueItems(due.filter(item => {
+    if (item.source.kind !== 'cup' || item.edition === null || item.source.observedThrough === null ||
+      item.edition !== item.source.observedThrough || item.attempts >= 3) return false;
+    const hints = metadata(item.source);
+    return hints.matchRoundsLeft === 0 && typeof hints.matchRound === 'number' && hints.matchRound > 0;
+  })).slice(0, Math.min(180, Math.ceil(maxItems * 3 / 5)));
+  for (const item of priorityCurrentCups) {
+    if (stopped || counts.itemsAttempted >= maxItems) break;
+    await attemptResult(item);
+  }
+  for (const item of priorityCurrentCups) priorityIds.add(item.id);
   for (const item of stopped ? [] : orderDueItems(due.filter(item => item.id !== priorityMasters?.id && !priorityIds.has(item.id))).slice(0, Math.max(0, maxItems - counts.itemsAttempted))) {
     await attemptResult(item);
     if (stopped) break;

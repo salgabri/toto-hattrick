@@ -17,6 +17,8 @@ included; use a manual refresh for time-sensitive results.
 The latest due Hattrick Masters result is checked first, and cups still missing the previous
 season's result receive a bounded priority before older domestic gaps. This is a queue priority,
 not an assertion that a final was played: unresolved or inactive cups remain pending for evidence.
+Current-season cups with a zero-rounds-left schedule hint also receive a bounded early probe.
+The hint never awards a winner: the final, preceding round and match evidence must validate first.
 
 The private updater lease prevents overlapping acquisitions. The publisher refuses to start unless
 the checkout is clean `main` at the exact `origin/main` revision:

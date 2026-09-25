@@ -145,6 +145,52 @@ test('a due previous-season cup final gets a bounded priority over current and h
   assert.equal(db.updateItem!.find(item => item.sourceKey === 'cup:7' && item.edition === 92)?.attempts, 0);
 });
 
+test('a zero-rounds-left current cup is probed before older due work without inventing a winner', async t => {
+  const db = archive(t, [94], 95);
+  db.updateSource!.push({ sourceKey: 'worlddetails:4', kind: 'worlddetails', externalId: 4,
+    numberingSystem: 'league:4:season', metadataJson: JSON.stringify({ name: 'Italy', world: parseWorldDetailsCups(worldRaw) }),
+    nextCheckAt: new Date('2026-10-01T00:00:00Z') });
+  db.cup!.push(
+    { cupId: 7, leagueId: 4, countryName: 'Italy', cupName: 'Coppa Italia', currentSeason: 95 },
+    { cupId: 515, leagueId: 4, countryName: 'Italy', cupName: 'Coppa Alpi', currentSeason: 95 },
+  );
+  for (const cupId of [7, 515]) db.cupChampion!.push({ cupId, season: 94, finalMatchId: cupId,
+    championTeamName: 'Retained winner', championUserId: 200 });
+  db.updateItem!.push(
+    { id: 900, sourceKey: 'cup:515', itemKey: '95', task: 'result', edition: 95, state: 'pending', attempts: 0,
+      nextAttemptAt: new Date('2026-09-23T00:00:00Z'), createdAt: new Date('2026-09-01T00:00:00Z') },
+    { id: 901, sourceKey: 'cup:7', itemKey: '93', task: 'result', edition: 93, state: 'pending', attempts: 0,
+      nextAttemptAt: new Date('2026-09-22T00:00:00Z'), createdAt: new Date('2026-09-01T00:00:00Z') },
+  );
+  const requested: string[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: Parameters<typeof fetch>[0]) => {
+    const url = new URL(String(input));
+    assert.equal(url.searchParams.get('file'), 'cupmatches');
+    const cupId = Number(url.searchParams.get('cupId'));
+    const season = Number(url.searchParams.get('season'));
+    requested.push(`${cupId}:${season}`);
+    return new Response(builder.build({ HattrickData: { Cup: {
+      CupID: cupId, CupName: cupId === 7 ? 'Coppa Italia' : 'Coppa Alpi', CupSeason: season, CupRound: 0, Match: '',
+    } } }));
+  });
+
+  const now = new Date('2026-09-25T05:17:00Z');
+  const result = await refreshScheduled(token, { onlyLeagueIds: [4], now, maxMetadataChecks: 0, maxItems: 1, pacingMs: 0 });
+  assert.deepEqual(requested, ['7:95']);
+  assert.equal(result.counts.itemsAttempted, 1);
+  assert.equal(db.updateItem!.find(item => item.sourceKey === 'cup:7' && item.edition === 95)?.attempts, 1);
+  assert.equal(db.updateItem!.find(item => item.sourceKey === 'cup:515' && item.edition === 95)?.attempts, 0);
+  assert.equal(db.updateItem!.find(item => item.sourceKey === 'cup:7' && item.edition === 93)?.attempts, 0);
+  assert.ok(!db.cupChampion!.some(row => row.cupId === 7 && row.season === 95));
+  assert.ok(db.updateItem!.find(item => item.sourceKey === 'cup:7' && item.edition === 95)?.nextAttemptAt > now);
+
+  for (const day of [26, 27, 28]) await refreshScheduled(token, { onlyLeagueIds: [4],
+    now: new Date(`2026-09-${day}T05:17:00Z`), maxMetadataChecks: 0, maxItems: 1, pacingMs: 0 });
+  assert.deepEqual(requested, ['7:95', '7:95', '7:95', '515:95']);
+  assert.equal(db.updateItem!.find(item => item.sourceKey === 'cup:7' && item.edition === 95)?.attempts, 3);
+  assert.equal(db.updateItem!.find(item => item.sourceKey === 'cup:515' && item.edition === 95)?.attempts, 1);
+});
+
 test('newly discovered cups enter the catalog and missing catalog entries remain', async t => {
   const db = archive(t, [], 94);
   db.cup!.push({ cupId: 99999, leagueId: 4, cupName: 'Temporarily missing' });
