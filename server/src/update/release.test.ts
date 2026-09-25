@@ -55,10 +55,10 @@ function fixture() {
     }],
   };
   return {
-    'managers.json': [{ userId: 1, userName: 'Manager', nationality: 'Italy', lg: 1, main: 0, sec: 0, hm: 0, sn: 0, wc: 0, wcSilver: 0, wcBronze: 0, lgLast: 1, mainLast: 0, secLast: 0, hmLast: 0, snLast: 0, wcLast: 0, titles: [title], cupsMain: [], cupsSec: [], masters: [], seasonal: [], worldCup: [], medals: [] }],
+    'managers.json': [{ userId: 1, userName: 'Manager', nationality: 'Italy', lg: 1, main: 0, sec: 0, hm: 0, sn: 0, wc: 0, wcSilver: 0, wcBronze: 0, lgLast: 1, mainLast: 0, secLast: 0, hmLast: 0, snLast: 0, wcLast: 0, titles: [title], cupsMain: [], cupsSec: [], masters: [] as Array<typeof title & { cup: string }>, seasonal: [], worldCup: [], medals: [] }],
     'leagues.json': [{ leagueId: 4, country: 'Italy', champions: [{ season: 94, club: 'Club', manager: 'Manager', teamId: 7, userId: 1 }] }],
     'cups.json': [{ leagueId: 4, country: 'Italy', cups: [{ cupId: 10, cupName: 'National Cup', isMain: true, cupLevel: 1, cupLevelIndex: 1, winners: [] }] }],
-    'masters.json': [], 'seasonal.json': [],
+    'masters.json': [] as Array<{ season: number; club: string; manager: string; teamId?: number; userId?: number; leagueId?: number }>, 'seasonal.json': [],
     'worldcup.json': {
       senior: [worldCupEdition], youth: [],
       regional: [{ cupId: 20, cupName: 'Regional Cup', isYouth: false, seasons: [regionalSeason] }],
@@ -118,6 +118,43 @@ test('new unattributed champion ends the old managers reigning status', async ()
   data['managers.json'][0]!.lgLast = 1;
   await save(dir, data);
   await assert.rejects(validateRelease(dir), /inconsistent titles/);
+}));
+
+test('release audit reports an unattributed reigning Masters winner without blocking valid publication', async () => temporary(async (dir) => {
+  const data = fixture();
+  data['masters.json'].push({ season: 95, club: 'FC Wieselhausen', manager: '—', teamId: 820764, leagueId: 3 });
+  await save(join(dir, 'candidate'), data);
+  const report = await validateRelease(join(dir, 'candidate'));
+  assert.equal(report.recentManagerCoverage.complete, false);
+  assert.equal(report.recentManagerCoverage.byFamily.masters.checked, 1);
+  assert.equal(report.recentManagerCoverage.byFamily.masters.missing, 1);
+  assert.deepEqual(report.recentManagerCoverage.examples[0], {
+    family: 'masters', competitionKey: 'cup:183', edition: 95, winner: 'FC Wieselhausen',
+  });
+  const release = await prepareRelease({ candidateDir: join(dir, 'candidate'), outputDataDir: join(dir, 'packaged'), codeRevision: 'test' });
+  assert.equal(release.validation.recentManagerCoverage.complete, false);
+  assert.match(release.dataVersion, /^[a-f0-9]{64}$/);
+}));
+
+test('recent manager audit checks only the latest completed winner in each competition', async () => temporary(async (dir) => {
+  const data = fixture();
+  data['worldcup.json'].senior = [];
+  data['worldcup.json'].regional = [];
+  data['masters.json'].push(
+    { season: 94, club: 'Former winner', manager: '—' },
+    { season: 95, club: 'FC Wieselhausen', manager: 'Manager', teamId: 820764, userId: 1, leagueId: 3 },
+  );
+  const manager = data['managers.json'][0]!;
+  manager.hm = 1;
+  manager.hmLast = 1;
+  manager.masters.push({ country: 'International', leagueId: 3, season: 95, club: 'FC Wieselhausen',
+    teamId: 820764, cup: 'Hattrick Masters', last: true, ago: 0 });
+  await save(dir, data);
+  const report = await validateRelease(dir);
+  assert.equal(report.recentManagerCoverage.complete, true);
+  assert.equal(report.recentManagerCoverage.byFamily.masters.checked, 1);
+  assert.equal(report.recentManagerCoverage.byFamily.masters.missing, 0);
+  assert.equal(report.recentManagerCoverage.missing, 0);
 }));
 
 test('verified identities, election multiplicity, and medal totals are protected', async () => temporary(async (dir) => {

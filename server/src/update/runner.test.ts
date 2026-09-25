@@ -33,6 +33,20 @@ test('offline coordinator restores isolated state, migrates, validates and retai
   await store.compareAndSwap('releases/baseline.json', jsonBytes(baseline), null);
   const result = await run(process.execPath, ['dist/scripts/update.js', 'run', '--no-fetch'], { cwd: process.cwd(), env: cliEnv, windowsHide: true, timeout: 60_000 });
   assert.match(result.stdout, /"calls": 0/); assert.match(result.stdout, /"published": false/);
+  assert.match(result.stdout, /"status": "degraded"/);
+  const releaseId = result.stdout.match(/"releaseId": "([a-f0-9-]+)"/)?.[1];
+  assert.ok(releaseId);
+  const recorded = await store.get(`runs/${releaseId}/result.json`);
+  assert.ok(recorded);
+  const outcome = JSON.parse(recorded.body.toString()) as {
+    status: string; acquisitionStatus: string; coverage: { complete: boolean; reasons: string[];
+      recentManagerAttribution: { complete: boolean; checked: number; missing: number } };
+  };
+  assert.equal(outcome.status, 'degraded');
+  assert.equal(outcome.acquisitionStatus, 'success');
+  assert.equal(outcome.coverage.complete, false);
+  assert.ok(outcome.coverage.reasons.includes('no competition sources have been registered'));
+  assert.equal(outcome.coverage.recentManagerAttribution.checked, 0);
   assert.equal(sha256(await readFile(db)), sourceHash, 'the source DB remains byte-for-byte unchanged');
   assert.notEqual((await readStatePointer(store))?.pointer.snapshotId, first.pointer.snapshotId);
   const pending = await readArtifactPointer(store, 'releases/pending.json'); assert.ok(pending);

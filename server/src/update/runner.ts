@@ -212,12 +212,22 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     // Checkpoint valid ingestion independently of the frontend build/deployment. Publication
     // failure must not lose edition tasks or make the next run re-acquire accepted results.
     const accepted = await saveSnapshot({ store, databasePath: workingPath, previousDatabasePath: beforePath, evidenceRefs: evidenceReferences(), runId, codeRevision, expectedStateEtag: state.etag });
-    await store.putImmutable(`runs/${runId}/report.json`, jsonBytes({ ...report, calls: runtime.stats(), snapshotId: accepted.pointer.snapshotId }));
     const candidateDir = join(dir, 'candidate-data');
     await bakeStatic(candidateDir);
     await validateRelease(candidateDir, acceptedData);
     const packagedData = join(dir, 'packaged-data');
     const release = await prepareRelease({ candidateDir, outputDataDir: packagedData, previousDataDir: previous.dataDir, codeRevision, sources: sources(report) });
+    const recentManagerAttribution = release.validation.recentManagerCoverage;
+    const reasons: string[] = [];
+    if (!recentManagerAttribution.complete) reasons.push('recent champion manager attribution is incomplete');
+    if (report.counts.pendingItems > 0) reasons.push('result checks remain queued');
+    if (report.counts.pendingEvidence > 0) reasons.push('evidence reviews remain queued');
+    if (report.issues.length > 0) reasons.push('source checks reported issues');
+    if (report.sources.length === 0) reasons.push('no competition sources have been registered');
+    const coverage = { complete: reasons.length === 0, reasons, recentManagerAttribution };
+    const status = coverage.complete ? 'success' : 'degraded';
+    await store.putImmutable(`runs/${runId}/report.json`, jsonBytes({ ...report, acquisitionStatus: report.status,
+      status, coverage, calls: runtime.stats(), snapshotId: accepted.pointer.snapshotId }));
     await writeFile(join(dir, 'pending-evidence.json'), JSON.stringify(report.pendingEvidence, null, 2));
     // Build in a new directory with Vite public copying DISABLED. Only the validated data goes in.
     const artifactDir = join(dir, 'site');
@@ -243,8 +253,9 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     const authenticationFailed = report.issues.some(issue => ['authentication', 'forbidden'].includes(issue.category));
     const deployment = (options.publish || options.draft) && !authenticationFailed
       ? await publishArtifact(store, pointer, artifactDir, !!options.publish, lease.assertHeld) : undefined;
-    const result = { status: report.status, releaseId: runId, dataVersion: release.dataVersion, published: deployment?.published ?? false,
-      artifactDir, counts: report.counts, requests: runtime.stats(), pendingEvidenceFile: join(dir, 'pending-evidence.json'), ...(deployment ? { deploymentUrl: deployment.url } : {}) };
+    const result = { status, acquisitionStatus: report.status, coverage, releaseId: runId, dataVersion: release.dataVersion,
+      published: deployment?.published ?? false, artifactDir, counts: report.counts, requests: runtime.stats(),
+      pendingEvidenceFile: join(dir, 'pending-evidence.json'), ...(deployment ? { deploymentUrl: deployment.url } : {}) };
     await store.putImmutable(`runs/${runId}/result.json`, jsonBytes(result));
     await summary(result);
     if (authenticationFailed) throw new Error('CHPP authorization failed; valid progress retained, publication stopped');
