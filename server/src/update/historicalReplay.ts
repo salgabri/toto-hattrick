@@ -1,9 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { z } from 'zod';
-import { prisma } from '../db/client.js';
 import { applyHistoricalWinners, extractHistoricalWinnerEvidence, type HistoricalClubHistory } from '../sync/historicalWinners.js';
-import { MASTERS_CUP_ID } from '../sync/masters.js';
 import { captureEvidence, importedEvidenceKey, InvalidEvidenceError, readEvidence, type EvidenceReference } from './evidence.js';
 import { sha256, type ObjectStore } from './storage.js';
 
@@ -31,6 +29,9 @@ function parseHistoryFile(body: Buffer): HistoricalClubHistory[] {
 /** One reviewed, checked-in history capture may be added after the original archive bootstrap.
  * Import this exact file immutably; no directory scan or live Hattrick request is involved. */
 export async function retainCheckedInClubHistory(store: ObjectStore, repositoryPath: string): Promise<EvidenceReference> {
+  // runner imports this module before it selects the isolated update database. Keep both
+  // masters.ts and db/client.ts lazy so their Prisma client binds only after that selection.
+  const { MASTERS_CUP_ID } = await import('../sync/masters.js');
   const body = await readFile(resolve(repositoryPath, CHECKED_IN_HISTORY_PATH));
   const histories = parseHistoryFile(body);
   const proof = extractHistoricalWinnerEvidence(histories).evidence;
@@ -67,6 +68,8 @@ export async function retainedClubHistories(store: ObjectStore, references: read
 /** Historical identity can arrive before the result row it proves. Replay already-retained
  * linked events after each result run; the shared resolver guards every database update. */
 export async function replayRetainedClubHistories(store: ObjectStore, references: readonly EvidenceReference[], now = new Date()) {
+  const { prisma } = await import('../db/client.js');
+  const { MASTERS_CUP_ID } = await import('../sync/masters.js');
   const retained = await retainedClubHistories(store, references);
   if (!retained.captures) return { captures: 0, histories: 0, applied: 0, conflicts: 0, unmatched: 0, attributionTasksCompleted: 0 };
   const result = await applyHistoricalWinners(retained.histories, { apply: true });
