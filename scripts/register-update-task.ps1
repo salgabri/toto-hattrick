@@ -34,10 +34,11 @@ if ($Frequency -eq 'Weekly') {
     $archiveTrigger = New-ScheduledTaskTrigger -Daily -At $archiveFirstRun
     $archiveSchedule = "daily at $At"
 }
-$archiveSettings = New-ScheduledTaskSettingsSet -StartWhenAvailable -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -MultipleInstances IgnoreNew -ExecutionTimeLimit (New-TimeSpan -Minutes 120)
+$archiveSettings = New-ScheduledTaskSettingsSet -StartWhenAvailable -WakeToRun -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -MultipleInstances IgnoreNew -ExecutionTimeLimit (New-TimeSpan -Minutes 120) -RestartCount 1 -RestartInterval (New-TimeSpan -Minutes 125)
 # InteractiveToken requires no saved password and runs only while this account is logged in.
 # StartWhenAvailable catches missed starts on the next logged-in opportunity; it cannot run
-# while the computer is off. Cloud scheduling is a separate opt-in in the runbook.
+# while the computer is off. A restart waits beyond the two-hour archive lease left by an
+# interrupted updater. Cloud scheduling is a separate opt-in in the runbook.
 $archiveIdentity = [Security.Principal.WindowsIdentity]::GetCurrent().Name
 $archivePrincipal = New-ScheduledTaskPrincipal -UserId $archiveIdentity -LogonType Interactive -RunLevel Limited
 if ($PSCmdlet.ShouldProcess($archiveTaskName, "Register a $archiveSchedule local archive update")) {

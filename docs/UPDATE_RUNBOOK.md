@@ -107,9 +107,12 @@ To schedule locally without S3, after a successful authorized manual run:
 
 This creates **Toto Hattrick archive update** in Windows Task Scheduler. It runs every Monday as your
 logged-in account with no password saved, skips overlapping starts, and catches up missed starts
-when available. It is allowed to start and finish on battery power so an unplugged laptop does not
-silently skip or interrupt an archive checkpoint. Its first start is the next occurrence of the selected local time, never an
-immediate catch-up for a time before registration. Your computer must be on and your account logged in. Logs are private local files
+when available. It requests a wake timer for a sleeping computer and retries one failed run after
+two hours and five minutes, long enough for an interrupted updater lease to expire. It is allowed
+to start and finish on battery power so an unplugged laptop does not silently skip or interrupt an
+archive checkpoint. A powered-off computer or a signed-out account still prevents the task from
+running. Its first start is the next occurrence of the selected local time, never an
+immediate catch-up for a time before registration. Logs are private local files
 under `.update-work/logs`; Task Scheduler exposes the last exit status. It does not automatically
 send notifications. Every scheduled publishing run first proves that the checkout is clean `main`
 and equals `origin/main`, then executes both workspace typechecks and the offline test suite before
