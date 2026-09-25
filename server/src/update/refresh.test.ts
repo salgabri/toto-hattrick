@@ -91,6 +91,31 @@ test('baseline retains historical holes and older work alternates with fresh fin
   assert.deepEqual(orderDueItems(items).map(item => item.edition), [100, 90, 99, 91]);
 });
 
+test('a full update probes the due current Masters result before a larger domestic backlog', async t => {
+  const db = archive(t, [], 95);
+  const calls: string[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: Parameters<typeof fetch>[0]) => {
+    const url = new URL(String(input));
+    const file = url.searchParams.get('file');
+    if (file === 'worlddetails') {
+      calls.push('worlddetails');
+      return new Response(worldXML(95));
+    }
+    assert.equal(file, 'cupmatches');
+    calls.push(`${url.searchParams.get('cupId')}:${url.searchParams.get('season')}`);
+    return new Response(builder.build({ HattrickData: { Cup: {
+      CupID: 183, CupName: 'Hattrick Masters', CupSeason: 95, CupRound: 0, Match: '',
+    } } }));
+  });
+
+  const result = await refreshScheduled(token, { now: new Date('2026-09-25T05:17:00Z'),
+    maxMetadataChecks: 1, maxItems: 1, pacingMs: 0 });
+  assert.deepEqual(calls, ['worlddetails', '183:95']);
+  assert.equal(result.counts.itemsAttempted, 1);
+  assert.equal(db.updateItem!.find(item => item.sourceKey === 'cup:183' && item.edition === 95 && item.task === 'result')?.attempts, 1);
+  assert.equal(db.updateItem!.find(item => item.sourceKey === 'league:4' && item.edition === 95 && item.task === 'result')?.attempts, 0);
+});
+
 test('newly discovered cups enter the catalog and missing catalog entries remain', async t => {
   const db = archive(t, [], 94);
   db.cup!.push({ cupId: 99999, leagueId: 4, cupName: 'Temporarily missing' });
