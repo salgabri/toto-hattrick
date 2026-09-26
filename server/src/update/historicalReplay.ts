@@ -1,10 +1,10 @@
-import { readFile } from 'node:fs/promises';
+import { lstat, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { z } from 'zod';
 import { applyHistoricalWinners, extractHistoricalWinnerEvidence, type HistoricalClubHistory } from '../sync/historicalWinners.js';
 import type { BulkCapture, BulkCaptureBatch } from '../sync/bulkHistoricalWinners.js';
 import { applyManagerProfileWinner, parseManagerProfileWinnerEvidence } from '../sync/managerProfileWinners.js';
-import { captureEvidence, importedEvidenceKey, InvalidEvidenceError, readEvidence, type EvidenceReference } from './evidence.js';
+import { captureEvidence, evidenceReferences, importedEvidenceKey, InvalidEvidenceError, readEvidence, type EvidenceReference } from './evidence.js';
 import { sha256, type ObjectStore } from './storage.js';
 
 const LEGACY_HISTORY_PATH = '.scrape/winner-recovery/histories.json';
@@ -15,7 +15,10 @@ export const GIBRALTAR_HISTORY_PATH = 'server/src/data/verified-club-history-gib
 export const HAITI_HISTORY_PATH = 'server/src/data/verified-club-history-haiti-2026-09.json';
 export const HRO_PROFILE_PATH = 'server/src/data/verified-manager-profile-hro-2026-09.json';
 export const BULK_HISTORY_PATH = 'server/src/data/verified-club-history-bulk-2026-09.jsonl';
-const HISTORY_PATHS = [LEGACY_HISTORY_PATH, CHECKED_IN_HISTORY_PATH, ETHIOPIA_HISTORY_PATH, BHUTAN_HISTORY_PATH, GIBRALTAR_HISTORY_PATH, HAITI_HISTORY_PATH] as const;
+/** Logical provenance for a manually supplied capture. The caller's filesystem path is never retained. */
+export const OPERATOR_HISTORY_PATH = 'operator/club-history.json';
+const MAX_OPERATOR_HISTORY_BYTES = 10 * 1024 * 1024;
+const HISTORY_PATHS = [LEGACY_HISTORY_PATH, CHECKED_IN_HISTORY_PATH, ETHIOPIA_HISTORY_PATH, BHUTAN_HISTORY_PATH, GIBRALTAR_HISTORY_PATH, HAITI_HISTORY_PATH, OPERATOR_HISTORY_PATH] as const;
 const pathByHash = new Map(HISTORY_PATHS.map(path => [sha256(path), path]));
 const ImportedHistorySchema = z.object({
   path: z.enum(HISTORY_PATHS), encoding: z.literal('base64'), contents: z.string().min(1),
@@ -38,6 +41,39 @@ function parseHistoryFile(body: Buffer): HistoricalClubHistory[] {
   try { extractHistoricalWinnerEvidence(entries as HistoricalClubHistory[]); }
   catch { throw new InvalidEvidenceError(); }
   return entries as HistoricalClubHistory[];
+}
+
+/** Retain a human-supplied Club History JSON file after validating its links and exact DB target.
+ * This deliberately does not fetch or scan Hattrick pages. The immutable capture is replayed
+ * later only when an accepted snapshot explicitly references it. */
+export async function retainOperatorClubHistory(store: ObjectStore, inputPath: string): Promise<{
+  reference: EvidenceReference;
+  evidence: number;
+  counts: Awaited<ReturnType<typeof applyHistoricalWinners>>['counts'];
+}> {
+  const file = await lstat(inputPath);
+  if (!file.isFile() || file.isSymbolicLink() || file.size > MAX_OPERATOR_HISTORY_BYTES) throw new InvalidEvidenceError();
+  const body = await readFile(inputPath);
+  if (body.length > MAX_OPERATOR_HISTORY_BYTES) throw new InvalidEvidenceError();
+  const histories = parseHistoryFile(body);
+  const extracted = extractHistoricalWinnerEvidence(histories);
+  if (!extracted.evidence.length || extracted.rejected.length) throw new InvalidEvidenceError();
+
+  // Preview the requested capture on its own, then include all already accepted Club History
+  // captures to detect contradictory manager claims before any new evidence is stored.
+  const preview = await applyHistoricalWinners(histories, { apply: false });
+  if (preview.counts.conflicts || preview.counts.unmatched ||
+    !preview.counts.ready && !preview.counts.alreadyAttributed)
+    throw new InvalidEvidenceError();
+  const accepted = await retainedClubHistories(store, evidenceReferences());
+  const combined = accepted.histories.length
+    ? await applyHistoricalWinners([...accepted.histories, ...histories], { apply: false }) : preview;
+  if (combined.counts.conflicts) throw new InvalidEvidenceError();
+
+  const reference = await captureEvidence({ store, key: importedEvidenceKey(OPERATOR_HISTORY_PATH, body),
+    source: OPERATOR_HISTORY_PATH, parserVersion: 'operator-history-v1',
+    payload: { path: OPERATOR_HISTORY_PATH, encoding: 'base64', contents: body.toString('base64') } });
+  return { reference, evidence: extracted.evidence.length, counts: preview.counts };
 }
 
 /** Import one reviewed capture immutably; no directory scan or live Hattrick request is involved. */
@@ -131,23 +167,28 @@ export async function replayRetainedHroProfile(store: ObjectStore, references: r
 export async function retainedClubHistories(store: ObjectStore, references: readonly EvidenceReference[]): Promise<{
   captures: number; histories: HistoricalClubHistory[];
 }> {
-  const keys = references.map(ref => ref.key).filter(key =>
-    /^evidence\/imports\/[a-f0-9]{64}\/[a-f0-9]{64}\.json$/.test(key) && pathByHash.has(key.split('/')[3]!.slice(0, -5))).sort();
+  const refs = [...new Map(references.filter(ref =>
+    /^evidence\/imports\/[a-f0-9]{64}\/[a-f0-9]{64}\.json$/.test(ref.key) &&
+    pathByHash.has(ref.key.split('/')[3]!.slice(0, -5))).map(ref => [ref.key, ref])).values()]
+    .sort((a, b) => a.key.localeCompare(b.key));
   const histories: HistoricalClubHistory[] = [];
-  for (const key of keys) {
-    const retained = await readEvidence(store, key);
-    const path = pathByHash.get(key.split('/')[3]!.slice(0, -5));
-    if (!retained || !path || retained.capture.source !== path ||
-      !['legacy-import-v1', 'checked-in-history-v1'].includes(retained.capture.parserVersion))
+  for (const ref of refs) {
+    const retained = await readEvidence(store, ref.key);
+    const path = pathByHash.get(ref.key.split('/')[3]!.slice(0, -5));
+    const expectedVersion = path === OPERATOR_HISTORY_PATH ? 'operator-history-v1' : null;
+    if (!retained || retained.reference.sha256 !== ref.sha256 || retained.reference.bytes !== ref.bytes ||
+      !path || retained.capture.source !== path ||
+      !(expectedVersion ? retained.capture.parserVersion === expectedVersion :
+        ['legacy-import-v1', 'checked-in-history-v1'].includes(retained.capture.parserVersion)))
       throw new InvalidEvidenceError();
     const payload = ImportedHistorySchema.safeParse(retained.capture.payload);
     if (!payload.success || payload.data.path !== path) throw new InvalidEvidenceError();
     const body = Buffer.from(payload.data.contents, 'base64');
-    if (body.toString('base64') !== payload.data.contents || sha256(body) !== key.split('/')[2])
+    if (body.toString('base64') !== payload.data.contents || sha256(body) !== ref.key.split('/')[2])
       throw new InvalidEvidenceError();
     histories.push(...parseHistoryFile(body));
   }
-  return { captures: keys.length, histories };
+  return { captures: refs.length, histories };
 }
 
 /** Historical identity can arrive before the result row it proves. Replay already-retained

@@ -8,8 +8,9 @@ import { env, childEnvironment, useUpdateDatabase } from '../config/env.js';
 import { configureChppRuntime } from '../chpp/client.js';
 import { bootstrapEvidence, captureEvidence, configureEvidenceStore, evidenceReferences, hasDedicatedEvidenceCapture } from './evidence.js';
 import { BHUTAN_HISTORY_PATH, ETHIOPIA_HISTORY_PATH, GIBRALTAR_HISTORY_PATH, HAITI_HISTORY_PATH,
-  replayRetainedBulkClubHistories, replayRetainedClubHistories, replayRetainedHroProfile,
-  retainCheckedInBulkClubHistory, retainCheckedInClubHistory, retainCheckedInHroProfile } from './historicalReplay.js';
+  replayRetainedBulkClubHistories, replayRetainedClubHistories, replayRetainedHroProfile, retainedClubHistories,
+  retainCheckedInBulkClubHistory, retainCheckedInClubHistory, retainCheckedInHroProfile,
+  retainOperatorClubHistory } from './historicalReplay.js';
 import { LocalObjectStore, S3ObjectStore, jsonBytes, type ObjectStore } from './storage.js';
 import { readStatePointer, restoreSnapshot, saveSnapshot, snapshotDatabase, assertArchivePreserved } from './snapshots.js';
 import { acquireLease } from './lease.js';
@@ -164,7 +165,7 @@ async function publishArtifact(store: ObjectStore, pointer: ArtifactPointer, art
   return result;
 }
 
-export async function runUpdate(options: { noFetch?: boolean; publish?: boolean; draft?: boolean } = {}) {
+export async function runUpdate(options: { noFetch?: boolean; publish?: boolean; draft?: boolean; operatorHistoryFile?: string } = {}) {
   if (options.publish || options.draft) {
     const configured = env.UPDATE_DEPLOY_PROVIDER === 'netlify' ? env.NETLIFY_SITE_ID && env.NETLIFY_AUTH_TOKEN
       : env.UPDATE_DEPLOY_PROVIDER === 'vercel' ? env.VERCEL_PROJECT_ID && env.VERCEL_TOKEN : false;
@@ -206,6 +207,10 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     await retainCheckedInClubHistory(store, repositoryPath, HAITI_HISTORY_PATH);
     await retainCheckedInBulkClubHistory(store, repositoryPath);
     await retainCheckedInHroProfile(store, repositoryPath);
+    // Operator input is a saved, human-reviewed DOM capture, never a live HTML request.
+    // Retention and exact-row dry-run both happen before CHPP or publication.
+    const operatorHistoryInput = options.operatorHistoryFile
+      ? await retainOperatorClubHistory(store, options.operatorHistoryFile) : null;
     const beforeRefresh = await reportScheduled();
     runtime = configureChppRuntime({ maxCalls: env.UPDATE_MAX_CALLS, maxRetries: 2, pacingMs: 600,
       deadline: Date.now() + env.UPDATE_MAX_MINUTES * 60_000,
@@ -218,10 +223,24 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     const acquisition = token ? await refreshScheduled(token, { maxItems: env.UPDATE_MAX_ITEMS,
       maxMetadataChecks: env.UPDATE_MAX_CALLS === 0 ? 0 : Math.max(1, Math.floor(env.UPDATE_MAX_CALLS / 3)),
     }) : await reportScheduled();
+    // Result acquisition can refine a winner row after the initial operator dry-run. Recheck
+    // only the immutable operator capture before applying it to the combined retained history.
+    if (operatorHistoryInput) {
+      const retained = await retainedClubHistories(store, [operatorHistoryInput.reference]);
+      const { applyHistoricalWinners } = await import('../sync/historicalWinners.js');
+      const preview = await applyHistoricalWinners(retained.histories, { apply: false });
+      if (preview.counts.conflicts || preview.counts.unmatched || preview.counts.rejected ||
+        !preview.counts.ready && !preview.counts.alreadyAttributed)
+        throw new Error('Operator history no longer matches an exact winner after acquisition; publication stopped');
+    }
     const clubHistoryReplay = await replayRetainedClubHistories(store, evidenceReferences());
+    if (operatorHistoryInput && clubHistoryReplay.conflicts > 0)
+      throw new Error('Operator history conflicts with retained winner evidence; publication stopped');
     const bulkClubHistoryReplay = await replayRetainedBulkClubHistories(store, evidenceReferences());
     const managerProfileReplay = await replayRetainedHroProfile(store, evidenceReferences());
-    const historicalEvidenceReplay = { ...clubHistoryReplay, bulkClubHistoryReplay, managerProfileReplay };
+    const historicalEvidenceReplay = { ...clubHistoryReplay, bulkClubHistoryReplay, managerProfileReplay,
+      operatorHistoryInput: operatorHistoryInput ? { evidence: operatorHistoryInput.evidence,
+        counts: operatorHistoryInput.counts } : null };
     // A linked history can predate the winner row first discovered above. Re-read the ledger
     // after replay so completed attribution tasks do not appear as unresolved in this release.
     const afterReplay = await reportScheduled();

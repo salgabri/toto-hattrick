@@ -376,6 +376,33 @@ HTML scan. From the repository root, `npm run update:publish -- --no-fetch` runs
 no-CHPP replay, Git merge, and deployment workflow; the similarly named server-workspace
 `update:publish` command only deploys an already prepared pending release.
 
+### One-command operator history import
+
+After the updater has stored a completed winner, review that winner's Club History page yourself
+in a browser and save the exact visible dated
+win statement and its anchor labels/hrefs in a local JSON file using the
+[historical winner evidence format](HISTORICAL_WINNER_RECOVERY.md#evidence-format). A partial
+history with a direct linked win statement uses `complete:false`; do not mark a page complete
+unless every page and ownership boundary was captured. Keep the input under `.scrape/` so it
+does not enter Git. The
+[Wieselhausen capture](../server/src/data/verified-club-history-wieselhausen-2026-09-17.json)
+shows the exact two-link Masters structure.
+
+From the repository root, one command validates, immutably retains, replays and publishes that
+reviewed evidence alongside the normal official XML update:
+
+```powershell
+npm run update:publish -- --history .scrape/manual-history.json
+```
+
+Add `--no-fetch` after `--` to make zero CHPP calls while still replaying the capture and
+publishing the validated archive. The command makes **no Club History HTTP request**; the person
+running it must supply the source row. Invalid, unlinked, conflicting, or unmatched evidence
+stops the run before publication. Previously accepted evidence is replayed on later runs without
+re-reading the local file. A former/retired manager without a source user link remains unresolved.
+Club History evidence covers club leagues, domestic cups, Masters and seasonal club trophies;
+national-team coach medals need their separate election/coaching evidence workflow.
+
 ## Failures and recovery
 
 - Source failures preserve earlier facts and successful-check timestamps. Other validated additions

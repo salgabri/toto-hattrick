@@ -6,9 +6,9 @@ import { test, type TestContext } from 'node:test';
 import { prisma } from '../db/client.js';
 import { captureEvidence, configureEvidenceStore, evidenceReferences, importedEvidenceKey } from './evidence.js';
 import { BHUTAN_HISTORY_PATH, BULK_HISTORY_PATH, CHECKED_IN_HISTORY_PATH, ETHIOPIA_HISTORY_PATH, GIBRALTAR_HISTORY_PATH, HAITI_HISTORY_PATH,
-  HRO_PROFILE_PATH, replayRetainedBulkClubHistories, replayRetainedClubHistories, replayRetainedHroProfile,
+  HRO_PROFILE_PATH, OPERATOR_HISTORY_PATH, replayRetainedBulkClubHistories, replayRetainedClubHistories, replayRetainedHroProfile,
   retainCheckedInBulkClubHistory, retainCheckedInClubHistory, retainCheckedInHroProfile,
-  retainedBulkClubHistories, retainedClubHistories } from './historicalReplay.js';
+  retainOperatorClubHistory, retainedBulkClubHistories, retainedClubHistories } from './historicalReplay.js';
 import { LocalObjectStore, sha256 } from './storage.js';
 
 const repositoryPath = resolve('..');
@@ -146,6 +146,113 @@ test('retained win-time manager link attributes a newly arrived Masters winner a
   assert.deepEqual((tasks[0] as { where: object }).where, {
     sourceKey: 'cup:183', itemKey: '95', task: 'attribution', state: { not: 'complete' },
   });
+});
+
+test('operator Club History JSON is validated, retained without its local path, and replayed only from accepted refs', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'archive-operator-history-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const inputPath = join(root, 'my-private-club-history.json');
+  const body = await reviewedHistory();
+  await writeFile(inputPath, body);
+  const store = new LocalObjectStore(join(root, 'private'));
+  const reset = configureEvidenceStore({ store, workspacePath: root }); t.after(reset);
+  const winner = { cupId: 183, leagueId: 0, season: 95, championTeamId: 820764,
+    championTeamName: 'FC Wieselhausen', championUserId: null, championUserName: null, championLeagueId: null };
+  mock(t, prisma.cup, 'findMany', async () => [{ cupId: 183, leagueId: 0 }]);
+  mock(t, prisma.cupChampion, 'findMany', async () => [winner]);
+  mock(t, prisma.leagueChampion, 'findMany', async () => []);
+  t.mock.method(globalThis, 'fetch', async () => { throw new Error('No network request is allowed'); });
+
+  const first = await retainOperatorClubHistory(store, inputPath);
+  assert.equal(first.reference.key, importedEvidenceKey(OPERATOR_HISTORY_PATH, body));
+  assert.equal(first.evidence, 1);
+  assert.equal(first.counts.ready, 1);
+  assert.equal((await retainedClubHistories(store, [])).captures, 0);
+  assert.equal((await retainedClubHistories(store, evidenceReferences())).captures, 1);
+  const saved = await store.get(first.reference.key);
+  assert.ok(saved);
+  assert.ok(!saved.body.toString('utf8').includes(inputPath), 'Private local input path must not enter retained evidence');
+  assert.deepEqual((await retainOperatorClubHistory(store, inputPath)).reference, first.reference);
+
+  const writes: unknown[] = [];
+  mock(t, prisma, '$transaction', async (run: (tx: object) => Promise<unknown>) => run({
+    cupChampion: { updateMany: async (args: unknown) => { writes.push(args); return { count: 1 }; } },
+    hattrickUser: { upsert: async () => ({}) },
+  }));
+  mock(t, prisma.updateItem, 'updateMany', async () => ({ count: 1 }));
+  const replay = await replayRetainedClubHistories(store, evidenceReferences());
+  assert.equal(replay.applied, 1);
+  assert.equal(writes.length, 1);
+  assert.deepEqual((writes[0] as { data: object }).data, { championUserId: 13557250,
+    championUserName: 'WitzigesWiesel', championTeamId: 820764 });
+
+  await writeFile(inputPath, Buffer.concat([body, Buffer.from('\n')]));
+  const changed = await retainOperatorClubHistory(store, inputPath);
+  assert.notEqual(changed.reference.key, first.reference.key);
+  assert.ok(await store.get(first.reference.key), 'Earlier immutable capture must remain available');
+});
+
+test('operator capture fails closed on empty/rejected proof, absent target, conflict, and unsafe input', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'archive-operator-history-invalid-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const inputPath = join(root, 'capture.json');
+  const store = new LocalObjectStore(join(root, 'private'));
+  const reset = configureEvidenceStore({ store, workspacePath: root }); t.after(reset);
+  const winner = { cupId: 183, leagueId: 0, season: 95, championTeamId: 820764,
+    championTeamName: 'FC Wieselhausen', championUserId: null as number | null,
+    championUserName: null, championLeagueId: null };
+  mock(t, prisma.cup, 'findMany', async () => [{ cupId: 183, leagueId: 0 }]);
+  let rows = [winner];
+  mock(t, prisma.cupChampion, 'findMany', async () => rows);
+  mock(t, prisma.leagueChampion, 'findMany', async () => []);
+  t.mock.method(globalThis, 'fetch', async () => { throw new Error('No network request is allowed'); });
+
+  await writeFile(inputPath, '[]');
+  await assert.rejects(retainOperatorClubHistory(store, inputPath), /Retained evidence cannot be validated/);
+  const changed = JSON.parse((await reviewedHistory()).toString('utf8'));
+  changed[0].pages[0].rows[0].links[1].href = '/en/Club/Manager/?userId=invalid';
+  await writeFile(inputPath, JSON.stringify(changed));
+  await assert.rejects(retainOperatorClubHistory(store, inputPath), /Retained evidence cannot be validated/);
+  const body = await reviewedHistory();
+  const mixed = JSON.parse(body.toString('utf8'));
+  const previous = structuredClone(mixed[0].pages[0].rows[0]);
+  previous.text = previous.text.replace('17.09.2026', '17.03.2026').replace('season 95', 'season 94');
+  mixed[0].pages[0].rows.push(previous);
+  await writeFile(inputPath, JSON.stringify(mixed));
+  await assert.rejects(retainOperatorClubHistory(store, inputPath), /Retained evidence cannot be validated/,
+    'A capture with one matching and one unmatched winner must not be retained');
+  await writeFile(inputPath, body);
+  rows = [];
+  await assert.rejects(retainOperatorClubHistory(store, inputPath), /Retained evidence cannot be validated/);
+  rows = [winner];
+  winner.championUserId = 42;
+  await assert.rejects(retainOperatorClubHistory(store, inputPath), /Retained evidence cannot be validated/);
+  winner.championUserId = null;
+  assert.equal(evidenceReferences().length, 0, 'Rejected files must not be retained');
+
+  await assert.rejects(retainOperatorClubHistory(store, root), /Retained evidence cannot be validated/);
+  await writeFile(inputPath, Buffer.alloc(10 * 1024 * 1024 + 1));
+  await assert.rejects(retainOperatorClubHistory(store, inputPath), /Retained evidence cannot be validated/);
+});
+
+test('operator capture refuses contradictory new manager claims before retaining a second file', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'archive-operator-history-conflict-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const inputPath = join(root, 'capture.json');
+  const store = new LocalObjectStore(join(root, 'private'));
+  const reset = configureEvidenceStore({ store, workspacePath: root }); t.after(reset);
+  mock(t, prisma.cup, 'findMany', async () => [{ cupId: 183, leagueId: 0 }]);
+  mock(t, prisma.cupChampion, 'findMany', async () => [{ cupId: 183, leagueId: 0, season: 95,
+    championTeamId: 820764, championTeamName: 'FC Wieselhausen', championUserId: null,
+    championUserName: null, championLeagueId: null }]);
+  mock(t, prisma.leagueChampion, 'findMany', async () => []);
+  await writeFile(inputPath, await reviewedHistory());
+  await retainOperatorClubHistory(store, inputPath);
+  const changed = JSON.parse((await reviewedHistory()).toString('utf8'));
+  changed[0].pages[0].rows[0].links[1].href = '/en/Club/Manager/?userId=13557251';
+  await writeFile(inputPath, JSON.stringify(changed));
+  await assert.rejects(retainOperatorClubHistory(store, inputPath), /Retained evidence cannot be validated/);
+  assert.equal(evidenceReferences().length, 1);
 });
 
 function bulkBody(userId = 11687578) {

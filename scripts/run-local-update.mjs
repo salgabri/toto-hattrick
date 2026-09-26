@@ -3,13 +3,21 @@ import { createWriteStream } from 'node:fs';
 import { mkdir, open } from 'node:fs/promises';
 import { delimiter, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseArgs } from 'node:util';
 
 // Task Scheduler entry point. No shell interpolation or credentials in arguments/task XML.
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const args = process.argv.slice(2);
-if (args.some(arg => !['--publish', '--no-fetch'].includes(arg))) throw new Error('Supported options: --publish, --no-fetch');
-const publishThroughGit = args.includes('--publish');
-const updateArgs = args.filter(arg => arg !== '--publish');
+const { values } = parseArgs({ options: {
+  publish: { type: 'boolean', default: false },
+  'no-fetch': { type: 'boolean', default: false },
+  history: { type: 'string' },
+}, allowPositionals: false });
+if (values.history !== undefined && !values.history.trim()) throw new Error('--history requires a nonempty file path');
+const publishThroughGit = values.publish;
+const updateArgs = [
+  ...(values['no-fetch'] ? ['--no-fetch'] : []),
+  ...(values.history ? ['--history', resolve(values.history)] : []),
+];
 const gitRelease = join(root, 'scripts', 'git-release.mjs');
 const npmCli = join(dirname(process.execPath), 'node_modules/npm/bin/npm-cli.js');
 const pathKey = Object.keys(process.env).find(key => key.toLowerCase() === 'path') ?? 'PATH';

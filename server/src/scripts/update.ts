@@ -8,14 +8,18 @@ import { confirmGitRelease, exportGitRelease, validateGitRelease } from '../upda
 try {
   const { positionals, values } = parseArgs({ allowPositionals: true, options: {
     'no-fetch': { type: 'boolean', default: false }, publish: { type: 'boolean', default: false }, draft: { type: 'boolean', default: false },
+    history: { type: 'string' },
     database: { type: 'string' }, manifest: { type: 'string' }, output: { type: 'string' }, commit: { type: 'string' },
     candidate: { type: 'string' }, previous: { type: 'string' }, 'timeout-ms': { type: 'string' },
   } });
   if (positionals.length !== 1 || (values.publish && values.draft)) throw new Error('Usage: update.ts plan|bootstrap|run|publish|export-git|validate-git|confirm-git|checkout|acknowledge|import [options]');
+  if (values.history !== undefined && !values.history.trim()) throw new Error('--history requires a nonempty file path');
+  if (values.history && positionals[0] !== 'run') throw new Error('--history is only supported by update run');
   switch (positionals[0]) {
     case 'plan': await planUpdate(); break;
     case 'bootstrap': await bootstrapArchive(); break;
-    case 'run': await runUpdate({ noFetch: values['no-fetch'], publish: values.publish, draft: values.draft }); break;
+    case 'run': await runUpdate({ noFetch: values['no-fetch'], publish: values.publish, draft: values.draft,
+      operatorHistoryFile: values.history ? resolve(values.history) : undefined }); break;
     case 'publish': await publishPending(values.publish); break;
     case 'export-git': {
       if (!values.output) throw new Error('export-git requires --output web/public/data');

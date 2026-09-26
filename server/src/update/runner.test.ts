@@ -59,6 +59,16 @@ test('offline coordinator restores isolated state, migrates, validates and retai
   assert.equal(record.files.filter(file => /^data\/versions\/[^/]+\/[^/]+\.json$/.test(file.path)).length, 7);
   assert.equal(record.files.some(file => file.path === 'data/managers.json'), false, 'stale committed data is excluded');
   assert.equal(await readArtifactPointer(store, 'releases/current.json'), null, 'preparation cannot claim a published release');
+  const invalidHistory = join(root, 'invalid-history.json');
+  await writeFile(invalidHistory, '[]');
+  const beforeInvalidImport = (await readStatePointer(store))?.pointer.snapshotId;
+  await assert.rejects(run(process.execPath, ['dist/scripts/update.js', 'run', '--no-fetch', '--history', invalidHistory], {
+    cwd: process.cwd(), env: cliEnv, windowsHide: true, timeout: 60_000,
+  }), (error: unknown) => {
+    assert.match((error as { stderr: string }).stderr, /InvalidEvidenceError|evidence|history/i); return true;
+  });
+  assert.equal((await readStatePointer(store))?.pointer.snapshotId, beforeInvalidImport,
+    'an unproved operator capture cannot advance accepted state');
   // Selecting Vercel must use its own configuration guard, before touching state or CHPP.
   await assert.rejects(run(process.execPath, ['dist/scripts/update.js', 'run', '--draft', '--no-fetch'], {
     cwd: process.cwd(), env: { ...cliEnv, UPDATE_DEPLOY_PROVIDER: 'vercel', VERCEL_PROJECT_ID: '', VERCEL_TOKEN: '' },
