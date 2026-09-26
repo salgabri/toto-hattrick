@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { z } from 'zod';
 import { applyHistoricalWinners, extractHistoricalWinnerEvidence, type HistoricalClubHistory } from '../sync/historicalWinners.js';
+import type { BulkCapture, BulkCaptureBatch } from '../sync/bulkHistoricalWinners.js';
 import { applyManagerProfileWinner, parseManagerProfileWinnerEvidence } from '../sync/managerProfileWinners.js';
 import { captureEvidence, importedEvidenceKey, InvalidEvidenceError, readEvidence, type EvidenceReference } from './evidence.js';
 import { sha256, type ObjectStore } from './storage.js';
@@ -13,6 +14,7 @@ export const BHUTAN_HISTORY_PATH = 'server/src/data/verified-club-history-bhutan
 export const GIBRALTAR_HISTORY_PATH = 'server/src/data/verified-club-history-gibraltar-2026-09.json';
 export const HAITI_HISTORY_PATH = 'server/src/data/verified-club-history-haiti-2026-09.json';
 export const HRO_PROFILE_PATH = 'server/src/data/verified-manager-profile-hro-2026-09.json';
+export const BULK_HISTORY_PATH = 'server/src/data/verified-club-history-bulk-2026-09.jsonl';
 const HISTORY_PATHS = [LEGACY_HISTORY_PATH, CHECKED_IN_HISTORY_PATH, ETHIOPIA_HISTORY_PATH, BHUTAN_HISTORY_PATH, GIBRALTAR_HISTORY_PATH, HAITI_HISTORY_PATH] as const;
 const pathByHash = new Map(HISTORY_PATHS.map(path => [sha256(path), path]));
 const ImportedHistorySchema = z.object({
@@ -20,6 +22,9 @@ const ImportedHistorySchema = z.object({
 }).strict();
 const ImportedProfileSchema = z.object({
   path: z.literal(HRO_PROFILE_PATH), encoding: z.literal('base64'), contents: z.string().min(1),
+}).strict();
+const ImportedBulkSchema = z.object({
+  path: z.literal(BULK_HISTORY_PATH), encoding: z.literal('base64'), contents: z.string().min(1),
 }).strict();
 
 function parseHistoryFile(body: Buffer): HistoricalClubHistory[] {
@@ -166,4 +171,93 @@ export async function replayRetainedClubHistories(store: ObjectStore, references
   }
   return { captures: retained.captures, histories: retained.histories.length, applied: result.counts.applied,
     conflicts: result.counts.conflicts, unmatched: result.counts.unmatched, attributionTasksCompleted };
+}
+
+async function parseBulkFile(body: Buffer): Promise<BulkCaptureBatch> {
+  try {
+    // Import only after runner selects its isolated update database. The bulk module's guarded
+    // apply path binds Prisma on import, while this parser also checks every linked row first.
+    const { parseBulkHistoricalWinnerJsonl } = await import('../sync/bulkHistoricalWinners.js');
+    return parseBulkHistoricalWinnerJsonl(body.toString('utf8').replace(/^\uFEFF/, ''));
+  } catch { throw new InvalidEvidenceError(); }
+}
+
+/** Retain reviewed JSONL bytes, not synthesized winner IDs or the live web page. */
+export async function retainCheckedInBulkClubHistory(store: ObjectStore, repositoryPath: string): Promise<EvidenceReference> {
+  const body = await readFile(resolve(repositoryPath, BULK_HISTORY_PATH));
+  await parseBulkFile(body);
+  return captureEvidence({ store, key: importedEvidenceKey(BULK_HISTORY_PATH, body), source: BULK_HISTORY_PATH,
+    parserVersion: 'checked-in-bulk-history-v1', payload: {
+      path: BULK_HISTORY_PATH, encoding: 'base64', contents: body.toString('base64'),
+    } });
+}
+
+/** Only accepted-snapshot references can feed replay; the checkout is never reread here. */
+export async function retainedBulkClubHistories(store: ObjectStore, references: readonly EvidenceReference[]): Promise<{
+  captures: number; batch: BulkCaptureBatch | null;
+}> {
+  const pathHash = sha256(BULK_HISTORY_PATH);
+  const refs = [...new Map(references.filter(ref =>
+    /^evidence\/imports\/[a-f0-9]{64}\/[a-f0-9]{64}\.json$/.test(ref.key) &&
+    ref.key.split('/')[3]!.slice(0, -5) === pathHash).map(ref => [ref.key, ref])).values()]
+    .sort((a, b) => a.key.localeCompare(b.key));
+  if (!refs.length) return { captures: 0, batch: null };
+  const merged = new Map<string, BulkCapture>();
+  let header: BulkCaptureBatch['header'] | null = null;
+  for (const ref of refs) {
+    const retained = await readEvidence(store, ref.key);
+    if (!retained || retained.reference.sha256 !== ref.sha256 || retained.reference.bytes !== ref.bytes ||
+      retained.capture.source !== BULK_HISTORY_PATH ||
+      !['legacy-import-v1', 'checked-in-bulk-history-v1'].includes(retained.capture.parserVersion)) throw new InvalidEvidenceError();
+    const payload = ImportedBulkSchema.safeParse(retained.capture.payload);
+    if (!payload.success) throw new InvalidEvidenceError();
+    const body = Buffer.from(payload.data.contents, 'base64');
+    if (body.toString('base64') !== payload.data.contents || sha256(body) !== ref.key.split('/')[2]) throw new InvalidEvidenceError();
+    const parsed = await parseBulkFile(body);
+    if (header && (header.format !== parsed.header.format || header.page !== parsed.header.page ||
+      header.sourceURLTemplate !== parsed.header.sourceURLTemplate || header.hrefPrefix !== parsed.header.hrefPrefix)) {
+      throw new InvalidEvidenceError();
+    }
+    header ??= parsed.header;
+    for (const capture of parsed.captures) {
+      const key = `${capture.cupId}:${capture.season}:${capture.teamId}`;
+      const prior = merged.get(key);
+      if (!prior || prior.status === 'unresolved' && capture.status === 'linked') {
+        merged.set(key, capture);
+      } else if (prior.status === 'linked' && capture.status === 'linked' && JSON.stringify(prior) !== JSON.stringify(capture)) {
+        // A changed win-time manager claim needs explicit review, never last-writer-wins.
+        throw new InvalidEvidenceError();
+      }
+    }
+  }
+  return { captures: refs.length, batch: { header: header!, captures: [...merged.values()] } };
+}
+
+/** Replays immutable direct proof after result ingestion; all conflicting owners block the run. */
+export async function replayRetainedBulkClubHistories(store: ObjectStore, references: readonly EvidenceReference[], now = new Date()) {
+  const retained = await retainedBulkClubHistories(store, references);
+  if (!retained.batch) return { captures: 0, targets: 0, applied: 0, unchanged: 0,
+    unresolved: 0, missingRows: 0, attributionTasksCompleted: 0 };
+  const { applyBulkHistoricalWinners } = await import('../sync/bulkHistoricalWinners.js');
+  const result = await applyBulkHistoricalWinners(retained.batch, { apply: true });
+  if (result.blocked) {
+    const conflicts = result.plans.filter(plan => plan.status === 'conflict')
+      .map(plan => `${plan.key}:${plan.reason}`).slice(0, 10).join(', ');
+    throw new Error(`Checked-in bulk Club History conflicts (${result.counts.conflicts}): ${conflicts}`);
+  }
+  const { prisma } = await import('../db/client.js');
+  const { MASTERS_CUP_ID } = await import('../sync/masters.js');
+  let attributionTasksCompleted = 0;
+  for (const plan of result.plans) {
+    if (plan.status !== 'applied' && plan.status !== 'unchanged' || !plan.stored) continue;
+    const sourceKey = plan.stored.leagueId === 0 && plan.stored.cupId !== MASTERS_CUP_ID
+      ? `seasonal:${plan.stored.cupId}` : `cup:${plan.stored.cupId}`;
+    const updated = await prisma.updateItem.updateMany({ where: {
+      sourceKey, itemKey: String(plan.stored.season), task: 'attribution', state: { not: 'complete' },
+    }, data: { state: 'complete', completedAt: now, nextAttemptAt: null, lastError: null, errorCategory: null } });
+    attributionTasksCompleted += updated.count;
+  }
+  return { captures: retained.captures, targets: result.records, applied: result.counts.applied,
+    unchanged: result.counts.unchanged, unresolved: result.counts.unresolved,
+    missingRows: result.counts.missingRows, attributionTasksCompleted };
 }

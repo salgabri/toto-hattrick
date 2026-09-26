@@ -5,9 +5,10 @@ import { join, resolve } from 'node:path';
 import { test, type TestContext } from 'node:test';
 import { prisma } from '../db/client.js';
 import { captureEvidence, configureEvidenceStore, evidenceReferences, importedEvidenceKey } from './evidence.js';
-import { BHUTAN_HISTORY_PATH, CHECKED_IN_HISTORY_PATH, ETHIOPIA_HISTORY_PATH, GIBRALTAR_HISTORY_PATH, HAITI_HISTORY_PATH,
-  HRO_PROFILE_PATH, replayRetainedClubHistories, replayRetainedHroProfile, retainCheckedInClubHistory,
-  retainCheckedInHroProfile, retainedClubHistories } from './historicalReplay.js';
+import { BHUTAN_HISTORY_PATH, BULK_HISTORY_PATH, CHECKED_IN_HISTORY_PATH, ETHIOPIA_HISTORY_PATH, GIBRALTAR_HISTORY_PATH, HAITI_HISTORY_PATH,
+  HRO_PROFILE_PATH, replayRetainedBulkClubHistories, replayRetainedClubHistories, replayRetainedHroProfile,
+  retainCheckedInBulkClubHistory, retainCheckedInClubHistory, retainCheckedInHroProfile,
+  retainedBulkClubHistories, retainedClubHistories } from './historicalReplay.js';
 import { LocalObjectStore, sha256 } from './storage.js';
 
 const repositoryPath = resolve('..');
@@ -145,4 +146,85 @@ test('retained win-time manager link attributes a newly arrived Masters winner a
   assert.deepEqual((tasks[0] as { where: object }).where, {
     sourceKey: 'cup:183', itemKey: '95', task: 'attribution', state: { not: 'complete' },
   });
+});
+
+function bulkBody(userId = 11687578) {
+  const header = { format: 'hattrick-cup-history-v1', capturedAt: '2026-09-26T12:00:00.000Z', page: 1,
+    sourceURLTemplate: 'https://www.hattrick.org/en/Club/History/?teamId={teamId}', hrefPrefix: '/en' };
+  return Buffer.from(`${JSON.stringify(header)}\n${JSON.stringify([7, 88, 1726060, '27-08-2024', 0,
+    'Re Picante', 'Coppa Italia', 'SebasM', userId, 88])}\n`);
+}
+
+test('bulk JSONL is retained by byte hash, replayed from accepted references, and closes only exact tasks', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'archive-bulk-history-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const checkout = join(root, 'checkout');
+  const path = join(checkout, BULK_HISTORY_PATH);
+  await mkdir(join(checkout, 'server/src/data'), { recursive: true });
+  const body = bulkBody();
+  await writeFile(path, body);
+  const store = new LocalObjectStore(join(root, 'private'));
+  const reset = configureEvidenceStore({ store, workspacePath: root }); t.after(reset);
+  const ref = await retainCheckedInBulkClubHistory(store, checkout);
+  assert.equal(ref.key, importedEvidenceKey(BULK_HISTORY_PATH, body));
+  assert.equal((await retainedBulkClubHistories(store, [])).batch, null);
+  const retained = await retainedBulkClubHistories(store, evidenceReferences());
+  assert.equal(retained.captures, 1);
+  assert.equal(retained.batch?.captures.length, 1);
+  const winner = { cupId: 7, season: 88, leagueId: 4, championTeamId: 1726060,
+    championTeamName: 'Re Picante', championUserId: null as number | null, championUserName: null as string | null };
+  const writes: unknown[] = [];
+  mock(t, prisma, '$transaction', async (run: (tx: object) => Promise<unknown>) => run({
+    cupChampion: {
+      findUnique: async () => winner,
+      updateMany: async (args: { data: { championUserId: number; championUserName: string } }) => {
+        writes.push(args); Object.assign(winner, args.data); return { count: 1 };
+      },
+    },
+    hattrickUser: { upsert: async () => ({ loginName: 'SebasM' }) },
+  }));
+  const tasks: unknown[] = [];
+  mock(t, prisma.updateItem, 'updateMany', async (args: unknown) => { tasks.push(args); return { count: 1 }; });
+  t.mock.method(globalThis, 'fetch', async () => { throw new Error('No network request is allowed'); });
+  const first = await replayRetainedBulkClubHistories(store, evidenceReferences(), new Date('2026-09-26T12:00:00.000Z'));
+  assert.deepEqual(first, { captures: 1, targets: 1, applied: 1, unchanged: 0,
+    unresolved: 0, missingRows: 0, attributionTasksCompleted: 1 });
+  assert.equal(writes.length, 1);
+  assert.deepEqual((tasks[0] as { where: object }).where, {
+    sourceKey: 'cup:7', itemKey: '88', task: 'attribution', state: { not: 'complete' },
+  });
+  const second = await replayRetainedBulkClubHistories(store, evidenceReferences());
+  assert.equal(second.applied, 0);
+  assert.equal(second.unchanged, 1);
+  assert.equal(writes.length, 1);
+  await writeFile(path, Buffer.concat([body, Buffer.from('\n')]));
+  const changedBytes = await retainCheckedInBulkClubHistory(store, checkout);
+  assert.notEqual(changedBytes.key, ref.key);
+  assert.ok(await store.get(ref.key));
+  assert.equal((await retainedBulkClubHistories(store, evidenceReferences())).captures, 2);
+  assert.equal((await retainedBulkClubHistories(store, evidenceReferences())).batch?.captures.length, 1);
+});
+
+test('bulk retention rejects malformed links and contradictory amended manager claims before replay', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'archive-bulk-history-conflict-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const checkout = join(root, 'checkout');
+  const path = join(checkout, BULK_HISTORY_PATH);
+  await mkdir(join(checkout, 'server/src/data'), { recursive: true });
+  const store = new LocalObjectStore(join(root, 'private'));
+  const reset = configureEvidenceStore({ store, workspacePath: root }); t.after(reset);
+  await writeFile(path, Buffer.from(`${JSON.stringify({ format: 'hattrick-cup-history-v1',
+    capturedAt: '2026-09-26T12:00:00.000Z', page: 1,
+    sourceURLTemplate: 'https://www.hattrick.org/en/Club/History/?teamId={teamId}', hrefPrefix: '/en' })}\n${JSON.stringify({
+    status: 'linked', cupId: 7, season: 88, teamId: 1726060, teamName: 'Re Picante', page: 1,
+    sourceURL: 'https://www.hattrick.org/en/Club/History/?teamId=1726060', winDate: '2024-08-27',
+    row: { text: '27-08-2024 In season 88, Re Picante emerged victorious from Coppa Italia. They were managed by SebasM.',
+      links: [{ text: 'Coppa Italia', href: '/en/World/Cup/Cup.aspx?CupID=7' }] },
+  })}\n`));
+  await assert.rejects(retainCheckedInBulkClubHistory(store, checkout), /Retained evidence cannot be validated/);
+  await writeFile(path, bulkBody());
+  await retainCheckedInBulkClubHistory(store, checkout);
+  await writeFile(path, bulkBody(11687579));
+  await retainCheckedInBulkClubHistory(store, checkout);
+  await assert.rejects(retainedBulkClubHistories(store, evidenceReferences()), /Retained evidence cannot be validated/);
 });

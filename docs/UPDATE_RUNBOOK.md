@@ -347,6 +347,19 @@ tasks must only be resolved once the retained capture proves the required covera
 capture date; the scheduler deliberately leaves unsupported-source freshness unknown until then.
 Automated HTML scanning is not an allowed recovery mechanism.
 
+For a reviewed Club History catch-up, the checked-in
+`server/src/data/verified-club-history-bulk-2026-09.jsonl` begins with a capture header and
+contains one outcome for each exact cup/season/team target. A compact linked tuple is permitted
+only after comparing the visible dated win statement and all four official anchor labels, hrefs,
+and their order against its lossless expansion. Nonstandard rows retain the verbatim statement
+and links; a retired manager without a user link is recorded as unresolved, never inferred from
+current ownership. The no-fetch updater retains the file by content hash and replays its direct
+manager links against exact database winner rows. A different existing manager or team blocks the
+batch; no positive ID is overwritten. Capture remains a reviewed operator step, not a scheduled
+HTML scan. From the repository root, `npm run update:publish -- --no-fetch` runs the full local
+no-CHPP replay, Git merge, and deployment workflow; the similarly named server-workspace
+`update:publish` command only deploys an already prepared pending release.
+
 ## Failures and recovery
 
 - Source failures preserve earlier facts and successful-check timestamps. Other validated additions
