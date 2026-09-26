@@ -5,7 +5,9 @@ import { join, resolve } from 'node:path';
 import { test, type TestContext } from 'node:test';
 import { prisma } from '../db/client.js';
 import { captureEvidence, configureEvidenceStore, evidenceReferences, importedEvidenceKey } from './evidence.js';
-import { CHECKED_IN_HISTORY_PATH, replayRetainedClubHistories, retainCheckedInClubHistory, retainedClubHistories } from './historicalReplay.js';
+import { BHUTAN_HISTORY_PATH, CHECKED_IN_HISTORY_PATH, ETHIOPIA_HISTORY_PATH, GIBRALTAR_HISTORY_PATH, HAITI_HISTORY_PATH,
+  HRO_PROFILE_PATH, replayRetainedClubHistories, replayRetainedHroProfile, retainCheckedInClubHistory,
+  retainCheckedInHroProfile, retainedClubHistories } from './historicalReplay.js';
 import { LocalObjectStore, sha256 } from './storage.js';
 
 const repositoryPath = resolve('..');
@@ -38,6 +40,63 @@ test('checked-in history is retained immutably and replayed only from accepted r
   assert.notEqual(second.key, first.key, 'Changed checkout bytes create a new capture; the old one is not overwritten');
   assert.ok(await store.get(first.key));
   assert.equal((await retainedClubHistories(store, evidenceReferences())).captures, 2);
+});
+
+test('reviewed country captures are retained only with their exact linked winners', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'archive-history-countries-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const checkout = join(root, 'checkout');
+  await mkdir(join(checkout, 'server/src/data'), { recursive: true });
+  for (const path of [ETHIOPIA_HISTORY_PATH, BHUTAN_HISTORY_PATH, GIBRALTAR_HISTORY_PATH, HAITI_HISTORY_PATH])
+    await writeFile(join(checkout, path), await readFile(join(repositoryPath, path)));
+  const store = new LocalObjectStore(join(root, 'private'));
+  const reset = configureEvidenceStore({ store, workspacePath: root }); t.after(reset);
+  await retainCheckedInClubHistory(store, checkout, ETHIOPIA_HISTORY_PATH);
+  await retainCheckedInClubHistory(store, checkout, BHUTAN_HISTORY_PATH);
+  await retainCheckedInClubHistory(store, checkout, GIBRALTAR_HISTORY_PATH);
+  await retainCheckedInClubHistory(store, checkout, HAITI_HISTORY_PATH);
+  const retained = await retainedClubHistories(store, evidenceReferences());
+  assert.equal(retained.captures, 4);
+  assert.deepEqual(retained.histories.map(({ teamId }) => teamId).sort(),
+    [2064714, 2064759, 2064846, 2064763, 2064747, 2787850, 2787812, 2785354, 2785355,
+      2790688, 2787922, 2788315, 2815169, 2788215,
+      2066127, 2066072, 2066147, 2066044, 2066113].sort());
+});
+
+test('retained HRO manager-profile trophy applies only to its exact completed league winner', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'archive-history-profile-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const checkout = join(root, 'checkout');
+  await mkdir(join(checkout, 'server/src/data'), { recursive: true });
+  const body = await readFile(join(repositoryPath, HRO_PROFILE_PATH));
+  await writeFile(join(checkout, HRO_PROFILE_PATH), body);
+  const store = new LocalObjectStore(join(root, 'private'));
+  const reset = configureEvidenceStore({ store, workspacePath: root }); t.after(reset);
+  const ref = await retainCheckedInHroProfile(store, checkout);
+  assert.equal(ref.key, importedEvidenceKey(HRO_PROFILE_PATH, body));
+  assert.equal((await replayRetainedHroProfile(store, [])).captures, 0);
+  mock(t, prisma.leagueChampion, 'findUnique', async () => ({ leagueId: 164, season: 19,
+    topSeriesId: 258666, countryName: 'Haiti', championTeamId: 2066186, championTeamName: 'HRO',
+    championUserId: 0, championUserName: null, complete: true }));
+  const writes: unknown[] = [];
+  mock(t, prisma, '$transaction', async (run: (tx: object) => Promise<unknown>) => run({
+    leagueChampion: { updateMany: async (args: unknown) => { writes.push(args); return { count: 1 }; } },
+    hattrickUser: { upsert: async () => ({}) },
+  }));
+  const tasks: unknown[] = [];
+  mock(t, prisma.updateItem, 'updateMany', async (args: unknown) => { tasks.push(args); return { count: 1 }; });
+  t.mock.method(globalThis, 'fetch', async () => { throw new Error('No network request is allowed'); });
+  const result = await replayRetainedHroProfile(store, evidenceReferences(), new Date('2026-09-26T12:00:00.000Z'));
+  assert.equal(result.applied, 1);
+  assert.equal(result.attributionTasksCompleted, 1);
+  assert.deepEqual((writes[0] as { data: object }).data, { championUserId: 4178181, championUserName: 'ooooo' });
+  assert.deepEqual((tasks[0] as { where: object }).where, {
+    sourceKey: 'league:164', itemKey: '19', task: 'attribution', state: { not: 'complete' },
+  });
+  const changed = JSON.parse(body.toString('utf8')) as { managerProfile: { sourceURL: string } };
+  changed.managerProfile.sourceURL = changed.managerProfile.sourceURL.replace('4178181', '4178182');
+  await writeFile(join(checkout, HRO_PROFILE_PATH), JSON.stringify(changed));
+  await assert.rejects(retainCheckedInHroProfile(store, checkout), /Retained evidence cannot be validated/);
 });
 
 test('malformed, mislabeled, and changed retained captures fail closed', async t => {

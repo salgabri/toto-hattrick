@@ -1,0 +1,97 @@
+[
+  {
+    "teamId": 2064714,
+    "leagueId": 156,
+    "club": "Sneaky Cat",
+    "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2064714",
+    "pages": [{
+      "page": 1,
+      "rows": [{
+        "text": "02.09.2026 In season 23, Sneaky Cat emerged victorious from Ītyōṗṗyā Cup. They were managed by Papa-Mish.",
+        "links": [
+          { "text": "23", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2064714&actiontype=viewcup" },
+          { "text": "Sneaky Cat", "href": "/en/Club/?TeamID=2064714" },
+          { "text": "Ītyōṗṗyā Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1468" },
+          { "text": "Papa-Mish", "href": "/en/Club/Manager/?userId=11419808" }
+        ]
+      }]
+    }]
+  },
+  {
+    "teamId": 2064759,
+    "leagueId": 156,
+    "club": "96'ers",
+    "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2064759",
+    "pages": [{
+      "page": 1,
+      "rows": [{
+        "text": "09.09.2026 In season 23, 96'ers emerged victorious from Ītyōṗṗyā Emerald Challenger Cup. They were managed by watwat.",
+        "links": [
+          { "text": "23", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2064759&actiontype=viewcup" },
+          { "text": "96'ers", "href": "/en/Club/?TeamID=2064759" },
+          { "text": "Ītyōṗṗyā Emerald Challenger Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1469" },
+          { "text": "watwat", "href": "/en/Club/Manager/?userId=4916963" }
+        ]
+      }]
+    }]
+  },
+  {
+    "teamId": 2064846,
+    "leagueId": 156,
+    "club": "The Bob & the Marleys",
+    "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2064846",
+    "pages": [{
+      "page": 1,
+      "rows": [{
+        "text": "09.09.2026 In season 23, The Bob & the Marleys emerged victorious from Ītyōṗṗyā Ruby Challenger Cup. They were managed by Rick_Rod.",
+        "links": [
+          { "text": "23", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2064846&actiontype=viewcup" },
+          { "text": "The Bob & the Marleys", "href": "/en/Club/?TeamID=2064846" },
+          { "text": "Ītyōṗṗyā Ruby Challenger Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1470" },
+          { "text": "Rick_Rod", "href": "/en/Club/Manager/?userId=13148804" }
+        ]
+      }]
+    }]
+  },
+  {
+    "teamId": 2064763,
+    "leagueId": 156,
+    "club": "Ras Tafari",
+    "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2064763",
+    "pages": [{
+      "page": 1,
+      "rows": [{
+        "text": "09.09.2026 Ras Tafari, under the leadership of Radeekkyo, won Ītyōṗṗyā Ruby Sapphire Cup season 23.",
+        "links": [
+          { "text": "Ras Tafari", "href": "/en/Club/?TeamID=2064763" },
+          { "text": "Radeekkyo", "href": "/en/Club/Manager/?userId=13754231" },
+          { "text": "Ītyōṗṗyā Ruby Sapphire Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1471" },
+          { "text": "23", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2064763&actiontype=viewcup" }
+        ]
+      }]
+    }]
+  },
+  {
+    "teamId": 2064747,
+    "leagueId": 156,
+    "club": "Fasil Kenema",
+    "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2064747",
+    "pages": [{
+      "page": 1,
+      "rows": [{
+        "text": "09.09.2026 In season 23, Fasil Kenema emerged victorious from Ītyōṗṗyā Consolation Cup. They were managed by Aebisan.",
+        "links": [
+          { "text": "23", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2064747&actiontype=viewcup" },
+          { "text": "Fasil Kenema", "href": "/en/Club/?TeamID=2064747" },
+          { "text": "Ītyōṗṗyā Consolation Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1472" },
+          { "text": "Aebisan", "href": "/en/Club/Manager/?userId=250791" }
+        ]
+      }]
+    }]
+  }
+]

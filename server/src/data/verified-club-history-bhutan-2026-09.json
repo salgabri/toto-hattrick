@@ -1,0 +1,66 @@
+[
+  {
+    "teamId": 2787850,
+    "leagueId": 177,
+    "club": "Iguwana FC",
+    "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2787850",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "09.09.2026 Season 3 was memorable for Astranaut, who led Iguwana FC to the title in Bhutan Cup.",
+      "links": [
+        { "text": "3", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2787850&actiontype=viewcup" },
+        { "text": "Astranaut", "href": "/en/Club/Manager/?userId=10360171" },
+        { "text": "Iguwana FC", "href": "/en/Club/?TeamID=2787850" },
+        { "text": "Bhutan Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1588" }
+      ]
+    }] }]
+  },
+  {
+    "teamId": 2787812,
+    "leagueId": 177,
+    "club": "Bhutan Reds",
+    "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2787812",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "16.09.2026 In season 3, Bhutan Reds emerged victorious from Bhutan Emerald Challenger Cup. They were managed by ShaoQing.",
+      "links": [
+        { "text": "3", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2787812&actiontype=viewcup" },
+        { "text": "Bhutan Reds", "href": "/en/Club/?TeamID=2787812" },
+        { "text": "Bhutan Emerald Challenger Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1589" },
+        { "text": "ShaoQing", "href": "/en/Club/Manager/?userId=9524206" }
+      ]
+    }] }]
+  },
+  {
+    "teamId": 2785354,
+    "leagueId": 177,
+    "club": "Union Kervo",
+    "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2785354",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "16.09.2026 Season 3 was memorable for Maragona, who led Union Kervo to the title in Bhutan Sapphire Challenger Cup.",
+      "links": [
+        { "text": "3", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2785354&actiontype=viewcup" },
+        { "text": "Maragona", "href": "/en/Club/Manager/?userId=13413709" },
+        { "text": "Union Kervo", "href": "/en/Club/?TeamID=2785354" },
+        { "text": "Bhutan Sapphire Challenger Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1591" }
+      ]
+    }] }]
+  },
+  {
+    "teamId": 2785355,
+    "leagueId": 177,
+    "club": "Bhutan Beasts",
+    "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2785355",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "16.09.2026 In season 3, Bhutan Beasts emerged victorious from Bhutan Consolation Cup. They were managed by Mazinho.",
+      "links": [
+        { "text": "3", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2785355&actiontype=viewcup" },
+        { "text": "Bhutan Beasts", "href": "/en/Club/?TeamID=2785355" },
+        { "text": "Bhutan Consolation Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1592" },
+        { "text": "Mazinho", "href": "/en/Club/Manager/?userId=48200" }
+      ]
+    }] }]
+  }
+]

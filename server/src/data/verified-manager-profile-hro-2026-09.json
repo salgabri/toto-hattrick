@@ -1,0 +1,25 @@
+{
+  "managerProfile": {
+    "sourceURL": "https://www.hattrick.org/en/Club/Manager/?userId=4178181",
+    "heading": "ooooo Germany Manager Licence Supporter Diamond (4178181)",
+    "previousTeam": {
+      "team": { "text": "HRO", "href": "/en/Club/History/?teamId=2066186" },
+      "country": { "text": "Haiti", "href": "/en/World/Leagues/League.aspx?LeagueID=164" },
+      "tenure": "12.02.2021–12.07.2026",
+      "trophy": {
+        "text": "Series Champions Première Ligue Haïtienne Season 19",
+        "href": "/en/World/Series/SeriesHistory.aspx?LeagueLevelUnitID=258666&RequestedSeason=19&Games="
+      }
+    }
+  },
+  "clubHistory": {
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2066186",
+    "event": {
+      "text": "05.07.2026 HRO, under the leadership of a now retired manager, became league champions season 19.",
+      "links": [
+        { "text": "HRO", "href": "/en/Club/?TeamID=2066186" },
+        { "text": "19", "href": "/en/World/Series/SeriesHistory.aspx?LeagueLevelUnitID=258666&RequestedSeason=19&Games=all" }
+      ]
+    }
+  }
+}

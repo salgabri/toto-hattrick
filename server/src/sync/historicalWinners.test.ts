@@ -168,6 +168,74 @@ test('captured Wieselhausen Masters entry proves the manager at the win without 
   }
 });
 
+test('captured Ethiopia cup events prove all five latest managers with dotted dates', () => {
+  const input = JSON.parse(readFileSync(new URL('../../src/data/verified-club-history-ethiopia-2026-09.json', import.meta.url), 'utf8')) as HistoricalClubHistory[];
+  const extracted = extractHistoricalWinnerEvidence(input);
+  assert.equal(extracted.rejected.length, 0);
+  assert.deepEqual(extracted.evidence.map(({ competitionId, season, teamId, userId, event }) =>
+    [competitionId, season, teamId, userId, event.date]), [
+    [1468, 23, 2064714, 11419808, '2026-09-02'],
+    [1469, 23, 2064759, 4916963, '2026-09-09'],
+    [1470, 23, 2064846, 13148804, '2026-09-09'],
+    [1471, 23, 2064763, 13754231, '2026-09-09'],
+    [1472, 23, 2064747, 250791, '2026-09-09'],
+  ]);
+  assert.ok(extracted.evidence.every(({ basis }) => basis === 'direct-manager'));
+  const stored: HistoricalWinnerSnapshot = {
+    cups: [1468, 1469, 1470, 1471, 1472].map(cupId => ({ cupId, leagueId: 156 })),
+    tournamentIds: [], leagueChampions: [],
+    cupChampions: input.map((club, index) => ({ cupId: 1468 + index, leagueId: 156, season: 23,
+      championTeamId: club.teamId, championTeamName: club.club, championUserId: null, championUserName: null })),
+  };
+  const plan = planHistoricalWinners(input, stored);
+  assert.equal(plan.plans.length, 5);
+  assert.ok(plan.plans.every(({ status }) => status === 'ready'));
+});
+
+test('captured Bhutan cup events prove four managers and do not impute the retired one', () => {
+  const input = JSON.parse(readFileSync(new URL('../../src/data/verified-club-history-bhutan-2026-09.json', import.meta.url), 'utf8')) as HistoricalClubHistory[];
+  const extracted = extractHistoricalWinnerEvidence(input);
+  assert.equal(extracted.rejected.length, 0);
+  assert.deepEqual(extracted.evidence.map(({ competitionId, season, teamId, userId }) =>
+    [competitionId, season, teamId, userId]), [
+    [1588, 3, 2787850, 10360171],
+    [1589, 3, 2787812, 9524206],
+    [1591, 3, 2785354, 13413709],
+    [1592, 3, 2785355, 48200],
+  ]);
+  assert.ok(extracted.evidence.every(({ basis }) => basis === 'direct-manager'));
+});
+
+test('captured Gibraltar cup events prove all five latest managers', () => {
+  const input = JSON.parse(readFileSync(new URL('../../src/data/verified-club-history-gibraltar-2026-09.json', import.meta.url), 'utf8')) as HistoricalClubHistory[];
+  const extracted = extractHistoricalWinnerEvidence(input);
+  assert.equal(extracted.rejected.length, 0);
+  assert.deepEqual(extracted.evidence.map(({ competitionId, season, teamId, userId }) =>
+    [competitionId, season, teamId, userId]), [
+    [1583, 3, 2790688, 13264188],
+    [1584, 3, 2787922, 4540620],
+    [1585, 3, 2788315, 4145756],
+    [1586, 3, 2815169, 13257829],
+    [1587, 3, 2788215, 13930589],
+  ]);
+  assert.ok(extracted.evidence.every(({ basis }) => basis === 'direct-manager'));
+});
+
+test('captured Haiti cup events prove all five latest managers', () => {
+  const input = JSON.parse(readFileSync(new URL('../../src/data/verified-club-history-haiti-2026-09.json', import.meta.url), 'utf8')) as HistoricalClubHistory[];
+  const extracted = extractHistoricalWinnerEvidence(input);
+  assert.equal(extracted.rejected.length, 0);
+  assert.deepEqual(extracted.evidence.map(({ competitionId, season, teamId, userId }) =>
+    [competitionId, season, teamId, userId]), [
+    [1508, 20, 2066127, 13620442],
+    [1509, 20, 2066072, 6205490],
+    [1510, 20, 2066147, 13606541],
+    [1511, 20, 2066044, 7568690],
+    [1512, 20, 2066113, 5739966],
+  ]);
+  assert.ok(extracted.evidence.every(({ basis }) => basis === 'direct-manager'));
+});
+
 test('positive wording alone or a link to a different named manager is never attribution evidence', () => {
   const unknownWording = { ...cupWin, text: '27-08-2024 Re Picante won something memorable under a manager.' };
   const conflictingName = { ...cupWin, text: cupWin.text.replace('managed by SebasM.', 'managed by Another.') };

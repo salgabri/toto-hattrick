@@ -1,0 +1,67 @@
+[
+  {
+    "teamId": 2066127, "leagueId": 164, "club": "Triceratops", "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2066127",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "10.09.2026 In season 20, Triceratops emerged victorious from Haiti Cup. They were managed by garcinha.",
+      "links": [
+        { "text": "20", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2066127&actiontype=viewcup" },
+        { "text": "Triceratops", "href": "/en/Club/?TeamID=2066127" },
+        { "text": "Haiti Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1508" },
+        { "text": "garcinha", "href": "/en/Club/Manager/?userId=13620442" }
+      ]
+    }] }]
+  },
+  {
+    "teamId": 2066072, "leagueId": 164, "club": "Les Caleçons Rouges", "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2066072",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "17.09.2026 Season 20 was memorable for Iguana10, who led Les Caleçons Rouges to the title in Haiti Emerald Challenger Cup.",
+      "links": [
+        { "text": "20", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2066072&actiontype=viewcup" },
+        { "text": "Iguana10", "href": "/en/Club/Manager/?userId=6205490" },
+        { "text": "Les Caleçons Rouges", "href": "/en/Club/?TeamID=2066072" },
+        { "text": "Haiti Emerald Challenger Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1509" }
+      ]
+    }] }]
+  },
+  {
+    "teamId": 2066147, "leagueId": 164, "club": "Le Rêve Haïtien", "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2066147",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "17.09.2026 Season 20 was memorable for Palois03, who led Le Rêve Haïtien to the title in Haiti Ruby Challenger Cup.",
+      "links": [
+        { "text": "20", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2066147&actiontype=viewcup" },
+        { "text": "Palois03", "href": "/en/Club/Manager/?userId=13606541" },
+        { "text": "Le Rêve Haïtien", "href": "/en/Club/?TeamID=2066147" },
+        { "text": "Haiti Ruby Challenger Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1510" }
+      ]
+    }] }]
+  },
+  {
+    "teamId": 2066044, "leagueId": 164, "club": "Sunny Tomci", "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2066044",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "17.09.2026 Sunny Tomci, under the leadership of nistelrooy1, won Haiti Sapphire Challenger Cup season 20.",
+      "links": [
+        { "text": "Sunny Tomci", "href": "/en/Club/?TeamID=2066044" },
+        { "text": "nistelrooy1", "href": "/en/Club/Manager/?userId=7568690" },
+        { "text": "Haiti Sapphire Challenger Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1511" },
+        { "text": "20", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2066044&actiontype=viewcup" }
+      ]
+    }] }]
+  },
+  {
+    "teamId": 2066113, "leagueId": 164, "club": "U.D Tarancón", "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2066113",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "17.09.2026 U.D Tarancón, under the leadership of Habatake, won Haiti Consolation Cup season 20.",
+      "links": [
+        { "text": "U.D Tarancón", "href": "/en/Club/?TeamID=2066113" },
+        { "text": "Habatake", "href": "/en/Club/Manager/?userId=5739966" },
+        { "text": "Haiti Consolation Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1512" },
+        { "text": "20", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2066113&actiontype=viewcup" }
+      ]
+    }] }]
+  }
+]

@@ -62,6 +62,17 @@ club's country/league, never the manager's nationality; omit it if unknown.
   accepted only with the matching linked team, matching linked manager name, and valid dated
   season. The checked-in [Wieselhausen capture](../server/src/data/verified-club-history-wieselhausen-2026-09-17.json)
   records the public 17 September 2026 season-95 entry; current ownership alone is not evidence.
+- Reviewed [Ethiopia](../server/src/data/verified-club-history-ethiopia-2026-09.json),
+  [Bhutan](../server/src/data/verified-club-history-bhutan-2026-09.json),
+  [Gibraltar](../server/src/data/verified-club-history-gibraltar-2026-09.json), and
+  [Haiti](../server/src/data/verified-club-history-haiti-2026-09.json) captures preserve
+  dated, linked win-time manager statements for their latest cups. These records are partial club
+  histories and prove only the specific direct cup events, not ownership across other titles.
+  Hattrick displays these dates with dots; the same validated date parser handles dots and hyphens.
+- A separate [HRO manager-profile capture](../server/src/data/verified-manager-profile-hro-2026-09.json)
+  links manager 4178181's previous HRO tenure and Première Ligue Haïtienne season-19 trophy to
+  HRO's dated club-history title. Its importer checks both pages' linked team, country, series,
+  season, and the win date against the tenure; it does not claim the entire club history was captured.
 - First-place league and registered tournament events use the most recent earlier ownership event
   only with a complete history. Missing/deleted owner links, relinquishments, missing dates, and
   ownership changes on the same day as the win block inference.
