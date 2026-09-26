@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "eae850c377795eb4283c1550cdb71a06fa46c5529381532ca350727941e0541d",
-  "codeRevision": "c4ab35533a4f7138d80e8d8492874010d39a242e",
-  "generatedAt": "2026-09-26T08:07:25.138Z",
-  "lastChangedAt": "2026-09-26T08:07:25.138Z",
+  "dataVersion": "33171ab5b0582d39102a238c424d5c6c22a9ddfdaa0beca7b6a1f9464c954eb5",
+  "codeRevision": "f57e6b1519e72beab51df7f1837d4df18534fd3b",
+  "generatedAt": "2026-09-26T08:36:30.315Z",
+  "lastChangedAt": "2026-09-26T08:36:30.315Z",
   "sources": [
     {
       "key": "cup:1",
@@ -23,196 +23,196 @@
       "key": "cup:1000",
       "label": "Consolante cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:1001",
       "label": "Hayastan Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:1002",
       "label": "Bahrain Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:1003",
       "label": "Barbados Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:1004",
       "label": "Taça de Consolação de Cabo Verde cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:1005",
       "label": "Consolante cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:1006",
       "label": "Al Kuwayt Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 22,
+      "pending": 21,
       "status": "pending"
     },
     {
       "key": "cup:1007",
       "label": "Al Iraq Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:1008",
       "label": "Azərbaycan Təsəlli Kuboku cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:1009",
       "label": "Taça de Consolação Angola cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:1010",
       "label": "Kup nada Crne Gore cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:1011",
       "label": "Bangladesh Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 22,
+      "pending": 21,
       "status": "pending"
     },
     {
       "key": "cup:1012",
       "label": "Al Yaman Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:1013",
       "label": "Oman Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:1014",
       "label": "Taça de Consolação de Moçambique cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:1015",
       "label": "Brunei Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 21,
+      "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:1016",
       "label": "Ghana Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:1017",
       "label": "Kampuchea Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:1018",
       "label": "Consolante cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:1019",
       "label": "Suriyah Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 21,
+      "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:1020",
       "label": "Dawlat Qatar Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 23,
+      "pending": 22,
       "status": "pending"
     },
     {
       "key": "cup:1021",
       "label": "Tanzania Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:1022",
       "label": "Uganda Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:1023",
       "label": "Dhivehi Raajje Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:1024",
       "label": "O’zbekiston Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:1025",
       "label": "Trophée Marc-Vivien Foé cup results",
       "lastSuccessfulCheck": null,
-      "pending": 18,
+      "pending": 17,
       "status": "pending"
     },
     {
       "key": "cup:1026",
       "label": "Copa Consolación cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:1027",
       "label": "Palestine Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
@@ -240,28 +240,28 @@
       "key": "cup:126",
       "label": "Кубок України cup results",
       "lastSuccessfulCheck": null,
-      "pending": 26,
+      "pending": 25,
       "status": "pending"
     },
     {
       "key": "cup:127",
       "label": "Kup Bosne i Hercegovine cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:128",
       "label": "Cúp Quốc Gia cup results",
       "lastSuccessfulCheck": null,
-      "pending": 24,
+      "pending": 23,
       "status": "pending"
     },
     {
       "key": "cup:129",
       "label": "Pakistan Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
@@ -275,56 +275,56 @@
       "key": "cup:130",
       "label": "Copa Paraguay cup results",
       "lastSuccessfulCheck": null,
-      "pending": 23,
+      "pending": 22,
       "status": "pending"
     },
     {
       "key": "cup:131",
       "label": "Copa Ecuador cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:132",
       "label": "Copa Bolivia cup results",
       "lastSuccessfulCheck": null,
-      "pending": 21,
+      "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:133",
       "label": "Nigerian League Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:134",
       "label": "Løgmanssteypið cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:135",
       "label": "Coupe Du Trône cup results",
       "lastSuccessfulCheck": null,
-      "pending": 43,
+      "pending": 42,
       "status": "pending"
     },
     {
       "key": "cup:138",
       "label": "Saudi Arabia Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 20,
+      "pending": 19,
       "status": "pending"
     },
     {
       "key": "cup:139",
       "label": "Tunisiyah Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 24,
+      "pending": 23,
       "status": "pending"
     },
     {
@@ -338,28 +338,28 @@
       "key": "cup:140",
       "label": "La Copa Tica cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:142",
       "label": "Kaas Al-Sheikh Zayed cup results",
       "lastSuccessfulCheck": null,
-      "pending": 20,
+      "pending": 19,
       "status": "pending"
     },
     {
       "key": "cup:143",
       "label": "Coupe de Luxembourg cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:1433",
       "label": "Hattrick International Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:13:44.060Z",
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
@@ -394,14 +394,14 @@
       "key": "cup:1438",
       "label": "Taça Nacional de São Tomé e Príncipe cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1439",
       "label": "Comoros Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
@@ -415,196 +415,196 @@
       "key": "cup:1440",
       "label": "Sri Lanka Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1441",
       "label": "Curaçao Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1442",
       "label": "Guam Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1443",
       "label": "São Tomé e Príncipe Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1444",
       "label": "São Tomé e Príncipe Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:1445",
       "label": "São Tomé e Príncipe Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:1446",
       "label": "São Tomé e Príncipe Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:1447",
       "label": "Comoros Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:1448",
       "label": "Comoros Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1449",
       "label": "Comoros Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:1450",
       "label": "Comoros Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1451",
       "label": "Sri Lanka Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:1452",
       "label": "Sri Lanka Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:1453",
       "label": "Sri Lanka Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:1454",
       "label": "Sri Lanka Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:1455",
       "label": "Curaçao Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:1456",
       "label": "Curaçao Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:1457",
       "label": "Curaçao Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:1458",
       "label": "Curaçao Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:1459",
       "label": "Guam Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:1460",
       "label": "Guam Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:1461",
       "label": "Guam Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:1462",
       "label": "Guam Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:1463",
       "label": "Coupe du Congo cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1464",
       "label": "Trophée Émeraude cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1465",
       "label": "Trophée Rubis cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:1466",
       "label": "Trophée Saphir cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1467",
       "label": "Consolante cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -625,7 +625,7 @@
       "key": "cup:147",
       "label": "Copa Quisqueya cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
@@ -653,196 +653,196 @@
       "key": "cup:1473",
       "label": "St Vincent & Grenadines Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1474",
       "label": "St Vincent & Grenadines Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:1475",
       "label": "St Vincent & Grenadines Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1476",
       "label": "St Vincent & Grenadines Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:1477",
       "label": "St Vincent & Grenadines Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:1478",
       "label": "Belize Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:13:44.060Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1479",
       "label": "Belize Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:148",
       "label": "Cyprus Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 27,
+      "pending": 26,
       "status": "pending"
     },
     {
       "key": "cup:1480",
       "label": "Belize Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1481",
       "label": "Belize Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1482",
       "label": "Belize Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1483",
       "label": "Madagasikara Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1484",
       "label": "Madagasikara Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:1485",
       "label": "Madagasikara Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1486",
       "label": "Madagasikara Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1487",
       "label": "Madagasikara Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:1488",
       "label": "Botswana Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1489",
       "label": "Botswana Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:1490",
       "label": "Botswana Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:1491",
       "label": "Botswana Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:1492",
       "label": "Botswana Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1493",
       "label": "Myanmar Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1494",
       "label": "Myanmar Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:1495",
       "label": "Myanmar Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:1496",
       "label": "Myanmar Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:1497",
       "label": "Myanmar Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1498",
       "label": "Zambia Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1499",
       "label": "Zambia Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -856,56 +856,56 @@
       "key": "cup:1500",
       "label": "Zambia Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:1501",
       "label": "Zambia Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1502",
       "label": "Zambia Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1503",
       "label": "Coppa Titano cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1504",
       "label": "Coppa Cesta cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:1505",
       "label": "Coppa Guaita cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:1506",
       "label": "Coppa Montale cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1507",
       "label": "Coppa Crescentini cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -926,7 +926,7 @@
       "key": "cup:151",
       "label": "Кубак Беларусі cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -954,35 +954,35 @@
       "key": "cup:1513",
       "label": "Puerto Rico Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1514",
       "label": "Puerto Rico Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:1515",
       "label": "Puerto Rico Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1516",
       "label": "Puerto Rico Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:1517",
       "label": "Puerto Rico Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
@@ -1024,196 +1024,196 @@
       "key": "cup:1528",
       "label": "Grenada Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1529",
       "label": "Grenada Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:153",
       "label": "N. Ireland Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:1530",
       "label": "Grenada Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1531",
       "label": "Grenada Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1532",
       "label": "Grenada Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1533",
       "label": "Burkina Faso Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1534",
       "label": "Burkina Faso Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1535",
       "label": "Burkina Faso Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1536",
       "label": "Burkina Faso Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1537",
       "label": "Burkina Faso Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1538",
       "label": "Nepal Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1539",
       "label": "Nepal Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:154",
       "label": "Jamaica Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:1540",
       "label": "Nepal Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1541",
       "label": "Nepal Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1542",
       "label": "Nepal Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1543",
       "label": "Guyana Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1544",
       "label": "Guyana Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1545",
       "label": "Guyana Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1546",
       "label": "Guyana Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1547",
       "label": "Guyana Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1548",
       "label": "Tahiti Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1549",
       "label": "Tahiti Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:155",
       "label": "Kenya Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:1550",
       "label": "Tahiti Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1551",
       "label": "Tahiti Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1552",
       "label": "Tahiti Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
@@ -1255,197 +1255,197 @@
       "key": "cup:1558",
       "label": "Guinea Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1559",
       "label": "Guinea Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:156",
       "label": "Copa del Istmo cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:1560",
       "label": "Guinea Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1561",
       "label": "Guinea Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1562",
       "label": "Guinea Consolation Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1563",
       "label": "Bahamas Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1564",
       "label": "Bahamas Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1565",
       "label": "Bahamas Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1566",
       "label": "Bahamas Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1567",
       "label": "Bahamas Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:1568",
       "label": "Rwanda Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1569",
       "label": "Rwanda Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:157",
       "label": "Куп на Македонија cup results",
       "lastSuccessfulCheck": null,
-      "pending": 18,
+      "pending": 17,
       "status": "pending"
     },
     {
       "key": "cup:1570",
       "label": "Rwanda Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1571",
       "label": "Rwanda Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1572",
       "label": "Rwanda Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1573",
       "label": "Saint Kitts and Nevis Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1574",
       "label": "Saint Kitts and Nevis Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1575",
       "label": "Saint Kitts and Nevis Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1576",
       "label": "Saint Kitts and Nevis Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1577",
       "label": "Saint Kitts and Nevis Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1578",
       "label": "Copa Moussambani cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1579",
       "label": "Copa Ndowé cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:158",
       "label": "Kupa e Shqipërisë cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:1580",
       "label": "Copa Fang cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1581",
       "label": "Copa Bubi cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1582",
       "label": "Copa Muni cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 1,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "cup:1583",
@@ -1500,7 +1500,7 @@
       "key": "cup:159",
       "label": "Copa Nacional Catracha cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -1528,7 +1528,7 @@
       "key": "cup:16",
       "label": "Canadian Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 18,
+      "pending": 17,
       "status": "pending"
     },
     {
@@ -1542,7 +1542,7 @@
       "key": "cup:161",
       "label": "Tazza ta' Malta cup results",
       "lastSuccessfulCheck": null,
-      "pending": 27,
+      "pending": 26,
       "status": "pending"
     },
     {
@@ -1584,42 +1584,42 @@
       "key": "cup:162",
       "label": "Kyrgyzstan Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:163",
       "label": "Cupa Moldovei cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:164",
       "label": "საქართველოს ეროვნული თასი cup results",
       "lastSuccessfulCheck": null,
-      "pending": 30,
+      "pending": 29,
       "status": "pending"
     },
     {
       "key": "cup:165",
       "label": "Copa Constitució cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:166",
       "label": "Al Urdun Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:167",
       "label": "Copa Gran Jaguar cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
@@ -1640,42 +1640,42 @@
       "key": "cup:171",
       "label": "Copa Nacional Rubén Darío cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:172",
       "label": "Kazakhstan Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:173",
       "label": "SVB Beker cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:177",
       "label": "Liechtenstein Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:178",
       "label": "Coupe d'Algérie cup results",
       "lastSuccessfulCheck": null,
-      "pending": 27,
+      "pending": 26,
       "status": "pending"
     },
     {
       "key": "cup:179",
       "label": "Mongol Uls Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -1689,21 +1689,21 @@
       "key": "cup:180",
       "label": "Lebanese FA Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:181",
       "label": "Senegal Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:182",
       "label": "Hayastani gavat cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -1717,119 +1717,119 @@
       "key": "cup:184",
       "label": "Kaas El Malek cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:185",
       "label": "Barbados Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:186",
       "label": "Taça de Cabo Verde cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:187",
       "label": "Coupe nationale cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:188",
       "label": "Al Kuwayt Emir Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:189",
       "label": "Al Iraq Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:19",
       "label": "Kas Misr cup results",
       "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
-      "pending": 29,
+      "pending": 28,
       "status": "pending"
     },
     {
       "key": "cup:190",
       "label": "Azərbaycan Kuboku cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:191",
       "label": "Taça de Angola cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:192",
       "label": "Kup Crne Gore cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:193",
       "label": "Bangladesh Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:194",
       "label": "Al Yaman Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:195",
       "label": "Ka'as Al-Sultan Qaboos cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:196",
       "label": "Taça de Mocambique cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:197",
       "label": "Brunei Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:198",
       "label": "Gold Coast Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:199",
       "label": "Kampuchea Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -1843,14 +1843,14 @@
       "key": "cup:20",
       "label": "Indian Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 34,
+      "pending": 33,
       "status": "failed"
     },
     {
       "key": "cup:200",
       "label": "Benin Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
@@ -1864,77 +1864,77 @@
       "key": "cup:202",
       "label": "Al Kaas Al Qatary cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:203",
       "label": "Tanzania Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:204",
       "label": "Uganda Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:205",
       "label": "Dhivehi Raajje Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:206",
       "label": "O'zbekiston Kubogi cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:207",
       "label": "Cameroonian Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:208",
       "label": "Copa Nacional de Cuba cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:209",
       "label": "Palestine Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:21",
       "label": "Irish Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 42,
+      "pending": 41,
       "status": "pending"
     },
     {
       "key": "cup:22",
       "label": "The Emperor's Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 18,
+      "pending": 17,
       "status": "failed"
     },
     {
       "key": "cup:23",
       "label": "Korea Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T20:46:56.900Z",
-      "pending": 22,
+      "pending": 21,
       "status": "pending"
     },
     {
@@ -1962,21 +1962,21 @@
       "key": "cup:27",
       "label": "Scottish Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 24,
+      "pending": 23,
       "status": "failed"
     },
     {
       "key": "cup:28",
       "label": "South African Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:29",
       "label": "Thai Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:02:59.103Z",
-      "pending": 29,
+      "pending": 28,
       "status": "pending"
     },
     {
@@ -2004,7 +2004,7 @@
       "key": "cup:32",
       "label": "Copa Venezuela cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -2018,7 +2018,7 @@
       "key": "cup:34",
       "label": "Кубок России cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 20,
+      "pending": 19,
       "status": "pending"
     },
     {
@@ -2032,7 +2032,7 @@
       "key": "cup:36",
       "label": "Íslandsbikarinn cup results",
       "lastSuccessfulCheck": null,
-      "pending": 20,
+      "pending": 19,
       "status": "pending"
     },
     {
@@ -2046,7 +2046,7 @@
       "key": "cup:38",
       "label": "Piala Malaysia cup results",
       "lastSuccessfulCheck": null,
-      "pending": 37,
+      "pending": 36,
       "status": "pending"
     },
     {
@@ -2060,7 +2060,7 @@
       "key": "cup:40",
       "label": "Singapore Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 33,
+      "pending": 32,
       "status": "pending"
     },
     {
@@ -2123,7 +2123,7 @@
       "key": "cup:512",
       "label": "Smaragdcupen cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -2137,21 +2137,21 @@
       "key": "cup:514",
       "label": "Smaragd-Pokal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:515",
       "label": "Coppa Alpi cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:516",
       "label": "Trophée Pantelis cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
@@ -2165,7 +2165,7 @@
       "key": "cup:518",
       "label": "Copa Esmeralda Pedro 'Apache' Zurita cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -2179,7 +2179,7 @@
       "key": "cup:52",
       "label": "Indonesia Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 28,
+      "pending": 27,
       "status": "pending"
     },
     {
@@ -2207,7 +2207,7 @@
       "key": "cup:523",
       "label": "Smaragden Beker cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
@@ -2221,7 +2221,7 @@
       "key": "cup:525",
       "label": "Copa Esmeralda cup results",
       "lastSuccessfulCheck": null,
-      "pending": 18,
+      "pending": 17,
       "status": "pending"
     },
     {
@@ -2235,7 +2235,7 @@
       "key": "cup:527",
       "label": "Copa Pau 'La Rompe' Gerpe Esmeralda cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -2249,14 +2249,14 @@
       "key": "cup:529",
       "label": "India Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:53",
       "label": "Philippine Football Federation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -2270,7 +2270,7 @@
       "key": "cup:531",
       "label": "Nippon Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
@@ -2284,14 +2284,14 @@
       "key": "cup:533",
       "label": "Szmaragdowy Puchar Drugiej Szansy cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:534",
       "label": "Taça Challenger Esmeralda de Portugal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -2305,7 +2305,7 @@
       "key": "cup:536",
       "label": "South Africa Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -2326,21 +2326,21 @@
       "key": "cup:539",
       "label": "Korea Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:54",
       "label": "Eesti Karikas cup results",
       "lastSuccessfulCheck": null,
-      "pending": 20,
+      "pending": 19,
       "status": "pending"
     },
     {
       "key": "cup:540",
       "label": "Prathet Thai Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -2354,7 +2354,7 @@
       "key": "cup:542",
       "label": "Misr Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
@@ -2375,21 +2375,21 @@
       "key": "cup:545",
       "label": "Copa Esmeralda cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:546",
       "label": "Trofeul Carpaţi cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:547",
       "label": "Smaragðsbikar Íslands cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -2403,7 +2403,7 @@
       "key": "cup:549",
       "label": "Belgium Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
@@ -2417,21 +2417,21 @@
       "key": "cup:550",
       "label": "Malaysia Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:551",
       "label": "Gotthard Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:552",
       "label": "Singapore Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
@@ -2473,7 +2473,7 @@
       "key": "cup:558",
       "label": "Pilipinas Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
@@ -2508,21 +2508,21 @@
       "key": "cup:562",
       "label": "Hong Kong Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:563",
       "label": "Chinese Taipei Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:564",
       "label": "Cwpan Pen y Fan cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -2578,98 +2578,98 @@
       "key": "cup:572",
       "label": "Cup Hạng Nhất cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:573",
       "label": "Pakistan Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:574",
       "label": "Copa Esmeralda \"Maldición de HH\" cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:575",
       "label": "Copa Desafío Esmeralda cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:576",
       "label": "Copa Esmeralda Juan Manuel Peña cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:577",
       "label": "Nigeria Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:578",
       "label": "Sóljusteypið cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:579",
       "label": "Trophée Émeraude cup results",
       "lastSuccessfulCheck": null,
-      "pending": 21,
+      "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:58",
       "label": "Hong Kong Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 22,
+      "pending": 21,
       "status": "pending"
     },
     {
       "key": "cup:580",
       "label": "Saudi Arabia Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:581",
       "label": "Trophée Wallid cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:582",
       "label": "Copa Esmeralda Keylor Navas cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:583",
       "label": "United Arab Emirates Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:584",
       "label": "Coupe Bofferding cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -2683,49 +2683,49 @@
       "key": "cup:586",
       "label": "Copa Desafío Esmeralda cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:587",
       "label": "Cyprus Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:589",
       "label": "Кубак Крывічаў cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:59",
       "label": "Phoenix Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 30,
+      "pending": 29,
       "status": "pending"
     },
     {
       "key": "cup:590",
       "label": "Northern Ireland Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:591",
       "label": "Jamaica Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:592",
       "label": "Kenya Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
@@ -2739,42 +2739,42 @@
       "key": "cup:594",
       "label": "Мактрик Куп cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:595",
       "label": "Shqipëria Kupa Sfiduese Smerald cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:596",
       "label": "Copa Esmeralda Lempira cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:597",
       "label": "Copa Desafío Esmeralda cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:598",
       "label": "Tazza ta' Għawdex cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:599",
       "label": "Kyrgyzstan Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -2788,77 +2788,77 @@
       "key": "cup:60",
       "label": "Wales Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 21,
+      "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:600",
       "label": "Cupa Ştefan Cel Mare cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:601",
       "label": "ბორის პაიჭაძის სახელობის თასი cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:602",
       "label": "Copa Maragda d'Andorra cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:603",
       "label": "Al Urdun Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:604",
       "label": "Copa Esmeralda Eterna Primavera cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:605",
       "label": "Trinidad & Tobago Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:606",
       "label": "Copa Esmeralda Cocibolca cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:607",
       "label": "Kazakhstan Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:608",
       "label": "Smaragden Beker cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:609",
       "label": "Hochegg-Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -2872,70 +2872,70 @@
       "key": "cup:610",
       "label": "Trophée Émeraude cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:611",
       "label": "Mongol Uls Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:612",
       "label": "Lubnan Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:613",
       "label": "Trophée Émeraude cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:614",
       "label": "Hayastan Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:615",
       "label": "Bahrain Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:616",
       "label": "Barbados Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:617",
       "label": "Taça Challenger Esmeralda de Cabo Verde cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:618",
       "label": "Trophée Émeraude cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:619",
       "label": "Al Kuwayt Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
@@ -2949,70 +2949,70 @@
       "key": "cup:620",
       "label": "Al Iraq Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:621",
       "label": "Azərbaycan Zümrüd Kuboku cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:622",
       "label": "Taça Challenger Esmeralda de Angola cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:623",
       "label": "Kup crnogorske zastave cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:624",
       "label": "Bangladesh Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:625",
       "label": "Al Yaman Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:626",
       "label": "Oman Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:627",
       "label": "Taça Challenger Esmeralda de Moçambique cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:628",
       "label": "Brunei Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:629",
       "label": "Ghana Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
@@ -3026,84 +3026,84 @@
       "key": "cup:630",
       "label": "Kampuchea Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:631",
       "label": "Trophée Émeraude cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:632",
       "label": "Suriyah Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:633",
       "label": "Dawlat Qatar Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:634",
       "label": "Kombe la Gonzo Emerald Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:635",
       "label": "Uganda Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:636",
       "label": "Dhivehi Raajje Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:637",
       "label": "O’zbekiston Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:638",
       "label": "Trophée Samuel Eto'o cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:639",
       "label": "Copa Desafío Esmeralda cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:640",
       "label": "Palestine Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:641",
       "label": "Rubincupen cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -3117,21 +3117,21 @@
       "key": "cup:643",
       "label": "Rubin-Pokal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:644",
       "label": "Coppa Appennini cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:645",
       "label": "Trophée Rubis cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -3145,7 +3145,7 @@
       "key": "cup:647",
       "label": "Copa Rubí Alberto Conte cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
@@ -3180,7 +3180,7 @@
       "key": "cup:652",
       "label": "Robijnen Beker cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -3194,7 +3194,7 @@
       "key": "cup:654",
       "label": "Copa Rubi cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
@@ -3208,7 +3208,7 @@
       "key": "cup:656",
       "label": "Copa Elefante Rubí cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
@@ -3222,7 +3222,7 @@
       "key": "cup:658",
       "label": "India Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -3236,7 +3236,7 @@
       "key": "cup:660",
       "label": "Nippon Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -3250,14 +3250,14 @@
       "key": "cup:662",
       "label": "Rubinowy Puchar Drugiej Szansy cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:663",
       "label": "Taça Challenger Rubi de Portugal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -3271,7 +3271,7 @@
       "key": "cup:665",
       "label": "South Africa Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -3292,14 +3292,14 @@
       "key": "cup:668",
       "label": "Korea Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:669",
       "label": "Prathet Thai Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -3313,7 +3313,7 @@
       "key": "cup:671",
       "label": "Misr Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -3334,21 +3334,21 @@
       "key": "cup:674",
       "label": "Copa Rubí cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:675",
       "label": "Trofeul Dunărea cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:676",
       "label": "Rúbínbikar Íslands cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -3362,28 +3362,28 @@
       "key": "cup:678",
       "label": "Belgium Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:679",
       "label": "Malaysia Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:680",
       "label": "Coupe Grand Saint-Bernard cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:681",
       "label": "Singapore Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -3425,7 +3425,7 @@
       "key": "cup:687",
       "label": "Pilipinas Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
@@ -3453,21 +3453,21 @@
       "key": "cup:691",
       "label": "Hong Kong Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:692",
       "label": "Chinese Taipei Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:693",
       "label": "The Gary Speed Trophy cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
@@ -3530,91 +3530,91 @@
       "key": "cup:701",
       "label": "Cup Hạng Nhì cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:702",
       "label": "Pakistan Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:703",
       "label": "Copa Rubí \"Arsenio Erico\" cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:704",
       "label": "Copa Desafío Rubí cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:705",
       "label": "Copa Rubí Víctor Agustín Ugarte cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:706",
       "label": "Nigeria Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:707",
       "label": "Tjaldurssteypið cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:708",
       "label": "Trophée Rubis cup results",
       "lastSuccessfulCheck": null,
-      "pending": 18,
+      "pending": 17,
       "status": "pending"
     },
     {
       "key": "cup:709",
       "label": "Saudi Arabia Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:710",
       "label": "Trophée Rubis cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:711",
       "label": "Copa Rubí La Negrita cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:712",
       "label": "United Arab Emirates Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:713",
       "label": "Coupe Mousel cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -3628,42 +3628,42 @@
       "key": "cup:715",
       "label": "Copa Desafío Rubí cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:716",
       "label": "Cyprus Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:718",
       "label": "Кубак Дрыгавічоў cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:719",
       "label": "Northern Ireland Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:720",
       "label": "Jamaica Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:721",
       "label": "Kenya Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -3677,308 +3677,308 @@
       "key": "cup:723",
       "label": "Куп Змејко Наџаков cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:724",
       "label": "Shqipëria Kupa Sfiduese Rubin cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:725",
       "label": "Copa Rubí Orquídea cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:726",
       "label": "Copa Desafío Rubí cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:727",
       "label": "Tazza ta' Kemmuna cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:728",
       "label": "Kyrgyzstan Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:729",
       "label": "Cupa Independenţei cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:730",
       "label": "მიხეილ მესხის სახელობის თასი cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:731",
       "label": "Copa Robí d'Andorra cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:732",
       "label": "Al Urdun Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:733",
       "label": "Copa Rubí Marimba cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:734",
       "label": "Trinidad & Tobago Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:735",
       "label": "Copa Rubí Xolotlán cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:736",
       "label": "Kazakhstan Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:737",
       "label": "Robijnen Beker cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:738",
       "label": "Täli-Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:739",
       "label": "Trophée Rubis cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:740",
       "label": "Mongol Uls Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:741",
       "label": "Lubnan Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:742",
       "label": "Trophée Rubis cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:743",
       "label": "Hayastan Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:744",
       "label": "Bahrain Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:745",
       "label": "Barbados Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:746",
       "label": "Taça Challenger Rubi de Cabo Verde cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:747",
       "label": "Trophée Rubis cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:748",
       "label": "Al Kuwayt Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 18,
+      "pending": 17,
       "status": "pending"
     },
     {
       "key": "cup:749",
       "label": "Al Iraq Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:750",
       "label": "Azərbaycan Yaqut Kuboku cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:751",
       "label": "Taça Challenger Rubi de Angola cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:752",
       "label": "Kup crnogorskog grba cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:753",
       "label": "Bangladesh Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:754",
       "label": "Al Yaman Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:755",
       "label": "Oman Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:756",
       "label": "Taça Challenger Rubi de Moçambique cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:757",
       "label": "Brunei Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:758",
       "label": "Ghana Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:759",
       "label": "Kampuchea Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:760",
       "label": "Trophée Rubis cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:761",
       "label": "Suriyah Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:762",
       "label": "Dawlat Qatar Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:763",
       "label": "Tanzania Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:764",
       "label": "Uganda Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:765",
       "label": "Dhivehi Raajje Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:766",
       "label": "O’zbekiston Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -3992,21 +3992,21 @@
       "key": "cup:768",
       "label": "Copa Desafío Rubí cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:769",
       "label": "Palestine Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:770",
       "label": "Safircupen cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
@@ -4020,21 +4020,21 @@
       "key": "cup:772",
       "label": "Saphir-Pokal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:773",
       "label": "Coppa Mediterraneo cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:774",
       "label": "Trophée Saphir cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -4048,7 +4048,7 @@
       "key": "cup:776",
       "label": "Copa Zafiro caPiTAn_piLuSO cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
@@ -4083,7 +4083,7 @@
       "key": "cup:781",
       "label": "Saffieren Beker cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -4097,7 +4097,7 @@
       "key": "cup:783",
       "label": "Copa Safira cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -4111,7 +4111,7 @@
       "key": "cup:785",
       "label": "Copa Julio de Pablos Caño Zafiro cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
@@ -4125,7 +4125,7 @@
       "key": "cup:787",
       "label": "India Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -4139,7 +4139,7 @@
       "key": "cup:789",
       "label": "Nippon Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -4153,14 +4153,14 @@
       "key": "cup:791",
       "label": "Szafirowy Puchar Drugiej Szansy cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:792",
       "label": "Taça Challenger Safira de Portugal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -4174,7 +4174,7 @@
       "key": "cup:794",
       "label": "South Africa Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -4195,14 +4195,14 @@
       "key": "cup:797",
       "label": "Korea Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:798",
       "label": "Prathet Thai Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
@@ -4223,7 +4223,7 @@
       "key": "cup:800",
       "label": "Misr Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 18,
+      "pending": 17,
       "status": "pending"
     },
     {
@@ -4244,21 +4244,21 @@
       "key": "cup:803",
       "label": "Copa Zafiro cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:804",
       "label": "Trofeul Marea Neagră cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:805",
       "label": "Safírbikar Íslands cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -4272,28 +4272,28 @@
       "key": "cup:807",
       "label": "Belgium Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:808",
       "label": "Malaysia Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:809",
       "label": "Coppa Bernina cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:810",
       "label": "Singapore Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
@@ -4335,7 +4335,7 @@
       "key": "cup:816",
       "label": "Pilipinas Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
@@ -4363,21 +4363,21 @@
       "key": "cup:820",
       "label": "Hong Kong Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:821",
       "label": "Chinese Taipei Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:822",
       "label": "Plât Eryri cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -4433,91 +4433,91 @@
       "key": "cup:830",
       "label": "Cup Hạng Ba cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:831",
       "label": "Pakistan Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:832",
       "label": "Copa Zafiro \"Terere\" cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:833",
       "label": "Copa Desafío Zafiro cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:834",
       "label": "Copa Zafiro Ronald Raldes cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:835",
       "label": "Nigeria Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:836",
       "label": "Veðrasteypið cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:837",
       "label": "Trophée Saphir cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:838",
       "label": "Saudi Arabia Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:839",
       "label": "Trophée Saphir cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:840",
       "label": "Copa Zafiro Bulto cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:841",
       "label": "United Arab Emirates Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:842",
       "label": "Coupe Diekirch cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -4531,42 +4531,42 @@
       "key": "cup:844",
       "label": "Copa Desafío Zafiro cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:845",
       "label": "Cyprus Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:847",
       "label": "Кубак Радзімічаў cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:848",
       "label": "Northern Ireland Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:849",
       "label": "Jamaica Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:850",
       "label": "Kenya Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
@@ -4580,154 +4580,154 @@
       "key": "cup:852",
       "label": "Куп Лечо Чадикоски cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:853",
       "label": "Shqipëria Kupa Sfiduese Safir cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:854",
       "label": "Copa Zafiro La Tigra cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:855",
       "label": "Copa Desafío Zafiro cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:856",
       "label": "Tazza ta' Kemmunett cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:857",
       "label": "Kyrgyzstan Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:858",
       "label": "Cupa Tricolorului cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:859",
       "label": "დავით ყიფიანის სახელობის თასი cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:860",
       "label": "Copa Safir d'Andorra cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:861",
       "label": "Al Urdun Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:862",
       "label": "Copa Zafiro Maya cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:863",
       "label": "Trinidad & Tobago Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:864",
       "label": "Copa Zafiro Guardabarranco cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:865",
       "label": "Kazakhstan Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:866",
       "label": "Saffieren Beker cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:867",
       "label": "Sareis-Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:868",
       "label": "Trophée Saphir cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:869",
       "label": "Mongol Uls Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:870",
       "label": "Lubnan Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:871",
       "label": "Trophée Saphir cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:872",
       "label": "Hayastan Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:873",
       "label": "Bahrain Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
@@ -4741,175 +4741,175 @@
       "key": "cup:875",
       "label": "Taça Challenger Safira de Cabo Verde cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:876",
       "label": "Trophée Saphir cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:877",
       "label": "Al Kuwayt Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:878",
       "label": "Al Iraq Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:879",
       "label": "Azərbaycan Sapfir Kuboku cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:880",
       "label": "Taça Challenger Safira de Angola cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:881",
       "label": "Kup zlatnog orla cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:882",
       "label": "Bangladesh Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:883",
       "label": "Al Yaman Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:884",
       "label": "Oman Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:885",
       "label": "Taça Challenger Safira de Moçambique cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:886",
       "label": "Brunei Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:887",
       "label": "Ghana Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:888",
       "label": "Kampuchea Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:889",
       "label": "Trophée Saphir cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:890",
       "label": "Suriyah Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:891",
       "label": "Dawlat Qatar Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:892",
       "label": "Tanzania Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:893",
       "label": "Uganda Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:894",
       "label": "Dhivehi Raajje Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:895",
       "label": "O’zbekiston Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:896",
       "label": "Trophée Rigobert Song cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:897",
       "label": "Copa Desafío Zafiro cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:898",
       "label": "Palestine Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:899",
       "label": "Tröstcupen cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
@@ -4930,21 +4930,21 @@
       "key": "cup:901",
       "label": "Goldene-Ananas-Pokal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:902",
       "label": "Coppa del Nonno cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:903",
       "label": "Consolante cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
@@ -4958,7 +4958,7 @@
       "key": "cup:905",
       "label": "Copa Consuelo Gerardo Raúl Peludo cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
@@ -4993,7 +4993,7 @@
       "key": "cup:910",
       "label": "Spek-en-Bonenschaal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -5007,7 +5007,7 @@
       "key": "cup:912",
       "label": "Copa Quartzo cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -5021,7 +5021,7 @@
       "key": "cup:914",
       "label": "Copa de Cartón cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "failed"
     },
     {
@@ -5035,7 +5035,7 @@
       "key": "cup:916",
       "label": "India Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 20,
+      "pending": 19,
       "status": "pending"
     },
     {
@@ -5049,7 +5049,7 @@
       "key": "cup:918",
       "label": "Nippon Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 21,
+      "pending": 20,
       "status": "pending"
     },
     {
@@ -5063,14 +5063,14 @@
       "key": "cup:920",
       "label": "Puchar Dożynkowy cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:921",
       "label": "Taça de Consolação de Portugal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
@@ -5084,7 +5084,7 @@
       "key": "cup:923",
       "label": "South Africa Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
@@ -5105,14 +5105,14 @@
       "key": "cup:926",
       "label": "Korea Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 23,
+      "pending": 22,
       "status": "pending"
     },
     {
       "key": "cup:927",
       "label": "Prathet Thai Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 18,
+      "pending": 17,
       "status": "pending"
     },
     {
@@ -5126,7 +5126,7 @@
       "key": "cup:929",
       "label": "Misr Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 27,
+      "pending": 26,
       "status": "pending"
     },
     {
@@ -5147,21 +5147,21 @@
       "key": "cup:932",
       "label": "Copa Consolación cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:933",
       "label": "Trofeul Speranţa cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:934",
       "label": "Harmbikar Íslands cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -5175,28 +5175,28 @@
       "key": "cup:936",
       "label": "Belgium Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:937",
       "label": "Malaysia Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:938",
       "label": "Golden Cervelat Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:939",
       "label": "Singapore Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 18,
+      "pending": 17,
       "status": "pending"
     },
     {
@@ -5238,7 +5238,7 @@
       "key": "cup:945",
       "label": "Pilipinas Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 29,
+      "pending": 28,
       "status": "pending"
     },
     {
@@ -5266,21 +5266,21 @@
       "key": "cup:949",
       "label": "Hong Kong Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 24,
+      "pending": 23,
       "status": "pending"
     },
     {
       "key": "cup:950",
       "label": "Chinese Taipei Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:951",
       "label": "Tarian Mynydd Pen-y-fâl cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
@@ -5336,91 +5336,91 @@
       "key": "cup:959",
       "label": "Cup Phong Trào cup results",
       "lastSuccessfulCheck": null,
-      "pending": 21,
+      "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:960",
       "label": "Pakistan Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:961",
       "label": "Copa Consuelo Hilario Vargas cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:962",
       "label": "Copa Consuelo cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:963",
       "label": "Copa Consuelo cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:964",
       "label": "Nigeria Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:965",
       "label": "Tarasteypið cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:966",
       "label": "Consolante cup results",
       "lastSuccessfulCheck": null,
-      "pending": 21,
+      "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:967",
       "label": "Saudi Arabia Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 22,
+      "pending": 21,
       "status": "pending"
     },
     {
       "key": "cup:968",
       "label": "Consolante cup results",
       "lastSuccessfulCheck": null,
-      "pending": 20,
+      "pending": 19,
       "status": "pending"
     },
     {
       "key": "cup:969",
       "label": "Copa Consuelo Roba Oxígeno cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:970",
       "label": "United Arab Emirates Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:971",
       "label": "Coupe Simon cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -5441,35 +5441,35 @@
       "key": "cup:974",
       "label": "Cyprus Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:976",
       "label": "Кубак Надзеі cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:977",
       "label": "Northern Ireland Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:978",
       "label": "Jamaica Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:979",
       "label": "Kenya Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
@@ -5483,112 +5483,112 @@
       "key": "cup:981",
       "label": "Куп Андон Богдановиќ cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:982",
       "label": "Shqipëria Kupa e Ngushëllimit cup results",
       "lastSuccessfulCheck": null,
-      "pending": 22,
+      "pending": 21,
       "status": "pending"
     },
     {
       "key": "cup:983",
       "label": "Copa Consolación Peor es nada cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:984",
       "label": "Copa Consolación cup results",
       "lastSuccessfulCheck": null,
-      "pending": 20,
+      "pending": 19,
       "status": "pending"
     },
     {
       "key": "cup:985",
       "label": "Tazza ta' Filfla cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:986",
       "label": "Kyrgyzstan Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:987",
       "label": "Cupa lui Guguţă cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:988",
       "label": "გოჩა დემეტრაძის სახელობის თასი cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:989",
       "label": "Copa de Consolació d'Andorra cup results",
       "lastSuccessfulCheck": null,
-      "pending": 20,
+      "pending": 19,
       "status": "pending"
     },
     {
       "key": "cup:990",
       "label": "Al Urdun Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:991",
       "label": "Copa Consolación DxHT cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:992",
       "label": "Trinidad & Tobago Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:993",
       "label": "Copa Consolación Sacuanjoche cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:994",
       "label": "Kazakhstan Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:995",
       "label": "Troosttrofee cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:996",
       "label": "Schneeflucht-Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -5602,14 +5602,14 @@
       "key": "cup:998",
       "label": "Mongol Uls Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:999",
       "label": "Lubnan Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 18,
+      "pending": 17,
       "status": "pending"
     },
     {
@@ -9206,37 +9206,37 @@
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/eae850c377795eb4283c1550cdb71a06fa46c5529381532ca350727941e0541d/managers.json",
-      "sha256": "af571373120cb566d2a5902acdd8e33249bdb99607c72f9839651fcf8b1452b4",
-      "bytes": 7057555
+      "path": "/data/versions/33171ab5b0582d39102a238c424d5c6c22a9ddfdaa0beca7b6a1f9464c954eb5/managers.json",
+      "sha256": "f23547fd5ddc678811807d9f121c42d368c8c1cb0c4e87830344b5d050afcc73",
+      "bytes": 7186562
     },
     "leagues.json": {
-      "path": "/data/versions/eae850c377795eb4283c1550cdb71a06fa46c5529381532ca350727941e0541d/leagues.json",
+      "path": "/data/versions/33171ab5b0582d39102a238c424d5c6c22a9ddfdaa0beca7b6a1f9464c954eb5/leagues.json",
       "sha256": "751144b6e38b3f6d096cae68680ecf40352901342b67e97a45b25ddab681b496",
       "bytes": 753890
     },
     "cups.json": {
-      "path": "/data/versions/eae850c377795eb4283c1550cdb71a06fa46c5529381532ca350727941e0541d/cups.json",
-      "sha256": "f1d4b771f6cf8ce70fe0b5bc541035ee65ab70ecc52672ad03b4d522207944d2",
-      "bytes": 2394011
+      "path": "/data/versions/33171ab5b0582d39102a238c424d5c6c22a9ddfdaa0beca7b6a1f9464c954eb5/cups.json",
+      "sha256": "f241cce1f5ceee46a022e6aaf77a63a2d2f482562f66e978466fa8332ad7b31d",
+      "bytes": 2407326
     },
     "masters.json": {
-      "path": "/data/versions/eae850c377795eb4283c1550cdb71a06fa46c5529381532ca350727941e0541d/masters.json",
+      "path": "/data/versions/33171ab5b0582d39102a238c424d5c6c22a9ddfdaa0beca7b6a1f9464c954eb5/masters.json",
       "sha256": "19c30f390f33f0262dc46812aff2f5d6ce593ffffda1fef24469b0d04c51bcc0",
       "bytes": 6974
     },
     "seasonal.json": {
-      "path": "/data/versions/eae850c377795eb4283c1550cdb71a06fa46c5529381532ca350727941e0541d/seasonal.json",
+      "path": "/data/versions/33171ab5b0582d39102a238c424d5c6c22a9ddfdaa0beca7b6a1f9464c954eb5/seasonal.json",
       "sha256": "fe05c6c09bf0f3a45271c01469d4a8dcf5bb32953da990f751334e581ca8cab3",
       "bytes": 58171
     },
     "worldcup.json": {
-      "path": "/data/versions/eae850c377795eb4283c1550cdb71a06fa46c5529381532ca350727941e0541d/worldcup.json",
+      "path": "/data/versions/33171ab5b0582d39102a238c424d5c6c22a9ddfdaa0beca7b6a1f9464c954eb5/worldcup.json",
       "sha256": "f5cc77f818a3789e0c1187fa6696b528fa028062a62be9e0e6cbc2df97e340fa",
       "bytes": 83744
     },
     "elections.json": {
-      "path": "/data/versions/eae850c377795eb4283c1550cdb71a06fa46c5529381532ca350727941e0541d/elections.json",
+      "path": "/data/versions/33171ab5b0582d39102a238c424d5c6c22a9ddfdaa0beca7b6a1f9464c954eb5/elections.json",
       "sha256": "6336c0e46a4e21ce7b1ef5c4c8fdeae16d9e874748afc6d092352b501216695e",
       "bytes": 1122909
     }
