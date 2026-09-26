@@ -199,7 +199,18 @@
 .th2000s .retro-banner-tools {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
   gap: 9px;
+}
+
+.th2000s .retro-country-names-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  font-size: 10px;
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {

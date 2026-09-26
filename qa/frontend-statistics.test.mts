@@ -17,15 +17,25 @@ import { LEAGUE_ISO, NATIONALITY_ISO } from '../web/src/aggregate/flags.js';
 import { nationalIdentity } from '../web/src/aggregate/nationalIdentity.js';
 
 const root = process.cwd();
-const read = (name: string) => JSON.parse(readFileSync(path.join(root, 'web/public/data', `${name}.json`), 'utf8'));
+const manifest = JSON.parse(readFileSync(path.join(root, 'web/public/data/manifest.json'), 'utf8'));
+const dataPath = (name: string) => path.join(root, 'web/public', manifest.files[`${name}.json`].path.slice(1));
+const read = (name: string) => JSON.parse(readFileSync(dataPath(name), 'utf8'));
 const raw = Object.fromEntries(['managers', 'leagues', 'cups', 'masters', 'seasonal', 'worldcup', 'elections'].map(name => [name, read(name)]));
+const nativeNames = new Map<number, string>(Object.entries(JSON.parse(readFileSync(path.join(root, 'server/src/data/national-team-ids.json'), 'utf8')))
+  .map(([name, value]: [string, any]) => [value.leagueId, name]));
+type CountryNameStyle = 'hattrick' | 'english';
+const displayCountry = (country: { leagueId: number; country: string }, style: CountryNameStyle = 'hattrick') => ({
+  code: String(country.leagueId), name: style === 'hattrick' ? nativeNames.get(country.leagueId) ?? country.country : country.country,
+});
+const countryOptions = (rows: Array<{ leagueId: number; country: string }>, style: CountryNameStyle = 'hattrick') =>
+  rows.map((country) => displayCountry(country, style)).sort((a, b) => a.name.localeCompare(b.name));
 const fetches: string[] = [];
 globalThis.fetch = (async (input: any) => {
-  if (String(input) === '/data/manifest.json') return new Response('', { status: 404 });
-  const file = String(input).match(/^\/data\/(managers|leagues|cups|masters|seasonal|worldcup|elections)\.json$/)?.[1];
+  if (String(input) === '/data/manifest.json') return Response.json(manifest);
+  const file = Object.keys(manifest.files).find((name) => manifest.files[name].path === String(input))?.replace(/\.json$/, '');
   assert.ok(file, `Unexpected network access: ${String(input)}`);
   fetches.push(file);
-  return Response.json(raw[file!]);
+  return new Response(readFileSync(dataPath(file!)));
 }) as typeof fetch;
 const data = await import('../web/src/aggregate/data.js');
 const source = readFileSync(path.join(root, 'web/src/aggregate/retro/Retro2000s.tsx'), 'utf8');
@@ -71,14 +81,14 @@ const runs = evaluate(['rows'], fn('withRuns').body!.getText(ast).slice(1, -1));
 const cabinetEffect = (() => {
   const statement = fn('RetroTrophyLeaders').body!.statements.find(s => ts.isExpressionStatement(s) && ts.isCallExpression(s.expression) && s.expression.expression.getText(ast) === 'useEffect' && s.getText(ast).includes('getCabinet('));
   assert.ok(statement, 'cabinet request effect must remain discoverable');
-  return evaluate(['groupBy', 'expandedId', 'getCabinet', 't', 'seasonWindow', 'lang', 'setCabinet', 'EMPTY_CABINET', 'useEffect'], statement.getText(ast));
+  return evaluate(['groupBy', 'expandedId', 'getCabinet', 't', 'seasonWindow', 'lang', 'countryNameStyle', 'setCabinet', 'EMPTY_CABINET', 'useEffect'], statement.getText(ast));
 })();
 const displayedCabinet = (() => {
   let expression: ts.Expression | undefined;
   const visit = (node: ts.Node) => { if (ts.isVariableDeclaration(node) && node.name.getText(ast) === 'cab') expression = node.initializer; ts.forEachChild(node, visit); };
   visit(fn('RetroTrophyLeaders'));
   assert.ok(expression);
-  return evaluate(['isExp', 'm', 'cabinet', 'lang', 'seasonWindow'], `return ${expression.getText(ast)};`);
+  return evaluate(['isExp', 'm', 'cabinet', 'lang', 'seasonWindow', 'countryNameStyle'], `return ${expression.getText(ast)};`);
 })();
 const fields = ['lg', 'main', 'sec', 'hm', 'sn', 'wc', 'wcSilver', 'wcBronze'];
 const categories = ['champ', 'main', 'sec', 'hm', 'sn', 'wc'];
@@ -147,40 +157,80 @@ test('every manager and category: career, last 1/5/10/20 and reigning counts equ
 
 test('every cabinet: category, detail labels, season values and reigning/window counts reconcile with the manager row', async () => {
   const bad: any[] = [];
+  const englishById = new Map<number, string>(raw.leagues.map((league: any) => [league.leagueId, league.country]));
+  const englishByIso = new Map<string, string>(raw.leagues
+    .filter((league: any) => LEAGUE_ISO[league.leagueId])
+    .map((league: any) => [LEAGUE_ISO[league.leagueId], league.country]));
+  const isoByNation = new Map<string, string>(Object.entries(NATIONALITY_ISO));
+  for (const [leagueId, name] of nativeNames) {
+    const iso = LEAGUE_ISO[leagueId];
+    if (iso) isoByNation.set(name, iso);
+  }
+  isoByNation.set("Côte d'Ivoire", 'ci');
+  const nationalSub = (rawName: string, leagueId: number | undefined, style: CountryNameStyle) => {
+    const prefix = rawName.match(/^U21\s+/)?.[0] ?? '';
+    const nation = rawName.slice(prefix.length);
+    if (style === 'hattrick') return leagueId === undefined ? rawName : prefix + (nativeNames.get(leagueId) ?? nation);
+    const iso = leagueId === undefined ? isoByNation.get(nation) : LEAGUE_ISO[leagueId] ?? isoByNation.get(nation);
+    return prefix + (englishById.get(leagueId ?? -1) ?? (iso ? englishByIso.get(iso) : undefined) ?? nation);
+  };
+  let changedNationalLabels = 0;
+  let italianNationalLabels = 0;
   for (const window of windows) {
     for (const m of rawManagers) {
       const cabinet: any = await data.getCabinet(m.userId, country => `QA ${country}`, window);
+      const englishCabinet: any = await data.getCabinet(m.userId, country => `QA ${country}`, window, 'english');
+      const expectedTitles = rowsFor(m, 0, window);
+      assert.deepEqual(cabinet.champ.map((r: any) => r.main), expectedTitles.map((r: any) => `QA ${nativeNames.get(r.leagueId) ?? r.country}`));
+      assert.deepEqual(englishCabinet.champ.map((r: any) => r.main), expectedTitles.map((r: any) => `QA ${r.country}`));
       for (let i = 0; i < fields.length; i++) {
         const actual = cabinet[cabinetKeys[i]];
+        const englishActual = englishCabinet[cabinetKeys[i]];
         const expected = rowsFor(m, i, window);
-        if (actual.length !== expected.length || actual.some((r: any, ix: number) => {
+        if (actual.length !== expected.length || englishActual.length !== expected.length || actual.some((r: any, ix: number) => {
+          const other = englishActual[ix];
+          if (!other) return true;
           const period = i >= 5 && ['World Cup', 'World Cup (Youth)'].includes(expected[ix].cup) ? `WC ${expected[ix].season}` : `S${expected[ix].season}`;
-          return r.sub !== (expected[ix].club ?? expected[ix].nation) || r.season !== period || (i < 6 && Boolean(r.last) !== Boolean(expected[ix].last));
+          const rawSub = expected[ix].club ?? expected[ix].nation;
+          const nativeSub = i >= 5 ? nationalSub(rawSub, expected[ix].leagueId, 'hattrick') : rawSub;
+          const englishSub = i >= 5 ? nationalSub(rawSub, expected[ix].leagueId, 'english') : rawSub;
+          if (i >= 5 && nativeSub !== englishSub) changedNationalLabels++;
+          if (i >= 5 && expected[ix].leagueId === 4 && rawSub === 'U21 Italia') {
+            italianNationalLabels++;
+            assert.equal(r.sub, 'U21 Italia');
+            assert.equal(other.sub, 'U21 Italy');
+          }
+          return r.sub !== nativeSub || other.sub !== englishSub || r.season !== period || other.season !== period
+            || r.flag !== other.flag || r.teamId !== other.teamId || r.last !== other.last
+            || (i < 6 && Boolean(r.last) !== Boolean(expected[ix].last));
         })) bad.push({ user: m.userName, window: window ?? 'all', category: cabinetKeys[i] });
       }
     }
   }
+  assert.ok(changedNationalLabels > 0, 'national country labels must differ across name styles where identities resolve');
+  assert.ok(italianNationalLabels > 0, 'the baked national records must exercise the Italia/Italy switch');
   assert.deepEqual(Object.values(await data.getCabinet(-1)).map((v: any) => v.length), Array(8).fill(0));
   results.checks.cabinetCategories = rawManagers.length * windows.length * 8;
+  results.checks.cabinetNationalLabels = changedNationalLabels;
   errors('cabinetMismatches', bad);
 });
 
-test('actual cabinet effect and render guard follow recency/language/user changes and discard late responses', async () => {
+test('actual cabinet effect and render guard follow recency/language/name style/user changes and discard late responses', async () => {
   let state: any = null, dependencies: any[] | undefined, cleanup: (() => void) | undefined;
-  const requests: Array<{ userId: number; window: number | undefined; resolve: (value: any) => void }> = [];
-  const loader = (userId: number, _label: any, window: number | undefined) => new Promise(resolve => requests.push({ userId, window, resolve }));
+  const requests: Array<{ userId: number; window: number | undefined; style: CountryNameStyle; resolve: (value: any) => void }> = [];
+  const loader = (userId: number, _label: any, window: number | undefined, style: CountryNameStyle) => new Promise(resolve => requests.push({ userId, window, style, resolve }));
   const t = (key: string) => key;
   const effect = (run: () => (() => void) | undefined, next: any[]) => {
     if (!dependencies || next.some((v, i) => !Object.is(v, dependencies![i]))) {
       cleanup?.(); dependencies = next; cleanup = run();
     }
   };
-  const render = (userId: number | null, window?: number, lang = 'en', group = 'manager') => {
-    cabinetEffect(group, userId === null ? null : String(userId), loader, t, window, lang, (value: any) => { state = value; }, {}, effect);
-    return displayedCabinet(userId !== null, { userId }, state, lang, window);
+  const render = (userId: number | null, window?: number, lang = 'en', group = 'manager', style: CountryNameStyle = 'hattrick') => {
+    cabinetEffect(group, userId === null ? null : String(userId), loader, t, window, lang, style, (value: any) => { state = value; }, {}, effect);
+    return displayedCabinet(userId !== null, { userId }, state, lang, window, style);
   };
   const settle = async (index: number, value: any) => { requests[index].resolve(value); await Promise.resolve(); await Promise.resolve(); };
-  const career = { record: 'all time' }, recent = { record: 'last five' }, twenty = { record: 'last twenty' }, translated = { record: 'French cabinet' }, other = { record: 'other manager' };
+  const career = { record: 'all time' }, recent = { record: 'last five' }, twenty = { record: 'last twenty' }, translated = { record: 'French cabinet' }, english = { record: 'English names' }, reverted = { record: 'Hattrick names' }, other = { record: 'other manager' };
   assert.equal(render(9674615), undefined);
   assert.equal(render(9674615, 5), undefined);
   assert.equal(requests.length, 2, 'a recency change must run a new effect');
@@ -195,13 +245,19 @@ test('actual cabinet effect and render guard follow recency/language/user change
   assert.equal(render(9674615, 20, 'fr'), undefined);
   await settle(3, translated);
   assert.equal(render(9674615, 20, 'fr'), translated);
+  assert.equal(render(9674615, 20, 'fr', 'manager', 'english'), undefined, 'the old name style is hidden immediately');
+  assert.equal(render(9674615, 20, 'fr', 'manager', 'hattrick'), translated, 'the previous Hattrick-name cabinet is still valid when switching back');
+  await settle(4, english);
+  assert.equal(render(9674615, 20, 'fr', 'manager', 'hattrick'), translated, 'a late English-name response cannot overwrite Hattrick names');
+  await settle(5, reverted);
+  assert.equal(render(9674615, 20, 'fr', 'manager', 'hattrick'), reverted);
   assert.equal(render(377711, 20), undefined);
-  await settle(4, other);
+  await settle(6, other);
   assert.equal(render(377711, 20), other);
   assert.equal(render(null, 20), undefined);
   cleanup?.();
-  assert.deepEqual(requests.map(({ userId, window }) => [userId, window]), [[9674615, undefined], [9674615, 5], [9674615, 20], [9674615, 20], [377711, 20]]);
-  results.checks.cabinetStateTransitions = 5;
+  assert.deepEqual(requests.map(({ userId, window, style }) => [userId, window, style]), [[9674615, undefined, 'hattrick'], [9674615, 5, 'hattrick'], [9674615, 20, 'hattrick'], [9674615, 20, 'hattrick'], [9674615, 20, 'english'], [9674615, 20, 'hattrick'], [377711, 20, 'hattrick']]);
+  results.checks.cabinetStateTransitions = 7;
 });
 
 test('all nationality selectors, their manager counts, and all five windows return the complete matching field', async () => {
@@ -270,10 +326,18 @@ test('actual UI manager/nation totals under every competition toggle, recency mo
 });
 
 test('every league, domestic cup, Masters and seasonal roll survives the frontend loader unchanged', async () => {
+  const byId = new Map(rawManagers.map(m => [m.userId, m.nationality]));
   const byLogin = new Map(rawManagers.map(m => [m.userName, m.nationality]));
-  const expected = (rows: any[]) => rows.map(r => ({ ...r, nationality: byLogin.get(r.manager) }));
-  assert.deepEqual(await data.getLeagues(), raw.leagues.map((c: any) => ({ code: String(c.leagueId), name: c.country })));
-  assert.deepEqual(await data.getCupCountries(), raw.cups.map((c: any) => ({ code: String(c.leagueId), name: c.country })));
+  const expected = (rows: any[]) => rows.map(r => ({ ...r, nationality: r.userId > 0 ? byId.get(r.userId) : byLogin.get(r.manager) }));
+  const leagues = await data.getLeagues();
+  assert.deepEqual(leagues, countryOptions(raw.leagues));
+  assert.equal(leagues.find((c: any) => c.code === '156')?.name, 'Ītyōṗṗyā');
+  const englishLeagues = await data.getLeagues('english');
+  assert.deepEqual(englishLeagues, countryOptions(raw.leagues, 'english'));
+  assert.equal(englishLeagues.find((c: any) => c.code === '156')?.name, 'Federal Democratic Republic of Ethiopia');
+  assert.deepEqual(new Set(leagues.map((c: any) => c.code)), new Set(englishLeagues.map((c: any) => c.code)));
+  assert.deepEqual(await data.getCupCountries(), countryOptions(raw.cups));
+  assert.deepEqual(await data.getCupCountries('english'), countryOptions(raw.cups, 'english'));
   for (const c of raw.leagues) assert.deepEqual(await data.getWinners(String(c.leagueId)), expected(c.champions));
   for (const c of raw.cups) assert.deepEqual(await data.getCups(String(c.leagueId)), c.cups.map((p: any) => ({ ...p, winners: expected(p.winners) })));
   assert.deepEqual(await data.getMastersWinners(), expected(raw.masters));
@@ -450,8 +514,13 @@ test('national identity unifies youth/native aliases without combining different
 
 test('election loaders and complete manager/nationality aggregate counts reconcile all source rows', async () => {
   const agg = await data.getElectionAggregates();
+  const englishAgg = await data.getElectionAggregates('english');
   assert.deepEqual(await data.getAllElections(), raw.elections);
   const countries = await data.getElectionCountries();
+  const electionCountries = [...new Map<number, { leagueId: number; country: string }>(raw.elections.map((r: any) => [r.leagueId, { leagueId: r.leagueId, country: r.countryName }])).values()];
+  assert.deepEqual(countries, countryOptions(electionCountries));
+  assert.deepEqual(await data.getElectionCountries('english'), countryOptions(electionCountries, 'english'));
+  assert.deepEqual(englishAgg.leaders.map((l: any) => [l.name, l.count]), agg.leaders.map((l: any) => [l.name, l.count]));
   assert.equal(countries.length, new Set(raw.elections.map((r: any) => r.leagueId)).size);
   for (const c of countries) assert.deepEqual(await data.getElections(c.code), raw.elections.filter((r: any) => String(r.leagueId) === c.code).sort((a: any, b: any) => b.edition - a.edition));
   assert.deepEqual(await data.getElections('-1'), []);
@@ -461,7 +530,14 @@ test('election loaders and complete manager/nationality aggregate counts reconci
     const expected = raw.elections.filter((r: any) => r.winner === l.name);
     assert.equal(l.count, expected.length); assert.equal(l.senior, expected.filter((r: any) => !r.isYouth).length); assert.equal(l.youth, expected.filter((r: any) => r.isYouth).length);
     assert.equal(l.elections.length, expected.length); assert.equal(sum(l.countries, 'count'), expected.length);
+    for (const c of l.countries) assert.equal(c.count, expected.filter((r: any) => (nativeNames.get(r.leagueId) ?? r.countryName) === c.country).length);
+  }
+  for (const l of englishAgg.leaders) {
+    const expected = raw.elections.filter((r: any) => r.winner === l.name);
     for (const c of l.countries) assert.equal(c.count, expected.filter((r: any) => r.countryName === c.country).length);
+    assert.deepEqual(l.elections.map((e: any) => e.countryName), expected
+      .slice().sort((a: any, b: any) => b.edition - a.edition || Number(!!a.isYouth) - Number(!!b.isYouth) || a.countryName.localeCompare(b.countryName))
+      .map((e: any) => e.countryName));
   }
   for (const n of agg.nations) {
     const leaders = agg.leaders.filter(l => l.nationality === n.nationality);

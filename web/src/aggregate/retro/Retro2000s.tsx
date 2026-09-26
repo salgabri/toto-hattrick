@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { CSSProperties, Dispatch, ReactNode, SetStateAction } from 'react';
 import {
   getCabinet,
@@ -31,6 +31,7 @@ import {
   type Winner,
 } from '../data.js';
 import { leagueFlagUrl, nationFlagUrl, nationalityFlagUrl } from '../flags.js';
+import { nationDisplayName, type CountryNameStyle } from '../hattrickCountryNames.js';
 import { nationalIdentity } from '../nationalIdentity.js';
 import { LANGS, useI18n, useT, type Lang, type TFn, type TranslationKey } from '../../i18n/index.js';
 import { R, MONO, rootStyle2000s, type Skin } from './theme2000s.js';
@@ -64,11 +65,34 @@ export interface Retro2000sProps {
   skin?: Skin;
 }
 
+const COUNTRY_NAMES_STORAGE_KEY = 'th.countryNames';
+
+const CountryDisplayContext = createContext<(name: string | null | undefined, leagueId?: number) => string>((name) => name ?? '');
+
+function useCountryDisplay() {
+  return useContext(CountryDisplayContext);
+}
+
+function savedCountryNameStyle(): CountryNameStyle {
+  if (typeof window === 'undefined') return 'hattrick';
+  try {
+    return window.localStorage.getItem(COUNTRY_NAMES_STORAGE_KEY) === 'english' ? 'english' : 'hattrick';
+  } catch {
+    return 'hattrick';
+  }
+}
+
 /** Wait for reference data before rejecting a shared selection. Empty URLs use the usual default. */
 function useCountryFilter(key: string, countries: Country[], preferred = '') {
   const [requested, setCountry] = useUrlState(key, textParam);
+  const [initialFallback, setInitialFallback] = useState('');
   const valid = countries.some((country) => country.code === requested);
-  const fallback = countries.find((country) => country.code === preferred)?.code ?? countries[0]?.code ?? '';
+  const fallback = countries.find((country) => country.code === preferred)?.code
+    ?? countries.find((country) => country.code === initialFallback)?.code
+    ?? countries[0]?.code ?? '';
+  useEffect(() => {
+    if (!initialFallback && fallback) setInitialFallback(fallback);
+  }, [initialFallback, fallback]);
   useEffect(() => {
     if (countries.length && requested && !valid) replaceUrlParam(key, textParam, '');
   }, [key, countries, requested, valid]);
@@ -77,7 +101,25 @@ function useCountryFilter(key: string, countries: Country[], preferred = '') {
 
 export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
   const { lang, setLang, t } = useI18n();
+  const [countryNameStyle, setCountryNameStyle] = useState<CountryNameStyle>(savedCountryNameStyle);
   const [view, setView] = useUrlState('view', viewParam);
+
+  const chooseCountryNameStyle = (style: CountryNameStyle) => {
+    setCountryNameStyle(style);
+    try {
+      window.localStorage.setItem(COUNTRY_NAMES_STORAGE_KEY, style);
+    } catch {
+      // The choice still works when browser storage is unavailable.
+    }
+  };
+
+  useEffect(() => {
+    const syncFromAnotherTab = (event: StorageEvent) => {
+      if (event.key === COUNTRY_NAMES_STORAGE_KEY) setCountryNameStyle(event.newValue === 'english' ? 'english' : 'hattrick');
+    };
+    window.addEventListener('storage', syncFromAnotherTab);
+    return () => window.removeEventListener('storage', syncFromAnotherTab);
+  }, []);
 
   // Namespaced URL filters survive reloads, sharing, tab switches and browser history.
   const [nation, setNation] = useUrlState('trophies.nation', nationParam);
@@ -93,7 +135,7 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
   const [electionTab, setElectionTab] = useUrlState('elections.tab', electionTabParam);
   const [, setStatus] = useState('Ready.');
 
-  // Reference lists (loaded once).
+  // Reference lists use stable league IDs; the label setting only changes their names and order.
   const [nationalities, setNationalities] = useState<Country[]>([]);
   const [leagues, setLeagues] = useState<Country[]>([]);
   const [cupCountries, setCupCountries] = useState<Country[]>([]);
@@ -124,13 +166,30 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
     getManagers()
       .then((ms) => setManagersTracked(ms.length))
       .catch(() => setManagersTracked(null));
-    getLeagues().then(setLeagues).catch(() => setLeagues([]));
-    getCupCountries().then(setCupCountries).catch(() => setCupCountries([]));
-    getElectionCountries().then(setElectionCountries).catch(() => setElectionCountries([]));
   }, []);
 
+  useEffect(() => {
+    let cancelled = false;
+    Promise.all([
+      getLeagues(countryNameStyle),
+      getCupCountries(countryNameStyle),
+      getElectionCountries(countryNameStyle),
+    ]).then(([nextLeagues, nextCups, nextElections]) => {
+      if (cancelled) return;
+      setLeagues(nextLeagues);
+      setCupCountries(nextCups);
+      setElectionCountries(nextElections);
+    }).catch(() => {
+      if (cancelled) return;
+      setLeagues([]);
+      setCupCountries([]);
+      setElectionCountries([]);
+    });
+    return () => { cancelled = true; };
+  }, [countryNameStyle]);
+
   /** Banner controls use the same 2000s inset-field look as the filters. */
-  const langSelect: CSSProperties = {
+  const bannerSelect: CSSProperties = {
     border: '2px inset var(--btn,#EBEFE2)',
     background: R.btn,
     color: '#222',
@@ -140,7 +199,13 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
     fontFamily: 'inherit',
   };
 
+  const displayCountry = useMemo(
+    () => (name: string | null | undefined, leagueId?: number) => name ? nationDisplayName(name, countryNameStyle, leagues, leagueId) : '',
+    [countryNameStyle, leagues],
+  );
+
   return (
+    <CountryDisplayContext.Provider value={displayCountry}>
     <div className="th2000s" style={rootStyle2000s(skin)}>
       <div
         style={{
@@ -193,12 +258,23 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
             </div>
             <div className="retro-banner-tools">
               <ShareView title={t(NAV.find((item) => item.key === view)!.labelKey)} />
+              <label className="retro-country-names-control">
+                <span>{t('app.countryNames')}:</span>
+                <select
+                  value={countryNameStyle}
+                  onChange={(e) => chooseCountryNameStyle(e.target.value as CountryNameStyle)}
+                  style={bannerSelect}
+                >
+                  <option value="hattrick">{t('app.countryNamesHattrick')}</option>
+                  <option value="english">{t('app.countryNamesEnglish')}</option>
+                </select>
+              </label>
               <select
                 value={lang}
                 onChange={(e) => setLang(e.target.value as Lang)}
                 title={t('app.language')}
                 aria-label={t('app.language')}
-                style={langSelect}
+                style={bannerSelect}
               >
                 {LANGS.map((l) => (
                   <option key={l.code} value={l.code}>
@@ -246,6 +322,7 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
               setGroupBy={setGroupBy}
               expandedId={expandedId}
               setExpandedId={setExpandedId}
+              countryNameStyle={countryNameStyle}
               onStatus={setStatus}
             />
           ) : view === 'leagues' ? (
@@ -263,6 +340,7 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
               setCountry={setElectionCountry}
               tab={electionTab}
               setTab={setElectionTab}
+              countryNameStyle={countryNameStyle}
               onStatus={setStatus}
             />
           )}
@@ -286,6 +364,7 @@ export function Retro2000s({ skin = 'green' }: Retro2000sProps) {
         </div>
       </div>
     </div>
+    </CountryDisplayContext.Provider>
   );
 }
 
@@ -405,12 +484,13 @@ function HtLink({ href, children }: { href: string | null; children: ReactNode }
 
 /** Small country flag (self-hosted SVG). Renders nothing for unknown/missing codes. */
 function Flag({ url, label, size = 20 }: { url: string | null; label?: string; size?: number }) {
+  const displayCountry = useCountryDisplay();
   if (!url) return null;
   return (
     <img
       src={url}
       alt=""
-      title={label}
+      title={label ? displayCountry(label) : undefined}
       loading="lazy"
       style={{ width: size, height: 'auto', border: '1px solid rgba(0,0,0,.28)', flex: 'none', display: 'block' }}
     />
@@ -906,6 +986,7 @@ function RetroTrophyLeaders({
   setGroupBy,
   expandedId,
   setExpandedId,
+  countryNameStyle,
   onStatus,
 }: {
   nationalities: Country[];
@@ -924,12 +1005,14 @@ function RetroTrophyLeaders({
   setGroupBy: Dispatch<SetStateAction<TrophyGroupBy>>;
   expandedId: string | null;
   setExpandedId: Dispatch<SetStateAction<string | null>>;
+  countryNameStyle: CountryNameStyle;
   onStatus: (s: string) => void;
 }) {
   const { lang, t } = useI18n();
+  const displayCountry = useCountryDisplay();
   const [managers, setManagers] = useState<Manager[]>([]);
   const [loading, setLoading] = useState(true);
-  const [cabinet, setCabinet] = useState<{ userId: number; lang: Lang; window?: SeasonWindow; value: TrophyCabinet } | null>(null);
+  const [cabinet, setCabinet] = useState<{ userId: number; lang: Lang; countryNameStyle: CountryNameStyle; window?: SeasonWindow; value: TrophyCabinet } | null>(null);
   const [page, setPage] = useState(1);
 
   // Nationality is the grouping dimension in nation mode, so it can't also be a filter there —
@@ -954,20 +1037,20 @@ function RetroTrophyLeaders({
     setExpandedId(null);
   }, [groupBy, setExpandedId]);
 
-  // A cabinet belongs to one user, language and recency window. Reload the open row whenever any
+  // A cabinet belongs to one user, language, name style and recency window. Reload whenever any
   // part changes, and ignore superseded requests. Rendering also checks the full scope so the
   // previous result cannot flash under the new row total before this effect runs.
   useEffect(() => {
     if (groupBy !== 'manager' || !expandedId) return;
     const userId = Number(expandedId);
     let cancelled = false;
-    getCabinet(userId, (country) => t('cabinet.champTitle', { country }), seasonWindow)
-      .then((value) => !cancelled && setCabinet({ userId, lang, window: seasonWindow, value }))
-      .catch(() => !cancelled && setCabinet({ userId, lang, window: seasonWindow, value: EMPTY_CABINET }));
+    getCabinet(userId, (country) => t('cabinet.champTitle', { country }), seasonWindow, countryNameStyle)
+      .then((value) => !cancelled && setCabinet({ userId, lang, countryNameStyle, window: seasonWindow, value }))
+      .catch(() => !cancelled && setCabinet({ userId, lang, countryNameStyle, window: seasonWindow, value: EMPTY_CABINET }));
     return () => {
       cancelled = true;
     };
-  }, [expandedId, groupBy, seasonWindow, lang, t]);
+  }, [expandedId, groupBy, seasonWindow, lang, t, countryNameStyle]);
 
   const toggleInc = (k: keyof IncState) => setInc((s) => ({ ...s, [k]: !s[k] }));
   const filtersChanged = nation !== 'ALL' || query !== '' || lastOnly || seasonWindow !== undefined || medals ||
@@ -1050,7 +1133,7 @@ function RetroTrophyLeaders({
       e.ft > 0 &&
       (!lastOnly || e.m.lgLast + e.m.mainLast + e.m.secLast + e.m.hmLast + e.m.snLast + e.m.wcLast > 0),
   );
-  const visibleNations = rankedNations.filter((n) => n.ft > 0 && (!q || n.nation.toLowerCase().includes(q)));
+  const visibleNations = rankedNations.filter((n) => n.ft > 0 && (!q || n.nation.toLowerCase().includes(q) || displayCountry(n.nation).toLowerCase().includes(q)));
 
   const byNation = groupBy === 'nation';
   const rowCount = byNation ? visibleNations.length : visible.length;
@@ -1162,7 +1245,7 @@ function RetroTrophyLeaders({
                 <option value="ALL">{t('filters.allNationalities')}</option>
                 {nationalities.map((o) => (
                   <option key={o.code} value={o.code}>
-                    {o.name}
+                    {displayCountry(o.code)}{o.name.slice(o.code.length)}
                   </option>
                 ))}
               </select>
@@ -1268,7 +1351,7 @@ function RetroTrophyLeaders({
                   <div style={{ minWidth: 0, display: 'flex', alignItems: 'center', gap: 7 }}>
                     <Flag url={nationalityFlagUrl(n.nation)} label={n.nation} size={24} />
                     <div style={{ minWidth: 0, fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {n.nation}
+                      {displayCountry(n.nation)}
                     </div>
                   </div>
                   <div style={{ fontFamily: MONO, fontSize: 12, color: R.soft }}>
@@ -1331,7 +1414,7 @@ function RetroTrophyLeaders({
           const m = e.m;
           const r = e.rank;
           const isExp = expandedId === String(m.userId);
-          const cab = isExp && cabinet?.userId === m.userId && cabinet.lang === lang && cabinet.window === seasonWindow ? cabinet.value : undefined;
+          const cab = isExp && cabinet?.userId === m.userId && cabinet.lang === lang && cabinet.countryNameStyle === countryNameStyle && cabinet.window === seasonWindow ? cabinet.value : undefined;
 
           const segRaw = mixSegments(e, inc);
           const baseBg = i % 2 ? R.alt : R.panel;
@@ -1375,7 +1458,7 @@ function RetroTrophyLeaders({
                 <div style={{ minWidth: 0, display: 'flex', alignItems: 'center', gap: 5 }}>
                   <Flag url={nationalityFlagUrl(m.c)} label={m.c} />
                   <span
-                    title={m.c}
+                    title={displayCountry(m.c)}
                     style={{
                       display: 'inline-block',
                       minWidth: 0,
@@ -1390,7 +1473,7 @@ function RetroTrophyLeaders({
                       whiteSpace: 'nowrap',
                     }}
                   >
-                    {m.c}
+                    {displayCountry(m.c)}
                   </span>
                 </div>
                 <MixBar segs={segRaw} total={e.ft} max={pageMax} />
@@ -2226,11 +2309,12 @@ function PodiumSlot({
   /** The champion's slot, which carries the row — bigger and in full ink. */
   emphasis?: boolean;
 }) {
+  const displayCountry = useCountryDisplay();
   if (!nation) return <span style={{ fontSize: 11, color: R.faint }}>—</span>;
   return (
     <div style={{ minWidth: 0 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
-        <Flag url={nationFlagUrl(nation, leagueId)} label={nation} size={emphasis ? 18 : 16} />
+        <Flag url={nationFlagUrl(nation, leagueId)} label={displayCountry(nation, leagueId)} size={emphasis ? 18 : 16} />
         <span
           style={{
             fontSize: emphasis ? 13 : 12,
@@ -2241,7 +2325,7 @@ function PodiumSlot({
             whiteSpace: 'nowrap',
           }}
         >
-          {nation}
+          {displayCountry(nation, leagueId)}
         </span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: R.soft, overflow: 'hidden', marginTop: 3 }}>
@@ -2398,6 +2482,7 @@ const MEDAL_SCOPES: Array<{ k: MedalScope; chip: TranslationKey; title: Translat
 
 function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
   const t = useT();
+  const displayCountry = useCountryDisplay();
   const { comps, loading } = useNationalCompetitions();
   const { bracket, setBracket, setCompKey, inBracket, comp } = useBracketedComp(comps, 'medals');
   const [scope, setScope] = useUrlState('medals.scope', medalScopeParam);
@@ -2543,7 +2628,7 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
   const medalCfg = MEDAL_BY.find((m) => m.k === medalBy) ?? MEDAL_BY[0]!;
   const medalRows: MedalRow[] =
     medalBy === 'nation'
-      ? medals.map(([key, m]) => ({ key, label: m.name, flag: nationFlagUrl(m.name, m.leagueId), g: m.g, s: m.s, b: m.b }))
+      ? medals.map(([key, m]) => ({ key, label: displayCountry(m.name, m.leagueId), flag: nationFlagUrl(m.name, m.leagueId), g: m.g, s: m.s, b: m.b }))
       : medalBy === 'coach'
         ? coachMedals.map((c) => ({
             key: String(c.userId),
@@ -2554,7 +2639,7 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
             s: c.s,
             b: c.b,
           }))
-        : coachNationMedals.map(([nat, m]) => ({ key: nat, label: nat, flag: nationalityFlagUrl(nat), g: m.g, s: m.s, b: m.b }));
+        : coachNationMedals.map(([nat, m]) => ({ key: nat, label: displayCountry(nat), flag: nationalityFlagUrl(nat), g: m.g, s: m.s, b: m.b }));
 
   useEffect(() => {
     if (!loading) onStatus(`Done. ${medalRows.length} row(s) loaded.`);
@@ -2650,7 +2735,7 @@ function RetroMedalTables({ onStatus }: { onStatus: (s: string) => void }) {
           right: (
             <span style={{ display: 'flex', alignItems: 'center', gap: 4, flex: 'none' }}>
               <Flag url={nationFlagUrl(r.nation)} label={r.nation} size={14} />
-              <span style={{ fontSize: 11, color: R.soft }}>{r.nation}</span>
+              <span style={{ fontSize: 11, color: R.soft }}>{displayCountry(r.nation)}</span>
             </span>
           ),
         })),
@@ -2752,6 +2837,7 @@ function RetroElections({
   setCountry,
   tab,
   setTab,
+  countryNameStyle,
   onStatus,
 }: {
   countries: Country[];
@@ -2759,6 +2845,7 @@ function RetroElections({
   setCountry: Dispatch<SetStateAction<string>>;
   tab: ElectionTab;
   setTab: Dispatch<SetStateAction<ElectionTab>>;
+  countryNameStyle: CountryNameStyle;
   onStatus: (s: string) => void;
 }) {
   const t = useT();
@@ -2776,7 +2863,7 @@ function RetroElections({
       {tab === 'countries' ? (
         <RetroElectionsByCountry countries={countries} country={country} setCountry={setCountry} onStatus={onStatus} />
       ) : (
-        <RetroElectionAggregates byNation={tab === 'nations'} onStatus={onStatus} />
+        <RetroElectionAggregates byNation={tab === 'nations'} countryNameStyle={countryNameStyle} onStatus={onStatus} />
       )}
     </div>
   );
@@ -2819,18 +2906,22 @@ function BracketBadge({ youth, label }: { youth: boolean; label: string }) {
   );
 }
 
-function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; onStatus: (s: string) => void }) {
+function RetroElectionAggregates({ byNation, countryNameStyle, onStatus }: { byNation: boolean; countryNameStyle: CountryNameStyle; onStatus: (s: string) => void }) {
   const { lang, t } = useI18n();
-  const [agg, setAgg] = useState<ElectionAggregates | null>(null);
+  const displayCountry = useCountryDisplay();
+  const [loadedAgg, setLoadedAgg] = useState<{ style: CountryNameStyle; value: ElectionAggregates } | null>(null);
+  const agg = loadedAgg?.style === countryNameStyle ? loadedAgg.value : null;
   const [query, setQuery] = useUrlState('elections.q', textParam, { history: 'replace' });
   const [page, setPage] = useState(1);
   const [expanded, setExpanded] = useState<string | null>(null);
 
   useEffect(() => {
-    getElectionAggregates()
-      .then(setAgg)
-      .catch(() => setAgg({ leaders: [], nations: [], unattributed: 0, withoutNationality: 0 }));
-  }, []);
+    let cancelled = false;
+    getElectionAggregates(countryNameStyle)
+      .then((value) => { if (!cancelled) setLoadedAgg({ style: countryNameStyle, value }); })
+      .catch(() => { if (!cancelled) setLoadedAgg({ style: countryNameStyle, value: { leaders: [], nations: [], unattributed: 0, withoutNationality: 0 } }); });
+    return () => { cancelled = true; };
+  }, [countryNameStyle]);
 
   // Switching mode or narrowing the search reshuffles the ranking — back to page one, and let go
   // of a row that is about to sit somewhere else (or nowhere).
@@ -2843,7 +2934,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
   const leaders = (agg?.leaders ?? []).filter(
     (l) => !q || l.name.toLowerCase().includes(q) || l.countries.some((c) => c.country.toLowerCase().includes(q)),
   );
-  const nations = (agg?.nations ?? []).filter((n) => !q || n.nationality.toLowerCase().includes(q));
+  const nations = (agg?.nations ?? []).filter((n) => !q || n.nationality.toLowerCase().includes(q) || displayCountry(n.nationality).toLowerCase().includes(q));
 
   const rowCount = byNation ? nations.length : leaders.length;
   const pageCount = Math.max(1, Math.ceil(rowCount / PAGE_SIZE));
@@ -2957,7 +3048,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                   <div style={{ minWidth: 0, display: 'flex', alignItems: 'center', gap: 7 }}>
                     <Flag url={nationalityFlagUrl(n.nationality)} label={n.nationality} size={24} />
                     <span style={{ fontSize: 12, fontWeight: 'bold', color: R.ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {n.nationality}
+                      {displayCountry(n.nationality)}
                     </span>
                   </div>
                   <div style={{ fontFamily: MONO, fontSize: 12, color: R.soft }}>{n.managers.toLocaleString(lang)}</div>
@@ -3048,7 +3139,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
               <div style={{ minWidth: 0, display: 'flex', alignItems: 'center', gap: 5 }}>
                 <Flag url={nationalityFlagUrl(l.nationality)} label={l.nationality} />
                 <span
-                  title={l.nationality}
+                  title={displayCountry(l.nationality)}
                   style={{
                     display: 'inline-block',
                     minWidth: 0,
@@ -3063,7 +3154,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  {l.nationality ?? '—'}
+                  {l.nationality ? displayCountry(l.nationality) : '—'}
                 </span>
               </div>
               {/* The countries that elected them, most-elected first. A coach can serve several
@@ -3222,7 +3313,7 @@ function RetroElectionAggregates({ byNation, onStatus }: { byNation: boolean; on
                               {t(o.place === 1 ? 'place.1' : o.place === 2 ? 'place.2' : 'place.3')}
                             </span>
                             <span style={{ fontSize: 11, color: R.ink, fontWeight: o.place === 1 ? 'bold' : 'normal' }}>{o.cup}</span>
-                            <span style={{ fontSize: 11, color: R.soft }}>{o.nation}</span>
+                            <span style={{ fontSize: 11, color: R.soft }}>{displayCountry(o.nation)}</span>
                             <span style={{ fontFamily: MONO, fontSize: 10, color: R.faint }}>
                               {o.isWorldCupResult ? `${t('col.wc')} ${o.season}` : `S${o.season}`}
                             </span>
@@ -3276,6 +3367,7 @@ function RetroElectionsByCountry({
   onStatus: (s: string) => void;
 }) {
   const t = useT();
+  const displayCountry = useCountryDisplay();
   const [rows, setRows] = useState<ElectionResult[]>([]);
   const [loading, setLoading] = useState(true);
   const countryName = countries.find((c) => c.code === country)?.name ?? '';
@@ -3367,7 +3459,7 @@ function RetroElectionsByCountry({
               }}
             >
               <div style={{ fontFamily: MONO, fontWeight: 'bold', fontSize: 13, color: R.ink }}>{r.edition}</div>
-              <div style={{ fontSize: 11, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.host}</div>
+              <div style={{ fontSize: 11, color: R.soft, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{displayCountry(r.host)}</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
                 {r.winner ? (
                   <>
