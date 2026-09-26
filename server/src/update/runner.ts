@@ -16,6 +16,7 @@ import { acquireLease } from './lease.js';
 import { saveArtifact, restoreArtifact, readArtifactPointer, type ArtifactPointer } from './artifacts.js';
 import { prepareRelease, validateRelease, type ReleaseManifest, type ReleaseSource } from './release.js';
 import type { ScheduledRefreshResult } from './refresh.js';
+import { newAttributionReviews } from './attributionReview.js';
 import { revision as resolveRevision } from './revision.js';
 
 export const repositoryPath = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -205,6 +206,7 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     await retainCheckedInClubHistory(store, repositoryPath, HAITI_HISTORY_PATH);
     await retainCheckedInBulkClubHistory(store, repositoryPath);
     await retainCheckedInHroProfile(store, repositoryPath);
+    const beforeRefresh = await reportScheduled();
     runtime = configureChppRuntime({ maxCalls: env.UPDATE_MAX_CALLS, maxRetries: 2, pacingMs: 600,
       deadline: Date.now() + env.UPDATE_MAX_MINUTES * 60_000,
       onResponse: async (params, xml, call) => {
@@ -223,6 +225,7 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     // A linked history can predate the winner row first discovered above. Re-read the ledger
     // after replay so completed attribution tasks do not appear as unresolved in this release.
     const afterReplay = await reportScheduled();
+    const newManagerReviews = newAttributionReviews(beforeRefresh.pendingEvidence, afterReplay.pendingEvidence);
     const issues = [...new Map([...acquisition.issues, ...afterReplay.issues].map(issue =>
       [`${issue.sourceKey}/${issue.edition ?? ''}/${issue.category}`, issue])).values()];
     const report: ScheduledRefreshResult = { ...afterReplay, issues,
@@ -250,8 +253,9 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     const coverage = { complete: reasons.length === 0, reasons, recentManagerAttribution };
     const status = coverage.complete ? 'success' : 'degraded';
     await store.putImmutable(`runs/${runId}/report.json`, jsonBytes({ ...report, acquisitionStatus: report.status,
-      status, coverage, historicalEvidenceReplay, calls: runtime.stats(), snapshotId: accepted.pointer.snapshotId }));
+      status, coverage, newManagerReviews, historicalEvidenceReplay, calls: runtime.stats(), snapshotId: accepted.pointer.snapshotId }));
     await writeFile(join(dir, 'pending-evidence.json'), JSON.stringify(report.pendingEvidence, null, 2));
+    await writeFile(join(dir, 'new-manager-reviews.json'), JSON.stringify(newManagerReviews, null, 2));
     // Build in a new directory with Vite public copying DISABLED. Only the validated data goes in.
     const artifactDir = join(dir, 'site');
     await runNode(join(repositoryPath, 'node_modules/vite/bin/vite.js'), ['build', '--config', 'vite.update.config.ts', '--outDir', artifactDir, '--emptyOutDir'], join(repositoryPath, 'web'));
@@ -278,8 +282,10 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
       ? await publishArtifact(store, pointer, artifactDir, !!options.publish, lease.assertHeld) : undefined;
     const result = { status, acquisitionStatus: report.status, coverage, releaseId: runId, dataVersion: release.dataVersion,
       published: deployment?.published ?? false, artifactDir, counts: report.counts,
+      newManagerReviews: newManagerReviews.length,
       historicalEvidenceReplay, requests: runtime.stats(),
-      pendingEvidenceFile: join(dir, 'pending-evidence.json'), ...(deployment ? { deploymentUrl: deployment.url } : {}) };
+      pendingEvidenceFile: join(dir, 'pending-evidence.json'), newManagerReviewsFile: join(dir, 'new-manager-reviews.json'),
+      ...(deployment ? { deploymentUrl: deployment.url } : {}) };
     await store.putImmutable(`runs/${runId}/result.json`, jsonBytes(result));
     await summary(result);
     if (authenticationFailed) throw new Error('CHPP authorization failed; valid progress retained, publication stopped');

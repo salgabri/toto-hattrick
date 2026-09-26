@@ -41,12 +41,15 @@ test('offline coordinator restores isolated state, migrates, validates and retai
   const outcome = JSON.parse(recorded.body.toString()) as {
     status: string; acquisitionStatus: string; coverage: { complete: boolean; reasons: string[];
       recentManagerAttribution: { complete: boolean; checked: number; missing: number } };
+    newManagerReviews: number; newManagerReviewsFile: string;
   };
   assert.equal(outcome.status, 'degraded');
   assert.equal(outcome.acquisitionStatus, 'success');
   assert.equal(outcome.coverage.complete, false);
   assert.ok(outcome.coverage.reasons.includes('no competition sources have been registered'));
   assert.equal(outcome.coverage.recentManagerAttribution.checked, 0);
+  assert.equal(outcome.newManagerReviews, 0);
+  assert.deepEqual(JSON.parse(await readFile(outcome.newManagerReviewsFile, 'utf8')), []);
   assert.equal(sha256(await readFile(db)), sourceHash, 'the source DB remains byte-for-byte unchanged');
   assert.notEqual((await readStatePointer(store))?.pointer.snapshotId, first.pointer.snapshotId);
   const pending = await readArtifactPointer(store, 'releases/pending.json'); assert.ok(pending);

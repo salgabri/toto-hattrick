@@ -22,6 +22,7 @@ export interface SourceIssue { sourceKey: string; edition?: number; category: st
 export interface PendingEvidence {
   sourceKey: string; itemKey: string; task: string; edition: number | null;
   reason: string; sourceUrl: string | null;
+  championTeamId?: number | null; championTeamName?: string | null;
 }
 export interface ScheduledSource {
   sourceKey: string; label: string; kind: string; externalId: number | null; baseline: number | null;
@@ -82,6 +83,11 @@ export function orderDueItems<T extends { edition: number | null; nextAttemptAt:
 
 function metadata(source: Pick<UpdateSource, 'metadataJson'>): Record<string, unknown> {
   try { return JSON.parse(source.metadataJson) as Record<string, unknown>; } catch { return {}; }
+}
+function clubAttributionSource(source: UpdateSource): boolean {
+  if (source.externalId === null || !Number.isSafeInteger(source.externalId) || source.externalId <= 0) return false;
+  return source.kind === 'league' || source.kind === 'cup' || source.kind === 'masters' ||
+    (source.kind === 'manual' && source.sourceKey === `seasonal:${source.externalId}`);
 }
 function sourceLabel(source: Pick<UpdateSource, 'kind' | 'externalId' | 'metadataJson'>): string {
   const name = metadata(source).name;
@@ -272,12 +278,45 @@ export async function reportScheduled(): Promise<ScheduledRefreshResult> {
   const items = await prisma.updateItem.findMany({ where: { state: { notIn: ['complete', 'no_award'] } }, orderBy: [{ sourceKey: 'asc' }, { edition: 'desc' }] });
   const byKey = new Map(sources.map(source => [source.sourceKey, source]));
   const automatedBacklog = items.filter(item => AUTOMATED_TASKS.has(item.task) && item.state !== 'needs_review');
+  // Prepare exact, review-only club links in bounded batches. A current owner is not historical
+  // attribution; this report reads retained winner IDs and never calls Hattrick or writes an ID.
+  const reviewTargets = items.filter(item => item.task === 'attribution' && item.edition !== null)
+    .map(item => ({ item, source: byKey.get(item.sourceKey) }))
+    .filter(({ source }) => source !== undefined && clubAttributionSource(source));
+  const winnerByKey = new Map<string, { championTeamId: number; championTeamName: string }>();
+  const batchSize = 250;
+  for (const kind of ['league', 'cup'] as const) {
+    const pairs = [...new Map(reviewTargets.filter(({ source }) => kind === 'league'
+      ? source?.kind === 'league' : source?.kind !== 'league')
+      .map(({ item, source }) => [`${source!.externalId}:${item.edition}`,
+        { id: source!.externalId!, season: item.edition! }] as const)).values()];
+    for (let offset = 0; offset < pairs.length; offset += batchSize) {
+      const group = pairs.slice(offset, offset + batchSize);
+      if (kind === 'league') {
+        const rows = await prisma.leagueChampion.findMany({ where: { OR: group.map(pair => ({ leagueId: pair.id, season: pair.season })) },
+          select: { leagueId: true, season: true, complete: true, championTeamId: true, championTeamName: true, championUserId: true } });
+        for (const row of rows) if (row.complete && (row.championUserId ?? 0) <= 0 && Number.isSafeInteger(row.championTeamId) && row.championTeamId > 0 && row.championTeamName.trim())
+          winnerByKey.set(`league:${row.leagueId}:${row.season}`, { championTeamId: row.championTeamId, championTeamName: row.championTeamName });
+      } else {
+        const rows = await prisma.cupChampion.findMany({ where: { OR: group.map(pair => ({ cupId: pair.id, season: pair.season })) },
+          select: { cupId: true, season: true, finalMatchId: true, championTeamId: true, championTeamName: true, championUserId: true } });
+        // A reconstructed finalMatchId=0 row may carry a club ID, but it lacks an explicit
+        // completion marker. Do not present it as a verified completed winner in review output.
+        for (const row of rows) if (row.finalMatchId > 0 && (row.championUserId ?? 0) <= 0 && row.championTeamId !== null && Number.isSafeInteger(row.championTeamId) && row.championTeamId > 0 && row.championTeamName.trim())
+          winnerByKey.set(`cup:${row.cupId}:${row.season}`, { championTeamId: row.championTeamId, championTeamName: row.championTeamName });
+      }
+    }
+  }
   const pendingEvidence = items.filter(item => !AUTOMATED_TASKS.has(item.task) || item.state === 'needs_review').map(item => {
     const source = byKey.get(item.sourceKey)!;
     const info = metadata(source);
-    const sourceUrl = typeof info.sourceUrl === 'string' ? info.sourceUrl : null;
+    const winner = item.task === 'attribution' && item.edition !== null && clubAttributionSource(source)
+      ? winnerByKey.get(`${source.kind === 'league' ? 'league' : 'cup'}:${source.externalId}:${item.edition}`) : undefined;
+    const sourceUrl = winner ? `https://www.hattrick.org/en/Club/History/?teamId=${winner.championTeamId}`
+      : typeof info.sourceUrl === 'string' ? info.sourceUrl : null;
     return { sourceKey: item.sourceKey, itemKey: item.itemKey, task: item.task, edition: item.edition,
-      reason: item.lastError ?? 'Retained historical evidence required', sourceUrl };
+      reason: item.lastError ?? 'Retained historical evidence required', sourceUrl,
+      championTeamId: winner?.championTeamId ?? null, championTeamName: winner?.championTeamName ?? null };
   });
   const issues = items.filter(item => AUTOMATED_TASKS.has(item.task) && item.errorCategory).map(item => ({
     sourceKey: item.sourceKey, edition: item.edition ?? undefined, category: item.errorCategory!, message: item.lastError ?? 'Source check requires attention',

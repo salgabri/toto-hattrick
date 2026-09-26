@@ -275,10 +275,66 @@ test('report mode is read-only and reports unresolved identities without assigni
   const before = JSON.stringify(db);
   const report = await reportScheduled();
   assert.equal(JSON.stringify(db), before);
-  assert.ok(report.pendingEvidence.some(item => item.sourceKey === 'league:4' && item.task === 'attribution' && item.edition === 94));
+  const leagueReview = report.pendingEvidence.find(item => item.sourceKey === 'league:4' && item.task === 'attribution' && item.edition === 94);
+  assert.deepEqual({ id: leagueReview?.championTeamId, name: leagueReview?.championTeamName, url: leagueReview?.sourceUrl },
+    { id: 101, name: 'Home', url: 'https://www.hattrick.org/en/Club/History/?teamId=101' });
   assert.ok(report.pendingEvidence.some(item => item.sourceKey === 'elections:4' && item.task === 'capture'));
   assert.equal(report.sources.find(source => source.sourceKey === 'elections:4')?.lastSuccessAt, null);
   assert.equal(db.leagueChampion![0].championUserId, null);
+});
+
+test('club reviews link only completed exact winners; missing IDs and manual URLs stay distinct', async t => {
+  const db = archive(t, [], 95);
+  db.updateSource!.push(
+    { sourceKey: 'league:4', kind: 'league', externalId: 4, metadataJson: '{}' },
+    { sourceKey: 'cup:7', kind: 'cup', externalId: 7, metadataJson: '{}' },
+    { sourceKey: 'cup:183', kind: 'masters', externalId: 183, metadataJson: '{}' },
+    { sourceKey: 'cup:8', kind: 'cup', externalId: 8, metadataJson: '{}' },
+    { sourceKey: 'cup:9', kind: 'cup', externalId: 9, metadataJson: '{}' },
+    { sourceKey: 'seasonal:4147445', kind: 'manual', externalId: 4147445,
+      metadataJson: JSON.stringify({ sourceUrl: 'https://www.hattrick.org/Club/ArenaHub/Tournaments/TournamentHistory.aspx?tournamentId=4147445' }) },
+    { sourceKey: 'elections:4', kind: 'manual', externalId: 4,
+      metadataJson: JSON.stringify({ sourceUrl: 'https://www.hattrick.org/World/Elections/History.aspx?LeagueID=4' }) },
+  );
+  db.leagueChampion!.push({ leagueId: 4, season: 95, complete: false,
+    championTeamId: 404, championTeamName: 'Season still running', championUserId: null });
+  db.cupChampion!.push(
+    { cupId: 7, season: 95, finalMatchId: 701, championTeamId: 202, championTeamName: 'Cup winner', championUserId: null },
+    { cupId: 183, season: 95, finalMatchId: 18301, championTeamId: 303, championTeamName: 'Masters winner', championUserId: 0 },
+    { cupId: 8, season: 95, finalMatchId: 801, championTeamId: 0, championTeamName: 'Unknown club ID', championUserId: null },
+    { cupId: 9, season: 95, finalMatchId: 0, championTeamId: 909, championTeamName: 'Unverified placeholder', championUserId: null },
+    { cupId: 4147445, season: 18, finalMatchId: 414744501, championTeamId: 505, championTeamName: 'Seasonal winner', championUserId: null },
+  );
+  for (const sourceKey of ['league:4', 'cup:7', 'cup:183', 'cup:8', 'cup:9']) db.updateItem!.push({ sourceKey,
+    itemKey: '95', task: 'attribution', edition: 95, state: 'needs_review' });
+  db.updateItem!.push(
+    { sourceKey: 'seasonal:4147445', itemKey: '18', task: 'attribution', edition: 18, state: 'needs_review' },
+    { sourceKey: 'seasonal:4147445', itemKey: 'capture:2026-09-21', task: 'capture', edition: 18, state: 'needs_review' },
+  );
+  db.updateItem!.push({ sourceKey: 'elections:4', itemKey: 'capture:2026-09-21', task: 'capture',
+    edition: null, state: 'needs_review' });
+  t.mock.method(globalThis, 'fetch', async () => { throw new Error('Report must not fetch Hattrick'); });
+
+  const before = JSON.stringify(db);
+  const report = await reportScheduled();
+  assert.equal(JSON.stringify(db), before);
+  const bySource = new Map(report.pendingEvidence.map(item => [item.sourceKey, item]));
+  assert.deepEqual([bySource.get('cup:7')?.championTeamId, bySource.get('cup:7')?.championTeamName, bySource.get('cup:7')?.sourceUrl],
+    [202, 'Cup winner', 'https://www.hattrick.org/en/Club/History/?teamId=202']);
+  assert.deepEqual([bySource.get('cup:183')?.championTeamId, bySource.get('cup:183')?.championTeamName, bySource.get('cup:183')?.sourceUrl],
+    [303, 'Masters winner', 'https://www.hattrick.org/en/Club/History/?teamId=303']);
+  assert.deepEqual([bySource.get('cup:8')?.championTeamId, bySource.get('cup:8')?.championTeamName, bySource.get('cup:8')?.sourceUrl],
+    [null, null, null]);
+  assert.deepEqual([bySource.get('cup:9')?.championTeamId, bySource.get('cup:9')?.sourceUrl], [null, null]);
+  assert.deepEqual([bySource.get('league:4')?.championTeamId, bySource.get('league:4')?.sourceUrl], [null, null]);
+  const seasonalAttribution = report.pendingEvidence.find(item => item.sourceKey === 'seasonal:4147445' && item.task === 'attribution');
+  const seasonalCapture = report.pendingEvidence.find(item => item.sourceKey === 'seasonal:4147445' && item.task === 'capture');
+  assert.deepEqual([seasonalAttribution?.championTeamId, seasonalAttribution?.championTeamName, seasonalAttribution?.sourceUrl],
+    [505, 'Seasonal winner', 'https://www.hattrick.org/en/Club/History/?teamId=505']);
+  assert.equal(seasonalCapture?.sourceUrl,
+    'https://www.hattrick.org/Club/ArenaHub/Tournaments/TournamentHistory.aspx?tournamentId=4147445');
+  assert.equal(bySource.get('elections:4')?.sourceUrl,
+    'https://www.hattrick.org/World/Elections/History.aspx?LeagueID=4');
 });
 
 test('reviewed official and seasonal identities close their retained attribution tasks', async t => {

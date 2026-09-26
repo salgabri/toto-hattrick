@@ -75,6 +75,14 @@ newly arrived winner row if its exact linked manager evidence was captured earli
 season-95 Masters manager is supported by a checked-in direct title entry. This replay makes no
 HTML request and does not infer a historical winner from current club ownership.
 
+The run now also compares the attribution queue before acquisition with the queue after evidence
+replay. `new-manager-reviews.json` lists only newly unresolved manager identities from this run;
+`pending-evidence.json` retains the full queue. Cup, Masters and league entries with a known winner
+TeamID include that team and a direct Club History review URL. Both files stay in the private run
+workspace, and `report.json` retains the new-review list. The command summary gives the new count
+and file path. This makes a newly discovered gap explicit; it does not turn a current owner into
+a verified win-time manager or automatically fetch a Club History page.
+
 The unattended publisher stages only `web/public/data/**`, creates a release commit and a
 no-fast-forward merge commit, then atomically pushes both the audit branch and `main`. A concurrent
 main change rejects the whole push. GitHub `Code checks` revalidates pushes and pull requests
@@ -345,7 +353,15 @@ already verified winners require the separate reviewed-correction workflow, not 
 not manually edit `state/current.json`, the DB under an active run, or production JSON. Capture
 tasks must only be resolved once the retained capture proves the required coverage and its actual
 capture date; the scheduler deliberately leaves unsupported-source freshness unknown until then.
-Automated HTML scanning is not an allowed recovery mechanism.
+Automated HTML scanning is not an allowed recovery mechanism under Hattrick's
+[CHPP Manual](https://wiki.hattrick.org/wiki/CHPP_Manual) and
+[House Rules](https://www.hattrick.org/en/Help/Rules/HRBeh.aspx).
+Unattended historical manager attribution from Club History requires Hattrick's explicit approval
+or an approved XML endpoint that provides win-time ownership. The existing `teamdetails` XML can
+describe a current owner, but it cannot generally prove who managed a particular trophy-winning
+team at an earlier final (notably for secondary teams and delayed weekly checks). Until an approved
+source is available, the weekly process must surface and retain unresolved cases for review, never
+silently assign a user ID.
 
 For a reviewed Club History catch-up, the checked-in
 `server/src/data/verified-club-history-bulk-2026-09.jsonl` begins with a capture header and
