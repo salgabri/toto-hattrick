@@ -9,17 +9,21 @@ import ts from 'typescript';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const qaRoot = resolve(root, 'qa');
 const work = mkdtempSync(join(qaRoot, '.web-tests-'));
-const files = ['tests/urlState.test.ts', 'tests/shareLink.test.ts', 'tests/snapshot.test.ts', 'tests/flags.test.ts', 'tests/nationalityJoin.test.ts', 'tests/nationalCompetitionRows.test.ts', 'src/aggregate/urlState.ts', 'src/aggregate/shareLink.ts', 'src/aggregate/filterParams.ts', 'src/aggregate/snapshot.ts', 'src/aggregate/flags.ts', 'src/aggregate/data.ts'];
+const webWork = join(work, 'web');
+const files = ['tests/urlState.test.ts', 'tests/shareLink.test.ts', 'tests/snapshot.test.ts', 'tests/flags.test.ts', 'tests/hattrickCountryNames.test.ts', 'tests/nationalityJoin.test.ts', 'tests/nationalCompetitionRows.test.ts', 'src/aggregate/urlState.ts', 'src/aggregate/shareLink.ts', 'src/aggregate/filterParams.ts', 'src/aggregate/snapshot.ts', 'src/aggregate/flags.ts', 'src/aggregate/hattrickCountryNames.ts', 'src/aggregate/data.ts'];
 try {
   writeFileSync(join(work, 'package.json'), '{"type":"module"}\n');
+  const nationalTeamIds = join(work, 'server/src/data/national-team-ids.json');
+  mkdirSync(dirname(nationalTeamIds), { recursive: true });
+  writeFileSync(nationalTeamIds, readFileSync(join(root, 'server/src/data/national-team-ids.json')));
   for (const relative of files) {
-    const target = join(work, relative.replace(/\.ts$/, '.js'));
+    const target = join(webWork, relative.replace(/\.ts$/, '.js'));
     mkdirSync(dirname(target), { recursive: true });
     const source = readFileSync(join(root, 'web', relative), 'utf8');
     const output = ts.transpileModule(source, { fileName: relative, compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext } }).outputText;
     writeFileSync(target, output.replace(/(from\s+['"][^'"]+)\.ts(['"])/g, '$1.js$2'));
   }
-  execFileSync(process.execPath, ['--test', ...files.filter((f) => f.startsWith('tests/')).map((f) => join(work, f.replace(/\.ts$/, '.js')))], { stdio: 'inherit' });
+  execFileSync(process.execPath, ['--test', ...files.filter((f) => f.startsWith('tests/')).map((f) => join(webWork, f.replace(/\.ts$/, '.js')))], { stdio: 'inherit' });
 } finally {
   const exact = resolve(work);
   assert.equal(dirname(exact), qaRoot);

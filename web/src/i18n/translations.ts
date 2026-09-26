@@ -4,12 +4,10 @@
  * `en` is the source of truth: its keys define `TranslationKey`, and any key a translation is
  * missing falls back to the English text rather than rendering the raw key (see `i18n/index.tsx`).
  *
- * Scope: CHROME ONLY. Everything the baked data carries stays in the language the data uses —
- * club names, manager logins, competition names scraped from Hattrick ("Europe Cup", "Heroes of
- * 2010 Trophy"), and country/nationality names, which Hattrick already prints in each country's
- * OWN language ("Deutschland", "Nippon" — see aggregate/flags.ts). Translating those would mean
- * shipping a name map per language and would leave the flags' lookup keys behind, so the data
- * layer is deliberately left alone.
+ * Scope: CHROME ONLY. Club names, manager logins, and competition names retain their baked
+ * spelling. Country display names can switch between Hattrick's league names and the English
+ * names in the snapshot, independently of the UI language. Manager nationality names remain in
+ * their own language ("Deutschland", "Nippon" — see aggregate/flags.ts).
  *
  * Placeholders are `{name}` and are substituted by `t()`.
  */
@@ -31,6 +29,9 @@ const en = {
   'app.loading': 'loading…',
   'app.managersTracked': '{n} managers tracked',
   'app.language': 'Language',
+  'app.countryNames': 'Country names',
+  'app.countryNamesHattrick': 'Hattrick names',
+  'app.countryNamesEnglish': 'English names',
   'app.footer': '© Toto Hattrick. Fan project, not affiliated with Hattrick / Extralives AB. Data via CHPP.',
 
   /* ---- sharing ---- */
@@ -252,6 +253,9 @@ const de: Dict = {
   'app.loading': 'lädt…',
   'app.managersTracked': '{n} erfasste Manager',
   'app.language': 'Sprache',
+  'app.countryNames': 'Ländernamen',
+  'app.countryNamesHattrick': 'Hattrick-Namen',
+  'app.countryNamesEnglish': 'Englische Namen',
   'app.footer': '© Toto Hattrick. Fan-Projekt, nicht mit Hattrick / Extralives AB verbunden. Daten über CHPP.',
 
   'share.button': 'Teilen',
@@ -457,6 +461,9 @@ const fr: Dict = {
   'app.loading': 'chargement…',
   'app.managersTracked': '{n} managers suivis',
   'app.language': 'Langue',
+  'app.countryNames': 'Noms des pays',
+  'app.countryNamesHattrick': 'Noms Hattrick',
+  'app.countryNamesEnglish': 'Noms anglais',
   'app.footer': '© Toto Hattrick. Projet de fans, sans lien avec Hattrick / Extralives AB. Données via CHPP.',
 
   'share.button': 'Partager',
@@ -662,6 +669,9 @@ const es: Dict = {
   'app.loading': 'cargando…',
   'app.managersTracked': '{n} managers registrados',
   'app.language': 'Idioma',
+  'app.countryNames': 'Nombres de países',
+  'app.countryNamesHattrick': 'Nombres de Hattrick',
+  'app.countryNamesEnglish': 'Nombres en inglés',
   'app.footer': '© Toto Hattrick. Proyecto de aficionados, sin relación con Hattrick / Extralives AB. Datos vía CHPP.',
 
   'share.button': 'Compartir',
@@ -867,6 +877,9 @@ const it: Dict = {
   'app.loading': 'caricamento…',
   'app.managersTracked': '{n} manager registrati',
   'app.language': 'Lingua',
+  'app.countryNames': 'Nomi dei paesi',
+  'app.countryNamesHattrick': 'Nomi di Hattrick',
+  'app.countryNamesEnglish': 'Nomi inglesi',
   'app.footer': '© Toto Hattrick. Progetto amatoriale, non affiliato a Hattrick / Extralives AB. Dati via CHPP.',
 
   'share.button': 'Condividi',

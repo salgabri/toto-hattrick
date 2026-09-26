@@ -6,6 +6,7 @@
  */
 
 import { LEAGUE_ISO, NATIONALITY_ISO, leagueFlagUrl, nationFlagUrl } from './flags.js';
+import { countryDisplayName, nationDisplayName, type CountryNameStyle } from './hattrickCountryNames.js';
 import { snapshot } from './snapshot.js';
 
 export interface Country {
@@ -193,9 +194,11 @@ function loadCups() {
   return cupsBundle;
 }
 
-export async function getCupCountries(): Promise<Country[]> {
+export async function getCupCountries(style: CountryNameStyle = 'hattrick'): Promise<Country[]> {
   const cups = await loadCups();
-  return cups.map((c) => ({ code: String(c.leagueId), name: c.country }));
+  return cups
+    .map((c) => ({ code: String(c.leagueId), name: countryDisplayName(c.leagueId, c.country, style) }))
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /** International cupId of the Supporter Week Trophy — mirrors server/src/sync/seasonal.ts. Every
@@ -268,9 +271,11 @@ export async function getNationalities(): Promise<Country[]> {
     .map(([nationality, n]) => ({ code: nationality, name: `${nationality} (${n})` }));
 }
 
-export async function getLeagues(): Promise<Country[]> {
+export async function getLeagues(style: CountryNameStyle = 'hattrick'): Promise<Country[]> {
   const { leagues } = await load();
-  return leagues.map((l) => ({ code: String(l.leagueId), name: l.country }));
+  return leagues
+    .map((l) => ({ code: String(l.leagueId), name: countryDisplayName(l.leagueId, l.country, style) }))
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /**
@@ -362,22 +367,24 @@ export async function getManagers(nationality?: string, window?: SeasonWindow): 
  *
  * `championsLabel` builds the "<country> champions" heading — the ONE user-facing sentence this
  * data layer composes, so the caller passes the translated form rather than the module reaching
- * for a language it has no business knowing about. Every other label here is a proper name that
- * came out of the bake and stays exactly as Hattrick spells it.
+ * for a language it has no business knowing about. The selected country-name style changes the
+ * league title and national-team labels, while season comparisons still use stored snapshot names.
  */
 export async function getCabinet(
   userId: number,
   championsLabel: (country: string) => string = (c) => `${c} champions`,
   window?: SeasonWindow,
+  countryNameStyle: CountryNameStyle = 'hattrick',
 ): Promise<TrophyCabinet> {
   const { managers, leagues } = await load();
   const m = managers.find((x) => x.userId === userId);
+  const englishCountries = leagues.map((league) => ({ code: String(league.leagueId), name: league.country }));
   // Mirror getManagers' league fallback so an expanded cabinet stays consistent with the chart
   // under "Reigning only" even before a re-bake (cups need the bake — no `last`, no fallback).
   const latestByCountry = latestLeagueSeasonByCountry(leagues);
   // Same window as the row's total, or the cabinet would list trophies the count doesn't include.
   const champ = inWindow(m?.titles, window).map((t) => ({
-    main: championsLabel(t.country),
+    main: championsLabel(countryDisplayName(t.leagueId, t.country, countryNameStyle)),
     sub: t.club,
     teamId: t.teamId,
     season: 'S' + t.season,
@@ -395,11 +402,11 @@ export async function getCabinet(
   const nationFlag = nationFlagUrl;
   const nationalPeriod = (cup: string, season: number) => `${isWorldCup(cup) ? 'WC ' : 'S'}${season}`;
   const nationalItems = (cups?: RawCup[]) =>
-    inWindow(cups, window).map((t) => ({ main: t.cup, sub: t.club, teamId: t.teamId, season: nationalPeriod(t.cup, t.season), last: t.last, flag: nationFlag(t.club, t.leagueId) }));
+    inWindow(cups, window).map((t) => ({ main: t.cup, sub: nationDisplayName(t.club, countryNameStyle, englishCountries, t.leagueId), teamId: t.teamId, season: nationalPeriod(t.cup, t.season), last: t.last, flag: nationFlag(t.club, t.leagueId) }));
   const medalItems = (place: number) =>
     inWindow(m?.medals, window)
       .filter((x) => x.place === place)
-      .map((x) => ({ main: x.cup, sub: x.nation, season: nationalPeriod(x.cup, x.season), flag: nationFlag(x.nation, x.leagueId) }));
+      .map((x) => ({ main: x.cup, sub: nationDisplayName(x.nation, countryNameStyle, englishCountries, x.leagueId), season: nationalPeriod(x.cup, x.season), flag: nationFlag(x.nation, x.leagueId) }));
   return {
     champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec),
     other: cupItems(m?.masters),
@@ -643,10 +650,10 @@ function loadElections() {
   return electionsBundle;
 }
 
-export async function getElectionCountries(): Promise<Country[]> {
+export async function getElectionCountries(style: CountryNameStyle = 'hattrick'): Promise<Country[]> {
   const rows = await loadElections();
   const seen = new Map<number, string>();
-  for (const r of rows) if (!seen.has(r.leagueId)) seen.set(r.leagueId, r.countryName);
+  for (const r of rows) if (!seen.has(r.leagueId)) seen.set(r.leagueId, countryDisplayName(r.leagueId, r.countryName, style));
   return [...seen.entries()].map(([code, name]) => ({ code: String(code), name })).sort((a, b) => a.name.localeCompare(b.name));
 }
 
@@ -795,7 +802,7 @@ function sameNation(r: NationalResult, leagueId: number): boolean {
   return !!iso && iso === LEAGUE_ISO[leagueId];
 }
 
-export async function getElectionAggregates(): Promise<ElectionAggregates> {
+export async function getElectionAggregates(style: CountryNameStyle = 'hattrick'): Promise<ElectionAggregates> {
   const [rows, wc, { managers }] = await Promise.all([loadElections(), getWorldCup(), load()]);
   // Senior and youth editions finish on different dates. Both the displayed date and the regional
   // result window must use the mandate's own bracket, even when the edition number is identical.
@@ -898,10 +905,11 @@ export async function getElectionAggregates(): Promise<ElectionAggregates> {
     else e.senior++;
     e.userId ??= r.winnerUserId;
     e.nationality ??= r.winnerNationality;
-    e.byCountry.set(r.countryName, (e.byCountry.get(r.countryName) ?? 0) + 1);
+    const countryName = countryDisplayName(r.leagueId, r.countryName, style);
+    e.byCountry.set(countryName, (e.byCountry.get(countryName) ?? 0) + 1);
     e.elections.push({
       leagueId: r.leagueId,
-      countryName: r.countryName,
+      countryName,
       edition: r.edition,
       host: r.host,
       isYouth,
