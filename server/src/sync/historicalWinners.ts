@@ -116,9 +116,9 @@ export function extractHistoricalWinnerEvidence(histories: readonly HistoricalCl
     const undatedBoundary = boundaries.some((event) => !event.date);
     for (const event of events) {
       if (ownershipBoundary.test(event.text)) continue;
-      const cupVictory = event.text.match(/^\d{2}-\d{2}-\d{4} In season (\d+), (.+?) emerged victorious from (.+?)\. They were managed by (.+)\.$/i);
-      const cupMemorable = event.text.match(/^\d{2}-\d{2}-\d{4} Season (\d+) was memorable for (.+?), who led (.+?) to the title in (.+)\.$/i);
-      const cupLeadership = event.text.match(/^\d{2}-\d{2}-\d{4} (.+?), under the leadership of (.+?), won (.+?) season (\d+)\.$/i);
+      const cupVictory = event.text.match(/^\d{2}[.-]\d{2}[.-]\d{4} In season (\d+), (.+?) emerged victorious from (.+?)\. They were managed by (.+)\.$/i);
+      const cupMemorable = event.text.match(/^\d{2}[.-]\d{2}[.-]\d{4} Season (\d+) was memorable for (.+?), who led (.+?) to the title in (.+)\.$/i);
+      const cupLeadership = event.text.match(/^\d{2}[.-]\d{2}[.-]\d{4} (.+?), under the leadership of (.+?), won (.+?) season (\d+)\.$/i);
       // The observed Masters history entry names and links the owner at the win, but unlike
       // domestic cup entries it has no CupID link. Its exact title names cup 183; require a
       // matching linked team and manager before using that fixed competition identity.

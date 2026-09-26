@@ -7,7 +7,8 @@ import { z } from 'zod';
 import { env, childEnvironment, useUpdateDatabase } from '../config/env.js';
 import { configureChppRuntime } from '../chpp/client.js';
 import { bootstrapEvidence, captureEvidence, configureEvidenceStore, evidenceReferences, hasDedicatedEvidenceCapture } from './evidence.js';
-import { replayRetainedClubHistories, retainCheckedInClubHistory } from './historicalReplay.js';
+import { BHUTAN_HISTORY_PATH, ETHIOPIA_HISTORY_PATH, GIBRALTAR_HISTORY_PATH, HAITI_HISTORY_PATH,
+  replayRetainedClubHistories, replayRetainedHroProfile, retainCheckedInClubHistory, retainCheckedInHroProfile } from './historicalReplay.js';
 import { LocalObjectStore, S3ObjectStore, jsonBytes, type ObjectStore } from './storage.js';
 import { readStatePointer, restoreSnapshot, saveSnapshot, snapshotDatabase, assertArchivePreserved } from './snapshots.js';
 import { acquireLease } from './lease.js';
@@ -197,6 +198,11 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     const previous = await previousRelease(store, join(dir, 'previous-release'));
     disposeEvidence = configureEvidenceStore({ store, workspacePath: dir, references: snapshot.evidence });
     await retainCheckedInClubHistory(store, repositoryPath);
+    await retainCheckedInClubHistory(store, repositoryPath, ETHIOPIA_HISTORY_PATH);
+    await retainCheckedInClubHistory(store, repositoryPath, BHUTAN_HISTORY_PATH);
+    await retainCheckedInClubHistory(store, repositoryPath, GIBRALTAR_HISTORY_PATH);
+    await retainCheckedInClubHistory(store, repositoryPath, HAITI_HISTORY_PATH);
+    await retainCheckedInHroProfile(store, repositoryPath);
     runtime = configureChppRuntime({ maxCalls: env.UPDATE_MAX_CALLS, maxRetries: 2, pacingMs: 600,
       deadline: Date.now() + env.UPDATE_MAX_MINUTES * 60_000,
       onResponse: async (params, xml, call) => {
@@ -208,7 +214,9 @@ export async function runUpdate(options: { noFetch?: boolean; publish?: boolean;
     const acquisition = token ? await refreshScheduled(token, { maxItems: env.UPDATE_MAX_ITEMS,
       maxMetadataChecks: env.UPDATE_MAX_CALLS === 0 ? 0 : Math.max(1, Math.floor(env.UPDATE_MAX_CALLS / 3)),
     }) : await reportScheduled();
-    const historicalEvidenceReplay = await replayRetainedClubHistories(store, evidenceReferences());
+    const clubHistoryReplay = await replayRetainedClubHistories(store, evidenceReferences());
+    const managerProfileReplay = await replayRetainedHroProfile(store, evidenceReferences());
+    const historicalEvidenceReplay = { ...clubHistoryReplay, managerProfileReplay };
     // A linked history can predate the winner row first discovered above. Re-read the ledger
     // after replay so completed attribution tasks do not appear as unresolved in this release.
     const afterReplay = await reportScheduled();

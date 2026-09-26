@@ -1,0 +1,67 @@
+[
+  {
+    "teamId": 2790688, "leagueId": 176, "club": "St Michael Wanderers FC", "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2790688",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "16.09.2026 Season 3 was memorable for psYx_, who led St Michael Wanderers FC to the title in Gibraltar Cup.",
+      "links": [
+        { "text": "3", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2790688&actiontype=viewcup" },
+        { "text": "psYx_", "href": "/en/Club/Manager/?userId=13264188" },
+        { "text": "St Michael Wanderers FC", "href": "/en/Club/?TeamID=2790688" },
+        { "text": "Gibraltar Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1583" }
+      ]
+    }] }]
+  },
+  {
+    "teamId": 2787922, "leagueId": 176, "club": "Skunk International", "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2787922",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "24.09.2026 Season 3 was memorable for Scally84, who led Skunk International to the title in Gibraltar Emerald Challenger Cup.",
+      "links": [
+        { "text": "3", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2787922&actiontype=viewcup" },
+        { "text": "Scally84", "href": "/en/Club/Manager/?userId=4540620" },
+        { "text": "Skunk International", "href": "/en/Club/?TeamID=2787922" },
+        { "text": "Gibraltar Emerald Challenger Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1584" }
+      ]
+    }] }]
+  },
+  {
+    "teamId": 2788315, "leagueId": 176, "club": "Gibraltar Chuggabug", "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2788315",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "24.09.2026 Season 3 was memorable for losninhos, who led Gibraltar Chuggabug to the title in Gibraltar Ruby Challenger Cup.",
+      "links": [
+        { "text": "3", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2788315&actiontype=viewcup" },
+        { "text": "losninhos", "href": "/en/Club/Manager/?userId=4145756" },
+        { "text": "Gibraltar Chuggabug", "href": "/en/Club/?TeamID=2788315" },
+        { "text": "Gibraltar Ruby Challenger Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1585" }
+      ]
+    }] }]
+  },
+  {
+    "teamId": 2815169, "leagueId": 176, "club": "Dragons Fürstenfeldbruck", "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2815169",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "24.09.2026 In season 3, Dragons Fürstenfeldbruck emerged victorious from Gibraltar Sapphire Challenger Cup. They were managed by el_loco1983.",
+      "links": [
+        { "text": "3", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2815169&actiontype=viewcup" },
+        { "text": "Dragons Fürstenfeldbruck", "href": "/en/Club/?TeamID=2815169" },
+        { "text": "Gibraltar Sapphire Challenger Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1586" },
+        { "text": "el_loco1983", "href": "/en/Club/Manager/?userId=13257829" }
+      ]
+    }] }]
+  },
+  {
+    "teamId": 2788215, "leagueId": 176, "club": "Mons Calpe FC", "complete": false,
+    "sourceURL": "https://www.hattrick.org/en/Club/History/?teamId=2788215",
+    "pages": [{ "page": 1, "rows": [{
+      "text": "24.09.2026 Mons Calpe FC, under the leadership of PublicAnnemie, won Gibraltar Consolation Cup season 3.",
+      "links": [
+        { "text": "Mons Calpe FC", "href": "/en/Club/?TeamID=2788215" },
+        { "text": "PublicAnnemie", "href": "/en/Club/Manager/?userId=13930589" },
+        { "text": "Gibraltar Consolation Cup", "href": "/en/World/Cup/Cup.aspx?CupID=1587" },
+        { "text": "3", "href": "/en/Club/Matches/Archive.aspx?season=95&TeamID=2788215&actiontype=viewcup" }
+      ]
+    }] }]
+  }
+]
