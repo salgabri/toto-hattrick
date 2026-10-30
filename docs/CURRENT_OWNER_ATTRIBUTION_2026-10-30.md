@@ -14,21 +14,37 @@ future winners still publish as manager pending until reviewed Club History evid
 | --- | ---: | ---: | ---: |
 | League champions, latest edition | 159 | 156 | 3 |
 | Domestic cups added by the 2026-10-29/30 runs | 82 | 82 | 0 |
-| Domestic cups from earlier weekly runs, latest edition | 172 | 168 | 4 |
+| Domestic cups from earlier weekly runs, latest edition | 172 | 169 | 3 |
 
-The 406 attributions name 394 managers. 120 of them were new manager rows, and their nationalities
-were resolved in the same pass. The finals were played between 2026-09-09 and 2026-10-28.
-
-Seven titles stay pending because their club has no owner today:
-
-- Three bot clubs: Gibraltar S3 (Town Area Rovers), Bhutan S3 (Trongsa United) and Hattrick Femme
-  International S2 (Nicosia Cyclops).
-- Four ownerless clubs: Cameroon's Trophée Roger Milla S51 (FC Speedcore), Dominican Republic's
-  Copa Consolación S74 (los domis), Algeria's Consolante S69 (Erekir) and Bhutan's Ruby Challenger
-  Cup S3 (Lwy Bhutanu).
+The CHPP pass made 406 attributions naming 394 managers. 120 of them were new manager rows, and
+their nationalities were resolved in the same pass. A Club History review then added one more (see
+below). The finals were played between 2026-09-09 and 2026-10-28.
 
 Older editions, including the 174 historical cup rows that the same runs re-checked, were out of
 scope and remain pending.
+
+## Clubs without an owner
+
+Seven winning clubs have no owner today, so CHPP could not name one. Their public Club History pages
+were then reviewed one at a time, at the operator's direction.
+
+- **FC Speedcore** (Cameroon's Trophée Roger Milla S51). "22.04.2017 The club changed owner as
+  gabber55 took control and renamed it FC Speedcore." links user 13281465. History pages 1–7 cover
+  2015–2026 and contain no later ownership change. CHPP shows the club ownerless only from
+  2026-09-26, ten days after the 2026-09-16 final. gabber55 managed it at the win and is now
+  attributed.
+- **Lwy Bhutanu** (Bhutan Ruby Challenger Cup S3), **Erekir** (Algeria's Consolante S69) and
+  **los domis** (Dominican Republic's Copa Consolación S74). Each was "founded by" one manager:
+  minios88, El_Sodo and fabriziromano. CHPP shows each club ownerless 20–33 days before its final.
+  minios88 is still active and manages another club. The other two had not logged in since July
+  and May. These wins had no manager.
+- **Town Area Rovers** (Gibraltar S3), **Trongsa United** (Bhutan S3) and **Nicosia Cyclops**
+  (Hattrick Femme International S2). Their complete histories name no founder or owner; they have
+  been bots since creation.
+
+Hattrick words every one of these wins "under the leadership of a now retired manager". That
+includes the bot-run Nicosia Cyclops title, so the phrase alone never identifies a person. The six
+titles without a manager stay "—".
 
 ## Evidence and guards
 
@@ -75,6 +91,8 @@ scope and remain pending.
 4. `update:import` validated the checkout: schema, protected facts and an unchanged ledger.
 5. A `--no-fetch` updater run packaged the release, which shipped through the normal Git and
    Vercel flow.
+6. The FC Speedcore attribution followed the same checkout, guarded edit, import and release path
+   as a separate one-row release.
 
 These rows are contemporaneous-owner approximations, not Club History evidence. Reviewed evidence
 that names a different manager will surface as a conflict for review. It never overwrites a row
