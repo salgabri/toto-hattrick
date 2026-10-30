@@ -53,6 +53,10 @@ export interface TrophyItem {
   /** Country-flag URL (by leagueId). For a national title that's the competition's country; for the
    *  country-less international cups it's the winning CLUB's own country. Null when unresolved. */
   flag?: string | null;
+  /** Where the title was won, in the selected country-name style — the same country `flag` shows:
+   *  the competition's for a national title, the winning club's for the Masters and Seasonal Cups,
+   *  the nation coached for a national trophy. Absent when unresolved. */
+  country?: string;
 }
 
 export interface TrophyCabinet {
@@ -377,22 +381,64 @@ export async function getCabinet(
   countryNameStyle: CountryNameStyle = 'hattrick',
 ): Promise<TrophyCabinet> {
   const { managers, leagues } = await load();
-  const m = managers.find((x) => x.userId === userId);
-  const englishCountries = leagues.map((league) => ({ code: String(league.leagueId), name: league.country }));
-  // Mirror getManagers' league fallback so an expanded cabinet stays consistent with the chart
-  // under "Reigning only" even before a re-bake (cups need the bake — no `last`, no fallback).
-  const latestByCountry = latestLeagueSeasonByCountry(leagues);
+  return cabinetOf(managers.find((x) => x.userId === userId), cabinetContext(leagues), championsLabel, window, countryNameStyle);
+}
+
+/** Many cabinets in one pass over the bundle — what exporting a whole filtered leaderboard needs. */
+export async function getCabinets(
+  userIds: readonly number[],
+  championsLabel: (country: string) => string = (c) => `${c} champions`,
+  window?: SeasonWindow,
+  countryNameStyle: CountryNameStyle = 'hattrick',
+): Promise<Map<number, TrophyCabinet>> {
+  const { managers, leagues } = await load();
+  const byId = new Map(managers.map((m) => [m.userId, m]));
+  const context = cabinetContext(leagues);
+  return new Map(userIds.map((id) => [id, cabinetOf(byId.get(id), context, championsLabel, window, countryNameStyle)]));
+}
+
+/** The league-wide lookups every cabinet shares, built once per request rather than per manager. */
+function cabinetContext(leagues: RawLeague[]) {
+  return {
+    englishCountries: leagues.map((league) => ({ code: String(league.leagueId), name: league.country })),
+    englishByLeagueId: new Map(leagues.map((league) => [league.leagueId, league.country])),
+    // Mirror getManagers' league fallback so an expanded cabinet stays consistent with the chart
+    // under "Reigning only" even before a re-bake (cups need the bake — no `last`, no fallback).
+    latestByCountry: latestLeagueSeasonByCountry(leagues),
+  };
+}
+
+function cabinetOf(
+  m: RawManager | undefined,
+  { englishCountries, englishByLeagueId, latestByCountry }: ReturnType<typeof cabinetContext>,
+  championsLabel: (country: string) => string,
+  window: SeasonWindow | undefined,
+  countryNameStyle: CountryNameStyle,
+): TrophyCabinet {
   // Same window as the row's total, or the cabinet would list trophies the count doesn't include.
-  const champ = inWindow(m?.titles, window).map((t) => ({
-    main: championsLabel(countryDisplayName(t.leagueId, t.country, countryNameStyle)),
-    sub: t.club,
-    teamId: t.teamId,
-    season: 'S' + t.season,
-    last: t.last ?? latestByCountry.get(t.country) === t.season,
-    flag: leagueFlagUrl(t.leagueId),
-  }));
-  const cupItems = (cups?: RawCup[]) =>
-    inWindow(cups, window).map((t) => ({ main: t.cup, sub: t.club, teamId: t.teamId, season: 'S' + t.season, last: t.last, flag: leagueFlagUrl(t.leagueId) }));
+  const champ = inWindow(m?.titles, window).map((t) => {
+    const country = countryDisplayName(t.leagueId, t.country, countryNameStyle);
+    return {
+      main: championsLabel(country),
+      sub: t.club,
+      teamId: t.teamId,
+      season: 'S' + t.season,
+      last: t.last ?? latestByCountry.get(t.country) === t.season,
+      flag: leagueFlagUrl(t.leagueId),
+      country,
+    };
+  });
+  // An international cup's `country` field names the cup itself, so its club's country comes from
+  // the baked leagueId alone.
+  const clubCountry = (leagueId: number | undefined) => {
+    const english = leagueId === undefined ? undefined : englishByLeagueId.get(leagueId);
+    return english === undefined ? undefined : countryDisplayName(leagueId, english, countryNameStyle);
+  };
+  const cupItems = (cups: RawCup[] | undefined, international = false) =>
+    inWindow(cups, window).map((t) => ({
+      main: t.cup, sub: t.club, teamId: t.teamId, season: 'S' + t.season, last: t.last, flag: leagueFlagUrl(t.leagueId),
+      country: international ? clubCountry(t.leagueId) : countryDisplayName(t.leagueId, t.country, countryNameStyle),
+    }));
   // `other` carries the Hattrick Masters, `seasonal` the Seasonal Cups, `worldCup` the World Cup
   // (senior + youth) — each its own category (see bake.ts / sync/masters.ts / sync/seasonal.ts /
   // sync/worldCup.ts). None of the three is a country's competition, so the flag can't come from
@@ -402,15 +448,21 @@ export async function getCabinet(
   const nationFlag = nationFlagUrl;
   const nationalPeriod = (cup: string, season: number) => `${isWorldCup(cup) ? 'WC ' : 'S'}${season}`;
   const nationalItems = (cups?: RawCup[]) =>
-    inWindow(cups, window).map((t) => ({ main: t.cup, sub: nationDisplayName(t.club, countryNameStyle, englishCountries, t.leagueId), teamId: t.teamId, season: nationalPeriod(t.cup, t.season), last: t.last, flag: nationFlag(t.club, t.leagueId) }));
+    inWindow(cups, window).map((t) => {
+      const nation = nationDisplayName(t.club, countryNameStyle, englishCountries, t.leagueId);
+      return { main: t.cup, sub: nation, teamId: t.teamId, season: nationalPeriod(t.cup, t.season), last: t.last, flag: nationFlag(t.club, t.leagueId), country: nation };
+    });
   const medalItems = (place: number) =>
     inWindow(m?.medals, window)
       .filter((x) => x.place === place)
-      .map((x) => ({ main: x.cup, sub: nationDisplayName(x.nation, countryNameStyle, englishCountries, x.leagueId), season: nationalPeriod(x.cup, x.season), flag: nationFlag(x.nation, x.leagueId) }));
+      .map((x) => {
+        const nation = nationDisplayName(x.nation, countryNameStyle, englishCountries, x.leagueId);
+        return { main: x.cup, sub: nation, season: nationalPeriod(x.cup, x.season), flag: nationFlag(x.nation, x.leagueId), country: nation };
+      });
   return {
     champ, main: cupItems(m?.cupsMain), sec: cupItems(m?.cupsSec),
-    other: cupItems(m?.masters),
-    seasonal: cupItems(m?.seasonal),
+    other: cupItems(m?.masters, true),
+    seasonal: cupItems(m?.seasonal, true),
     worldCup: nationalItems(m?.worldCup),
     silver: medalItems(2), bronze: medalItems(3),
   };
