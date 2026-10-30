@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>worlddetails.xml</FileName>
+  <Version>1.9</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-10-30 00:42:02</FetchedDate>
+  <LeagueList>
+    <League>
+      <LeagueID>1002</LeagueID>
+      <LeagueName>Hattrick Anniversary League</LeagueName>
+      <Season>8</Season>
+      <SeasonOffset>-87</SeasonOffset>
+      <MatchRound>16</MatchRound>
+      <ShortName>Anniversary</ShortName>
+      <Continent>World</Continent>
+      <ZoneName>World</ZoneName>
+      <EnglishName>Hattrick Anniversary League</EnglishName>
+      <LanguageId>2</LanguageId>
+      <LanguageName>English (UK)</LanguageName>
+      <Country Available="False" />
+      <Cups>
+        <Cup>
+          <CupID>1523</CupID>
+          <CupName>Hattrick Anniversary Cup</CupName>
+          <CupLeagueLevel>0</CupLeagueLevel>
+          <CupLevel>1</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>0</MatchRound>
+          <MatchRoundsLeft>15</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1524</CupID>
+          <CupName>Hattrick Anniversary Emerald Challenger Cup</CupName>
+          <CupLeagueLevel>0</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>0</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1525</CupID>
+          <CupName>Hattrick Anniversary Ruby Challenger Cup</CupName>
+          <CupLeagueLevel>0</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>2</CupLevelIndex>
+          <MatchRound>0</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1526</CupID>
+          <CupName>Hattrick Anniversary Sapphire Challenger Cup</CupName>
+          <CupLeagueLevel>0</CupLeagueLevel>
+          <CupLevel>2</CupLevel>
+          <CupLevelIndex>3</CupLevelIndex>
+          <MatchRound>0</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+        <Cup>
+          <CupID>1527</CupID>
+          <CupName>Hattrick Anniversary Consolation Cup</CupName>
+          <CupLeagueLevel>0</CupLeagueLevel>
+          <CupLevel>3</CupLevel>
+          <CupLevelIndex>1</CupLevelIndex>
+          <MatchRound>0</MatchRound>
+          <MatchRoundsLeft>0</MatchRoundsLeft>
+        </Cup>
+      </Cups>
+      <NationalTeamId>0</NationalTeamId>
+      <U20TeamId>0</U20TeamId>
+      <ActiveTeams>0</ActiveTeams>
+      <ActiveUsers>0</ActiveUsers>
+      <WaitingUsers>0</WaitingUsers>
+      <TrainingDate>2024-09-19 10:30:00</TrainingDate>
+      <EconomyDate>2024-09-20 13:15:00</EconomyDate>
+      <CupMatchDate>2024-09-17 17:00:00</CupMatchDate>
+      <SeriesMatchDate>2024-09-21 18:30:00</SeriesMatchDate>
+      <Sequence1>2024-09-16 10:15:00</Sequence1>
+      <Sequence2>2024-09-16 17:15:00</Sequence2>
+      <Sequence3>2024-09-17 10:15:00</Sequence3>
+      <Sequence5>2024-09-18 09:15:00</Sequence5>
+      <Sequence7>2024-09-19 16:30:00</Sequence7>
+      <NumberOfLevels>7</NumberOfLevels>
+    </League>
+  </LeagueList>
+</HattrickData>

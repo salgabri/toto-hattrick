@@ -77,6 +77,25 @@ export function parseTeamDetails(raw: unknown): { userId: number; teams: TeamSum
   };
 }
 
+// A requested club that no longer exists still gets a valid 3.6 envelope: the owner is a hidden
+// placeholder (User/UserID 0) and the team list is a self-closing <Teams />, which parses to "".
+// Modelled on samples/teamdetails-3.6-deleted-team.xml (S38 Masters champion 54696).
+const DeletedTeamDetailsSchema = z.object({
+  HattrickData: z
+    .object({
+      FileName: z.literal('teamdetails.xml'),
+      Version: z.literal('3.6'),
+      User: z.object({ UserID: z.literal('0') }).passthrough(),
+      Teams: z.literal(''),
+    })
+    .passthrough(),
+});
+
+/** True only for the captured deleted-club response; any other shape stays a parser/evidence gap. */
+export function isDeletedTeamDetails(raw: unknown): boolean {
+  return DeletedTeamDetailsSchema.safeParse(raw).success;
+}
+
 // --- matchesarchive (1.4) ---------------------------------------------------
 
 const ArchiveMatch = z
@@ -334,6 +353,8 @@ const WorldDetailsSchema = z.object({
             Cups: z
               .union([z.literal(''), z.object({ Cup: arrayOf(WorldCup) })])
               .transform((v) => (v === '' ? { Cup: [] } : v)),
+            // 0 for a frozen event league (samples/worlddetails-1.9-anniversary-inactive.xml).
+            ActiveTeams: num.optional(),
           })
           .passthrough(),
       }),
@@ -360,6 +381,7 @@ export function parseWorldDetailsCups(raw: unknown): {
   matchRound: number | null;
   cupMatchDate: Date | null;
   seriesMatchDate: Date | null;
+  activeTeams: number | null;
   cups: WorldCupInfo[];
 } {
   const l = WorldDetailsSchema.parse(raw).HattrickData.LeagueList.League;
@@ -372,6 +394,7 @@ export function parseWorldDetailsCups(raw: unknown): {
     matchRound: l.MatchRound ?? null,
     cupMatchDate: l.CupMatchDate ?? null,
     seriesMatchDate: l.SeriesMatchDate ?? null,
+    activeTeams: l.ActiveTeams ?? null,
     cups: l.Cups.Cup.map((c) => ({
       cupId: c.CupID,
       cupName: c.CupName,

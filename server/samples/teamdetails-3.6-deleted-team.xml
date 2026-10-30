@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>teamdetails.xml</FileName>
+  <Version>3.6</Version>
+  <UserID>9491504</UserID>
+  <FetchedDate>2026-10-30 00:48:29</FetchedDate>
+  <User>
+    <UserID>0</UserID>
+    <SupporterTier>none</SupporterTier>
+    <Loginname></Loginname>
+    <Name>HIDDEN</Name>
+    <ICQ></ICQ>
+    <SignupDate>0001-01-01 00:00:00</SignupDate>
+    <ActivationDate>0001-01-01 00:00:00</ActivationDate>
+    <LastLoginDate>0001-01-01 00:00:00</LastLoginDate>
+    <HasManagerLicense>False</HasManagerLicense>
+    <NationalTeams />
+  </User>
+  <Teams />
+</HattrickData>

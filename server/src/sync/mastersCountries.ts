@@ -2,7 +2,8 @@ import type { UpdateItem } from '@prisma/client';
 import type { TokenPair } from '../chpp/auth.js';
 import { fetchTeamDetails } from '../chpp/endpoints.js';
 import { prisma } from '../db/client.js';
-import { parseTeamDetails } from '../schemas/index.js';
+import { isDeletedTeamDetails, parseTeamDetails } from '../schemas/index.js';
+import { deletedTeamReason, TEAM_DELETED } from '../update/evidenceGaps.js';
 import { MASTERS_CUP_ID } from './masters.js';
 
 const SOURCE_KEY = `cup:${MASTERS_CUP_ID}`;
@@ -34,7 +35,8 @@ export interface MastersCountryReconciliation {
  * Mirror retained Masters winners into independently retryable country tasks. Positive country
  * facts complete their task, a newly available exact team id reopens an old evidence gap, and a
  * retry's existing backoff is preserved. Legacy championLeagueId=0 rows are deliberately retried
- * when an exact team id exists; the scheduler never writes that sentinel itself.
+ * when an exact team id exists; the scheduler never writes that sentinel itself. A club that
+ * official teamdetails reported deleted stays a terminal gap until the winner's team id changes.
  */
 export async function reconcileMastersCountryTasks(now: Date): Promise<MastersCountryReconciliation> {
   if (Number.isNaN(now.getTime())) throw new Error('Invalid Masters country reconciliation time');
@@ -61,7 +63,13 @@ export async function reconcileMastersCountryTasks(now: Date): Promise<MastersCo
       continue;
     }
 
-    if ((row.championTeamId ?? 0) > 0) {
+    const teamId = row.championTeamId ?? 0;
+    if (teamId > 0) {
+      if (existing?.state === 'needs_review' && existing.errorCategory === TEAM_DELETED &&
+          existing.lastError === deletedTeamReason(teamId)) {
+        counts.needsReview++;
+        continue;
+      }
       counts.pending++;
       if (!existing) {
         await prisma.updateItem.create({ data: { sourceKey: SOURCE_KEY, itemKey: String(row.season), task: TASK,
@@ -101,7 +109,8 @@ export async function dueMastersCountryTasks(now: Date, limit: number): Promise<
 /**
  * Resolve one task from the exact championTeamId and the pinned teamdetails endpoint. This never
  * reads or writes manager identity. The guarded update prevents a concurrent winner correction
- * from attaching the fetched country to a different club.
+ * from attaching the fetched country to a different club. The captured deleted-club response is
+ * recorded as a terminal evidence gap rather than thrown as a parser failure.
  */
 export async function resolveMastersCountryTask(token: TokenPair, task: Pick<UpdateItem, 'id' | 'sourceKey' | 'task' | 'edition'>, now: Date): Promise<boolean> {
   if (task.sourceKey !== SOURCE_KEY || task.task !== TASK || task.edition === null || !Number.isSafeInteger(task.edition) || Number.isNaN(now.getTime()))
@@ -119,7 +128,13 @@ export async function resolveMastersCountryTask(token: TokenPair, task: Pick<Upd
   }
   if (!row.championTeamId || row.championTeamId <= 0) throw new MastersCountryEvidenceError();
 
-  const response = parseTeamDetails(await fetchTeamDetails(token, row.championTeamId));
+  const raw = await fetchTeamDetails(token, row.championTeamId);
+  if (isDeletedTeamDetails(raw)) {
+    await prisma.updateItem.update({ where: { id: task.id }, data: { state: 'needs_review', completedAt: null,
+      nextAttemptAt: null, lastError: deletedTeamReason(row.championTeamId), errorCategory: TEAM_DELETED } });
+    return false;
+  }
+  const response = parseTeamDetails(raw);
   const exact = response.teams.find(team => team.teamId === row.championTeamId);
   if (!exact || !Number.isSafeInteger(exact.leagueId) || exact.leagueId <= 0) throw new MastersCountryEvidenceError();
 

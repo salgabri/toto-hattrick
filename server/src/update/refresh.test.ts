@@ -11,7 +11,11 @@ import { orderDueItems, reconcileCupCatalog, reconcilePodiumAttribution, reconci
   refreshScheduled, reportScheduled, sourceError, trackedBaseline } from './refresh.js';
 
 const token = { token: 'test-token', tokenSecret: 'test-secret' };
-const worldRaw = new XMLParser({ ignoreAttributes: false, parseTagValue: false }).parse(readFileSync(new URL('../../samples/worlddetails-1.9-italy.xml', import.meta.url), 'utf8'));
+const sample = (name: string) => readFileSync(new URL(`../../samples/${name}`, import.meta.url), 'utf8');
+const worldRaw = new XMLParser({ ignoreAttributes: false, parseTagValue: false }).parse(sample('worlddetails-1.9-italy.xml'));
+// Real retained responses: the deleted S38 Masters champion and the frozen Anniversary League.
+const deletedTeamXml = sample('teamdetails-3.6-deleted-team.xml');
+const anniversaryXml = sample('worlddetails-1.9-anniversary-inactive.xml');
 const builder = new XMLBuilder({ ignoreAttributes: false });
 const worldXML = (season: number, leagueId = 4) => {
   const raw = structuredClone(worldRaw);
@@ -80,6 +84,9 @@ test('worlddetails scheduling hints are modelled from the real Italy sample', ()
   assert.equal(result.cups.find(cup => cup.cupId === 7)?.matchRoundsLeft, 0);
   assert.equal(result.cups.find(cup => cup.cupId === 515)?.matchRoundsLeft, 1);
   assert.equal(result.seriesMatchDate?.toISOString(), '2026-07-04T12:00:00.000Z');
+  assert.equal(result.activeTeams, 21390);
+  const frozen = parseWorldDetailsCups(new XMLParser({ ignoreAttributes: false, parseTagValue: false }).parse(anniversaryXml));
+  assert.deepEqual([frozen.leagueId, frozen.currentSeason, frozen.matchRound, frozen.activeTeams], [1002, 8, 16, 0]);
 });
 
 test('baseline retains historical holes and older work alternates with fresh finals', () => {
@@ -462,6 +469,110 @@ test('a small metadata cap rotates through countries while leaving calls for res
   }
   assert.deepEqual(metadataCalls, [4, 5, 6, 4]);
   assert.equal(resultCalls.length, 3);
+});
+
+test('a deleted Masters champion club costs one teamdetails call, then stays a gap that does not degrade runs', async t => {
+  const db = archive(t, [95], 95);
+  db.cup!.push({ cupId: 183, leagueId: 0, countryName: 'Hattrick Masters', cupName: 'Hattrick Masters', currentSeason: 38 });
+  db.cupChampion!.push({ cupId: 183, season: 38, finalMatchId: 220199706, championTeamId: 54696,
+    championTeamName: 'Hackers United', championLeagueId: 0, championUserId: null });
+  const calls: string[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: Parameters<typeof fetch>[0]) => {
+    const url = new URL(String(input));
+    calls.push(`${url.searchParams.get('file')}:${url.searchParams.get('teamID')}`);
+    return new Response(deletedTeamXml);
+  });
+
+  for (const day of ['02', '09', '16']) {
+    const result = await refreshScheduled(token, { now: new Date(`2026-11-${day}T06:17:00Z`), maxMetadataChecks: 0, maxItems: 20, pacingMs: 0 });
+    assert.equal(result.status, 'success');
+    assert.deepEqual(result.issues, []);
+    const gap = result.pendingEvidence.find(item => item.sourceKey === 'cup:183' && item.task === 'country');
+    assert.equal(gap?.edition, 38);
+    assert.match(gap?.reason ?? '', /champion club 54696 no longer exists/);
+  }
+  assert.deepEqual(calls, ['teamdetails:54696']);
+  const task = db.updateItem!.find(item => item.sourceKey === 'cup:183' && item.task === 'country');
+  assert.deepEqual([task?.state, task?.errorCategory, task?.attempts], ['needs_review', 'team_deleted', 1]);
+  assert.equal(db.cupChampion!.find(row => row.cupId === 183)?.championLeagueId, 0);
+});
+
+/** The frozen Hattrick Anniversary League: league S8 plus five catalog cups at S5–S8 stay unplayed. */
+function anniversaryArchive(t: TestContext, isCountry = false) {
+  const db = archive(t, [], 8);
+  db.nationalLeague!.push({ leagueId: 1002, countryName: 'Hattrick Anniversary League', topSeriesId: 260265, currentSeason: 8, isCountry });
+  db.leagueChampion!.push({ leagueId: 1002, season: 7, complete: true, championTeamId: 2102951,
+    championTeamName: 'FC Freebie', championUserId: 10559120 });
+  const probes: string[] = [];
+  const world = { xml: anniversaryXml };
+  t.mock.method(globalThis, 'fetch', async (input: Parameters<typeof fetch>[0]) => {
+    const url = new URL(String(input));
+    const file = url.searchParams.get('file');
+    const season = Number(url.searchParams.get('season'));
+    if (file === 'worlddetails') return new Response(world.xml);
+    if (file === 'leaguefixtures') {
+      probes.push(`league:${season}`);
+      return new Response(builder.build({ HattrickData: { LeagueLevelUnitID: 260265, LeagueLevelUnitName: 'I.1', Season: season } }));
+    }
+    assert.equal(file, 'cupmatches');
+    const cupId = Number(url.searchParams.get('cupId'));
+    probes.push(`${cupId}:${season}`);
+    return new Response(builder.build({ HattrickData: { Cup: { CupID: cupId, CupSeason: season, CupRound: 0, CupName: 'Anniversary cup' } } }));
+  });
+  const run = (now: string) => refreshScheduled(token, { onlyLeagueIds: [1002], now: new Date(now), maxMetadataChecks: 1, maxItems: 40, pacingMs: 0 });
+  const open = () => db.updateItem!.filter(item => item.task === 'result' && item.state !== 'complete');
+  return { db, probes, world, run, open };
+}
+
+test('an inactive non-country league is probed once per edition, then parked until worlddetails reports active teams', async t => {
+  const { probes, world, run, open } = anniversaryArchive(t);
+
+  const first = await run('2026-11-02T06:17:00Z');
+  assert.equal(first.status, 'success');
+  assert.deepEqual(first.issues, []);
+  assert.equal(probes.length, 21, 'league S8 and five cups x S5-S8 each get one confirming probe');
+  assert.equal(open().length, 21);
+  for (const item of open()) assert.deepEqual([item.state, item.errorCategory, item.nextAttemptAt], ['needs_review', 'league_inactive', null]);
+  assert.equal(first.counts.pendingItems, 0);
+  assert.ok(first.pendingEvidence.some(item => item.sourceKey === 'league:1002' && item.edition === 8 && /no active teams/.test(item.reason)));
+
+  const second = await run('2026-11-09T06:17:00Z');
+  assert.equal(second.status, 'success');
+  assert.equal(second.counts.metadataChecked, 1, 'worlddetails keeps watching for reactivation');
+  assert.equal(probes.length, 21, 'parked editions cost no further result calls');
+
+  world.xml = anniversaryXml.replace('<ActiveTeams>0</ActiveTeams>', '<ActiveTeams>12</ActiveTeams>');
+  await run('2026-11-16T06:17:00Z');
+  assert.equal(probes.length, 42, 'active teams reopen and re-probe every parked edition');
+  for (const item of open()) assert.deepEqual([item.state, item.errorCategory], ['pending', null]);
+});
+
+test('a country league reporting no active teams keeps its normal probe schedule', async t => {
+  const { probes, run, open } = anniversaryArchive(t, true);
+  const now = new Date('2026-11-02T06:17:00Z');
+  await run(now.toISOString());
+  assert.equal(probes.length, 21);
+  for (const item of open()) {
+    assert.deepEqual([item.state, item.errorCategory], ['pending', null]);
+    assert.ok(item.nextAttemptAt > now);
+  }
+});
+
+test('terminal evidence gaps stay visible for review without failing their source check', async t => {
+  const db = archive(t, [], 94);
+  db.updateSource!.push(
+    { sourceKey: 'cup:183', kind: 'masters', externalId: 183, metadataJson: JSON.stringify({ name: 'Hattrick Masters' }) },
+    { sourceKey: 'league:1002', kind: 'league', externalId: 1002, metadataJson: JSON.stringify({ name: 'Hattrick Anniversary League' }) },
+  );
+  db.updateItem!.push(
+    { sourceKey: 'cup:183', itemKey: '38', task: 'country', edition: 38, state: 'needs_review', errorCategory: 'team_deleted', lastError: 'deleted club' },
+    { sourceKey: 'league:1002', itemKey: '8', task: 'result', edition: 8, state: 'needs_review', errorCategory: 'league_inactive', lastError: 'inactive league' },
+    { sourceKey: 'cup:183', itemKey: '37', task: 'country', edition: 37, state: 'needs_review', errorCategory: 'schema', lastError: 'parser review' },
+  );
+  const report = await reportScheduled();
+  assert.deepEqual(report.issues.map(issue => [issue.sourceKey, issue.edition, issue.category]), [['cup:183', 37, 'schema']]);
+  assert.deepEqual(report.pendingEvidence.map(item => `${item.sourceKey}/${item.edition}`).sort(), ['cup:183/37', 'cup:183/38', 'league:1002/8']);
+  assert.equal(report.sources.find(source => source.sourceKey === 'league:1002')?.needsReview, 1);
 });
 
 test('zero metadata allowance preserves stored observations and negative allowances are rejected', async t => {

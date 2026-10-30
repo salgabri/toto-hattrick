@@ -531,6 +531,42 @@ test('a tiebreaker capture that reaches the CHPP budget stays queued and stops a
   assert.equal(db.updateItem!.find(item => item.sourceKey === sourceKey && item.task === 'result')?.state, 'retry');
 });
 
+test('a deleted seasonal champion club is checked once and kept as a non-failing evidence gap', async t => {
+  runtime(t);
+  const db = tournamentArchive(t);
+  const sourceKey = 'seasonal:6000003';
+  seedSources(db, 'none', {});
+  db.cup!.push({ cupId: 6_000_003, leagueId: 0, countryName: 'International', cupName: 'Deleted club harness',
+    cupLevel: 0, cupLevelIndex: 0, isMain: false, currentSeason: 3 });
+  db.updateSource!.push({ sourceKey, kind: 'tournament', externalId: 6_000_003, numberingSystem: 'tournament:6000003:season',
+    baseline: 3, observedThrough: 3, lastAttemptAt: null, lastSuccessAt: null, nextCheckAt: null, metadataJson: '{}' });
+  db.cupChampion!.push({ cupId: 6_000_003, season: 3, championTeamName: 'Hackers United', championTeamId: 54_696, championLeagueId: null });
+  const teamIds: number[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: Parameters<typeof fetch>[0]) => {
+    const url = new URL(String(input));
+    const file = url.searchParams.get('file');
+    if (file === 'tournamentdetails') return new Response(tournamentDetailsXml(6_000_003, 3, 0, 'Deleted club harness'));
+    assert.equal(file, 'teamdetails');
+    teamIds.push(Number(url.searchParams.get('teamID')));
+    return new Response(sample('teamdetails-3.6-deleted-team.xml'));
+  });
+
+  const first = await refreshOfficialTournaments(token, {
+    now: new Date('2026-09-13T05:17:00.000Z'), maxMetadataChecks: 1, maxItems: 1,
+  });
+  const second = await refreshOfficialTournaments(token, {
+    now: new Date('2026-09-14T05:17:00.000Z'), maxMetadataChecks: 1, maxItems: 1,
+  });
+
+  assert.equal(second.metadataChecked, 1);
+  assert.deepEqual(teamIds, [54_696]);
+  assert.deepEqual([...first.issues, ...second.issues], []);
+  const task = db.updateItem!.find(item => item.sourceKey === sourceKey && item.itemKey === '3' && item.task === 'country');
+  assert.deepEqual([task?.state, task?.errorCategory, task?.attempts], ['needs_review', 'team_deleted', 1]);
+  assert.match(task?.lastError ?? '', /champion club 54696 no longer exists/);
+  assert.equal(db.cupChampion![0].championLeagueId, null);
+});
+
 test('seasonal country reconciliation fairly drains legacy gaps and skips already resolved rows', async t => {
   runtime(t);
   const db = tournamentArchive(t);

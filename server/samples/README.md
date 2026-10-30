@@ -39,3 +39,18 @@ Safe source URLs, captured scores, and SHA256 hashes for the 50 initial gap fina
 are in `src/data/recovered-cup-final-evidence.json`; Masters probe facts are in
 `qa/masters-format-evidence.json` relative to the repository root. All match IDs
 were checked against stored finals/matches before their first fetch.
+
+## Dead-source captures — 29 October 2026 UTC
+
+Unmodified authenticated CHPP response bodies, copied from the updater's retained per-run evidence
+(`evidence/runs/<run>/<call>.json` → `payload.xml`). The `payloadSha256` values identify the
+retained captures in the private store.
+
+- `teamdetails-3.6-deleted-team.xml`: `file=teamdetails&version=3.6&teamID=54696`, the S38 Masters
+  champion Hackers United. A deleted club returns a valid envelope: `User/UserID` 0 (`HIDDEN`,
+  `0001-01-01` dates) and a self-closing `<Teams />`. Run `690e7f8c-376e-4843-a702-3d0b9faa56b4`
+  call 1, payloadSha256 `7e4f3c7aa31adef29fb271c1cfb8d81de9afd2c8395293e6322c3e72d8bb2cb9`.
+- `worlddetails-1.9-anniversary-inactive.xml`: `file=worlddetails&version=1.9&leagueID=1002`, the
+  Hattrick Anniversary League frozen at Season 8, MatchRound 16, `ActiveTeams` 0, with every schedule
+  date in September 2024. Run `51e05564-ad9f-4ea0-a269-06db32730ebd` call 158, payloadSha256
+  `9f7b40ccede5ddb55f941cdca5797d360cf39a8ffa57086e3731199ec207704d`.

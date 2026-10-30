@@ -1,13 +1,17 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test, type TestContext } from 'node:test';
+import { XMLParser } from 'fast-xml-parser';
 import { prisma } from '../db/client.js';
 import { configureChppRuntime } from '../chpp/client.js';
+import { isDeletedTeamDetails } from '../schemas/index.js';
 import { dueMastersCountryTasks, mastersCountryQuota, MastersCountryEvidenceError,
   reconcileMastersCountryTasks, resolveMastersCountryTask } from './mastersCountries.js';
 
 const token = { token: 'test-token', tokenSecret: 'test-secret' };
 const teamDetailsXml = readFileSync(new URL('../../samples/teamdetails.xml', import.meta.url), 'utf8');
+// Real CHPP response for the deleted S38 champion Hackers United (teamID 54696).
+const deletedTeamXml = readFileSync(new URL('../../samples/teamdetails-3.6-deleted-team.xml', import.meta.url), 'utf8');
 const at = new Date('2026-09-13T05:17:00.000Z');
 
 type Row = Record<string, any>;
@@ -135,6 +139,51 @@ test('a valid response without the exact club leaves country and manager untouch
   assert.equal(champion.championUserId, 777);
   assert.equal(champion.championUserName, 'Historical winner');
   assert.equal(db.tasks[0]!.state, 'pending');
+});
+
+test('only the captured deleted-club envelope is recognised as a deleted team', () => {
+  const parse = (xml: string) => new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_', parseTagValue: false, trimValues: true }).parse(xml);
+  assert.equal(isDeletedTeamDetails(parse(deletedTeamXml)), true);
+  assert.equal(isDeletedTeamDetails(parse(teamDetailsXml)), false);
+  // Neither half of the shape is enough on its own, and a different endpoint/version never matches.
+  assert.equal(isDeletedTeamDetails(parse(deletedTeamXml.replace('<UserID>0</UserID>', '<UserID>777</UserID>'))), false);
+  assert.equal(isDeletedTeamDetails(parse(deletedTeamXml.replace('<Teams />', '<Teams><Team><TeamID>54696</TeamID></Team></Teams>'))), false);
+  assert.equal(isDeletedTeamDetails(parse(deletedTeamXml.replace('<Version>3.6</Version>', '<Version>3.5</Version>'))), false);
+  assert.equal(isDeletedTeamDetails(parse(deletedTeamXml.replace('teamdetails.xml', 'chpperror.xml'))), false);
+});
+
+test('a deleted champion club becomes a terminal evidence gap that reconciliation reopens only for a corrected team id', async t => {
+  const champion = { cupId: 183, season: 38, championTeamId: 54696, championLeagueId: 0,
+    championUserId: null, championUserName: null };
+  const db = fakeArchive(t, [champion]);
+  assert.deepEqual(await reconcileMastersCountryTasks(at), { complete: 0, pending: 1, needsReview: 0 });
+  const requests: URL[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: Parameters<typeof fetch>[0]) => {
+    requests.push(new URL(String(input)));
+    return new Response(deletedTeamXml);
+  });
+  const runtime = configureChppRuntime({ maxCalls: 1, pacingMs: 0, maxRetries: 0 });
+  t.after(runtime.dispose);
+
+  assert.equal(await resolveMastersCountryTask(token, (await dueMastersCountryTasks(at, 1))[0]!, at), false);
+  assert.deepEqual(requests.map(url => url.searchParams.get('teamID')), ['54696']);
+  const task = db.tasks[0]!;
+  assert.equal(task.state, 'needs_review');
+  assert.equal(task.errorCategory, 'team_deleted');
+  assert.match(task.lastError, /champion club 54696 no longer exists/);
+  assert.equal(task.nextAttemptAt, null);
+  assert.deepEqual(champion, { cupId: 183, season: 38, championTeamId: 54696, championLeagueId: 0,
+    championUserId: null, championUserName: null }, 'neither country nor manager is inferred');
+
+  const later = new Date('2026-09-20T05:17:00.000Z');
+  assert.deepEqual(await reconcileMastersCountryTasks(later), { complete: 0, pending: 0, needsReview: 1 });
+  assert.equal(task.state, 'needs_review');
+  assert.deepEqual(await dueMastersCountryTasks(later, 4), [], 'the same deleted club is never re-fetched');
+
+  champion.championTeamId = 2241372;
+  assert.deepEqual(await reconcileMastersCountryTasks(later), { complete: 0, pending: 1, needsReview: 0 });
+  assert.deepEqual([task.state, task.errorCategory, task.lastError], ['pending', null, null]);
+  assert.deepEqual((await dueMastersCountryTasks(later, 4)).map(item => item.edition), [38]);
 });
 
 test('the scheduler reserves a bounded country lane without consuming a zero-item run', () => {

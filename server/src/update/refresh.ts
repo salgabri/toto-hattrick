@@ -13,6 +13,7 @@ import { dueMastersCountryTasks, mastersCountryQuota, reconcileMastersCountryTas
   resolveMastersCountryTask } from '../sync/mastersCountries.js';
 import { dueUserNationalityTasks, reconcileUserNationalityTasks, resolveUserNationalityTask,
   userNationalityQuota } from '../sync/userNationalities.js';
+import { EVIDENCE_GAP_CATEGORIES, LEAGUE_INACTIVE, LEAGUE_INACTIVE_REASON } from './evidenceGaps.js';
 
 const DAY = 86_400_000;
 const AUTOMATED_KINDS = ['league', 'cup', 'masters'];
@@ -98,6 +99,12 @@ function sourceLabel(source: Pick<UpdateSource, 'kind' | 'externalId' | 'metadat
   const description = descriptions[source.kind] ?? 'archive source';
   if (typeof name === 'string' && name.trim()) return `${name.trim()} ${description}`;
   return `${description.charAt(0).toUpperCase()}${description.slice(1)}${source.externalId === null ? '' : ` (${source.externalId})`}`;
+}
+/** The domestic league behind a result source; Masters and other global sources have none. */
+function sourceLeagueId(source: Pick<UpdateSource, 'kind' | 'externalId' | 'numberingSystem'>): number | null {
+  if (source.kind === 'league') return source.externalId;
+  const match = source.kind === 'cup' ? /^league:(\d+):season$/.exec(source.numberingSystem) : null;
+  return match ? Number(match[1]) : null;
 }
 function dueAt(at: Date | null, now: Date): boolean { return at === null || at <= now; }
 function later(now: Date, days = 1): Date { return new Date(now.getTime() + days * DAY); }
@@ -318,7 +325,8 @@ export async function reportScheduled(): Promise<ScheduledRefreshResult> {
       reason: item.lastError ?? 'Retained historical evidence required', sourceUrl,
       championTeamId: winner?.championTeamId ?? null, championTeamName: winner?.championTeamName ?? null };
   });
-  const issues = items.filter(item => AUTOMATED_TASKS.has(item.task) && item.errorCategory).map(item => ({
+  const issues = items.filter(item => AUTOMATED_TASKS.has(item.task) && item.errorCategory &&
+    !EVIDENCE_GAP_CATEGORIES.has(item.errorCategory)).map(item => ({
     sourceKey: item.sourceKey, edition: item.edition ?? undefined, category: item.errorCategory!, message: item.lastError ?? 'Source check requires attention',
   }));
   for (const source of sources) {
@@ -390,6 +398,18 @@ export async function refreshScheduled(token: TokenPair, options: ScheduledRefre
     else if (globalSeasons.length > 1) issues.push({ sourceKey: 'cup:183', category: 'metadata', message: 'Masters season needs a consistent offset-zero worlddetails observation; retained season is preserved' });
   }
   await seedCompetitionItems(options.onlyLeagueIds, observations, now);
+  // A non-country event league whose latest worlddetails reports no active teams cannot produce new
+  // results. Each edition still gets a probe while it is inactive, so a final played just before
+  // the league froze is retained; an empty probe parks the edition until teams return.
+  const inactiveLeagues = new Set(leagues.filter(league => !league.isCountry &&
+    observations.get(league.leagueId)?.activeTeams === 0).map(league => league.leagueId));
+  const parked = await prisma.updateItem.findMany({ where: { task: 'result', state: 'needs_review', errorCategory: LEAGUE_INACTIVE }, include: { source: true } });
+  for (const item of parked) {
+    const leagueId = sourceLeagueId(item.source);
+    const activeTeams = leagueId === null ? null : observations.get(leagueId)?.activeTeams;
+    if (typeof activeTeams === 'number' && activeTeams > 0) await prisma.updateItem.update({ where: { id: item.id },
+      data: { state: 'pending', nextAttemptAt: now, lastError: null, errorCategory: null } });
+  }
   const due = await prisma.updateItem.findMany({ where: {
     task: 'result', state: { in: ['pending', 'retry'] }, OR: [{ nextAttemptAt: null }, { nextAttemptAt: { lte: now } }],
     source: { kind: { in: AUTOMATED_KINDS }, ...(options.onlyLeagueIds ? { OR: [{ kind: 'league', externalId: { in: options.onlyLeagueIds } }, { kind: 'cup', numberingSystem: { in: options.onlyLeagueIds.map(id => `league:${id}:season`) } }] } : {}) },
@@ -421,7 +441,10 @@ export async function refreshScheduled(token: TokenPair, options: ScheduledRefre
         ? await prisma.leagueChampion.findUnique({ where: { leagueId_season: { leagueId: item.source.externalId, season: item.edition } } })
         : await prisma.cupChampion.findUnique({ where: { cupId_season: { cupId: item.source.externalId, season: item.edition } } });
       const complete = row && ('complete' in row ? row.complete : row.finalMatchId > 0 || row.championUserId !== null);
-      await prisma.updateItem.update({ where: { id: item.id }, data: { state: complete ? 'complete' : 'pending', completedAt: complete ? now : null,
+      const leagueId = sourceLeagueId(item.source);
+      if (!complete && leagueId !== null && inactiveLeagues.has(leagueId)) await prisma.updateItem.update({ where: { id: item.id },
+        data: { state: 'needs_review', completedAt: null, errorCategory: LEAGUE_INACTIVE, lastError: LEAGUE_INACTIVE_REASON, nextAttemptAt: null } });
+      else await prisma.updateItem.update({ where: { id: item.id }, data: { state: complete ? 'complete' : 'pending', completedAt: complete ? now : null,
         errorCategory: null, lastError: null, nextAttemptAt: complete ? null : nextResultCheck(item, now) } });
       succeeded.add(item.sourceKey);
       if (row && complete && (row.championUserId ?? 0) <= 0) await prisma.updateItem.upsert({ where: keyOf(item.sourceKey, item.itemKey, 'attribution'), update: {}, create: {

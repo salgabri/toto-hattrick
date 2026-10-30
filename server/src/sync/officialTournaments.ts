@@ -7,6 +7,7 @@ import {
   fetchTournamentFixtures,
 } from '../chpp/endpoints.js';
 import {
+  isDeletedTeamDetails,
   parseTeamDetails,
   parseTournamentDetails,
   parseTournamentFixtures,
@@ -14,6 +15,7 @@ import {
 } from '../schemas/index.js';
 import type { CupFinalMatch } from '../schemas/cupFinal.js';
 import { matchEvidenceKey } from '../update/evidence.js';
+import { deletedTeamReason, TEAM_DELETED } from '../update/evidenceGaps.js';
 import { loadCupFinalMatch } from './cupFinals.js';
 import { ingestNtCupSeasons, NT_CUPS } from './ntCups.js';
 import { ingestSeasonalWinners } from './seasonal.js';
@@ -509,7 +511,14 @@ async function resolveSeasonalCountry(token: TokenPair, spec: TournamentSourceSp
     return;
   }
   await prisma.updateItem.update({ where: { id: item.id }, data: { attempts: { increment: 1 } } });
-  const response = parseTeamDetails(await fetchTeamDetails(token, row.championTeamId));
+  const raw = await fetchTeamDetails(token, row.championTeamId);
+  // Reconciliation reopens only completed or id-less tasks, so this gap is never re-fetched.
+  if (isDeletedTeamDetails(raw)) {
+    await prisma.updateItem.update({ where: { id: item.id }, data: { state: 'needs_review', completedAt: null,
+      nextAttemptAt: null, lastError: deletedTeamReason(row.championTeamId), errorCategory: TEAM_DELETED } });
+    return;
+  }
+  const response = parseTeamDetails(raw);
   const team = response.teams.find(candidate => candidate.teamId === row.championTeamId);
   if (!team || team.leagueId <= 0) throw new Error('teamdetails did not retain the exact seasonal champion identity');
   const updated = await prisma.cupChampion.updateMany({ where: { cupId: spec.tournamentId, season: edition,
