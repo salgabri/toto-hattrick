@@ -17,6 +17,12 @@ included; use a manual refresh for time-sensitive results.
 The latest due Hattrick Masters result is checked first, and cups still missing the previous
 season's result receive a bounded priority before older domestic gaps. This is a queue priority,
 not an assertion that a final was played: unresolved or inactive cups remain pending for evidence.
+A non-country league whose worlddetails reports no active teams (the frozen Hattrick Anniversary
+League) gets one probe per open edition; an empty probe parks that edition as `league_inactive`
+until worlddetails reports active teams again. Its league worlddetails check still runs every week.
+A Masters or seasonal-trophy champion club that teamdetails reports deleted becomes a `team_deleted`
+country gap after one check. Neither is marked `no_award`, re-fetched, or reported as a failed source
+check; both stay in `pendingEvidence`.
 Current-season cups with a zero-rounds-left schedule hint also receive a bounded early probe.
 The hint never awards a winner: the final, preceding round and match evidence must validate first.
 

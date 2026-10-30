@@ -167,6 +167,8 @@ The implemented ledger sits alongside the existing Prisma domain tables:
 
 Useful item states are `pending`, `retry`, `complete`, `no_award` and `needs_review`. An ongoing event remains pending with a later check time. `no_award` requires evidence. Empty/error responses do not prove that an edition never existed.
 
+A terminal evidence gap is a `needs_review` item whose valid official response proved the source can no longer supply the fact: `team_deleted` (teamdetails returns the hidden placeholder owner and an empty team list for a deleted champion club) or `league_inactive` (worlddetails reports no active teams in a non-country league and a probe found no result). It stays in the pending-evidence queue and is not re-fetched or reported as a failed source check. A corrected champion team id reopens `team_deleted`; a worlddetails observation with active teams reopens `league_inactive`.
+
 Initialize the ledger from the retained archive with an explicitly recorded baseline. Previously stored winners can seed result-complete items, while missing detail or attribution remains separate work. Do not label historical coverage complete merely because its highest season is present.
 
 On metadata discovery, create all absent items between the baseline and the newly observed season, retaining earlier unresolved items. Prioritize due recent finals to capture disappearing detail, then spend the remaining budget on older gaps without starving them. Any call-budget or time limit leaves unprocessed items queued.
