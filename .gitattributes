@@ -2,4 +2,5 @@
 /qa/*.json text eol=lf
 /qa/**/*.json text eol=lf
 /server/src/data/*cup-final*.json text eol=lf
+/server/src/data/reviewed-attribution-clearances-*.json text eol=lf
 /server/samples/cup-final-*.xml text eol=lf

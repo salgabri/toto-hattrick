@@ -117,6 +117,9 @@ node --import tsx src/scripts/apply-reviewed-corrections.ts --apply --report ../
 
 There is no arbitrary-source or broad-overwrite flag. Apply requires an exclusive, new audit file;
 one unexpected prior owner, club ID, team name, season, or country blocks the complete batch.
+A credit that is impossible rather than replaceable is not corrected here. For example, a title
+won before the credited account existed is cleared back to manager pending with
+[`update:clear`](UPDATE_RUNBOOK.md#clearing-an-impossible-manager-credit).
 Writes are atomic, retain existing manager metadata, and also restore the proven missing club ID.
 An already corrected exact identity is a no-op. Keep the manifest and reports, then re-bake. A
 fresh bake/reconstruction preserves the corrected IDs; rebuilding from an old bake requires

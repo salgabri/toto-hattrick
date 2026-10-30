@@ -4,7 +4,8 @@ A read-only audit of the accepted archive. It finds league and cup titles whose 
 Hattrick account was created after the title was won. Nothing was applied: the private store,
 the published JSON and the accepted snapshot are unchanged, and no CHPP or HTML request was made.
 The [proposed corrections](../qa/pre-signup-attribution-clearances.proposed.json) are a draft for
-review.
+review. After approval they go through the
+[clearance workflow](UPDATE_RUNBOOK.md#clearing-an-impossible-manager-credit) (`update:clear`).
 
 This is separate from the operator-approved
 [season-95 current-owner attribution](CURRENT_OWNER_ATTRIBUTION_2026-10-30.md). None of the
@@ -81,11 +82,15 @@ differs from the snapshot named by `.update-store/state/current.json`.
 
 | Item | Value |
 | --- | --- |
-| Snapshot | `c32714f1-edfe-42ba-8932-6b45fd4c8188`, created 2026-10-30T13:44:58Z at code revision `5f5bd27` |
+| Snapshot audited | `c32714f1-edfe-42ba-8932-6b45fd4c8188`, created 2026-10-30T13:44:58Z at code revision `5f5bd27` |
 | `archive.db` SHA-256 | `08d2c88c9ba31cb2443d40c45c0e67f506c520b6555715adce33abcc6d9d3d45` (verified on the copy) |
-| Credited titles audited | 34,141: every `LeagueChampion` and `CupChampion` row with `championUserId` > 0 |
+| Re-run on | `c3c29f14-9ac7-4e99-ba35-7e2d2c06ca32` (`21b98414…`), accepted 2026-10-30T14:53:50Z |
+| Credited titles audited | 34,141: every `LeagueChampion` and `CupChampion` row with `championUserId` > 0 (34,142 on the re-run) |
 
-The database was copied to a private scratch directory and opened read-only.
+The database was copied to a private scratch directory and opened read-only. While this audit was
+in progress, a data refresh adopted `c3c29f14`. Its only identity change is one newly credited cup
+title (cup 767 S51, gabber55), which is consistent. The re-run flags exactly the same 940 titles,
+15 review-only rows and 46 borderline rows. The draft corrections are bound to `c3c29f14`.
 
 ### 2. Title dates
 
@@ -189,9 +194,12 @@ the title. Whether the same person held the ID then cannot be told from IDs:
 ## Proposed corrections
 
 [`qa/pre-signup-attribution-clearances.proposed.json`](../qa/pre-signup-attribution-clearances.proposed.json)
-holds one `clear-attribution` record per flagged title (940). Each sets `championUserId` and
-`championUserName` to null (manager pending). Nothing else changes: not the winning club, the
-result, the `HattrickUser` row or any other title.
+holds one `clear-attribution` record per flagged title (940). Each sets `championUserId` to 0, the
+archive's manager-pending sentinel, and `championUserName` to null. Nothing else changes: not the
+winning club, the result, the `HattrickUser` row or any other title. The sentinel is 0, not
+`NULL`, because all 556 cup rows are placeholders without a final match ID. The updater treats a
+`NULL`-manager placeholder as an unfinished final to fetch again. With 0 the result stays settled,
+and every evidence path can still fill the manager.
 
 Each record carries:
 
@@ -205,64 +213,65 @@ Each record carries:
 `server/src/data/` and `.scrape/winner-recovery/` are evidence roots, and an unreviewed draft must
 not be retained as evidence.
 
-**Dry run on a scratch copy.** The draft was applied in one transaction to a throwaway copy of the
-snapshot, never the store:
-
-- Every guarded update matched exactly one row.
-- A cell-by-cell diff against the accepted snapshot shows only `championUserId` and
-  `championUserName` changed, in 384 league rows and 556 cup rows.
-- Managers with at least one credited title would drop from 10,425 to 9,997.
-
 A separate brute-force recomputation agreed with the script on every flagged row's anchors,
 global season and title date.
 
-### Why the current workflow cannot apply it yet
+### Why a separate workflow
 
-1. **The manifest schema does not allow a clearance.** The reviewed-correction manifest
+1. **The correction manifest cannot clear.** The reviewed-correction manifest
    (`server/src/data/reviewed-winner-corrections.json`, schema in
    `server/src/sync/reviewedCorrections.ts`) only replaces one positive cup manager with another.
    Each change needs a direct, manager-linked Club History event. A clearance has no new manager and
    no event, and 384 of the rows are league titles.
-2. **The import guard rejects the change.** `update:import` runs `assertArchivePreserved`
+2. **The import guard refused it.** `update:import` runs `assertArchivePreserved`
    (`server/src/update/snapshots.ts`), which refuses any change to a positive `championUserId`.
-   Now that accepted state lives in the update store, that guard would also refuse the existing
-   positive-to-positive corrections. So no supported path can currently change a published manager
-   credit.
+3. **Release validation refused it.** It rejects a published manager that disappears
+   (`changed verified manager`). It runs in the updater, in Git delivery and in GitHub's release
+   continuity check.
 
-### Proposed extension (not implemented; needs your approval)
+### Clearance workflow
 
-1. **Schema.** Add a `clear-attribution` record kind for `leagueChampion` and `cupChampion`, with
-   the fields in the draft. Require a reviewer-set `reviewedAt`. Re-check from the record that the
-   anchor date minus the latest title date is at least 112 days.
-2. **Applicator.** Reuse the `processReviewedCorrections` pattern:
-   - Dry run by default.
-   - Preflight every record, and let one mismatch block the batch.
-   - Make each update a single guarded `updateMany` on every expected prior value.
-   - With `--apply`, require a new, exclusive report file.
-3. **Import.** Add `update:import --corrections <manifest>`. It allows exactly the listed
-   `championUserId` → null changes, and checks that the candidate differs from the accepted
-   snapshot only in those rows' `championUserId`, `championUserName` and `updatedAt`. Every other
-   row still goes through `assertArchivePreserved` unchanged. The manifest is retained by hash as
-   evidence in the new snapshot.
-4. **Release.** Publish with `npm run update:publish -- --no-fetch` through `scripts/git-release.mjs`,
-   as for any data release.
+`update:clear` and its guards are described in the
+[runbook](UPDATE_RUNBOOK.md#clearing-an-impossible-manager-credit). In short:
+
+- **Approval.** A reviewer turns the draft into `server/src/data/reviewed-attribution-clearances-*.json`
+  with `qa/approve-attribution-clearances.mjs`.
+- **Schema.** The manifest schema re-derives each record's verdict from its own dates. It rejects
+  drafts, unreviewed records, edited gaps and unsupported confidence.
+- **Applicator.** `update:clear` dry-runs by default. An apply is all-or-nothing and guarded by the
+  full prior identity. It keeps an exclusive report and binds the manifest bytes to the checkout.
+- **Import.** `update:import` allows exactly the listed manager → 0 changes. It retains the manifest
+  by hash.
+- **Release.** Release validation accepts a lost manager only for an exact (title, prior manager)
+  pair in a committed manifest.
 
 The weekly replay of retained Club History evidence fills only `null`/`0` managers from exact,
 manager-linked evidence. So a cleared title can later regain a manager only through that evidence.
 No disabled approximation is re-enabled.
 
+**Rehearsal on a scratch copy of the accepted store.** The full sequence ran against a private copy
+of `c3c29f14` and its 8,988 evidence files. The real store was only read. The draft was approved
+for the rehearsal only.
+
+| Step | Result |
+| --- | --- |
+| `update:clear` dry run | 940 would apply, 0 conflicts |
+| `update:clear --apply` | 940 cleared in one transaction |
+| `update:import` | Adopted with exactly 940 clearances; the manifest is retained (8,989 evidence files) |
+| Accepted archive | 384 league and 556 cup rows at manager 0. `NULL` cup placeholders unchanged at 6,784 |
+| Weekly Club History replays | 0 applied, 0 conflicts; none of the 940 titles is credited again |
+| Bake and release check vs. the live published bundles | Passes with the manifest; without it fails `changed verified manager league:105:14` |
+| Release contents | 43,819 historical records kept; trophies 34,302 → 33,362 (−940); managers 10,589 → 10,162; latest-winner coverage unchanged |
+
 ### Suggested order
 
-1. Review the 24 medium rows (marked †) and Appendix B. Medium rows can stay in the batch or wait
-   for a second pass.
-2. Approve the extension above. It is a code change with tests, landed on `main` like any other
-   code.
-3. Set `reviewedAt` and commit the reviewed manifest next to `reviewed-winner-corrections.json`.
-4. Run, in order:
-   1. `update:checkout`.
-   2. The applicator, first as a dry run, then with `--apply`.
-   3. `update:import --corrections …`.
-   4. `npm run update:publish -- --no-fetch`.
+1. Review the 24 medium rows (marked †) and Appendix B. Medium rows can stay in the batch, or be
+   dropped with `--confidence high`.
+2. Approve: write `server/src/data/reviewed-attribution-clearances-2026-10-30.json` with the
+   approval helper, commit it and merge it to `main`.
+3. Run `update:checkout`, `update:clear` (dry run, then `--apply`), `update:import`, then
+   `npm run update:publish -- --no-fetch`. The runbook gives the exact commands.
+4. The next fetching run opens an attribution review item for each cleared title.
 
 ## Reproduce
 
@@ -271,13 +280,13 @@ file):
 
 ```powershell
 node qa/audit-pre-signup-attributions.mjs --db <copy of archive.db> `
-  --out .scrape/pre-signup-audit/results-c32714f1.json `
+  --out .scrape/pre-signup-audit/results-c3c29f14.json `
   --proposal qa/pre-signup-attribution-clearances.proposed.json
 ```
 
 `--store` and `--scrape` default to `.update-store` and `.scrape` in the checkout. The full results,
 including the anchor chain and per-row gaps, are kept privately at
-`.scrape/pre-signup-audit/results-c32714f1.json`.
+`.scrape/pre-signup-audit/results-c32714f1.json` and `results-c3c29f14.json`.
 
 ## Appendix A: flagged titles by credited manager
 

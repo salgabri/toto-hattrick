@@ -306,8 +306,8 @@ if (args.proposal) {
     generatedAt: output.generatedAt, snapshot: output.snapshot,
     audit: { script: 'qa/audit-pre-signup-attributions.mjs', report: 'docs/PRE_SIGNUP_ATTRIBUTION_AUDIT_2026-10-30.md',
       marginDays: MARGIN_DAYS, firstCalibratedSeason: FIRST_CALIBRATED_SEASON },
-    effect: 'Each record sets championUserId and championUserName to null (manager pending). Nothing else changes: ' +
-      'not the winning club, the result, the HattrickUser row or any other title.',
+    effect: 'Each record sets championUserId to 0 (the archive\'s manager-pending sentinel) and championUserName to null. ' +
+      'Nothing else changes: not the winning club, the result, the HattrickUser row or any other title.',
     guard: 'Apply all-or-nothing. Every expectedPrior field, the team name and the competition/season key must match ' +
       'the accepted snapshot exactly; one mismatch blocks the whole batch.',
     records: flagged.map(result => ({

@@ -48,9 +48,15 @@ export async function snapshotDatabase(source: string, target: string): Promise<
   validateDatabase(target);
 }
 
+export interface PreservationOptions {
+  /** Table -> JSON primary keys of reviewed clearances (update clear). Only these rows' positive
+   * championUserId may become the 0 "manager pending" sentinel; nothing else is relaxed. */
+  clearedAttributions?: ReadonlyMap<string, ReadonlySet<string>>;
+}
+
 /** Every old primary key must survive. Completed results and proven attribution cannot be
  * overwritten during an automatic run. Newly resolved null identities remain permitted. */
-export function assertArchivePreserved(beforePath: string, afterPath: string): void {
+export function assertArchivePreserved(beforePath: string, afterPath: string, options: PreservationOptions = {}): void {
   validateDatabase(afterPath);
   const before = new DatabaseSync(resolve(beforePath), { readOnly: true });
   const after = new DatabaseSync(resolve(afterPath), { readOnly: true });
@@ -63,11 +69,14 @@ export function assertArchivePreserved(beforePath: string, afterPath: string): v
       if (!primary.length) throw new Error(`Archive table lacks a stable primary key: ${name}`);
       const rows = before.prepare(`SELECT * FROM ${quote(name)}`).all() as Row[];
       const lookup = after.prepare(`SELECT * FROM ${quote(name)} WHERE ${primary.map(key => `${quote(key)} = ?`).join(' AND ')}`);
+      const cleared = options.clearedAttributions?.get(name);
       for (const row of rows) {
         const next = lookup.get(...primary.map(key => row[key] as string | number | null)) as Row | undefined;
         if (!next) throw new Error(`Archive record was removed: ${name}`);
+        const clearable = cleared?.has(JSON.stringify(primary.map(key => row[key]))) ?? false;
         const protectedFields = protectedColumns(name, row);
         for (const field of protectedFields) {
+          if (clearable && field === 'championUserId' && next[field] === 0) continue;
           const value = row[field];
           if (/^thirdFourth(User|Team)Ids$/.test(field) && typeof value === 'string') {
             const oldIds = value.split(',');
@@ -137,6 +146,7 @@ export async function restoreSnapshot(store: ObjectStore, pointer: StatePointer,
 export async function saveSnapshot(options: {
   store: ObjectStore; databasePath: string; evidenceRefs: readonly EvidenceReference[]; runId: string; codeRevision: string;
   expectedStateEtag: string | null; previousDatabasePath?: string;
+  clearedAttributions?: PreservationOptions['clearedAttributions'];
 }): Promise<{ pointer: StatePointer; etag: string; manifest: SnapshotManifest }> {
   if (options.expectedStateEtag !== null && !options.previousDatabasePath) throw new Error('Updating accepted state requires its previous database for preservation checks');
   const accepted = await readStatePointer(options.store);
@@ -153,7 +163,7 @@ export async function saveSnapshot(options: {
   const temporary = resolve(dirname(options.databasePath), `.snapshot-${snapshotId}.db`);
   try {
     await snapshotDatabase(options.databasePath, temporary);
-    if (options.previousDatabasePath) assertArchivePreserved(options.previousDatabasePath, temporary);
+    if (options.previousDatabasePath) assertArchivePreserved(options.previousDatabasePath, temporary, { clearedAttributions: options.clearedAttributions });
     const evidence = [...options.evidenceRefs].sort((a, b) => a.key.localeCompare(b.key));
     for (const reference of evidence) await checkedObject(options.store, EvidenceReferenceSchema.parse(reference));
     const body = await readFile(temporary);

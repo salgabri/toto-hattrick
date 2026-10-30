@@ -1,11 +1,11 @@
 {
  "format": "proposed-attribution-clearance-v1",
  "status": "proposed-not-reviewed",
- "generatedAt": "2026-10-30T14:36:02.480Z",
+ "generatedAt": "2026-10-30T15:03:29.531Z",
  "snapshot": {
-  "snapshotId": "c32714f1-edfe-42ba-8932-6b45fd4c8188",
-  "createdAt": "2026-10-30T13:44:58.095Z",
-  "databaseSha256": "08d2c88c9ba31cb2443d40c45c0e67f506c520b6555715adce33abcc6d9d3d45"
+  "snapshotId": "c3c29f14-9ac7-4e99-ba35-7e2d2c06ca32",
+  "createdAt": "2026-10-30T14:53:50.066Z",
+  "databaseSha256": "21b98414299673c9163ab1c6214279bc32a17bbb1c79d30419afa55d5e9d9fc3"
  },
  "audit": {
   "script": "qa/audit-pre-signup-attributions.mjs",
@@ -13,7 +13,7 @@
   "marginDays": 112,
   "firstCalibratedSeason": 15
  },
- "effect": "Each record sets championUserId and championUserName to null (manager pending). Nothing else changes: not the winning club, the result, the HattrickUser row or any other title.",
+ "effect": "Each record sets championUserId to 0 (the archive's manager-pending sentinel) and championUserName to null. Nothing else changes: not the winning club, the result, the HattrickUser row or any other title.",
  "guard": "Apply all-or-nothing. Every expectedPrior field, the team name and the competition/season key must match the accepted snapshot exactly; one mismatch blocks the whole batch.",
  "records": [
   {"kind":"clear-attribution","table":"leagueChampion","competitionId":18,"season":1,"leagueId":18,"teamName":"Santiago","expectedPriorTeamId":0,"expectedPriorUserId":78207,"expectedPriorUserName":"clown1977","confidence":"medium","reason":"Won by 2001-09-16 (global season 13); account 78207 was created no earlier than 2002-01-17.","evidence":{"family":"league","titleLatest":"2001-09-16","globalSeason":13,"accountNotBefore":{"anchorUserId":55874,"signup":"2002-01-17","gapDays":123},"corroboratingAnchor":{"anchorUserId":50832,"signup":"2001-12-19","gapDays":94},"ownSignupOnChain":null},"reviewedAt":null},

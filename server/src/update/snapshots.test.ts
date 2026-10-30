@@ -60,6 +60,30 @@ test('record replacement and changes from zero scores cannot pass preservation b
   edited.close();
 });
 
+test('a reviewed clearance may only turn its listed manager into the 0 sentinel', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'archive-clearance-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const source = join(root, 'before.db');
+  const db = fixture(source);
+  db.exec('UPDATE CupChampion SET championUserId=19 WHERE id=1');
+  db.close();
+  const candidate = join(root, 'after.db');
+  await snapshotDatabase(source, candidate);
+  const edited = new DatabaseSync(candidate);
+  const listed = { clearedAttributions: new Map([['CupChampion', new Set(['[1]'])]]) };
+  edited.exec('UPDATE CupChampion SET championUserId=0 WHERE id=1');
+  assert.throws(() => assertArchivePreserved(source, candidate), /championUserId/, 'An unlisted clearance is refused');
+  assert.doesNotThrow(() => assertArchivePreserved(source, candidate, listed));
+  assert.throws(() => assertArchivePreserved(source, candidate, { clearedAttributions: new Map([['CupChampion', new Set(['[2]'])]]) }), /championUserId/);
+  edited.exec('UPDATE CupChampion SET championUserId=NULL WHERE id=1');
+  assert.throws(() => assertArchivePreserved(source, candidate, listed), /championUserId/, 'Only the 0 manager-pending sentinel is allowed');
+  edited.exec('UPDATE CupChampion SET championUserId=20 WHERE id=1');
+  assert.throws(() => assertArchivePreserved(source, candidate, listed), /championUserId/, 'A clearance never reassigns the title');
+  edited.exec('UPDATE CupChampion SET championUserId=0, homeGoals=3 WHERE id=1');
+  assert.throws(() => assertArchivePreserved(source, candidate, listed), /homeGoals/, 'Other protected facts stay protected');
+  edited.close();
+});
+
 test('failed upload and CAS conflict cannot advance accepted state', async t => {
   const root = await mkdtemp(join(tmpdir(), 'archive-checkpoint-'));
   t.after(() => rm(root, { recursive: true, force: true }));
