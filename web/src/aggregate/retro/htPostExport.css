@@ -1,0 +1,61 @@
+/* "Copy for Hattrick" — the Share dialog's chrome, widened for a block of markup. The dialog inherits
+   text styling from wherever its trigger is mounted, so it resets what a toolbar might set. */
+
+.th2000s .retro-htpost-trigger {
+  flex: none;
+  gap: 5px;
+  padding: 4px 9px;
+  white-space: nowrap;
+}
+
+.th2000s .retro-htpost-trigger:disabled {
+  background: linear-gradient(180deg, #fff, var(--btn, #ebefe2));
+  opacity: .55;
+  cursor: default;
+}
+
+.th2000s .retro-htpost-dialog {
+  width: min(640px, calc(100vw - 32px));
+  font-size: 12px;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.th2000s .retro-htpost-markup {
+  display: block;
+  width: 100%;
+  height: 210px;
+  margin: 0;
+  padding: 8px 9px;
+  border: 2px inset var(--btn, #ebefe2);
+  border-radius: 0;
+  background: var(--panel2, #f2f5ed);
+  color: var(--ink, #27321f);
+  font: 11px/1.5 'Courier New', monospace;
+  white-space: pre;
+  overflow: auto;
+  resize: vertical;
+}
+
+.th2000s .retro-htpost-markup:focus {
+  outline: 2px solid var(--mod, #567e47);
+  outline-offset: 2px;
+}
+
+.th2000s .retro-htpost-markup.is-pending {
+  display: grid;
+  place-items: center;
+  color: var(--soft, #5e7150);
+  font: 11px Verdana, Tahoma, sans-serif;
+  white-space: normal;
+  text-align: center;
+  resize: none;
+}
+
+.th2000s .retro-htpost-stats {
+  min-height: 1.6em;
+  margin-top: 6px;
+  color: var(--faint, #63715a);
+  font: 10px/1.6 'Courier New', monospace;
+}

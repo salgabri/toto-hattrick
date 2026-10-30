@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { CSSProperties, Dispatch, ReactNode, SetStateAction } from 'react';
 import {
   getCabinet,
+  getCabinets,
   getCupCountries,
   getCups,
   ELECTION_NATION_TOP_N,
@@ -32,9 +33,11 @@ import {
 } from '../data.js';
 import { leagueFlagUrl, nationFlagUrl, nationalityFlagUrl } from '../flags.js';
 import { nationDisplayName, type CountryNameStyle } from '../hattrickCountryNames.js';
+import { htTable, htTeam, htUser, type HtPost } from '../htPost.js';
 import { nationalIdentity } from '../nationalIdentity.js';
 import { LANGS, useI18n, useT, type Lang, type TFn, type TranslationKey } from '../../i18n/index.js';
 import { R, MONO, rootStyle2000s, type Skin } from './theme2000s.js';
+import { HtPostExport } from './HtPostExport.js';
 import { ShareView } from './ShareView.js';
 import { TableFrame } from './TableFrame.js';
 import { replaceUrlParam, updateUrlParams, useUrlState } from '../urlState.js';
@@ -959,14 +962,86 @@ function cabinetCats(t: TFn, tr: TrophyCabinet, inc: IncState, lastOnly: boolean
         ...tr.bronze.map((it) => ({ ...it, medal: 3 })),
       ]
     : pick(tr.worldCup);
-  return [
-    { label: t('cat.champ'), dot: R.champ, items: pick(tr.champ), excluded: !inc.champ },
-    { label: t('cat.main'), dot: R.main, items: pick(tr.main), excluded: !inc.main },
-    { label: t('cat.masters'), dot: R.masters, items: pick(tr.other), excluded: !inc.hm },
-    { label: t(medals ? 'cat.nationalMedals' : 'cat.national'), dot: R.worldCup, items: national, excluded: !inc.wc },
-    { label: t('cat.seasonal'), dot: R.seasonal, items: pick(tr.seasonal), excluded: !inc.sn },
-    { label: t('cat.sec'), dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
-  ].filter((c) => c.items.length);
+  const groups: Array<{ k: keyof IncState; label: string; dot: string; items: CabinetItem[]; excluded: boolean }> = [
+    { k: 'champ', label: t('cat.champ'), dot: R.champ, items: pick(tr.champ), excluded: !inc.champ },
+    { k: 'main', label: t('cat.main'), dot: R.main, items: pick(tr.main), excluded: !inc.main },
+    { k: 'hm', label: t('cat.masters'), dot: R.masters, items: pick(tr.other), excluded: !inc.hm },
+    { k: 'wc', label: t(medals ? 'cat.nationalMedals' : 'cat.national'), dot: R.worldCup, items: national, excluded: !inc.wc },
+    { k: 'sn', label: t('cat.seasonal'), dot: R.seasonal, items: pick(tr.seasonal), excluded: !inc.sn },
+    { k: 'sec', label: t('cat.sec'), dot: R.sec, items: pick(tr.sec), excluded: !inc.sec },
+  ];
+  return groups.filter((c) => c.items.length);
+}
+
+/**
+ * What a counted category is called in a Hattrick post, in post order. A national league or cup
+ * reads as plain "League"/"Cup" because the Country column already says where; the international
+ * competitions (null) have no country of their own, so their rows name the competition itself.
+ */
+const POST_COMPETITIONS: Array<[keyof IncState, TranslationKey | null]> = [
+  ['champ', 'htpost.league'],
+  ['main', 'htpost.cup'],
+  ['sec', 'htpost.secondaryCup'],
+  ['hm', null],
+  ['sn', null],
+  ['wc', null],
+];
+
+/**
+ * The leaderboard as a Hattrick post: one row per counted title behind the listed managers — what
+ * their expanded cabinets show, minus excluded categories — ordered by country, the way these lists
+ * are posted on the forum. A Season column joins once the recency filter spans more than the
+ * reigning instalment, where the rows stop being one season each.
+ */
+function trophyPost(t: TFn, lang: Lang, managers: Manager[], cabinets: Map<number, TrophyCabinet>, inc: IncState, lastOnly: boolean, medals: boolean): HtPost {
+  const collator = new Intl.Collator(lang);
+  const titles = managers.flatMap((m) =>
+    cabinetCats(t, cabinets.get(m.userId) ?? EMPTY_CABINET, inc, lastOnly, medals)
+      .filter((g) => !g.excluded)
+      .flatMap((g) => {
+        const order = POST_COMPETITIONS.findIndex(([k]) => k === g.k);
+        const label = POST_COMPETITIONS[order]![1];
+        return g.items.map((it) => ({
+          m,
+          it,
+          order,
+          competition: (label ? t(label) : it.main) + (it.medal && it.medal > 1 ? ` (${t(it.medal === 2 ? 'place.2' : 'place.3')})` : ''),
+          season: Number(it.season.replace(/\D/g, '')),
+        }));
+      }),
+  );
+  titles.sort((a, b) =>
+    Number(!a.it.country) - Number(!b.it.country) ||
+    collator.compare(a.it.country ?? '', b.it.country ?? '') ||
+    b.season - a.season ||
+    a.order - b.order ||
+    collator.compare(a.m.login, b.m.login),
+  );
+  return htTable(
+    [t('htpost.col.country'), t('htpost.col.manager'), t('htpost.col.team'), t('htpost.col.competition'), ...(lastOnly ? [] : [t('htpost.col.season')])],
+    titles.map(({ m, it, competition }) => [
+      it.country ?? '—',
+      htUser(m.login, m.userId),
+      htTeam(it.sub, it.teamId),
+      competition,
+      ...(lastOnly ? [] : [it.season]),
+    ]),
+  );
+}
+
+/** A roll of honour as a Hattrick post, newest season first like the table. `countryOf` adds the
+ *  winning club's country, for the international rolls whose winners come from everywhere. */
+function rollPost(t: TFn, winners: Winner[], countryOf?: (w: Winner) => string | undefined): HtPost {
+  const country = winners.some((w) => w.leagueId) ? countryOf : undefined;
+  return htTable(
+    [t('htpost.col.season'), ...(country ? [t('htpost.col.country')] : []), t('htpost.col.manager'), t('htpost.col.team')],
+    winners.map((w) => [
+      `S${w.season}`,
+      ...(country ? [country(w) ?? '—'] : []),
+      w.manager ? htUser(w.manager, w.userId) : '—',
+      htTeam(w.club, w.teamId),
+    ]),
+  );
 }
 
 function RetroTrophyLeaders({
@@ -1287,6 +1362,23 @@ function RetroTrophyLeaders({
           <LegendSwatch color={R.seasonal} label={t('chip.seasonal')} />
           <LegendSwatch color={R.sec} label={t('chip.sec')} />
         </div>
+        {!byNation && (
+          <HtPostExport
+            title={t('board.trophyLeaders')}
+            note={t('htpost.trophiesNote')}
+            disabled={loading || rowCount === 0}
+            build={async () => {
+              const listed = visible.map((e) => e.m);
+              const cabinets = await getCabinets(
+                listed.map((m) => m.userId),
+                (country) => t('cabinet.champTitle', { country }),
+                seasonWindow,
+                countryNameStyle,
+              );
+              return trophyPost(t, lang, listed, cabinets, inc, lastOnly, medals);
+            }}
+          />
+        )}
         {!loading && pageCount > 1 && <RetroPager page={curPage} pageCount={pageCount} setPage={setPage} />}
       </div>
       <TableFrame label={t(byNation ? 'board.trophyLeadersByNation' : 'board.trophyLeaders')} minWidth={760}>
@@ -1672,6 +1764,12 @@ function RetroLeagueWinners({
           </div>
           <div style={{ flex: 1 }} />
           <div style={{ fontSize: 11, color: R.soft }}>{span}</div>
+          {/* Up here rather than in the table's own header bar, which scrolls sideways on a phone. */}
+          <HtPostExport
+            title={t('leagues.rollOfHonour', { country: leagueName })}
+            disabled={loading || winnersRaw.length === 0}
+            build={() => rollPost(t, winnersRaw)}
+          />
         </div>
       </fieldset>
 
@@ -1937,6 +2035,12 @@ function RetroCupWinners({
   }, [loading, category, main, selectedSecondary, masters, selectedSeasonal]);
 
   const showCountryPicker = category === 'main' || category === 'secondary';
+  // The roll on screen, for the Hattrick post. The international ones add each club's country.
+  const roll: { name: string; winners: Winner[]; international?: boolean } | null =
+    category === 'main' ? main && { name: main.cupName, winners: main.winners }
+    : category === 'secondary' ? selectedSecondary && { name: selectedSecondary.cupName, winners: selectedSecondary.winners }
+    : category === 'masters' ? masters && { name: 'Hattrick Masters', winners: masters, international: true }
+    : selectedSeasonal && { name: selectedSeasonal.cupName, winners: selectedSeasonal.winners, international: true };
 
   return (
     <div>
@@ -2013,6 +2117,11 @@ function RetroCupWinners({
               {countryName}
             </div>
           )}
+          <HtPostExport
+            title={roll?.name ?? ''}
+            disabled={loading || !roll?.winners.length}
+            build={() => rollPost(t, roll?.winners ?? [], roll?.international ? (w) => countryNames.get(String(w.leagueId)) : undefined)}
+          />
         </div>
       </fieldset>
 

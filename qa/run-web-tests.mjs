@@ -10,7 +10,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const qaRoot = resolve(root, 'qa');
 const work = mkdtempSync(join(qaRoot, '.web-tests-'));
 const webWork = join(work, 'web');
-const files = ['tests/urlState.test.ts', 'tests/shareLink.test.ts', 'tests/snapshot.test.ts', 'tests/flags.test.ts', 'tests/hattrickCountryNames.test.ts', 'tests/nationalityJoin.test.ts', 'tests/nationalCompetitionRows.test.ts', 'src/aggregate/urlState.ts', 'src/aggregate/shareLink.ts', 'src/aggregate/filterParams.ts', 'src/aggregate/snapshot.ts', 'src/aggregate/flags.ts', 'src/aggregate/hattrickCountryNames.ts', 'src/aggregate/data.ts'];
+const files = ['tests/urlState.test.ts', 'tests/shareLink.test.ts', 'tests/snapshot.test.ts', 'tests/flags.test.ts', 'tests/hattrickCountryNames.test.ts', 'tests/nationalityJoin.test.ts', 'tests/nationalCompetitionRows.test.ts', 'tests/htPost.test.ts', 'src/aggregate/urlState.ts', 'src/aggregate/shareLink.ts', 'src/aggregate/filterParams.ts', 'src/aggregate/snapshot.ts', 'src/aggregate/flags.ts', 'src/aggregate/hattrickCountryNames.ts', 'src/aggregate/data.ts', 'src/aggregate/htPost.ts'];
 try {
   writeFileSync(join(work, 'package.json'), '{"type":"module"}\n');
   const nationalTeamIds = join(work, 'server/src/data/national-team-ids.json');
