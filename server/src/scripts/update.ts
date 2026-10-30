@@ -2,7 +2,7 @@ import { parseArgs } from 'node:util';
 import { join, resolve } from 'node:path';
 import { env } from '../config/env.js';
 import { bootstrapArchive, configuredStore, planUpdate, publishPending, repositoryPath, runUpdate, safeFailure } from '../update/runner.js';
-import { acknowledgeReviewCaptureManifest, adoptReviewedArchive, checkoutForReview } from '../update/review.js';
+import { acknowledgeReviewCaptureManifest, adoptReviewedArchive, applyReviewClearances, checkoutForReview } from '../update/review.js';
 import { confirmGitRelease, exportGitRelease, validateGitRelease } from '../update/gitRelease.js';
 
 try {
@@ -11,8 +11,10 @@ try {
     history: { type: 'string' },
     database: { type: 'string' }, manifest: { type: 'string' }, output: { type: 'string' }, commit: { type: 'string' },
     candidate: { type: 'string' }, previous: { type: 'string' }, 'timeout-ms': { type: 'string' },
+    apply: { type: 'boolean', default: false }, report: { type: 'string' },
   } });
-  if (positionals.length !== 1 || (values.publish && values.draft)) throw new Error('Usage: update.ts plan|bootstrap|run|publish|export-git|validate-git|confirm-git|checkout|acknowledge|import [options]');
+  if (positionals.length !== 1 || (values.publish && values.draft)) throw new Error('Usage: update.ts plan|bootstrap|run|publish|export-git|validate-git|confirm-git|checkout|acknowledge|clear|import [options]');
+  if ((values.apply || values.report !== undefined) && positionals[0] !== 'clear') throw new Error('--apply and --report are only supported by update clear');
   if (values.history !== undefined && !values.history.trim()) throw new Error('--history requires a nonempty file path');
   if (values.history && positionals[0] !== 'run') throw new Error('--history is only supported by update run');
   switch (positionals[0]) {
@@ -58,6 +60,15 @@ try {
       console.log(JSON.stringify(await acknowledgeReviewCaptureManifest({ databasePath: resolve(values.database), repositoryPath,
         manifestPath: values.manifest }), null, 2));
       break;
+    case 'clear': {
+      if (!values.database || !values.manifest)
+        throw new Error('clear requires --database (a review checkout) and --manifest server/src/data/reviewed-attribution-clearances-<name>.json');
+      const summary = await applyReviewClearances({ databasePath: resolve(values.database), repositoryPath,
+        manifestPath: values.manifest, apply: values.apply, reportPath: values.report ? resolve(values.report) : undefined });
+      console.log(JSON.stringify(summary, null, 2));
+      if (summary.conflicts) process.exitCode = 1;
+      break;
+    }
     case 'import':
       if (!values.database) throw new Error('import requires --database pointing to a reviewed checkout');
       console.log(JSON.stringify(await adoptReviewedArchive({ store: configuredStore(), databasePath: resolve(values.database), repositoryPath, codeRevision: env.GITHUB_SHA ?? 'local-reviewed-import' }), null, 2));

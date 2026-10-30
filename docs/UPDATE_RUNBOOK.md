@@ -355,7 +355,9 @@ freshness advances for the whole acknowledged batch are applied atomically. Impo
 publish. Ordinary reviewed fact edits neither complete capture tasks nor advance source freshness;
 only a validated batch acknowledgement does. Reconciliation of newly evidenced identities happens
 on the next refresh. Edits to
-already verified winners require the separate reviewed-correction workflow, not this importer. Do
+already verified winners require the separate reviewed-correction workflow, not this importer;
+clearing an impossible credit back to manager pending uses
+[`update:clear`](#clearing-an-impossible-manager-credit). Do
 not manually edit `state/current.json`, the DB under an active run, or production JSON. Capture
 tasks must only be resolved once the retained capture proves the required coverage and its actual
 capture date; the scheduler deliberately leaves unsupported-source freshness unknown until then.
@@ -408,6 +410,55 @@ stops the run before publication. Previously accepted evidence is replayed on la
 re-reading the local file. A former/retired manager without a source user link remains unresolved.
 Club History evidence covers club leagues, domestic cups, Masters and seasonal club trophies;
 national-team coach medals need their separate election/coaching evidence workflow.
+
+### Clearing an impossible manager credit
+
+No evidence path may overwrite a positive manager. A credit that cannot be right, such as a title
+won before the credited account existed, is cleared only through a committed, reviewed manifest.
+The [2026-10-30 pre-signup audit](PRE_SIGNUP_ATTRIBUTION_AUDIT_2026-10-30.md) drafted the first one.
+
+1. **Approve the draft.** After the review, write the reviewed manifest. Use `--confidence high` to
+   keep only high-confidence rows. The helper refuses to overwrite a file.
+
+   ```powershell
+   node qa/approve-attribution-clearances.mjs --proposal qa/pre-signup-attribution-clearances.proposed.json `
+     --reviewed-at <YYYY-MM-DD> --out server/src/data/reviewed-attribution-clearances-2026-10-30.json
+   ```
+
+2. **Merge it.** Commit the manifest and merge it to `main` like code. Release validation reads the
+   committed manifests, so the publisher and GitHub's continuity check accept the cleared credits
+   only from that commit on.
+3. **Clear, import and publish.** Run from the repository root:
+
+   ```powershell
+   npm run update:checkout -w server -- --database ../.update-work/clear.db
+   npm run update:clear -w server -- --database ../.update-work/clear.db --manifest server/src/data/reviewed-attribution-clearances-2026-10-30.json
+   npm run update:clear -w server -- --database ../.update-work/clear.db --manifest server/src/data/reviewed-attribution-clearances-2026-10-30.json --apply --report ../.update-work/clear-applied.json
+   npm run update:import -w server -- --database ../.update-work/clear.db
+   npm run update:publish -- --no-fetch
+   ```
+
+   The first `update:clear` is a dry run; check its counts and conflicts before applying.
+
+The guards:
+
+- **Strict, reviewed records.** The manifest schema rejects drafts, unreviewed records, edited gaps
+  and confidence labels the evidence does not support.
+- **Exact prior identity.** Every record names the exact prior row: club name, club ID, manager ID
+  and manager name. One mismatch blocks the whole batch, and nothing is written.
+- **Manager pending, result kept.** A cleared row gets `championUserId` 0 and `championUserName`
+  null. The 0 sentinel keeps a placeholder cup final settled, so it is not fetched again. Every
+  Club History or verified-evidence path can still fill it later.
+- **Bound to the checkout.** `--apply` needs a new, exclusive report file. It records the
+  manifest's exact bytes in the checkout sidecar.
+- **Import allows only the listed changes.** `update:import` accepts exactly the listed
+  manager → 0 changes and nothing else in those rows. It refuses an unlisted clear, a reassignment,
+  an extra edit or an edited manifest. It retains the manifest by hash in the new snapshot.
+- **Release continuity matches the manifest.** A published manager may disappear only for an exact
+  (title, prior manager) pair in a committed manifest.
+- **The next fetching run reopens review.** A `--no-fetch` publish skips the reconcile. The next
+  run that fetches, such as the Monday task, opens an attribution review item for each cleared
+  title. They appear in that run's new manager reviews and then stay in `pendingEvidence`.
 
 ## Failures and recovery
 

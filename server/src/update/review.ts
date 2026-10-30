@@ -1,9 +1,13 @@
 import { existsSync } from 'node:fs';
-import { lstat, mkdir, mkdtemp, readFile, realpath, rm, writeFile } from 'node:fs/promises';
+import { lstat, mkdir, mkdtemp, open, readFile, realpath, rm, writeFile } from 'node:fs/promises';
 import { basename, dirname, isAbsolute, join, relative, resolve } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { randomUUID } from 'node:crypto';
 import { z } from 'zod';
+import {
+  applyPlannedClearances, assertClearancesApplied, clearanceCells, clearanceFactKey, ClearanceManifestDescriptorSchema,
+  loadClearanceManifest, planClearances, type LoadedClearanceManifest,
+} from './clearances.js';
 import {
   captureEvidence, discoverBootstrapEvidence, EvidenceReferenceSchema, importedEvidenceKey,
   type EvidenceReference,
@@ -54,6 +58,7 @@ const ReviewCheckoutSchema = z.object({
   checkedOutAt: z.string().datetime(),
   evidenceRefs: z.array(EvidenceReferenceSchema),
   captureManifests: z.array(ReviewCaptureManifestSchema).default([]),
+  clearanceManifests: z.array(ClearanceManifestDescriptorSchema).default([]),
 }).strict();
 type ReviewCheckout = z.infer<typeof ReviewCheckoutSchema>;
 
@@ -227,6 +232,7 @@ export async function checkoutForReview(options: { store: ObjectStore; databaseP
     checkedOutAt: new Date().toISOString(),
     evidenceRefs: manifest.evidence,
     captureManifests: [],
+    clearanceManifests: [],
   };
   await writeFile(sidecarPath, jsonBytes(sidecar), { flag: 'wx', mode: 0o600 });
   return { databasePath, sidecarPath, snapshotId: accepted.pointer.snapshotId, etag: accepted.etag, evidenceFiles: manifest.evidence.length };
@@ -263,6 +269,63 @@ export async function acknowledgeReviewCaptureManifest(options: {
     assertions: resolutions.length,
     artifacts: next.artifactFiles.length,
   };
+}
+
+/** Clear reviewed impossible manager credits in a checkout. Dry run by default; an apply is
+ * all-or-nothing, keeps an exclusive audit report, and binds the manifest's exact bytes to the
+ * sidecar so import can allow precisely those cells. */
+export async function applyReviewClearances(options: {
+  databasePath: string;
+  repositoryPath: string;
+  manifestPath: string;
+  apply?: boolean;
+  reportPath?: string;
+}) {
+  const databasePath = resolve(options.databasePath);
+  const sidecar = await readReviewSidecar(databasePath);
+  if (resolve(sidecar.databasePath) !== databasePath) throw new Error('Review sidecar belongs to a different database path');
+  if (options.apply && !options.reportPath) throw new Error('clear --apply requires --report <new.json> to retain the clearance audit');
+  const loaded = await loadClearanceManifest(options.repositoryPath, options.manifestPath);
+  const previous = sidecar.clearanceManifests.find(descriptor => descriptor.path === loaded.descriptor.path);
+  if (previous && JSON.stringify(previous) !== JSON.stringify(loaded.descriptor))
+    throw new Error('This clearance manifest path was already applied with different content');
+  const listed = new Set<string>();
+  for (const descriptor of sidecar.clearanceManifests) if (descriptor !== previous)
+    for (const record of (await loadClearanceManifest(options.repositoryPath, descriptor.path, descriptor)).manifest.records) listed.add(clearanceFactKey(record));
+  const overlap = loaded.manifest.records.find(record => listed.has(clearanceFactKey(record)));
+  if (overlap) throw new Error(`Another applied clearance manifest already lists ${clearanceFactKey(overlap)}`);
+  // Reserve the audit file before any mutation, refusing to overwrite an existing report.
+  const reportFile = options.reportPath ? await open(resolve(options.reportPath), 'wx') : undefined;
+  const startedAt = new Date().toISOString();
+  try {
+    const database = new DatabaseSync(databasePath);
+    const { plans, applied } = (() => {
+      try {
+        const plans = planClearances(database, loaded.manifest.records);
+        const blocked = plans.some(plan => plan.status === 'conflict');
+        return { plans, applied: options.apply && !blocked ? applyPlannedClearances(database, plans, Date.now()) : 0 };
+      } finally { database.close(); }
+    })();
+    const conflicts = plans.filter(plan => plan.status === 'conflict');
+    if (options.apply && !conflicts.length && !previous) {
+      sidecar.clearanceManifests.push(loaded.descriptor);
+      await writeFile(reviewSidecarPath(databasePath), jsonBytes(sidecar), { mode: 0o600 });
+    }
+    const summary = {
+      dryRun: !options.apply, blocked: Boolean(options.apply && conflicts.length), manifestPath: loaded.descriptor.path,
+      manifestSha256: loaded.descriptor.sha256, records: plans.length,
+      wouldApply: options.apply ? 0 : plans.filter(plan => plan.status === 'wouldApply').length, applied,
+      unchanged: plans.filter(plan => plan.status === 'unchanged').length, conflicts: conflicts.length,
+      conflictExamples: conflicts.slice(0, 20).map(plan => ({ key: clearanceFactKey(plan.record), reason: plan.reason })),
+    };
+    await reportFile?.writeFile(`${JSON.stringify({ startedAt, finishedAt: new Date().toISOString(), ...summary,
+      results: plans.map(({ record, status, reason, before }) => ({ key: clearanceFactKey(record), status, reason, before })) }, null, 2)}\n`);
+    return summary;
+  } catch (error) {
+    await reportFile?.writeFile(`${JSON.stringify({ startedAt, failedAt: new Date().toISOString(), manifestPath: loaded.descriptor.path,
+      apply: Boolean(options.apply), error: error instanceof Error ? error.message : String(error) }, null, 2)}\n`);
+    throw error;
+  } finally { await reportFile?.close(); }
 }
 
 const identifier = (name: string) => `"${name.replaceAll('"', '""')}"`;
@@ -399,6 +462,22 @@ async function retainCaptureBatch(store: ObjectStore, batch: LoadedCaptureBatch)
   return references;
 }
 
+async function retainClearanceManifest(store: ObjectStore, loaded: LoadedClearanceManifest): Promise<EvidenceReference> {
+  return captureEvidence({
+    store,
+    key: loaded.descriptor.evidenceRef,
+    source: loaded.descriptor.path,
+    parserVersion: 'reviewed-attribution-clearance-v1',
+    capturedAt: loaded.manifest.generatedAt,
+    payload: { path: loaded.descriptor.path, encoding: 'base64', contents: loaded.body.toString('base64') },
+  });
+}
+
+function readOnly<T>(databasePath: string, read: (database: DatabaseSync) => T): T {
+  const database = new DatabaseSync(databasePath, { readOnly: true });
+  try { return read(database); } finally { database.close(); }
+}
+
 function sameEvidence(left: readonly EvidenceReference[], right: readonly EvidenceReference[]): boolean {
   const sort = (rows: readonly EvidenceReference[]) => [...rows].sort((a, b) => a.key.localeCompare(b.key));
   return JSON.stringify(sort(left)) === JSON.stringify(sort(right));
@@ -432,12 +511,19 @@ export async function adoptReviewedArchive(options: {
     // cannot slip into a snapshot after validation, and an open WAL is captured correctly.
     await snapshotDatabase(databasePath, candidatePath);
     assertReviewSchemaUnchanged(baselinePath, candidatePath);
-    assertArchivePreserved(baselinePath, candidatePath);
+    const repositoryPath = resolve(options.repositoryPath);
+    // A reviewed clearance is the one sanctioned removal of a known manager: exactly the listed
+    // rows that still hold their reviewed prior identity may become manager pending.
+    const clearanceManifests: LoadedClearanceManifest[] = [];
+    for (const descriptor of sidecar.clearanceManifests)
+      clearanceManifests.push(await loadClearanceManifest(repositoryPath, descriptor.path, descriptor));
+    const clearances = readOnly(baselinePath, database => clearanceCells(database, clearanceManifests.map(loaded => loaded.manifest)));
+    assertArchivePreserved(baselinePath, candidatePath, { clearedAttributions: clearances.allow });
+    readOnly(candidatePath, database => assertClearancesApplied(database, clearances.pending));
     assertReviewLedgerUnchanged(baselinePath, candidatePath);
 
     // Load every declared byte into memory before any private-store write. Only strict manifests
     // and their hash-bound artifacts are retained; unrelated allowlisted repository files are not.
-    const repositoryPath = resolve(options.repositoryPath);
     const allowed = new Set(await discoverBootstrapEvidence(repositoryPath));
     const batches: LoadedCaptureBatch[] = [];
     for (const descriptor of sidecar.captureManifests)
@@ -449,7 +535,10 @@ export async function adoptReviewedArchive(options: {
     assertExpectedLedgerDelta(baselinePath, candidatePath, resolutions, importedAt);
 
     const evidence = new Map(acceptedManifest.evidence.map(reference => [reference.key, reference]));
-    for (const batch of batches) for (const reference of await retainCaptureBatch(options.store, batch)) {
+    const retained: EvidenceReference[] = [];
+    for (const batch of batches) retained.push(...await retainCaptureBatch(options.store, batch));
+    for (const loaded of clearanceManifests) retained.push(await retainClearanceManifest(options.store, loaded));
+    for (const reference of retained) {
       const old = evidence.get(reference.key);
       if (old && (old.sha256 !== reference.sha256 || old.bytes !== reference.bytes))
         throw new Error('Reviewed evidence conflicts with the accepted archive');
@@ -465,6 +554,7 @@ export async function adoptReviewedArchive(options: {
       runId,
       codeRevision: options.codeRevision,
       expectedStateEtag: accepted.etag,
+      clearedAttributions: clearances.allow,
     });
     return {
       status: 'adopted' as const,
@@ -474,6 +564,7 @@ export async function adoptReviewedArchive(options: {
       published: false as const,
       sourceFreshnessChanged: resolutions.length > 0,
       acknowledgedCaptures: resolutions.length,
+      clearedAttributions: clearances.pending.length,
     };
   } finally {
     try {

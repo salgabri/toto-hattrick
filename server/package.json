@@ -19,6 +19,7 @@
     "update:confirm-git": "npm run build && node dist/scripts/update.js confirm-git",
     "update:checkout": "npm run build && node dist/scripts/update.js checkout",
     "update:acknowledge": "npm run build && node dist/scripts/update.js acknowledge",
+    "update:clear": "npm run build && node dist/scripts/update.js clear",
     "update:import": "npm run build && node dist/scripts/update.js import",
     "attribute:cups": "tsx src/scripts/attribute-cups-by-club.ts",
     "backfill:cups": "tsx src/scripts/backfill-cups.ts",

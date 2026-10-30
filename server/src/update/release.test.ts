@@ -174,6 +174,31 @@ test('verified identities, election multiplicity, and medal totals are protected
   await assert.rejects(validateRelease(join(dir, 'after')), /incorrect medal totals/);
 }));
 
+test('a reviewed clearance may remove exactly its listed manager credit', async () => temporary(async (dir) => {
+  const previous = join(dir, 'before');
+  const candidate = join(dir, 'after');
+  await save(previous, fixture());
+  const cleared = fixture();
+  const champion = cleared['leagues.json'][0]!.champions[0]!;
+  champion.userId = undefined as unknown as number;
+  champion.manager = '—';
+  Object.assign(cleared['managers.json'][0]!, { titles: [], lg: 0, lgLast: 0 });
+  await save(candidate, cleared);
+  await assert.rejects(validateRelease(candidate, previous, { clearances: new Map() }), /changed verified manager league:4:94/);
+  await assert.rejects(validateRelease(candidate, previous, { clearances: new Map([['league:4:94', 2]]) }), /changed verified manager/,
+    'The reviewed prior manager must match the published one');
+  await validateRelease(candidate, previous, { clearances: new Map([['league:4:94', 1]]) });
+  const release = await prepareRelease({ candidateDir: candidate, outputDataDir: join(dir, 'packaged'), previousDataDir: previous,
+    codeRevision: 'clearance', clearances: new Map([['league:4:94', 1]]) });
+  assert.equal(release.validation.historicalRecords, (await validateRelease(previous)).historicalRecords, 'The cleared title itself is kept');
+  const reassigned = fixture();
+  reassigned['leagues.json'][0]!.champions[0]!.userId = 2;
+  reassigned['managers.json'][0]!.userId = 2;
+  await save(candidate, reassigned);
+  await assert.rejects(validateRelease(candidate, previous, { clearances: new Map([['league:4:94', 1]]) }), /changed verified manager/,
+    'A clearance never reassigns the title');
+}));
+
 test('missing files and tampered previous releases block packaging', async () => temporary(async (dir) => {
   const candidateDir = join(dir, 'candidate');
   await save(candidateDir, fixture());

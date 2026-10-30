@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { z } from 'zod';
+import { committedClearanceAllowance } from './clearances.js';
 
 export const RELEASE_FILES = ['managers.json', 'leagues.json', 'cups.json', 'masters.json', 'seasonal.json', 'worldcup.json', 'elections.json'] as const;
 export type ReleaseFile = typeof RELEASE_FILES[number];
@@ -243,7 +244,10 @@ function reconcile(actual: unknown[], expected: unknown[], label: string) {
   if (a.size !== b.size || [...a].some(([k, v]) => b.get(k) !== v)) fail(`inconsistent ${label}`);
 }
 
-function validate(data: Bundles, previous?: Bundles) {
+/** Fact key -> reviewed prior manager. Only these exact credits may become manager pending. */
+export type ClearanceAllowance = ReadonlyMap<string, number>;
+
+function validate(data: Bundles, previous?: Bundles, clearances: ClearanceAllowance = new Map()) {
   const indexed = indexBundles(data);
   const managers = new Map(data['managers.json'].map((m) => [m.userId, m]));
   if (managers.size !== data['managers.json'].length) fail('duplicate manager identity');
@@ -277,7 +281,8 @@ function validate(data: Bundles, previous?: Bundles) {
     for (const old of indexBundles(previous).facts.values()) {
       const next = indexed.facts.get(old.key);
       if (!next) fail(`lost historical record ${old.key}`);
-      if (old.userId && old.userId !== next.userId) fail(`changed verified manager ${old.key}`);
+      const cleared = !next.userId && clearances.get(old.key) === old.userId;
+      if (old.userId && old.userId !== next.userId && !cleared) fail(`changed verified manager ${old.key}`);
       if (old.teamId && old.teamId !== next.teamId) fail(`changed verified team ${old.key}`);
       // With no stable team ID a known name is the only retained winner evidence.
       if (old.club && !old.teamId && old.club !== next.club) fail(`changed recorded winner ${old.key}`);
@@ -295,10 +300,12 @@ function validate(data: Bundles, previous?: Bundles) {
     elections: data['elections.json'].length, recentManagerCoverage: auditRecentManagerCoverage(data) };
 }
 
-export async function validateRelease(candidateDir: string, previousDataDir?: string) {
+/** Committed reviewed clearances by default, so the updater, Git delivery and CI agree. */
+export async function validateRelease(candidateDir: string, previousDataDir?: string, options: { clearances?: ClearanceAllowance } = {}) {
   const candidate = await readBundles(candidateDir);
   const previous = previousDataDir ? await readBundles(previousDataDir) : undefined;
-  return validate(candidate.bundles, previous?.bundles);
+  const clearances = previous ? options.clearances ?? await committedClearanceAllowance() : undefined;
+  return validate(candidate.bundles, previous?.bundles, clearances);
 }
 
 export interface PrepareReleaseOptions {
@@ -308,6 +315,7 @@ export interface PrepareReleaseOptions {
   codeRevision: string;
   generatedAt?: string;
   sources?: ReleaseSource[];
+  clearances?: ClearanceAllowance;
 }
 
 /** Package only a complete, validated snapshot. The caller builds/deploys this exact directory. */
@@ -315,7 +323,8 @@ export async function prepareRelease(options: PrepareReleaseOptions) {
   if (resolve(options.candidateDir) === resolve(options.outputDataDir)) throw new Error('Release output must be separate from the candidate');
   const candidate = await readBundles(options.candidateDir);
   const previous = options.previousDataDir ? await readBundles(options.previousDataDir) : undefined;
-  const validation = validate(candidate.bundles, previous?.bundles);
+  const clearances = previous ? options.clearances ?? await committedClearanceAllowance() : undefined;
+  const validation = validate(candidate.bundles, previous?.bundles, clearances);
   const dataVersion = hash(RELEASE_FILES.map((name) => `${name}:${hash(candidate.bytes[name])}`).join('\n'));
   const generatedAt = options.generatedAt ?? new Date().toISOString();
   if (!Number.isFinite(Date.parse(generatedAt))) throw new Error('Invalid release generation date');
