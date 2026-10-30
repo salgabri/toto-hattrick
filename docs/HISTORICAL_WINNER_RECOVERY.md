@@ -116,7 +116,9 @@ The legacy library behavior is available only through explicit options:
 
 These options are approximations, not substitutes for historical evidence. They remain off in
 normal callers so a later refresh cannot silently fill a recycled club's old titles from its
-current owner or another season's manager.
+current owner or another season's manager. Credits they left behind can still be wrong: the
+[2026-10-30 pre-signup audit](PRE_SIGNUP_ATTRIBUTION_AUDIT_2026-10-30.md) found 940 titles won
+before the credited account existed, and proposes clearing them after review.
 
 ## Missing final/team facts
 
