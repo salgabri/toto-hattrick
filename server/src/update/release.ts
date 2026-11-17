@@ -288,10 +288,20 @@ function validate(data: Bundles, previous?: Bundles, clearances: ClearanceAllowa
       if (old.club && !old.teamId && old.club !== next.club) fail(`changed recorded winner ${old.key}`);
     }
     // Multiple elections in a cycle are real. Preserve a multiset, permitting only unresolved
-    // identity enrichment and login changes for already known IDs.
+    // identity enrichment, login changes for already known IDs, and a running cycle's empty host
+    // becoming known. Exact matches are claimed first so a host fill cannot take another's twin.
     const remaining = [...data['elections.json']];
+    type Election = (typeof remaining)[number];
+    const same = (r: Election, old: Election, hostFill: boolean) => r.leagueId === old.leagueId && r.edition === old.edition &&
+      !!r.isYouth === !!old.isYouth && (hostFill ? old.host === '' && r.host !== '' : r.host === old.host) && r.votes === old.votes &&
+      (old.winnerUserId ? r.winnerUserId === old.winnerUserId : !old.winner || r.winner === old.winner);
+    const unmatched: Election[] = [];
     for (const old of [...previous['elections.json']].sort((a, b) => Number(!!b.winnerUserId) - Number(!!a.winnerUserId))) {
-      const ix = remaining.findIndex((r) => r.leagueId === old.leagueId && r.edition === old.edition && !!r.isYouth === !!old.isYouth && r.host === old.host && r.votes === old.votes && (old.winnerUserId ? r.winnerUserId === old.winnerUserId : !old.winner || r.winner === old.winner));
+      const ix = remaining.findIndex((r) => same(r, old, false));
+      if (ix < 0) unmatched.push(old); else remaining.splice(ix, 1);
+    }
+    for (const old of unmatched) {
+      const ix = remaining.findIndex((r) => same(r, old, true));
       if (ix < 0) fail(`lost or changed election ${old.leagueId}:${old.edition}:${old.isYouth ? 'youth' : 'senior'}`);
       remaining.splice(ix, 1);
     }
