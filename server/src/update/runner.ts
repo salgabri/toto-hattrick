@@ -24,7 +24,7 @@ export const repositoryPath = resolve(dirname(fileURLToPath(import.meta.url)), '
 const serverPath = join(repositoryPath, 'server');
 const tokenSchema = z.object({ token: z.string().min(1), tokenSecret: z.string().min(1) });
 
-async function authorizedToken() {
+export async function authorizedToken() {
   try {
     if (Boolean(env.CHPP_ACCESS_TOKEN) !== Boolean(env.CHPP_ACCESS_TOKEN_SECRET)) throw new Error('incomplete token pair');
     return tokenSchema.parse(env.CHPP_ACCESS_TOKEN && env.CHPP_ACCESS_TOKEN_SECRET

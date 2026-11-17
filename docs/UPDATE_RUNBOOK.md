@@ -5,6 +5,27 @@ evidence, an edition queue, validated static candidates, and a Git delivery step
 only by this computer. GitHub receives only the seven public JSON bundles and their manifest;
 Vercel builds the merged `main` commit. No S3 bucket is required for this setup.
 
+## Weekly assisted update (current process, since 2026-11-18)
+
+A scheduled Claude task runs the whole weekly update by following
+[WEEKLY_UPDATE_PLAYBOOK.md](WEEKLY_UPDATE_PLAYBOOK.md). The site owner set two rules on 2026-11-17:
+
+- A published winner must name its manager or coach. The only exception is a winning account
+  that no longer exists.
+- Every update must include elections and national trophies.
+
+These rules replace the "manager pending until reviewed Club History evidence" default described
+below for new winners. The two review-checkout commands below implement them. Both are guarded,
+neither changes a positive identity, and `update:import` re-validates everything before adoption.
+
+| Command | What it does |
+| --- | --- |
+| `update:attribute -- --database <checkout> [--tenure <json>] [--apply --report <new.json>]` | Fills empty managers of recent winners from CHPP `teamdetails`. A winner is filled only if the owner took over at least 30 days before the decisive match, is not a bot, and plays in the competition's country. National-trophy coaches come from `nationalteamdetails` when the coach won the cycle's election and is still in charge, or else from dated NTFormerCoaches tenure. It also resolves new managers' nationalities. |
+| `update:elections -- --database <checkout> --capture <dir> [--apply --report <new.json>]` | Applies a browser read of the election history pages (`server/scrape/elections-capture.js`). It fills a running cycle's empty host and adds new elections. Older editions must match the archive or be explained row by row. It writes the capture manifest for `update:acknowledge`. |
+
+`scripts/weekly-status.mjs` says when another acquisition round or an elections read is due.
+`scripts/diff-release.mjs` reviews a packaged release and blocks on lost titles or changed managers.
+
 ## When updates run
 
 The Windows task **Toto Hattrick archive update** checks every **Monday at 07:17 local time**.
