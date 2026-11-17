@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "5026838e1c8aa664e117c79b6d3da3ecba5d276728976ba13241f75165e8a834",
-  "codeRevision": "c1263cbbcd3fd8fe1138249c93b09c9f78b7d530",
-  "generatedAt": "2026-11-17T21:56:53.976Z",
-  "lastChangedAt": "2026-11-17T21:56:53.976Z",
+  "dataVersion": "59d342f441e5071baa37469611be4a049c7d87d3551fbe170b1680c86767dc32",
+  "codeRevision": "263b93078b8495f450302875e8137f36e1ebbb82",
+  "generatedAt": "2026-11-17T22:42:21.972Z",
+  "lastChangedAt": "2026-11-17T22:42:21.972Z",
   "sources": [
     {
       "key": "cup:1",
@@ -5615,1094 +5615,1094 @@
     {
       "key": "elections:1",
       "label": "Sweden senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:04.091Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:100",
       "label": "El Salvador senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:54.936Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:101",
       "label": "Malta senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:56.571Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:102",
       "label": "Kyrgyz Republic senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:58.390Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:103",
       "label": "Moldova senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:00.113Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:104",
       "label": "Georgia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:02.149Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:105",
       "label": "Andorra senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:04.296Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:106",
       "label": "Jordan senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:06.116Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:107",
       "label": "Guatemala senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:08.365Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:11",
       "label": "Denmark senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:37.243Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:110",
       "label": "Trinidad & Tobago senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:16.427Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:111",
       "label": "Nicaragua senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:18.508Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:112",
       "label": "Kazakhstan senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:20.145Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:113",
       "label": "Suriname senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:23.404Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:117",
       "label": "Liechtenstein senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:25.747Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:118",
       "label": "Algeria senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:27.855Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:119",
       "label": "Mongolia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:30.072Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:12",
       "label": "Finland senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:39.877Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:120",
       "label": "Lebanon senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:32.252Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:121",
       "label": "Senegal senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:35.521Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:122",
       "label": "Armenia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:37.490Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:123",
       "label": "Bahrain senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:39.728Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:124",
       "label": "Barbados senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:41.496Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:125",
       "label": "Cape Verde senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:44.541Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:126",
       "label": "Côte d’Ivoire senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:46.629Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:127",
       "label": "Kuwait senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:48.540Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:128",
       "label": "Iraq senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:50.542Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:129",
       "label": "Azerbaijan senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:52.628Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:130",
       "label": "Angola senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:55.519Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:131",
       "label": "Montenegro senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:30:58.538Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:132",
       "label": "Bangladesh senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:01.647Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:133",
       "label": "Yemen senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:04.564Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:134",
       "label": "Oman senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:07.601Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:135",
       "label": "Mozambique senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:10.928Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:136",
       "label": "Brunei senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:13.545Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:137",
       "label": "Ghana senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:16.567Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:138",
       "label": "Cambodia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:19.476Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:139",
       "label": "Benin senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:22.459Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:14",
       "label": "Netherlands senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:42.497Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:140",
       "label": "Syria senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:24.517Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:141",
       "label": "Qatar senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:27.583Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:142",
       "label": "Tanzania senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:32.039Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:143",
       "label": "Uganda senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:34.728Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:144",
       "label": "Maldives senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:36.685Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:145",
       "label": "Uzbekistan senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:39.511Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:146",
       "label": "Cameroon senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:41.500Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:147",
       "label": "Cuba senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:43.467Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:148",
       "label": "Palestine senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:46.507Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:149",
       "label": "São Tomé e Príncipe senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:49.553Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:15",
       "label": "Oceania senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:50.789Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:151",
       "label": "Comoros senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:52.635Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:152",
       "label": "Sri Lanka senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:54.507Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:153",
       "label": "Curaçao senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:56.450Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:154",
       "label": "Guam senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:31:58.464Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:155",
       "label": "Democratic Republic of the Congo senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:00.423Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:156",
       "label": "Federal Democratic Republic of Ethiopia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:02.492Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:157",
       "label": "Saint Vincent and the Grenadines senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:04.399Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:158",
       "label": "Belize senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:06.489Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:159",
       "label": "Madagascar senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:09.463Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:16",
       "label": "Brazil senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:53.300Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:160",
       "label": "Botswana senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:11.547Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:161",
       "label": "Myanmar senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:13.423Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:162",
       "label": "Zambia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:15.443Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:163",
       "label": "San Marino senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:17.407Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:164",
       "label": "Haiti senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:19.414Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:165",
       "label": "Puerto Rico senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:21.402Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:166",
       "label": "Grenada senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:23.446Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:167",
       "label": "Burkina Faso senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:26.394Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:168",
       "label": "Nepal senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:28.443Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:169",
       "label": "Guyana senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:30.431Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:17",
       "label": "Canada senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:55.150Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:170",
       "label": "Tahiti senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:33.358Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:171",
       "label": "Guinea senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:35.385Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:172",
       "label": "Bahamas senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:37.350Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:173",
       "label": "Rwanda senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:39.402Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:174",
       "label": "Saint Kitts and Nevis senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:41.430Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:175",
       "label": "Guinea Ecuatorial senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:43.368Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:176",
       "label": "Gibraltar senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:52.354Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:177",
       "label": "Bhutan senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:32:54.376Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:18",
       "label": "Chile senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:58.130Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:19",
       "label": "Colombia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:00.327Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:2",
       "label": "England senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:06.791Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:20",
       "label": "India senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:08.326Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:21",
       "label": "Ireland senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:10.481Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:22",
       "label": "Japan senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:12.297Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:23",
       "label": "Peru senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:14.515Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:24",
       "label": "Poland senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:17.752Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:25",
       "label": "Portugal senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:20.503Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:26",
       "label": "Scotland senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:22.809Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:27",
       "label": "South Africa senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:25.045Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:28",
       "label": "Uruguay senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:27.260Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:29",
       "label": "Venezuela senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:29.125Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:3",
       "label": "Germany senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:11.736Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:30",
       "label": "South Korea senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:30.904Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:31",
       "label": "Thailand senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:33.175Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:32",
       "label": "Turkey senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:35.604Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:33",
       "label": "Egypt senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:37.742Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:34",
       "label": "People's Republic of China senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:45.976Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:35",
       "label": "Russia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:47.930Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:36",
       "label": "Spain senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:51.093Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:37",
       "label": "Romania senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:53.188Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:38",
       "label": "Iceland senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:55.139Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:39",
       "label": "Austria senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:57.188Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:4",
       "label": "Italy senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:14.271Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:44",
       "label": "Belgium senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:27:59.428Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:45",
       "label": "Malaysia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:01.104Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:46",
       "label": "Switzerland senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:03.777Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:47",
       "label": "Singapore senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:06.059Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:5",
       "label": "France senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:18.055Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:50",
       "label": "Greece senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:07.928Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:51",
       "label": "Hungary senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:09.875Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:52",
       "label": "Czechia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:12.154Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:53",
       "label": "Latvia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:14.069Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:54",
       "label": "Indonesia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:16.462Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:55",
       "label": "Philippines senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:19.585Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:56",
       "label": "Estonia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:22.496Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:57",
       "label": "Serbia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:24.648Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:58",
       "label": "Croatia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:27.595Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:59",
       "label": "Hong Kong senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:29.511Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:6",
       "label": "Mexico senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:21.168Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:60",
       "label": "Chinese Taipei senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:32.529Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:61",
       "label": "Wales senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:34.505Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:62",
       "label": "Bulgaria senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:42.336Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:63",
       "label": "Israel senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:44.644Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:64",
       "label": "Slovenia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:46.970Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:66",
       "label": "Lithuania senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:49.235Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:67",
       "label": "Slovakia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:51.076Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:68",
       "label": "Ukraine senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:53.311Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:69",
       "label": "Bosnia and Herzegovina senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:55.533Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:7",
       "label": "Argentina senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:24.796Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:70",
       "label": "Vietnam senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:57.604Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:71",
       "label": "Pakistan senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:28:59.389Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:72",
       "label": "Paraguay senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:01.301Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:73",
       "label": "Ecuador senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:03.290Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:74",
       "label": "Bolivia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:05.714Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:75",
       "label": "Nigeria senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:07.869Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:76",
       "label": "Faroe Islands senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:09.889Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:77",
       "label": "Morocco senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:11.785Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:79",
       "label": "Saudi Arabia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:13.341Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:8",
       "label": "USA senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:27.080Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:80",
       "label": "Tunisia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:15.161Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:81",
       "label": "Costa Rica senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:16.873Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:83",
       "label": "United Arab Emirates senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:19.129Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:84",
       "label": "Luxembourg senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:20.906Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:85",
       "label": "Iran senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:28.833Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:88",
       "label": "Dominican Republic senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:30.490Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:89",
       "label": "Cyprus senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:33.501Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:9",
       "label": "Norway senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:26:34.965Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:91",
       "label": "Belarus senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:35.503Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:93",
       "label": "Northern Ireland senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:38.478Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:94",
       "label": "Jamaica senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:40.516Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:95",
       "label": "Kenya senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:43.475Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:96",
       "label": "Panama senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:46.468Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:97",
       "label": "North Macedonia senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:48.543Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:98",
       "label": "Albania senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:50.644Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "elections:99",
       "label": "Honduras senior and youth elections evidence review",
-      "lastSuccessfulCheck": null,
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-17T22:29:52.580Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "league:1",
@@ -9206,39 +9206,39 @@
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/5026838e1c8aa664e117c79b6d3da3ecba5d276728976ba13241f75165e8a834/managers.json",
+      "path": "/data/versions/59d342f441e5071baa37469611be4a049c7d87d3551fbe170b1680c86767dc32/managers.json",
       "sha256": "2d26d3f6ac29ce81d56c94b61b4f23c880a56708251e973c4cf697a5701e8e10",
       "bytes": 7284052
     },
     "leagues.json": {
-      "path": "/data/versions/5026838e1c8aa664e117c79b6d3da3ecba5d276728976ba13241f75165e8a834/leagues.json",
+      "path": "/data/versions/59d342f441e5071baa37469611be4a049c7d87d3551fbe170b1680c86767dc32/leagues.json",
       "sha256": "369260eb6f835c9e543c47564af2659dcfd886e7559e9bca5d99c8abcde6d555",
       "bytes": 768727
     },
     "cups.json": {
-      "path": "/data/versions/5026838e1c8aa664e117c79b6d3da3ecba5d276728976ba13241f75165e8a834/cups.json",
+      "path": "/data/versions/59d342f441e5071baa37469611be4a049c7d87d3551fbe170b1680c86767dc32/cups.json",
       "sha256": "22c5a2bcd44ab76cce3ec1db7a8402f198d0930a2dc93dd48873c28fc4a5f2e4",
       "bytes": 2440084
     },
     "masters.json": {
-      "path": "/data/versions/5026838e1c8aa664e117c79b6d3da3ecba5d276728976ba13241f75165e8a834/masters.json",
+      "path": "/data/versions/59d342f441e5071baa37469611be4a049c7d87d3551fbe170b1680c86767dc32/masters.json",
       "sha256": "19c30f390f33f0262dc46812aff2f5d6ce593ffffda1fef24469b0d04c51bcc0",
       "bytes": 6974
     },
     "seasonal.json": {
-      "path": "/data/versions/5026838e1c8aa664e117c79b6d3da3ecba5d276728976ba13241f75165e8a834/seasonal.json",
+      "path": "/data/versions/59d342f441e5071baa37469611be4a049c7d87d3551fbe170b1680c86767dc32/seasonal.json",
       "sha256": "000f2aac5cbdf62935a3441321efd13261216f62176884a9af92a4a8226ab64d",
       "bytes": 60734
     },
     "worldcup.json": {
-      "path": "/data/versions/5026838e1c8aa664e117c79b6d3da3ecba5d276728976ba13241f75165e8a834/worldcup.json",
+      "path": "/data/versions/59d342f441e5071baa37469611be4a049c7d87d3551fbe170b1680c86767dc32/worldcup.json",
       "sha256": "a3ed171051cf71e37187374866c2ea6b8137abfc43751dfb4d2f9e0dc04d7451",
       "bytes": 86212
     },
     "elections.json": {
-      "path": "/data/versions/5026838e1c8aa664e117c79b6d3da3ecba5d276728976ba13241f75165e8a834/elections.json",
-      "sha256": "6336c0e46a4e21ce7b1ef5c4c8fdeae16d9e874748afc6d092352b501216695e",
-      "bytes": 1122909
+      "path": "/data/versions/59d342f441e5071baa37469611be4a049c7d87d3551fbe170b1680c86767dc32/elections.json",
+      "sha256": "cbdf2a4922bf7827b1a82fc54220bee11f7224bfb557a0718a3cdce0e3d0257a",
+      "bytes": 1150520
     }
   }
 }
