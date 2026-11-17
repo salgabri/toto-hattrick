@@ -531,7 +531,7 @@ test('a tiebreaker capture that reaches the CHPP budget stays queued and stops a
   assert.equal(db.updateItem!.find(item => item.sourceKey === sourceKey && item.task === 'result')?.state, 'retry');
 });
 
-function seasonalHarness(t: TestContext, cupId: number, edition: number) {
+function seasonalHarness(t: TestContext, cupId: number, edition: number, source: Record<string, unknown> = {}) {
   runtime(t);
   const db = tournamentArchive(t);
   const sourceKey = `seasonal:${cupId}`;
@@ -539,7 +539,7 @@ function seasonalHarness(t: TestContext, cupId: number, edition: number) {
   db.cup!.push({ cupId, leagueId: 0, countryName: 'Seasonal harness', cupName: 'Seasonal harness',
     cupLevel: 1, cupLevelIndex: 1, isMain: false, currentSeason: edition });
   db.updateSource!.push({ sourceKey, kind: 'tournament', externalId: cupId, numberingSystem: `tournament:${cupId}:season`,
-    baseline: edition, observedThrough: edition, lastAttemptAt: null, lastSuccessAt: null, nextCheckAt: null, metadataJson: '{}' });
+    baseline: edition, observedThrough: edition, lastAttemptAt: null, lastSuccessAt: null, nextCheckAt: null, metadataJson: '{}', ...source });
   const files: string[] = [];
   t.mock.method(globalThis, 'fetch', async (input: Parameters<typeof fetch>[0]) => {
     const file = new URL(String(input)).searchParams.get('file')!;
@@ -557,19 +557,30 @@ function seasonalHarness(t: TestContext, cupId: number, edition: number) {
   return { db, sourceKey, files, resultItem };
 }
 
-test('a current seasonal edition parked by the former final-score overwrite is retried once and retained exactly', async t => {
-  const { db, sourceKey, files, resultItem } = seasonalHarness(t, 6_000_004, 30);
+test('a current seasonal edition parked by the former final-score overwrite is retried at once and retained exactly', async t => {
+  const legacy = 'Official tournament facts conflict with retained evidence; review is required';
+  // As left by the 2026-11-17 run: the failed source is not due again for a day.
+  const { db, sourceKey, files, resultItem } = seasonalHarness(t, 6_000_004, 30, {
+    lastAttemptAt: new Date('2026-11-17T19:47:44.000Z'), nextCheckAt: new Date('2026-11-18T19:47:44.000Z'),
+    metadataJson: JSON.stringify({ name: 'Seasonal harness', tournamentKind: 'seasonal', failure: { category: 'evidence', message: legacy } }),
+  });
   db.updateItem!.push({ id: 1, sourceKey, itemKey: '30', task: 'result', edition: 30, state: 'needs_review', attempts: 5,
-    nextAttemptAt: null, completedAt: null, lastError: 'Official tournament facts conflict with retained evidence; review is required',
-    errorCategory: 'evidence' });
+    nextAttemptAt: null, completedAt: null, lastError: legacy, errorCategory: 'evidence' });
 
   const result = await refreshOfficialTournaments(token, {
-    now: new Date('2026-11-17T19:47:00.000Z'), maxMetadataChecks: 1, maxItems: 1,
+    now: new Date('2026-11-17T21:00:00.000Z'), maxMetadataChecks: 1, maxItems: 1,
+  });
+  // Once retained, the source follows its normal schedule again.
+  const later = await refreshOfficialTournaments(token, {
+    now: new Date('2026-11-17T22:00:00.000Z'), maxMetadataChecks: 1, maxItems: 1,
   });
 
   assert.deepEqual(result.issues, []);
   assert.equal(result.seasonalChampionsAdded, 1);
+  assert.equal(later.metadataChecked, 0);
   assert.deepEqual(files, ['tournamentdetails', 'tournamentfixtures']);
+  const source = db.updateSource!.find(entry => entry.sourceKey === sourceKey);
+  assert.equal(JSON.parse(source.metadataJson).failure, undefined);
   const row = db.cupChampion!.find(entry => entry.cupId === 6_000_004 && entry.season === 30);
   assert.deepEqual([row?.championTeamId, row?.championTeamName, row?.runnerUpTeamName], [201, 'Finalist Two', 'Finalist One']);
   assert.deepEqual([row?.finalMatchId, row?.homeGoals, row?.awayGoals], [42_734_464, 0, 2]);
@@ -587,11 +598,15 @@ test('a genuine seasonal conflict stays parked for review and is not re-fetched 
   const first = await refreshOfficialTournaments(token, {
     now: new Date('2026-11-17T19:47:00.000Z'), maxMetadataChecks: 1, maxItems: 1,
   });
+  const sameDay = await refreshOfficialTournaments(token, {
+    now: new Date('2026-11-17T21:00:00.000Z'), maxMetadataChecks: 1, maxItems: 1,
+  });
   const second = await refreshOfficialTournaments(token, {
     now: new Date('2026-11-18T19:47:00.000Z'), maxMetadataChecks: 1, maxItems: 1,
   });
 
   assert.equal(first.issues[0]?.category, 'evidence');
+  assert.equal(sameDay.metadataChecked, 0, 'A new conflict is not treated as the former overwrite');
   assert.deepEqual(second.issues, []);
   assert.deepEqual(files, ['tournamentdetails', 'tournamentfixtures', 'tournamentdetails']);
   assert.deepEqual([resultItem()?.state, resultItem()?.lastError],
