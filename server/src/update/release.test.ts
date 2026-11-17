@@ -157,6 +157,20 @@ test('recent manager audit checks only the latest completed winner in each compe
   assert.equal(report.recentManagerCoverage.missing, 0);
 }));
 
+test('a running cycle election keeps its identity when its host becomes known', async () => temporary(async (dir) => {
+  const before = fixture();
+  before['elections.json'][1]!.host = '';
+  await save(join(dir, 'before'), before);
+  const after = fixture();
+  after['elections.json'].reverse();
+  await save(join(dir, 'after'), after);
+  await validateRelease(join(dir, 'after'), join(dir, 'before'));
+  const changedVotes = fixture();
+  changedVotes['elections.json'][1]!.votes = '51';
+  await save(join(dir, 'after'), changedVotes);
+  await assert.rejects(validateRelease(join(dir, 'after'), join(dir, 'before')), /lost or changed election/);
+}));
+
 test('verified identities, election multiplicity, and medal totals are protected', async () => temporary(async (dir) => {
   await save(join(dir, 'before'), fixture());
   const data = fixture();
@@ -167,6 +181,10 @@ test('verified identities, election multiplicity, and medal totals are protected
   const elections = fixture();
   elections['elections.json'].pop();
   await save(join(dir, 'after'), elections);
+  await assert.rejects(validateRelease(join(dir, 'after'), join(dir, 'before')), /lost or changed election/);
+  const movedHost = fixture();
+  movedHost['elections.json'][1]!.host = 'France';
+  await save(join(dir, 'after'), movedHost);
   await assert.rejects(validateRelease(join(dir, 'after'), join(dir, 'before')), /lost or changed election/);
   const medals = fixture();
   medals['managers.json'][0]!.wcSilver = 1;
