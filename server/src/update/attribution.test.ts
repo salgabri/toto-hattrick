@@ -4,8 +4,8 @@ import { DatabaseSync } from 'node:sqlite';
 import { test } from 'node:test';
 import { XMLParser } from 'fast-xml-parser';
 import {
-  applyDecisions, currentCoach, decideClubOwner, decideNationalCoach, leagueFinalRoundDate, ownerSnapshot,
-  type ClubTarget, type CoachTarget, type OwnerSnapshot,
+  applyDecisions, CUP_DATE_WINDOW, currentCoach, decideClubOwner, decideNationalCoach, estimateWindow, LEAGUE_DATE_WINDOW, leagueFinalRoundDate,
+  ownerSnapshot, selectBackfillTeams, type ClubTarget, type CoachTarget, type OwnerSnapshot,
 } from './attribution.js';
 
 const xml = (name: string) => new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_', parseTagValue: false, trimValues: true })
@@ -56,6 +56,33 @@ test('every club guard rejects with a reason instead of guessing', () => {
   assert.deepEqual(renamed.status === 'attribute' && renamed.notes, ['club renamed: stored "Old name", now "Panormus 2024"']);
   // International competitions have no country restriction.
   assert.equal(decideClubOwner(target({ family: 'seasonal', competitionLeagueId: null }), snapshot({ team: { leagueId: 99 } })).status, 'attribute');
+});
+
+test('an estimated decisive date requires the takeover before its earliest bound', () => {
+  const estimated = target({ family: 'league', table: 'LeagueChampion', decisiveDate: '2010-06-20T10:00:00.000Z', dateWindowDays: LEAGUE_DATE_WINDOW });
+  // 35 days before the estimate is only 28 days before its earliest bound (estimate - 7).
+  const tooClose = decideClubOwner(estimated, snapshot({ team: { foundedDate: '2010-05-16T10:00:00.000Z' }, owner: { activationDate: '2005-01-01T00:00:00.000Z' } }));
+  assert.match(tooClose.status === 'unresolved' ? tooClose.reason : '', /28 days before the decisive match's earliest date 2010-06-13/);
+  const held = decideClubOwner(estimated, snapshot({ team: { foundedDate: '2010-05-01T10:00:00.000Z' }, owner: { activationDate: '2005-01-01T00:00:00.000Z' } }));
+  assert.equal(held.status, 'attribute');
+  // Uncalibrated early seasons widen the early side by two seasons; calibrated ones keep the observed spread.
+  assert.deepEqual(estimateWindow(LEAGUE_DATE_WINDOW, 10), [-231, 14]);
+  assert.deepEqual(estimateWindow(CUP_DATE_WINDOW, 15), [-75, 10]);
+});
+
+test('a later title of the club credited to someone else blocks the attribution', () => {
+  const blocked = decideClubOwner(target(), snapshot(), [], [9491504, 42]);
+  assert.match(blocked.status === 'unresolved' ? blocked.reason : '', /later title of this club to 42/);
+  assert.equal(decideClubOwner(target(), snapshot(), [], [9491504]).status, 'attribute');
+});
+
+test('backfill selects the newest titles first, skips recently checked clubs and respects the cap', () => {
+  const at = (teamId: number, date: string) => target({ teamId, decisiveDate: date });
+  const targets = [at(1, '2005-01-01T00:00:00.000Z'), at(2, '2020-01-01T00:00:00.000Z'), at(3, '2015-01-01T00:00:00.000Z'), at(1, '2021-01-01T00:00:00.000Z')];
+  const now = Date.parse('2026-11-18T00:00:00Z');
+  assert.deepEqual([...selectBackfillTeams(targets, { teams: {} }, now, 2)], [1, 2]);
+  const state = { teams: { '1': { checkedAt: '2026-10-01T00:00:00.000Z', outcome: 'unresolved' }, '2': { checkedAt: '2026-01-01T00:00:00.000Z', outcome: 'unresolved' } } };
+  assert.deepEqual([...selectBackfillTeams(targets, state, now, 5)], [2, 3]);
 });
 
 test('league round 14 date follows the 16-week season from a worlddetails observation', () => {

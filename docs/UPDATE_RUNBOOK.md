@@ -23,6 +23,22 @@ neither changes a positive identity, and `update:import` re-validates everything
 | `update:attribute -- --database <checkout> [--tenure <json>] [--apply --report <new.json>]` | Fills empty managers of recent winners from CHPP `teamdetails`. A winner is filled only if the owner took over at least 30 days before the decisive match, is not a bot, and plays in the competition's country. National-trophy coaches come from `nationalteamdetails` when the coach won the cycle's election and is still in charge, or else from dated NTFormerCoaches tenure. It also resolves new managers' nationalities. |
 | `update:elections -- --database <checkout> --capture <dir> [--apply --report <new.json>]` | Applies a browser read of the election history pages (`server/scrape/elections-capture.js`). It fills a running cycle's empty host and adds new elections. Older editions must match the archive or be explained row by row. It writes the capture manifest for `update:acknowledge`. |
 
+`update:attribute --backfill --state <progress.json> [--max-teams N]` applies the same guard to
+older titles. An estimated decisive date only counts from its earliest bound: league titles
+−7/+14 days, cups and Masters without a retained final −75/+10 days, and two more seasons before
+global season 15. A later title of the club credited to someone else blocks the attribution.
+Checked clubs are recorded privately and skipped for 90 days.
+
+A 2026-11-18 run found the older backlog is not reachable this way. A random sample of 40 clubs
+(72 empty titles, out of 1,402 clubs with a team id) gave 0 attributions:
+
+- 47 titles: the club no longer exists;
+- 19 titles: the club is a bot;
+- 6 titles: the club has no owner.
+
+Earlier passes already credited every title whose club still has its winning manager, so the
+backfill is not part of the weekly run.
+
 `scripts/weekly-status.mjs` says when another acquisition round or an elections read is due.
 `scripts/diff-release.mjs` reviews a packaged release and blocks on lost titles or changed managers.
 
