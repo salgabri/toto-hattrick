@@ -14,7 +14,10 @@ try {
     database: { type: 'string' }, manifest: { type: 'string' }, output: { type: 'string' }, commit: { type: 'string' },
     candidate: { type: 'string' }, previous: { type: 'string' }, 'timeout-ms': { type: 'string' },
     apply: { type: 'boolean', default: false }, report: { type: 'string' }, tenure: { type: 'string' }, capture: { type: 'string' },
+    backfill: { type: 'boolean', default: false }, 'max-teams': { type: 'string' }, state: { type: 'string' },
   } });
+  if ((values.backfill || values['max-teams'] !== undefined || values.state !== undefined) && positionals[0] !== 'attribute')
+    throw new Error('--backfill, --max-teams and --state are only supported by update attribute');
   if (positionals.length !== 1 || (values.publish && values.draft)) throw new Error('Usage: update.ts plan|bootstrap|run|publish|export-git|validate-git|confirm-git|checkout|acknowledge|clear|attribute|elections|import [options]');
   if ((values.apply || values.report !== undefined) && !['clear', 'attribute', 'elections'].includes(positionals[0]!)) throw new Error('--apply and --report are only supported by update clear, attribute and elections');
   if (values.tenure !== undefined && positionals[0] !== 'attribute') throw new Error('--tenure is only supported by update attribute');
@@ -75,8 +78,11 @@ try {
     }
     case 'attribute': {
       if (!values.database) throw new Error('attribute requires --database (a review checkout); add --apply --report <new.json> to write, --tenure <json> for NTFormerCoaches tenure');
+      const maxTeams = values['max-teams'] === undefined ? undefined : Number(values['max-teams']);
+      if (maxTeams !== undefined && (!Number.isSafeInteger(maxTeams) || maxTeams < 1)) throw new Error('--max-teams must be a positive integer');
       const summary = await attributeCheckout({ databasePath: resolve(values.database), token: await authorizedToken(), store: configuredStore(),
-        apply: values.apply, reportPath: values.report ? resolve(values.report) : undefined, tenurePath: values.tenure ? resolve(values.tenure) : undefined });
+        apply: values.apply, reportPath: values.report ? resolve(values.report) : undefined, tenurePath: values.tenure ? resolve(values.tenure) : undefined,
+        backfill: values.backfill, maxTeams, statePath: values.state ? resolve(values.state) : undefined });
       console.log(JSON.stringify(summary, null, 2));
       break;
     }
