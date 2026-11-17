@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "d81ff5def3384c401088c8fa085936b643fcf6564808aa535ddc72d76b0d818a",
-  "codeRevision": "85f856a5c2564bc94c824d5339f00ef72d6f8fe7",
-  "generatedAt": "2026-11-17T19:54:37.981Z",
-  "lastChangedAt": "2026-11-17T19:54:37.981Z",
+  "dataVersion": "5ae7a2c5ec2826adb90fa3f7405eea99546757062ecee45c3e7b27c0907690e3",
+  "codeRevision": "1b737b80fb7dd83b73cac1c175ad50f663efd0b1",
+  "generatedAt": "2026-11-17T21:14:30.468Z",
+  "lastChangedAt": "2026-11-17T21:14:30.468Z",
   "sources": [
     {
       "key": "cup:1",
       "label": "Svenska Cupen cup results",
-      "lastSuccessfulCheck": "2026-10-19T05:17:28.745Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 19,
       "status": "pending"
     },
     {
       "key": "cup:10",
       "label": "Landspokalturneringen cup results",
-      "lastSuccessfulCheck": "2026-10-12T16:43:19.994Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 36,
       "status": "pending"
     },
@@ -218,7 +218,7 @@
     {
       "key": "cup:11",
       "label": "Suomen Cup cup results",
-      "lastSuccessfulCheck": "2026-10-19T05:17:28.745Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 10,
       "status": "pending"
     },
@@ -267,7 +267,7 @@
     {
       "key": "cup:13",
       "label": "KNVB Beker cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 24,
       "status": "pending"
     },
@@ -330,7 +330,7 @@
     {
       "key": "cup:14",
       "label": "Oceanian Cup cup results",
-      "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 24,
       "status": "pending"
     },
@@ -848,7 +848,7 @@
     {
       "key": "cup:15",
       "label": "Copa do Brasil cup results",
-      "lastSuccessfulCheck": "2026-10-19T05:17:28.745Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 21,
       "status": "pending"
     },
@@ -1527,7 +1527,7 @@
     {
       "key": "cup:16",
       "label": "Canadian Cup cup results",
-      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 18,
       "status": "pending"
     },
@@ -1625,7 +1625,7 @@
     {
       "key": "cup:17",
       "label": "Copa Chile cup results",
-      "lastSuccessfulCheck": "2026-10-19T05:17:28.745Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 28,
       "status": "pending"
     },
@@ -1681,7 +1681,7 @@
     {
       "key": "cup:18",
       "label": "Copa Colombia cup results",
-      "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 19,
       "status": "pending"
     },
@@ -1758,7 +1758,7 @@
     {
       "key": "cup:19",
       "label": "Kas Misr cup results",
-      "lastSuccessfulCheck": "2026-09-25T20:27:15.524Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 29,
       "status": "pending"
     },
@@ -1835,14 +1835,14 @@
     {
       "key": "cup:2",
       "label": "Copa Argentina Diego Armando Maradona cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:20",
       "label": "Indian Cup cup results",
-      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 34,
       "status": "failed"
     },
@@ -1919,7 +1919,7 @@
     {
       "key": "cup:21",
       "label": "Irish Cup cup results",
-      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 42,
       "status": "pending"
     },
@@ -1933,28 +1933,28 @@
     {
       "key": "cup:23",
       "label": "Korea Cup cup results",
-      "lastSuccessfulCheck": "2026-09-25T20:46:56.900Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 22,
       "status": "pending"
     },
     {
       "key": "cup:24",
       "label": "Copa Perú cup results",
-      "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:25",
       "label": "Puchar Polski cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 23,
       "status": "failed"
     },
     {
       "key": "cup:26",
       "label": "Taça de Portugal cup results",
-      "lastSuccessfulCheck": "2026-10-19T05:17:28.745Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 28,
       "status": "pending"
     },
@@ -1968,91 +1968,91 @@
     {
       "key": "cup:28",
       "label": "South African Cup cup results",
-      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:29",
       "label": "Thai Cup cup results",
-      "lastSuccessfulCheck": "2026-09-25T21:02:59.103Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 29,
       "status": "pending"
     },
     {
       "key": "cup:3",
       "label": "English Cup cup results",
-      "lastSuccessfulCheck": "2026-10-12T16:43:19.994Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 31,
       "status": "pending"
     },
     {
       "key": "cup:30",
       "label": "Türkiye Kupası cup results",
-      "lastSuccessfulCheck": "2026-10-12T16:43:19.994Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 27,
       "status": "pending"
     },
     {
       "key": "cup:31",
       "label": "Copa Uruguay cup results",
-      "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 30,
       "status": "pending"
     },
     {
       "key": "cup:32",
       "label": "Copa Venezuela cup results",
-      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:33",
       "label": "China Cup cup results",
-      "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:34",
       "label": "Кубок России cup results",
-      "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:35",
       "label": "Cupa României cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 23,
       "status": "pending"
     },
     {
       "key": "cup:36",
       "label": "Íslandsbikarinn cup results",
-      "lastSuccessfulCheck": "2026-09-28T16:56:33.075Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:37",
       "label": "Austria-Cup cup results",
-      "lastSuccessfulCheck": "2026-10-12T16:43:19.994Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 34,
       "status": "pending"
     },
     {
       "key": "cup:38",
       "label": "Piala Malaysia cup results",
-      "lastSuccessfulCheck": "2026-09-28T16:56:33.075Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 37,
       "status": "pending"
     },
     {
       "key": "cup:4",
       "label": "Deutschland-Pokal cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 26,
       "status": "pending"
     },
@@ -2066,21 +2066,21 @@
     {
       "key": "cup:41",
       "label": "Belgium Cup cup results",
-      "lastSuccessfulCheck": "2026-10-19T05:17:28.745Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 21,
       "status": "pending"
     },
     {
       "key": "cup:42",
       "label": "Switzerland Cup cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 17,
       "status": "pending"
     },
     {
       "key": "cup:43",
       "label": "Copa de España cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 29,
       "status": "pending"
     },
@@ -2101,7 +2101,7 @@
     {
       "key": "cup:5",
       "label": "Copa Nacional de México cup results",
-      "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 31,
       "status": "pending"
     },
@@ -2780,7 +2780,7 @@
     {
       "key": "cup:6",
       "label": "Coupe de France cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 23,
       "status": "pending"
     },
@@ -3515,7 +3515,7 @@
     {
       "key": "cup:7",
       "label": "Coppa Italia cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 15,
       "status": "pending"
     },
@@ -4215,7 +4215,7 @@
     {
       "key": "cup:8",
       "label": "US Open Cup cup results",
-      "lastSuccessfulCheck": "2026-10-12T16:43:19.994Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 30,
       "status": "pending"
     },
@@ -4915,7 +4915,7 @@
     {
       "key": "cup:9",
       "label": "Norgesmesterskapet cup results",
-      "lastSuccessfulCheck": "2026-10-12T16:43:19.994Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 26,
       "status": "pending"
     },
@@ -6714,14 +6714,14 @@
     {
       "key": "league:100",
       "label": "El Salvador league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:1000",
       "label": "Hattrick International league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 7,
       "status": "pending"
     },
@@ -6735,56 +6735,56 @@
     {
       "key": "league:1003",
       "label": "Homegrown League league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 5,
       "status": "pending"
     },
     {
       "key": "league:101",
       "label": "Malta league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 21,
       "status": "pending"
     },
     {
       "key": "league:102",
       "label": "Kyrgyz Republic league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:103",
       "label": "Moldova league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "league:104",
       "label": "Georgia league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 24,
       "status": "pending"
     },
     {
       "key": "league:105",
       "label": "Andorra league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:106",
       "label": "Jordan league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "league:107",
       "label": "Guatemala league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
@@ -6798,49 +6798,49 @@
     {
       "key": "league:110",
       "label": "Trinidad & Tobago league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:111",
       "label": "Nicaragua league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:112",
       "label": "Kazakhstan league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:113",
       "label": "Suriname league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:117",
       "label": "Liechtenstein league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:118",
       "label": "Algeria league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 16,
       "status": "pending"
     },
     {
       "key": "league:119",
       "label": "Mongolia league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
@@ -6854,140 +6854,140 @@
     {
       "key": "league:120",
       "label": "Lebanon league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:121",
       "label": "Senegal league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:122",
       "label": "Armenia league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:123",
       "label": "Bahrain league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:124",
       "label": "Barbados league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:125",
       "label": "Cape Verde league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:126",
       "label": "Côte d’Ivoire league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "league:127",
       "label": "Kuwait league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:128",
       "label": "Iraq league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:129",
       "label": "Azerbaijan league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "league:130",
       "label": "Angola league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:131",
       "label": "Montenegro league results",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:132",
       "label": "Bangladesh league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:133",
       "label": "Yemen league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:134",
       "label": "Oman league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "league:135",
       "label": "Mozambique league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:136",
       "label": "Brunei league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:137",
       "label": "Ghana league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:138",
       "label": "Cambodia league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:139",
       "label": "Benin league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
@@ -7001,70 +7001,70 @@
     {
       "key": "league:140",
       "label": "Syria league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:141",
       "label": "Qatar league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:142",
       "label": "Tanzania league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:143",
       "label": "Uganda league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:144",
       "label": "Maldives league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:145",
       "label": "Uzbekistan league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:146",
       "label": "Cameroon league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:147",
       "label": "Cuba league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:148",
       "label": "Palestine league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:149",
       "label": "São Tomé e Príncipe league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
@@ -7078,63 +7078,63 @@
     {
       "key": "league:151",
       "label": "Comoros league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "league:152",
       "label": "Sri Lanka league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "league:153",
       "label": "Curaçao league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:154",
       "label": "Guam league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "league:155",
       "label": "Democratic Republic of the Congo league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:156",
       "label": "Federal Democratic Republic of Ethiopia league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:157",
       "label": "Saint Vincent and the Grenadines league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:158",
       "label": "Belize league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:159",
       "label": "Madagascar league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
@@ -7148,70 +7148,70 @@
     {
       "key": "league:160",
       "label": "Botswana league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:161",
       "label": "Myanmar league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:162",
       "label": "Zambia league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:163",
       "label": "San Marino league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:164",
       "label": "Haiti league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:165",
       "label": "Puerto Rico league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "league:166",
       "label": "Grenada league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "league:167",
       "label": "Burkina Faso league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "league:168",
       "label": "Nepal league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "league:169",
       "label": "Guyana league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
@@ -7225,56 +7225,56 @@
     {
       "key": "league:170",
       "label": "Tahiti league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "league:171",
       "label": "Guinea league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "league:172",
       "label": "Bahamas league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "league:173",
       "label": "Rwanda league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "league:174",
       "label": "Saint Kitts and Nevis league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "league:175",
       "label": "Guinea Ecuatorial league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "league:176",
       "label": "Gibraltar league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "league:177",
       "label": "Bhutan league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
       "status": "pending"
     },
@@ -7386,7 +7386,7 @@
     {
       "key": "league:3000",
       "label": "Hattrick Femme International league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 3,
       "status": "pending"
     },
@@ -7813,14 +7813,14 @@
     {
       "key": "league:98",
       "label": "Albania league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
     {
       "key": "league:99",
       "label": "Honduras league results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
       "status": "pending"
     },
@@ -7847,7 +7847,7 @@
     },
     {
       "key": "national-cup:4878493",
-      "label": "U21 Asia-Oceania Cup official tournament",
+      "label": "U21 Asia and Oceania Cup official tournament",
       "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
       "pending": 1,
       "status": "pending"
@@ -7882,7 +7882,7 @@
     },
     {
       "key": "national-cup:5001279",
-      "label": "Asia-Oceania Cup official tournament",
+      "label": "Asia and Oceania Cup official tournament",
       "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
       "pending": 3,
       "status": "pending"
@@ -7897,176 +7897,176 @@
     {
       "key": "seasonal:2108472",
       "label": "Supporter Week Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 2,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116034",
       "label": "Trophy of Legends official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 3,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116057",
       "label": "Titans of 2005 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116058",
       "label": "Titans of 2006 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 3,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116059",
       "label": "Titans of 2007 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 4,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116060",
       "label": "Titans of 2008 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 3,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116061",
       "label": "Titans of 2009 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 3,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116062",
       "label": "Heroes of 2010 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 6,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116063",
       "label": "Heroes of 2011 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 5,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116064",
       "label": "Heroes of 2012 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 7,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116065",
       "label": "Heroes of 2013 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 5,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116067",
       "label": "Heroes of 2014 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 8,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116068",
       "label": "Heroes of 2015 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 8,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116070",
       "label": "Heroes of 2016 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 11,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3116071",
       "label": "Heroes of 2017 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 12,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3195190",
       "label": "Heroes of 2018 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 13,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3427550",
       "label": "Heroes of 2019 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 6,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:3704867",
       "label": "Heroes of 2020 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 9,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:4945473",
       "label": "Heroes of 2021 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 6,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:5255320",
       "label": "Heroes of 2022 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 8,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:5555820",
       "label": "Heroes of 2023 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 8,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:5873608",
       "label": "Heroes of 2024 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 3,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:6320224",
       "label": "Heroes of 2025 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "seasonal:6758706",
       "label": "Heroes of 2026 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
       "pending": 1,
-      "status": "failed"
+      "status": "pending"
     },
     {
       "key": "users:nationality",
       "label": "Manager and coach nationality archive source",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 38,
+      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
+      "pending": 23,
       "status": "pending"
     },
     {
@@ -9206,37 +9206,37 @@
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/d81ff5def3384c401088c8fa085936b643fcf6564808aa535ddc72d76b0d818a/managers.json",
-      "sha256": "7c86bb1990e11b02ac394240655f52f760e102bf555b3929c3ee6be890882c20",
-      "bytes": 7276585
+      "path": "/data/versions/5ae7a2c5ec2826adb90fa3f7405eea99546757062ecee45c3e7b27c0907690e3/managers.json",
+      "sha256": "a78e2b909d9b67211031f69266b065f684174b18643ae98e169e0723b62ac945",
+      "bytes": 7276637
     },
     "leagues.json": {
-      "path": "/data/versions/d81ff5def3384c401088c8fa085936b643fcf6564808aa535ddc72d76b0d818a/leagues.json",
+      "path": "/data/versions/5ae7a2c5ec2826adb90fa3f7405eea99546757062ecee45c3e7b27c0907690e3/leagues.json",
       "sha256": "369260eb6f835c9e543c47564af2659dcfd886e7559e9bca5d99c8abcde6d555",
       "bytes": 768727
     },
     "cups.json": {
-      "path": "/data/versions/d81ff5def3384c401088c8fa085936b643fcf6564808aa535ddc72d76b0d818a/cups.json",
-      "sha256": "b69a80fb6a4b836146294e64a71f0946e98d8f5940e00f05c9517db1bf32f980",
-      "bytes": 2438180
+      "path": "/data/versions/5ae7a2c5ec2826adb90fa3f7405eea99546757062ecee45c3e7b27c0907690e3/cups.json",
+      "sha256": "22c5a2bcd44ab76cce3ec1db7a8402f198d0930a2dc93dd48873c28fc4a5f2e4",
+      "bytes": 2440084
     },
     "masters.json": {
-      "path": "/data/versions/d81ff5def3384c401088c8fa085936b643fcf6564808aa535ddc72d76b0d818a/masters.json",
+      "path": "/data/versions/5ae7a2c5ec2826adb90fa3f7405eea99546757062ecee45c3e7b27c0907690e3/masters.json",
       "sha256": "19c30f390f33f0262dc46812aff2f5d6ce593ffffda1fef24469b0d04c51bcc0",
       "bytes": 6974
     },
     "seasonal.json": {
-      "path": "/data/versions/d81ff5def3384c401088c8fa085936b643fcf6564808aa535ddc72d76b0d818a/seasonal.json",
-      "sha256": "fe05c6c09bf0f3a45271c01469d4a8dcf5bb32953da990f751334e581ca8cab3",
-      "bytes": 58171
+      "path": "/data/versions/5ae7a2c5ec2826adb90fa3f7405eea99546757062ecee45c3e7b27c0907690e3/seasonal.json",
+      "sha256": "00b7a4d0f0c0ef0ffc73d6f020d677f92a03fecb3ca580918090d4c47d2becaa",
+      "bytes": 60210
     },
     "worldcup.json": {
-      "path": "/data/versions/d81ff5def3384c401088c8fa085936b643fcf6564808aa535ddc72d76b0d818a/worldcup.json",
+      "path": "/data/versions/5ae7a2c5ec2826adb90fa3f7405eea99546757062ecee45c3e7b27c0907690e3/worldcup.json",
       "sha256": "c9157bbdfa8a61a7a45814124390849e5086ba11928d8506ee95cab0cf6ba0cd",
       "bytes": 84806
     },
     "elections.json": {
-      "path": "/data/versions/d81ff5def3384c401088c8fa085936b643fcf6564808aa535ddc72d76b0d818a/elections.json",
+      "path": "/data/versions/5ae7a2c5ec2826adb90fa3f7405eea99546757062ecee45c3e7b27c0907690e3/elections.json",
       "sha256": "6336c0e46a4e21ce7b1ef5c4c8fdeae16d9e874748afc6d092352b501216695e",
       "bytes": 1122909
     }
