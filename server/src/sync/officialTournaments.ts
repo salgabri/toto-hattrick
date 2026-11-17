@@ -25,6 +25,9 @@ const DAY = 86_400_000;
 const LEGACY_UNPROVEN_PODIUM = 'The official fixture set did not prove one complete decisive final and both semifinals';
 const UNPROVEN_PODIUM = 'The official fixture set did not prove one complete decisive final and both semifinals, including any explicit retained tiebreaker evidence';
 const RETAINED_TIE_REVIEW = 'Tied knockout matchdetails were retained, but no matched Tournament sample yet proves a penalty-winner interpretation; explicit review is required';
+/** Recorded before 2026-11-17, when every decisive official seasonal final failed its own exact-score check. */
+const LEGACY_EVIDENCE_CONFLICT = 'Official tournament facts conflict with retained evidence; review is required';
+const EVIDENCE_CONFLICT = 'Official tournament facts conflict with retained archive facts; explicit review is required';
 
 /** The post-2021 World Cups use Hattrick's Tournament system. */
 export const MODERN_WORLD_CUP_TOURNAMENTS = [
@@ -249,7 +252,7 @@ function safeIssue(error: unknown): { category: string; message: string; stop: b
     return { category, message: 'Official tournament source check failed; retained facts are unchanged', stop: ['authentication', 'forbidden'].includes(category) };
   }
   if (error instanceof Error && /conflict|not retained|different tournament|regressed/i.test(error.message))
-    return { category: 'evidence', message: 'Official tournament facts conflict with retained evidence; review is required', stop: false };
+    return { category: 'evidence', message: EVIDENCE_CONFLICT, stop: false };
   return { category: 'source', message: 'Official tournament source could not be fetched or validated', stop: false };
 }
 function dotDate(date: Date) {
@@ -359,6 +362,13 @@ async function reconcileItems(spec: TournamentSourceSpec, source: UpdateSource,
   if (details.nextMatchRoundDate > now) await prisma.updateItem.updateMany({
     where: { sourceKey: spec.sourceKey, itemKey: String(current), task: 'result',
       state: 'needs_review', lastError: UNPROVEN_PODIUM },
+    data: { state: 'pending', nextAttemptAt: now, completedAt: null, lastError: null, errorCategory: null },
+  });
+  // One-time migration for current seasonal editions parked by the former final-score overwrite.
+  // A genuine conflict now records EVIDENCE_CONFLICT, so it is retried once, never daily.
+  if (spec.kind === 'seasonal') await prisma.updateItem.updateMany({
+    where: { sourceKey: spec.sourceKey, itemKey: String(current), task: 'result',
+      state: 'needs_review', lastError: LEGACY_EVIDENCE_CONFLICT },
     data: { state: 'pending', nextAttemptAt: now, completedAt: null, lastError: null, errorCategory: null },
   });
 }

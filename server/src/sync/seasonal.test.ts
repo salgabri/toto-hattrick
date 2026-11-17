@@ -134,6 +134,16 @@ test('official final collision is rejected before a seasonal winner can be parti
   assert.equal(db.writes(), 0);
 });
 
+test('a new official seasonal final is created with its exact match id and score', async t => {
+  const db = database(t);
+  for (const [season, homeGoals, awayGoals] of [[11, 3, 1], [12, 0, 2]] as const) {
+    await ingestSeasonalWinners(token, { ...options, winners: [{ ...recovered, season, finalMatchId: 41_825_500 + season, homeGoals, awayGoals }] });
+    const row = db.row(season)!;
+    assert.deepEqual([row.finalMatchId, row.homeGoals, row.awayGoals], [41_825_500 + season, homeGoals, awayGoals]);
+  }
+  assert.equal(db.size(), 2);
+});
+
 test('an in-transaction exact-final validation failure rolls the seasonal winner back', async t => {
   const db = database(t, undefined, { corruptReturnedFinal: true });
   await assert.rejects(ingestSeasonalWinners(token, { ...options, winners: [{

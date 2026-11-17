@@ -531,6 +531,74 @@ test('a tiebreaker capture that reaches the CHPP budget stays queued and stops a
   assert.equal(db.updateItem!.find(item => item.sourceKey === sourceKey && item.task === 'result')?.state, 'retry');
 });
 
+function seasonalHarness(t: TestContext, cupId: number, edition: number) {
+  runtime(t);
+  const db = tournamentArchive(t);
+  const sourceKey = `seasonal:${cupId}`;
+  seedSources(db, 'none', {});
+  db.cup!.push({ cupId, leagueId: 0, countryName: 'Seasonal harness', cupName: 'Seasonal harness',
+    cupLevel: 1, cupLevelIndex: 1, isMain: false, currentSeason: edition });
+  db.updateSource!.push({ sourceKey, kind: 'tournament', externalId: cupId, numberingSystem: `tournament:${cupId}:season`,
+    baseline: edition, observedThrough: edition, lastAttemptAt: null, lastSuccessAt: null, nextCheckAt: null, metadataJson: '{}' });
+  const files: string[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: Parameters<typeof fetch>[0]) => {
+    const file = new URL(String(input)).searchParams.get('file')!;
+    files.push(file);
+    if (file === 'tournamentdetails') return new Response(tournamentDetailsXml(cupId, edition, 2, 'Seasonal harness'));
+    assert.equal(file, 'tournamentfixtures');
+    return new Response(`<?xml version="1.0" encoding="utf-8"?>
+<HattrickData><FileName>tournamentFixtures.xml</FileName><Version>1.1</Version><Matches>
+<Match><MatchId>42734001</MatchId><HomeTeamId>101</HomeTeamId><HomeTeamName>Finalist One</HomeTeamName><AwayTeamId>301</AwayTeamId><AwayTeamName>Bronze One</AwayTeamName><MatchDate>2026-11-01 12:00:00</MatchDate><MatchType>51</MatchType><MatchRound>1</MatchRound><Group>0</Group><Status>2</Status><HomeGoals>1</HomeGoals><AwayGoals>0</AwayGoals></Match>
+<Match><MatchId>42734002</MatchId><HomeTeamId>201</HomeTeamId><HomeTeamName>Finalist Two</HomeTeamName><AwayTeamId>401</AwayTeamId><AwayTeamName>Bronze Two</AwayTeamName><MatchDate>2026-11-01 12:00:00</MatchDate><MatchType>51</MatchType><MatchRound>1</MatchRound><Group>0</Group><Status>2</Status><HomeGoals>2</HomeGoals><AwayGoals>0</AwayGoals></Match>
+<Match><MatchId>42734464</MatchId><HomeTeamId>101</HomeTeamId><HomeTeamName>Finalist One</HomeTeamName><AwayTeamId>201</AwayTeamId><AwayTeamName>Finalist Two</AwayTeamName><MatchDate>2026-11-01 18:00:00</MatchDate><MatchType>51</MatchType><MatchRound>2</MatchRound><Group>0</Group><Status>2</Status><HomeGoals>0</HomeGoals><AwayGoals>2</AwayGoals></Match>
+</Matches></HattrickData>`);
+  });
+  const resultItem = () => db.updateItem!.find(item => item.sourceKey === sourceKey && item.edition === edition && item.task === 'result');
+  return { db, sourceKey, files, resultItem };
+}
+
+test('a current seasonal edition parked by the former final-score overwrite is retried once and retained exactly', async t => {
+  const { db, sourceKey, files, resultItem } = seasonalHarness(t, 6_000_004, 30);
+  db.updateItem!.push({ id: 1, sourceKey, itemKey: '30', task: 'result', edition: 30, state: 'needs_review', attempts: 5,
+    nextAttemptAt: null, completedAt: null, lastError: 'Official tournament facts conflict with retained evidence; review is required',
+    errorCategory: 'evidence' });
+
+  const result = await refreshOfficialTournaments(token, {
+    now: new Date('2026-11-17T19:47:00.000Z'), maxMetadataChecks: 1, maxItems: 1,
+  });
+
+  assert.deepEqual(result.issues, []);
+  assert.equal(result.seasonalChampionsAdded, 1);
+  assert.deepEqual(files, ['tournamentdetails', 'tournamentfixtures']);
+  const row = db.cupChampion!.find(entry => entry.cupId === 6_000_004 && entry.season === 30);
+  assert.deepEqual([row?.championTeamId, row?.championTeamName, row?.runnerUpTeamName], [201, 'Finalist Two', 'Finalist One']);
+  assert.deepEqual([row?.finalMatchId, row?.homeGoals, row?.awayGoals], [42_734_464, 0, 2]);
+  assert.equal(row?.championUserId, null, 'The final proves the club, not its manager on the final date');
+  assert.equal(resultItem()?.state, 'complete');
+});
+
+test('a genuine seasonal conflict stays parked for review and is not re-fetched the next day', async t => {
+  const { db, files, resultItem } = seasonalHarness(t, 6_000_005, 30);
+  // The official final is already retained as another tournament's result.
+  const retained = { cupId: 7_000_001, season: 4, championTeamId: 999, championTeamName: 'Another tournament winner',
+    championUserId: null, championUserName: null, championLeagueId: null, runnerUpTeamName: '', finalMatchId: 42_734_464, homeGoals: 1, awayGoals: 0 };
+  db.cupChampion!.push({ ...retained });
+
+  const first = await refreshOfficialTournaments(token, {
+    now: new Date('2026-11-17T19:47:00.000Z'), maxMetadataChecks: 1, maxItems: 1,
+  });
+  const second = await refreshOfficialTournaments(token, {
+    now: new Date('2026-11-18T19:47:00.000Z'), maxMetadataChecks: 1, maxItems: 1,
+  });
+
+  assert.equal(first.issues[0]?.category, 'evidence');
+  assert.deepEqual(second.issues, []);
+  assert.deepEqual(files, ['tournamentdetails', 'tournamentfixtures', 'tournamentdetails']);
+  assert.deepEqual([resultItem()?.state, resultItem()?.lastError],
+    ['needs_review', 'Official tournament facts conflict with retained archive facts; explicit review is required']);
+  assert.deepEqual(db.cupChampion, [retained]);
+});
+
 test('a deleted seasonal champion club is checked once and kept as a non-failing evidence gap', async t => {
   runtime(t);
   const db = tournamentArchive(t);
