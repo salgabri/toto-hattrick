@@ -237,6 +237,13 @@ function itemKey(sourceKey: string, edition: number, task = 'result') {
 function sourceMetadata(source: Pick<UpdateSource, 'metadataJson'>): Record<string, unknown> {
   try { return JSON.parse(source.metadataJson) as Record<string, unknown>; } catch { return {}; }
 }
+/** One-time: a seasonal source last failed by the former final-score overwrite is due at once. Success
+ * drops the failure marker and a genuine conflict records EVIDENCE_CONFLICT, so this cannot repeat. */
+function parkedByFormerSeasonalOverwrite(spec: TournamentSourceSpec, source: Pick<UpdateSource, 'metadataJson'>): boolean {
+  const failure = sourceMetadata(source).failure;
+  return spec.kind === 'seasonal' && typeof failure === 'object' && failure !== null &&
+    (failure as { message?: unknown }).message === LEGACY_EVIDENCE_CONFLICT;
+}
 function successfulMetadata(source: Pick<UpdateSource, 'metadataJson'>): Record<string, unknown> {
   const { failure: _failure, ...metadata } = sourceMetadata(source);
   return metadata;
@@ -552,7 +559,7 @@ export async function refreshOfficialTournaments(token: TokenPair, options: {
   const work: Array<{ spec: TournamentSourceSpec; source: UpdateSource }> = [];
   for (const spec of await specs()) {
     const source = await migrateSource(spec, now);
-    if (due(source.nextCheckAt, now)) work.push({ spec, source });
+    if (due(source.nextCheckAt, now) || parkedByFormerSeasonalOverwrite(spec, source)) work.push({ spec, source });
   }
   work.sort((a, b) => Number(a.source.lastAttemptAt !== null) - Number(b.source.lastAttemptAt !== null) ||
     (a.source.nextCheckAt?.getTime() ?? 0) - (b.source.nextCheckAt?.getTime() ?? 0) ||
