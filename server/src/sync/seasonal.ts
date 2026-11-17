@@ -170,10 +170,12 @@ export async function ingestSeasonalWinners(
           countryName: opts.name,
           cupName: opts.name,
           isMain: false,
-          finalMatchId: 0, // no per-final match id from the scrape (placeholder, like reconstructed finals)
-          ...winner,
+          // Placeholders for a retained winner without an official final (like reconstructed finals).
+          // They must precede `winner`, which carries the exact official final and score when known.
+          finalMatchId: 0,
           homeGoals: 0,
           awayGoals: 0,
+          ...winner,
         },
       });
       if (w.finalMatchId && (retained.finalMatchId !== w.finalMatchId || retained.homeGoals !== w.homeGoals || retained.awayGoals !== w.awayGoals))
