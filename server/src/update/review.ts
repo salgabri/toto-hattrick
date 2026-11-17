@@ -88,7 +88,7 @@ function captureInstant(itemKey: string, value: string): Date {
   return capturedAt;
 }
 
-async function readReviewSidecar(databasePath: string): Promise<ReviewCheckout> {
+export async function readReviewSidecar(databasePath: string): Promise<ReviewCheckout> {
   try { return ReviewCheckoutSchema.parse(JSON.parse(await readFile(reviewSidecarPath(databasePath), 'utf8'))); }
   catch { throw new Error('A valid review checkout sidecar is required; start with update checkout'); }
 }

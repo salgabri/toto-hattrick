@@ -1,8 +1,10 @@
 import { parseArgs } from 'node:util';
 import { join, resolve } from 'node:path';
 import { env } from '../config/env.js';
-import { bootstrapArchive, configuredStore, planUpdate, publishPending, repositoryPath, runUpdate, safeFailure } from '../update/runner.js';
+import { authorizedToken, bootstrapArchive, configuredStore, planUpdate, publishPending, repositoryPath, runUpdate, safeFailure } from '../update/runner.js';
 import { acknowledgeReviewCaptureManifest, adoptReviewedArchive, applyReviewClearances, checkoutForReview } from '../update/review.js';
+import { attributeCheckout } from '../update/attribution.js';
+import { applyElectionCapture } from '../update/electionCapture.js';
 import { confirmGitRelease, exportGitRelease, validateGitRelease } from '../update/gitRelease.js';
 
 try {
@@ -11,10 +13,12 @@ try {
     history: { type: 'string' },
     database: { type: 'string' }, manifest: { type: 'string' }, output: { type: 'string' }, commit: { type: 'string' },
     candidate: { type: 'string' }, previous: { type: 'string' }, 'timeout-ms': { type: 'string' },
-    apply: { type: 'boolean', default: false }, report: { type: 'string' },
+    apply: { type: 'boolean', default: false }, report: { type: 'string' }, tenure: { type: 'string' }, capture: { type: 'string' },
   } });
-  if (positionals.length !== 1 || (values.publish && values.draft)) throw new Error('Usage: update.ts plan|bootstrap|run|publish|export-git|validate-git|confirm-git|checkout|acknowledge|clear|import [options]');
-  if ((values.apply || values.report !== undefined) && positionals[0] !== 'clear') throw new Error('--apply and --report are only supported by update clear');
+  if (positionals.length !== 1 || (values.publish && values.draft)) throw new Error('Usage: update.ts plan|bootstrap|run|publish|export-git|validate-git|confirm-git|checkout|acknowledge|clear|attribute|elections|import [options]');
+  if ((values.apply || values.report !== undefined) && !['clear', 'attribute', 'elections'].includes(positionals[0]!)) throw new Error('--apply and --report are only supported by update clear, attribute and elections');
+  if (values.tenure !== undefined && positionals[0] !== 'attribute') throw new Error('--tenure is only supported by update attribute');
+  if (values.capture !== undefined && positionals[0] !== 'elections') throw new Error('--capture is only supported by update elections');
   if (values.history !== undefined && !values.history.trim()) throw new Error('--history requires a nonempty file path');
   if (values.history && positionals[0] !== 'run') throw new Error('--history is only supported by update run');
   switch (positionals[0]) {
@@ -67,6 +71,22 @@ try {
         manifestPath: values.manifest, apply: values.apply, reportPath: values.report ? resolve(values.report) : undefined });
       console.log(JSON.stringify(summary, null, 2));
       if (summary.conflicts) process.exitCode = 1;
+      break;
+    }
+    case 'attribute': {
+      if (!values.database) throw new Error('attribute requires --database (a review checkout); add --apply --report <new.json> to write, --tenure <json> for NTFormerCoaches tenure');
+      const summary = await attributeCheckout({ databasePath: resolve(values.database), token: await authorizedToken(), store: configuredStore(),
+        apply: values.apply, reportPath: values.report ? resolve(values.report) : undefined, tenurePath: values.tenure ? resolve(values.tenure) : undefined });
+      console.log(JSON.stringify(summary, null, 2));
+      break;
+    }
+    case 'elections': {
+      if (!values.database || !values.capture) throw new Error('elections requires --database (a review checkout) and --capture <dir with chunk-N.json [older.json]>');
+      const token = await authorizedToken().catch(() => undefined);
+      const summary = await applyElectionCapture({ databasePath: resolve(values.database), captureDir: resolve(values.capture), repositoryPath,
+        apply: values.apply, reportPath: values.report ? resolve(values.report) : undefined, token });
+      console.log(JSON.stringify(summary, null, 2));
+      if (summary.needsOlderDetails.length || summary.conflicts.length) process.exitCode = 2;
       break;
     }
     case 'import':
