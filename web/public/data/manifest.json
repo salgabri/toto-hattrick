@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "9f763f602a7c30dcb21308ac40cbb9fc99cdd18cd864a665198414b060ba65ad",
-  "codeRevision": "4479607d66e7272ad388d4a387e11acd55a6d93d",
-  "generatedAt": "2026-11-17T22:52:24.867Z",
-  "lastChangedAt": "2026-11-17T22:52:24.867Z",
+  "dataVersion": "0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4",
+  "codeRevision": "3902b1ecdd0cd1b78b1fb9b6f3e94588a3fa66c9",
+  "generatedAt": "2026-11-18T22:00:06.509Z",
+  "lastChangedAt": "2026-11-18T22:00:06.509Z",
   "sources": [
     {
       "key": "cup:1",
@@ -359,35 +359,35 @@
       "key": "cup:1433",
       "label": "Hattrick International Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:13:44.060Z",
-      "pending": 8,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:1434",
       "label": "Hattrick International Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
-      "pending": 7,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:1435",
       "label": "Hattrick International Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:1436",
       "label": "Hattrick International Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:1437",
       "label": "Hattrick International Consolation Cup cup results",
       "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
-      "pending": 7,
+      "pending": 5,
       "status": "pending"
     },
     {
@@ -877,7 +877,7 @@
       "key": "cup:1503",
       "label": "Coppa Titano cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
@@ -1703,7 +1703,7 @@
       "key": "cup:182",
       "label": "Hayastani gavat cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -1794,7 +1794,7 @@
       "key": "cup:194",
       "label": "Al Yaman Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
@@ -1878,7 +1878,7 @@
       "key": "cup:204",
       "label": "Uganda Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
@@ -2060,7 +2060,7 @@
       "key": "cup:40",
       "label": "Singapore Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 33,
+      "pending": 32,
       "status": "failed"
     },
     {
@@ -9206,37 +9206,37 @@
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/9f763f602a7c30dcb21308ac40cbb9fc99cdd18cd864a665198414b060ba65ad/managers.json",
-      "sha256": "6bc75f042a8c1bc7d6746413c640df1ed4993c6cf1b944026494c92928bcb666",
-      "bytes": 7284778
+      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/managers.json",
+      "sha256": "afc032ff0aa6e29d1607190da090ef0f5c77245c98471096347111c4b8908cb8",
+      "bytes": 7604673
     },
     "leagues.json": {
-      "path": "/data/versions/9f763f602a7c30dcb21308ac40cbb9fc99cdd18cd864a665198414b060ba65ad/leagues.json",
-      "sha256": "369260eb6f835c9e543c47564af2659dcfd886e7559e9bca5d99c8abcde6d555",
-      "bytes": 768727
+      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/leagues.json",
+      "sha256": "5600dd113f60147c62457ae5c74fdea173b6a52f240df762e663c69ba27b496e",
+      "bytes": 769108
     },
     "cups.json": {
-      "path": "/data/versions/9f763f602a7c30dcb21308ac40cbb9fc99cdd18cd864a665198414b060ba65ad/cups.json",
-      "sha256": "22c5a2bcd44ab76cce3ec1db7a8402f198d0930a2dc93dd48873c28fc4a5f2e4",
-      "bytes": 2440084
+      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/cups.json",
+      "sha256": "b1e4c4692fa9d83c7714e9053d5930d3da438b97435a12bfcb1d4248cddd0ff4",
+      "bytes": 2463930
     },
     "masters.json": {
-      "path": "/data/versions/9f763f602a7c30dcb21308ac40cbb9fc99cdd18cd864a665198414b060ba65ad/masters.json",
+      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/masters.json",
       "sha256": "19c30f390f33f0262dc46812aff2f5d6ce593ffffda1fef24469b0d04c51bcc0",
       "bytes": 6974
     },
     "seasonal.json": {
-      "path": "/data/versions/9f763f602a7c30dcb21308ac40cbb9fc99cdd18cd864a665198414b060ba65ad/seasonal.json",
-      "sha256": "000f2aac5cbdf62935a3441321efd13261216f62176884a9af92a4a8226ab64d",
-      "bytes": 60734
+      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/seasonal.json",
+      "sha256": "6e6b3b6756499fd1b4f6cc7d3413e255106073526b62c09f035c559b969a5c8f",
+      "bytes": 60891
     },
     "worldcup.json": {
-      "path": "/data/versions/9f763f602a7c30dcb21308ac40cbb9fc99cdd18cd864a665198414b060ba65ad/worldcup.json",
+      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/worldcup.json",
       "sha256": "4bfc17e046a122f35f2b53ada1c7955a2da743dbf86175e3c653fef695aecdb2",
       "bytes": 86534
     },
     "elections.json": {
-      "path": "/data/versions/9f763f602a7c30dcb21308ac40cbb9fc99cdd18cd864a665198414b060ba65ad/elections.json",
+      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/elections.json",
       "sha256": "cbdf2a4922bf7827b1a82fc54220bee11f7224bfb557a0718a3cdce0e3d0257a",
       "bytes": 1150520
     }
