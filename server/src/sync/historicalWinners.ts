@@ -159,7 +159,11 @@ export function extractHistoricalWinnerEvidence(histories: readonly HistoricalCl
       let owner: { userId: number; userName: string } | null = null;
       let ownershipEvent: HistoricalEvent | undefined;
       const directLeagueManager = leagueChampion ? manager(event) : null;
-      const direct = cupWin || directLeagueManager !== null;
+      // Like the league label above, a cup won "under the leadership of a now retired manager"
+      // supplies a win, not an identity: with no manager link it is resolved only through the same
+      // complete, dated ownership inference (never from the wording alone).
+      const retiredCupLeader = cupWin && /^a now retired manager$/i.test(clean(cupManagerName ?? '')) && manager(event) === null;
+      const direct = (cupWin && !retiredCupLeader) || directLeagueManager !== null;
       if (direct) {
         owner = manager(event);
         if (!owner) { reject('Winner event has no unique linked manager'); continue; }
