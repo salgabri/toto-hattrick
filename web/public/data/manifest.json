@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4",
-  "codeRevision": "3902b1ecdd0cd1b78b1fb9b6f3e94588a3fa66c9",
-  "generatedAt": "2026-11-18T22:00:06.509Z",
-  "lastChangedAt": "2026-11-18T22:00:06.509Z",
+  "dataVersion": "cb5e69d09bd2f07d6755926b611db52f5f7d59cc485d453510728df1db76250a",
+  "codeRevision": "7ddacab0c6bd8d5de7e3f9ed9a4d2949c08f5720",
+  "generatedAt": "2026-11-18T22:35:06.055Z",
+  "lastChangedAt": "2026-11-18T22:35:06.055Z",
   "sources": [
     {
       "key": "cup:1",
@@ -9206,37 +9206,37 @@
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/managers.json",
-      "sha256": "afc032ff0aa6e29d1607190da090ef0f5c77245c98471096347111c4b8908cb8",
-      "bytes": 7604673
+      "path": "/data/versions/cb5e69d09bd2f07d6755926b611db52f5f7d59cc485d453510728df1db76250a/managers.json",
+      "sha256": "90efbd600aa0028e9e1348d416cbeff55b53b55d2f9a52b6f79fe56b8eb2f4eb",
+      "bytes": 7597058
     },
     "leagues.json": {
-      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/leagues.json",
-      "sha256": "5600dd113f60147c62457ae5c74fdea173b6a52f240df762e663c69ba27b496e",
-      "bytes": 769108
+      "path": "/data/versions/cb5e69d09bd2f07d6755926b611db52f5f7d59cc485d453510728df1db76250a/leagues.json",
+      "sha256": "3fccd721bd7abd4b6dd187bd0aafafea41f990e200a7fcef0637d696f23783e7",
+      "bytes": 768630
     },
     "cups.json": {
-      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/cups.json",
-      "sha256": "b1e4c4692fa9d83c7714e9053d5930d3da438b97435a12bfcb1d4248cddd0ff4",
-      "bytes": 2463930
+      "path": "/data/versions/cb5e69d09bd2f07d6755926b611db52f5f7d59cc485d453510728df1db76250a/cups.json",
+      "sha256": "84848c8af1ee4c756bf12d42507767f54f64e98bde6c34e210b8aa8969067196",
+      "bytes": 2463559
     },
     "masters.json": {
-      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/masters.json",
+      "path": "/data/versions/cb5e69d09bd2f07d6755926b611db52f5f7d59cc485d453510728df1db76250a/masters.json",
       "sha256": "19c30f390f33f0262dc46812aff2f5d6ce593ffffda1fef24469b0d04c51bcc0",
       "bytes": 6974
     },
     "seasonal.json": {
-      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/seasonal.json",
+      "path": "/data/versions/cb5e69d09bd2f07d6755926b611db52f5f7d59cc485d453510728df1db76250a/seasonal.json",
       "sha256": "6e6b3b6756499fd1b4f6cc7d3413e255106073526b62c09f035c559b969a5c8f",
       "bytes": 60891
     },
     "worldcup.json": {
-      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/worldcup.json",
+      "path": "/data/versions/cb5e69d09bd2f07d6755926b611db52f5f7d59cc485d453510728df1db76250a/worldcup.json",
       "sha256": "4bfc17e046a122f35f2b53ada1c7955a2da743dbf86175e3c653fef695aecdb2",
       "bytes": 86534
     },
     "elections.json": {
-      "path": "/data/versions/0b374515b907d404bbc6c1ee273390c601dff60ae31b03df6804213778dfd0a4/elections.json",
+      "path": "/data/versions/cb5e69d09bd2f07d6755926b611db52f5f7d59cc485d453510728df1db76250a/elections.json",
       "sha256": "cbdf2a4922bf7827b1a82fc54220bee11f7224bfb557a0718a3cdce0e3d0257a",
       "bytes": 1150520
     }
