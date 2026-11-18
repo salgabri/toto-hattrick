@@ -58,15 +58,16 @@ test('the dry run selects only name-only domestic finals of a review checkout an
     [7, 89, 0, null, 'Retained', '', 0, 0, null], // the updater already fetched this season
     [7, 88, 0, null, 'Pending', '', 0, 0, 0], // cleared to manager pending: not this job's
     [7, 87, 5, 11, 'Real', 'Other', 1, 0, null], // already a real final
+    [7, 86, 6, null, 'Half Done', 'Other', 2, 1, null], // its matchdetails step failed earlier: selected again
     [900, 3, 0, null, 'Seasonal', '', 0, 0, null], // international: cupmatches is not its source
   ], ['evidence/chpp/cupmatches/1.2/7/89/7.json']);
   t.mock.method(globalThis, 'fetch', async () => { throw new Error('a dry run must not call CHPP'); });
   const summary = await materializeCheckoutCupFinals({ databasePath: path, reportPath: join(dir, 'plan.json') });
   assert.equal(summary.dryRun, true);
-  assert.equal(summary.nameOnlyFinals, 2);
-  assert.equal(summary.selected, 1);
+  assert.equal(summary.nameOnlyFinals, 3);
+  assert.equal(summary.selected, 2);
   assert.deepEqual(summary.leftToUpdater, [{ cupId: 7, season: 89 }]);
-  assert.deepEqual(JSON.parse(await readFile(join(dir, 'plan.json'), 'utf8')).finals, [{ cupId: 7, season: 90 }]);
+  assert.deepEqual(JSON.parse(await readFile(join(dir, 'plan.json'), 'utf8')).finals, [{ cupId: 7, season: 90 }, { cupId: 7, season: 86 }]);
   await assert.rejects(materializeCheckoutCupFinals({ databasePath: path, apply: true, maxCalls: 10 }), /requires --report/);
   await assert.rejects(materializeCheckoutCupFinals({ databasePath: path, apply: true, maxCalls: 0, reportPath: join(dir, 'x.json'),
     token: { token: 't', tokenSecret: 's' } }), /--max-calls between 1 and/);

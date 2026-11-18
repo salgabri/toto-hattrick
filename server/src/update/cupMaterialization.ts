@@ -39,9 +39,11 @@ const RETAINED_CUP_SEASON = /^evidence\/(?:chpp|observations)\/cupmatches\/1\.2\
 const RETAINED_MATCH = /^evidence\/(?:chpp|observations)\/matchdetails\/3\.0\/(\d+)\//;
 export const MAX_MATERIALIZE_CALLS = 2000;
 
-/** Domestic cup winners that carry nothing but a club name; newest seasons first within each cup. */
+/** Domestic cup winners with no club identity and no manager; newest seasons first within each cup.
+ * Mostly name-only placeholders (finalMatchId 0). A final whose matchdetails step failed after its
+ * cupmatches step keeps its match ID and is selected again for the second step only. */
 const NAME_ONLY_FINALS = `SELECT c.cupId AS cupId, c.season AS season FROM CupChampion c JOIN Cup cu ON cu.cupId = c.cupId
-  WHERE c.finalMatchId = 0 AND c.championTeamId IS NULL AND c.championUserId IS NULL AND cu.leagueId <> 0
+  WHERE c.championTeamId IS NULL AND c.championUserId IS NULL AND cu.leagueId <> 0
     AND TRIM(c.championTeamName) <> ''
   ORDER BY cu.isMain DESC, cu.leagueId, cu.cupLevelIndex, c.cupId, c.season DESC`;
 const MATERIALIZED = `SELECT cupId, season, finalMatchId, championTeamId, championTeamName, runnerUpTeamName, homeGoals, awayGoals
