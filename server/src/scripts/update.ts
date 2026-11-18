@@ -3,9 +3,10 @@ import { join, resolve } from 'node:path';
 import { env } from '../config/env.js';
 import { authorizedToken, bootstrapArchive, configuredStore, planUpdate, publishPending, repositoryPath, runUpdate, safeFailure } from '../update/runner.js';
 import { acknowledgeReviewCaptureManifest, adoptReviewedArchive, applyReviewClearances, checkoutForReview } from '../update/review.js';
-import { attributeCheckout } from '../update/attribution.js';
-import { applyElectionCapture } from '../update/electionCapture.js';
 import { confirmGitRelease, exportGitRelease, validateGitRelease } from '../update/gitRelease.js';
+// Command modules that (transitively) load the shared Prisma client are imported inside their
+// case only. A static import would construct the client against .env's DATABASE_URL before
+// `run` switches it to the isolated working database (update.test.ts guards this).
 
 try {
   const { positionals, values } = parseArgs({ allowPositionals: true, options: {
@@ -80,6 +81,7 @@ try {
       if (!values.database) throw new Error('attribute requires --database (a review checkout); add --apply --report <new.json> to write, --tenure <json> for NTFormerCoaches tenure');
       const maxTeams = values['max-teams'] === undefined ? undefined : Number(values['max-teams']);
       if (maxTeams !== undefined && (!Number.isSafeInteger(maxTeams) || maxTeams < 1)) throw new Error('--max-teams must be a positive integer');
+      const { attributeCheckout } = await import('../update/attribution.js');
       const summary = await attributeCheckout({ databasePath: resolve(values.database), token: await authorizedToken(), store: configuredStore(),
         apply: values.apply, reportPath: values.report ? resolve(values.report) : undefined, tenurePath: values.tenure ? resolve(values.tenure) : undefined,
         backfill: values.backfill, maxTeams, statePath: values.state ? resolve(values.state) : undefined });
@@ -89,6 +91,7 @@ try {
     case 'elections': {
       if (!values.database || !values.capture) throw new Error('elections requires --database (a review checkout) and --capture <dir with chunk-N.json [older.json]>');
       const token = await authorizedToken().catch(() => undefined);
+      const { applyElectionCapture } = await import('../update/electionCapture.js');
       const summary = await applyElectionCapture({ databasePath: resolve(values.database), captureDir: resolve(values.capture), repositoryPath,
         apply: values.apply, reportPath: values.report ? resolve(values.report) : undefined, token });
       console.log(JSON.stringify(summary, null, 2));
