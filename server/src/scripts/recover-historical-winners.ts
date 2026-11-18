@@ -11,7 +11,9 @@ Without --apply, only reads the database and writes the evidence report.
 Paths are relative to server/ when run through the workspace command.
 Input: an array of HistoricalClubHistory records, or { "histories": [...] }.
 Reports are created exclusively: an existing report is never overwritten.
-No Hattrick calls, nationality lookup, or baking is performed.`;
+No Hattrick calls, nationality lookup, or baking is performed. A tenure credit to a club's last
+recorded owner stays "unverified" until the capture carries CHPP state: run
+annotate:club-histories on the capture first.`;
 
 async function main(): Promise<void> {
   const { values } = parseArgs({

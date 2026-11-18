@@ -3,6 +3,19 @@ import { z } from 'zod';
 /** DOM evidence from the logged-in Club/History pages; never fetches Hattrick itself. */
 export interface HistoricalLink { text: string; href: string }
 export interface HistoricalRow { text: string; links: HistoricalLink[] }
+/**
+ * CHPP teamdetails (3.6) state read alongside a capture (`npm run annotate:club-histories`).
+ * Club History never records an owner leaving; for an ownerless club, a FoundedDate later than
+ * the last recorded takeover is the day that owner left (validated 2026-11-18 on 391 clubs: no
+ * anniversary or named-manager row of the last owner, and no bot cleanup, contradicts it).
+ */
+export interface HistoricalClubState {
+  checkedAt: string;
+  /** Current owner's user ID; 0 when the club has no owner or no longer exists. */
+  ownerUserId: number;
+  /** Team/FoundedDate as YYYY-MM-DD; null when the club no longer exists. */
+  foundedDate: string | null;
+}
 export interface HistoricalClubHistory {
   teamId: number;
   leagueId?: number | null;
@@ -10,6 +23,7 @@ export interface HistoricalClubHistory {
   complete: boolean;
   sourceURL?: string;
   pages: Array<{ page: number; sourceURL?: string; rows: HistoricalRow[] }>;
+  current?: HistoricalClubState;
 }
 export interface HistoricalEvent extends HistoricalRow {
   date: string;
@@ -29,6 +43,12 @@ export interface HistoricalWinnerEvidence {
   sourceURL: string;
   event: HistoricalEvent;
   ownershipEvent?: HistoricalEvent;
+  /**
+   * Set when tenure credits the club's last recorded owner (no takeover after the win), whose
+   * departure date only CHPP can show. 'unchecked' (capture without `current`) is held as
+   * unverified, never written.
+   */
+  lastOwner?: 'unchecked' | 'current-owner' | 'left-after-win' | 'departure-undated';
 }
 export interface RejectedHistoricalEvent { teamId: number; reason: string; event: HistoricalEvent }
 
@@ -43,6 +63,11 @@ const HistorySchema = z.object({
     sourceURL: z.string().optional(),
     rows: z.array(z.object({ text: z.string(), links: z.array(z.object({ text: z.string(), href: z.string() })) })),
   })),
+  current: z.object({
+    checkedAt: z.string().min(1),
+    ownerUserId: z.number().int().nonnegative(),
+    foundedDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable(),
+  }).optional(),
 });
 const clean = (text: string) => text.normalize('NFC').replace(/\s+/g, ' ').trim();
 const positive = (value: unknown): number | null => {
@@ -85,13 +110,19 @@ function eventDate(text: string): string | null {
   const value = new Date(`${iso}T00:00:00Z`);
   return !Number.isNaN(value.valueOf()) && value.toISOString().slice(0, 10) === iso ? iso : null;
 }
-const ownershipBoundary = /changed owner|took control|took over|has taken over|now managed by|left the club|abandoned|bought the club/i;
-const relinquished = /left the club|abandoned/i;
+const takeover = /changed owner|took control|took over|has taken over|now managed by|bought the club/i;
+// Club History never says an owner left; a bot cleanup demotion is dated proof that the club had
+// no owner by then (it only ever follows the departure: 0 of 36 before CHPP's date, 2026-11-18).
+const botCleanup = /demoted during bot cleanup/i;
+const ownershipBoundary = new RegExp(`${takeover.source}|left the club|abandoned|${botCleanup.source}`, 'i');
+const relinquished = new RegExp(`left the club|abandoned|${botCleanup.source}`, 'i');
+const dayGap = (from: string, to: string) => Math.round((Date.parse(`${to}T00:00:00Z`) - Date.parse(`${from}T00:00:00Z`)) / 86_400_000);
 
 /**
  * Pure extraction. Direct cup winner/manager links work even on partial histories. League and
  * tournament wins require complete pagination and a dated, linked ownership event before the win.
- * An intervening unlinked/deleted owner, relinquishment, or same-day ownership ambiguity blocks it.
+ * An intervening unlinked/deleted owner, relinquishment, bot cleanup, or same-day ownership
+ * ambiguity blocks it, and so does a CHPP departure (`current`) of the last owner before the win.
  */
 export function extractHistoricalWinnerEvidence(histories: readonly HistoricalClubHistory[]): {
   evidence: HistoricalWinnerEvidence[]; rejected: RejectedHistoricalEvent[];
@@ -158,6 +189,7 @@ export function extractHistoricalWinnerEvidence(histories: readonly HistoricalCl
       }
       let owner: { userId: number; userName: string } | null = null;
       let ownershipEvent: HistoricalEvent | undefined;
+      let lastOwner: HistoricalWinnerEvidence['lastOwner'];
       const directLeagueManager = leagueChampion ? manager(event) : null;
       // Like the league label above, a cup won "under the leadership of a now retired manager"
       // supplies a win, not an identity: with no manager link it is resolved only through the same
@@ -176,18 +208,36 @@ export function extractHistoricalWinnerEvidence(histories: readonly HistoricalCl
         ownershipEvent = prior[0];
         if (!ownershipEvent) { reject('No ownership event predates the win'); continue; }
         const latest = prior.filter((boundary) => boundary.date === ownershipEvent!.date);
+        if (latest.some((boundary) => botCleanup.test(boundary.text))) {
+          reject('The club had no owner (bot cleanup) between the last takeover and the win'); continue;
+        }
         const owners = latest.map((boundary) => relinquished.test(boundary.text) ? null : manager(boundary));
         if (owners.some((value) => value === null) || new Set(owners.map((value) => value?.userId)).size !== 1) {
           reject('Most recent ownership boundary is unlinked, relinquished, or ambiguous'); continue;
         }
         owner = owners[0]!;
+        // Without a later takeover, only CHPP can show whether the last owner was still there.
+        if (!boundaries.some((boundary) => boundary.date > event.date && takeover.test(boundary.text))) {
+          const state = history.current;
+          if (!state) lastOwner = 'unchecked';
+          else if (state.ownerUserId > 0) {
+            if (state.ownerUserId !== owner.userId) { reject('CHPP names a different current owner than the last recorded takeover'); continue; }
+            lastOwner = 'current-owner';
+          } else if (!state.foundedDate || Math.abs(dayGap(ownershipEvent.date, state.foundedDate)) <= 1) {
+            lastOwner = 'departure-undated';
+          } else if (state.foundedDate < ownershipEvent.date) {
+            reject('CHPP FoundedDate predates the last recorded takeover'); continue;
+          } else if (state.foundedDate <= event.date) {
+            reject(`The last owner left on ${state.foundedDate}, before or on the win date (CHPP FoundedDate of the ownerless club)`); continue;
+          } else lastOwner = 'left-after-win';
+        }
       }
       const historicalRename = ownershipEvent?.text.match(/\band renamed it (.+?)\.$/i)?.[1];
       evidence.push({
         kind, competitionId: ids[0]!, season, teamId: history.teamId,
         leagueId: positive(history.leagueId), club: clean(cupClub ?? leagueChampion?.[1] ?? historicalRename ?? history.club),
         ...owner, basis: direct ? 'direct-manager' : 'ownership-tenure',
-        sourceURL: event.sourceURL, event, ...(ownershipEvent ? { ownershipEvent } : {}),
+        sourceURL: event.sourceURL, event, ...(ownershipEvent ? { ownershipEvent } : {}), ...(lastOwner ? { lastOwner } : {}),
       });
     }
   }
@@ -215,7 +265,7 @@ export interface HistoricalWinnerSnapshot {
 export interface HistoricalWinnerPlanItem {
   key: string;
   table: 'cupChampion' | 'leagueChampion';
-  status: 'ready' | 'already-attributed' | 'conflict' | 'unmatched' | 'applied' | 'stale';
+  status: 'ready' | 'already-attributed' | 'conflict' | 'unmatched' | 'unverified' | 'applied' | 'stale';
   reason?: string;
   evidence: HistoricalWinnerEvidence[];
   selected?: HistoricalWinnerEvidence;
@@ -259,7 +309,7 @@ export function planHistoricalWinners(histories: readonly HistoricalClubHistory[
       plan.status = 'conflict';
       plan.reason = 'Equally strong history evidence disagrees on the winner identity';
     } else {
-      const selected = best[0]!;
+      const selected = best.find((item) => item.lastOwner !== 'unchecked') ?? best[0]!;
       const row = plan.stored!;
       plan.selected = selected;
       if (positive(row.championUserId)) {
@@ -269,8 +319,11 @@ export function planHistoricalWinners(histories: readonly HistoricalClubHistory[
       } else if (row.championUserId !== null && row.championUserId !== 0) {
         plan.status = 'conflict';
         plan.reason = 'Stored attribution is neither a positive manager ID nor a supported missing-value sentinel';
+      } else if (selected.lastOwner === 'unchecked') {
+        plan.status = 'unverified';
+        plan.reason = "Credits the club's last recorded owner; needs the CHPP departure check (annotate:club-histories)";
       } else {
-        plan.changes = { championUserId: selected.userId, championUserName: selected.userName, championTeamId: selected.teamId };
+        plan.changes ={ championUserId: selected.userId, championUserName: selected.userName, championTeamId: selected.teamId };
         if (plan.table === 'cupChampion' && row.leagueId === 0 && selected.leagueId && !positive(row.championLeagueId)) {
           plan.changes.championLeagueId = selected.leagueId;
         }
@@ -313,7 +366,7 @@ export async function applyHistoricalWinners(histories: readonly HistoricalClubH
     plan.status = updated ? 'applied' : 'stale';
     if (!updated) plan.reason = 'Winner changed after planning; no write applied';
   }
-  const counts = { ready: 0, applied: 0, conflicts: 0, unmatched: 0, alreadyAttributed: 0, stale: 0, rejected: report.rejected.length };
+  const counts = { ready: 0, applied: 0, conflicts: 0, unmatched: 0, unverified: 0, alreadyAttributed: 0, stale: 0, rejected: report.rejected.length };
   for (const plan of report.plans) {
     if (plan.status === 'conflict') counts.conflicts++;
     else if (plan.status === 'already-attributed') counts.alreadyAttributed++;
