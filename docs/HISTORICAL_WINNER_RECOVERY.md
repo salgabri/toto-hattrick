@@ -192,14 +192,19 @@ checkout. Start only when it is clean `main` = `origin/main` and the update lock
 3. Write a state file without the clubs this round identified. Copy
    `.update-work/attribution-backfill-state.json` and drop the `filled[].championTeamId` entries from
    the materialize report. Then run `update:attribute --database …<D>.db --backfill --state <that file>
-   --max-teams <clubs> --apply --report ../.update-work/cup-teamids-<D>-attribution.json`.
+   --max-teams <clubs> --apply --report ../.update-work/cup-teamids-<D>-attribution.json`. Merge the
+   round's state file back into `attribution-backfill-state.json`, keeping the newer `checkedAt` per
+   club. That way the next round only checks its own new clubs.
 4. `update:import`, then `node scripts/run-local-update.mjs --no-fetch`, then
    `node scripts/diff-release.mjs <run dir>`. Publish only with nothing under `blocking`.
    Then check the live `manifest.json`.
 
 Reading Club History pages for clubs that stay `unresolved` needs the owner's go-ahead. The
 annotated 2026-11-18 capture (`.scrape/club-history-2026-11-18/`) covers the 768 clubs that were
-ownerless then; the newly identified clubs are mostly not among them.
+ownerless then, and none of the clubs identified so far is among them. The first round
+(2026-11-18/19) checked 358 clubs, most of them from main cups. Its 518 titles split into 211 from
+deleted clubs, which keep "—", and 307 from 242 clubs that are bots or ownerless now. No current
+owner qualified, which matches the July 2026 finding that these clubs had no human owner.
 
 Fetched cup ID, local season, and winner name must match the stored winner before any update.
 Names that changed are conservatively reported for review. Phase 2 reuses existing `Match` facts;
