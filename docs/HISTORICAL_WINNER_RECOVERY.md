@@ -7,9 +7,14 @@ the win. It makes no API calls and does not bake or publish data.
 From the repository root:
 
 ```sh
-npm run recover:historical-winners -w server -- --input scrape/histories.json --report scrape/recovery-dry-run.json
-npm run recover:historical-winners -w server -- --input scrape/histories.json --report scrape/recovery-applied.json --apply
+npm run annotate:club-histories -w server -- --input scrape/histories.json --output scrape/histories.annotated.json
+npm run recover:historical-winners -w server -- --input scrape/histories.annotated.json --report scrape/recovery-dry-run.json
+npm run recover:historical-winners -w server -- --input scrape/histories.annotated.json --report scrape/recovery-applied.json --apply
 ```
+
+`annotate:club-histories` is the only step that calls Hattrick: one pinned `teamdetails` read per
+club whose tenure credit names its last recorded owner (see the rules below). It writes a new file;
+the capture itself is never modified.
 
 Paths resolve from `server/`. Omit `--report` to create a timestamped report beside the input.
 Reports never overwrite existing files. Review `plans`, `rejected`, and `counts` in the dry-run
@@ -52,6 +57,10 @@ only after capturing **all** history pages, numbered consecutively from 1. Keep 
 pagination uses POST, so the report records the page number separately. `leagueId` is the winning
 club's country/league, never the manager's nationality; omit it if unknown.
 
+The annotate step adds `"current": { "checkedAt", "ownerUserId", "foundedDate" }` to the clubs it
+reads: the CHPP owner (0 for none or a deleted club) and `Team/FoundedDate` as `YYYY-MM-DD` (null
+for a deleted club). Captures read in the browser use `server/scrape/club-history-capture.js`.
+
 ## Attribution rules
 
 - Direct cup-victory events name the winner through a manager link; these work on partial histories.
@@ -73,11 +82,27 @@ club's country/league, never the manager's nationality; omit it if unknown.
   links manager 4178181's previous HRO tenure and Première Ligue Haïtienne season-19 trophy to
   HRO's dated club-history title. Its importer checks both pages' linked team, country, series,
   season, and the win date against the tenure; it does not claim the entire club history was captured.
-- First-place league and registered tournament events use the most recent earlier ownership event
-  only with a complete history. Missing/deleted owner links, relinquishments, missing dates, and
-  ownership changes on the same day as the win block inference.
-  The observed league message mentioning "a now retired manager" can also be matched through a
-  prior linked ownership event; that generic message alone never supplies a manager identity.
+- First-place league and registered tournament events, and league titles or cups won "under the
+  leadership of a now retired manager", use the most recent earlier ownership event only with a
+  complete history. Missing/deleted owner links, relinquishments, missing dates, and ownership
+  changes on the same day as the win block inference.
+- That wording names nobody and says nothing reliable about the account: it covers wins after the
+  owner had left (COLLA AFRICA, Guinea Ruby Challenger Cup season 7, won 19 days after deivit left)
+  and wins by managers who are still active (ercanto, HI-Dandy de Tazmania, HI league season 7,
+  named directly by rows 17 days before and 95 days after). Never credit anyone from it alone, and
+  don't treat a manager's current activity as evidence either way.
+- Club History never records an owner leaving; it only shows the next takeover. Two dated proofs
+  bound a tenure instead:
+  - "The team was demoted during bot cleanup" means the club had no owner by then. A cleanup
+    after the last takeover blocks every later win until the next takeover.
+  - When no takeover follows the win, the credit names the club's last recorded owner, and only
+    CHPP shows whether they were still there. For an ownerless club, a `FoundedDate` later than the
+    last takeover is the day that owner left. On 2026-11-18 this held for all 391 such clubs: no
+    anniversary or named-manager row of the last owner, and no bot cleanup, contradicts it. A
+    departure on or before the win blocks the credit. A different current owner, or a
+    `FoundedDate` before the takeover, means the capture is stale and also blocks it.
+  Without `current`, such a credit is planned as `unverified` and never written; the weekly
+  replay therefore leaves them alone until an annotated capture is recovered.
 - Competition ID, season, and the stored winner's team ID must agree. If the stored team ID is
   missing, the historical club name must match exactly after normalizing whitespace.
 - Only `championUserId:null` or `0` is filled. Every disagreement with an existing positive manager

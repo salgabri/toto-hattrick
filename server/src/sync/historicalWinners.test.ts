@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test, type TestContext } from 'node:test';
-import { applyHistoricalWinners, extractHistoricalWinnerEvidence, planHistoricalWinners, type HistoricalClubHistory, type HistoricalRow, type HistoricalWinnerSnapshot } from './historicalWinners.js';
+import { applyHistoricalWinners, extractHistoricalWinnerEvidence, planHistoricalWinners, type HistoricalClubHistory, type HistoricalClubState, type HistoricalRow, type HistoricalWinnerSnapshot } from './historicalWinners.js';
 
 const user = { text: 'SebasM', href: '/en/Club/Manager/?userId=11687578' };
 const ownership: HistoricalRow = {
@@ -22,6 +22,8 @@ const leagueWin: HistoricalRow = {
 const history = (rows = [cupWin, leagueWin, tournamentWin, ownership], complete = true): HistoricalClubHistory => ({
   teamId: 1726060, leagueId: 4, club: 'Re Picante', complete,
   pages: [{ page: 1, sourceURL: 'https://www88.hattrick.org/en/Club/History/?teamId=1726060', rows }],
+  // CHPP teamdetails read with the capture: SebasM still owns the club.
+  current: { checkedAt: '2026-11-18T12:00:00.000Z', ownerUserId: 11687578, foundedDate: '2019-07-13' },
 });
 function snapshot(): HistoricalWinnerSnapshot {
   const common = { leagueId: 4, season: 88, championTeamId: null, championTeamName: 'Re Picante', championUserId: null, championUserName: null };
@@ -305,6 +307,83 @@ test('a cup won under "a now retired manager" is resolved only through complete 
   const abandoned = { text: '01.03.2006 Ad_the_Lad left the club.', links: [{ text: 'Ad_the_Lad', href: '/en/Club/Manager/?userId=48414' }] };
   assert.match(extractHistoricalWinnerEvidence([durham([retiredCup, abandoned, takeover])]).rejected[0]!.reason, /unlinked, relinquished, or ambiguous/);
   assert.match(extractHistoricalWinnerEvidence([durham([retiredCup])]).rejected[0]!.reason, /No ownership event predates the win/);
+});
+
+test('a bot cleanup after the last takeover blocks tenure for later wins only', () => {
+  // Club History never says an owner left; "demoted during bot cleanup" proves the club had none.
+  const cleanup = (date: string): HistoricalRow => ({ text: `${date} The team was demoted during bot cleanup`, links: [] });
+  const blocked = extractHistoricalWinnerEvidence([history([tournamentWin, cleanup('01-06-2023'), ownership])]);
+  assert.equal(blocked.evidence.length, 0);
+  assert.match(blocked.rejected[0]!.reason, /no owner \(bot cleanup\)/);
+  assert.match(extractHistoricalWinnerEvidence([history([tournamentWin, cleanup('28-01-2024'), ownership])]).rejected[0]!.reason, /same date/);
+  const later = extractHistoricalWinnerEvidence([{ ...history([tournamentWin, cleanup('01-06-2024'), ownership]), current: undefined }]);
+  assert.deepEqual(later.evidence.map((item) => [item.userId, item.lastOwner]), [[11687578, 'unchecked']]);
+});
+
+test('real COLLA AFRICA rows: the last owner left before the final, so that cup names nobody', () => {
+  // Team 2134781, captured 2026-11-18. CHPP teamdetails the same day: no owner, FoundedDate 2026-05-08.
+  // deivit (still active elsewhere) is named for season 5; season 7 was won 19 days after the club lost him.
+  const deivit = { text: 'deivit', href: '/en/Club/Manager/?userId=9356593' };
+  const club = { text: 'COLLA AFRICA', href: '/en/Club/?TeamID=2134781' };
+  const cup = { text: 'Guinea Ruby Challenger Cup', href: '/en/World/Cup/Cup.aspx?CupID=1560' };
+  const rows: HistoricalRow[] = [
+    { text: '27.05.2026 COLLA AFRICA, under the leadership of a now retired manager, won Guinea Ruby Challenger Cup season 7.',
+      links: [club, cup, { text: '7', href: '/en/Club/Matches/Archive.aspx?season=94&TeamID=2134781&actiontype=viewcup' }] },
+    { text: '15.10.2025 Season 5 was memorable for deivit, who led COLLA AFRICA to the title in Guinea Ruby Challenger Cup.',
+      links: [{ text: '5', href: '/en/Club/Matches/Archive.aspx?season=92&TeamID=2134781&actiontype=viewcup' }, deivit, club, cup] },
+    { text: '15.05.2024 The club changed owner as deivit took control and renamed it COLLA AFRICA.', links: [deivit] },
+  ];
+  const colla = (current?: HistoricalClubState): HistoricalClubHistory => ({ teamId: 2134781, leagueId: 171, club: 'COLLA AFRICA', complete: true,
+    pages: [{ page: 1, sourceURL: 'https://www.hattrick.org/en/Club/History/?teamId=2134781', rows }], ...(current ? { current } : {}) });
+  assert.deepEqual(extractHistoricalWinnerEvidence([colla()]).evidence.map((item) => [item.season, item.userId, item.basis, item.lastOwner]),
+    [[7, 9356593, 'ownership-tenure', 'unchecked'], [5, 9356593, 'direct-manager', undefined]]);
+  const checked = extractHistoricalWinnerEvidence([colla({ checkedAt: '2026-11-18T12:00:00.000Z', ownerUserId: 0, foundedDate: '2026-05-08' })]);
+  assert.deepEqual(checked.evidence.map((item) => [item.season, item.basis]), [[5, 'direct-manager']]);
+  assert.match(checked.rejected[0]!.reason, /last owner left on 2026-05-08, before or on the win date/);
+});
+
+test('a tenure credit to the last recorded owner is written only after the CHPP departure check', () => {
+  const takeover: HistoricalRow = { text: '01.01.2002 The club changed owner as Ad_the_Lad took control and renamed it Durham City FC.',
+    links: [{ text: 'Ad_the_Lad', href: '/en/Club/Manager/?userId=48414' }] };
+  const win: HistoricalRow = { text: '02.08.2006 Durham City FC, under the leadership of a now retired manager, won English Cup season 29.',
+    links: [{ text: 'Durham City FC', href: '/en/Club/?TeamID=54226' }, { text: 'English Cup', href: '/en/World/Cup/Cup.aspx?CupID=3' }] };
+  const durham = (current?: Omit<HistoricalClubState, 'checkedAt'>, rows = [win, takeover]): HistoricalClubHistory => ({
+    teamId: 54226, leagueId: 2, club: 'Durham City FC', complete: true, pages: [{ page: 1, rows }],
+    ...(current ? { current: { checkedAt: '2026-11-18T12:00:00.000Z', ...current } } : {}) });
+  const stored = (): HistoricalWinnerSnapshot => ({ cups: [{ cupId: 3, leagueId: 2 }], tournamentIds: [], leagueChampions: [],
+    cupChampions: [{ cupId: 3, season: 29, leagueId: 2, championTeamId: null, championTeamName: 'Durham City FC', championUserId: null, championUserName: null }] });
+  const plan = (input: HistoricalClubHistory) => planHistoricalWinners([input], stored()).plans[0];
+
+  const held = plan(durham())!;
+  assert.equal(held.status, 'unverified');
+  assert.equal(held.changes, undefined);
+  for (const [state, lastOwner] of [
+    [{ ownerUserId: 0, foundedDate: '2012-05-01' }, 'left-after-win'],
+    [{ ownerUserId: 0, foundedDate: '2002-01-02' }, 'departure-undated'],
+    [{ ownerUserId: 0, foundedDate: null }, 'departure-undated'],
+    [{ ownerUserId: 48414, foundedDate: '2002-01-01' }, 'current-owner'],
+  ] as const) {
+    const ready = plan(durham(state))!;
+    assert.equal(ready.status, 'ready', lastOwner);
+    assert.equal(ready.selected?.lastOwner, lastOwner);
+    assert.equal(ready.changes?.championUserId, 48414);
+  }
+  for (const [state, reason] of [
+    [{ ownerUserId: 0, foundedDate: '2006-03-01' }, /left on 2006-03-01, before or on the win date/],
+    [{ ownerUserId: 0, foundedDate: '2006-08-02' }, /left on 2006-08-02, before or on the win date/],
+    [{ ownerUserId: 0, foundedDate: '2001-06-01' }, /predates the last recorded takeover/],
+    [{ ownerUserId: 999, foundedDate: '2020-01-01' }, /different current owner/],
+  ] as const) {
+    const result = extractHistoricalWinnerEvidence([durham(state)]);
+    assert.equal(result.evidence.length, 0);
+    assert.match(result.rejected[0]!.reason, reason);
+  }
+  // A later takeover bounds the tenure from Club History alone: no CHPP state is needed.
+  const later: HistoricalRow = { text: '29.10.2023 The club changed owner as DubanSlayer took control and renamed it FC Wojkow.',
+    links: [{ text: 'DubanSlayer', href: '/en/Club/Manager/?userId=14024522' }] };
+  const bounded = plan(durham(undefined, [later, win, takeover]))!;
+  assert.equal(bounded.status, 'ready');
+  assert.equal(bounded.selected?.lastOwner, undefined);
 });
 
 test('plans both null and sentinel winners, recovering team IDs and international club country', () => {
