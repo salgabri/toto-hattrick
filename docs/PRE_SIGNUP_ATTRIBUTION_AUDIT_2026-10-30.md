@@ -273,6 +273,18 @@ for the rehearsal only.
    `npm run update:publish -- --no-fetch`. The runbook gives the exact commands.
 4. The next fetching run opens an attribution review item for each cleared title.
 
+### Approved so far
+
+- **2026-11-18: 35 high-confidence rows**
+  ([manifest](../server/src/data/reviewed-attribution-clearances-club-history-2026-11-18.json)).
+  - Why: the complete Club History captured that day independently names a different manager for
+    each of these titles. Each named manager's own account existed by the win.
+  - Approved by the user ("Yes, fix them").
+  - Release continuity only lets a cleared title publish without a manager. So the titles ship as
+    "—" first, then a second release fills them through `recover:historical-winners` (see
+    [HISTORICAL_WINNER_RECOVERY.md](HISTORICAL_WINNER_RECOVERY.md)).
+- The other 905 rows remain proposed, not reviewed.
+
 ## Reproduce
 
 From the repository root, against a restored copy of the accepted snapshot (never the live store
