@@ -43,5 +43,17 @@ test('annotation reads each needed club once and leaves the others untouched', a
   assert.deepEqual(histories[0]!.current, { checkedAt: '2026-11-18T12:00:00.000Z', ownerUserId: 0, foundedDate: '2012-05-01' });
   assert.equal(histories[1], bounded);
   assert.equal(histories[2], direct);
-  assert.deepEqual(summary, { histories: 3, needed: 1, read: 1, ownerless: 1 });
+  assert.deepEqual(summary, { histories: 3, needed: 1, read: 1, ownerless: 1, failed: [] });
+});
+
+test('a club whose read fails keeps no state, so its last-owner credits stay unverified', async () => {
+  const stale = { ...lastOwner, current: { checkedAt: '2020-01-01T00:00:00.000Z', ownerUserId: 0, foundedDate: '2012-05-01' } };
+  const failed = await annotateClubHistories([stale], async () => null);
+  assert.deepEqual(failed.summary, { histories: 1, needed: 1, read: 0, ownerless: 0, failed: [1] });
+  assert.equal(failed.histories[0]!.current, undefined);
+  // A snapshot for a different club is a failure too, never state for this one.
+  const wrong = await annotateClubHistories([lastOwner], async () => ({ deleted: false, owner: null,
+    team: { teamId: 99, name: 'Other', leagueId: 2, isBot: true, foundedDate: '2012-05-01T10:00:00.000Z' } }));
+  assert.deepEqual(wrong.summary.failed, [1]);
+  await assert.rejects(annotateClubHistories([lastOwner], async () => { throw new Error('authentication'); }), /authentication/);
 });

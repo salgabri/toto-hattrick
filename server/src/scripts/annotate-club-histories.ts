@@ -1,7 +1,7 @@
 import { open, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { parseArgs } from 'node:util';
-import { configureChppRuntime } from '../chpp/client.js';
+import { ChppRequestError, configureChppRuntime, isChppBudgetError } from '../chpp/client.js';
 import { fetchTeamDetails } from '../chpp/endpoints.js';
 import type { HistoricalClubHistory } from '../sync/historicalWinners.js';
 import { ownerSnapshot } from '../update/attribution.js';
@@ -34,7 +34,13 @@ async function main(): Promise<void> {
   const runtime = configureChppRuntime({ maxCalls, pacingMs: 1000, maxRetries: 1 });
   try {
     const token = await authorizedToken();
-    const result = await annotateClubHistories(histories, async (teamId) => ownerSnapshot(await fetchTeamDetails(token, teamId), teamId));
+    // A failed club keeps no state (its credits stay unverified); credentials or budget stop the run.
+    const result = await annotateClubHistories(histories, async (teamId) => {
+      try { return ownerSnapshot(await fetchTeamDetails(token, teamId), teamId); } catch (error) {
+        if (isChppBudgetError(error) || (error instanceof ChppRequestError && ['authentication', 'forbidden', 'rate_limit'].includes(error.category))) throw error;
+        return null;
+      }
+    });
     await output.writeFile(`${JSON.stringify(result.histories)}\n`);
     console.log(JSON.stringify({ ...result.summary, calls: runtime.stats().calls, output: resolve(values.output) }));
   } finally {
