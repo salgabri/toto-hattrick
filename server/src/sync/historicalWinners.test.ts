@@ -285,6 +285,28 @@ test('actual abandoned-club league label is resolved only by a known prior linke
   assert.equal(missing.rejected.length, 1);
 });
 
+test('a cup won under "a now retired manager" is resolved only through complete linked ownership tenure', () => {
+  // Real Durham City FC (team 54226) history rows, captured 2026-11-18 (dotted account date format).
+  const retiredCup: HistoricalRow = {
+    text: '02.08.2006 Durham City FC, under the leadership of a now retired manager, won English Cup season 29.',
+    links: [{ text: 'Durham City FC', href: '/en/Club/?TeamID=54226' }, { text: 'English Cup', href: '/en/World/Cup/Cup.aspx?CupID=3' }],
+  };
+  const takeover: HistoricalRow = {
+    text: '01.01.2002 The club changed owner as Ad_the_Lad took control and renamed it Durham City FC.',
+    links: [{ text: 'Ad_the_Lad', href: '/en/Club/Manager/?userId=48414' }],
+  };
+  const durham = (rows: HistoricalRow[], complete = true): HistoricalClubHistory => ({ teamId: 54226, leagueId: 2, club: 'Durham City FC', complete,
+    pages: [{ page: 1, sourceURL: 'https://www.hattrick.org/en/Club/History/?teamId=54226', rows }] });
+  const resolved = extractHistoricalWinnerEvidence([durham([retiredCup, takeover])]);
+  assert.deepEqual(resolved.evidence.map(e => [e.kind, e.competitionId, e.season, e.userId, e.basis]), [['cup', 3, 29, 48414, 'ownership-tenure']]);
+  assert.equal(resolved.rejected.length, 0);
+  // A partial history, a later relinquishment before the win, or no ownership event never names anyone.
+  assert.match(extractHistoricalWinnerEvidence([durham([retiredCup, takeover], false)]).rejected[0]!.reason, /complete, dated history/);
+  const abandoned = { text: '01.03.2006 Ad_the_Lad left the club.', links: [{ text: 'Ad_the_Lad', href: '/en/Club/Manager/?userId=48414' }] };
+  assert.match(extractHistoricalWinnerEvidence([durham([retiredCup, abandoned, takeover])]).rejected[0]!.reason, /unlinked, relinquished, or ambiguous/);
+  assert.match(extractHistoricalWinnerEvidence([durham([retiredCup])]).rejected[0]!.reason, /No ownership event predates the win/);
+});
+
 test('plans both null and sentinel winners, recovering team IDs and international club country', () => {
   const result = planHistoricalWinners([history()], snapshot());
   assert.equal(result.plans.length, 3);
