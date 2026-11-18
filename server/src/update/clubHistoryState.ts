@@ -18,20 +18,28 @@ export function clubState(snapshot: OwnerSnapshot, teamId: number, checkedAt: st
   return { checkedAt, ownerUserId: snapshot.owner?.userId ?? 0, foundedDate: snapshot.team.foundedDate?.slice(0, 10) ?? null };
 }
 
-export interface AnnotationSummary { histories: number; needed: number; read: number; ownerless: number }
+export interface AnnotationSummary { histories: number; needed: number; read: number; ownerless: number; failed: number[] }
 
-/** Returns new history records; `read(teamId)` is called once per club that needs CHPP state. */
+/**
+ * Returns new history records; `read(teamId)` is called once per club that needs CHPP state. A
+ * club whose read returns null (a per-club failure) keeps no state, so its credits stay
+ * unverified; a fatal error (authentication, budget) should be thrown by `read` instead.
+ */
 export async function annotateClubHistories(histories: readonly HistoricalClubHistory[],
-  read: (teamId: number) => Promise<OwnerSnapshot>, now: () => Date = () => new Date()) {
+  read: (teamId: number) => Promise<OwnerSnapshot | null>, now: () => Date = () => new Date()) {
   const needed = new Set(clubsNeedingState(histories));
   const annotated: HistoricalClubHistory[] = [];
-  const summary: AnnotationSummary = { histories: histories.length, needed: needed.size, read: 0, ownerless: 0 };
+  const summary: AnnotationSummary = { histories: histories.length, needed: needed.size, read: 0, ownerless: 0, failed: [] };
   for (const history of histories) {
     if (!needed.has(history.teamId)) { annotated.push(history); continue; }
-    const state = clubState(await read(history.teamId), history.teamId, now().toISOString());
+    const { current: _previous, ...bare } = history;
+    const snapshot = await read(history.teamId);
+    let state: HistoricalClubState | null = null;
+    try { state = snapshot ? clubState(snapshot, history.teamId, now().toISOString()) : null; } catch { state = null; }
+    if (!state) { summary.failed.push(history.teamId); annotated.push(bare); continue; }
     summary.read++;
     if (state.ownerUserId === 0) summary.ownerless++;
-    annotated.push({ ...history, current: state });
+    annotated.push({ ...bare, current: state });
   }
   return { histories: annotated, summary };
 }
