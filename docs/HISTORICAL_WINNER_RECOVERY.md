@@ -182,6 +182,25 @@ would otherwise wait. Clubs that are bots or ownerless now need Club History. If
 makes the checkout stale, check out again and replay with `--carry-from <old checkout>`, then
 continue. Nothing is fetched twice.
 
+**Daily catch-up** (one round per day until `nameOnlyRemaining` reaches 0). Work from the main
+checkout. Start only when it is clean `main` = `origin/main` and the update lock shows
+`"expiresAt":0`. `<D>` is today's date and `<P>` is the previous round's checkout.
+
+1. `update:checkout --database ../.update-work/cup-teamids-<D>.db`. If `<P>` was never imported,
+   replay it first: `update:materialize --database …<D>.db --carry-from …<P>.db --apply --report …`.
+2. `update:materialize --database …<D>.db --apply --max-calls 2000 --report ../.update-work/cup-teamids-<D>-materialize.json`.
+3. Write a state file without the clubs this round identified. Copy
+   `.update-work/attribution-backfill-state.json` and drop the `filled[].championTeamId` entries from
+   the materialize report. Then run `update:attribute --database …<D>.db --backfill --state <that file>
+   --max-teams <clubs> --apply --report ../.update-work/cup-teamids-<D>-attribution.json`.
+4. `update:import`, then `node scripts/run-local-update.mjs --no-fetch`, then
+   `node scripts/diff-release.mjs <run dir>`. Publish only with nothing under `blocking`.
+   Then check the live `manifest.json`.
+
+Reading Club History pages for clubs that stay `unresolved` needs the owner's go-ahead. The
+annotated 2026-11-18 capture (`.scrape/club-history-2026-11-18/`) covers the 768 clubs that were
+ownerless then; the newly identified clubs are mostly not among them.
+
 Fetched cup ID, local season, and winner name must match the stored winner before any update.
 Names that changed are conservatively reported for review. Phase 2 reuses existing `Match` facts;
 incomplete/conflicting stored matches or existing detail markers are reported without fetching the
