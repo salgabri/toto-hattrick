@@ -38,6 +38,9 @@ export interface BackfillCupsOpts {
   onlyMain?: boolean;
   /** Exact intersection with the other filters. An empty list deliberately selects no finals. */
   onlyFinals?: Array<{ cupId: number; season: number }>;
+  /** Final match IDs whose matchdetails the update store already retains. They are never fetched
+   * again; their team identity has to come from that retained evidence instead. */
+  retainedMatchIds?: ReadonlySet<number>;
 }
 
 export interface BackfillCupsResult {
@@ -182,6 +185,7 @@ export async function backfillCups(token: TokenPair, opts: BackfillCupsOpts = {}
         if (!md) {
           const storedDetail = await prisma.matchDetail.findUnique({ where: { matchId: finalMatchId }, select: { matchId: true } });
           if (storedDetail) { issue('Match details were already stored but usable identity/result facts are missing; no re-fetch'); continue; }
+          if (opts.retainedMatchIds?.has(finalMatchId)) { issue('Final match details are already retained in the update store; no re-fetch'); continue; }
           if (stop()) break outer;
           md = await call(async () => parseMatchDetails(await fetchMatchDetails(token, finalMatchId))) ?? null;
         }

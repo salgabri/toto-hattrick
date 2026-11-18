@@ -55,6 +55,17 @@ test('facts-only backfill validates the sampled final before filling match and t
   assert.ok(writes.every((write) => !('championUserId' in write.data)));
 });
 
+test('a final whose matchdetails the update store retains is materialized but never fetched again', async (t) => {
+  const { writes, calls } = setup(t);
+  const result = await backfillCups(token, { pacingMs: 0, retainedMatchIds: new Set([747054745]) });
+  assert.deepEqual(calls, ['cupmatches']);
+  assert.equal(result.materialized, 1);
+  assert.equal(result.teamIdsResolved, 0);
+  assert.equal(writes.length, 1);
+  assert.equal(writes[0]!.data.finalMatchId, 747054745);
+  assert.match(result.issues[0]!.reason, /retained in the update store; no re-fetch/);
+});
+
 test('recent main/exact-final filters use each cup local season and intersect requested keys', async (t) => {
   const { calls } = setup(t, []);
   mockMethod(t, prisma.cup, 'findMany', async (args: Prisma.CupFindManyArgs) => {

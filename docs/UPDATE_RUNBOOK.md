@@ -29,6 +29,16 @@ older titles. An estimated decisive date only counts from its earliest bound: le
 global season 15. A later title of the club credited to someone else blocks the attribution.
 Checked clubs are recorded privately and skipped for 90 days.
 
+Neither attribution path can reach a cup winner that the archive knows only by its club name
+(`finalMatchId` 0, no team id). `update:materialize -- --database <checkout> [--only-finals <json>]
+[--apply --max-calls <n> --report <new.json>]` gives those finals their facts first: CHPP
+`cupmatches` for the final, then `matchdetails` for the winner's team id, each checked against the
+stored winner name. It names no manager. It is a dry run without `--apply`, leaves a cup season the
+updater has already started to the updater, and never fetches a final whose matchdetails are
+retained. `--carry-from <older checkout>` replays finals an older checkout materialized into a
+fresh one without any CHPP call, for when another import made the older checkout stale. See
+[HISTORICAL_WINNER_RECOVERY.md](HISTORICAL_WINNER_RECOVERY.md#missing-finalteam-facts).
+
 A 2026-11-18 run found the older backlog is not reachable this way. A random sample of 40 clubs
 (72 empty titles, out of 1,402 clubs with a team id) gave 0 attributions:
 

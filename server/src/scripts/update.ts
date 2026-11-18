@@ -16,11 +16,14 @@ try {
     candidate: { type: 'string' }, previous: { type: 'string' }, 'timeout-ms': { type: 'string' },
     apply: { type: 'boolean', default: false }, report: { type: 'string' }, tenure: { type: 'string' }, capture: { type: 'string' },
     backfill: { type: 'boolean', default: false }, 'max-teams': { type: 'string' }, state: { type: 'string' },
+    'max-calls': { type: 'string' }, 'only-finals': { type: 'string' }, 'carry-from': { type: 'string' },
   } });
   if ((values.backfill || values['max-teams'] !== undefined || values.state !== undefined) && positionals[0] !== 'attribute')
     throw new Error('--backfill, --max-teams and --state are only supported by update attribute');
-  if (positionals.length !== 1 || (values.publish && values.draft)) throw new Error('Usage: update.ts plan|bootstrap|run|publish|export-git|validate-git|confirm-git|checkout|acknowledge|clear|attribute|elections|import [options]');
-  if ((values.apply || values.report !== undefined) && !['clear', 'attribute', 'elections'].includes(positionals[0]!)) throw new Error('--apply and --report are only supported by update clear, attribute and elections');
+  if ((values['max-calls'] !== undefined || values['only-finals'] !== undefined || values['carry-from'] !== undefined) && positionals[0] !== 'materialize')
+    throw new Error('--max-calls, --only-finals and --carry-from are only supported by update materialize');
+  if (positionals.length !== 1 || (values.publish && values.draft)) throw new Error('Usage: update.ts plan|bootstrap|run|publish|export-git|validate-git|confirm-git|checkout|acknowledge|clear|attribute|materialize|elections|import [options]');
+  if ((values.apply || values.report !== undefined) && !['clear', 'attribute', 'materialize', 'elections'].includes(positionals[0]!)) throw new Error('--apply and --report are only supported by update clear, attribute, materialize and elections');
   if (values.tenure !== undefined && positionals[0] !== 'attribute') throw new Error('--tenure is only supported by update attribute');
   if (values.capture !== undefined && positionals[0] !== 'elections') throw new Error('--capture is only supported by update elections');
   if (values.history !== undefined && !values.history.trim()) throw new Error('--history requires a nonempty file path');
@@ -85,6 +88,23 @@ try {
       const summary = await attributeCheckout({ databasePath: resolve(values.database), token: await authorizedToken(), store: configuredStore(),
         apply: values.apply, reportPath: values.report ? resolve(values.report) : undefined, tenurePath: values.tenure ? resolve(values.tenure) : undefined,
         backfill: values.backfill, maxTeams, statePath: values.state ? resolve(values.state) : undefined });
+      console.log(JSON.stringify(summary, null, 2));
+      break;
+    }
+    case 'materialize': {
+      if (!values.database) throw new Error('materialize requires --database (a review checkout); add --apply --max-calls <n> --report <new.json> to fetch, --only-finals <json> for exact finals, or --carry-from <older checkout> to replay finals without CHPP calls');
+      const { carryMaterializedFinals, materializeCheckoutCupFinals } = await import('../update/cupMaterialization.js');
+      const reportPath = values.report ? resolve(values.report) : undefined;
+      if (values['carry-from'] !== undefined) {
+        if (values['max-calls'] !== undefined || values['only-finals'] !== undefined) throw new Error('--carry-from makes no CHPP calls; it takes no --max-calls or --only-finals');
+        const summary = await carryMaterializedFinals({ databasePath: resolve(values.database), fromPath: resolve(values['carry-from']), apply: values.apply, reportPath });
+        console.log(JSON.stringify(summary, null, 2));
+        if (summary.conflicts.length) process.exitCode = 2;
+        break;
+      }
+      const maxCalls = values['max-calls'] === undefined ? undefined : Number(values['max-calls']);
+      const summary = await materializeCheckoutCupFinals({ databasePath: resolve(values.database), apply: values.apply, maxCalls, reportPath,
+        onlyFinalsPath: values['only-finals'] ? resolve(values['only-finals']) : undefined, token: values.apply ? await authorizedToken() : undefined });
       console.log(JSON.stringify(summary, null, 2));
       break;
     }

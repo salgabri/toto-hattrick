@@ -159,6 +159,29 @@ cup's current season plus six predecessors. Unknown current seasons are skipped.
 performs CHPP calls and writes facts only, with at most 100 calls and no owner attribution or bake.
 OAuth stash location comes from validated `OAUTH_ACCESS_STASH` (default `.oauth-access.json`).
 
+For **every** domestic cup winner the archive knows only by its club name (finalMatchId 0, no
+team id, no manager), use the review-checkout command instead. Rebuilding the archive from the
+published bundles in August 2026 dropped the match and team ids that the July materialization had
+found, so about 6,300 such finals (seasons 1–92, main and secondary cups) wait for this step. A
+40-call trial on 2026-11-18 materialized 20 of 20 sampled finals across seasons 4–91.
+
+```sh
+npm run update:checkout -w server -- --database ../.update-work/<name>.db
+npm run update:materialize -w server -- --database ../.update-work/<name>.db
+npm run update:materialize -w server -- --database ../.update-work/<name>.db --apply --max-calls 1000 --report ../.update-work/<name>-materialize.json
+npm run update:attribute -w server -- --database ../.update-work/<name>.db --backfill --state <fresh-state.json> --max-teams <n> --apply --report ../.update-work/<name>-attribution.json
+```
+
+It spends two calls per final (`cupmatches`, then `matchdetails`), commits final by final and
+stops at `--max-calls` (at most 2,000 per run). Spread the backlog over several days. The plan
+leaves a cup season with retained `cupmatches` evidence to the updater's own result queue, and a
+final whose matchdetails are retained is never fetched again. A finished final then needs a
+manager from `update:attribute --backfill`. Give that run a state file without the newly
+identified clubs: a club checked in the last 90 days is skipped, so its newly identified title
+would otherwise wait. Clubs that are bots or ownerless now need Club History. If another import
+makes the checkout stale, check out again and replay with `--carry-from <old checkout>`, then
+continue. Nothing is fetched twice.
+
 Fetched cup ID, local season, and winner name must match the stored winner before any update.
 Names that changed are conservatively reported for review. Phase 2 reuses existing `Match` facts;
 incomplete/conflicting stored matches or existing detail markers are reported without fetching the
