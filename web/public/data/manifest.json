@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "f71f73867114c0e37973fa8e2e230f90ea818b5a8753ec8399766129dc9c655d",
-  "codeRevision": "5e41932802e715f4281fe7a422277465510f3b63",
-  "generatedAt": "2026-11-21T09:56:00.412Z",
-  "lastChangedAt": "2026-11-21T09:56:00.412Z",
+  "dataVersion": "880eee58851abc6ad69643c96fe3e73ee757db330681469de7f40abaecdd326d",
+  "codeRevision": "9687c6a7d93fa18e498ac3a680c4f16230a48ad3",
+  "generatedAt": "2026-11-23T17:54:21.235Z",
+  "lastChangedAt": "2026-11-23T17:54:21.235Z",
   "sources": [
     {
       "key": "cup:1",
       "label": "Svenska Cupen cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 19,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:10",
       "label": "Landspokalturneringen cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 36,
+      "pending": 26,
       "status": "pending"
     },
     {
@@ -30,7 +30,7 @@
       "key": "cup:1001",
       "label": "Hayastan Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -93,14 +93,14 @@
       "key": "cup:1010",
       "label": "Kup nada Crne Gore cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:1011",
       "label": "Bangladesh Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 22,
+      "pending": 21,
       "status": "pending"
     },
     {
@@ -114,7 +114,7 @@
       "key": "cup:1013",
       "label": "Oman Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 17,
       "status": "pending"
     },
     {
@@ -219,111 +219,111 @@
       "key": "cup:11",
       "label": "Suomen Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 10,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:124",
       "label": "Lietuvos taurė cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 28,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:125",
       "label": "Slovenský pohár cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 17,
-      "status": "failed"
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 2,
+      "status": "pending"
     },
     {
       "key": "cup:126",
       "label": "Кубок України cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 26,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 17,
       "status": "pending"
     },
     {
       "key": "cup:127",
       "label": "Kup Bosne i Hercegovine cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 13,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:128",
       "label": "Cúp Quốc Gia cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 24,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:129",
       "label": "Pakistan Cup cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 6,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:13",
       "label": "KNVB Beker cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 24,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:130",
       "label": "Copa Paraguay cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 23,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:131",
       "label": "Copa Ecuador cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 13,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:132",
       "label": "Copa Bolivia cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 21,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:133",
       "label": "Nigerian League Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:134",
       "label": "Løgmanssteypið cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:135",
       "label": "Coupe Du Trône cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 43,
       "status": "pending"
     },
     {
       "key": "cup:138",
       "label": "Saudi Arabia Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:139",
       "label": "Tunisiyah Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 24,
       "status": "pending"
     },
@@ -331,63 +331,63 @@
       "key": "cup:14",
       "label": "Oceanian Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 24,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:140",
       "label": "La Copa Tica cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:142",
       "label": "Kaas Al-Sheikh Zayed cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 20,
       "status": "pending"
     },
     {
       "key": "cup:143",
       "label": "Coupe de Luxembourg cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 10,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:1433",
       "label": "Hattrick International Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:13:44.060Z",
-      "pending": 5,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1434",
       "label": "Hattrick International Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
-      "pending": 5,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1435",
       "label": "Hattrick International Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
-      "pending": 6,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:1436",
       "label": "Hattrick International Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
-      "pending": 8,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1437",
       "label": "Hattrick International Consolation Cup cup results",
       "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
-      "pending": 5,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -407,7 +407,7 @@
     {
       "key": "cup:144",
       "label": "Persian Gulf Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 19,
       "status": "pending"
     },
@@ -624,7 +624,7 @@
     {
       "key": "cup:147",
       "label": "Copa Quisqueya cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 8,
       "status": "pending"
     },
@@ -701,7 +701,7 @@
     {
       "key": "cup:148",
       "label": "Cyprus Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 27,
       "status": "pending"
     },
@@ -849,7 +849,7 @@
       "key": "cup:15",
       "label": "Copa do Brasil cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 21,
+      "pending": 11,
       "status": "pending"
     },
     {
@@ -884,7 +884,7 @@
       "key": "cup:1504",
       "label": "Coppa Cesta cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 4,
       "status": "pending"
     },
     {
@@ -898,14 +898,14 @@
       "key": "cup:1506",
       "label": "Coppa Montale cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1507",
       "label": "Coppa Crescentini cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -925,7 +925,7 @@
     {
       "key": "cup:151",
       "label": "Кубак Беларусі cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 17,
       "status": "pending"
     },
@@ -1037,7 +1037,7 @@
     {
       "key": "cup:153",
       "label": "N. Ireland Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 11,
       "status": "pending"
     },
@@ -1114,7 +1114,7 @@
     {
       "key": "cup:154",
       "label": "Jamaica Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 7,
       "status": "pending"
     },
@@ -1191,7 +1191,7 @@
     {
       "key": "cup:155",
       "label": "Kenya Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 16,
       "status": "pending"
     },
@@ -1220,21 +1220,21 @@
       "key": "cup:1553",
       "label": "Homegrown Cup cup results",
       "lastSuccessfulCheck": "2026-10-05T19:10:38.650Z",
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1554",
       "label": "Homegrown Emerald Cup cup results",
       "lastSuccessfulCheck": "2026-10-12T16:43:19.994Z",
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1555",
       "label": "Homegrown Ruby Cup cup results",
       "lastSuccessfulCheck": "2026-10-12T16:43:19.994Z",
-      "pending": 3,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -1248,14 +1248,14 @@
       "key": "cup:1557",
       "label": "Homegrown Consolation Cup cup results",
       "lastSuccessfulCheck": "2026-10-12T16:43:19.994Z",
-      "pending": 3,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:1558",
       "label": "Guinea Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 3,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -1268,7 +1268,7 @@
     {
       "key": "cup:156",
       "label": "Copa del Istmo cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 17,
       "status": "pending"
     },
@@ -1276,14 +1276,14 @@
       "key": "cup:1560",
       "label": "Guinea Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:1561",
       "label": "Guinea Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
@@ -1345,7 +1345,7 @@
     {
       "key": "cup:157",
       "label": "Куп на Македонија cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 18,
       "status": "pending"
     },
@@ -1409,7 +1409,7 @@
       "key": "cup:1578",
       "label": "Copa Moussambani cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 3,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -1422,7 +1422,7 @@
     {
       "key": "cup:158",
       "label": "Kupa e Shqipërisë cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 8,
       "status": "pending"
     },
@@ -1499,7 +1499,7 @@
     {
       "key": "cup:159",
       "label": "Copa Nacional Catracha cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 7,
       "status": "pending"
     },
@@ -1528,21 +1528,21 @@
       "key": "cup:16",
       "label": "Canadian Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 18,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:160",
       "label": "Copa Presidente cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:161",
       "label": "Tazza ta' Malta cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 27,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 26,
       "status": "pending"
     },
     {
@@ -1583,42 +1583,42 @@
     {
       "key": "cup:162",
       "label": "Kyrgyzstan Cup cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 7,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:163",
       "label": "Cupa Moldovei cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 16,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:164",
       "label": "საქართველოს ეროვნული თასი cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 30,
       "status": "pending"
     },
     {
       "key": "cup:165",
       "label": "Copa Constitució cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:166",
       "label": "Al Urdun Cup cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 19,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:167",
       "label": "Copa Gran Jaguar cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 12,
       "status": "pending"
     },
@@ -1626,55 +1626,55 @@
       "key": "cup:17",
       "label": "Copa Chile cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 28,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:170",
       "label": "The Pro Bowl cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:171",
       "label": "Copa Nacional Rubén Darío cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:172",
       "label": "Kazakhstan Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:173",
       "label": "SVB Beker cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:177",
       "label": "Liechtenstein Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:178",
       "label": "Coupe d'Algérie cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 27,
       "status": "pending"
     },
     {
       "key": "cup:179",
       "label": "Mongol Uls Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 7,
       "status": "pending"
     },
@@ -1682,76 +1682,76 @@
       "key": "cup:18",
       "label": "Copa Colombia cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 19,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:180",
       "label": "Lebanese FA Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:181",
       "label": "Senegal Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:182",
       "label": "Hayastani gavat cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 12,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:183",
       "label": "Hattrick Masters results",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:184",
       "label": "Kaas El Malek cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:185",
       "label": "Barbados Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:186",
       "label": "Taça de Cabo Verde cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:187",
       "label": "Coupe nationale cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 6,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:188",
       "label": "Al Kuwayt Emir Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:189",
       "label": "Al Iraq Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 2,
       "status": "pending"
     },
@@ -1759,160 +1759,160 @@
       "key": "cup:19",
       "label": "Kas Misr cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 29,
+      "pending": 17,
       "status": "pending"
     },
     {
       "key": "cup:190",
       "label": "Azərbaycan Kuboku cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 15,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:191",
       "label": "Taça de Angola cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:192",
       "label": "Kup Crne Gore cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 17,
       "status": "pending"
     },
     {
       "key": "cup:193",
       "label": "Bangladesh Cup cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 13,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:194",
       "label": "Al Yaman Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:195",
       "label": "Ka'as Al-Sultan Qaboos cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 10,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:196",
       "label": "Taça de Mocambique cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:197",
       "label": "Brunei Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:198",
       "label": "Gold Coast Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:199",
       "label": "Kampuchea Cup cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 7,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:2",
       "label": "Copa Argentina Diego Armando Maradona cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 20,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:20",
       "label": "Indian Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 34,
-      "status": "failed"
+      "pending": 21,
+      "status": "pending"
     },
     {
       "key": "cup:200",
       "label": "Benin Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:201",
       "label": "Suriyah Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:202",
       "label": "Al Kaas Al Qatary cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:203",
       "label": "Tanzania Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:204",
       "label": "Uganda Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:205",
       "label": "Dhivehi Raajje Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:206",
       "label": "O'zbekiston Kubogi cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:207",
       "label": "Cameroonian Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:208",
       "label": "Copa Nacional de Cuba cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:209",
       "label": "Palestine Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 8,
       "status": "pending"
     },
@@ -1920,322 +1920,322 @@
       "key": "cup:21",
       "label": "Irish Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 42,
+      "pending": 38,
       "status": "pending"
     },
     {
       "key": "cup:22",
       "label": "The Emperor's Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 18,
-      "status": "failed"
+      "pending": 13,
+      "status": "pending"
     },
     {
       "key": "cup:23",
       "label": "Korea Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 22,
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:24",
       "label": "Copa Perú cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 16,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:25",
       "label": "Puchar Polski cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 23,
+      "pending": 2,
       "status": "failed"
     },
     {
       "key": "cup:26",
       "label": "Taça de Portugal cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 28,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:27",
       "label": "Scottish Cup cup results",
       "lastSuccessfulCheck": "2026-09-25T21:22:07.457Z",
-      "pending": 24,
-      "status": "failed"
+      "pending": 12,
+      "status": "pending"
     },
     {
       "key": "cup:28",
       "label": "South African Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 13,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:29",
       "label": "Thai Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 29,
+      "pending": 18,
       "status": "pending"
     },
     {
       "key": "cup:3",
       "label": "English Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 31,
+      "pending": 23,
       "status": "pending"
     },
     {
       "key": "cup:30",
       "label": "Türkiye Kupası cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 27,
+      "pending": 19,
       "status": "pending"
     },
     {
       "key": "cup:31",
       "label": "Copa Uruguay cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 30,
+      "pending": 21,
       "status": "pending"
     },
     {
       "key": "cup:32",
       "label": "Copa Venezuela cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 13,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:33",
       "label": "China Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 15,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:34",
       "label": "Кубок России cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 20,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:35",
       "label": "Cupa României cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 23,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:36",
       "label": "Íslandsbikarinn cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 20,
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "cup:37",
       "label": "Austria-Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 34,
+      "pending": 26,
       "status": "pending"
     },
     {
       "key": "cup:38",
       "label": "Piala Malaysia cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 37,
+      "pending": 29,
       "status": "pending"
     },
     {
       "key": "cup:4",
       "label": "Deutschland-Pokal cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 26,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:40",
       "label": "Singapore Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 32,
-      "status": "failed"
+      "pending": 22,
+      "status": "pending"
     },
     {
       "key": "cup:41",
       "label": "Belgium Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 21,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:42",
       "label": "Switzerland Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 17,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:43",
       "label": "Copa de España cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 29,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:48",
       "label": "Κύπελλο Ελλάδος cup results",
       "lastSuccessfulCheck": null,
-      "pending": 20,
+      "pending": 11,
       "status": "failed"
     },
     {
       "key": "cup:49",
       "label": "Magyar Kupa cup results",
-      "lastSuccessfulCheck": "2026-10-19T05:17:28.745Z",
-      "pending": 13,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:5",
       "label": "Copa Nacional de México cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 31,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:50",
       "label": "Český pohár cup results",
-      "lastSuccessfulCheck": "2026-10-19T05:17:28.745Z",
-      "pending": 21,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 17,
       "status": "pending"
     },
     {
       "key": "cup:51",
       "label": "Latvijas Nacionālais kauss cup results",
-      "lastSuccessfulCheck": "2026-10-19T05:17:28.745Z",
-      "pending": 21,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:512",
       "label": "Smaragdcupen cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:513",
       "label": "Craig Wozniak Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:514",
       "label": "Smaragd-Pokal cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 8,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:515",
       "label": "Coppa Alpi cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:516",
       "label": "Trophée Pantelis cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:517",
       "label": "Copa Esmeralda Maya cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 16,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:518",
       "label": "Copa Esmeralda Pedro 'Apache' Zurita cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 6,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:519",
       "label": "Voyager Cup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:52",
       "label": "Indonesia Cup cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:40:28.134Z",
-      "pending": 28,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 22,
       "status": "pending"
     },
     {
       "key": "cup:520",
       "label": "Ponduscupen smaragd cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 11,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:521",
       "label": "Smaragdturneringen cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:522",
       "label": "Suomen Ahven-haastajacup cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:523",
       "label": "Smaragden Beker cup results",
-      "lastSuccessfulCheck": null,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:524",
       "label": "Oceania Emerald Challenger Cup cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 12,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:525",
       "label": "Copa Esmeralda cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 17,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 16,
       "status": "pending"
     },
     {
       "key": "cup:526",
       "label": "Royal Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "cup:527",
       "label": "Copa Pau 'La Rompe' Gerpe Esmeralda cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
@@ -2249,15 +2249,15 @@
       "key": "cup:529",
       "label": "India Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:53",
       "label": "Philippine Football Federation Cup cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
-      "pending": 13,
-      "status": "failed"
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 4,
+      "status": "pending"
     },
     {
       "key": "cup:530",
@@ -2270,7 +2270,7 @@
       "key": "cup:531",
       "label": "Nippon Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
@@ -2284,21 +2284,21 @@
       "key": "cup:533",
       "label": "Szmaragdowy Puchar Drugiej Szansy cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:534",
       "label": "Taça Challenger Esmeralda de Portugal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:535",
       "label": "Thistle Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -2312,7 +2312,7 @@
       "key": "cup:537",
       "label": "Copa Esmeralda \"José Nasazzi\" cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
@@ -2332,15 +2332,15 @@
     {
       "key": "cup:54",
       "label": "Eesti Karikas cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
-      "pending": 20,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:540",
       "label": "Prathet Thai Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -2354,7 +2354,7 @@
       "key": "cup:542",
       "label": "Misr Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 4,
       "status": "pending"
     },
     {
@@ -2368,14 +2368,14 @@
       "key": "cup:544",
       "label": "Изумрудный кубок вызова cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:545",
       "label": "Copa Esmeralda cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -2389,28 +2389,28 @@
       "key": "cup:547",
       "label": "Smaragðsbikar Íslands cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:548",
       "label": "Grüner-Veltliner-Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:549",
       "label": "Belgium Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:55",
       "label": "Куп Србије cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
-      "pending": 22,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 21,
       "status": "pending"
     },
     {
@@ -2431,14 +2431,14 @@
       "key": "cup:552",
       "label": "Singapore Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:553",
       "label": "Σμαραγδένιο Κύπελλο Ελλάδος cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -2473,7 +2473,7 @@
       "key": "cup:558",
       "label": "Pilipinas Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -2486,8 +2486,8 @@
     {
       "key": "cup:56",
       "label": "Kup Hrvatske cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
-      "pending": 22,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -2501,7 +2501,7 @@
       "key": "cup:561",
       "label": "Smaragdni kup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -2515,7 +2515,7 @@
       "key": "cup:563",
       "label": "Chinese Taipei Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -2529,7 +2529,7 @@
       "key": "cup:565",
       "label": "Българска купа на лигата (Изумруд) cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
@@ -2543,14 +2543,14 @@
       "key": "cup:567",
       "label": "Prešernov pokal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:568",
       "label": "Ąžuolo taurė cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
@@ -2564,7 +2564,7 @@
       "key": "cup:570",
       "label": "Кубок Області cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
@@ -2578,8 +2578,8 @@
       "key": "cup:572",
       "label": "Cup Hạng Nhất cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
-      "status": "pending"
+      "pending": 14,
+      "status": "failed"
     },
     {
       "key": "cup:573",
@@ -2592,21 +2592,21 @@
       "key": "cup:574",
       "label": "Copa Esmeralda \"Maldición de HH\" cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:575",
       "label": "Copa Desafío Esmeralda cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:576",
       "label": "Copa Esmeralda Juan Manuel Peña cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
@@ -2633,15 +2633,15 @@
     {
       "key": "cup:58",
       "label": "Hong Kong Cup cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
-      "pending": 22,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:580",
       "label": "Saudi Arabia Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
@@ -2703,8 +2703,8 @@
     {
       "key": "cup:59",
       "label": "Phoenix Cup cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
-      "pending": 30,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 27,
       "status": "pending"
     },
     {
@@ -2781,14 +2781,14 @@
       "key": "cup:6",
       "label": "Coupe de France cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 23,
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "cup:60",
       "label": "Wales Cup cup results",
-      "lastSuccessfulCheck": "2026-10-29T23:48:21.437Z",
-      "pending": 21,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -2864,8 +2864,8 @@
     {
       "key": "cup:61",
       "label": "Купа на България cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 21,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -2900,7 +2900,7 @@
       "key": "cup:614",
       "label": "Hayastan Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -2941,8 +2941,8 @@
     {
       "key": "cup:62",
       "label": "Israel State Cup cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 24,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 20,
       "status": "pending"
     },
     {
@@ -3018,8 +3018,8 @@
     {
       "key": "cup:63",
       "label": "Pokal Slovenije cup results",
-      "lastSuccessfulCheck": null,
-      "pending": 22,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -3061,7 +3061,7 @@
       "key": "cup:635",
       "label": "Uganda Emerald Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
@@ -3103,7 +3103,7 @@
       "key": "cup:641",
       "label": "Rubincupen cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
@@ -3145,21 +3145,21 @@
       "key": "cup:647",
       "label": "Copa Rubí Alberto Conte cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "cup:648",
       "label": "Apollo Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:649",
       "label": "Ponduscupen rubin cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -3215,14 +3215,14 @@
       "key": "cup:657",
       "label": "Copa Cocuy Rubí cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:658",
       "label": "India Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 8,
       "status": "pending"
     },
     {
@@ -3243,7 +3243,7 @@
       "key": "cup:661",
       "label": "Copa Rubí Almte. Miguel Grau Seminario cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -3257,7 +3257,7 @@
       "key": "cup:663",
       "label": "Taça Challenger Rubi de Portugal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
@@ -3285,7 +3285,7 @@
       "key": "cup:667",
       "label": "Copa Galileo Rubí cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
@@ -3313,14 +3313,14 @@
       "key": "cup:671",
       "label": "Misr Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:672",
       "label": "桑榆挑战者杯 (Ruby Challenger Cup) cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -3334,21 +3334,21 @@
       "key": "cup:674",
       "label": "Copa Rubí cup results",
       "lastSuccessfulCheck": null,
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "cup:675",
       "label": "Trofeul Dunărea cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "cup:676",
       "label": "Rúbínbikar Íslands cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 15,
       "status": "pending"
     },
     {
@@ -3362,7 +3362,7 @@
       "key": "cup:678",
       "label": "Belgium Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -3383,7 +3383,7 @@
       "key": "cup:681",
       "label": "Singapore Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 13,
       "status": "pending"
     },
     {
@@ -3411,21 +3411,21 @@
       "key": "cup:685",
       "label": "Daugavas kauss cup results",
       "lastSuccessfulCheck": null,
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "cup:686",
       "label": "Indonesia Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:687",
       "label": "Pilipinas Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 13,
       "status": "pending"
     },
     {
@@ -3474,7 +3474,7 @@
       "key": "cup:694",
       "label": "Българска купа на лигата (Рубин) cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
@@ -3516,7 +3516,7 @@
       "key": "cup:7",
       "label": "Coppa Italia cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 15,
+      "pending": 3,
       "status": "pending"
     },
     {
@@ -3544,21 +3544,21 @@
       "key": "cup:703",
       "label": "Copa Rubí \"Arsenio Erico\" cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:704",
       "label": "Copa Desafío Rubí cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "cup:705",
       "label": "Copa Rubí Víctor Agustín Ugarte cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
@@ -3712,7 +3712,7 @@
       "key": "cup:728",
       "label": "Kyrgyzstan Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 3,
+      "pending": 2,
       "status": "pending"
     },
     {
@@ -3817,7 +3817,7 @@
       "key": "cup:743",
       "label": "Hayastan Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 7,
       "status": "pending"
     },
     {
@@ -3887,14 +3887,14 @@
       "key": "cup:753",
       "label": "Bangladesh Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
       "key": "cup:754",
       "label": "Al Yaman Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -3929,7 +3929,7 @@
       "key": "cup:759",
       "label": "Kampuchea Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
@@ -3964,7 +3964,7 @@
       "key": "cup:764",
       "label": "Uganda Ruby Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -4013,7 +4013,7 @@
       "key": "cup:771",
       "label": "Conspirator Memorial Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -4041,14 +4041,14 @@
       "key": "cup:775",
       "label": "Copa Zafiro Olmeca cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:776",
       "label": "Copa Zafiro caPiTAn_piLuSO cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -4062,7 +4062,7 @@
       "key": "cup:778",
       "label": "Ponduscupen safir cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
@@ -4083,7 +4083,7 @@
       "key": "cup:781",
       "label": "Saffieren Beker cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
@@ -4104,7 +4104,7 @@
       "key": "cup:784",
       "label": "Polar Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
@@ -4167,28 +4167,28 @@
       "key": "cup:793",
       "label": "Saltire Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
       "key": "cup:794",
       "label": "South Africa Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "cup:795",
       "label": "Copa Zafiro \"Héctor Scarone\" cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:796",
       "label": "Copa Galileo Zafiro cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -4216,14 +4216,14 @@
       "key": "cup:8",
       "label": "US Open Cup cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 30,
+      "pending": 25,
       "status": "pending"
     },
     {
       "key": "cup:800",
       "label": "Misr Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 18,
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -4237,14 +4237,14 @@
       "key": "cup:802",
       "label": "Сапфировый кубок вызова cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:803",
       "label": "Copa Zafiro cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -4258,14 +4258,14 @@
       "key": "cup:805",
       "label": "Safírbikar Íslands cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "cup:806",
       "label": "Blauer-Zweigelt-Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
@@ -4293,7 +4293,7 @@
       "key": "cup:810",
       "label": "Singapore Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 15,
+      "pending": 14,
       "status": "pending"
     },
     {
@@ -4321,7 +4321,7 @@
       "key": "cup:814",
       "label": "Gaiziņa kauss cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -4335,7 +4335,7 @@
       "key": "cup:816",
       "label": "Pilipinas Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 18,
       "status": "pending"
     },
     {
@@ -4356,7 +4356,7 @@
       "key": "cup:819",
       "label": "Safirni kup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 6,
+      "pending": 5,
       "status": "pending"
     },
     {
@@ -4384,7 +4384,7 @@
       "key": "cup:823",
       "label": "Българска купа на лигата (Сапфир) cup results",
       "lastSuccessfulCheck": null,
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -4398,21 +4398,21 @@
       "key": "cup:825",
       "label": "Trubarjev pokal cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
       "key": "cup:826",
       "label": "Baltijos taurė cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "cup:827",
       "label": "Zafírový pohár cup results",
       "lastSuccessfulCheck": null,
-      "pending": 10,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -4426,7 +4426,7 @@
       "key": "cup:829",
       "label": "Bavarac_Vinnie kup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 9,
+      "pending": 8,
       "status": "pending"
     },
     {
@@ -4447,14 +4447,14 @@
       "key": "cup:832",
       "label": "Copa Zafiro \"Terere\" cup results",
       "lastSuccessfulCheck": null,
-      "pending": 8,
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "cup:833",
       "label": "Copa Desafío Zafiro cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 10,
       "status": "pending"
     },
     {
@@ -4797,7 +4797,7 @@
       "key": "cup:883",
       "label": "Al Yaman Sapphire Challenger Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 11,
+      "pending": 9,
       "status": "pending"
     },
     {
@@ -4916,7 +4916,7 @@
       "key": "cup:9",
       "label": "Norgesmesterskapet cup results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 26,
+      "pending": 17,
       "status": "pending"
     },
     {
@@ -4951,7 +4951,7 @@
       "key": "cup:904",
       "label": "Copa de Chocolate cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
@@ -5126,7 +5126,7 @@
       "key": "cup:929",
       "label": "Misr Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 27,
+      "pending": 26,
       "status": "pending"
     },
     {
@@ -5161,7 +5161,7 @@
       "key": "cup:934",
       "label": "Harmbikar Íslands cup results",
       "lastSuccessfulCheck": null,
-      "pending": 17,
+      "pending": 16,
       "status": "pending"
     },
     {
@@ -5196,7 +5196,7 @@
       "key": "cup:939",
       "label": "Singapore Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 18,
+      "pending": 15,
       "status": "pending"
     },
     {
@@ -5224,7 +5224,7 @@
       "key": "cup:943",
       "label": "Sprīdīša kauss cup results",
       "lastSuccessfulCheck": null,
-      "pending": 14,
+      "pending": 13,
       "status": "pending"
     },
     {
@@ -5238,7 +5238,7 @@
       "key": "cup:945",
       "label": "Pilipinas Consolation Cup cup results",
       "lastSuccessfulCheck": null,
-      "pending": 29,
+      "pending": 28,
       "status": "pending"
     },
     {
@@ -5357,7 +5357,7 @@
       "key": "cup:962",
       "label": "Copa Consuelo cup results",
       "lastSuccessfulCheck": null,
-      "pending": 19,
+      "pending": 17,
       "status": "pending"
     },
     {
@@ -5448,7 +5448,7 @@
       "key": "cup:976",
       "label": "Кубак Надзеі cup results",
       "lastSuccessfulCheck": null,
-      "pending": 13,
+      "pending": 12,
       "status": "pending"
     },
     {
@@ -6708,7 +6708,7 @@
       "key": "league:1",
       "label": "Sweden league results",
       "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 4,
+      "pending": 3,
       "status": "pending"
     },
     {
@@ -6722,7 +6722,7 @@
       "key": "league:1000",
       "label": "Hattrick International league results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 7,
+      "pending": 6,
       "status": "pending"
     },
     {
@@ -6743,7 +6743,7 @@
       "key": "league:101",
       "label": "Malta league results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 21,
+      "pending": 18,
       "status": "pending"
     },
     {
@@ -6757,7 +6757,7 @@
       "key": "league:103",
       "label": "Moldova league results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -6778,7 +6778,7 @@
       "key": "league:106",
       "label": "Jordan league results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 3,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -6897,7 +6897,7 @@
       "key": "league:126",
       "label": "Côte d’Ivoire league results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -6918,7 +6918,7 @@
       "key": "league:129",
       "label": "Azerbaijan league results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 3,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -6953,7 +6953,7 @@
       "key": "league:134",
       "label": "Oman league results",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 4,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -7282,7 +7282,7 @@
       "key": "league:18",
       "label": "Chile league results",
       "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 16,
+      "pending": 15,
       "status": "pending"
     },
     {
@@ -7478,7 +7478,7 @@
       "key": "league:46",
       "label": "Switzerland league results",
       "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -7541,7 +7541,7 @@
       "key": "league:56",
       "label": "Estonia league results",
       "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 5,
+      "pending": 4,
       "status": "pending"
     },
     {
@@ -7597,7 +7597,7 @@
       "key": "league:63",
       "label": "Israel league results",
       "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 12,
+      "pending": 11,
       "status": "pending"
     },
     {
@@ -7751,7 +7751,7 @@
       "key": "league:88",
       "label": "Dominican Republic league results",
       "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 2,
+      "pending": 1,
       "status": "pending"
     },
     {
@@ -7827,1416 +7827,1416 @@
     {
       "key": "national-cup:4878483",
       "label": "U21 Europe Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 2,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "national-cup:4878490",
       "label": "U21 America Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "national-cup:4878492",
       "label": "U21 Africa Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "national-cup:4878493",
-      "label": "U21 Asia and Oceania Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 1,
-      "status": "pending"
+      "label": "U21 Asia-Oceania Cup official tournament",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "national-cup:4892615",
       "label": "U21 Nations Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "national-cup:5001273",
       "label": "Europe Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "national-cup:5001277",
       "label": "America Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 2,
       "status": "pending"
     },
     {
       "key": "national-cup:5001278",
       "label": "Africa Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 4,
       "status": "pending"
     },
     {
       "key": "national-cup:5001279",
-      "label": "Asia and Oceania Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "label": "Asia-Oceania Cup official tournament",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 3,
       "status": "pending"
     },
     {
       "key": "national-cup:5001319",
       "label": "Nations Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 3,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "seasonal:2108472",
       "label": "Supporter Week Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 2,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "seasonal:3116034",
       "label": "Trophy of Legends official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 3,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "seasonal:3116057",
       "label": "Titans of 2005 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 4,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "seasonal:3116058",
       "label": "Titans of 2006 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 3,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "seasonal:3116059",
       "label": "Titans of 2007 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 4,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "seasonal:3116060",
       "label": "Titans of 2008 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 3,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "seasonal:3116061",
       "label": "Titans of 2009 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 3,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 2,
       "status": "pending"
     },
     {
       "key": "seasonal:3116062",
       "label": "Heroes of 2010 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 6,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "seasonal:3116063",
       "label": "Heroes of 2011 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 5,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 3,
       "status": "pending"
     },
     {
       "key": "seasonal:3116064",
       "label": "Heroes of 2012 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 7,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 6,
       "status": "pending"
     },
     {
       "key": "seasonal:3116065",
       "label": "Heroes of 2013 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 5,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 4,
       "status": "pending"
     },
     {
       "key": "seasonal:3116067",
       "label": "Heroes of 2014 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 8,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "seasonal:3116068",
       "label": "Heroes of 2015 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 8,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "seasonal:3116070",
       "label": "Heroes of 2016 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 11,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 9,
       "status": "pending"
     },
     {
       "key": "seasonal:3116071",
       "label": "Heroes of 2017 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 12,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 10,
       "status": "pending"
     },
     {
       "key": "seasonal:3195190",
       "label": "Heroes of 2018 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 13,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 12,
       "status": "pending"
     },
     {
       "key": "seasonal:3427550",
       "label": "Heroes of 2019 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 6,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "seasonal:3704867",
       "label": "Heroes of 2020 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 9,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 8,
       "status": "pending"
     },
     {
       "key": "seasonal:4945473",
       "label": "Heroes of 2021 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 6,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 5,
       "status": "pending"
     },
     {
       "key": "seasonal:5255320",
       "label": "Heroes of 2022 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 8,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "seasonal:5555820",
       "label": "Heroes of 2023 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 8,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 7,
       "status": "pending"
     },
     {
       "key": "seasonal:5873608",
       "label": "Heroes of 2024 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 3,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 1,
       "status": "pending"
     },
     {
       "key": "seasonal:6320224",
       "label": "Heroes of 2025 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "seasonal:6758706",
       "label": "Heroes of 2026 Trophy official tournament",
-      "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 1,
-      "status": "pending"
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "users:nationality",
       "label": "Manager and coach nationality archive source",
       "lastSuccessfulCheck": "2026-11-17T21:08:15.904Z",
-      "pending": 23,
-      "status": "pending"
+      "pending": 0,
+      "status": "ok"
     },
     {
       "key": "worldcup:senior",
       "label": "World Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
-      "pending": 16,
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
+      "pending": 15,
       "status": "pending"
     },
     {
       "key": "worldcup:youth",
       "label": "U21 World Cup official tournament",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 13,
       "status": "pending"
     },
     {
       "key": "worlddetails:1",
       "label": "Sweden competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:100",
       "label": "El Salvador competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:1000",
       "label": "Hattrick International competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:1002",
       "label": "Hattrick Anniversary League competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:1003",
       "label": "Homegrown League competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:101",
       "label": "Malta competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:102",
       "label": "Kyrgyz Republic competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:103",
       "label": "Moldova competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:104",
       "label": "Georgia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:105",
       "label": "Andorra competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:106",
       "label": "Jordan competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:107",
       "label": "Guatemala competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:11",
       "label": "Denmark competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:110",
       "label": "Trinidad & Tobago competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:111",
       "label": "Nicaragua competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:112",
       "label": "Kazakhstan competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:113",
       "label": "Suriname competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:117",
       "label": "Liechtenstein competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:118",
       "label": "Algeria competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:119",
       "label": "Mongolia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:12",
       "label": "Finland competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:120",
       "label": "Lebanon competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:121",
       "label": "Senegal competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:122",
       "label": "Armenia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:123",
       "label": "Bahrain competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:124",
       "label": "Barbados competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:125",
       "label": "Cape Verde competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:126",
       "label": "Côte d’Ivoire competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:127",
       "label": "Kuwait competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:128",
       "label": "Iraq competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:129",
       "label": "Azerbaijan competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:130",
       "label": "Angola competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:131",
       "label": "Montenegro competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:132",
       "label": "Bangladesh competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:133",
       "label": "Yemen competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:134",
       "label": "Oman competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:135",
       "label": "Mozambique competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:136",
       "label": "Brunei competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:137",
       "label": "Ghana competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:138",
       "label": "Cambodia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:139",
       "label": "Benin competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:14",
       "label": "Netherlands competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:140",
       "label": "Syria competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:141",
       "label": "Qatar competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:142",
       "label": "Tanzania competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:143",
       "label": "Uganda competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:144",
       "label": "Maldives competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:145",
       "label": "Uzbekistan competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:146",
       "label": "Cameroon competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:147",
       "label": "Cuba competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:148",
       "label": "Palestine competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:149",
       "label": "São Tomé e Príncipe competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:15",
       "label": "Oceania competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:151",
       "label": "Comoros competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:152",
       "label": "Sri Lanka competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:153",
       "label": "Curaçao competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:154",
       "label": "Guam competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:155",
       "label": "Democratic Republic of the Congo competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:156",
       "label": "Federal Democratic Republic of Ethiopia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:157",
       "label": "Saint Vincent and the Grenadines competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:158",
       "label": "Belize competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:159",
       "label": "Madagascar competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:16",
       "label": "Brazil competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:160",
       "label": "Botswana competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:161",
       "label": "Myanmar competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:162",
       "label": "Zambia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:163",
       "label": "San Marino competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:164",
       "label": "Haiti competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:165",
       "label": "Puerto Rico competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:166",
       "label": "Grenada competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:167",
       "label": "Burkina Faso competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:168",
       "label": "Nepal competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:169",
       "label": "Guyana competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:17",
       "label": "Canada competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:170",
       "label": "Tahiti competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:171",
       "label": "Guinea competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:172",
       "label": "Bahamas competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:173",
       "label": "Rwanda competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:174",
       "label": "Saint Kitts and Nevis competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:175",
       "label": "Guinea Ecuatorial competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:176",
       "label": "Gibraltar competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:177",
       "label": "Bhutan competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:18",
       "label": "Chile competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:19",
       "label": "Colombia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:2",
       "label": "England competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:20",
       "label": "India competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:21",
       "label": "Ireland competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:22",
       "label": "Japan competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:23",
       "label": "Peru competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:24",
       "label": "Poland competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:25",
       "label": "Portugal competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:26",
       "label": "Scotland competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:27",
       "label": "South Africa competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:28",
       "label": "Uruguay competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:29",
       "label": "Venezuela competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:3",
       "label": "Germany competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:30",
       "label": "South Korea competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:3000",
       "label": "Hattrick Femme International competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:31",
       "label": "Thailand competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:32",
       "label": "Turkey competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:33",
       "label": "Egypt competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:34",
       "label": "People's Republic of China competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:35",
       "label": "Russia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:36",
       "label": "Spain competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:37",
       "label": "Romania competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:38",
       "label": "Iceland competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:39",
       "label": "Austria competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:4",
       "label": "Italy competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:44",
       "label": "Belgium competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:45",
       "label": "Malaysia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:46",
       "label": "Switzerland competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:47",
       "label": "Singapore competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:5",
       "label": "France competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:50",
       "label": "Greece competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:51",
       "label": "Hungary competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:52",
       "label": "Czechia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:53",
       "label": "Latvia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:54",
       "label": "Indonesia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:55",
       "label": "Philippines competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:56",
       "label": "Estonia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:57",
       "label": "Serbia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:58",
       "label": "Croatia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:59",
       "label": "Hong Kong competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:6",
       "label": "Mexico competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:60",
       "label": "Chinese Taipei competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:61",
       "label": "Wales competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:62",
       "label": "Bulgaria competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:63",
       "label": "Israel competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:64",
       "label": "Slovenia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:66",
       "label": "Lithuania competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:67",
       "label": "Slovakia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:68",
       "label": "Ukraine competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:69",
       "label": "Bosnia and Herzegovina competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:7",
       "label": "Argentina competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:70",
       "label": "Vietnam competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:71",
       "label": "Pakistan competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:72",
       "label": "Paraguay competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:73",
       "label": "Ecuador competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:74",
       "label": "Bolivia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:75",
       "label": "Nigeria competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:76",
       "label": "Faroe Islands competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:77",
       "label": "Morocco competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:79",
       "label": "Saudi Arabia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:8",
       "label": "USA competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:80",
       "label": "Tunisia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:81",
       "label": "Costa Rica competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:83",
       "label": "United Arab Emirates competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:84",
       "label": "Luxembourg competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:85",
       "label": "Iran competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:88",
       "label": "Dominican Republic competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:89",
       "label": "Cyprus competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:9",
       "label": "Norway competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:91",
       "label": "Belarus competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:93",
       "label": "Northern Ireland competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:94",
       "label": "Jamaica competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:95",
       "label": "Kenya competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:96",
       "label": "Panama competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:97",
       "label": "North Macedonia competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:98",
       "label": "Albania competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     },
     {
       "key": "worlddetails:99",
       "label": "Honduras competition calendar",
-      "lastSuccessfulCheck": "2026-11-17T19:47:44.122Z",
+      "lastSuccessfulCheck": "2026-11-23T17:46:05.968Z",
       "pending": 0,
       "status": "ok"
     }
   ],
   "files": {
     "managers.json": {
-      "path": "/data/versions/f71f73867114c0e37973fa8e2e230f90ea818b5a8753ec8399766129dc9c655d/managers.json",
+      "path": "/data/versions/880eee58851abc6ad69643c96fe3e73ee757db330681469de7f40abaecdd326d/managers.json",
       "sha256": "24b8ff19f079a84d3d8e22d2953d8854fa3e6828b75f22500634dee9b98e4342",
       "bytes": 7601911
     },
     "leagues.json": {
-      "path": "/data/versions/f71f73867114c0e37973fa8e2e230f90ea818b5a8753ec8399766129dc9c655d/leagues.json",
+      "path": "/data/versions/880eee58851abc6ad69643c96fe3e73ee757db330681469de7f40abaecdd326d/leagues.json",
       "sha256": "4d41b5a5b6a7f9d89203e6e5c4c4f687269fcdc15a8cf4b83a9a99d64682fa79",
       "bytes": 769344
     },
     "cups.json": {
-      "path": "/data/versions/f71f73867114c0e37973fa8e2e230f90ea818b5a8753ec8399766129dc9c655d/cups.json",
-      "sha256": "202e522054459be0f621b6ed10ce9e0c3fa8db64b7c46100384ec10b85a82c8b",
-      "bytes": 2504838
+      "path": "/data/versions/880eee58851abc6ad69643c96fe3e73ee757db330681469de7f40abaecdd326d/cups.json",
+      "sha256": "64c149f013404727d62050266308c19a047c58d3cb760907a0896bc66a4036ab",
+      "bytes": 2506451
     },
     "masters.json": {
-      "path": "/data/versions/f71f73867114c0e37973fa8e2e230f90ea818b5a8753ec8399766129dc9c655d/masters.json",
+      "path": "/data/versions/880eee58851abc6ad69643c96fe3e73ee757db330681469de7f40abaecdd326d/masters.json",
       "sha256": "19c30f390f33f0262dc46812aff2f5d6ce593ffffda1fef24469b0d04c51bcc0",
       "bytes": 6974
     },
     "seasonal.json": {
-      "path": "/data/versions/f71f73867114c0e37973fa8e2e230f90ea818b5a8753ec8399766129dc9c655d/seasonal.json",
+      "path": "/data/versions/880eee58851abc6ad69643c96fe3e73ee757db330681469de7f40abaecdd326d/seasonal.json",
       "sha256": "6e6b3b6756499fd1b4f6cc7d3413e255106073526b62c09f035c559b969a5c8f",
       "bytes": 60891
     },
     "worldcup.json": {
-      "path": "/data/versions/f71f73867114c0e37973fa8e2e230f90ea818b5a8753ec8399766129dc9c655d/worldcup.json",
+      "path": "/data/versions/880eee58851abc6ad69643c96fe3e73ee757db330681469de7f40abaecdd326d/worldcup.json",
       "sha256": "4bfc17e046a122f35f2b53ada1c7955a2da743dbf86175e3c653fef695aecdb2",
       "bytes": 86534
     },
     "elections.json": {
-      "path": "/data/versions/f71f73867114c0e37973fa8e2e230f90ea818b5a8753ec8399766129dc9c655d/elections.json",
+      "path": "/data/versions/880eee58851abc6ad69643c96fe3e73ee757db330681469de7f40abaecdd326d/elections.json",
       "sha256": "cbdf2a4922bf7827b1a82fc54220bee11f7224bfb557a0718a3cdce0e3d0257a",
       "bytes": 1150520
     }
